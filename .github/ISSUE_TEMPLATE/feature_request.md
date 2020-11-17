@@ -1,3 +1,12 @@
+---
+name: Feature request
+about: Suggest an idea for this project
+title: ''
+labels: ''
+assignees: ''
+
+---
+
 ## 🔍 Feature
  
 | Name             | About | Labels | Assignee(s) |
@@ -26,4 +35,3 @@
 
 - 주의 사항 1
 - 주의 사항 2
-
