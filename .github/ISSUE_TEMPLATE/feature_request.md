@@ -7,14 +7,6 @@ assignees: ''
 
 ---
 
-## 🔍 Feature
- 
-| Name             | About | Labels | Assignee(s) |
-| ---------------- | -------- | -------- | -------- |
-| Feature Request  | Suggest an idea for this project  |    |    |
-
----
-
 ## 🗣 설명
 
 
