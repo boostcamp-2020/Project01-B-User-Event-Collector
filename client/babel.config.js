@@ -8,14 +8,19 @@ module.exports = function (api) {
         targets: '> 0.25%, not dead',
         useBuiltIns: 'usage',
         corejs: '3',
-        modules: false,
+        shippedProposals: true,
       },
     ],
     '@babel/preset-react',
     '@babel/preset-typescript',
   ];
 
+  const plugins = [
+    '@babel/proposal-object-rest-spread',
+  ];
+
   return {
     presets,
+    plugins,
   };
 };
