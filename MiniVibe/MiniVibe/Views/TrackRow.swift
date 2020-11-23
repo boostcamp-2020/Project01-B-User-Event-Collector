@@ -9,7 +9,20 @@ import SwiftUI
 
 struct TrackRow: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Image("album")
+                .resizable()
+                .frame(width: 100, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+            VStack(alignment: .leading) {
+                Text("Dynamite")
+                    .font(.title)
+                Text("방탄소년단")
+                    .font(.title2)
+                    .foregroundColor(.secondary)
+            }
+            Spacer()
+        }
+        .padding(.vertical, 8)
     }
 }
 
