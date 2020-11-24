@@ -7,14 +7,6 @@ assignees: ''
 
 ---
 
-## 🔍 Feature
- 
-| Name             | About | Labels | Assignee(s) |
-| ---------------- | -------- | -------- | -------- |
-| Feature Request  | Suggest an idea for this project  |    |    |
-
----
-
 ## 🗣 설명
 
 
@@ -27,11 +19,3 @@ assignees: ''
 - [ ] 체크 사항 2
 - [ ] 체크 사항 3
 - [ ] 체크 사항 4
-
-
-## 🚧 주의 사항
-
-> 이슈를 구현할 때 유의깊게 살펴볼 사항
-
-- 주의 사항 1
-- 주의 사항 2
