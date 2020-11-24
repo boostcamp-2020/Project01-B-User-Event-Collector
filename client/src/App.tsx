@@ -1,7 +1,8 @@
 import React from 'react';
+import Button from '@components/atoms/Button/Button.tsx';
 
 const App = () => (
-  <h1>hello world</h1>
+  <Button>버튼</Button>
 );
 
 export default App;
