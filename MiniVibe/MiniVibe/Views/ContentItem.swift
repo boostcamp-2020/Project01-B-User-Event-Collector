@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentsItem: View {
+struct ContentItem: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text("인기 플레이리스트")
@@ -18,7 +18,7 @@ struct ContentsItem: View {
                 .resizable()
                 .aspectRatio(2, contentMode: .fit)
             
-            VStack {
+            VStack(spacing: 3) {
                 Text("오랜만에 흥 터지네")
                     .font(.system(size: 17))
                     .bold()
@@ -33,6 +33,6 @@ struct ContentsItem: View {
 
 struct ContentsItem_Previews: PreviewProvider {
     static var previews: some View {
-        ContentsItem()
+        ContentItem()
     }
 }
