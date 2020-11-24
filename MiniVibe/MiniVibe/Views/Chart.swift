@@ -21,9 +21,6 @@ struct Chart: View {
                     }
                 }
             }
-            VStack {
-                
-            }
         }
     }
 }

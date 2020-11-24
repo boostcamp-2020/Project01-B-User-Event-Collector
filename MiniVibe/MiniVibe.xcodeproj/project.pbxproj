@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		444272B3256CDEC8008BB87B /* TodayTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272B2256CDEC8008BB87B /* TodayTitle.swift */; };
+		444272B8256CE2B3008BB87B /* ContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272B7256CE2B3008BB87B /* ContentItem.swift */; };
+		444272BB256CE701008BB87B /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272BA256CE701008BB87B /* Contents.swift */; };
 		4478AA3A256CDD8F00FDED38 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4478AA39256CDD8F00FDED38 /* .swiftlint.yml */; };
 		805E28AE256BBD52007AF5F1 /* MiniVibeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805E28AD256BBD52007AF5F1 /* MiniVibeApp.swift */; };
 		805E28B0256BBD52007AF5F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805E28AF256BBD52007AF5F1 /* ContentView.swift */; };
@@ -21,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		444272B2256CDEC8008BB87B /* TodayTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTitle.swift; sourceTree = "<group>"; };
+		444272B7256CE2B3008BB87B /* ContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItem.swift; sourceTree = "<group>"; };
+		444272BA256CE701008BB87B /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
 		4478AA39256CDD8F00FDED38 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4B64F8DD7C3A90466A7DD817 /* Pods-MiniVibe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe.debug.xcconfig"; path = "Target Support Files/Pods-MiniVibe/Pods-MiniVibe.debug.xcconfig"; sourceTree = "<group>"; };
 		805E28AA256BBD52007AF5F1 /* MiniVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +107,8 @@
 				805E28D6256BDE90007AF5F1 /* SectionTitle.swift */,
 				805E28D9256BDFE6007AF5F1 /* Chart.swift */,
 				444272B2256CDEC8008BB87B /* TodayTitle.swift */,
+				444272B7256CE2B3008BB87B /* ContentItem.swift */,
+				444272BA256CE701008BB87B /* Contents.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -232,10 +238,12 @@
 			files = (
 				805E28DA256BDFE6007AF5F1 /* Chart.swift in Sources */,
 				805E28D7256BDE90007AF5F1 /* SectionTitle.swift in Sources */,
+				444272B8256CE2B3008BB87B /* ContentItem.swift in Sources */,
 				444272B3256CDEC8008BB87B /* TodayTitle.swift in Sources */,
 				805E28D3256BDC4A007AF5F1 /* TrackRow.swift in Sources */,
 				805E28B0256BBD52007AF5F1 /* ContentView.swift in Sources */,
 				805E28AE256BBD52007AF5F1 /* MiniVibeApp.swift in Sources */,
+				444272BB256CE701008BB87B /* Contents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
