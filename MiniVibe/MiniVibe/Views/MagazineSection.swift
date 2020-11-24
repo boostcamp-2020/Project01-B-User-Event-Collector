@@ -9,7 +9,21 @@ import SwiftUI
 
 struct MagazineSection: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            SectionTitle()
+            GeometryReader { geometry in
+                let width = geometry.size.width
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: width * 0.03) {
+                        ForEach(0..<10) { _ in
+                            MagazineItem()
+                                .frame(width: width * 0.9)
+                        }
+                    }
+                    .padding(.horizontal, width * 0.03)
+                }
+            }
+        }
     }
 }
 
