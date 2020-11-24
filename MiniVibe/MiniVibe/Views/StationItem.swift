@@ -9,7 +9,20 @@ import SwiftUI
 
 struct StationItem: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(alignment: .bottomTrailing) {
+            Button {
+
+            } label: {
+                Image("station")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+            
+            Image(systemName: "play.circle.fill")
+                .font(.system(size: 40))
+                .foregroundColor(Color.white.opacity(0.8))
+                .padding()
+        }
     }
 }
 
