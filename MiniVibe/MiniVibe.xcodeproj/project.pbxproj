@@ -11,6 +11,8 @@
 		444272B8256CE2B3008BB87B /* ContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272B7256CE2B3008BB87B /* ContentItem.swift */; };
 		444272BB256CE701008BB87B /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272BA256CE701008BB87B /* Contents.swift */; };
 		4478AA3A256CDD8F00FDED38 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4478AA39256CDD8F00FDED38 /* .swiftlint.yml */; };
+		44F97972256CF2AE00C9C224 /* PlayListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F97971256CF2AE00C9C224 /* PlayListItem.swift */; };
+		44F97976256CFBA900C9C224 /* PlayListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F97975256CFBA900C9C224 /* PlayListSection.swift */; };
 		805E28AE256BBD52007AF5F1 /* MiniVibeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805E28AD256BBD52007AF5F1 /* MiniVibeApp.swift */; };
 		805E28B0256BBD52007AF5F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805E28AF256BBD52007AF5F1 /* ContentView.swift */; };
 		805E28B2256BBD53007AF5F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805E28B1256BBD53007AF5F1 /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 		444272B7256CE2B3008BB87B /* ContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItem.swift; sourceTree = "<group>"; };
 		444272BA256CE701008BB87B /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
 		4478AA39256CDD8F00FDED38 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		44F97971256CF2AE00C9C224 /* PlayListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListItem.swift; sourceTree = "<group>"; };
+		44F97975256CFBA900C9C224 /* PlayListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListSection.swift; sourceTree = "<group>"; };
 		4B64F8DD7C3A90466A7DD817 /* Pods-MiniVibe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe.debug.xcconfig"; path = "Target Support Files/Pods-MiniVibe/Pods-MiniVibe.debug.xcconfig"; sourceTree = "<group>"; };
 		805E28AA256BBD52007AF5F1 /* MiniVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805E28AD256BBD52007AF5F1 /* MiniVibeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeApp.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 				444272BA256CE701008BB87B /* Contents.swift */,
 				80C62079256CF21600B5C375 /* StationItem.swift */,
 				80C6207C256CFBA100B5C375 /* Station.swift */,
+				44F97971256CF2AE00C9C224 /* PlayListItem.swift */,
+				44F97975256CFBA900C9C224 /* PlayListSection.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -243,12 +249,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				805E28DA256BDFE6007AF5F1 /* Chart.swift in Sources */,
+				44F97972256CF2AE00C9C224 /* PlayListItem.swift in Sources */,
 				805E28D7256BDE90007AF5F1 /* SectionTitle.swift in Sources */,
 				444272B8256CE2B3008BB87B /* ContentItem.swift in Sources */,
 				444272B3256CDEC8008BB87B /* TodayTitle.swift in Sources */,
 				805E28D3256BDC4A007AF5F1 /* TrackRow.swift in Sources */,
 				80C6207A256CF21600B5C375 /* StationItem.swift in Sources */,
 				80C6207D256CFBA100B5C375 /* Station.swift in Sources */,
+				44F97976256CFBA900C9C224 /* PlayListSection.swift in Sources */,
 				805E28B0256BBD52007AF5F1 /* ContentView.swift in Sources */,
 				805E28AE256BBD52007AF5F1 /* MiniVibeApp.swift in Sources */,
 				444272BB256CE701008BB87B /* Contents.swift in Sources */,
