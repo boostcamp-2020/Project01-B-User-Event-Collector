@@ -13,9 +13,17 @@
 		// Disallow features that require cross-file information for emit.
 		"isolatedModules": true,
 		// Import non-ES modules as default imports.
-        "esModuleInterop": true,
+   		"esModuleInterop": true,
 		"skipLibCheck": true,
-		"jsx": "react"
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@stores/*": ["src/stores/*"]
+    }
 	},
 	"include": [
 		"src"
