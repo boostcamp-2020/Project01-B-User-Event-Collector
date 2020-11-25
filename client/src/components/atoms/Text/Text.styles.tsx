@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-const getTextStyle = (props) => {
+interface StyledTextProps {
+  variant?: 'primary' | 'secondary';
+}
+
+const getTextStyle = (props: StyledTextProps) => {
   let color;
 
   switch (props.variant) {
@@ -20,7 +24,7 @@ const getTextStyle = (props) => {
   `;
 };
 
-export const StyledText = styled.p`
+export const StyledText = styled.p<StyledTextProps>`
   ${(props) => getTextStyle(props)};
   font-size: 15px;
 `;
