@@ -16,11 +16,10 @@ struct Today: View {
                 ScrollView {
                     VStack(spacing: 30) {
                         TodayTitle()
-                            .padding(.horizontal, width * 0.02)
+                            .padding(.horizontal, width * 0.04)
                         ContentSection(width: width)
                             .aspectRatio(1.5, contentMode: .fit)
                         PlayListSection(width: width, destination: MixtapeList(), title: "나를 위한 믹스테잎")
-                        
                         PlayListSection(width: width, destination: Text("즐겨듣는 플레이리스트"), title: "즐겨듣는 플레이리스트")
                         PlayListSection(width: width, destination: Text("내 취향 플레이리스트"), title: "내 취향 플레이리스트")
                         StationSection(width: width, title: "DJ 스테이션")

@@ -26,7 +26,7 @@ struct SectionTitle<Dest: View>: View {
                         .foregroundColor(.secondary)
                         .font(.system(size: 12))
                 }
-                .padding(.horizontal, width * 0.02)
+                .padding(.horizontal, width * 0.04)
             })
     }
 }

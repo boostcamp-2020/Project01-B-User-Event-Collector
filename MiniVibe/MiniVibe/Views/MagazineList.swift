@@ -20,7 +20,7 @@ struct MagazineList: View {
                     Text("VIBE 추천 플레이리스트"),
                     displayMode: .inline
                 )
-                .padding(geometry.size.width * 0.02)
+                .padding(geometry.size.width * 0.04)
             }
         }
     }
