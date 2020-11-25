@@ -8,13 +8,30 @@
 import SwiftUI
 
 struct MagazineList: View {
+    let width: CGFloat
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: [.init()]) {
+                    ForEach(0..<20) {_ in
+                        ListRow()
+                    }
+                }
+                .navigationBarTitle(
+                    Text("VIBE 추천 플레이리스트"),
+                    displayMode: .inline
+                )
+                .padding(width * 0.02)
+            }
+        }
     }
 }
 
 struct MagazineList_Previews: PreviewProvider {
     static var previews: some View {
-        MagazineList()
+        GeometryReader { geometry in
+            MagazineList(width: geometry.size.width)
+        }
     }
 }
