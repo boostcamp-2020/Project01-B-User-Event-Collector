@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-const getAStyle = (props) => {
+interface StyledAProps {
+  variant?: 'primary' | 'secondary' | 'tertiary';
+}
+
+const getAStyle = (props: StyledAProps) => {
   let color = 'black';
   let fontWeight = '400';
   let fontSize;
@@ -35,7 +39,7 @@ const getAStyle = (props) => {
   `;
 };
 
-export const StyledA = styled.a`
+export const StyledA = styled.a<StyledAProps>`
 ${(props) => getAStyle(props)};
 `;
 

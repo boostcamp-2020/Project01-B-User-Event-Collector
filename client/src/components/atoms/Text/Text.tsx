@@ -1,21 +1,15 @@
-import React from 'react';
-import { func, node, string } from 'prop-types';
+import React, { ReactNode } from 'react';
+import StyledText from './Text.styles';
 
-import StyledText from './Text.styles.tsx';
+interface TextProps {
+  children: ReactNode;
+  variant?: 'primary' | 'secondary';
+}
 
-const Text = ({
-  children, variant,
-}) => <StyledText variant={variant}>{children}</StyledText>;
-
-// Expected prop values
-Text.propTypes = {
-  children: node.isRequired,
-  variant: string,
-};
-
-// Default prop values
-Text.defaultProps = {
-  children: 'Text text',
-};
+const Text = ({ children, variant }: TextProps) => (
+  <StyledText variant={variant}>
+    {children}
+  </StyledText>
+);
 
 export default Text;

@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-const getButtonStyle = (props) => {
+interface StyledButtonProps {
+  variant?: 'primary';
+}
+
+const getButtonStyle = (props: StyledButtonProps) => {
   let color; let borderColor; let backgroundColor;
 
   switch (props.variant) {
@@ -23,7 +27,7 @@ const getButtonStyle = (props) => {
   `;
 };
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button<StyledButtonProps>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
