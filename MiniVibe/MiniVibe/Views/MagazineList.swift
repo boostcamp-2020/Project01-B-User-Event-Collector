@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MagazineList: View {
+    let barTitle: String
+    
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
@@ -17,7 +19,7 @@ struct MagazineList: View {
                     }
                 }
                 .navigationBarTitle(
-                    Text("VIBE 추천 플레이리스트"),
+                    Text(barTitle),
                     displayMode: .inline
                 )
                 .padding(geometry.size.width * 0.02)
@@ -29,7 +31,7 @@ struct MagazineList: View {
 struct MagazineList_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            MagazineList()
+            MagazineList(barTitle: "매거진")
         }
     }
 }

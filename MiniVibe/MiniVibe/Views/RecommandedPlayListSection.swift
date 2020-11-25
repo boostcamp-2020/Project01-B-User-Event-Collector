@@ -13,7 +13,7 @@ struct RecommandedPlayListSection: View {
     
     var body: some View {
         VStack {
-            SectionTitle(width: width, destination: Text("추천 플레이리스트"), title: title)
+            SectionTitle(width: width, destination: MagazineList(barTitle: "VIBE 추천 플레이리스트"), title: title)
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: width * 0.02) {
                     ForEach(0..<5) { _ in
