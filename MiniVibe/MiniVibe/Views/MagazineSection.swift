@@ -13,7 +13,7 @@ struct MagazineSection: View {
     
     var body: some View {
         VStack {
-            SectionTitle(width: width, destination: MagazineList(), title: title)
+            SectionTitle(width: width, destination: MagazineList(barTitle: "매거진"), title: title)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * 0.02) {
                     ForEach(0..<10) { _ in
