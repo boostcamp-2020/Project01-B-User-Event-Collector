@@ -16,6 +16,7 @@
 		4478AA3A256CDD8F00FDED38 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4478AA39256CDD8F00FDED38 /* .swiftlint.yml */; };
 		4478F717256E817100755656 /* CGFloat+Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4478F716256E817100755656 /* CGFloat+Constant.swift */; };
 		4478F71C256E858700755656 /* MixtapeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4478F71B256E858700755656 /* MixtapeGrid.swift */; };
+		4478F723256E8B2B00755656 /* PlayAndShuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4478F722256E8B2B00755656 /* PlayAndShuffle.swift */; };
 		44F97972256CF2AE00C9C224 /* ThumbnailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F97971256CF2AE00C9C224 /* ThumbnailItem.swift */; };
 		44F97976256CFBA900C9C224 /* ThumbnailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F97975256CFBA900C9C224 /* ThumbnailSection.swift */; };
 		44F9797C256D04EA00C9C224 /* RecommandedPlayListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F9797B256D04EA00C9C224 /* RecommandedPlayListItem.swift */; };
@@ -46,6 +47,7 @@
 		4478AA39256CDD8F00FDED38 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4478F716256E817100755656 /* CGFloat+Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Constant.swift"; sourceTree = "<group>"; };
 		4478F71B256E858700755656 /* MixtapeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixtapeGrid.swift; sourceTree = "<group>"; };
+		4478F722256E8B2B00755656 /* PlayAndShuffle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAndShuffle.swift; sourceTree = "<group>"; };
 		44F97971256CF2AE00C9C224 /* ThumbnailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailItem.swift; sourceTree = "<group>"; };
 		44F97975256CFBA900C9C224 /* ThumbnailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailSection.swift; sourceTree = "<group>"; };
 		44F9797B256D04EA00C9C224 /* RecommandedPlayListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandedPlayListItem.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				4478F71B256E858700755656 /* MixtapeGrid.swift */,
 				8084AB6C256E403900F2AAC2 /* ThumbnailRow.swift */,
 				8084AB6F256E409B00F2AAC2 /* ThumbnailList.swift */,
+				4478F722256E8B2B00755656 /* PlayAndShuffle.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				80EB9FF5256DE8A300CD99FD /* Today.swift in Sources */,
 				445919B1256E5CEA0069DAB2 /* StationStack.swift in Sources */,
 				44F9797F256D069600C9C224 /* RecommandedPlayListSection.swift in Sources */,
+				4478F723256E8B2B00755656 /* PlayAndShuffle.swift in Sources */,
 				44F97976256CFBA900C9C224 /* ThumbnailSection.swift in Sources */,
 				8084AB70256E409B00F2AAC2 /* ThumbnailList.swift in Sources */,
 				805E28AE256BBD52007AF5F1 /* MiniVibeApp.swift in Sources */,
