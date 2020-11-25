@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, MouseEvent } from 'react';
+import React, { ReactNode, MouseEvent } from 'react';
 import StyledButton from './Button.styles';
 
 interface ButtonProps {
@@ -7,8 +7,10 @@ interface ButtonProps {
     variant?: 'primary';
 }
 
-const Button: FC<ButtonProps> = ({
-  children, onClick, variant,
-}) => <StyledButton variant={variant} onClick={onClick}>{children}</StyledButton>;
+const Button = ({ children, onClick, variant }: ButtonProps) => (
+  <StyledButton variant={variant} onClick={onClick}>
+    {children}
+  </StyledButton>
+);
 
 export default Button;
