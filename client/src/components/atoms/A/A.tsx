@@ -1,23 +1,19 @@
-import React from 'react';
-import { func, node, string } from 'prop-types';
+import React, { ReactNode, MouseEvent } from 'react';
+import StyledA from './A.styles';
 
-import StyledA from './A.styles.tsx';
+interface AProps {
+  children: ReactNode;
+  href: string;
+  onClick?: (e: MouseEvent<HTMLElement>) => void;
+  variant?: 'primary' | 'secondary' | 'tertiary';
+}
 
 const A = ({
   children, href, onClick, variant,
-}) => <StyledA variant={variant} href={href} onClick={onClick}>{children}</StyledA>;
-
-// Expected prop values
-A.propTypes = {
-  children: node.isRequired,
-  href: string,
-  onClick: func,
-  variant: string,
-};
-
-// Default prop values
-A.defaultProps = {
-  children: 'A text',
-};
+}:AProps) => (
+  <StyledA variant={variant} href={href} onClick={onClick}>
+    {children}
+  </StyledA>
+);
 
 export default A;
