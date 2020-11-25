@@ -6,9 +6,9 @@ interface StyledSpanProps {
 }
 
 const getSpanStyle = ({ selected, variant }: StyledSpanProps) => {
-  if (!selected) return '';
+  if (!selected || !variant) return '';
 
-  let color = 'white';
+  const color = 'white';
   let borderColor;
   let backgroundColor;
 
@@ -26,10 +26,7 @@ const getSpanStyle = ({ selected, variant }: StyledSpanProps) => {
       borderColor = '#8b00ed';
       break;
     default:
-      color = '#aaa';
-      borderColor = '#D7D7D7';
-      backgroundColor = 'white';
-      break;
+      return '';
   }
 
   return `
