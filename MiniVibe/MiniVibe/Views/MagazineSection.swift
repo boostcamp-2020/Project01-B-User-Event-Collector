@@ -9,10 +9,11 @@ import SwiftUI
 
 struct MagazineSection: View {
     let width: CGFloat
+    let title: String
     
     var body: some View {
         VStack {
-            SectionTitle(width: width)
+            SectionTitle(width: width, destination: MagazineList(), title: title)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * 0.03) {
                     ForEach(0..<10) { _ in
@@ -28,6 +29,6 @@ struct MagazineSection: View {
 
 struct MagazineSection_Previews: PreviewProvider {
     static var previews: some View {
-        MagazineSection(width: 200)
+        MagazineSection(width: 200, title: "매거진")
     }
 }

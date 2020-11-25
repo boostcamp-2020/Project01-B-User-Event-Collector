@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct MagazineList: View {
-    let width: CGFloat
-    
     var body: some View {
-        NavigationView {
+        GeometryReader { geometry in
             ScrollView {
                 LazyVGrid(columns: [.init()]) {
                     ForEach(0..<20) {_ in
@@ -22,7 +20,7 @@ struct MagazineList: View {
                     Text("VIBE 추천 플레이리스트"),
                     displayMode: .inline
                 )
-                .padding(width * 0.02)
+                .padding(geometry.size.width * 0.02)
             }
         }
     }
@@ -30,8 +28,8 @@ struct MagazineList: View {
 
 struct MagazineList_Previews: PreviewProvider {
     static var previews: some View {
-        GeometryReader { geometry in
-            MagazineList(width: geometry.size.width)
+        NavigationView {
+            MagazineList()
         }
     }
 }

@@ -10,6 +10,7 @@
 		444272B3256CDEC8008BB87B /* TodayTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272B2256CDEC8008BB87B /* TodayTitle.swift */; };
 		444272B8256CE2B3008BB87B /* ContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272B7256CE2B3008BB87B /* ContentItem.swift */; };
 		444272BB256CE701008BB87B /* ContentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272BA256CE701008BB87B /* ContentSection.swift */; };
+		445919A4256E4A6F0069DAB2 /* MixtapeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445919A3256E4A6F0069DAB2 /* MixtapeList.swift */; };
 		4478AA3A256CDD8F00FDED38 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4478AA39256CDD8F00FDED38 /* .swiftlint.yml */; };
 		44F97972256CF2AE00C9C224 /* PlayListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F97971256CF2AE00C9C224 /* PlayListItem.swift */; };
 		44F97976256CFBA900C9C224 /* PlayListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F97975256CFBA900C9C224 /* PlayListSection.swift */; };
@@ -36,6 +37,7 @@
 		444272B2256CDEC8008BB87B /* TodayTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTitle.swift; sourceTree = "<group>"; };
 		444272B7256CE2B3008BB87B /* ContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItem.swift; sourceTree = "<group>"; };
 		444272BA256CE701008BB87B /* ContentSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSection.swift; sourceTree = "<group>"; };
+		445919A3256E4A6F0069DAB2 /* MixtapeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixtapeList.swift; sourceTree = "<group>"; };
 		4478AA39256CDD8F00FDED38 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		44F97971256CF2AE00C9C224 /* PlayListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListItem.swift; sourceTree = "<group>"; };
 		44F97975256CFBA900C9C224 /* PlayListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListSection.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				80EB9FE7256D0AD700CD99FD /* MagazineSection.swift */,
 				44F9797B256D04EA00C9C224 /* RecommandedPlayListItem.swift */,
 				44F9797E256D069600C9C224 /* RecommandedPlayListSection.swift */,
+				445919A3256E4A6F0069DAB2 /* MixtapeList.swift */,
 				80EB9FF4256DE8A300CD99FD /* Today.swift */,
 				8084AB6C256E403900F2AAC2 /* ListRow.swift */,
 				8084AB6F256E409B00F2AAC2 /* MagazineList.swift */,
@@ -273,6 +276,7 @@
 				44F97972256CF2AE00C9C224 /* PlayListItem.swift in Sources */,
 				805E28D7256BDE90007AF5F1 /* SectionTitle.swift in Sources */,
 				80EB9FE8256D0AD700CD99FD /* MagazineSection.swift in Sources */,
+				445919A4256E4A6F0069DAB2 /* MixtapeList.swift in Sources */,
 				444272B8256CE2B3008BB87B /* ContentItem.swift in Sources */,
 				444272B3256CDEC8008BB87B /* TodayTitle.swift in Sources */,
 				805E28D3256BDC4A007AF5F1 /* TrackRow.swift in Sources */,
