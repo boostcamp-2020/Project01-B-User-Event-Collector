@@ -13,7 +13,9 @@ struct ChartSection: View {
     
     var body: some View {
         VStack {
-            SectionTitle(width: width, destination: Text("차트 음원 목록"), title: title)
+            SectionTitle(width: width,
+                         destination: ChartList(title: title),
+                         title: title)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: .init(repeating: .init(.flexible(minimum: 60)), count: 5)) {
