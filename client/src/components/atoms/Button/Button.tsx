@@ -1,26 +1,14 @@
-import React from 'react';
-import { func, node, string } from 'prop-types';
+import React, { FC, ReactNode, MouseEvent } from 'react';
+import StyledButton from './Button.styles';
 
-import StyledButton from './Button.styles.tsx';
+interface ButtonProps {
+    children: ReactNode;
+    onClick?: (e: MouseEvent<HTMLElement>) => void;
+    variant?: 'primary';
+}
 
-const Button = ({
-  children, href, onClick, variant,
-}) => {
-  if (!href) return <StyledButton variant={variant} onClick={onClick}>{children}</StyledButton>;
-  return <a href={href}>{children}</a>;
-};
-
-// Expected prop values
-Button.propTypes = {
-  children: node.isRequired,
-  href: string,
-  onClick: func,
-  variant: string,
-};
-
-// Default prop values
-Button.defaultProps = {
-  children: 'Button text',
-};
+const Button: FC<ButtonProps> = ({
+  children, onClick, variant,
+}) => <StyledButton variant={variant} onClick={onClick}>{children}</StyledButton>;
 
 export default Button;
