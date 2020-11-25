@@ -1,5 +1,5 @@
 //
-//  ContentsItem.swift
+//  PreviewItem.swift
 //  MiniVibe
 //
 //  Created by TTOzzi on 2020/11/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentItem: View {
+struct PreviewItem: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text("인기 플레이리스트")
@@ -30,8 +30,8 @@ struct ContentItem: View {
     }
 }
 
-struct ContentsItem_Previews: PreviewProvider {
+struct PreviewItem_Previews: PreviewProvider {
     static var previews: some View {
-        ContentItem()
+        PreviewItem()
     }
 }

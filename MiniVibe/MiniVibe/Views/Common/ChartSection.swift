@@ -14,14 +14,15 @@ struct ChartSection: View {
     var body: some View {
         VStack {
             SectionTitle(width: width, destination: Text("차트 음원 목록"), title: title)
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: .init(repeating: .init(.flexible(minimum: 60)), count: 5)) {
                     ForEach(0..<25) { _ in
                         TrackRow()
                     }
-                    .frame(width: width * 0.9)
+                    .frame(width: width * .sectionRatio)
                 }
-                .padding(.horizontal, width * 0.04)
+                .padding(.horizontal, width * .paddingRatio)
             }
         }
     }

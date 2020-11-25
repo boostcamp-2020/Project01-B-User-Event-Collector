@@ -1,5 +1,5 @@
 //
-//  PlayListItem.swift
+//  ThumbnailItem.swift
 //  MiniVibe
 //
 //  Created by TTOzzi on 2020/11/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PlayListItem: View {
+struct ThumbnailItem: View {
     var body: some View {
         VStack(alignment: .leading) {
             Image("playListThumbnail")
@@ -24,8 +24,8 @@ struct PlayListItem: View {
     }
 }
 
-struct PlayListItem_Previews: PreviewProvider {
+struct ThumbnailItem_Previews: PreviewProvider {
     static var previews: some View {
-        PlayListItem()
+        ThumbnailItem()
     }
 }

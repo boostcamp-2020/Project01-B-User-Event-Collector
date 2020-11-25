@@ -7,22 +7,17 @@
 
 import SwiftUI
 
-struct Badge: View {
+private struct Badge: View {
     var body: some View {
-        Button {
-            
-            
-        } label: {
-            Text("Genre".uppercased())
-                .font(.custom("American Typewriter", size: 18))
-                .fontWeight(.heavy)
-                .foregroundColor(.white)
-                .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-                .background(
-                    RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                        .foregroundColor(.purple)
-                )
-        }
+        Text("Genre".uppercased())
+            .font(.custom("American Typewriter", size: 18))
+            .fontWeight(.heavy)
+            .foregroundColor(.white)
+            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+            .background(
+                RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(.purple)
+            )
     }
 }
 
@@ -32,6 +27,7 @@ struct MagazineItem: View {
             Image("magazine")
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
+            
             VStack(alignment: .leading) {
                 Badge()
                 
@@ -43,7 +39,6 @@ struct MagazineItem: View {
                 .foregroundColor(.white)
                 .font(.system(size: 24))
                 .fontWeight(.semibold)
-                
             }
             .padding()
         }

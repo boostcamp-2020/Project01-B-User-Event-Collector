@@ -1,5 +1,5 @@
 //
-//  PlayListSection.swift
+//  ThumbnailSection.swift
 //  MiniVibe
 //
 //  Created by TTOzzi on 2020/11/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PlayListSection<Dest: View>: View {
+struct ThumbnailSection<Dest: View>: View {
     let width: CGFloat
     let destination: Dest
     let title: String
@@ -15,21 +15,22 @@ struct PlayListSection<Dest: View>: View {
     var body: some View {
         VStack(spacing: 8) {
             SectionTitle(width: width, destination: destination, title: title)
+            
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: width * 0.02) {
+                HStack(spacing: width * .spacingRatio) {
                     ForEach(0..<10) { _ in
-                        PlayListItem()
-                            .frame(width: width * 0.45)
+                        ThumbnailItem()
+                            .frame(width: width * .thumbnailRatio)
                     }
                 }
-                .padding(.horizontal, width * 0.04)
+                .padding(.horizontal, width * .paddingRatio)
             }
         }
     }
 }
 
-struct PlayListStack_Previews: PreviewProvider {
+struct ThumbnailSection_Previews: PreviewProvider {
     static var previews: some View {
-        PlayListSection(width: 200, destination: Text("플레이리스트 목록"), title: "플레이리스트")
+        ThumbnailSection(width: 200, destination: Text("플레이리스트 목록"), title: "플레이리스트")
     }
 }
