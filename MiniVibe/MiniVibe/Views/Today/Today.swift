@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct Today: View {
+    init() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundColor = .systemBackground
+        UINavigationBar.appearance().standardAppearance = appearance
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width
