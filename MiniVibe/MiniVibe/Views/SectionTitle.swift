@@ -24,8 +24,8 @@ struct SectionTitle: View {
     }
 }
 
-//struct SectionTitle_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SectionTitle()
-//    }
-//}
+struct SectionTitle_Previews: PreviewProvider {
+    static var previews: some View {
+        SectionTitle(width: 200)
+    }
+}

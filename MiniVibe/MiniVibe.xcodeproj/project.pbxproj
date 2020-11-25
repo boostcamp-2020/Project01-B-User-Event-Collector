@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4407D84C256E393500F79D61 /* MixtapeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4407D84B256E393500F79D61 /* MixtapeList.swift */; };
 		444272B3256CDEC8008BB87B /* TodayTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272B2256CDEC8008BB87B /* TodayTitle.swift */; };
 		444272B8256CE2B3008BB87B /* ContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272B7256CE2B3008BB87B /* ContentItem.swift */; };
 		444272BB256CE701008BB87B /* ContentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272BA256CE701008BB87B /* ContentSection.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4407D84B256E393500F79D61 /* MixtapeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixtapeList.swift; sourceTree = "<group>"; };
 		444272B2256CDEC8008BB87B /* TodayTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTitle.swift; sourceTree = "<group>"; };
 		444272B7256CE2B3008BB87B /* ContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItem.swift; sourceTree = "<group>"; };
 		444272BA256CE701008BB87B /* ContentSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSection.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				44F9797B256D04EA00C9C224 /* RecommandedPlayListItem.swift */,
 				44F9797E256D069600C9C224 /* RecommandedPlayListSection.swift */,
 				80EB9FF4256DE8A300CD99FD /* Today.swift */,
+				4407D84B256E393500F79D61 /* MixtapeList.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				805E28AE256BBD52007AF5F1 /* MiniVibeApp.swift in Sources */,
 				44F9797C256D04EA00C9C224 /* RecommandedPlayListItem.swift in Sources */,
 				444272BB256CE701008BB87B /* ContentSection.swift in Sources */,
+				4407D84C256E393500F79D61 /* MixtapeList.swift in Sources */,
 				80EB9FE5256D04A000CD99FD /* MagazineItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
