@@ -21,7 +21,7 @@ struct ChartSection: View {
                     }
                     .frame(width: width * 0.9)
                 }
-                .padding(.horizontal, width * 0.02)
+                .padding(.horizontal, width * 0.04)
             }
         }
     }

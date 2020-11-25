@@ -13,17 +13,8 @@ struct StationSection: View {
     
     var body: some View {
         VStack {
-            SectionTitle(width: width, destination: Text("스테이션 더보기"), title: title)
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: width * 0.02) {
-                    ForEach(0..<10) { _ in
-                        StationItem()
-                            .frame(width: width * 0.45)
-                    }
-                    
-                }
-                .padding(.horizontal, width * 0.02)
-            }
+            SectionTitle(width: width, destination: StationList(), title: title)
+            StationStack(width: width)
         }
     }
 }

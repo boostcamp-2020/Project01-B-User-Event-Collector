@@ -15,10 +15,10 @@ struct ContentSection: View {
             HStack {
                 ForEach(0..<5) { _ in
                     ContentItem()
-                        .frame(width: width * 0.94)
+                        .frame(width: width * 0.92)
                 }
             }
-            .padding(.horizontal, 8)
+            .padding(.horizontal, width * 0.04)
         }
     }
 }

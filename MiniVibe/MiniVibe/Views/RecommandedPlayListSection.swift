@@ -18,10 +18,10 @@ struct RecommandedPlayListSection: View {
                 LazyHStack(spacing: width * 0.02) {
                     ForEach(0..<5) { _ in
                         RecommandedPlayListItem()
-                            .frame(width: width * 0.9)
+                            .frame(width: width * 0.92)
                     }
                 }
-                .padding(.horizontal, width * 0.02)
+                .padding(.horizontal, width * 0.04)
             }
         }
     }

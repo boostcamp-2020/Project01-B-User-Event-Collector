@@ -22,7 +22,7 @@ struct PlayListSection<Dest: View>: View {
                             .frame(width: width * 0.45)
                     }
                 }
-                .padding(.horizontal, width * 0.02)
+                .padding(.horizontal, width * 0.04)
             }
         }
     }

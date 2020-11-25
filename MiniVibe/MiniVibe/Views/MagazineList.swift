@@ -22,7 +22,7 @@ struct MagazineList: View {
                     Text(barTitle),
                     displayMode: .inline
                 )
-                .padding(geometry.size.width * 0.02)
+                .padding(geometry.size.width * 0.04)
             }
         }
     }
