@@ -16,7 +16,7 @@ struct StationList: View {
                         header: Text("최근 들은 스테이션")
                             .bold()
                             .padding(.top, 8)
-                            .padding(.horizontal, geometry.size.width * 0.04),
+                            .padding(.horizontal, geometry.size.width * .paddingRatio),
                         footer: Spacer().frame(height: 50)
                     ) {
                         StationStack(width: geometry.size.width)
@@ -27,14 +27,19 @@ struct StationList: View {
                             header: Text("느낌별 스테이션").bold(),
                             footer: Spacer().frame(height: 50)
                         ) {
-                            LazyVGrid(columns: .init(repeating: .init(.fixed(geometry.size.width * 0.45)), count: 2)) {
+                            LazyVGrid(
+                                columns: .init(
+                                    repeating: .init(.fixed(geometry.size.width * .thumbnailRatio)),
+                                    count: 2
+                                )
+                            ) {
                                 ForEach(0..<10) { _ in
                                     StationItem()
                                 }
                             }
                         }
                     }
-                    .padding(.horizontal, geometry.size.width * 0.04)
+                    .padding(.horizontal, geometry.size.width * .paddingRatio)
                 }
                 .navigationTitle("스테이션")
                 .navigationBarTitleDisplayMode(.inline)

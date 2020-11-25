@@ -1,5 +1,5 @@
 //
-//  ContentSection.swift
+//  PreviewSection.swift
 //  MiniVibe
 //
 //  Created by TTOzzi on 2020/11/24.
@@ -7,26 +7,26 @@
 
 import SwiftUI
 
-struct ContentSection: View {
+struct PreviewSection: View {
     let width: CGFloat
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(0..<5) { _ in
-                    ContentItem()
-                        .frame(width: width * 0.92)
+                    PreviewItem()
+                        .frame(width: width * .sectionRatio)
                 }
             }
-            .padding(.horizontal, width * 0.04)
+            .padding(.horizontal, width * .paddingRatio)
         }
     }
 }
 
-struct ContentSection_Previews: PreviewProvider {
+struct PreviewSection_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geometry in
-            ContentSection(width: geometry.size.width)
+            PreviewSection(width: geometry.size.width)
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  MagazineList.swift
+//  ThumbnailList.swift
 //  MiniVibe
 //
 //  Created by Sue Cho on 2020/11/25.
@@ -7,31 +7,31 @@
 
 import SwiftUI
 
-struct MagazineList: View {
-    let barTitle: String
+struct ThumbnailList: View {
+    let title: String
     
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
                 LazyVGrid(columns: [.init()]) {
                     ForEach(0..<20) {_ in
-                        ListRow()
+                        ThumbnailRow()
                     }
                 }
                 .navigationBarTitle(
-                    Text(barTitle),
+                    Text(title),
                     displayMode: .inline
                 )
-                .padding(geometry.size.width * 0.04)
+                .padding(geometry.size.width * .paddingRatio)
             }
         }
     }
 }
 
-struct MagazineList_Previews: PreviewProvider {
+struct ThumbnailList_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            MagazineList(barTitle: "매거진")
+            ThumbnailList(title: "매거진")
         }
     }
 }

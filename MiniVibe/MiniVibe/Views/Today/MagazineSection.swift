@@ -13,15 +13,16 @@ struct MagazineSection: View {
     
     var body: some View {
         VStack {
-            SectionTitle(width: width, destination: MagazineList(barTitle: "매거진"), title: title)
+            SectionTitle(width: width, destination: ThumbnailList(title: "매거진"), title: title)
+            
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: width * 0.02) {
+                HStack(spacing: width * .spacingRatio) {
                     ForEach(0..<10) { _ in
                         MagazineItem()
-                            .frame(width: width * 0.92)
+                            .frame(width: width * .sectionRatio)
                     }
                 }
-                .padding(.horizontal, width * 0.04)
+                .padding(.horizontal, width * .paddingRatio)
             }
         }
     }
