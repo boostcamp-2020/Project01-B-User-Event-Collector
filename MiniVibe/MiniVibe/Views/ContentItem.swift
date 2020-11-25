@@ -16,7 +16,6 @@ struct ContentItem: View {
             
             Image("content")
                 .resizable()
-                .aspectRatio(2, contentMode: .fit)
             
             VStack(spacing: 3) {
                 Text("오랜만에 흥 터지네")

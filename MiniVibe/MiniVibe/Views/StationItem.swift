@@ -19,9 +19,9 @@ struct StationItem: View {
             }
             
             Image(systemName: "play.circle.fill")
-                .font(.system(size: 40))
+                .font(.system(size: 20))
                 .foregroundColor(Color.white.opacity(0.8))
-                .padding()
+                .padding(10)
         }
     }
 }
