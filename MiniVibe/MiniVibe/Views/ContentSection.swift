@@ -25,6 +25,8 @@ struct ContentSection: View {
 
 struct ContentSection_Previews: PreviewProvider {
     static var previews: some View {
-        ContentSection(width: 200)
+        GeometryReader { geometry in
+            ContentSection(width: geometry.size.width)
+        }
     }
 }

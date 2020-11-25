@@ -8,22 +8,19 @@
 import SwiftUI
 
 struct RecommandedPlayListSection: View {
+    let width: CGFloat
+    
     var body: some View {
         VStack {
-            GeometryReader { geometry in
-                let width = geometry.size.width
-                
-                SectionTitle()
-                
-                ScrollView(.horizontal) {
-                    LazyHStack(spacing: width * 0.03) {
-                        ForEach(0..<5) { _ in
-                            RecommandedPlayListItem()
-                                .frame(width: width * 0.9)
-                        }
+            SectionTitle(width: width)
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHStack(spacing: width * 0.02) {
+                    ForEach(0..<5) { _ in
+                        RecommandedPlayListItem()
+                            .frame(width: width * 0.9)
                     }
-                    .padding(.horizontal, width * 0.03)
                 }
+                .padding(.horizontal, width * 0.02)
             }
         }
     }
@@ -31,6 +28,6 @@ struct RecommandedPlayListSection: View {
 
 struct RecommandedPlayListSection_Previews: PreviewProvider {
     static var previews: some View {
-        RecommandedPlayListSection()
+        RecommandedPlayListSection(width: 200)
     }
 }
