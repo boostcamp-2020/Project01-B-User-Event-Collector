@@ -1,5 +1,5 @@
 import React, { MouseEvent } from 'react';
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import styled from 'styled-components';
 import MenuLink from '@components/atoms/MenuLink';
 import DropdownMenu from '@components/molecules/DropdownMenu';
@@ -19,12 +19,12 @@ const IconWrapper = styled.div`
 `;
 
 const UserProfileMenu = ({ user }: UserProfileMenuProps) => {
-  const router = useRouter();
+  // const router = useRouter();
 
   const defaultImage = 'https://ssl.pstatic.net/static/common/myarea/myInfo.gif?type=s33';
   const dropdownItems = [{
       content: 'My 멤버십',
-      handleClick: (e: MouseEvent<HTMLElement>) => router.push('/membership/my'),
+      handleClick: (e: MouseEvent<HTMLElement>) => console.log('My 멤버십'), // TODO: My 멤버십 페이지 이동 함수로 변경
     }, {
       content: '로그아웃',
       handleClick: (e: MouseEvent<HTMLElement>) => console.log('로그아웃'), // TODO: 로그아웃 함수로 변경
