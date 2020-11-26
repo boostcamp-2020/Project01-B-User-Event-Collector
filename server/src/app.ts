@@ -3,11 +3,10 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import morgan from 'morgan';
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import router from './routes';
 import db from './db';
 
-dotenv.config();
 db();
 const app = express();
 
