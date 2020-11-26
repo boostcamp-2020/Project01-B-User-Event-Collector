@@ -2,7 +2,7 @@ import React, { ReactNode, MouseEvent } from 'react';
 import StyledCircle from './Circle.styles';
 
 interface CircleProps {
-    children: ReactNode;
+    children?: ReactNode;
     variant?: 'primary';
 }
 

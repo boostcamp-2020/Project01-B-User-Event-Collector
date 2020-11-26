@@ -12,6 +12,7 @@ const StyledSearchInput = styled.div`
     align-items: center;
     border-radius: 5px;
     box-shadow: 0 0 5px skyblue;
+    background-color: white;
 `;
 
 const IconContainer = styled.div`

@@ -1,5 +1,5 @@
-import React from "react"
-import { Image } from "./Image"
+import React from "react";
+import Image from "./Image"
 
 export default {
   title: "Image",
@@ -10,7 +10,7 @@ const STORY_IMAGE_SRC = "https://musicmeta-phinf.pstatic.net/artist/002/826/2826
 
 export const Default = () => <Image src = {STORY_IMAGE_SRC}/>
 
-export const Primary = () => <Image variant = "" src = {STORY_IMAGE_SRC}/>
+export const Primary = () => <Image variant = "primary" src = {STORY_IMAGE_SRC}/>
 
 export const NormalMagazine = () => <Image variant = "normalMagazine" src = {STORY_IMAGE_SRC}/>
 
