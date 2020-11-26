@@ -55,6 +55,7 @@ struct Today: View {
                     .padding(.bottom)
                 }
                 .navigationBarHidden(true)
+                .preference(key: Size.self, value: [geometry.frame(in: CoordinateSpace.global)])
             }
         }
     }
