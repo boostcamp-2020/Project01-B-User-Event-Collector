@@ -11,7 +11,7 @@ import SwiftUI
 struct MiniVibeApp: App {
     var body: some Scene {
         WindowGroup {
-            Today()
+            MainTab()
         }
     }
 }
