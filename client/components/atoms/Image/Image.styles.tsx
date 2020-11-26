@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 const getImageStyle = (props) => {
   let width; let height; 
+  let borderRadius = '0%';
+  let position = 'static';
 
   switch (props.variant) {
     case 'primary':     //today - magazine card & vibe 추천 플레이리스트 카드의 썸네일
@@ -32,6 +34,22 @@ const getImageStyle = (props) => {
         width = '45px';
         height = '45px';
     break;
+    case 'smallArtistImage':  //연관 아티스트 목록 이미지로 사용
+      width = '162px';
+      height = '162px';
+      borderRadius = '50%';
+    break;
+    case 'regularArtistImage':  //아티스트 상세 페이지 이미지로 사용
+      width = '176px';
+      height = '176px';
+      borderRadius = '50%';
+    break;
+    case 'largeArtistImage':  //보관함 아티스트 이미지로 사용
+      width = '219.64px';
+      height = '219.64px';
+      borderRadius = '50%';
+      position = 'absolute';
+    break;
     default:            //일반 플레이리스트 카드의 썸네일
         width = '162px';
         height = '162px';
@@ -41,6 +59,8 @@ const getImageStyle = (props) => {
   return `
     width: ${width};
     height: ${height};
+    border-radius: ${borderRadius};
+    position: ${position};
   `;
 };
 

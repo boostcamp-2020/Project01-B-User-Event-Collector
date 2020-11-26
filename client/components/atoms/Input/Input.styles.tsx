@@ -3,13 +3,15 @@ import styled from 'styled-components';
 const getInputStyle = (props) => {
   let placeholderColor; let backgroundColor;
   let fontSize; let fontWeight;
-
+  let width = '70%'; let height = '20px';
   switch (props.variant) {
     case 'search':
       placeholderColor = '#999';
       backgroundColor = 'white';
       fontSize = '21px';
       fontWeight = '500';
+      width = '85%';
+      height = '25px';
       break;
     default:
       placeholderColor = '#999';
@@ -23,6 +25,8 @@ const getInputStyle = (props) => {
     background-color: ${backgroundColor};
     font-size: ${fontSize};
     font-weight: ${fontWeight};
+    width: ${width};
+    height: ${height};
     ::placeholder,
     ::-webkit-input-placeholder {
       color: ${placeholderColor};
