@@ -7,8 +7,9 @@ export default {
 }
 
 const STORY_CHILDREN = "Label"
+const STORY_SPECIAL_CHILDREN = "Special"
 
-export const Special = () => <Label selected = {true} variant = "special">{STORY_CHILDREN}</Label>
+export const Special = () => <Label selected = {true} variant = "special">{STORY_SPECIAL_CHILDREN}</Label>
 
 export const Primary = () => <Label selected = {true} variant = "primary">{STORY_CHILDREN}</Label>
 
