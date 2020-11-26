@@ -1,9 +1,9 @@
 import React from 'react'
-import { StyledSlideButton } from './SlideButton.styles';
+import { StyledSlideNextButton } from './SlideNextButton.styles';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Circle from '../../atoms/Circle/Circle';
 
-const SlideButton = () => {
+const SlideNextButton = () => {
     return(
         <Circle variant="primary">
             <NavigateNextIcon />
@@ -11,4 +11,4 @@ const SlideButton = () => {
     )
 };
 
-export default SlideButton;
+export default SlideNextButton;

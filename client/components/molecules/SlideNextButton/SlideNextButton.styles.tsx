@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledSlideButton = styled.div`
+export const StyledSlideNextButton = styled.div`
 width: 38px;
 height: 38px;
 border-radius: 70%;
