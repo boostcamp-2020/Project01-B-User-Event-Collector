@@ -5,11 +5,12 @@ interface StyledTextProps {
 }
 
 const getTextStyle = (props: StyledTextProps) => {
-  let color;
+  let color; let fontSize = '15px';
 
   switch (props.variant) {
     case 'primary':
       color = '#999';
+      fontSize = '13px';
       break;
     case 'secondary':
       color = 'white';
@@ -21,12 +22,13 @@ const getTextStyle = (props: StyledTextProps) => {
 
   return `
     color: ${color};
+    font-size: ${fontSize};
   `;
 };
 
 export const StyledText = styled.p<StyledTextProps>`
   ${(props) => getTextStyle(props)};
-  font-size: 15px;
+  margin: 0;
 `;
 
 export default StyledText;
