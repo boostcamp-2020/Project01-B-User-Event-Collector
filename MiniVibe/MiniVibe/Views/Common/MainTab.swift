@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainTab: View {
+    @State private var contentFrame = CGRect.zero
+    
     init() {
         UITabBar.appearance().barTintColor = .systemBackground
         UITabBar.appearance().clipsToBounds = true
@@ -36,11 +38,25 @@ struct MainTab: View {
                 }
         }
         .accentColor(.pink)
+        .onPreferenceChange(Size.self, perform: { value in
+            contentFrame = value.last ?? .zero
+        })
+        .overlay(
+            PlayerPreview(coordinate: contentFrame)
+        )
     }
 }
 
 struct MainTab_Previews: PreviewProvider {
     static var previews: some View {
         MainTab()
+    }
+}
+
+struct Size: PreferenceKey {
+    typealias Value = [CGRect]
+    static var defaultValue: [CGRect] = []
+    static func reduce(value: inout [CGRect], nextValue: () -> [CGRect]) {
+        value.append(contentsOf: nextValue())
     }
 }
