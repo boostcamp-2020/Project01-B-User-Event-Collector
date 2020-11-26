@@ -15,6 +15,14 @@ Pods/
 # Icon must end with two \r
 Icon
 
+# env
+.env
+
+# next
+.next
+
+# vscode
+.vscode
 
 # Thumbnails
 ._*
