@@ -15,7 +15,7 @@ const getSpanStyle = ({ selected, variant }: StyledSpanProps) => {
   switch (variant) {
     case 'special':
       backgroundColor = 'linear-gradient(104deg,#ff2300,#fc00b9 51%,#a100f8)';
-      borderColor = '#ff0050';
+      borderColor = 'rgba(0,0,0,0)';
       break;
     case 'primary':
       backgroundColor = '#ff0050';
