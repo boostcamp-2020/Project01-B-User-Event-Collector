@@ -1,0 +1,30 @@
+{
+    "id": 0,
+    "title": "좋아할 최신 앨범",
+    "albums": [
+        {
+            id: 0,
+            "thumbnail_url": "https://musicmeta-phinf.pstatic.net/album/005/083/5083048.jpg?type=r360Fll&v=20201118141004",
+            "title": "알았다면",
+            "subitle": "길구봉구"
+        },
+        {
+            id: 1,
+            "thumbnail_url": "https://musicmeta-phinf.pstatic.net/album/004/483/4483580.jpg?type=r360Fll&v=20201120103008",
+            "title": "Heaven & Hell",
+            "subitle": "Ava Max"
+        },
+        {
+            id: 2,
+            "thumbnail_url": "https://musicmeta-phinf.pstatic.net/album/004/572/4572449.jpg?type=r360Fll&v=20201120103008",
+            "title": "Hey Boy",
+            "subitle": "Sia"
+        },
+        {
+            id: 3,
+            "thumbnail_url": "https://musicmeta-phinf.pstatic.net/album/005/083/5083159.jpg?type=r360Fll&v=20201116171028",
+            "title": "경우의 수 OST Part 9",
+            "subitle": "옥상달빛"
+        }
+    ]
+}
