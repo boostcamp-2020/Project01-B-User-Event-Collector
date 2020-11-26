@@ -1,0 +1,30 @@
+{
+    "id": 0,
+    "title": "나를 위한 믹스테잎",
+    "playlist": [
+        {
+            "id": 0,
+            "thumbnail_url": "https://music-phinf.pstatic.net/20201023_252/1603433363570qDaLB_PNG/VIBE_%B0%F8%C5%EB_%B7%AF%B4%D7%C7%D2%B6%A7.png",
+            "title": "지금은 러닝 중",
+            "subtitle": "VIBE"
+        },
+        {
+            "id": 1,
+            "thumbnail_url": "https://musicmeta-phinf.pstatic.net/album/005/074/5074362.jpg?type=r360Fll&v=20201109175907",
+            "title": "너의 하루 (바른연애 길잡이 X 로꼬)",
+            "subtitle": "로꼬"
+        },
+        {
+            "id": 2,
+            "thumbnailurl": "https://musicmeta-phinf.pstatic.net/album/003/192/3192546.jpg?type=r360Fll&v=20200218131711",
+            "title": "Two Five",
+            "subtitle": "볼빨간사춘기"
+        },
+        {
+            "id": 3,
+            "thumbnail_url": "https://musicmeta-phinf.pstatic.net/artist/000/134/134431.jpg?type=f674_674_repre3&v=2020112606",
+            "title": "10CM 대표곡",
+            "subtitle": "바이브"
+        }
+    ]
+}
