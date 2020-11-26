@@ -52,6 +52,7 @@ struct Today: View {
                         
                         MagazineSection(width: width, title: "매거진")
                     }
+                    .padding(.bottom)
                 }
                 .navigationBarHidden(true)
             }
