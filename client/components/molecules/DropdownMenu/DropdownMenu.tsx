@@ -3,10 +3,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Menu, { MenuProps } from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-interface DropDownMenuProps {
+interface DropdownMenuProps {
     id: string;
     control: ComponentType<{
-        onClick:  (e: MouseEvent<HTMLElement>) => void; 
+        onClick?:  (e: MouseEvent<HTMLElement>) => void; 
     }>;
     menuItems: {
         content: string;
@@ -34,7 +34,7 @@ const StyledMenu = withStyles({
     />
   ));
 
-const DropdownMenu = ({ id, control : ControlComponent, menuItems }: DropDownMenuProps) => {
+const DropdownMenu = ({ id, control : ControlComponent, menuItems }: DropdownMenuProps) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
