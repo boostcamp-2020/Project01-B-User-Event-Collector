@@ -1,4 +1,5 @@
 import React, { ReactNode, ComponentType } from 'react';
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 import styled from 'styled-components';
 
@@ -35,17 +36,21 @@ const IconWrapper = styled.div`
 
 const MenuLink = ({
   children, href, icon: Icon, selected,
-}: MenuLinkProps) => (
-  <Link href={href}>
-    <StyledLink selected={selected}>
-      { Icon && (
-      <IconWrapper>
-        <Icon />
-      </IconWrapper>
-      )}
-      {children}
-    </StyledLink>
-  </Link>
-);
+}: MenuLinkProps) => {
+  const router = useRouter();
+
+  return (
+    <Link href={href}>
+      <StyledLink selected={selected? selected : router.pathname === href}>
+        { Icon && (
+          <IconWrapper>
+            <Icon />
+          </IconWrapper>
+        )}
+        {children}
+      </StyledLink>
+    </Link>
+    );
+};
 
 export default MenuLink;
