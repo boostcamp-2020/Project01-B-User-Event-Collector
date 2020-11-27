@@ -36,7 +36,7 @@ const IconWrapper = styled.div`
 const MenuLink = ({
   children, href, icon: Icon, selected,
 }: MenuLinkProps) => (
-  // <Link href={href}>
+  <Link href={href}>
     <StyledLink selected={selected}>
       { Icon && (
       <IconWrapper>
@@ -45,7 +45,7 @@ const MenuLink = ({
       )}
       {children}
     </StyledLink>
-  // </Link>
+  </Link>
 );
 
 export default MenuLink;
