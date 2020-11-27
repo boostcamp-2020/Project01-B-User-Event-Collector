@@ -11,11 +11,13 @@ const getSpanStyle = ({ selected, variant }: StyledSpanProps) => {
   const color = 'white';
   let borderColor;
   let backgroundColor;
+  let fontStyle = "normal";
 
   switch (variant) {
     case 'special':
       backgroundColor = 'linear-gradient(104deg,#ff2300,#fc00b9 51%,#a100f8)';
-      borderColor = '#ff0050';
+      borderColor = 'rgba(0,0,0,0)';
+      fontStyle = "oblique";
       break;
     case 'primary':
       backgroundColor = '#ff0050';
@@ -33,6 +35,7 @@ const getSpanStyle = ({ selected, variant }: StyledSpanProps) => {
     color: ${color};
     border: 1px solid ${borderColor};
     background: ${backgroundColor};
+    font-style: ${fontStyle};
   `;
 };
 

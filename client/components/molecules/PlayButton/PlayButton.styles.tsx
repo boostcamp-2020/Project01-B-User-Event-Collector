@@ -14,10 +14,11 @@ opacity: 91%;
 `;
 
 export const StyledPlayButton = styled.div`
-background-color: black;
+bottom: 0;
+left: 2%;
 width: 53px;
 height: 53px;
-position: relative;
+position: absolute;
 display: flex;
 align-items: center;
 justify-content: center;

@@ -10,7 +10,7 @@ interface DropdownMenuProps {
     }>;
     menuItems: {
         content: string;
-        handleClick: (e: MouseEvent<HTMLElement>) => void; 
+        handleClick?: (e: MouseEvent<HTMLElement>) => void; 
     }[];
     children?: ReactNode;
 }
@@ -50,7 +50,7 @@ const DropdownMenu = ({ id, control : ControlComponent, menuItems, children }: D
     <>
       {
         ControlComponent &&
-        (<ControlComponent aria-controls={id} aria-haspopup="true" onClick={handleClick}/>)
+        (<ControlComponent style={{ fontSize: 30 }} aria-controls={id} aria-haspopup="true" onClick={handleClick}/>)
       }
       {
         !ControlComponent && 
