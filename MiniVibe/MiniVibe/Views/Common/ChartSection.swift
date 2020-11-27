@@ -32,8 +32,7 @@ struct ChartSection: View {
 
 struct ChartSection_Previews: PreviewProvider {
     static var previews: some View {
-        GeometryReader { geometry in
-            ChartSection(width: geometry.size.width, title: "최근 들은 노래")
-        }
+        ChartSection(width: 375, title: "최근 들은 노래")
+            .previewLayout(.fixed(width: 375, height: 420))
     }
 }

@@ -26,6 +26,7 @@ struct StationStack: View {
 
 struct StationStack_Previews: PreviewProvider {
     static var previews: some View {
-        StationStack(width: 100)
+        StationStack(width: 375)
+            .previewLayout(.fixed(width: 375, height: 200))
     }
 }

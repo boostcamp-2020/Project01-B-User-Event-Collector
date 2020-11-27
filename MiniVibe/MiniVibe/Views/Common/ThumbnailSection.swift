@@ -31,6 +31,7 @@ struct ThumbnailSection<Dest: View>: View {
 
 struct ThumbnailSection_Previews: PreviewProvider {
     static var previews: some View {
-        ThumbnailSection(width: 200, destination: Text("플레이리스트 목록"), title: "플레이리스트")
+        ThumbnailSection(width: 375, destination: Text("플레이리스트 목록"), title: "플레이리스트")
+            .previewLayout(.fixed(width: 375, height: 300))
     }
 }
