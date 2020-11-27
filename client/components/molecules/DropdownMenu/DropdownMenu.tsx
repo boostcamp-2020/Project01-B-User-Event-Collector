@@ -1,17 +1,18 @@
-import React, { MouseEvent, ComponentType } from 'react';
+import React, { ReactNode, MouseEvent, ComponentType } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Menu, { MenuProps } from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
 interface DropdownMenuProps {
     id: string;
-    control: ComponentType<{
+    control?: ComponentType<{
         onClick?:  (e: MouseEvent<HTMLElement>) => void; 
     }>;
     menuItems: {
         content: string;
         handleClick?: (e: MouseEvent<HTMLElement>) => void; 
     }[];
+    children?: ReactNode;
 }
 
 const StyledMenu = withStyles({
@@ -34,7 +35,7 @@ const StyledMenu = withStyles({
     />
   ));
 
-const DropdownMenu = ({ id, control : ControlComponent, menuItems }: DropdownMenuProps) => {
+const DropdownMenu = ({ id, control : ControlComponent, menuItems, children }: DropdownMenuProps) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -47,7 +48,14 @@ const DropdownMenu = ({ id, control : ControlComponent, menuItems }: DropdownMen
 
   return (
     <>
-      <ControlComponent style={{ fontSize: 30 }} aria-controls={id} aria-haspopup="true" onClick={handleClick}/>
+      {
+        ControlComponent &&
+        (<ControlComponent style={{ fontSize: 30 }} aria-controls={id} aria-haspopup="true" onClick={handleClick}/>)
+      }
+      {
+        !ControlComponent && 
+        (<span aria-controls={id} aria-haspopup="true" onClick={handleClick}>{children}</span>) 
+      }
       <StyledMenu
         id={id}
         anchorEl={anchorEl}

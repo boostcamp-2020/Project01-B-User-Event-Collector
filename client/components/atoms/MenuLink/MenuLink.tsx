@@ -1,4 +1,5 @@
 import React, { ReactNode, ComponentType } from 'react';
+import Link from 'next/link'
 import styled from 'styled-components';
 
 interface MenuLinkProps {
@@ -9,11 +10,9 @@ interface MenuLinkProps {
 }
 
 interface styledLinkProps {
-    href: string;
     selected?: boolean;
 }
 
-// TODO: a 태그 -> Link 컴포넌트로 변경하기
 const StyledLink = styled.a<styledLinkProps>` 
     display: flex;
     align-items: center;
@@ -37,14 +36,16 @@ const IconWrapper = styled.div`
 const MenuLink = ({
   children, href, icon: Icon, selected,
 }: MenuLinkProps) => (
-  <StyledLink href={href} selected={selected}>
-    { Icon && (
-    <IconWrapper>
-      <Icon />
-    </IconWrapper>
-    )}
-    {children}
-  </StyledLink>
+  // <Link href={href}>
+    <StyledLink selected={selected}>
+      { Icon && (
+      <IconWrapper>
+        <Icon />
+      </IconWrapper>
+      )}
+      {children}
+    </StyledLink>
+  // </Link>
 );
 
 export default MenuLink;
