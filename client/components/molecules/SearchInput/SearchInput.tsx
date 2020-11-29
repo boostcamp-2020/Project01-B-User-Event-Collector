@@ -5,14 +5,14 @@ import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
 
 const StyledSearchInput = styled.div`
-    width: 90%;
-    height: 55px;
+    width: 100%;
     z-index: 10;
     display: flex;
     align-items: center;
     border-radius: 5px;
     box-shadow: 0 0 5px skyblue;
     background-color: white;
+    margin: 10px 0;
 `;
 
 const IconContainer = styled.div`
@@ -29,14 +29,14 @@ const ArtistName = styled.div`
     font-weight: 400;
 `;
 
-const SearchInput = () => (
+const SearchInput = ({ onClose }) => (
     <StyledSearchInput>
         <IconContainer>
             <SearchIcon style={{ color: '#999' }}/>
         </IconContainer>
         <Input variant="search" />
         <IconContainer>
-            <CloseIcon style={{ color: '#999' }}/>
+            <CloseIcon style={{ color: '#999' }} onClick={onClose} />
         </IconContainer>
     </StyledSearchInput>
   );
