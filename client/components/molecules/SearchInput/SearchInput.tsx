@@ -22,14 +22,18 @@ const IconContainer = styled.div`
     justify-content: center;
 `;
 
-const ArtistName = styled.div`
-    position: absolute;
-    bottom: 0px;
-    font-size: 14px;
-    font-weight: 400;
-`;
+// const ArtistName = styled.div`
+//     position: absolute;
+//     bottom: 0px;
+//     font-size: 14px;
+//     font-weight: 400;
+// `;
 
-const SearchInput = ({ onClose }) => (
+interface SearchInputProps {
+    onClose: () => void;
+}
+
+const SearchInput = ({ onClose }: SearchInputProps) => (
     <StyledSearchInput>
         <IconContainer>
             <SearchIcon style={{ color: '#999' }}/>

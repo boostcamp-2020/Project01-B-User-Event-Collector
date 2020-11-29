@@ -8,7 +8,15 @@ import SearchInput from '@components/molecules/SearchInput';
 import SearchIcon from '@material-ui/icons/Search';
 import { LogoContainer, Logo, SearchContainer, SectionContainer, ProfileContainer, Header } from './HeaderSideBar.styles';
 
-const HeaderSideBar = ({ user }) => { 
+interface HeaderProps {
+    user?: {
+        id: string,
+        name: string,
+        profileUrl?: string,
+    };
+}
+
+const HeaderSideBar = ({ user }: HeaderProps) => { 
   const [ searching, setSearching ] = useState(false);
 
   return(
