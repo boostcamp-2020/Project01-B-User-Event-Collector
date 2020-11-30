@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Image from '../../../atoms/Image/Image';
 
 const Card = styled.div`
-    width: 162px;
-    height: 188px;
+    width: 180px;
+    height: 220px;
     position: relative;
     display: flex;
     justify-content:center;
@@ -12,7 +12,7 @@ const Card = styled.div`
 
 const ArtistName = styled.div`
     position: absolute;
-    bottom: 0px;
+    bottom: 15px;
     font-size: 14px;
     font-weight: 400;
 `;
@@ -24,7 +24,7 @@ interface NormalArtistThumbnailProps {
 
 const NormalArtistThumbnail = ({ name, src }: NormalArtistThumbnailProps) => (
     <Card>
-        <Image variant = "smallArtistImage" src = {src}/>
+        <Image variant = "regularArtistImage" src = {src}/>
         <ArtistName>{name}</ArtistName>
     </Card>
   );
