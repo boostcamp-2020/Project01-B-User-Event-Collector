@@ -33,7 +33,12 @@ final class NetworkService {
         self.session = session
     }
     
-    func request(urlRequest: URLRequest) -> AnyPublisher<Data, NetworkError> {
+    func request(url: String) -> AnyPublisher<Data, NetworkError> {
+        guard let url = URL(string: url) else {
+            return Fail(error: NetworkError.invalidURL)
+                .eraseToAnyPublisher()
+        }
+        let urlRequest = URLRequest(url: url)
         return session.dataTaskPublisher(for: urlRequest)
             .tryMap { (data, response) -> Data in
                 guard let response = response as? HTTPURLResponse,
@@ -43,6 +48,9 @@ final class NetworkService {
                 return data
             }
             .mapError { (error) -> NetworkError in
+                if let error = error as? NetworkError {
+                    return error
+                }
                 return .unknownError(message: error.localizedDescription)
             }
             .eraseToAnyPublisher()
