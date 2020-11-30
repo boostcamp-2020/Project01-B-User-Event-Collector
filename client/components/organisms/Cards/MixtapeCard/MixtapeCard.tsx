@@ -7,8 +7,8 @@ import Text from '../../../atoms/Text/Text';
 const CardContainer = styled.div`
     display: flex;
     flex-flow: column;
-    width: ${props => props.sort === 'mainMagazine'? '310px;':'274px;' }
-    height: ${props => props.sort === 'mainMagazine'? '382px;':'349px;' }
+    width: 180px;
+    height: 240px;
 `;
 
 const ThumbnailContainer = styled.div`
@@ -23,43 +23,43 @@ const TextContainer = styled.div`
 
 const TitelContainer = styled.div`
     height: 75%;
-    padding: 10px 0px 10px 0px;
+    padding: 10px 0px 0px 0px;
 `;
 
 const DescriptionContainer = styled.div`
     height: 25%;
-    padding: 0;
+    padding: 0px 0px 30px 0px;
 `;
 
 const StyledA = styled(A)`
-    font-size: 16px;
+    font-size: 14px;
 `;
 
 const StyledText = styled(Text)`
+    font-size: 13px;
 `;
 
-interface MagazineCardProps {
+interface MixtapeCardProps {
     src: string,
     href: string,
     title: string,
-    date: string,
-    sort: 'todayMagazine' | 'normalMagazine'
+    artist: string
 };
 
-const MagazineCard = ( { title, date, src, href, sort }: MagazineCardProps ) => (
-    <CardContainer sort = {sort}>
+const MixtapeCard = ( { title, artist, src, href }: MixtapeCardProps ) => (
+    <CardContainer >
         <ThumbnailContainer>
-            <ContentsThumbnail src = {src} href = {href} sort = {sort} />
+            <ContentsThumbnail src = {src} href = {href} sort = "" />
         </ThumbnailContainer>
         <TextContainer>
             <TitelContainer>
                 <StyledA href={href}>{title}</StyledA>
             </TitelContainer>
             <DescriptionContainer>
-                <StyledText variant = "primary">{date}</StyledText>
+                <StyledText variant = "primary">{artist}</StyledText>
             </DescriptionContainer>
         </TextContainer>
     </CardContainer>
 )
 
-export default MagazineCard;
+export default MixtapeCard;
