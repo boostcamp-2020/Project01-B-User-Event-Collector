@@ -20,6 +20,8 @@ export const TrackRowCard = () => <Image variant = "trackRowCard" src = {STORY_I
 
 export const TrackInfo = () => <Image variant = "trackInfo" src = {STORY_IMAGE_SRC}/>
 
+export const LyricTrackInfo = () => <Image variant = "lyricTrackInfo" src = {STORY_IMAGE_SRC}/>
+
 export const SmallArtistImage = () => <Image variant = "smallArtist" src = {STORY_IMAGE_SRC}/>
 
 export const RegularArtistImage = () => <Image variant = "regularArtist" src = {STORY_IMAGE_SRC}/>
