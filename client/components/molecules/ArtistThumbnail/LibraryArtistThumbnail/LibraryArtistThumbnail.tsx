@@ -32,7 +32,7 @@ interface LibraryArtistThumbnailProps {
 
 const LibraryArtistThumbnail = ({ name, src }: LibraryArtistThumbnailProps) => (
     <Card>
-        <Image variant = "regularArtistImage" src = {src}/>
+        <Image variant = "regularArtist" src = {src}/>
         <ArtistLikeButtonContainer>
             <ArtistLikeButton />
         </ArtistLikeButtonContainer>
