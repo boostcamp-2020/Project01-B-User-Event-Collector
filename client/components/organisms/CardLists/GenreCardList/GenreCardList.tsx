@@ -2,6 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 import GenreCard from '@components/molecules/GenreCard/GenreCard';
 
+// TODO : DB 에서 장르 내용 받아오기
+const cards = [];
+for (let i = 0; i < 15; i++) {
+    const title = `test${i}`;
+    const href = '#';
+    const color = `#${Math.round(Math.random() * 0xffffff).toString(16)}`;
+    const card = {
+        title,
+        href,
+        color,
+    };
+}
+
+// TODO : refactor
 const getCardBundle = (cards) => {
     const bundle = [];
 
