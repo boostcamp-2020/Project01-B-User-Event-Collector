@@ -1,50 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
 import Image from '@components/atoms/Image/Image';
 import Text from '@components/atoms/Text/Text';
+import { Card, AlbumImg, PlayButton, Rank, SongInfo } from './ChartCard.styles';
 
-const PlayButton = styled.button`
-    outline: 0;
-    border: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 40px;
-    height: 40px;
-    padding-top: 6px;
-    visibility: hidden;
-    opacity: 0%;
-    background-color: black;
-`;
-
-const Card = styled.li`
-    list-style: none;
-    display: flex;
-    padding: 8px 0;
-    margin: 0;
-    &:hover ${PlayButton} {
-        visibility: visible;
-        opacity: 60%;
-    }
-`;
-
-const AlbumImg = styled.div`
-    position: relative;
-`;
-
-const Rank = styled.div`
-    width: 25px;
-    padding-left: 13px;
-    text-align: center;
-`;
-const SongInfo = styled.div`
-    padding: 0 20px 0 12px;
-`;
 const ChartCard = ({ src, rank, singer, songTitle }) => (
     <Card>
         <AlbumImg>
             <Image variant="trackRowCard" src={src} />
             <PlayButton>
+                {
+                    // TODO : svg 별도로 분리
+                }
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     version="1.0"
