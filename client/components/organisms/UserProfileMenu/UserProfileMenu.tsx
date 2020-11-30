@@ -34,7 +34,7 @@ const UserProfileMenu = ({ user }: UserProfileMenuProps) => {
     return (
       <MenuLink href="/login">
         <IconWrapper>
-          <Avatar alt="profile" src={defaultImage} />
+          <Avatar alt="profile" src={defaultImage} style={{width: 30, height: 30}}/>
         </IconWrapper>
         로그인
       </MenuLink>
@@ -44,7 +44,7 @@ const UserProfileMenu = ({ user }: UserProfileMenuProps) => {
     <DropdownMenu id="user-profile" menuItems={dropdownItems}>
     <MenuLink href="">
           <IconWrapper>
-            <Avatar alt="profile" src={user.profileUrl ? user.profileUrl : defaultImage} />
+            <Avatar alt="profile" src={user.profileUrl ? user.profileUrl : defaultImage} style={{width: 30, height: 30}}/>
           </IconWrapper>
           {user.name}
           <ArrowDropDownIcon />
