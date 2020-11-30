@@ -24,3 +24,8 @@ export interface MagazineCardProps {
     date: string,
     sort: 'todayMagazine' | 'normalMagazine'
 };
+
+export interface StationCardProps {
+    src: string,
+    href: string,
+};
