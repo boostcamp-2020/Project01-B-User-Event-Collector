@@ -30,6 +30,7 @@ struct MagazineSection: View {
 
 struct MagazineSection_Previews: PreviewProvider {
     static var previews: some View {
-        MagazineSection(width: 200, title: "매거진")
+        MagazineSection(width: 375, title: "매거진")
+            .previewLayout(.fixed(width: 375, height: 450))
     }
 }

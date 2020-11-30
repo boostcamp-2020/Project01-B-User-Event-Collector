@@ -49,5 +49,6 @@ struct TrackRow: View {
 struct TrackRow_Previews: PreviewProvider {
     static var previews: some View {
         TrackRow()
+            .previewLayout(.fixed(width: 375, height: 80))
     }
 }

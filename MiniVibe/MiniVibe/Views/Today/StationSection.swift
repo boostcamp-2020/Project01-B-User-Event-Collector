@@ -22,6 +22,7 @@ struct StationSection: View {
 
 struct StationSection_Previews: PreviewProvider {
     static var previews: some View {
-        StationSection(width: 200, title: "스테이션")
+        StationSection(width: 375, title: "스테이션")
+            .previewLayout(.fixed(width: 375, height: 200))
     }
 }

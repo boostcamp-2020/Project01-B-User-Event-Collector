@@ -27,5 +27,6 @@ struct ThumbnailItem: View {
 struct ThumbnailItem_Previews: PreviewProvider {
     static var previews: some View {
         ThumbnailItem()
+            .previewLayout(.fixed(width: 375, height: 415))
     }
 }

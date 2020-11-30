@@ -29,5 +29,6 @@ struct StationItem: View {
 struct StationItem_Previews: PreviewProvider {
     static var previews: some View {
         StationItem()
+            .previewLayout(.fixed(width: 375, height: 375))
     }
 }

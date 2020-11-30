@@ -36,5 +36,6 @@ struct ThumbnailRow: View {
 struct ThumbnailRow_Previews: PreviewProvider {
     static var previews: some View {
         ThumbnailRow()
+            .previewLayout(.fixed(width: 375, height: 100))
     }
 }
