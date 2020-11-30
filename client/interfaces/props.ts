@@ -1,6 +1,6 @@
 export enum MagazineSort {
-    main = 'mainMagazine',
-    normal = 'normalMagazine'
+    main = 'todayMagazine',
+    normal = 'todayMagazine'
 }
 
 export interface MagazineCardProps {

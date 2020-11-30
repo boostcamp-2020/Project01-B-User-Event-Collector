@@ -7,8 +7,8 @@ import Text from '@components/atoms/Text/Text';
 const CardContainer = styled.div`
     display: flex;
     flex-flow: column;
-    width: ${props => props.sort === 'mainMagazine'? '310px;':'274px;' }
-    height: ${props => props.sort === 'mainMagazine'? '382px;':'349px;' }
+    width: 310px;
+    height: 382px;
 `;
 
 const ThumbnailContainer = styled.div`
