@@ -36,5 +36,6 @@ struct TodayTitle: View {
 struct TodayTitle_Previews: PreviewProvider {
     static var previews: some View {
         TodayTitle()
+            .previewLayout(.fixed(width: 375, height: 100))
     }
 }

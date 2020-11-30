@@ -31,5 +31,6 @@ struct RecommandedPlayListItem: View {
 struct RecommandedPlayListItem_Previews: PreviewProvider {
     static var previews: some View {
         RecommandedPlayListItem()
+            .previewLayout(.fixed(width: 375, height: 500))
     }
 }
