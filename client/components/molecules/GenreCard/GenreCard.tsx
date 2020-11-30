@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Text from '../../atoms/Text/Text';
 
 const Card = styled.div`
-    display: flex; 
+    display: flex;
     align-items: center;
     height: 60px;
     padding: 0 9px;
@@ -11,6 +11,7 @@ const Card = styled.div`
     text-align: left;
     border-radius: 4px;
     background-color: #ececec;
+    margin-bottom: 12px;
 `;
 
 const Bar = styled.div`
@@ -31,16 +32,14 @@ interface GenreCardProps {
 }
 
 const GenreCard = ({ title, href, color }: GenreCardProps) => (
-  <Card>
-    {/* TODO : Link 컴포넌트로 감싸기 */}
-    {/* <Link href={href}/> */}
-    <Bar color={color} />
-    <Content>
-      <Text>
-        {title}
-      </Text>
-    </Content>
-  </Card>
+    <Card>
+        {/* TODO : Link 컴포넌트로 감싸기 */}
+        {/* <Link href={href}/> */}
+        <Bar color={color} />
+        <Content>
+            <Text>{title}</Text>
+        </Content>
+    </Card>
 );
 
 export default GenreCard;

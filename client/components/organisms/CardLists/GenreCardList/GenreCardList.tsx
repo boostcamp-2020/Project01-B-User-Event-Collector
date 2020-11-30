@@ -17,6 +17,20 @@ const getCardBundle = (cards) => {
     return bundle;
 };
 
+const StyledListContainer = styled.div`
+    box-sizing: border-box;
+    padding: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+`;
+const CardBundle = styled.div`
+    width: 180px;
+    display: inline-block;
+    box-sizing: border-box;
+    margin-right: 16px;
+`;
+
 const GenreCardList = () => <StyledListContainer>{getCardBundle(cards)}</StyledListContainer>;
 
 export default GenreCardList;
