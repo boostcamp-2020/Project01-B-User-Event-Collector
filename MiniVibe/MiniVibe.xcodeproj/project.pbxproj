@@ -21,6 +21,7 @@
 		445919B1256E5CEA0069DAB2 /* StationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445919B0256E5CEA0069DAB2 /* StationStack.swift */; };
 		4474DC002574E2C3006FC827 /* PlayerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4474DBFF2574E2C3006FC827 /* PlayerHeader.swift */; };
 		4474DC032574E6BC006FC827 /* PlayerThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4474DC022574E6BC006FC827 /* PlayerThumbnail.swift */; };
+		4474DC062574E8DB006FC827 /* PlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4474DC052574E8DB006FC827 /* PlayerSlider.swift */; };
 		4478AA3A256CDD8F00FDED38 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4478AA39256CDD8F00FDED38 /* .swiftlint.yml */; };
 		4478F717256E817100755656 /* CGFloat+Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4478F716256E817100755656 /* CGFloat+Constant.swift */; };
 		4478F71C256E858700755656 /* MixtapeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4478F71B256E858700755656 /* MixtapeGrid.swift */; };
@@ -65,6 +66,7 @@
 		445919B0256E5CEA0069DAB2 /* StationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationStack.swift; sourceTree = "<group>"; };
 		4474DBFF2574E2C3006FC827 /* PlayerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHeader.swift; sourceTree = "<group>"; };
 		4474DC022574E6BC006FC827 /* PlayerThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerThumbnail.swift; sourceTree = "<group>"; };
+		4474DC052574E8DB006FC827 /* PlayerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSlider.swift; sourceTree = "<group>"; };
 		4478AA39256CDD8F00FDED38 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4478F716256E817100755656 /* CGFloat+Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Constant.swift"; sourceTree = "<group>"; };
 		4478F71B256E858700755656 /* MixtapeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixtapeGrid.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				44219931256E7B2300ECF4A0 /* Today */,
 				4474DBFF2574E2C3006FC827 /* PlayerHeader.swift */,
 				4474DC022574E6BC006FC827 /* PlayerThumbnail.swift */,
+				4474DC052574E8DB006FC827 /* PlayerSlider.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				805E28AE256BBD52007AF5F1 /* MiniVibeApp.swift in Sources */,
 				447BF73B256F3E6C003B5DB7 /* MainTab.swift in Sources */,
 				44F9797C256D04EA00C9C224 /* RecommandedPlayListItem.swift in Sources */,
+				4474DC062574E8DB006FC827 /* PlayerSlider.swift in Sources */,
 				444272BB256CE701008BB87B /* PreviewSection.swift in Sources */,
 				80EB9FE5256D04A000CD99FD /* MagazineItem.swift in Sources */,
 			);
