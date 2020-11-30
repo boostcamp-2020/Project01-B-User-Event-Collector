@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import ContentsThumbnail from '../../../molecules/ContentsThumbnail/ContentsThumbnail';
-import A from '../../../atoms/A/A';
-import Text from '../../../atoms/Text/Text';
+import ContentsThumbnail from '@components/molecules/ContentsThumbnail/ContentsThumbnail';
+import A from '@components/atoms/A/A';
+import Text from '@components/atoms/Text/Text';
 
 const CardContainer = styled.div`
     display: flex;
@@ -12,20 +12,17 @@ const CardContainer = styled.div`
 `;
 
 const ThumbnailContainer = styled.div`
-
 `;
 
 interface StationCardProps {
     src: string,
     href: string,
-    title: string,
-    artist: string
 };
 
-const StationCard = ( { title, artist, src, href }: StationCardProps ) => (
+const StationCard = ( { src }: StationCardProps ) => (
     <CardContainer >
         <ThumbnailContainer>
-            <ContentsThumbnail src = {src} href = {href} sort = "" />
+            <ContentsThumbnail src = {src} href = "" sort = "" />
         </ThumbnailContainer>
     </CardContainer>
 )
