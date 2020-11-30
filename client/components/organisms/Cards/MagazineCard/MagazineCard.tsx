@@ -43,7 +43,7 @@ interface MagazineCardProps {
     href: string,
     title: string,
     date: string,
-    sort: 'mainMagazine' | 'normalMagazine'
+    sort: 'todayMagazine' | 'normalMagazine'
 };
 
 const MagazineCard = ( { title, date, src, href, sort }: MagazineCardProps ) => (
