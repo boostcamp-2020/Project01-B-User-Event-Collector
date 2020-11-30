@@ -19,7 +19,9 @@ struct PlayerControls: View {
             
             HStack {
                 RepeatButton()
+                
                 Spacer()
+                
                 Button {
                     
                 } label: {
@@ -27,7 +29,9 @@ struct PlayerControls: View {
                         .foregroundColor(.secondary)
                         .font(.system(size: 28))
                 }
+                
                 Spacer()
+                
                 Button {
                     isPlaying.toggle()
                 } label: {
@@ -36,7 +40,9 @@ struct PlayerControls: View {
                         .font(.system(size: 40))
                         .frame(height: 40)
                 }
+                
                 Spacer()
+                
                 Button {
                     isFavorite.toggle()
                 } label: {
@@ -44,7 +50,9 @@ struct PlayerControls: View {
                         .foregroundColor(isFavorite ? .pink : .secondary)
                         .font(.system(size: 32))
                 }
+                
                 Spacer()
+                
                 Button {
                     isShuffle.toggle()
                 } label: {

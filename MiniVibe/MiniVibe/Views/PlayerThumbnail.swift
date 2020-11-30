@@ -18,6 +18,7 @@ struct PlayerThumbnail: View {
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .scaleEffect(isPlaying ? 1 : 0.9)
+            
             Text(lyrics)
                 .font(.system(size: 14))
                 .foregroundColor(.secondary)

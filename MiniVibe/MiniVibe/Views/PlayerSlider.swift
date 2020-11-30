@@ -28,6 +28,7 @@ struct PlayerSlider: View {
                             .foregroundColor(.secondary)
                             .offset(x: dragLocation)
                     }
+                    
                     ZStack(alignment: .leading) {
                         Rectangle()
                             .foregroundColor(.secondary)
@@ -41,7 +42,6 @@ struct PlayerSlider: View {
                     .gesture(
                         DragGesture(minimumDistance: 0)
                             .onChanged { value in
-                                
                                 let changedPercentage = Float(
                                     value.location.x / geometry.size.width * 100
                                 )
@@ -55,7 +55,9 @@ struct PlayerSlider: View {
                     )
                     HStack {
                         Text(playbackTime)
+                        
                         Spacer()
+                        
                         Text(totalDuration)
                     }
                     .foregroundColor(.secondary)

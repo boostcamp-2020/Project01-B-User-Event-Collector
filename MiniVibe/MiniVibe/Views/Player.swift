@@ -30,7 +30,7 @@ struct Player: View {
         .padding(16)
     }
     
-    var footer: some View {
+    private var footer: some View {
         HStack {
             Button {
                 
@@ -38,7 +38,9 @@ struct Player: View {
                 Image(systemName: "airplayaudio")
                     .foregroundColor(.secondary)
             }
+            
             Spacer()
+            
             Button {
                 
             } label: {
@@ -49,7 +51,9 @@ struct Player: View {
                 .foregroundColor(.pink)
                 .font(.system(size: 12))
             }
+            
             Spacer()
+            
             Button {
                 
             } label: {
