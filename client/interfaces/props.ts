@@ -17,10 +17,3 @@ export interface NewsCardProps {
     newsHref: string,
     title: string,
 };
-export interface MagazineCardProps {
-    src: string,
-    href: string,
-    title: string,
-    date: string,
-    sort: 'todayMagazine' | 'normalMagazine'
-};
