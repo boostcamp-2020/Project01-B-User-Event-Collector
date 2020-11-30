@@ -66,6 +66,8 @@ struct PlayerPreview: View {
 
 struct PlayerPreview_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerPreview(coordinate: .zero)
+        GeometryReader { geometry in
+            PlayerPreview(coordinate: geometry.frame(in: .global))
+        }
     }
 }

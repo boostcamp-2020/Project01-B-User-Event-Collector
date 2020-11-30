@@ -48,5 +48,6 @@ struct MagazineItem: View {
 struct Magazine_Previews: PreviewProvider {
     static var previews: some View {
         MagazineItem()
+            .previewLayout(.fixed(width: 375, height: 375))
     }
 }

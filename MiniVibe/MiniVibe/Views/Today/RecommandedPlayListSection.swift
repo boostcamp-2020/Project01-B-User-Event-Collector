@@ -32,6 +32,7 @@ struct RecommandedPlayListSection: View {
 
 struct RecommandedPlayListSection_Previews: PreviewProvider {
     static var previews: some View {
-        RecommandedPlayListSection(width: 200, title: "추천 플레이리스트")
+        RecommandedPlayListSection(width: 375, title: "추천 플레이리스트")
+            .previewLayout(.fixed(width: 375, height: 450))
     }
 }

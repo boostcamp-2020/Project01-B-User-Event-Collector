@@ -25,8 +25,7 @@ struct PreviewSection: View {
 
 struct PreviewSection_Previews: PreviewProvider {
     static var previews: some View {
-        GeometryReader { geometry in
-            PreviewSection(width: geometry.size.width)
-        }
+            PreviewSection(width: 375)
+                .previewLayout(.fixed(width: 375, height: 250))
     }
 }

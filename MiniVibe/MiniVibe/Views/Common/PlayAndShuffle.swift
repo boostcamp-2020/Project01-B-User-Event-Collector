@@ -42,8 +42,7 @@ struct PlayAndShuffle: View {
 
 struct PlayAndShuffle_Previews: PreviewProvider {
     static var previews: some View {
-        GeometryReader { geometry in
-            PlayAndShuffle(width: geometry.size.width)
-        }
+        PlayAndShuffle(width: 375)
+            .previewLayout(.fixed(width: 375, height: 80))
     }
 }

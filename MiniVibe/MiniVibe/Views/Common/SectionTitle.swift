@@ -35,6 +35,7 @@ struct SectionTitle<D: View>: View {
 
 struct SectionTitle_Previews: PreviewProvider {
     static var previews: some View {
-        SectionTitle(width: 200, destination: Text("Hello"), title: "최근 들은 노래")
+        SectionTitle(width: 375, destination: Text("Hello"), title: "최근 들은 노래")
+            .previewLayout(.fixed(width: 375, height: 50))
     }
 }

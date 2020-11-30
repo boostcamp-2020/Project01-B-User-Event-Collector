@@ -33,5 +33,6 @@ struct PreviewItem: View {
 struct PreviewItem_Previews: PreviewProvider {
     static var previews: some View {
         PreviewItem()
+            .previewLayout(.fixed(width: 375, height: 250))
     }
 }
