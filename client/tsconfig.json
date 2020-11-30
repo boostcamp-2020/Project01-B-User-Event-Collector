@@ -24,7 +24,8 @@
       ],
       "@utils/*":["@utils/*"],
       "@hooks/*":["@hooks/*"],
-      "@stores/*":["@stores/*"]
+      "@stores/*":["@stores/*"],
+      "@types/*":["@types/*"]
     }
   },
   "include": [
