@@ -70,7 +70,7 @@ interface ContentsThumbnailProps {
 const ContentsThumbnail = ( { src, href, sort } ) => (
     <ThumbnailContainer>
         <StyledImage src = {src} variant = { sort === 'news' ? 'news' : 
-                                sort === 'mainMagazine' || sort === 'recommendPlaylist' ? 'primary' : 
+                                sort === 'todayMagazine' || sort === 'recommendPlaylist' ? 'primary' : 
                                 sort === 'normalMagazine' ? 'normalMagazine' : ''}/>
         <ButtonContainer>
             <PlayButton />

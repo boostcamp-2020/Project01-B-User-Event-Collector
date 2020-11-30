@@ -7,8 +7,8 @@ import Text from '@components/atoms/Text/Text';
 const CardContainer = styled.div`
     display: flex;
     flex-flow: column;
-    width: 310px;
-    height: 261px;
+    width: 180px;
+    height: 240px;
 `;
 
 const ThumbnailContainer = styled.div`
@@ -17,41 +17,48 @@ const ThumbnailContainer = styled.div`
 const TextContainer = styled.div`
     display: flex;
     flex-flow: column;
+    height: 50%;
 `;
 
 const TitelContainer = styled.div`
-    padding: 10px 0px 10px 0px;
+    height: 75%;
+    padding: 10px 0px 0px 0px;
 `;
 
 const DescriptionContainer = styled.div`
-    padding: 0;
+    height: 25%;
+    padding: 0px 0px 30px 0px;
 `;
 
 const StyledA = styled(A)`
-    font-size: 16px;
+    font-size: 14px;
 `;
 
-interface NewsCardProps {
+const StyledText = styled(Text)`
+    font-size: 13px;
+`;
+
+interface MixtapeCardProps {
     src: string,
     href: string,
-    newsHref: string,
     title: string,
+    artist: string
 };
 
-const NewsCard = ( { title, src, href, newsHref }: NewsCardProps ) => (
+const MixtapeCard = ( { title, artist, src, href }: MixtapeCardProps ) => (
     <CardContainer >
         <ThumbnailContainer>
-            <ContentsThumbnail sort = "news" src = {src} href = {href} />
+            <ContentsThumbnail src = {src} href = {href} sort = "" />
         </ThumbnailContainer>
         <TextContainer>
             <TitelContainer>
                 <StyledA href={href}>{title}</StyledA>
             </TitelContainer>
             <DescriptionContainer>
-                <A href = {newsHref} variant = "tertiary">관련 뉴스 보기</A>
+                <StyledText variant = "primary">{artist}</StyledText>
             </DescriptionContainer>
         </TextContainer>
     </CardContainer>
 )
 
-export default NewsCard;
+export default MixtapeCard;
