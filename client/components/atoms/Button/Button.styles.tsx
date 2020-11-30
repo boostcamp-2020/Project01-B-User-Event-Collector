@@ -24,6 +24,8 @@ const getButtonStyle = (props: StyledButtonProps) => {
     color: ${color};
     border: 1px solid ${borderColor};
     background-color: ${backgroundColor};
+    width: ${props.width}px;
+    height: ${props.height}px;
   `;
 };
 
