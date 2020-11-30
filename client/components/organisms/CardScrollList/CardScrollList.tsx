@@ -23,14 +23,10 @@ const CardScrollList = ({ type, items }: CardScrollListProps) => {
             <List>
                 {
                     items.map((item, idx) => 
-                        type === 'magazine'? 
                         // TODO : key idx가 아닌 data id로 수정
                         <ItemContainer key={idx} ref={idx === 0? firstItemRef : ( idx === items.length - 1 ? lastItemRef : undefined) }>
-                            <MagazineCard { ...(item as MagazineCardProps)}/>
-                        </ItemContainer> :
-                        <ItemContainer key={idx} >
-                            <NewsCard { ...(item as NewsCardProps)}/>
-                        </ItemContainer>
+                            {type === 'magazine'? <MagazineCard { ...(item as MagazineCardProps)}/> : <NewsCard { ...(item as NewsCardProps)}/>}
+                        </ItemContainer> 
                     )
                 }
             </List>
