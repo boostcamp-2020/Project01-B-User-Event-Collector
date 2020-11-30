@@ -1,88 +1,44 @@
 import React, { useRef } from 'react';
-import styled from 'styled-components';
 import MagazineCard from '@components/organisms/Cards/MagazineCard'
+import NewsCard from '@components/organisms/Cards/NewsCard';
 import SlideNextButton from '@components/molecules/SlideNextButton';
 import SlidePrevButton from '@components/molecules/SlidePrevButton';
+import { MagazineCardProps, NewsCardProps } from '@interfaces/props';
+import { List, ListContainer, ItemContainer, PrevButtonContainer, NextButtonContainer } from './CardScrollList.styles';
 
-const List = styled.ul`
-    display: flex;
-    margin: 0;
-    padding: 0;
-    overflow-x: auto;
-    -ms-overflow-style: none; /* IE */
-    scrollbar-width: none; /* Firefox */
-    &::-webkit-scrollbar { 
-        display: none !important;  /* 크롬 등  */
-      }
-    scroll-behavior: smooth;
-`;
+interface CardScrollListProps {
+    type: 'magazine' | 'news';
+    items: (MagazineCardProps | NewsCardProps)[];
+}
 
-const ItemContainer = styled.li`
-    list-style: none;   
-    margin-left: 17px;
+const CardScrollList = ({ type, items }: CardScrollListProps) => {
+    const firstItemRef = useRef(null);
+    const lastItemRef = useRef(null);
 
-    &:first-child {
-        margin-left: 0;
-    }
-`;
-
-const ListContainer = styled.div`
-    position: relative;
-    min-height: 375px;
-`;
-
-const PrevButtonContainer = styled.div` 
-    position: absolute;
-    top: 133px;
-    left: -27px;
-`
-
-const NextButtonContainer = styled.div`
-    position: absolute;
-    top: 133px;
-    right: -27px;
-`
-
-const CardScrollList = ({ children }) => {
-    const myRef = useRef(null);
-    const executeScroll = () => myRef.current.scrollIntoView(true);
-
-    const src = "https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906";
-    const href = "localhost:3000";
-    const title =   `이 주의 디깅 #77 
-                    이영지 새 앨범 발표`;
-    const date = "2020.11.25";
+    const scrollToFirst = () => firstItemRef.current.scrollIntoView(); 
+    const scrollToLast = () => lastItemRef.current.scrollIntoView();
 
     return(
         <ListContainer>
             <List>
-                <ItemContainer>
-                    <MagazineCard sort="mainMagazine" src={src} href={href} title={title} date={date}/>
-                </ItemContainer>
-                <ItemContainer>
-                    <MagazineCard sort="mainMagazine" src={src} href={href} title={title} date={date}/>
-                </ItemContainer>
-                <ItemContainer>
-                    <MagazineCard sort="mainMagazine" src={src} href={href} title={title} date={date}/>
-                </ItemContainer>
-                <ItemContainer>
-                    <MagazineCard sort="mainMagazine" src={src} href={href} title={title} date={date}/>
-                </ItemContainer>
-                <ItemContainer>
-                    <MagazineCard sort="mainMagazine" src={src} href={href} title={title} date={date}/>
-                </ItemContainer>
-                <ItemContainer >
-                    <MagazineCard sort="mainMagazine" src={src} href={href} title={title} date={date}/>
-                </ItemContainer>
-                <ItemContainer ref={myRef}>
-                    <MagazineCard sort="mainMagazine" src={src} href={href} title={title} date={date}/>
-                </ItemContainer>
+                {
+                    items.map((item, idx) => 
+                        type === 'magazine'? 
+                        // TODO : key idx가 아닌 data id로 수정
+                        <ItemContainer key={idx} ref={idx === 0? firstItemRef : ( idx === items.length - 1 ? lastItemRef : undefined) }>
+                            <MagazineCard { ...(item as MagazineCardProps)}/>
+                        </ItemContainer> :
+                        <ItemContainer key={idx} >
+                            <NewsCard { ...(item as NewsCardProps)}/>
+                        </ItemContainer>
+                    )
+                }
             </List>
             <PrevButtonContainer>
-                <SlidePrevButton onClick={executeScroll}/>
+                <SlidePrevButton onClick={scrollToFirst}/>
             </PrevButtonContainer>
             <NextButtonContainer>
-                <SlideNextButton onClick={executeScroll}/>
+                <SlideNextButton onClick={scrollToLast}/>
             </NextButtonContainer>
         </ListContainer>
     )
