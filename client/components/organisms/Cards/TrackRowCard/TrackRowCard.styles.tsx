@@ -10,6 +10,9 @@ export const List = styled.li`
         visibility: visible;
         opacity: 60%;
     }
+    &:hover {
+        background-color: #ececec;
+    }
 `;
 const TrackArea = styled.div`
     display: flex;
