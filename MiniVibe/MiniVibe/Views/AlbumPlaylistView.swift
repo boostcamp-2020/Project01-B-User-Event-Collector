@@ -38,11 +38,12 @@ struct AlbumPlaylistView: View {
                 
                 ThumbnailSection(
                     width: width,
-                    destination: ThumbnailGrid(title: "아티스트의 다른 앨범"),
+                    destination: ThumbnailGridView(title: "아티스트의 다른 앨범"),
                     title: "아티스트의 다른 앨범"
                 )
                 
-                ArtistSection(sectionTitle: "비슷한 아티스트")
+                ArtistSection(width: width,
+                              sectionTitle: "비슷한 아티스트")
                 
                 ThumbnailSection(
                     width: width,
@@ -53,7 +54,6 @@ struct AlbumPlaylistView: View {
         }
     }
     
-    @ViewBuilder
     var trailingBarButtons: some View {
         HStack(spacing: 10) {
             Button {
