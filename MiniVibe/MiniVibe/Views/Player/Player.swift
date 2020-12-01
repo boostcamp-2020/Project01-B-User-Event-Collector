@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Player: View {
     @State var isPlaying = false
+    @Binding var isOpenMenu: Bool
     
     var body: some View {
         VStack {
@@ -21,7 +22,8 @@ struct Player: View {
             
             Spacer()
             
-            PlayerControls(isPlaying: $isPlaying)
+            PlayerControls(isPlaying: $isPlaying,
+                           isOpenMenu: $isOpenMenu)
                 
             Spacer()
             
@@ -66,6 +68,6 @@ struct Player: View {
 
 struct Player_Previews: PreviewProvider {
     static var previews: some View {
-        Player()
+        Player(isOpenMenu: .constant(false))
     }
 }

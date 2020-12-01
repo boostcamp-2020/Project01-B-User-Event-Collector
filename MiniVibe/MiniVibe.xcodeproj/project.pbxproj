@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		44056D152575DD5100BF8337 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44056D142575DD5100BF8337 /* PlayerView.swift */; };
+		44139C81257607D3000CEEA5 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44139C80257607D3000CEEA5 /* MenuButton.swift */; };
 		441DA8A4256F83BB00F64AB0 /* FavoritePlayList.json in Resources */ = {isa = PBXBuildFile; fileRef = 441DA8A3256F83BB00F64AB0 /* FavoritePlayList.json */; };
 		441DA8A7256F840F00F64AB0 /* MyTastePlayList.json in Resources */ = {isa = PBXBuildFile; fileRef = 441DA8A6256F840F00F64AB0 /* MyTastePlayList.json */; };
 		441DA8AA256F843800F64AB0 /* RecommandedPlayList.json in Resources */ = {isa = PBXBuildFile; fileRef = 441DA8A9256F843800F64AB0 /* RecommandedPlayList.json */; };
 		441DA8AD256F846000F64AB0 /* RecommandedAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 441DA8AC256F846000F64AB0 /* RecommandedAlbum.json */; };
 		441DA8B0256F848C00F64AB0 /* Stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 441DA8AF256F848C00F64AB0 /* Stations.json */; };
 		441DA8B3256F84AE00F64AB0 /* Magazines.json in Resources */ = {isa = PBXBuildFile; fileRef = 441DA8B2256F84AE00F64AB0 /* Magazines.json */; };
+		441EC8402576031F0069146E /* PlayerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441EC83F2576031F0069146E /* PlayerMenu.swift */; };
 		444272B3256CDEC8008BB87B /* TodayTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272B2256CDEC8008BB87B /* TodayTitle.swift */; };
 		444272B8256CE2B3008BB87B /* PreviewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272B7256CE2B3008BB87B /* PreviewItem.swift */; };
 		444272BB256CE701008BB87B /* PreviewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272BA256CE701008BB87B /* PreviewSection.swift */; };
@@ -75,12 +77,14 @@
 
 /* Begin PBXFileReference section */
 		44056D142575DD5100BF8337 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		44139C80257607D3000CEEA5 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		441DA8A3256F83BB00F64AB0 /* FavoritePlayList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FavoritePlayList.json; sourceTree = "<group>"; };
 		441DA8A6256F840F00F64AB0 /* MyTastePlayList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MyTastePlayList.json; sourceTree = "<group>"; };
 		441DA8A9256F843800F64AB0 /* RecommandedPlayList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecommandedPlayList.json; sourceTree = "<group>"; };
 		441DA8AC256F846000F64AB0 /* RecommandedAlbum.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecommandedAlbum.json; sourceTree = "<group>"; };
 		441DA8AF256F848C00F64AB0 /* Stations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Stations.json; sourceTree = "<group>"; };
 		441DA8B2256F84AE00F64AB0 /* Magazines.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Magazines.json; sourceTree = "<group>"; };
+		441EC83F2576031F0069146E /* PlayerMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerMenu.swift; sourceTree = "<group>"; };
 		444272B2256CDEC8008BB87B /* TodayTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTitle.swift; sourceTree = "<group>"; };
 		444272B7256CE2B3008BB87B /* PreviewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewItem.swift; sourceTree = "<group>"; };
 		444272BA256CE701008BB87B /* PreviewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSection.swift; sourceTree = "<group>"; };
@@ -294,6 +298,8 @@
 				4421992D256E7AA800ECF4A0 /* Common */,
 				44219931256E7B2300ECF4A0 /* Today */,
 				445E69232575E7B200C7BF21 /* Player */,
+				441EC83F2576031F0069146E /* PlayerMenu.swift */,
+				44139C80257607D3000CEEA5 /* MenuButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -496,8 +502,10 @@
 				805E28D3256BDC4A007AF5F1 /* TrackRow.swift in Sources */,
 				80C6207A256CF21600B5C375 /* StationItem.swift in Sources */,
 				8084AB6D256E403900F2AAC2 /* ThumbnailRow.swift in Sources */,
+				44139C81257607D3000CEEA5 /* MenuButton.swift in Sources */,
 				80C6207D256CFBA100B5C375 /* StationSection.swift in Sources */,
 				80045DFA257602A900F32E6C /* Lyrics.swift in Sources */,
+				441EC8402576031F0069146E /* PlayerMenu.swift in Sources */,
 				80EB9FF5256DE8A300CD99FD /* Today.swift in Sources */,
 				445919B1256E5CEA0069DAB2 /* StationStack.swift in Sources */,
 				4478F720256E89EB00755656 /* ChartList.swift in Sources */,
