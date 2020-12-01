@@ -8,19 +8,22 @@
 import SwiftUI
 
 struct ArtistSection: View {
+    let width: CGFloat
     let sectionTitle: String
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(sectionTitle)
                 .font(.system(size: 16.5, weight: .bold))
+                .padding(.horizontal, width * .paddingRatio)
             ScrollView(.horizontal,
                        showsIndicators: false) {
-                LazyHStack(spacing: 16) {
+                HStack(spacing: 16) {
                     ForEach(0..<10) { _ in
                         ArtistItem()
                     }
                 }
+                .padding(.horizontal, width * .paddingRatio)
             }
         }
     }
@@ -28,7 +31,7 @@ struct ArtistSection: View {
 
 struct ArtistSection_Previews: PreviewProvider {
     static var previews: some View {
-        ArtistSection(sectionTitle: "비슷한 아티스트")
+        ArtistSection(width: 350, sectionTitle: "비슷한 아티스트")
             .previewLayout(.fixed(width: 400, height: 200))
     }
 }
