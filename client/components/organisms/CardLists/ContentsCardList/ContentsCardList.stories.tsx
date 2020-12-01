@@ -1,22 +1,10 @@
 import React from 'react';
-import CardScrollList from './CardScrollList';
-import { MagazineSort } from '@interfaces/props';
-import MagazineCardList from '@components/organisms/CardLists/MagazineList/MagazineList';
-import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
+import ContentsCardList from './ContentsCardList';
 
 export default {
-    title: 'CardScrollList',
-    component: CardScrollList,
+    title: 'ContentsCardList',
+    component: ContentsCardList,
 };
-
-const Magazinesdata = Array(9).fill({
-    src: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906',
-    href: 'localhost:3000',
-    title: `이 주의 디깅 #77 
-    이영지 새 앨범 발표`,
-    date: '2020.11.25',
-    sort: MagazineSort.main,
-});
 
 const Newsdata = Array(9).fill({
     src: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906',
@@ -51,39 +39,22 @@ const Playlistdata = Array(9).fill({
     description: "VIBE"
 });
 
-// export const News = () => <CardScrollList type="news" items={Newsdata}/>
-export const Magazine = () => (
-    <CardScrollList>
-        <MagazineCardList variant="row" items={Magazinesdata} />
-    </CardScrollList>
-);
-
 export const News = () => (
-    <CardScrollList>
         <ContentsCardList variant="news" items={Newsdata} />
-    </CardScrollList>
 );
 
 export const Album = () => (
-    <CardScrollList>
-        <ContentsCardList variant="album" items={Albumdata} />
-    </CardScrollList>
+    <ContentsCardList variant="album" items={Albumdata} />
 );
 
 export const Artist = () => (
-    <CardScrollList>
-        <ContentsCardList variant="artist" items={Artistdata} />
-    </CardScrollList>
+    <ContentsCardList variant="artist" items={Artistdata} />
 );
 
 export const Mixtape = () => (
-    <CardScrollList>
-        <ContentsCardList variant="mixtape" items={Mixtapedata} />
-    </CardScrollList>
+    <ContentsCardList variant="mixtape" items={Mixtapedata} />
 );
 
 export const Playlist = () => (
-    <CardScrollList>
-        <ContentsCardList variant="playlist" items={Playlistdata} />
-    </CardScrollList>
+    <ContentsCardList variant="playlist" items={Playlistdata} />
 );

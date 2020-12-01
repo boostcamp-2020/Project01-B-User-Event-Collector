@@ -1,12 +1,12 @@
 import React from 'react';
-import CardScrollList from './CardScrollList';
+import CardListContainer from './CardListContainer';
 import { MagazineSort } from '@interfaces/props';
 import MagazineCardList from '@components/organisms/CardLists/MagazineList/MagazineList';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 
 export default {
-    title: 'CardScrollList',
-    component: CardScrollList,
+    title: 'CardListContainer',
+    component: CardListContainer,
 };
 
 const Magazinesdata = Array(9).fill({
@@ -51,39 +51,38 @@ const Playlistdata = Array(9).fill({
     description: "VIBE"
 });
 
-// export const News = () => <CardScrollList type="news" items={Newsdata}/>
 export const Magazine = () => (
-    <CardScrollList>
+    <CardListContainer title="매거진" href="/">
         <MagazineCardList variant="row" items={Magazinesdata} />
-    </CardScrollList>
+    </CardListContainer>
 );
 
 export const News = () => (
-    <CardScrollList>
+    <CardListContainer title="NEWS">
         <ContentsCardList variant="news" items={Newsdata} />
-    </CardScrollList>
+    </CardListContainer>
 );
 
 export const Album = () => (
-    <CardScrollList>
+    <CardListContainer title="좋아할 최신 앨범" href="/">
         <ContentsCardList variant="album" items={Albumdata} />
-    </CardScrollList>
+    </CardListContainer>
 );
 
 export const Artist = () => (
-    <CardScrollList>
+    <CardListContainer title="연관 아티스트">
         <ContentsCardList variant="artist" items={Artistdata} />
-    </CardScrollList>
+    </CardListContainer>
 );
 
 export const Mixtape = () => (
-    <CardScrollList>
+    <CardListContainer title="나를 위한 믹스테잎">
         <ContentsCardList variant="mixtape" items={Mixtapedata} />
-    </CardScrollList>
+    </CardListContainer>
 );
 
 export const Playlist = () => (
-    <CardScrollList>
+    <CardListContainer title="내 취향 플레이리스트" href="/">
         <ContentsCardList variant="playlist" items={Playlistdata} />
-    </CardScrollList>
+    </CardListContainer>
 );
