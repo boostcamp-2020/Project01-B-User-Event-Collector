@@ -34,17 +34,21 @@ const getImageStyle = (props) => {
         width = '45px';
         height = '45px';
     break;
-    case 'smallArtistImage':  //연관 아티스트 목록 이미지로 사용
+    case 'lyricTrackInfo':  //가사 모달창의 track info
+      width = '80px';
+      height = '80px';
+  break;
+    case 'smallArtist':  //연관 아티스트 목록 이미지로 사용
       width = '162px';
       height = '162px';
       borderRadius = '50%';
     break;
-    case 'regularArtistImage':  //아티스트 상세 페이지 이미지로 사용
+    case 'regularArtist':  //아티스트 상세 페이지 이미지로 사용
       width = '180px';
       height = '180px';
       borderRadius = '50%';
     break;
-    case 'largeArtistImage':  //보관함 아티스트 이미지로 사용
+    case 'largeArtist':  //보관함 아티스트 이미지로 사용
       width = '195px';
       height = '195px';
       borderRadius = '50%';
