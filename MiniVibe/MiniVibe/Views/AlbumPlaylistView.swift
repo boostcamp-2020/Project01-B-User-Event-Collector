@@ -13,6 +13,8 @@ struct AlbumPlaylistView: View {
     
     var body: some View {
         GeometryReader { geometry in
+            let width: CGFloat = geometry.size.width
+            
             ScrollView {
                 PlaylistAlbumInfo(title: title, subtitle: subtitle)
                     .padding(.vertical, 10)
@@ -32,6 +34,20 @@ struct AlbumPlaylistView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(
                     trailing: trailingBarButtons
+                )
+                
+                ThumbnailSection(
+                    width: width,
+                    destination: ThumbnailGrid(title: "아티스트의 다른 앨범"),
+                    title: "아티스트의 다른 앨범"
+                )
+                
+                ArtistSection(sectionTitle: "비슷한 아티스트")
+                
+                ThumbnailSection(
+                    width: width,
+                    destination: ThumbnailList(title: "관련 플레이리스트"),
+                    title: "관련 플레이리스트"
                 )
             }
         }
