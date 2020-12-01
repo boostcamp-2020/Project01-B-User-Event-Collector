@@ -1,26 +1,22 @@
-import React, { useRef } from 'react';
-import MagazineCard from '@components/organisms/Cards/MagazineCard'
-import NewsCard from '@components/organisms/Cards/NewsCard';
+import React, { ReactNode, useRef } from 'react';
 import SlideNextButton from '@components/molecules/SlideNextButton';
 import SlidePrevButton from '@components/molecules/SlidePrevButton';
-import { MagazineCardProps, NewsCardProps } from '@interfaces/props';
-import { List, ListContainer, ItemContainer, PrevButtonContainer, NextButtonContainer } from './CardScrollList.styles';
+import { Container, ListContainer,  PrevButtonContainer, NextButtonContainer } from './CardScrollList.styles';
 
 interface CardScrollListProps {
-    type: 'magazine' | 'news';
-    items: (MagazineCardProps | NewsCardProps)[];
+  children: ReactNode;
 }
 
-const CardScrollList = ({ type, items }: CardScrollListProps) => {
-    const firstItemRef = useRef(null);
-    const lastItemRef = useRef(null);
+const CardScrollList = ({ children }: CardScrollListProps) => {
+    // const firstItemRef = useRef(null);
+    // const lastItemRef = useRef(null);
 
-    const scrollToFirst = () => firstItemRef.current.scrollIntoView(); 
-    const scrollToLast = () => lastItemRef.current.scrollIntoView();
+    // const scrollToFirst = () => firstItemRef.current.scrollIntoView(); 
+    // const scrollToLast = () => lastItemRef.current.scrollIntoView();
 
     return(
-        <ListContainer>
-            <List>
+        <Container>
+            {/* <List>
                 {
                     items.map((item, idx) => 
                         // TODO : key idx가 아닌 data id로 수정
@@ -29,14 +25,17 @@ const CardScrollList = ({ type, items }: CardScrollListProps) => {
                         </ItemContainer> 
                     )
                 }
-            </List>
+            </List> */}
+            <ListContainer>
+                {children}
+            </ListContainer>
             <PrevButtonContainer>
-                <SlidePrevButton onClick={scrollToFirst}/>
+                <SlidePrevButton onClick={()=>console.log('scroll')}/>
             </PrevButtonContainer>
             <NextButtonContainer>
-                <SlideNextButton onClick={scrollToLast}/>
+                <SlideNextButton onClick={()=>console.log('scroll')}/>
             </NextButtonContainer>
-        </ListContainer>
+        </Container>
     )
 }
 

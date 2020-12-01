@@ -1,12 +1,12 @@
 import React from "react";
 import CardScrollList from "./CardScrollList"
 import { MagazineSort } from '@interfaces/props';
+import MagazineCardList from '@components/organisms/CardLists/MagazineList/MagazineList';
 
 export default {
   title: "CardScrollList",
   component: CardScrollList,
 }
-
 
 const Magazinesdata = Array(9).fill({
     src: "https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906",
@@ -23,5 +23,6 @@ const Newsdata = Array(9).fill({
     title: `이영지가 새 앨범을 발표했습니다`,
 });
 
-export const Magazine = () => <CardScrollList type="magazine" items={Magazinesdata}/>
-export const News = () => <CardScrollList type="news" items={Newsdata}/>
+// export const Magazine = () => <CardScrollList type="magazine" items={Magazinesdata}/>
+// export const News = () => <CardScrollList type="news" items={Newsdata}/>
+export const News = () => <CardScrollList><MagazineCardList variant="row" items={Magazinesdata}/></CardScrollList>
