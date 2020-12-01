@@ -12,6 +12,10 @@ struct Item: Hashable {
 }
 
 struct UpNextList: View {
+    init() {
+        UITableView.appearance().showsVerticalScrollIndicator = false
+    }
+    
     @State private var isAutoPlay: Bool = true
     @State private var editMode = EditMode.active
     @State private var tracks: [Item] = (0..<20).map {
@@ -22,7 +26,7 @@ struct UpNextList: View {
     var selectionCount: Int {
         return selectedTracks.count
     }
-     
+    
     var body: some View {
         VStack {
             HStack {
@@ -38,7 +42,7 @@ struct UpNextList: View {
             }
             .padding()
             
-            ZStack(alignment: .bottom) {
+            VStack(spacing: 0) {
                 List(selection: $selectedTracks) {
                     ForEach(tracks, id: \.self) { track in
                         Text(track.title)
@@ -57,10 +61,12 @@ struct UpNextList: View {
                     }
                 }
                 .environment(\.editMode, .constant(EditMode.active))
+                
                 if selectedTracks.count > 0 {
                     MultiselectTabBar(
                         barItems: [AddToPlaylist(), Save(), Delete()]
                     )
+                    .frame(height: 48)
                 }
             }
         }
@@ -103,7 +109,7 @@ struct UpNextList: View {
         } else {
             Button {
                 // TO DO:
-                    // sheet 내리기
+                // sheet 내리기
             } label: { Image(systemName: "chevron.down") }
         }
     }

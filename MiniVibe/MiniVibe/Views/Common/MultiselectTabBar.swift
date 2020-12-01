@@ -36,10 +36,7 @@ struct MultiselectTabBar: View {
                     Spacer()
                 }
             }
-            
         }
-        .ignoresSafeArea(edges: .bottom)
-        .frame(height: 15, alignment: .bottom)
     }
 }
 
