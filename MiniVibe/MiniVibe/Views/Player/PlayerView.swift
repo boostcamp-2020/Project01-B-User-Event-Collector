@@ -9,12 +9,13 @@ import SwiftUI
 
 struct PlayerView: View {
     @State private var isOpenMenu = false
+    @State private var isOpenLyrics = false
     
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
                 VStack {
-                    Player(isOpenMenu: $isOpenMenu)
+                    Player(isOpenMenu: $isOpenMenu, isOpenLyrics: $isOpenLyrics)
                         .frame(height: geometry.size.height)
                     
                     Divider()
@@ -24,6 +25,7 @@ struct PlayerView: View {
                 }
             }
             .fullScreenCover(isPresented: $isOpenMenu, content: PlayerMenu.init)
+            .sheet(isPresented: $isOpenLyrics, content: Lyrics.init)
         }
     }
 }

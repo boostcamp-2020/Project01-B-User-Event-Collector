@@ -9,7 +9,9 @@ import SwiftUI
 
 struct Player: View {
     @State var isPlaying = false
+    
     @Binding var isOpenMenu: Bool
+    @Binding var isOpenLyrics: Bool
     
     var body: some View {
         VStack {
@@ -18,7 +20,7 @@ struct Player: View {
             Spacer()
             
             PlayerThumbnail(image: "playListThumbnail",
-                            lyrics: "가사가사가사가사\n가사가사\n가사\n가사가사가사가사", isPlaying: $isPlaying)
+                            lyrics: "가사가사가사가사\n가사가사\n가사\n가사가사가사가사", isPlaying: $isPlaying, isOpenLyrics: $isOpenLyrics)
             
             Spacer()
             
@@ -68,6 +70,6 @@ struct Player: View {
 
 struct Player_Previews: PreviewProvider {
     static var previews: some View {
-        Player(isOpenMenu: .constant(false))
+        Player(isOpenMenu: .constant(false), isOpenLyrics: .constant(false))
     }
 }

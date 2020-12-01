@@ -13,6 +13,7 @@ struct PlayerSliderView: View {
     let artist: String
     let totalDuration: String = "3:21"
     @State private var playbackTime: String? = "0:00"
+    @Binding var isOpenMenu: Bool
     
     var body: some View {
         GeometryReader { geometry in
@@ -23,6 +24,8 @@ struct PlayerSliderView: View {
                     totalDuration: totalDuration,
                     playbackTime: $playbackTime
                 )
+                .foregroundColor(.secondary)
+                .font(.system(size: 12))
             }
         }
     }
@@ -41,7 +44,7 @@ struct PlayerSliderView: View {
                 Spacer()
                 
                 Button {
-                    
+                    isOpenMenu = true
                 } label: {
                     Image(systemName: "ellipsis")
                         .foregroundColor(.black)
@@ -53,6 +56,6 @@ struct PlayerSliderView: View {
 
 struct PlayerSliderView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerSliderView(title: "포장마차", artist: "황인욱")
+        PlayerSliderView(title: "포장마차", artist: "황인욱", isOpenMenu: .constant(true))
     }
 }

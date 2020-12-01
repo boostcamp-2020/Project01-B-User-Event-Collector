@@ -11,6 +11,7 @@ struct PlayerThumbnail: View {
     let image: String
     let lyrics: String
     @Binding var isPlaying: Bool
+    @Binding var isOpenLyrics: Bool
     
     var body: some View {
         VStack {
@@ -24,6 +25,10 @@ struct PlayerThumbnail: View {
                 .foregroundColor(.secondary)
                 .lineLimit(2)
                 .opacity(isPlaying ? 1 : 0)
+                .onTapGesture {
+                    isOpenLyrics = true
+                }
+            
         }
         .animation(.easeInOut)
     }
@@ -32,6 +37,6 @@ struct PlayerThumbnail: View {
 struct PlayerThumbnail_Previews: PreviewProvider {
     static var previews: some View {
         PlayerThumbnail(image: "playListThumbnail",
-                        lyrics: "가사가사가사가사\n가사가사\n가사\n가사가사가사가사", isPlaying: .constant(false))
+                        lyrics: "가사가사가사가사\n가사가사\n가사\n가사가사가사가사", isPlaying: .constant(false), isOpenLyrics: .constant(true))
     }
 }

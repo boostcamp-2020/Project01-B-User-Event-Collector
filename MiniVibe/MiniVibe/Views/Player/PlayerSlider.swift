@@ -14,7 +14,6 @@ struct PlayerSlider: View {
     @State private var percentage: Float = 30
     @State private var dragAction = false
     @State private var dragLocation: CGFloat = .zero
-    @Binding var isOpenMenu: Bool
     
     var body: some View {
         
@@ -29,7 +28,6 @@ struct PlayerSlider: View {
                 Rectangle()
                     .foregroundColor(.secondary)
                 
-// feat/Lyrics-iOS
                 Rectangle()
                     .foregroundColor(.pink)
                     .frame(width: width * CGFloat(percentage / 100))
@@ -58,18 +56,7 @@ struct PlayerSlider: View {
                     Spacer()
                     
                     Text("\(totalDuration)")
-//=======
-                Spacer()
-                
-                Button {
-                    isOpenMenu = true
-                } label: {
-                    Image(systemName: "ellipsis")
-                        .foregroundColor(.black)
-// dev
                 }
-                .foregroundColor(.secondary)
-                .font(.system(size: 12))
             }
         }
         .offset(y: dragAction ? -40 : 0)
@@ -80,19 +67,12 @@ struct PlayerSlider: View {
 
 struct PlayerSlider_Previews: PreviewProvider {
     static var previews: some View {
-// feat/Lyrics-iOS
         GeometryReader { geometry in
-            //PlayerSlider(width: geometry.size.width)
             PlayerSlider(
                 width: geometry.size.width,
                 totalDuration: "3:21",
                 playbackTime: .constant("0:00")
             )
         }
-//=======
-        PlayerSlider(title: "노래 제목",
-                     artist: "가수 이름",
-                     isOpenMenu: .constant(false))
-// dev
     }
 }
