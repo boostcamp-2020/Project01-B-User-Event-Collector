@@ -66,6 +66,8 @@
 		80EB9FE5256D04A000CD99FD /* MagazineItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EB9FE4256D04A000CD99FD /* MagazineItem.swift */; };
 		80EB9FE8256D0AD700CD99FD /* MagazineSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EB9FE7256D0AD700CD99FD /* MagazineSection.swift */; };
 		80EB9FF5256DE8A300CD99FD /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EB9FF4256DE8A300CD99FD /* Today.swift */; };
+		80FA442F25763DE00092D25D /* AlbumPlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FA442E25763DE00092D25D /* AlbumPlaylistView.swift */; };
+		80FA4433257640330092D25D /* PlaylistAlbumInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FA4432257640330092D25D /* PlaylistAlbumInfo.swift */; };
 		CC104F1456125D58CB9B7320 /* Pods_MiniVibe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF5A04776CA4FAE781C72DD3 /* Pods_MiniVibe.framework */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +146,8 @@
 		80EB9FE4256D04A000CD99FD /* MagazineItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineItem.swift; sourceTree = "<group>"; };
 		80EB9FE7256D0AD700CD99FD /* MagazineSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineSection.swift; sourceTree = "<group>"; };
 		80EB9FF4256DE8A300CD99FD /* Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
+		80FA442E25763DE00092D25D /* AlbumPlaylistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumPlaylistView.swift; sourceTree = "<group>"; };
+		80FA4432257640330092D25D /* PlaylistAlbumInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistAlbumInfo.swift; sourceTree = "<group>"; };
 		909FD052C9CC565608492595 /* Pods-MiniVibe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe.release.xcconfig"; path = "Target Support Files/Pods-MiniVibe/Pods-MiniVibe.release.xcconfig"; sourceTree = "<group>"; };
 		DF5A04776CA4FAE781C72DD3 /* Pods_MiniVibe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniVibe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -312,6 +316,8 @@
 				44139C9C25762D17000CEEA5 /* ArtistSection.swift */,
 				44139CA625763283000CEEA5 /* ArtistThumbnail.swift */,
 				44139CA225762D7A000CEEA5 /* ArtistItem.swift */,
+				80FA442E25763DE00092D25D /* AlbumPlaylistView.swift */,
+				80FA4432257640330092D25D /* PlaylistAlbumInfo.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -514,6 +520,7 @@
 				4474DBFD2574DF78006FC827 /* Player.swift in Sources */,
 				805E28D3256BDC4A007AF5F1 /* TrackRow.swift in Sources */,
 				80C6207A256CF21600B5C375 /* StationItem.swift in Sources */,
+				80FA4433257640330092D25D /* PlaylistAlbumInfo.swift in Sources */,
 				8084AB6D256E403900F2AAC2 /* ThumbnailRow.swift in Sources */,
 				44139C81257607D3000CEEA5 /* MenuButton.swift in Sources */,
 				80C6207D256CFBA100B5C375 /* StationSection.swift in Sources */,
@@ -526,6 +533,7 @@
 				44F9797F256D069600C9C224 /* RecommandedPlayListSection.swift in Sources */,
 				4478F723256E8B2B00755656 /* PlayAndShuffle.swift in Sources */,
 				44F97976256CFBA900C9C224 /* ThumbnailSection.swift in Sources */,
+				80FA442F25763DE00092D25D /* AlbumPlaylistView.swift in Sources */,
 				80ABC18D2574DFDE003D4666 /* UpNextList.swift in Sources */,
 				8084AB70256E409B00F2AAC2 /* ThumbnailList.swift in Sources */,
 				8087AC7B256F3E4D001F6369 /* PlayerPreview.swift in Sources */,
