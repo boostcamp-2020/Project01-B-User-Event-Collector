@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Image from '../../../atoms/Image/Image';
 import ArtistLikeButton from '../../ArtistLikeButton/ArtistLikeButton';
 
+import { LibraryArtistThumbnailProps } from '../../../../interfaces/props';
+
 const Card = styled.div`
     width: 180px;
     height: 225px;
@@ -25,12 +27,7 @@ const ArtistLikeButtonContainer = styled.div`
     z-index:10;
 `;
 
-interface LibraryArtistThumbnailProps {
-    name: string;
-    src: string;
-}
-
-const LibraryArtistThumbnail = ({ name, src }: LibraryArtistThumbnailProps) => (
+const LibraryArtistThumbnail = ({ name, src, href }: LibraryArtistThumbnailProps) => (
     <Card>
         <Image variant = "regularArtist" src = {src}/>
         <ArtistLikeButtonContainer>
