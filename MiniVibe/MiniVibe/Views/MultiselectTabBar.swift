@@ -8,13 +8,43 @@
 import SwiftUI
 
 struct MultiselectTabBar: View {
+    var barItems: [CustomTabbarItem]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Rectangle()
+                .foregroundColor(Color.pink)
+            
+            HStack {
+                ForEach(barItems, id: \.caption) { item in
+                    Spacer()
+                    
+                    Button {
+                        // action
+                        item.itemFunction()
+                    } label: {
+                        VStack(spacing: 5) {
+                            item.icon
+                                .font(.system(size: 20))
+                            
+                            Text(item.caption)
+                                .font(.caption)
+                        }
+                    }
+                    .foregroundColor(.white)
+                    
+                    Spacer()
+                }
+            }
+            
+        }
+        .edgesIgnoringSafeArea(.bottom)
+        .frame(height: 15, alignment: .bottom)
     }
 }
 
 struct MultiselectTabBar_Previews: PreviewProvider {
     static var previews: some View {
-        MultiselectTabBar()
+        MultiselectTabBar(barItems: [AddToPlaylist(), Delete()])
     }
 }
