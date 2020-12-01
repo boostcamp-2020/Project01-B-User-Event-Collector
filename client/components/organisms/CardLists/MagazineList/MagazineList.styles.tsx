@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface StyleProps {
-  variant?: string;
+    variant?: string;
 }
 
 const getListStyle = (props) => {
@@ -10,11 +10,11 @@ const getListStyle = (props) => {
             return `
                     display: flex;
                     margin: 0;
-                `
+                `;
         default:
-            return ""
-      }
-}
+            return '';
+    }
+};
 
 const getItemStyle = (props) => {
     switch (props.variant) {
@@ -25,28 +25,25 @@ const getItemStyle = (props) => {
                     &:first-child {
                         margin-left: 0;
                     }
-                `
+                `;
         default:
             return `
                     float: left;
                     width: 33.333333%;
                     margin: 0;
                     padding: 0 17px 39px 0;
-                `
-        
-      }
-}
+                `;
+    }
+};
 
 export const List = styled.ul<StyleProps>`
     padding: 0;
-    list-style: none; 
+    list-style: none;
 
     ${(props) => getListStyle(props)};
 `;
 
-export const Item = styled.ul<StyleProps>`
+export const Item = styled.li<StyleProps>`
     box-sizing: border-box;
     ${(props) => getItemStyle(props)};
 `;
-
-

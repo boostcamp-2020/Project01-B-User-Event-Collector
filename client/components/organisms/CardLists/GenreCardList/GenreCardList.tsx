@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import GenreCard from '@components/molecules/GenreCard/GenreCard';
+import CardScrollList from '@components/organisms/CardScrollList/CardScrollList';
 
 // TODO : DB 에서 장르 내용 받아오기
 const cards = [];
@@ -39,8 +40,6 @@ const getCardBundle = (cards) => {
 const StyledListContainer = styled.div`
     box-sizing: border-box;
     padding: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
     white-space: nowrap;
 `;
 const CardBundle = styled.div`
@@ -51,6 +50,10 @@ const CardBundle = styled.div`
     vertical-align: top;
 `;
 
-const GenreCardList = () => <StyledListContainer>{getCardBundle(cards)}</StyledListContainer>;
+const GenreCardList = () => (
+    <CardScrollList>
+        <StyledListContainer>{getCardBundle(cards)}</StyledListContainer>
+    </CardScrollList>
+);
 
 export default GenreCardList;
