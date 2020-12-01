@@ -15,8 +15,9 @@ export const Play = styled.div`
     left: 0;
     width: 40px;
     height: 40px;
-    padding-top: 6px;
+    padding-top: 8px;
     visibility: hidden;
     opacity: 0%;
     background-color: black;
+    box-sizing: border-box;
 `;

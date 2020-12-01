@@ -1,33 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-
-export const PlayButton = styled.button`
-    outline: 0;
-    border: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 40px;
-    height: 40px;
-    padding-top: 6px;
-    visibility: hidden;
-    opacity: 0%;
-    background-color: black;
-`;
+import { Play } from '@components/molecules/TrackPlayButton/TrackPlayButton.styles';
 
 export const Card = styled.li`
     list-style: none;
     display: flex;
     padding: 8px 0;
     margin: 0;
-    &:hover ${PlayButton} {
+    &:hover ${Play} {
         visibility: visible;
         opacity: 60%;
     }
-`;
-
-export const AlbumImg = styled.div`
-    position: relative;
 `;
 
 export const Rank = styled.div`
