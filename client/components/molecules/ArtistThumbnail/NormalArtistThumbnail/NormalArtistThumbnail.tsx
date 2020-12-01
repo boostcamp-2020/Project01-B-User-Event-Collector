@@ -24,7 +24,7 @@ interface NormalArtistThumbnailProps {
 
 const NormalArtistThumbnail = ({ name, src }: NormalArtistThumbnailProps) => (
     <Card>
-        <Image variant = "regularArtistImage" src = {src}/>
+        <Image variant = "regularArtist" src = {src}/>
         <ArtistName>{name}</ArtistName>
     </Card>
   );

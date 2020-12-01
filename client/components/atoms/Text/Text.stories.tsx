@@ -12,4 +12,6 @@ export const Default = () => <Text>{STORY_TEXT}</Text>
 
 export const Primary = () => <Text variant = "primary">{STORY_TEXT}</Text>
 
+export const Tertiary = () => <Text variant = "tertiary">{STORY_TEXT}</Text>
+
 export const Secondary = () => <Text variant = "secondary">{STORY_TEXT}</Text>

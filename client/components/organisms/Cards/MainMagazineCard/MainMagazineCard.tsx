@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import Image from '../../../atoms/Image/Image';
-import A from '../../../atoms/A/A';
-import Text from '../../../atoms/Text/Text';
-import Label from '../../../atoms/Label';
+import Image from '@components/atoms/Image/Image';
+import A from '@components/atoms/A/A';
+import Text from '@components/atoms/Text/Text';
+import Label from '@components/atoms/Label';
 
 const CardContainer = styled.div`
     display: flex;
@@ -14,7 +14,6 @@ const CardContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-
 `;
 
 const ContentsContainer = styled.div`

@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 interface StyledTextProps {
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'tertiary';
 }
 
 const getTextStyle = (props: StyledTextProps) => {
-  let color; let fontSize = '15px';
+  let color; let fontSize = '15px'; let fontWeight = '400';
 
   switch (props.variant) {
     case 'primary':
@@ -15,6 +15,11 @@ const getTextStyle = (props: StyledTextProps) => {
     case 'secondary':
       color = 'white';
       break;
+    case 'tertiary':
+      color = 'black';
+      fontWeight = '800';
+      fontSize = '26px';
+      break;
     default:
       color = 'black';
       break;
@@ -23,6 +28,7 @@ const getTextStyle = (props: StyledTextProps) => {
   return `
     color: ${color};
     font-size: ${fontSize};
+    font-weight: ${fontWeight}
   `;
 };
 

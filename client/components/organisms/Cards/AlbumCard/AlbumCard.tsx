@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import ContentsThumbnail from '../../../molecules/ContentsThumbnail/ContentsThumbnail';
-import A from '../../../atoms/A/A';
-import Text from '../../../atoms/Text/Text';
+import ContentsThumbnail from '@components/molecules/ContentsThumbnail/ContentsThumbnail';
+import A from '@components/atoms/A/A';
+import Text from '@components/atoms/Text/Text';
 
 const CardContainer = styled.div`
     display: flex;
@@ -12,7 +12,6 @@ const CardContainer = styled.div`
 `;
 
 const ThumbnailContainer = styled.div`
-
 `;
 
 const TextContainer = styled.div`
@@ -35,9 +34,6 @@ const StyledA = styled(A)`
     font-size: 16px;
 `;
 
-const StyledText = styled(Text)`
-`;
-
 interface AlbumCardProps {
     src: string,
     href: string,
@@ -55,7 +51,7 @@ const AlbumCard = ( { title, artist, src, href }: AlbumCardProps ) => (
                 <StyledA href={href}>{title}</StyledA>
             </TitelContainer>
             <DescriptionContainer>
-                <StyledText variant = "primary">{artist}</StyledText>
+                <Text variant = "primary">{artist}</Text>
             </DescriptionContainer>
         </TextContainer>
     </CardContainer>

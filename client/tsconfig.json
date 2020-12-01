@@ -22,9 +22,10 @@
       "@components/*": [
           "components/*"
       ],
-      "@utils/*":["@utils/*"],
-      "@hooks/*":["@hooks/*"],
-      "@stores/*":["@stores/*"]
+      "@utils/*":["utils/*"],
+      "@hooks/*":["hooks/*"],
+      "@stores/*":["stores/*"],
+      "@interfaces/*":["interfaces/*"]
     }
   },
   "include": [
