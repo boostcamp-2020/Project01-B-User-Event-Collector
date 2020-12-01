@@ -23,12 +23,12 @@ const TextContainer = styled.div`
 `;
 
 const TitelContainer = styled.div`
-    height: 75%;
+    height: 50%;
     padding: 10px 0px 0px 0px;
 `;
 
 const DescriptionContainer = styled.div`
-    height: 25%;
+    height: 50%;
     padding: 0px 0px 30px 0px;
 `;
 
