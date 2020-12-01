@@ -46,6 +46,7 @@
 		80045DE225758D1600F32E6C /* MultiselectTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80045DE125758D1600F32E6C /* MultiselectTabBar.swift */; };
 		80045DFA257602A900F32E6C /* Lyrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80045DF9257602A900F32E6C /* Lyrics.swift */; };
 		80045DFE257608B000F32E6C /* PlayerSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80045DFD257608B000F32E6C /* PlayerSliderView.swift */; };
+		80045E0E25762C1100F32E6C /* ArtistMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80045E0D25762C1100F32E6C /* ArtistMenu.swift */; };
 		805E28AE256BBD52007AF5F1 /* MiniVibeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805E28AD256BBD52007AF5F1 /* MiniVibeApp.swift */; };
 		805E28B2256BBD53007AF5F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805E28B1256BBD53007AF5F1 /* Assets.xcassets */; };
 		805E28B5256BBD53007AF5F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805E28B4256BBD53007AF5F1 /* Preview Assets.xcassets */; };
@@ -119,6 +120,7 @@
 		80045DE125758D1600F32E6C /* MultiselectTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiselectTabBar.swift; sourceTree = "<group>"; };
 		80045DF9257602A900F32E6C /* Lyrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lyrics.swift; sourceTree = "<group>"; };
 		80045DFD257608B000F32E6C /* PlayerSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSliderView.swift; sourceTree = "<group>"; };
+		80045E0D25762C1100F32E6C /* ArtistMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistMenu.swift; sourceTree = "<group>"; };
 		805E28AA256BBD52007AF5F1 /* MiniVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805E28AD256BBD52007AF5F1 /* MiniVibeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeApp.swift; sourceTree = "<group>"; };
 		805E28B1256BBD53007AF5F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				445E69232575E7B200C7BF21 /* Player */,
 				441EC83F2576031F0069146E /* PlayerMenu.swift */,
 				44139C80257607D3000CEEA5 /* MenuButton.swift */,
+				80045E0D25762C1100F32E6C /* ArtistMenu.swift */,
 				44139C9C25762D17000CEEA5 /* ArtistSection.swift */,
 				44139CA625763283000CEEA5 /* ArtistThumbnail.swift */,
 				44139CA225762D7A000CEEA5 /* ArtistItem.swift */,
@@ -515,6 +518,7 @@
 				44139C81257607D3000CEEA5 /* MenuButton.swift in Sources */,
 				80C6207D256CFBA100B5C375 /* StationSection.swift in Sources */,
 				80045DFA257602A900F32E6C /* Lyrics.swift in Sources */,
+				80045E0E25762C1100F32E6C /* ArtistMenu.swift in Sources */,
 				441EC8402576031F0069146E /* PlayerMenu.swift in Sources */,
 				80EB9FF5256DE8A300CD99FD /* Today.swift in Sources */,
 				445919B1256E5CEA0069DAB2 /* StationStack.swift in Sources */,
