@@ -6,14 +6,20 @@ import { ChartCardProps } from '@interfaces/props';
 interface ChartCardListProps {
     items: ChartCardProps[];
 }
+
+const ListContainer = styled.ul`
+    list-style: none;
+    padding: 0;
+    border: 1px solid black;
+    box-sizing: border-box;
+`;
+
 const ChartCardList = ({ items }: ChartCardListProps) => (
-    <ul>
+    <ListContainer>
         {items.map((item) => (
-            <li>
-                <ChartCard {...(item as ChartCardProps)} />
-            </li>
+            <ChartCard {...(item as ChartCardProps)} />
         ))}
-    </ul>
+    </ListContainer>
 );
 
 export default ChartCardList;
