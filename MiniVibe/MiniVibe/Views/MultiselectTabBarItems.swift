@@ -7,14 +7,32 @@
 
 import SwiftUI
 
-struct MultiselectTabBarItems: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+protocol CustomTabbarItem {
+    var caption: String { get }
+    var icon: Image { get }
+    func itemFunction()
+}
+
+struct AddToPlaylist: CustomTabbarItem {
+    let caption = "Add"
+    let icon = Image(systemName: "text.badge.plus")
+    func itemFunction() {
+        print("Add to playlist pressed")
     }
 }
 
-struct MultiselectTabBarItems_Previews: PreviewProvider {
-    static var previews: some View {
-        MultiselectTabBarItems()
+struct Save: CustomTabbarItem {
+    let caption = "Save"
+    let icon = Image(systemName: "square.and.arrow.down")
+    func itemFunction() {
+        print("Save pressed")
+    }
+}
+
+struct Delete: CustomTabbarItem {
+    let caption = "Delete"
+    let icon = Image(systemName: "trash")
+    func itemFunction() {
+        print("Delete pressed")
     }
 }
