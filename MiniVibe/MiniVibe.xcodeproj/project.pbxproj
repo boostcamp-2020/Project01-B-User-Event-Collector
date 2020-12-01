@@ -177,7 +177,7 @@
 			path = Today;
 			sourceTree = "<group>";
 		};
-		445E69232575E7B200C7BF21 /* New Group */ = {
+		445E69232575E7B200C7BF21 /* Player */ = {
 			isa = PBXGroup;
 			children = (
 				4474DBFC2574DF78006FC827 /* Player.swift */,
@@ -190,7 +190,7 @@
 				80ABC1892574DF7C003D4666 /* MultiselectTrackRow.swift */,
 				80ABC18C2574DFDE003D4666 /* UpNextList.swift */,
 			);
-			path = "New Group";
+			path = Player;
 			sourceTree = "<group>";
 		};
 		4478F715256E816B00755656 /* Extension */ = {
@@ -262,7 +262,7 @@
 			children = (
 				4421992D256E7AA800ECF4A0 /* Common */,
 				44219931256E7B2300ECF4A0 /* Today */,
-				445E69232575E7B200C7BF21 /* New Group */,
+				445E69232575E7B200C7BF21 /* Player */,
 			);
 			path = Views;
 			sourceTree = "<group>";
