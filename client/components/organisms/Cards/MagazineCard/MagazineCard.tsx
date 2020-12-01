@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ContentsThumbnail from '@components/molecules/ContentsThumbnail/ContentsThumbnail';
 import A from '@components/atoms/A/A';
 import Text from '@components/atoms/Text/Text';
-
+import { MagazineCardProps } from '@interfaces/props';
 const CardContainer = styled.div`
     display: flex;
     flex-flow: column;
@@ -11,8 +11,7 @@ const CardContainer = styled.div`
     height: 382px;
 `;
 
-const ThumbnailContainer = styled.div`
-`;
+const ThumbnailContainer = styled.div``;
 
 const TextContainer = styled.div`
     display: flex;
@@ -34,28 +33,20 @@ const StyledA = styled(A)`
     font-size: 16px;
 `;
 
-interface MagazineCardProps {
-    src: string,
-    href: string,
-    title: string,
-    date: string,
-    sort: 'todayMagazine' | 'normalMagazine'
-};
-
-const MagazineCard = ( { title, date, src, href, sort }: MagazineCardProps ) => (
-    <CardContainer sort = {sort}>
+const MagazineCard = ({ title, date, src, href, sort }: MagazineCardProps) => (
+    <CardContainer sort={sort}>
         <ThumbnailContainer>
-            <ContentsThumbnail src = {src} href = {href} sort = {sort} />
+            <ContentsThumbnail src={src} href={href} sort={sort} />
         </ThumbnailContainer>
         <TextContainer>
             <TitelContainer>
                 <StyledA href={href}>{title}</StyledA>
             </TitelContainer>
             <DescriptionContainer>
-                <Text variant = "primary">{date}</Text>
+                <Text variant="primary">{date}</Text>
             </DescriptionContainer>
         </TextContainer>
     </CardContainer>
-)
+);
 
 export default MagazineCard;

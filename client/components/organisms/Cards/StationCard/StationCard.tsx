@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import ContentsThumbnail from '@components/molecules/ContentsThumbnail/ContentsThumbnail';
+import { StationCardProps } from '@interfaces/props';
 import A from '@components/atoms/A/A';
 import Text from '@components/atoms/Text/Text';
 
@@ -11,20 +12,14 @@ const CardContainer = styled.div`
     height: 180px;
 `;
 
-const ThumbnailContainer = styled.div`
-`;
+const ThumbnailContainer = styled.div``;
 
-interface StationCardProps {
-    src: string,
-    href: string,
-};
-
-const StationCard = ( { src }: StationCardProps ) => (
-    <CardContainer >
+const StationCard = ({ src }: StationCardProps) => (
+    <CardContainer>
         <ThumbnailContainer>
-            <ContentsThumbnail src = {src} href = "" sort = "" />
+            <ContentsThumbnail src={src} href="" sort="" />
         </ThumbnailContainer>
     </CardContainer>
-)
+);
 
 export default StationCard;
