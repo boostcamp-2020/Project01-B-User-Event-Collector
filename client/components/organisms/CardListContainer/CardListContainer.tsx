@@ -7,7 +7,7 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 interface CardListContainerProps {
     title: string;
-    href: string;
+    href?: string;
     children: ReactNode;
 }
 
@@ -16,18 +16,27 @@ const Container = styled.div`
     padding: 36px 0 45px;
 `;
 
-const Title = styled.div`
+const TitleContainer = styled.div`
     margin: 10px 0;
+`;
+
+const Title = styled.div`
+    font-weight: 700;
+    font-size: 17px;
 `;
 
 const CardListContainer = ({ title, href, children }: CardListContainerProps) => (
     <Container>
-        <Title>
-            <A href={href} variant="secondary">
-                {title}
-                <IconButton variant="plainBlackRegular" icon={ArrowForwardIosIcon} />
-            </A>
-        </Title>
+        <TitleContainer>
+            {href ? (
+                <A href={href} variant="secondary">
+                    {title}
+                    <IconButton variant="plainBlackRegular" icon={ArrowForwardIosIcon} />
+                </A>
+            ) : (
+                <Title>{title}</Title>
+            )}
+        </TitleContainer>
         <CardScrollList> {children} </CardScrollList>
     </Container>
 );
