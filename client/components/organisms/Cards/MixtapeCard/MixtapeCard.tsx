@@ -4,6 +4,8 @@ import ContentsThumbnail from '@components/molecules/ContentsThumbnail/ContentsT
 import A from '@components/atoms/A/A';
 import Text from '@components/atoms/Text/Text';
 
+import { MixtapeCardProps } from '@interfaces/props';
+
 const CardContainer = styled.div`
     display: flex;
     flex-flow: column;
@@ -37,13 +39,6 @@ const StyledA = styled(A)`
 const StyledText = styled(Text)`
     font-size: 13px;
 `;
-
-interface MixtapeCardProps {
-    src: string,
-    href: string,
-    title: string,
-    artist: string
-};
 
 const MixtapeCard = ( { title, artist, src, href }: MixtapeCardProps ) => (
     <CardContainer >

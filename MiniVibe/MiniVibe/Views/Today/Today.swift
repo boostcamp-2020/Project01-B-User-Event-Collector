@@ -47,7 +47,7 @@ struct Today: View {
                         RecommandedPlayListSection(width: width, title: "VIBE 추천 플레이리스트")
                         
                         ThumbnailSection(width: width,
-                                         destination: ThumbnailGrid(title: "좋아할 최신 앨범"),
+                                         destination: ThumbnailGridView(title: "좋아할 최신 앨범"),
                                          title: "좋아할 최신 앨범")
                         
                         MagazineSection(width: width, title: "매거진")
