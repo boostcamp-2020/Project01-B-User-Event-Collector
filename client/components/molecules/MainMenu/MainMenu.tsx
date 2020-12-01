@@ -15,7 +15,7 @@ const MenuWrapper = styled.div`
 
 const MainMenu = () => (
   <MenuWrapper>
-    <MenuLink href="/today" icon={HomeIcon}> 투데이 </MenuLink>
+    <MenuLink href="/" icon={HomeIcon}> 투데이 </MenuLink>
     <MenuLink href="/chart" icon={InsertChartIcon}> 차트 </MenuLink>
     <MenuLink href="/dj-station" icon={AlbumIcon}> DJ 스테이션 </MenuLink>
     <MenuLink href="/magazines" icon={MenuBookIcon}> ViBE MAG </MenuLink>
