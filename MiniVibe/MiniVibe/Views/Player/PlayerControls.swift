@@ -15,7 +15,7 @@ struct PlayerControls: View {
     
     var body: some View {
         VStack {
-            PlayerSlider(title: "노래 제목", artist: "가수 이름", isOpenMenu: $isOpenMenu)
+            PlayerSliderView(title: "노래 제목", artist: "가수 이름", isOpenMenu: $isOpenMenu)
                 .frame(height: 100)
             
             HStack {
