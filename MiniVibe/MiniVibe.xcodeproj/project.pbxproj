@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		44056D152575DD5100BF8337 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44056D142575DD5100BF8337 /* PlayerView.swift */; };
 		44139C81257607D3000CEEA5 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44139C80257607D3000CEEA5 /* MenuButton.swift */; };
+		44139CA325762D7A000CEEA5 /* ArtistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44139CA225762D7A000CEEA5 /* ArtistItem.swift */; };
 		441DA8A4256F83BB00F64AB0 /* FavoritePlayList.json in Resources */ = {isa = PBXBuildFile; fileRef = 441DA8A3256F83BB00F64AB0 /* FavoritePlayList.json */; };
 		441DA8A7256F840F00F64AB0 /* MyTastePlayList.json in Resources */ = {isa = PBXBuildFile; fileRef = 441DA8A6256F840F00F64AB0 /* MyTastePlayList.json */; };
 		441DA8AA256F843800F64AB0 /* RecommandedPlayList.json in Resources */ = {isa = PBXBuildFile; fileRef = 441DA8A9256F843800F64AB0 /* RecommandedPlayList.json */; };
@@ -78,6 +79,7 @@
 /* Begin PBXFileReference section */
 		44056D142575DD5100BF8337 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		44139C80257607D3000CEEA5 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		44139CA225762D7A000CEEA5 /* ArtistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistItem.swift; sourceTree = "<group>"; };
 		441DA8A3256F83BB00F64AB0 /* FavoritePlayList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FavoritePlayList.json; sourceTree = "<group>"; };
 		441DA8A6256F840F00F64AB0 /* MyTastePlayList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MyTastePlayList.json; sourceTree = "<group>"; };
 		441DA8A9256F843800F64AB0 /* RecommandedPlayList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecommandedPlayList.json; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				445E69232575E7B200C7BF21 /* Player */,
 				441EC83F2576031F0069146E /* PlayerMenu.swift */,
 				44139C80257607D3000CEEA5 /* MenuButton.swift */,
+				44139CA225762D7A000CEEA5 /* ArtistItem.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44D7B7EA25754BF10049CDBB /* PlayerControls.swift in Sources */,
+				44139CA325762D7A000CEEA5 /* ArtistItem.swift in Sources */,
 				805E28DA256BDFE6007AF5F1 /* ChartSection.swift in Sources */,
 				44F97972256CF2AE00C9C224 /* ThumbnailItem.swift in Sources */,
 				4474DC032574E6BC006FC827 /* PlayerThumbnail.swift in Sources */,
