@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainTab: View {
     @State private var contentFrame = CGRect.zero
+    @State private var isPlayerPresented = false
     
     init() {
         UITabBar.appearance().barTintColor = .systemBackground
@@ -43,6 +44,12 @@ struct MainTab: View {
         })
         .overlay(
             PlayerPreview(coordinate: contentFrame)
+                .onTapGesture {
+                    isPlayerPresented.toggle()
+                }
+                .sheet(isPresented: $isPlayerPresented) {
+                    PlayerView()
+                }
         )
     }
 }
