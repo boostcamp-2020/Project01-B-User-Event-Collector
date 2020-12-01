@@ -14,12 +14,19 @@ const ListContainer = styled.ul`
     box-sizing: border-box;
 `;
 
-const ChartCardList = ({ items }: ChartCardListProps) => (
-    <ListContainer>
-        {items.map((item) => (
-            <ChartCard {...(item as ChartCardProps)} />
-        ))}
-    </ListContainer>
-);
+const getCardBundle = (items) => {
+    const bundle = [];
+    for (let i = 0; i < items.length; i += 5) {
+        bundle.push(
+            <ListContainer>
+                {items.slice(i, i + 5).map((item) => (
+                    <ChartCard {...(item as ChartCardProps)} />
+                ))}
+            </ListContainer>,
+        );
+    }
+    return bundle;
+};
+const ChartCardList = ({ items }: ChartCardListProps) => <>{getCardBundle(items).map((item) => item)}</>;
 
 export default ChartCardList;
