@@ -1,20 +1,20 @@
 import React, { ReactNode, useRef } from 'react';
 import SlideNextButton from '@components/molecules/SlideNextButton';
 import SlidePrevButton from '@components/molecules/SlidePrevButton';
-import { Container, ListContainer,  PrevButtonContainer, NextButtonContainer } from './CardScrollList.styles';
+import { Container, ListContainer, PrevButtonContainer, NextButtonContainer } from './CardScrollList.styles';
 
 interface CardScrollListProps {
-  children: ReactNode;
+    children: ReactNode;
 }
 
 const CardScrollList = ({ children }: CardScrollListProps) => {
     // const firstItemRef = useRef(null);
     // const lastItemRef = useRef(null);
 
-    // const scrollToFirst = () => firstItemRef.current.scrollIntoView(); 
+    // const scrollToFirst = () => firstItemRef.current.scrollIntoView();
     // const scrollToLast = () => lastItemRef.current.scrollIntoView();
 
-    return(
+    return (
         <Container>
             {/* <List>
                 {
@@ -26,17 +26,15 @@ const CardScrollList = ({ children }: CardScrollListProps) => {
                     )
                 }
             </List> */}
-            <ListContainer>
-                {children}
-            </ListContainer>
+            <ListContainer>{children}</ListContainer>
             <PrevButtonContainer>
-                <SlidePrevButton onClick={()=>console.log('scroll')}/>
+                <SlidePrevButton onClick={() => console.log('scroll')} />
             </PrevButtonContainer>
             <NextButtonContainer>
-                <SlideNextButton onClick={()=>console.log('scroll')}/>
+                <SlideNextButton onClick={() => console.log('scroll')} />
             </NextButtonContainer>
         </Container>
-    )
-}
+    );
+};
 
 export default CardScrollList;
