@@ -7,7 +7,8 @@ li {
 }
 
 body {
-    background-color: #fbfbfb;
+    /* background-color: #fbfbfb; */
+    background-color: black;
 }
 
 * {
@@ -20,4 +21,9 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+button {
+    border: none;
+    background-color: inherit;
 }
