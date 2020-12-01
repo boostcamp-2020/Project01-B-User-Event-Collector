@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 import MainMagazineCard from "@components/organisms/Cards/MainMagazineCard/MainMagazineCard";
-import CardScrollList from "@components/organisms/CardScrollList";
+import CardListContainer from "@components/organisms/CardListContainer";
 import { MagazineSort } from '@interfaces/props';
 import MagazineCardList from '@components/organisms/CardLists/MagazineList/MagazineList';
+import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 
 
 const mainMagazineData = 
@@ -16,12 +17,45 @@ const mainMagazineData =
 }
 
 const Magazinesdata = Array(9).fill({
-    src: "https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906",
-    href: "localhost:3000",
+    src: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906',
+    href: 'localhost:3000',
     title: `이 주의 디깅 #77 
     이영지 새 앨범 발표`,
-    date: "2020.11.25",
+    date: '2020.11.25',
     sort: MagazineSort.main,
+});
+
+const Newsdata = Array(9).fill({
+    src: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906',
+    href: 'localhost:3000',
+    title: `이영지가 새 앨범을 발표했습니다`,
+});
+
+const Albumdata = Array(9).fill({
+    src: "https://musicmeta-phinf.pstatic.net/album/005/102/5102890.jpg?type=r360Fll&v=20201123123608",
+    href: 'localhost:3000',
+    title: "Blue Skies",
+    artist: "Birdy"
+});
+
+const Artistdata = Array(9).fill({
+    name: '이영지',
+    src: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906',
+    href: 'localhost:3000',
+});
+
+const Mixtapedata = Array(9).fill({
+    src: "https://vibeapp.music.naver.com/vibe/v1/cover/mix/3171155,2487724,3553414,635724/favorite/favorite/",
+    href: 'localhost:3000',
+    title: "나를 위한 믹스테잎",
+    artist: "Lana Del Rey, Dua Lipa, 이영지"
+});
+
+const Playlistdata = Array(9).fill({
+    src: "https://music-phinf.pstatic.net/20200504_183/1588567824216rHHs6_PNG/VIBE_%B0%F8%C5%EB_VibeAndChill.png",
+    href: 'localhost:3000',
+    title: "VIBE AND CHILL",
+    description: "VIBE"
 });
 
 const TodayContainer = styled.div`
@@ -31,12 +65,14 @@ const TodayContainer = styled.div`
     flex-flow: column;
     align-items: center;
     background-color: #f2f2f2;
+    padding: 0 0 300px 0;
 `;
 
 const MainMagazineContainer = styled.div`
     display: flex;
     flex-flow: column;
     align-items: center;
+    margin: 40px 0;
 `;
 
 const PublicContentsContainer = styled.div`
@@ -51,17 +87,50 @@ const UserContentsContainer = styled.div`
     align-items: center;
 `;
 
+const ContentsContainer = styled.div`
+    border-bottom: 1px solid #dddddd;
+`;
+
 const Home = () => {
+    //TODO: isLogined state 이용하여 <UserContentsContainer> 부분은 로그인 했을 때만 보이도록 수정
     return (
         <TodayContainer>
             <MainMagazineContainer>
                 <MainMagazineCard {...mainMagazineData} />
             </MainMagazineContainer>
             <PublicContentsContainer>
-                <CardScrollList><MagazineCardList variant="row" items={Magazinesdata}/></CardScrollList>
+                <ContentsContainer>
+                    <CardListContainer title="매거진" href="/">
+                        <MagazineCardList variant="row" items={Magazinesdata} />
+                    </CardListContainer>
+                </ContentsContainer>
+                <ContentsContainer>
+                    <CardListContainer title="NEWS">
+                        <ContentsCardList variant="news" items={Newsdata} />
+                    </CardListContainer>
+                </ContentsContainer>
+                <ContentsContainer>
+                    <CardListContainer title="VIBE 추천 플레이리스트" href="/">
+                        <ContentsCardList variant="playlist" items={Playlistdata} />
+                    </CardListContainer>
+                </ContentsContainer>
             </PublicContentsContainer>
             <UserContentsContainer>
-                
+                <ContentsContainer>
+                    <CardListContainer title="내 취향 플레이리스트" href="/">
+                        <ContentsCardList variant="playlist" items={Playlistdata} />
+                    </CardListContainer>
+                </ContentsContainer>
+                <ContentsContainer>
+                    <CardListContainer title="나를 위한 믹스테잎">
+                        <ContentsCardList variant="mixtape" items={Mixtapedata} />
+                    </CardListContainer>
+                </ContentsContainer>
+                <ContentsContainer>
+                    <CardListContainer title="좋아할 최신 앨범" href="/">
+                        <ContentsCardList variant="album" items={Albumdata} />
+                    </CardListContainer>
+                </ContentsContainer>
             </UserContentsContainer>
         </TodayContainer>
     )
