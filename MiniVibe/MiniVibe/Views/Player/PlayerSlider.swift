@@ -16,6 +16,7 @@ struct PlayerSlider: View {
     @State private var percentage: Float = 30
     @State private var dragAction = false
     @State private var dragLocation: CGFloat = .zero
+    @Binding var isOpenMenu: Bool
     
     var body: some View {
         GeometryReader { geometry in
@@ -83,7 +84,7 @@ struct PlayerSlider: View {
                 Spacer()
                 
                 Button {
-                    
+                    isOpenMenu = true
                 } label: {
                     Image(systemName: "ellipsis")
                         .foregroundColor(.black)
@@ -95,6 +96,8 @@ struct PlayerSlider: View {
 
 struct PlayerSlider_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerSlider(title: "노래 제목", artist: "가수 이름")
+        PlayerSlider(title: "노래 제목",
+                     artist: "가수 이름",
+                     isOpenMenu: .constant(false))
     }
 }

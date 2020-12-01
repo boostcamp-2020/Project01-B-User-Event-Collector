@@ -52,10 +52,12 @@ struct MenuButton: View {
         Button {
             
         } label: {
-            HStack {
+            HStack(spacing: 0) {
                 Image(systemName: type.imageName)
                     .foregroundColor(type == .like(true) ? .pink : .black)
+                    .font(.system(size: 24))
                     .frame(width: 24, height: 24)
+                    .padding(.horizontal)
                 
                 Text(type.title)
                     .foregroundColor(.black)
@@ -64,7 +66,6 @@ struct MenuButton: View {
             
             Spacer()
         }
-        .padding(.horizontal)
     }
 }
 
