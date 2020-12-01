@@ -17,3 +17,36 @@ export interface NewsCardProps {
     newsHref: string,
     title: string,
 };
+
+export interface MixtapeCardProps {
+    src: string,
+    href: string,
+    title: string,
+    artist: string
+};
+
+export interface AlbumCardProps {
+    src: string,
+    href: string,
+    title: string,
+    artist: string
+};
+
+export interface PlaylistCardProps {
+    src: string,
+    href: string,
+    title: string,
+    description: string
+};
+
+ export interface LibraryArtistThumbnailProps {
+    name: string;
+    src: string;
+    href: string;
+}
+
+export interface NormalArtistThumbnailProps {
+    name: string;
+    src: string;
+    href: string;
+}

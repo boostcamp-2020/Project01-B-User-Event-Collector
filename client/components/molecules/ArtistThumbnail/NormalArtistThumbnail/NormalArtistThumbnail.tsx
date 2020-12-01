@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Image from '../../../atoms/Image/Image';
 
+import { NormalArtistThumbnailProps } from '../../../../interfaces/props';
+
 const Card = styled.div`
     width: 180px;
     height: 220px;
@@ -17,12 +19,7 @@ const ArtistName = styled.div`
     font-weight: 400;
 `;
 
-interface NormalArtistThumbnailProps {
-    name: string;
-    src: string;
-}
-
-const NormalArtistThumbnail = ({ name, src }: NormalArtistThumbnailProps) => (
+const NormalArtistThumbnail = ({ name, src, href }: NormalArtistThumbnailProps) => (
     <Card>
         <Image variant = "regularArtist" src = {src}/>
         <ArtistName>{name}</ArtistName>

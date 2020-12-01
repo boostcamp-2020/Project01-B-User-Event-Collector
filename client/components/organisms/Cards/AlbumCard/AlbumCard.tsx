@@ -4,6 +4,8 @@ import ContentsThumbnail from '@components/molecules/ContentsThumbnail/ContentsT
 import A from '@components/atoms/A/A';
 import Text from '@components/atoms/Text/Text';
 
+import { AlbumCardProps } from '../../../../interfaces/props';
+
 const CardContainer = styled.div`
     display: flex;
     flex-flow: column;
@@ -33,13 +35,6 @@ const DescriptionContainer = styled.div`
 const StyledA = styled(A)`
     font-size: 16px;
 `;
-
-interface AlbumCardProps {
-    src: string,
-    href: string,
-    title: string,
-    artist: string
-};
 
 const AlbumCard = ( { title, artist, src, href }: AlbumCardProps ) => (
     <CardContainer >
