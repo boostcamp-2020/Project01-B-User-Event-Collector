@@ -1,11 +1,12 @@
 import React from 'react';
-import CardScrollList from './CardScrollList';
+import CardListContainer from './CardListContainer';
 import { MagazineSort } from '@interfaces/props';
 import MagazineCardList from '@components/organisms/CardLists/MagazineList/MagazineList';
+import NewsCardList from '@components/organisms/CardLists/NewsList';
 
 export default {
-    title: 'CardScrollList',
-    component: CardScrollList,
+    title: 'CardListContainer',
+    component: CardListContainer,
 };
 
 const Magazinesdata = Array(9).fill({
@@ -23,9 +24,14 @@ const Newsdata = Array(9).fill({
     title: `이영지가 새 앨범을 발표했습니다`,
 });
 
-// export const News = () => <CardScrollList type="news" items={Newsdata}/>
 export const Magazine = () => (
-    <CardScrollList>
+    <CardListContainer title="매거진" href="/">
         <MagazineCardList variant="row" items={Magazinesdata} />
-    </CardScrollList>
+    </CardListContainer>
+);
+
+export const Default = () => (
+    <CardListContainer title="NEWS">
+        <NewsCardList items={Newsdata} />
+    </CardListContainer>
 );
