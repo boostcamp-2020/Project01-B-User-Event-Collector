@@ -25,6 +25,9 @@ export const Card = styled.li`
         visibility: visible;
         opacity: 60%;
     }
+    & + & {
+        border-top: 1px solid #ececec;
+    }
 `;
 
 export const AlbumImg = styled.div`
