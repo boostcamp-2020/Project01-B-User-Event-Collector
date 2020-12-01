@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Image from '../../../atoms/Image/Image';
 import ArtistLikeButton from '../../ArtistLikeButton/ArtistLikeButton';
 
-import { LibraryArtistThumbnailProps } from '../../../../interfaces/props';
+import { LibraryArtistThumbnailProps } from '@interfaces/props';
 
 const Card = styled.div`
     width: 180px;

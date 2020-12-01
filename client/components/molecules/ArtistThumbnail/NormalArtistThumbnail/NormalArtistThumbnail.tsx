@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Image from '../../../atoms/Image/Image';
 
-import { NormalArtistThumbnailProps } from '../../../../interfaces/props';
+import { NormalArtistThumbnailProps } from '@interfaces/props';
 
 const Card = styled.div`
     width: 180px;
