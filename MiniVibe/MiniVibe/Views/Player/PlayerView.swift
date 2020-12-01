@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct PlayerView: View {
+    @State private var isOpenMenu = false
+    
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
                 VStack {
-                    Player()
+                    Player(isOpenMenu: $isOpenMenu)
                         .frame(height: geometry.size.height)
                     
                     Divider()
@@ -21,6 +23,7 @@ struct PlayerView: View {
                         .frame(height: geometry.size.height)
                 }
             }
+            .fullScreenCover(isPresented: $isOpenMenu, content: PlayerMenu.init)
         }
     }
 }
