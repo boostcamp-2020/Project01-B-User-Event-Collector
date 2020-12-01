@@ -24,74 +24,88 @@ struct UpNextList: View {
     }
      
     var body: some View {
-        ZStack(alignment: .bottom) {
-            List(selection: $selectedTracks) {
-                ForEach(tracks, id: \.self) { track in
-                    Text(track.title)
-                }
-                .onMove(perform: onMove(source:destination:))
+        VStack {
+            HStack {
+                leadingBarItem
                 
-                Toggle(isOn: $isAutoPlay) {
-                    VStack(alignment: .leading) {
-                        Text("Auto Play")
-                          .font(.subheadline)
-                        
-                        Text("Play similar songs endlessly")
-                            .font(.caption)
-                            .foregroundColor(.gray)
+                Spacer()
+                
+                headerTitle
+                
+                Spacer()
+                
+                trailingBarItem
+            }
+            .padding()
+            
+            ZStack(alignment: .bottom) {
+                List(selection: $selectedTracks) {
+                    ForEach(tracks, id: \.self) { track in
+                        Text(track.title)
+                    }
+                    .onMove(perform: onMove(source:destination:))
+                    
+                    Toggle(isOn: $isAutoPlay) {
+                        VStack(alignment: .leading) {
+                            Text("Auto Play")
+                                .font(.subheadline)
+                            
+                            Text("Play similar songs endlessly")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                        }
                     }
                 }
-            }
-            .navigationBarTitle(
-                selectionCount > 0 ?
-                    Text("\(selectionCount) song(s) selected") :
-                    Text("Up next"),
-                displayMode: .inline
-            )
-            .navigationBarItems(
-                leading: leadingBarItem,
-                trailing: trailingBarItem
-            )
-            .environment(\.editMode, .constant(EditMode.active))
-            
-            if selectedTracks.count > 0 {
-                MultiselectTabBar(
-                    barItems: [AddToPlaylist(), Save(), Delete()]
-                )
+                .environment(\.editMode, .constant(EditMode.active))
+                if selectedTracks.count > 0 {
+                    MultiselectTabBar(
+                        barItems: [AddToPlaylist(), Save(), Delete()]
+                    )
+                }
             }
         }
     }
     
-    var leadingBarItem: AnyView {
+    var headerTitle: some View {
+        selectionCount > 0 ?
+            Text("\(selectionCount) song(s) selected") :
+            Text("Up next")
+    }
+    
+    @ViewBuilder
+    var leadingBarItem: some View {
         if selectionCount == 0 {
-            return AnyView(Button {
+            Button {
                 // TO DO:
-                    // 현재 [Up Next] 트랙 내에서 검색
+                // 현재 [Up Next] 트랙 내에서 검색
             } label: {
                 Image(systemName: "magnifyingglass")
-            })
+            }
         } else if selectionCount == tracks.count {
-            return AnyView(Button {
+            Button {
                 selectedTracks.removeAll()
             } label: {
                 Text("Deselect All")
-            })
+            }
         } else {
-            return AnyView(Button {
+            Button {
                 tracks.forEach { selectedTracks.insert($0) }
-            } label: { Text("Select All") })
+            } label: { Text("Select All") }
         }
     }
     
-    var trailingBarItem: AnyView {
-        selectionCount > 0 ?
-            AnyView(Button {
+    @ViewBuilder
+    var trailingBarItem: some View {
+        if selectionCount > 0 {
+            Button {
                 selectedTracks.removeAll()
-            } label: { Text("Done") }) :
-            AnyView(Button {
+            } label: { Text("Done") }
+        } else {
+            Button {
                 // TO DO:
                     // sheet 내리기
-            } label: { Image(systemName: "chevron.down") })
+            } label: { Image(systemName: "chevron.down") }
+        }
     }
     
     private func onMove(source: IndexSet, destination: Int) {
@@ -102,8 +116,6 @@ struct UpNextList: View {
 
 struct UpNextList_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            UpNextList()
-        }
+        UpNextList()
     }
 }
