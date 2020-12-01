@@ -51,6 +51,8 @@
 		8087AC7B256F3E4D001F6369 /* PlayerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8087AC7A256F3E4D001F6369 /* PlayerPreview.swift */; };
 		80ABC18A2574DF7C003D4666 /* MultiselectTrackRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC1892574DF7C003D4666 /* MultiselectTrackRow.swift */; };
 		80ABC18D2574DFDE003D4666 /* UpNextList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC18C2574DFDE003D4666 /* UpNextList.swift */; };
+		80ABC1732574BF11003D4666 /* MiniVibeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC1722574BF11003D4666 /* MiniVibeTests.swift */; };
+		80ABC1832574C1FC003D4666 /* NetworkError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC1822574C1FC003D4666 /* NetworkError+Equatable.swift */; };
 		80C6207A256CF21600B5C375 /* StationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C62079256CF21600B5C375 /* StationItem.swift */; };
 		80C6207D256CFBA100B5C375 /* StationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6207C256CFBA100B5C375 /* StationSection.swift */; };
 		80EB9FE5256D04A000CD99FD /* MagazineItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EB9FE4256D04A000CD99FD /* MagazineItem.swift */; };
@@ -58,6 +60,16 @@
 		80EB9FF5256DE8A300CD99FD /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EB9FF4256DE8A300CD99FD /* Today.swift */; };
 		CC104F1456125D58CB9B7320 /* Pods_MiniVibe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF5A04776CA4FAE781C72DD3 /* Pods_MiniVibe.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		80ABC1752574BF11003D4666 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 805E28A2256BBD52007AF5F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 805E28A9256BBD52007AF5F1;
+			remoteInfo = MiniVibe;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		44056D142575DD5100BF8337 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
@@ -107,6 +119,10 @@
 		8087AC7A256F3E4D001F6369 /* PlayerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPreview.swift; sourceTree = "<group>"; };
 		80ABC1892574DF7C003D4666 /* MultiselectTrackRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiselectTrackRow.swift; sourceTree = "<group>"; };
 		80ABC18C2574DFDE003D4666 /* UpNextList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpNextList.swift; sourceTree = "<group>"; };
+		80ABC1702574BF11003D4666 /* MiniVibeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniVibeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		80ABC1722574BF11003D4666 /* MiniVibeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeTests.swift; sourceTree = "<group>"; };
+		80ABC1742574BF11003D4666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80ABC1822574C1FC003D4666 /* NetworkError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkError+Equatable.swift"; sourceTree = "<group>"; };
 		80C62079256CF21600B5C375 /* StationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationItem.swift; sourceTree = "<group>"; };
 		80C6207C256CFBA100B5C375 /* StationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSection.swift; sourceTree = "<group>"; };
 		80EB9FE4256D04A000CD99FD /* MagazineItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineItem.swift; sourceTree = "<group>"; };
@@ -122,6 +138,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC104F1456125D58CB9B7320 /* Pods_MiniVibe.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80ABC16D2574BF11003D4666 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +243,7 @@
 			children = (
 				4478AA39256CDD8F00FDED38 /* .swiftlint.yml */,
 				805E28AC256BBD52007AF5F1 /* MiniVibe */,
+				80ABC1712574BF11003D4666 /* MiniVibeTests */,
 				805E28AB256BBD52007AF5F1 /* Products */,
 				C7B714187A17166F0F7ADEA6 /* Pods */,
 				1BFAEF7789F23CA1FE12D1BB /* Frameworks */,
@@ -230,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				805E28AA256BBD52007AF5F1 /* MiniVibe.app */,
+				80ABC1702574BF11003D4666 /* MiniVibeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -275,6 +300,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		80ABC1712574BF11003D4666 /* MiniVibeTests */ = {
+			isa = PBXGroup;
+			children = (
+				80ABC1722574BF11003D4666 /* MiniVibeTests.swift */,
+				80ABC1742574BF11003D4666 /* Info.plist */,
+				80ABC1822574C1FC003D4666 /* NetworkError+Equatable.swift */,
+			);
+			path = MiniVibeTests;
+			sourceTree = "<group>";
+		};
 		C7B714187A17166F0F7ADEA6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +341,24 @@
 			productReference = 805E28AA256BBD52007AF5F1 /* MiniVibe.app */;
 			productType = "com.apple.product-type.application";
 		};
+		80ABC16F2574BF11003D4666 /* MiniVibeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80ABC1772574BF11003D4666 /* Build configuration list for PBXNativeTarget "MiniVibeTests" */;
+			buildPhases = (
+				80ABC16C2574BF11003D4666 /* Sources */,
+				80ABC16D2574BF11003D4666 /* Frameworks */,
+				80ABC16E2574BF11003D4666 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				80ABC1762574BF11003D4666 /* PBXTargetDependency */,
+			);
+			name = MiniVibeTests;
+			productName = MiniVibeTests;
+			productReference = 80ABC1702574BF11003D4666 /* MiniVibeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -317,6 +370,10 @@
 				TargetAttributes = {
 					805E28A9256BBD52007AF5F1 = {
 						CreatedOnToolsVersion = 12.2;
+					};
+					80ABC16F2574BF11003D4666 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 805E28A9256BBD52007AF5F1;
 					};
 				};
 			};
@@ -334,6 +391,7 @@
 			projectRoot = "";
 			targets = (
 				805E28A9256BBD52007AF5F1 /* MiniVibe */,
+				80ABC16F2574BF11003D4666 /* MiniVibeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -353,6 +411,13 @@
 				805E28B2256BBD53007AF5F1 /* Assets.xcassets in Resources */,
 				441DA8B0256F848C00F64AB0 /* Stations.json in Resources */,
 				448FD1CE256F83050027BC57 /* MyMixtape.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80ABC16E2574BF11003D4666 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,7 +512,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		80ABC16C2574BF11003D4666 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80ABC1832574C1FC003D4666 /* NetworkError+Equatable.swift in Sources */,
+				80ABC1732574BF11003D4666 /* MiniVibeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		80ABC1762574BF11003D4666 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 805E28A9256BBD52007AF5F1 /* MiniVibe */;
+			targetProxy = 80ABC1752574BF11003D4666 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		805E28B7256BBD53007AF5F1 /* Debug */ = {
@@ -612,6 +694,46 @@
 			};
 			name = Release;
 		};
+		80ABC1782574BF11003D4666 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JPSVCU4H4D;
+				INFOPLIST_FILE = MiniVibeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sueaty.MiniVibeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiniVibe.app/MiniVibe";
+			};
+			name = Debug;
+		};
+		80ABC1792574BF11003D4666 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JPSVCU4H4D;
+				INFOPLIST_FILE = MiniVibeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sueaty.MiniVibeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiniVibe.app/MiniVibe";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -629,6 +751,15 @@
 			buildConfigurations = (
 				805E28BA256BBD53007AF5F1 /* Debug */,
 				805E28BB256BBD53007AF5F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80ABC1772574BF11003D4666 /* Build configuration list for PBXNativeTarget "MiniVibeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80ABC1782574BF11003D4666 /* Debug */,
+				80ABC1792574BF11003D4666 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -6,27 +6,70 @@
 //
 
 import XCTest
+import Combine
+@testable import MiniVibe
 
 class MiniVibeTests: XCTestCase {
+    
+    var subscriptions: Set<AnyCancellable> = []
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_network_success() throws {
+        let expectation = XCTestExpectation(description: "Network success test")
+        let network = NetworkService()
+        let url = "https://www.google.com"
+        network.request(url: url)
+            .sink { result in
+                switch result {
+                case .finished:
+                    expectation.fulfill()
+                case .failure:
+                    XCTFail("Network Request Fail")
+                }
+            } receiveValue: { _ in
+                
+            }
+            .store(in: &subscriptions)
+        wait(for: [expectation], timeout: 5)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func test_network_fail_invalidURL() throws {
+        let expectation = XCTestExpectation(description: "Network success test")
+        let network = NetworkService()
+        let url = ""
+        network.request(url: url)
+            .sink { result in
+                switch result {
+                case .finished:
+                    XCTFail("Network Request Success -fail")
+                case let .failure(error):
+                    XCTAssertEqual(error, NetworkService.NetworkError.invalidURL)
+                    expectation.fulfill()
+                }
+            } receiveValue: { _ in
+                XCTFail("Received Value - fail")
+            }
+            .store(in: &subscriptions)
+        wait(for: [expectation], timeout: 5)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_network_fail_unknownError() throws {
+        let expectation = XCTestExpectation(description: "Network success test")
+        let network = NetworkService()
+        let url = "abcdefg"
+        network.request(url: url)
+            .sink { result in
+                switch result {
+                case .finished:
+                    XCTFail("Network Request Success -fail")
+                case let .failure(error):
+                    XCTAssertEqual(error, NetworkService.NetworkError.unknownError(message: "Unknown Error"))
+                    expectation.fulfill()
+                }
+            } receiveValue: { _ in
+                XCTFail("Received Value - fail")
+            }
+            .store(in: &subscriptions)
+        wait(for: [expectation], timeout: 5)
     }
 
 }
