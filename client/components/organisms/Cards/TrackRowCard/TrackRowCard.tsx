@@ -18,9 +18,12 @@ const TrackLeft = styled.div`
 `;
 const TrackMiddle = styled.div`
     border: 1px solid blue;
+    display: flex;
+    height: 50px;
 `;
 const TrackRight = styled.div`
     border: 1px solid blue;
+    dispaly: flex;
 `;
 const TrackPlayBtnContainer = styled.div`
     padding-right: 7px;
@@ -29,7 +32,12 @@ const TrackPlayBtnContainer = styled.div`
 const TrackTitle = styled.div`
     padding: 13px 0 13px 7px;
 `;
-const TrackRowCard = ({ trackId, albumImgSrc, trackTitle }) => (
+const TrackMiddleElem = styled.div`
+    width: 195px;
+    max-width: 195px;
+    padding: 15px 0 15px 30px;
+`;
+const TrackRowCard = ({ trackId, albumImgSrc, trackTitle, artist, albumTitle }) => (
     <List>
         <TrackLeft>
             <CheckBox id={trackId} />
@@ -40,8 +48,19 @@ const TrackRowCard = ({ trackId, albumImgSrc, trackTitle }) => (
                 <A href="#">{trackTitle}</A>
             </TrackTitle>
         </TrackLeft>
-        {/* <TrackMiddle></TrackMiddle>
-        <TrackRight></TrackRight> */}
+        <TrackMiddle>
+            <TrackMiddleElem>
+                <A href="#" variant="tertiary">
+                    {artist}
+                </A>
+            </TrackMiddleElem>
+            <TrackMiddleElem>
+                <A href="#" variant="tertiary">
+                    {albumTitle}
+                </A>
+            </TrackMiddleElem>
+        </TrackMiddle>
+        {/* <TrackRight></TrackRight> */}
     </List>
 );
 
