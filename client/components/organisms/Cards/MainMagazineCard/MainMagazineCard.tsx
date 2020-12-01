@@ -47,10 +47,10 @@ interface MainMagazineCardProps {
     href: string,
     title: string,
     label: string,
-    decription: string
+    description: string
 };
 
-const MainMagazineCard = ( { title, src, href, decription, label }: MainMagazineCardProps ) => (
+const MainMagazineCard = ( { title, src, href, description, label }: MainMagazineCardProps ) => (
     <CardContainer>
         <ImageContainer>
             <Image variant = "primary" src = {src}/>
@@ -63,7 +63,7 @@ const MainMagazineCard = ( { title, src, href, decription, label }: MainMagazine
                 <A variant = 'primary' href = {href}>{title}</A>
             </TitleContainer>
             <DescriptionContainer>
-                <Text variant = 'primary'>{decription}</Text>
+                <Text variant = 'primary'>{description}</Text>
             </DescriptionContainer>
         </ContentsContainer>
     </CardContainer>

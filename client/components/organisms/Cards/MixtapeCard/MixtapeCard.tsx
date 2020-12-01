@@ -4,7 +4,7 @@ import ContentsThumbnail from '@components/molecules/ContentsThumbnail/ContentsT
 import A from '@components/atoms/A/A';
 import Text from '@components/atoms/Text/Text';
 
-import { MixtapeCardProps } from '../../../../interfaces/props';
+import { MixtapeCardProps } from '@interfaces/props';
 
 const CardContainer = styled.div`
     display: flex;
