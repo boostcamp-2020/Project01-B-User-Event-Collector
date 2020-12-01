@@ -9,7 +9,7 @@ export const ButtonContainer = styled.button`
     width: 40px;
     height: 40px;
 `;
-export const SvgContainer = styled.div`
+export const Play = styled.div`
     position: absolute;
     top: 0;
     left: 0;
