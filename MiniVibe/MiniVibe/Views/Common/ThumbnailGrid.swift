@@ -2,16 +2,14 @@
 //  ThumbnailGrid.swift
 //  MiniVibe
 //
-//  Created by TTOzzi on 2020/11/25.
+//  Created by TTOzzi on 2020/12/01.
 //
 
 import SwiftUI
 
 struct ThumbnailGrid: View {
-    let title: String
-    
     var body: some View {
-        GeometryReader { proxy in
+        GeometryReader { geometry in
             ScrollView {
                 LazyVGrid(
                     columns: .init(repeating: .init(), count: 2)
@@ -20,19 +18,15 @@ struct ThumbnailGrid: View {
                         ThumbnailItem()
                     }
                 }
-                .padding(.horizontal, proxy.size.width * .paddingRatio)
+                .padding(.horizontal, geometry.size.width * .paddingRatio)
                 .padding(.vertical)
             }
-            .navigationTitle(title)
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
 
 struct ThumbnailGrid_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            ThumbnailGrid(title: "좋아할 최신 앨범")
-        }
+        ThumbnailGrid()
     }
 }

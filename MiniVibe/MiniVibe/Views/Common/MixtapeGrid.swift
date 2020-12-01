@@ -11,7 +11,7 @@ struct MixtapeGrid: View {
     let title: String
     
     var body: some View {
-        ThumbnailGrid(title: title)
+        ThumbnailGridView(title: title)
             .navigationBarItems(
                 trailing: Button {
                     
