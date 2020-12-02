@@ -9,7 +9,7 @@ import SwiftUI
 
 final class NowPlaying: ObservableObject {
     
-    enum Destination {
+    enum Destination: Equatable {
         case albumPlayList(title: String, subtitle: String)
         case artist
         
@@ -26,5 +26,11 @@ final class NowPlaying: ObservableObject {
     @Published var trackId: Int?
     @Published var isPlayerOpen: Bool = false
     @Published var isNavigationActive: Bool = false
-    var destination: Destination?
+    private(set) var destination: Destination?
+    
+    func setDestination(_ destination: Destination) -> Bool {
+        guard self.destination != destination else { return false }
+        self.destination = destination
+        return true
+    }
 }

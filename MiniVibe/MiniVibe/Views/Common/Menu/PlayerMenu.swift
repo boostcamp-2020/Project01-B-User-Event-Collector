@@ -17,10 +17,11 @@ struct PlayerMenu: View {
         VStack(spacing: 36) {
             Spacer()
             MenuThumbnailButton(title: title, subtitle: subtitle) {
-                nowPlaying.destination = .albumPlayList(title: title, subtitle: subtitle)
                 presentationMode.wrappedValue.dismiss()
                 nowPlaying.isPlayerOpen = false
-                nowPlaying.isNavigationActive = true
+                if nowPlaying.setDestination(.albumPlayList(title: title, subtitle: subtitle)) {
+                    nowPlaying.isNavigationActive = true
+                }
             }
             
             MenuButton(type: .like(true))

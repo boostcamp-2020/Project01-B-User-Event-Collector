@@ -18,10 +18,10 @@ struct AlbumMenu: View {
             Spacer()
             MenuThumbnailButton(title: title,
                                 subtitle: subtitle) {
-                nowPlaying.destination = .albumPlayList(title: "Dynamite",
-                                                        subtitle: "방탄소년단")
                 presentationMode.wrappedValue.dismiss()
-                nowPlaying.isNavigationActive = true
+                if nowPlaying.setDestination(.albumPlayList(title: title, subtitle: subtitle)) {
+                    nowPlaying.isNavigationActive = true
+                }
             }
             MenuButton(type: .download(.album))
             MenuButton(type: .like(false))
