@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct TrackRow: View {
+    let title: String
+    let artist: String
+    
     var body: some View {
         HStack {
-            Image("album")
-                .resizable()
-                .frame(width: 60, height: 60)
-                .border(Color.gray, width: 0.7)
-                .padding(.horizontal, 4)
+            NavigationLink(
+                destination: AlbumPlaylistView(title: title, subtitle: artist),
+                label: {
+                    Image("album")
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                        .border(Color.gray, width: 0.7)
+                        .padding(.horizontal, 4)
+                })
             
             VStack(spacing: 3) {
                 Text("1")
@@ -25,9 +32,9 @@ struct TrackRow: View {
             .padding(.horizontal, 4)
             
             VStack(alignment: .leading, spacing: 4) {
-                Text("Dynamite")
+                Text(title)
                     .font(.title3)
-                Text("방탄소년단")
+                Text(artist)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
@@ -48,7 +55,7 @@ struct TrackRow: View {
 
 struct TrackRow_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRow()
+        TrackRow(title: "Dynamite", artist: "방탄소년단")
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

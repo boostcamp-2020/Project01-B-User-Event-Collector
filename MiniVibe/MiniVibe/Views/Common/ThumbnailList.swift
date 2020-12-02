@@ -26,6 +26,7 @@ struct ThumbnailList: View {
                             ThumbnailRow()
                         }
                     }
+                    .foregroundColor(.black)
                 }
                 .navigationBarTitle(
                     Text(title),

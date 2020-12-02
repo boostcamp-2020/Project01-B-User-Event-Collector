@@ -26,8 +26,8 @@ struct ThumbnailSection<Dest: View>: View {
                                     .frame(width: width * .thumbnailRatio)
                             }
                         )
-                        
                     }
+                    .foregroundColor(.black)
                 }
                 .padding(.horizontal, width * .paddingRatio)
             }

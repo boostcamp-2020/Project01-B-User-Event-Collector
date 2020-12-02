@@ -58,7 +58,7 @@ struct Today: View {
                             
                             MagazineSection(width: width, title: "매거진")
                         }
-                        .padding(.bottom)
+                        .padding(.bottom, 70)
                     }
                     .navigationBarHidden(true)
                     .preference(key: Size.self, value: [geometry.frame(in: CoordinateSpace.global)])

@@ -25,6 +25,7 @@ struct RecommandedPlayListSection: View {
                                 .frame(width: width * .sectionRatio)
                         }
                     }
+                    .foregroundColor(.black)
                 }
                 .padding(.horizontal, width * .paddingRatio)
             }
