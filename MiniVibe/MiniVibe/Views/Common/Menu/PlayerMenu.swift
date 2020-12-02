@@ -9,12 +9,18 @@ import SwiftUI
 
 struct PlayerMenu: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var nowPlaying: NowPlaying
+    let title: String
+    let subtitle: String
     
     var body: some View {
         VStack(spacing: 36) {
             Spacer()
             Button {
-                
+                nowPlaying.destination = .albumPlayList(title: title, subtitle: subtitle)
+                presentationMode.wrappedValue.dismiss()
+                nowPlaying.isPlayerOpen = false
+                nowPlaying.isNavigationActive = true
             } label: {
                 Image("playListThumbnail")
                     .resizable()
@@ -22,9 +28,9 @@ struct PlayerMenu: View {
                     .frame(width: 80)
                 VStack(alignment: .leading,
                        spacing: 4) {
-                    Text("제목ddddddasdfasdfsdasfasfasdf")
+                    Text(title)
                         .font(.system(size: 18, weight: .bold))
-                    Text("가수")
+                    Text(subtitle)
                         .foregroundColor(.secondary)
                 }
                 .lineLimit(1)
@@ -61,6 +67,6 @@ struct PlayerMenu: View {
 
 struct PlayerMenu_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerMenu()
+        PlayerMenu(title: "Among US", subtitle: "정혜일")
     }
 }

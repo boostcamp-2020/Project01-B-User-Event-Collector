@@ -19,9 +19,15 @@ struct ThumbnailSection<Dest: View>: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {
                     ForEach(0..<10) { _ in
-                        ThumbnailItem()
-                            .frame(width: width * .thumbnailRatio)
+                        NavigationLink(
+                            destination: AlbumPlaylistView(title: "요즘 이 곡", subtitle: "VIBE"),
+                            label: {
+                                ThumbnailItem(title: "요즘 이 곡", subtitle: "VIBE")
+                                    .frame(width: width * .thumbnailRatio)
+                            }
+                        )
                     }
+                    .foregroundColor(.black)
                 }
                 .padding(.horizontal, width * .paddingRatio)
             }

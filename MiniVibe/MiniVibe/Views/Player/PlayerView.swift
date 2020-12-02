@@ -13,19 +13,26 @@ struct PlayerView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            ScrollView {
-                VStack {
-                    Player(isOpenMenu: $isOpenMenu, isOpenLyrics: $isOpenLyrics)
-                        .frame(height: geometry.size.height)
-                    
-                    Divider()
-                    
-                    UpNextList()
-                        .frame(height: geometry.size.height)
+            ZStack {
+                ScrollView {
+                    VStack {
+                        Player(isOpenMenu: $isOpenMenu, isOpenLyrics: $isOpenLyrics)
+                            .frame(height: geometry.size.height)
+                        
+                        Divider()
+                        
+                        UpNextList()
+                            .frame(height: geometry.size.height)
+                    }
+                }
+                if isOpenLyrics {
+                    Lyrics(isOpenLyrics: $isOpenLyrics)
                 }
             }
-            .fullScreenCover(isPresented: $isOpenMenu, content: PlayerMenu.init)
-            .sheet(isPresented: $isOpenLyrics, content: Lyrics.init)
+            .animation(.easeInOut)
+            .fullScreenCover(isPresented: $isOpenMenu) {
+                PlayerMenu(title: "Among US", subtitle: "정혜일")
+            }
         }
     }
 }

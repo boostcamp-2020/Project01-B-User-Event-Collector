@@ -25,7 +25,7 @@ struct AlbumPlaylistView: View {
                 ) {
                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
                         ForEach(0..<100) { _ in
-                            TrackRow()
+                            TrackRow(title: "Dynamite", artist: "방탄소년단")
                         }
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)
@@ -47,7 +47,7 @@ struct AlbumPlaylistView: View {
                 
                 ThumbnailSection(
                     width: width,
-                    destination: ThumbnailList(title: "관련 플레이리스트"),
+                    destination: ThumbnailList(title: "관련 플레이리스트", info: .playlist),
                     title: "관련 플레이리스트"
                 )
             }

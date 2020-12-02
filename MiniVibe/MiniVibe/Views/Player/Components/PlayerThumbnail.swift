@@ -30,7 +30,6 @@ struct PlayerThumbnail: View {
                 }
             
         }
-        .animation(.easeInOut)
     }
 }
 

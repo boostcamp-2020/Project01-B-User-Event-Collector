@@ -14,6 +14,7 @@ struct PlayerSliderView: View {
     let totalDuration: String = "3:21"
     @State private var playbackTime: String? = "0:00"
     @Binding var isOpenMenu: Bool
+    @EnvironmentObject var nowPlaying: NowPlaying
     
     var body: some View {
         GeometryReader { geometry in
@@ -33,13 +34,20 @@ struct PlayerSliderView: View {
     private func trackInfo(title: String, artist: String) -> some View {
         VStack(alignment: .leading,
                spacing: 3) {
-            Text(title)
-                .font(.system(size: 20, weight: .bold))
-            
             HStack {
-                Text(artist)
-                    .font(.system(size: 16))
-                    .foregroundColor(.secondary)
+                VStack(alignment: .leading,
+                       spacing: 4) {
+                    Text(title)
+                        .font(.system(size: 20, weight: .bold))
+                    Text(artist)
+                        .font(.system(size: 16))
+                        .foregroundColor(.secondary)
+                }
+                .onTapGesture {
+                    nowPlaying.destination = .artist
+                    nowPlaying.isPlayerOpen = false
+                    nowPlaying.isNavigationActive = true
+                }
                 
                 Spacer()
                 

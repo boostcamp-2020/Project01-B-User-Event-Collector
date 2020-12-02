@@ -14,15 +14,18 @@ struct RecommandedPlayListSection: View {
     var body: some View {
         VStack {
             SectionTitle(width: width,
-                         destination: ThumbnailList(title: "VIBE 추천 플레이리스트"),
+                         destination: ThumbnailList(title: "VIBE 추천 플레이리스트", info: .playlist),
                          title: title)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: width * .spacingRatio) {
                     ForEach(0..<5) { _ in
-                        RecommandedPlayListItem()
-                            .frame(width: width * .sectionRatio)
+                        NavigationLink(destination: AlbumPlaylistView(title: "지붕뚫고 급상승", subtitle: "VIBE")) {
+                            RecommandedPlayListItem()
+                                .frame(width: width * .sectionRatio)
+                        }
                     }
+                    .foregroundColor(.black)
                 }
                 .padding(.horizontal, width * .paddingRatio)
             }
