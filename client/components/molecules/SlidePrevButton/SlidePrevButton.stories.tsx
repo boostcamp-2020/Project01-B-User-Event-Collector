@@ -2,7 +2,7 @@ import React from 'react';
 import SlidePrevButton from './index';
 
 export default {
-    title: 'SlidePrevButton',
+    title: 'Molecules/SlidePrevButton',
     component: SlidePrevButton,
 };
 

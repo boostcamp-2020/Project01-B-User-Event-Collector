@@ -2,7 +2,7 @@ import React from 'react';
 import SubMenu from './index';
 
 export default {
-    title: 'SubMenu',
+    title: 'Molecules/SubMenu',
     component: SubMenu,
 };
 

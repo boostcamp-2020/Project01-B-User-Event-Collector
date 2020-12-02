@@ -2,7 +2,7 @@ import React from 'react';
 import TrackRowCard from './index';
 
 export default {
-    title: 'TrackRowCard',
+    title: 'Organisms/TrackRowCard',
     component: TrackRowCard,
 };
 const TrackRowCardData = {

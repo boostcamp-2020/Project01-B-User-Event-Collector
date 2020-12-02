@@ -2,7 +2,7 @@ import React from 'react';
 import StationCardList from './StationCardList';
 
 export default {
-    title: 'StationCardList',
+    title: 'Organisms/StationCardList',
     component: StationCardList,
 };
 

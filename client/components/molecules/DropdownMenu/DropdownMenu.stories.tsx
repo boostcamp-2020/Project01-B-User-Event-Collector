@@ -4,7 +4,7 @@ import DropdownMenu from './index';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 export default {
-    title: 'DropdownMenu',
+    title: 'Molecules/DropdownMenu',
     component: DropdownMenu,
 };
 
