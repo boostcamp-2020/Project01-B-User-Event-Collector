@@ -9,9 +9,26 @@ import SwiftUI
 
 struct MenuButton: View {
     enum MenuButtonType: Equatable {
+        enum DownloadType: CustomStringConvertible {
+            case music
+            case album
+            case playlist
+            
+            var description: String {
+                switch self {
+                case .music:
+                    return "곡"
+                case .album:
+                    return "앨범"
+                case .playlist:
+                    return "플레이리스트"
+                }
+            }
+        }
+        
         case like(Bool)
         case exclude
-        case download
+        case download(DownloadType)
         case addToPlaylist
         case share
         
@@ -36,8 +53,8 @@ struct MenuButton: View {
                 return isLike ? "좋아요 취소" : "좋아요"
             case .exclude:
                 return "이 노래 제외"
-            case .download:
-                return "곡 저장"
+            case let .download(type):
+                return "\(type) 저장"
             case .addToPlaylist:
                 return "내 플레이리스트에 추가"
             case .share:

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ThumbnailSection<Dest: View>: View {
+    @State private var isOpenMenu = false
     let width: CGFloat
     let destination: Dest
     let title: String
@@ -19,10 +20,12 @@ struct ThumbnailSection<Dest: View>: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {
                     ForEach(0..<10) { _ in
+                        let title = "요즘 이 곡"
+                        let subtitle = "VIBE"
                         NavigationLink(
-                            destination: AlbumPlaylistView(title: "요즘 이 곡", subtitle: "VIBE"),
+                            destination: AlbumPlaylistView(title: title, subtitle: subtitle),
                             label: {
-                                ThumbnailItem(title: "요즘 이 곡", subtitle: "VIBE")
+                                ThumbnailItem(title: title, subtitle: subtitle)
                                     .frame(width: width * .thumbnailRatio)
                             }
                         )

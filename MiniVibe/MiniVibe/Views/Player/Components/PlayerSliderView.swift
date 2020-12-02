@@ -44,9 +44,10 @@ struct PlayerSliderView: View {
                         .foregroundColor(.secondary)
                 }
                 .onTapGesture {
-                    nowPlaying.destination = .artist
                     nowPlaying.isPlayerOpen = false
-                    nowPlaying.isNavigationActive = true
+                    if nowPlaying.setDestination(.artist) {
+                        nowPlaying.isNavigationActive = true
+                    }
                 }
                 
                 Spacer()
