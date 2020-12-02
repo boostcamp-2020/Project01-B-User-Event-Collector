@@ -1,17 +1,16 @@
-import React from "react";
-import LyricModal from "./LyricModal"
+import React from 'react';
+import LyricModal from './LyricModal';
 
 export default {
-  title: "LyricModal",
-  component: LyricModal,
-}
+    title: 'Organisms/LyricModal',
+    component: LyricModal,
+};
 
-const STORY_SRC = "https://musicmeta-phinf.pstatic.net/album/004/551/4551646.jpg?type=r360Fll&v=20200507115931";
-const STORY_TITLE = "그냥";
-const STORY_ARTIST = "이영지";
+const STORY_SRC = 'https://musicmeta-phinf.pstatic.net/album/004/551/4551646.jpg?type=r360Fll&v=20200507115931';
+const STORY_TITLE = '그냥';
+const STORY_ARTIST = '이영지';
 
-const STORY_LYRICS = 
-`keep callin' to me
+const STORY_LYRICS = `keep callin' to me
 왜 인지는 묻지 말아 주면은 안돼?
 just text me 
 밥은 잘 먹고 있는지에 대해
@@ -117,6 +116,8 @@ oh 얘기를 해 잠은 충분해 난
 
 we can find out the answer
 we can find out the answer
-`
+`;
 
-export const Default = () => <LyricModal src = {STORY_SRC} title = {STORY_TITLE} artist = {STORY_ARTIST} lyrics = {STORY_LYRICS}/>
+export const Default = () => (
+    <LyricModal src={STORY_SRC} title={STORY_TITLE} artist={STORY_ARTIST} lyrics={STORY_LYRICS} />
+);

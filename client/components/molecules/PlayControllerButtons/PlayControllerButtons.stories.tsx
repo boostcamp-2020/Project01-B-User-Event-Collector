@@ -2,7 +2,7 @@ import React from 'react';
 import PlayControllerButtons from './index';
 
 export default {
-    title: 'PlayControllerButtons',
+    title: 'Molecules/PlayControllerButtons',
     component: PlayControllerButtons,
 };
 

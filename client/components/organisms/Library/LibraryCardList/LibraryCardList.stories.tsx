@@ -2,7 +2,7 @@ import React from 'react';
 import LibraryCardList from './LibraryCardList';
 
 export default {
-    title: 'LibraryCardList',
+    title: 'Organisms/LibraryCardList',
     component: LibraryCardList,
 };
 
@@ -10,7 +10,7 @@ const MixtapesData = Array(9).fill({
     src: 'https://vibeapp.music.naver.com/vibe/v1/cover/mix/3171155,2487724,3553414,635724/favorite/favorite/',
     href: 'localhost:3000',
     title: `최애 믹스테잎`,
-    artist: 'Lana Del Rey, 이영지, Dua Lipa'
+    artist: 'Lana Del Rey, 이영지, Dua Lipa',
 });
 
 const AritstData = Array(9).fill({
@@ -23,14 +23,14 @@ const AlbumData = Array(9).fill({
     src: 'https://musicmeta-phinf.pstatic.net/album/004/491/4491829.jpg?type=r360Fll&v=20200808020212',
     href: 'localhost:3000',
     title: 'Rio Loves Tokyo Part 1',
-    artist: '김승민'
+    artist: '김승민',
 });
 
 const PlaylistData = Array(9).fill({
     src: 'https://music-phinf.pstatic.net/20200504_183/1588567824216rHHs6_PNG/VIBE_%B0%F8%C5%EB_VibeAndChill.png',
     href: 'localhost:3000',
     title: 'VIBE 추천 플레이리스트',
-    description: 'VIBE'
+    description: 'VIBE',
 });
 
 export const Mixtape = () => <LibraryCardList variant="mixtape" items={MixtapesData} />;

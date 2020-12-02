@@ -1,9 +1,9 @@
-import React from "react";
-import PlayButton from "./PlayButton"
+import React from 'react';
+import PlayButton from './PlayButton';
 
 export default {
-  title: "PlayButton",
-  component: PlayButton,
-}
+    title: 'Molecules/PlayButton',
+    component: PlayButton,
+};
 
-export const Default = () => <PlayButton />
+export const Default = () => <PlayButton />;

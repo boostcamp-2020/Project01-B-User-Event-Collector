@@ -2,7 +2,7 @@ import React from 'react';
 import MainMenu from './index';
 
 export default {
-    title: 'MainMenu',
+    title: 'Molecules/MainMenu',
     component: MainMenu,
 };
 

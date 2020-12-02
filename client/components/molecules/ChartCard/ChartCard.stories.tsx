@@ -2,7 +2,7 @@ import React from 'react';
 import ChartCard from './ChartCard';
 
 export default {
-    title: 'ChartCard',
+    title: 'Molecules/ChartCard',
     component: ChartCard,
 };
 

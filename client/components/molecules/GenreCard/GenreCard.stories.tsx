@@ -2,7 +2,7 @@ import React from 'react';
 import GenreCard from './GenreCard';
 
 export default {
-    title: 'GenreCard',
+    title: 'Molecules/GenreCard',
     component: GenreCard,
 };
 

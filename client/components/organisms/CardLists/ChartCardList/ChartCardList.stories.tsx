@@ -3,7 +3,7 @@ import React from 'react';
 import ChartCardList from './ChartCardList';
 
 export default {
-    title: 'ChartCardList',
+    title: 'Organisms/ChartCardList',
     conponent: ChartCardList,
 };
 let i = 1;

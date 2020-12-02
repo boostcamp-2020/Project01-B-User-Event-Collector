@@ -2,7 +2,7 @@ import React from 'react';
 import SlideNextButton from './index';
 
 export default {
-    title: 'SlideNextButton',
+    title: 'Molecules/SlideNextButton',
     component: SlideNextButton,
 };
 
