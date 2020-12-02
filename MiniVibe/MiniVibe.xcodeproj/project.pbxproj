@@ -70,6 +70,7 @@
 		80DA951D25779F52008C9DFF /* Image+TrackRowConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DA951C25779F52008C9DFF /* Image+TrackRowConfigure.swift */; };
 		80DA952125779FE9008C9DFF /* TrackRowB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DA952025779FE9008C9DFF /* TrackRowB.swift */; };
 		80DA95252577A084008C9DFF /* TrackRowC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DA95242577A084008C9DFF /* TrackRowC.swift */; };
+		80DA95332577A681008C9DFF /* TrackRowD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DA95322577A681008C9DFF /* TrackRowD.swift */; };
 		80EB9FE5256D04A000CD99FD /* MagazineItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EB9FE4256D04A000CD99FD /* MagazineItem.swift */; };
 		80EB9FE8256D0AD700CD99FD /* MagazineSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EB9FE7256D0AD700CD99FD /* MagazineSection.swift */; };
 		80EB9FF5256DE8A300CD99FD /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EB9FF4256DE8A300CD99FD /* Today.swift */; };
@@ -157,6 +158,7 @@
 		80DA951C25779F52008C9DFF /* Image+TrackRowConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+TrackRowConfigure.swift"; sourceTree = "<group>"; };
 		80DA952025779FE9008C9DFF /* TrackRowB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRowB.swift; sourceTree = "<group>"; };
 		80DA95242577A084008C9DFF /* TrackRowC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRowC.swift; sourceTree = "<group>"; };
+		80DA95322577A681008C9DFF /* TrackRowD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRowD.swift; sourceTree = "<group>"; };
 		80EB9FE4256D04A000CD99FD /* MagazineItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineItem.swift; sourceTree = "<group>"; };
 		80EB9FE7256D0AD700CD99FD /* MagazineSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineSection.swift; sourceTree = "<group>"; };
 		80EB9FF4256DE8A300CD99FD /* Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
@@ -218,7 +220,6 @@
 				8087AC7A256F3E4D001F6369 /* PlayerPreview.swift */,
 				80045DE125758D1600F32E6C /* MultiselectTabBar.swift */,
 				80045DDE25758C5A00F32E6C /* MultiselectTabBarItems.swift */,
-				80FA4432257640330092D25D /* PlaylistAlbumInfo.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -280,6 +281,7 @@
 				805E28D2256BDC4A007AF5F1 /* TrackRowA.swift */,
 				80DA952025779FE9008C9DFF /* TrackRowB.swift */,
 				80DA95242577A084008C9DFF /* TrackRowC.swift */,
+				80DA95322577A681008C9DFF /* TrackRowD.swift */,
 			);
 			path = TrackRows;
 			sourceTree = "<group>";
@@ -377,6 +379,7 @@
 				805E28D6256BDE90007AF5F1 /* SectionTitle.swift */,
 				44F97971256CF2AE00C9C224 /* ThumbnailItem.swift */,
 				4478F722256E8B2B00755656 /* PlayAndShuffle.swift */,
+				80FA4432257640330092D25D /* PlaylistAlbumInfo.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				4474DC032574E6BC006FC827 /* PlayerThumbnail.swift in Sources */,
 				4478F71C256E858700755656 /* MixtapeGrid.swift in Sources */,
 				805E28D7256BDE90007AF5F1 /* SectionTitle.swift in Sources */,
+				80DA95332577A681008C9DFF /* TrackRowD.swift in Sources */,
 				445919AD256E559D0069DAB2 /* StationList.swift in Sources */,
 				44D7B7E725753C2D0049CDBB /* RepeatButton.swift in Sources */,
 				80EB9FE8256D0AD700CD99FD /* MagazineSection.swift in Sources */,

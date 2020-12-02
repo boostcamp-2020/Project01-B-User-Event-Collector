@@ -24,8 +24,8 @@ struct AlbumPlaylistView: View {
                     pinnedViews: [.sectionHeaders]
                 ) {
                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
-                        ForEach(0..<100) { _ in
-                            TrackRowA(title: "Dynamite", artist: "방탄소년단")
+                        ForEach(0..<7) { index in
+                            TrackRowD(order: index + 1, title: "Dynamite", artist: "방탄소년단")
                         }
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)

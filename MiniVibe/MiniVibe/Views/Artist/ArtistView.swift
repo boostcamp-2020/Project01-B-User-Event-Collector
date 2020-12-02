@@ -15,7 +15,24 @@ struct ArtistView: View {
             ScrollView {
                 VStack(spacing: 24) {
                     ArtistThumbnail()
-                    ChartSection(width: width, title: "노래")
+                    //ChartSection(width: width, title: "노래")
+                    
+                    VStack {
+                        SectionTitle(
+                            width: width,
+                            destination: ChartList(title: "노래"),
+                            title: "노래"
+                        )
+
+                        VStack(spacing: 12) {
+                            ForEach(0..<5) { _ in
+                                TrackRowB(title: "Dynamite", artist: "방탄소년단")
+                            }
+                            .frame(width: width * .sectionRatio)
+                        }
+                        .padding(.horizontal, width * .paddingRatio)   
+                    }
+                    
                     ThumbnailSection(width: width,
                                      destination: ArtistAlbumGridView(title: "앨범"),
                                      title: "앨범")
