@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TrackRowA: View {
+    let order: Int
     let title: String
     let artist: String
 
@@ -18,14 +19,10 @@ struct TrackRowA: View {
                     .trackRowImageConfigure()
             }
             
-            HStack {
-                VStack(spacing: 3) {
-                    Text("1")
-                        .font(.title3)
-                    
-                    Spacer()
-                }
-                .padding(.horizontal, 4)
+            HStack(alignment: .top) {
+                Text("\(order)")
+                    .font(.title3)
+                    .padding(.horizontal, 4)
                 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(title)
@@ -45,16 +42,15 @@ struct TrackRowA: View {
             } label: {
                 Image(systemName: "ellipsis")
                     .foregroundColor(.black)
+                    .padding()
             }
-            .padding()
         }
-        .padding(.vertical, 8)
     }
 }
 
 struct TrackRow_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowA(title: "Dynamite", artist: "방탄소년단")
+        TrackRowA(order: 4, title: "Dynamite", artist: "방탄소년단")
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

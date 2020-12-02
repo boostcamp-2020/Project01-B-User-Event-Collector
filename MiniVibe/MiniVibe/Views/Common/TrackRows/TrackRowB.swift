@@ -18,15 +18,14 @@ struct TrackRowB: View {
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
-                    .font(.title3)
+                    .font(.system(size: 17))
                 Text(artist)
-                    .font(.subheadline)
+                    .font(.system(size: 13))
                     .foregroundColor(.secondary)
             }
             
             Spacer()
         }
-        .padding(.vertical, 8)
     }
 }
 

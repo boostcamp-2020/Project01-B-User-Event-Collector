@@ -10,8 +10,7 @@ import SwiftUI
 extension Image {
     func trackRowImageConfigure() -> some View {
         resizable()
-        .frame(width: 60, height: 60)
+        .frame(width: 50, height: 50)
         .border(Color.gray, width: 0.7)
-        .padding(.horizontal, 4)
     }
 }
