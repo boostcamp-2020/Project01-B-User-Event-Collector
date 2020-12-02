@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react'
+import React, { MouseEvent } from 'react';
 //import { StyledSlidePrevButton } from './SlidePrevButton.styles';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import Circle from '@components/atoms/Circle/Circle';
@@ -8,11 +8,11 @@ interface SlidePrevButtonProps {
 }
 
 const SlidePrevButton = ({ onClick }: SlidePrevButtonProps) => {
-    return(
+    return (
         <Circle variant="primary" onClick={onClick}>
             <NavigateBeforeIcon />
         </Circle>
-    )
+    );
 };
 
 export default SlidePrevButton;

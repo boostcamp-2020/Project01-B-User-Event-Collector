@@ -1,9 +1,9 @@
-import React from "react";
-import SlidePrevButton from "./SlidePrevButton"
+import React from 'react';
+import SlidePrevButton from './index';
 
 export default {
-  title: "SlidePrevButton",
-  component: SlidePrevButton,
-}
+    title: 'SlidePrevButton',
+    component: SlidePrevButton,
+};
 
-export const Default = () => <SlidePrevButton />
+export const Default = () => <SlidePrevButton />;
