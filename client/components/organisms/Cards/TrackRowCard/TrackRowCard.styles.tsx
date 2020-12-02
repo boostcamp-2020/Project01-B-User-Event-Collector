@@ -35,6 +35,10 @@ export const TrackPlayBtnContainer = styled.div`
 `;
 export const TrackTitle = styled.div`
     padding: 13px 0 13px 7px;
+    max-width: 287px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 `;
 export const TrackMiddleElem = styled.div`
     width: 195px;
