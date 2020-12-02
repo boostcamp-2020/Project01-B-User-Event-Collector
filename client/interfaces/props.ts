@@ -57,3 +57,11 @@ export interface ChartCardProps {
     singer: string;
     songTitle: string;
 }
+
+export interface TrackRowCardProps {
+    trackId: string, 
+    albumImgSrc: string, 
+    trackTitle: string, 
+    artist : string, 
+    albumTitle: string
+}

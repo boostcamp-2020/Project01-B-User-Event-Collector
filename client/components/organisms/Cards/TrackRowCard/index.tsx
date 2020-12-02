@@ -15,8 +15,8 @@ import {
     ShowLyricButton,
     LikeOptions,
 } from './TrackRowCard.styles';
-
-const TrackRowCard = ({ trackId, albumImgSrc, trackTitle, artist, albumTitle }) => (
+import { TrackRowCardProps } from '@interfaces/props';
+const TrackRowCard = ({ trackId, albumImgSrc, trackTitle, artist, albumTitle }: TrackRowCardProps) => (
     <List>
         <TrackLeft>
             <CheckBox id={trackId} />
