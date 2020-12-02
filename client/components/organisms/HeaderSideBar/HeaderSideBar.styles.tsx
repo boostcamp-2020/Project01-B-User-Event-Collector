@@ -14,6 +14,7 @@ const LogoContainer = styled.div`
 `;
 
 const Logo = styled.h1`
+    cursor: pointer;
     display: inline-flex;
     margin: 0 0 5px 0;
 
@@ -41,6 +42,7 @@ const SectionContainer = styled.div`
 `;
 
 const ProfileContainer = styled.div`
+    cursor: pointer;
     border: 1px solid hsla(0,0%,84.7%,.13);
     border-width: 1px 0;
     padding: 11px 0;

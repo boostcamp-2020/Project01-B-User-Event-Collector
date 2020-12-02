@@ -15,6 +15,7 @@ interface styledLinkProps {
 }
 
 const StyledLink = styled.a<styledLinkProps>` 
+  cursor: pointer;
     display: flex;
     align-items: center;
     font-size: 16px;
