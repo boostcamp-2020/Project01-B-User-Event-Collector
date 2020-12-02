@@ -1,5 +1,5 @@
 import React from 'react';
-import TrackPlayButton from './TrackPlayButton';
+import TrackPlayButton from './index';
 
 export default {
     title: 'TrackPlayButton',
