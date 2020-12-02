@@ -6,7 +6,7 @@ import { Card, Rank, SongInfo } from './ChartCard.styles';
 
 const ChartCard = ({ src, rank, artist, trackTitle }) => (
     <Card>
-        <TrackPlayButton src={src} />
+        <TrackPlayButton src={src} imgVariant="trackRowCard" />
         <Rank>
             <Text variant="k">{rank.toString()}</Text>
         </Rank>
