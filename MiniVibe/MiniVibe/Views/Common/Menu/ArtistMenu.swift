@@ -22,6 +22,7 @@ struct ArtistMenu: View {
                     .resizable()
                     .aspectRatio(1, contentMode: .fit)
                     .frame(width: 80)
+                    .clipShape(Circle())
                 
                 VStack(alignment: .leading,
                        spacing: 4) {
@@ -45,21 +46,8 @@ struct ArtistMenu: View {
             MenuButton(type: .like(true))
             MenuButton(type: .exclude)
             MenuButton(type: .share)
-            
-            VStack(spacing: 0) {
-                Divider()
-                
-                Button {
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Spacer()
-                    
-                    Text("닫기")
-                        .foregroundColor(.secondary)
-                        .font(.system(size: 18))
-                    Spacer()
-                }
-                .padding(.vertical)
+            MenuCloseButton {
+                presentationMode.wrappedValue.dismiss()
             }
         }
     }

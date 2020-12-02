@@ -1,13 +1,13 @@
 //
-//  PlayerMenu.swift
+//  AlbumMenu.swift
 //  MiniVibe
 //
-//  Created by TTOzzi on 2020/12/01.
+//  Created by TTOzzi on 2020/12/02.
 //
 
 import SwiftUI
 
-struct PlayerMenu: View {
+struct AlbumMenu: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var nowPlaying: NowPlaying
     let title: String
@@ -16,16 +16,15 @@ struct PlayerMenu: View {
     var body: some View {
         VStack(spacing: 36) {
             Spacer()
-            MenuThumbnailButton(title: title, subtitle: subtitle) {
-                nowPlaying.destination = .albumPlayList(title: title, subtitle: subtitle)
+            MenuThumbnailButton(title: title,
+                                subtitle: subtitle) {
+                nowPlaying.destination = .albumPlayList(title: "Dynamite",
+                                                        subtitle: "방탄소년단")
                 presentationMode.wrappedValue.dismiss()
-                nowPlaying.isPlayerOpen = false
                 nowPlaying.isNavigationActive = true
             }
-            
-            MenuButton(type: .like(true))
-            MenuButton(type: .exclude)
-            MenuButton(type: .download(.music))
+            MenuButton(type: .download(.album))
+            MenuButton(type: .like(false))
             MenuButton(type: .addToPlaylist)
             MenuButton(type: .share)
             MenuCloseButton {
@@ -35,8 +34,8 @@ struct PlayerMenu: View {
     }
 }
 
-struct PlayerMenu_Previews: PreviewProvider {
+struct AlbumMenu_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerMenu(title: "Among US", subtitle: "정혜일")
+        AlbumMenu(title: "Dynamite", subtitle: "방탄소년단")
     }
 }

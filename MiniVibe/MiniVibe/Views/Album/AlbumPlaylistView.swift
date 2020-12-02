@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct AlbumPlaylistView: View {
-    let title: String // [Album] : 앨범 명, [Playlist] : 플레이리스트 명
-    let subtitle: String // [Album] : 가수 명, [Playlist] : 플레이리스트 명
+    @State private var isOpenMenu = false
+    let title: String
+    let subtitle: String
     
     var body: some View {
         GeometryReader { geometry in
@@ -51,6 +52,9 @@ struct AlbumPlaylistView: View {
                     title: "관련 플레이리스트"
                 )
             }
+            .fullScreenCover(isPresented: $isOpenMenu) {
+                AlbumMenu(title: title, subtitle: subtitle)
+            }
         }
     }
     
@@ -58,15 +62,21 @@ struct AlbumPlaylistView: View {
         HStack(spacing: 10) {
             Button {
                 
-            } label: {  Image(systemName: "heart") }
+            } label: {
+                Image(systemName: "heart")
+            }
             
             Button {
                 
-            } label: {  Image(systemName: "checkmark.circle") }
+            } label: {
+                Image(systemName: "checkmark.circle")
+            }
             
             Button {
-                
-            } label: { Image(systemName: "ellipsis")  }
+                isOpenMenu = true
+            } label: {
+                Image(systemName: "ellipsis")
+            }
         }
         .font(.system(size: 17))
         .foregroundColor(.black)
