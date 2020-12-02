@@ -19,7 +19,7 @@ struct ChartList: View {
                 ) {
                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
                         ForEach(0..<100) { _ in
-                            TrackRow(title: "Dynamite", artist: "방탄소년단")
+                            TrackRowA(title: "Dynamite", artist: "방탄소년단")
                         }
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)
