@@ -12,7 +12,7 @@ interface CardListContainerProps {
 }
 
 const Container = styled.div`
-    width: 1160px;
+    width: 960px;
     margin: 0 auto;
     padding: 36px 0 45px;
 `;

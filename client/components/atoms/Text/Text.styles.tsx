@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface StyledTextProps {
-  variant?: 'primary' | 'secondary' | 'tertiary';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'regularStrong';
 }
 
 const getTextStyle = (props: StyledTextProps) => {
@@ -17,8 +17,13 @@ const getTextStyle = (props: StyledTextProps) => {
       break;
     case 'tertiary':
       color = 'black';
-      fontWeight = '800';
-      fontSize = '26px';
+      fontWeight = '700';
+      fontSize = '30px';
+      break;
+    case 'regularStrong':
+      color = 'black';
+      fontWeight = '600';
+      fontSize = '16px';
       break;
     default:
       color = 'black';

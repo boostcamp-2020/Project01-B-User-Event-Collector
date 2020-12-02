@@ -7,7 +7,7 @@ import Label from '@components/atoms/Label';
 
 const CardContainer = styled.div`
     display: flex;
-    width: 1160px;
+    width: 960px;
     height: 310px;
     background-color: white;
     cursor: pointer;

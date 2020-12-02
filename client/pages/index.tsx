@@ -59,16 +59,16 @@ const Playlistdata = Array(9).fill({
 });
 
 const TodayContainer = styled.div`
-    width: 100%;
     height: 100%;
     display: flex;
     flex-flow: column;
     align-items: center;
     background-color: #f2f2f2;
-    padding: 0 0 300px 0;
+    padding: 0 0 300px 225px;
 `;
 
 const MainMagazineContainer = styled.div`
+    width: 50%;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -76,12 +76,14 @@ const MainMagazineContainer = styled.div`
 `;
 
 const PublicContentsContainer = styled.div`
+    width: 50%;
     display: flex;
     flex-flow: column;
     align-items: center;
 `;
 
 const UserContentsContainer = styled.div`
+    width: 50%;
     display: flex;
     flex-flow: column;
     align-items: center;
