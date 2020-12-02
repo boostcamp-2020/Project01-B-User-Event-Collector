@@ -1,5 +1,5 @@
 import React from 'react';
-import PlayControllerButtons from './PlayControllerButtons';
+import PlayControllerButtons from './index';
 
 export default {
     title: 'PlayControllerButtons',
