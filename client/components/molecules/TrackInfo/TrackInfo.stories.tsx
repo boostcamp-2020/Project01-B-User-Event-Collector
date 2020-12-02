@@ -7,4 +7,5 @@ export default {
 };
 const TRACKTITLE = 'VVS (Feat. JUSTHIS) (Prod. GroovyRoom)';
 const ARTIST = '나는가수다';
-export const Default = () => <TrackInfo trackTitle={TRACKTITLE} artist={ARTIST} />;
+export const Track = () => <TrackInfo trackTitle={TRACKTITLE} artist={ARTIST} isTrack={true} />;
+export const Chart = () => <TrackInfo trackTitle={TRACKTITLE} artist={ARTIST} isTrack={false} />;
