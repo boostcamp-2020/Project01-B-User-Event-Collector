@@ -7,15 +7,24 @@
 
 import SwiftUI
 
+
 struct ThumbnailList: View {
+    enum Info {
+        case playlist
+        case magazine
+    }
+    
     let title: String
+    let info: Info
     
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
                 LazyVGrid(columns: [.init()]) {
                     ForEach(0..<20) {_ in
-                        ThumbnailRow()
+                        NavigationLink(destination: destination()) {
+                            ThumbnailRow()
+                        }
                     }
                 }
                 .navigationBarTitle(
@@ -26,12 +35,22 @@ struct ThumbnailList: View {
             }
         }
     }
+    
+    @ViewBuilder
+    func destination() -> some View {
+        switch info {
+        case .playlist:
+            AlbumPlaylistView(title: "EB", subtitle: "방탄소년단")
+        case .magazine:
+            Text("Magazine content")
+        }
+    }
 }
 
 struct ThumbnailList_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ThumbnailList(title: "매거진")
+            ThumbnailList(title: "매거진", info: .playlist)
         }
     }
 }

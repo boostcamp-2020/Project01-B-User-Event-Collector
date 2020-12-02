@@ -47,7 +47,7 @@ struct AlbumPlaylistView: View {
                 
                 ThumbnailSection(
                     width: width,
-                    destination: ThumbnailList(title: "관련 플레이리스트"),
+                    destination: ThumbnailList(title: "관련 플레이리스트", info: .playlist),
                     title: "관련 플레이리스트"
                 )
             }

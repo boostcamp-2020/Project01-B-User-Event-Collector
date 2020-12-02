@@ -33,11 +33,11 @@ struct Today: View {
                                         title: "나를 위한 믹스테잎")
                         
                         ThumbnailSection(width: width,
-                                        destination: ThumbnailList(title: "즐겨듣는 플레이리스트"),
+                                         destination: ThumbnailList(title: "즐겨듣는 플레이리스트", info: .playlist),
                                         title: "즐겨듣는 플레이리스트")
                         
                         ThumbnailSection(width: width,
-                                        destination: ThumbnailList(title: "내 취향 플레이리스트"),
+                                         destination: ThumbnailList(title: "내 취향 플레이리스트", info: .playlist),
                                         title: "내 취향 플레이리스트")
                         
                         StationSection(width: width, title: "DJ 스테이션")

@@ -13,7 +13,7 @@ struct MagazineSection: View {
     
     var body: some View {
         VStack {
-            SectionTitle(width: width, destination: ThumbnailList(title: "매거진"), title: title)
+            SectionTitle(width: width, destination: ThumbnailList(title: "매거진", info: .magazine), title: title)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {

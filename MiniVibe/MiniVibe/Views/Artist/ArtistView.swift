@@ -21,7 +21,7 @@ struct ArtistView: View {
                                      destination: ArtistAlbumGridView(title: "앨범"),
                                      title: "앨범")
                     ThumbnailSection(width: width,
-                                     destination: ThumbnailList(title: "관련 플레이리스트"),
+                                     destination: ThumbnailList(title: "관련 플레이리스트", info: .playlist),
                                      title: "관련 플레이리스트")
                     ArtistSection(width: width,
                                   sectionTitle: "비슷한 아티스트")
