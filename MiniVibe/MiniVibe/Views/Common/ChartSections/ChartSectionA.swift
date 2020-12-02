@@ -1,5 +1,5 @@
 //
-//  ChartSection.swift
+//  ChartSectionA.swift
 //  MiniVibe
 //
 //  Created by Sue Cho on 2020/11/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChartSection: View {
+struct ChartSectionA: View {
     let width: CGFloat
     let title: String
     
@@ -30,9 +30,9 @@ struct ChartSection: View {
     }
 }
 
-struct ChartSection_Previews: PreviewProvider {
+struct ChartSectionA_Previews: PreviewProvider {
     static var previews: some View {
-        ChartSection(width: 375, title: "최근 들은 노래")
+        ChartSectionA(width: 375, title: "최근 들은 노래")
             .previewLayout(.fixed(width: 375, height: 420))
     }
 }
