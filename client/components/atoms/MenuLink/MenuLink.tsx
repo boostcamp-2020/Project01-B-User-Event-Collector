@@ -19,7 +19,7 @@ const StyledLink = styled.a<styledLinkProps>`
     display: flex;
     align-items: center;
     font-size: 16px;
-    color: ${(props) => (props.selected ? '#ff1500' : '#fff')};
+    color: ${(props) => (props.selected ? '#FF1150' : '#fff')};
     background-color: transparent;
     padding: 6px 9px;
     text-decoration: none;
