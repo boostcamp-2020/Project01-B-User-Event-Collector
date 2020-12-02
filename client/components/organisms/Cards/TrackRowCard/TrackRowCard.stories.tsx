@@ -1,5 +1,5 @@
 import React from 'react';
-import TrackRowCard from './TrackRowCard';
+import TrackRowCard from './index';
 
 export default {
     title: 'TrackRowCard',
