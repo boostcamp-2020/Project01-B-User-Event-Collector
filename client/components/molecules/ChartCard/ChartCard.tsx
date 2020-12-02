@@ -2,8 +2,9 @@ import React from 'react';
 import Image from '@components/atoms/Image/Image';
 import Text from '@components/atoms/Text/Text';
 import { Card, AlbumImg, PlayButton, Rank, SongInfo } from './ChartCard.styles';
+import { ChartCardProps } from '@interfaces/props';
 
-const ChartCard = ({ src, rank, singer, songTitle }) => (
+const ChartCard = ({ src, rank, singer, songTitle }: ChartCardProps) => (
     <Card>
         <AlbumImg>
             <Image variant="trackRowCard" src={src} />
@@ -28,7 +29,7 @@ const ChartCard = ({ src, rank, singer, songTitle }) => (
             </PlayButton>
         </AlbumImg>
         <Rank>
-            <Text variant="k">{rank}</Text>
+            <Text variant="k">{rank.toString()}</Text>
         </Rank>
         <SongInfo>
             <a href="#">
