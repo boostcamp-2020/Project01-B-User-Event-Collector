@@ -25,7 +25,7 @@ const MoveInfoDetail = styled(StyledA)<{ top: boolean; track: boolean }>`
         props.top &&
         css`
             color: #fff;
-            padding-top: 4px;
+            padding-top: 2px;
             font-size: 14px;
         `}
 `;

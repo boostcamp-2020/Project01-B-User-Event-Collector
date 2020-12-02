@@ -5,7 +5,6 @@ import TrackInfo from '@components/molecules/TrackInfo';
 import { TrackCardProps } from '@interfaces/props';
 
 const TrackCardContainer = styled.div<{ isDefault: boolean }>`
-    border: 1px solid black;
     display: flex;
     height: 46px;
     ${(props) =>
