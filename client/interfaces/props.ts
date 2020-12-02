@@ -54,8 +54,8 @@ export interface NormalArtistThumbnailProps {
 export interface ChartCardProps {
     src: string;
     rank: number;
-    singer: string;
-    songTitle: string;
+    artist: string;
+    trackTitle: string;
 }
 
 export interface TrackRowCardProps {
