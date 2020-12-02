@@ -3,7 +3,7 @@ import StyledText from './Text.styles';
 
 interface TextProps {
   children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'tertiary';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'regularStrong';
 }
 
 const Text = ({ children, variant }: TextProps) => (
