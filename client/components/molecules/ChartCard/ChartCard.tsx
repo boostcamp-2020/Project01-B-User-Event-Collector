@@ -8,7 +8,7 @@ const ChartCard = ({ src, rank, artist, trackTitle }) => (
     <Card>
         <TrackPlayButton src={src} />
         <Rank>
-            <Text variant="k">{rank}</Text>
+            <Text variant="k">{rank.toString()}</Text>
         </Rank>
         <SongInfo>
             <a href="#">

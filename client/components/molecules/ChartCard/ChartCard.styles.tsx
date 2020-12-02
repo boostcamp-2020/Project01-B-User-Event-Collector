@@ -11,6 +11,9 @@ export const Card = styled.li`
         visibility: visible;
         opacity: 60%;
     }
+    & + & {
+        border-top: 1px solid #ececec;
+    }
 `;
 
 export const Rank = styled.div`
@@ -20,4 +23,5 @@ export const Rank = styled.div`
 `;
 export const SongInfo = styled.div`
     padding: 0 20px 0 12px;
+    line-height: 21px;
 `;

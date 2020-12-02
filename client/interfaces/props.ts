@@ -50,3 +50,10 @@ export interface NormalArtistThumbnailProps {
     src: string;
     href: string;
 }
+
+export interface ChartCardProps {
+    src: string;
+    rank: number;
+    singer: string;
+    songTitle: string;
+}
