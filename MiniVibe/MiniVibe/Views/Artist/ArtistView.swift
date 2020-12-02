@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ArtistView: View {
-    let title: String
     
     var body: some View {
         GeometryReader { geometry in
@@ -27,7 +26,7 @@ struct ArtistView: View {
                                   sectionTitle: "비슷한 아티스트")
                 }
             }
-            .navigationTitle(title)
+            .navigationTitle("방탄소년단")
             .navigationBarItems(trailing: trailingBarButtons)
             .navigationBarTitleDisplayMode(.inline)
         }
@@ -51,7 +50,7 @@ struct ArtistView: View {
 struct ArtistView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ArtistView(title: "방탄소년단")
+            ArtistView()
         }
     }
 }

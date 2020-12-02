@@ -30,7 +30,9 @@ struct PlayerView: View {
                 }
             }
             .animation(.easeInOut)
-            .fullScreenCover(isPresented: $isOpenMenu, content: PlayerMenu.init)
+            .fullScreenCover(isPresented: $isOpenMenu) {
+                PlayerMenu(title: "Among US", subtitle: "정혜일")
+            }
         }
     }
 }

@@ -20,8 +20,10 @@ struct RecommandedPlayListSection: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: width * .spacingRatio) {
                     ForEach(0..<5) { _ in
-                        RecommandedPlayListItem()
-                            .frame(width: width * .sectionRatio)
+                        NavigationLink(destination: AlbumPlaylistView(title: "지붕뚫고 급상승", subtitle: "VIBE")) {
+                            RecommandedPlayListItem()
+                                .frame(width: width * .sectionRatio)
+                        }
                     }
                 }
                 .padding(.horizontal, width * .paddingRatio)
