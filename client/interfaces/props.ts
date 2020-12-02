@@ -65,3 +65,12 @@ export interface TrackRowCardProps {
     artist : string, 
     albumTitle: string
 }
+
+export interface TrackCardProps {
+    src: string;
+    trackTitle: string;
+    artist: string;
+    imgVariant: 'trackRowCard' | 'trackInfo';
+    isDefault: boolean;
+    isTrack: boolean;
+}
