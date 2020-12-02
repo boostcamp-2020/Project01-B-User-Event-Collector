@@ -16,6 +16,7 @@ const LibraryContainer = styled.div`
     flex-flow: column;
     align-items: center;
     background-color: white;
+    padding: 0 0 300px 225px;
 `;
 
 const LibraryHeaderContainer = styled.div`
