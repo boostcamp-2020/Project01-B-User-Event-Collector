@@ -5,6 +5,13 @@ import ContentsButtonGroup from '@components/organisms/ContentsButtonGroup';
 import CardListContainer from '@components/organisms/CardListContainer';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 
+const playlistData = 
+{
+    src: "https://music-phinf.pstatic.net/20200109_13/15785370058255nAVe_PNG/%C0%CC%B4%DE%C0%C7%B3%EB%B7%A1_%C1%A4%B9%E6%C7%FC.png",
+    title: "이달의 노래 11월",
+    description: "최근 발매되어 많은 사랑을 받은 곡들 중에서 VIBE DJ 느낌별 스테이션이 선택한 노래 입니다. 힙터질때, 신났을때, 우울할때, 사랑할때, 사랑했을때, 파티할때, 멍때릴때, 운동할때, 휴식할때 가장 어울리는 VIBE 11월의 느낌을 만나 보세요."
+}
+
 const TrackDatas = Array(20).fill({
     albumImgSrc: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906',
     trackId: '1',
@@ -12,29 +19,6 @@ const TrackDatas = Array(20).fill({
     artist: '미란이',
     albumTitle: '쇼미더머니 9 Episode 1',
 });
-
-const albumData = 
-{
-    src: "https://musicmeta-phinf.pstatic.net/album/004/491/4491829.jpg?type=r360Fll&v=20200808020212",
-    title: "Rio Loves Tokyo Part 1",
-    artist: "김승민",
-    releasedDate: "2020.03.20",
-    genre: "랩/힙합",
-    description: `1. 10°0' 0° N 118°50 0° E (Feat. ASH ISLAND)
-    LYRICS BY 김승민, ASH ISLAND
-    COMPOSED BY 김승민, Minit, Chiic
-    ARRANGED BY Minit, Chiic
-    GUITAR BY Chiic
-    Mixed by 배재한 @등대사운드
-    Mastered by 배재한 @등대사운드
-        
-    2. MIA
-    LYRICS BY 김승민
-    COMPOSED BY 김승민, Minit, Chiic
-    ARRANGED BY Minit, Chiic
-    GUITAR BY Chiic
-    Mixed by 배재한 @등대사운드`
-}
 
 const Artistdata = Array(9).fill({
     name: '이영지',
@@ -69,11 +53,11 @@ const TrackListContainer = styled.div`
 const ArtistListContainer = styled.div`
 `;
 
-const Album = () => {
+const ThisMonth = () => {
     return (
         <Container>
             <Header>
-                <DetailHeader sort = "album" data = {albumData}/>
+                <DetailHeader sort = "playlist" data = {playlistData}/>
             </Header>
             <ContentsContainer>
                 <ContentsButtonGroup />
@@ -96,4 +80,4 @@ const Album = () => {
     });
 })*/
 
-export default Album;
+export default ThisMonth;

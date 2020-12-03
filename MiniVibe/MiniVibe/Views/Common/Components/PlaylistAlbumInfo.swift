@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct PlaylistAlbumInfo: View {
-    let title: String // [Album] : 앨범 명, [Playlist] : 플레이리스트 명
-    let subtitle: String // [Album] : 가수 명, [Playlist] : 플레이리스트 명
+    let title: String
+    let subtitle: String
     
     var body: some View {
         VStack {
@@ -21,14 +21,14 @@ struct PlaylistAlbumInfo: View {
 }
 
 struct EssentialAlbumInfo: View {
-    let title: String // [Album] : 앨범 명, [Playlist] : 플레이리스트 명
-    let subtitle: String // [Album] : 가수 명, [Playlist] : 플레이리스트 명
+    let title: String
+    let subtitle: String
     
     var body: some View {
         HStack(alignment: .top) {
             Button {
                 // TO DO:
-                    // 앨범 관련 글 열기
+                // 앨범 관련 글 열기
             } label: {
                 Image("album")
                     .resizable()
@@ -38,16 +38,18 @@ struct EssentialAlbumInfo: View {
             
             VStack(alignment: .leading) {
                 Text("\(title)")
-                    .font(.title3)
+                    .font(.system(size: 18, weight: .bold))
                 Text("\(subtitle)")
-                    .font(.subheadline)
+                    .font(.system(size: 16))
+                    .foregroundColor(.secondary)
                 Spacer()
                 Button {
                     // TO DO: 앨범 전체 곡 다운로드
                 } label: {
-                    Image(systemName: "square.and.arrow.down")
+                    Image(systemName: "arrow.down.to.line")
                         .foregroundColor(.black)
-                        .font(.system(size: 25))
+                        .font(.system(size: 25, weight: .light))
+                        .padding(.bottom, 4)
                 }
             }
             .frame(height: 130)
@@ -59,25 +61,21 @@ struct EssentialAlbumInfo: View {
 
 struct OptionalAlbumInfo: View {
     var body: some View {
-        //첫번째 HStack은 원래 모든 플레이리스트에 다 있지만 그냥... 없어도 되는걸로 하는 거 어때여
-        HStack {
-            Text("Info-1")
-            Text("Info-2")
-            Text("Info-3")
-            Spacer()
-        }
-        .font(.system(size: 15))
-        
-        HStack {
-            Text(AlbumInfoExample.text)
-                .lineLimit(1)
-            Button {
+        VStack(alignment: .leading) {
+            Text("2020.8.21 • 댄스 • 6곡")
+            
+            HStack {
+                Text(AlbumInfoExample.text)
+                    .lineLimit(1)
+                Text("더보기")
+            }
+            .onTapGesture {
                 // TO DO:
-                    // 앨범 정보 더보기
-            } label: { Text("더보기") }
+                // 앨범 정보 더보기
+            }
+            .foregroundColor(.secondary)
         }
-        .foregroundColor(.secondary)
-        .font(.system(size: 15))
+        .font(.system(size: 14))
     }
 }
 
@@ -86,7 +84,6 @@ struct PlaylistAlbumInfo_Previews: PreviewProvider {
         PlaylistAlbumInfo(title: "여긴 앨범이고", subtitle: "여긴 가수")
     }
 }
-
 
 struct AlbumInfoExample {
     static let text = """

@@ -20,7 +20,11 @@ struct ArtistSection: View {
                        showsIndicators: false) {
                 HStack(spacing: 16) {
                     ForEach(0..<10) { _ in
-                        ArtistItem()
+                        NavigationLink(
+                            destination: ArtistView(),
+                            label: {
+                                ArtistItem()
+                            })
                     }
                 }
                 .padding(.horizontal, width * .paddingRatio)

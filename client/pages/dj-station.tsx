@@ -25,12 +25,12 @@ const Container = styled.div`
 `;
 
 const HeaderContainer = styled.div`
-    width: 100%;
+    width: 50%;
     margin: 60px 0 30px 0;
 `;
 
 const ContentsContainer = styled.div`
-    width: 100%;        
+    width: 50%;
 `;
 
 const StationContainer = styled.div`

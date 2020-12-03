@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChartList: View {
+    @State private var isMenuOpen = false
     let title: String
     
     var body: some View {
@@ -20,10 +21,13 @@ struct ChartList: View {
                 ) {
                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
                         ForEach(0..<50) { index in
-                            TrackRowA(order: index + 1, title: "Dynamite", artist: "방탄소년단")
+                            TrackRowA(isMenuOpen: $isMenuOpen, order: index + 1, title: "Dynamite", artist: "방탄소년단")
                         }
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)
+                }
+                .fullScreenCover(isPresented: $isMenuOpen) {
+                    PlayerMenu(title: "Among US", subtitle: "정혜일")
                 }
                 .navigationTitle(title)
                 .navigationBarTitleDisplayMode(.inline)

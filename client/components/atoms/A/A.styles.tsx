@@ -35,7 +35,7 @@ const getAStyle = (props: StyledAProps) => {
     font-size:  ${fontSize};
     font-weight: ${fontWeight};
     text-decoration: none;
-
+    cursor: pointer;
     &:hover {
        text-decoration: underline;
     }
