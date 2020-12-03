@@ -15,8 +15,6 @@ enum ActiveSheet {
 struct AlbumPlaylistView: View {
     @State private var activeSheet: ActiveSheet = .playlist
     @State private var showSheet = false
-//    @State private var isAlbumMenuOpen = false
-//    @State private var isTrackMenuOpen = false
     
     let title: String
     let subtitle: String
@@ -35,7 +33,12 @@ struct AlbumPlaylistView: View {
                 ) {
                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
                         ForEach(0..<7) { index in
-                            TrackRowD(isMenuOpen: $showSheet, activeSheet: $activeSheet, order: index + 1, title: "Dynamite", artist: "방탄소년단")
+                            TrackRowD(isMenuOpen: $showSheet,
+                                      activeSheet: $activeSheet,
+                                      order: index + 1,
+                                      title: "Dynamite",
+                                      artist: "방탄소년단"
+                            )
                         }
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)
@@ -64,8 +67,7 @@ struct AlbumPlaylistView: View {
             .fullScreenCover(isPresented: $showSheet) {
                 if activeSheet == .playlist {
                     AlbumMenu(title: title, subtitle: subtitle)
-                }
-                else {
+                } else {
                     PlayerMenu(title: "Among US", subtitle: "정혜일")
                 }
             }
