@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct PlayListSection: View {
+struct PlayListSection<D: View>: View {
     @State private var isOpenMenu = false
     let width: CGFloat
     let title: String
+    let destination: D
     
     var body: some View {
         VStack(spacing: 8) {
             SectionTitle(width: width,
-                         destination: ThumbnailList(title: title,
-                                                    info: .playlist),
+                         destination: destination,
                          title: title)
             
             ScrollView(.horizontal, showsIndicators: false) {
@@ -42,7 +42,7 @@ struct PlayListSection: View {
 
 struct PlayListSection_Previews: PreviewProvider {
     static var previews: some View {
-        PlayListSection(width: 375, title: "플레이리스트")
+        PlayListSection(width: 375, title: "플레이리스트", destination: Text("플레이리스트 더보기"))
             .previewLayout(.fixed(width: 375, height: 300))
     }
 }

@@ -7,15 +7,14 @@
 
 import SwiftUI
 
-enum ActiveSheet {
-    case playlist
-    case track
-}
-
 struct AlbumView: View {
-    @State private var activeSheet: ActiveSheet = .playlist
-    @State private var showSheet = false
+    enum ActiveSheet {
+        case album
+        case track
+    }
     
+    @State private var activeSheet: ActiveSheet = .album
+    @State private var showSheet = false
     let title: String
     let subtitle: String
     
@@ -59,7 +58,9 @@ struct AlbumView: View {
                     
                     PlayListSection(
                         width: width,
-                        title: "관련 플레이리스트"
+                        title: "관련 플레이리스트",
+                        destination: ThumbnailList(title: "관련 플레이리스트",
+                                                   info: .playlist)
                     )
                 }
             }
@@ -69,10 +70,10 @@ struct AlbumView: View {
                 trailing: trailingBarButtons
             )
             .fullScreenCover(isPresented: $showSheet) {
-                if activeSheet == .playlist {
+                if activeSheet == .album {
                     AlbumMenu(title: title, subtitle: subtitle)
                 } else {
-                    PlayerMenu(title: "Among US", subtitle: "정혜일")
+                    PlayerMenu(title: title, subtitle: subtitle)
                 }
             }
         }
@@ -93,13 +94,12 @@ struct AlbumView: View {
             }
             
             Button {
-                activeSheet = .playlist
-                if activeSheet == .playlist {
-                    showSheet = true
-                }
+                activeSheet = .album
+                showSheet = true
             } label: {
                 Image(systemName: "ellipsis")
             }
+            .padding(.vertical)
         }
         .font(.system(size: 17))
         .foregroundColor(.black)

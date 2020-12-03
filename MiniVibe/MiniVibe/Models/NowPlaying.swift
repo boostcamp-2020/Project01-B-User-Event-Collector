@@ -10,13 +10,16 @@ import SwiftUI
 final class NowPlaying: ObservableObject {
     
     enum Destination: Equatable {
-        case albumPlayList(title: String, subtitle: String)
+        case album(title: String, subtitle: String)
+        case playList(title: String, subtitle: String)
         case artist
         
         var view: some View {
             switch self {
-            case let .albumPlayList(title, subtitle):
+            case let .album(title, subtitle):
                 return AnyView(AlbumView(title: title, subtitle: subtitle))
+            case let .playList(title, subtitle):
+                return AnyView(PlayListView(title: title, subtitle: subtitle))
             case .artist:
                 return AnyView(ArtistView())
             }

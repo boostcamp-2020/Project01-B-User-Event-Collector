@@ -15,7 +15,6 @@ struct ArtistView: View {
             ScrollView {
                 VStack(spacing: 24) {
                     ArtistThumbnail()
-                    //ChartSectionA(width: width, sectionTitle: "노래")
                     
                     VStack {
                         SectionTitle(
@@ -42,7 +41,9 @@ struct ArtistView: View {
                     ArtistSection(width: width,
                                   sectionTitle: "비슷한 아티스트")
                     PlayListSection(width: width,
-                                     title: "관련 플레이리스트")
+                                    title: "관련 플레이리스트",
+                                    destination: ThumbnailList(title: "관련 플레이리스트",
+                                                               info: .playlist))
                 }
             }
             .navigationTitle("방탄소년단")

@@ -19,7 +19,7 @@ struct AlbumMenu: View {
             MenuThumbnailButton(title: title,
                                 subtitle: subtitle) {
                 presentationMode.wrappedValue.dismiss()
-                if nowPlaying.setDestination(.albumPlayList(title: title, subtitle: subtitle)) {
+                if nowPlaying.setDestination(.album(title: title, subtitle: subtitle)) {
                     nowPlaying.isNavigationActive = true
                 }
             }

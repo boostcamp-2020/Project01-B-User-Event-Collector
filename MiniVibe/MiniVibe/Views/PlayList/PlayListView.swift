@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct PlayListView: View {
+    enum ActiveSheet {
+        case playList
+        case track
+    }
+    
+    @State private var activeSheet: ActiveSheet = .playList
     @State private var showSheet = false
     let title: String
     let subtitle: String
@@ -31,6 +37,7 @@ struct PlayListView: View {
                                     TrackRowC(title: "Dynamite",
                                               artist: "방탄소년단"
                                     ) {
+                                        activeSheet = .track
                                         showSheet = true
                                     }
                                 }
@@ -49,7 +56,7 @@ struct PlayListView: View {
                 trailing: trailingBarButtons
             )
             .fullScreenCover(isPresented: $showSheet) {
-                PlayerMenu(title: "Among US", subtitle: "정혜일")
+                PlayerMenu(title: title, subtitle: subtitle)
             }
         }
     }
@@ -69,10 +76,12 @@ struct PlayListView: View {
             }
             
             Button {
-                
+                activeSheet = .playList
+                showSheet = true
             } label: {
                 Image(systemName: "ellipsis")
             }
+            .padding(.vertical)
         }
         .font(.system(size: 17))
         .foregroundColor(.black)

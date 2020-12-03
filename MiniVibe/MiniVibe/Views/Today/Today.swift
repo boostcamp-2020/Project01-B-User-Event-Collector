@@ -34,15 +34,15 @@ struct Today: View {
                             PreviewSection(width: width)
                                 .aspectRatio(1.5, contentMode: .fit)
                             
-                            AlbumSection(width: width,
-                                         destination: MixtapeGrid(title: "나를 위한 믹스테잎"),
-                                         title: "나를 위한 믹스테잎")
+                            PlayListSection(width: width,
+                                            title: "나를 위한 믹스테잎",
+                                         destination: MixtapeGrid(title: "나를 위한 믹스테잎"))
                             
                             PlayListSection(width: width,
-                                         title: "즐겨듣는 플레이리스트")
+                                            title: "즐겨듣는 플레이리스트", destination: ThumbnailList(title: "즐겨듣는 플레이리스트", info: .playlist))
                             
                             PlayListSection(width: width,
-                                         title: "내 취향 플레이리스트")
+                                            title: "내 취향 플레이리스트", destination: ThumbnailList(title: "내 취향 플레이리스트", info: .playlist))
                             
                             StationSection(width: width, title: "DJ 스테이션")
                             
