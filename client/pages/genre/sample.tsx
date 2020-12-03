@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import Text from '@components/atoms/Text';
 import CardListContainer from '@components/organisms/CardListContainer';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
+import ChartCardList from '@components/organisms/CardLists/ChartCardList/ChartCardList';
 
 const Container = styled.div`
     padding-left: 225px;
+    padding-bottom: 90px;
 `;
 const Header = styled.header``;
 const Contents = styled.div``;
@@ -17,12 +19,17 @@ const Albumdata = Array(9).fill({
     title: 'Blue Skies',
     artist: 'Birdy',
 });
-
+const Chartdata = Array(30).fill({
+    src: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906',
+    rank: 1,
+    artist: '방탄소년단',
+    trackTitle: 'dynamite',
+});
 const GenreData = {
     id: 1,
     title: '국내 힙합',
-    latestAlbum: '',
-    top100: '',
+    latestAlbum: Albumdata,
+    top100: Chartdata,
     artist: '',
     featuredPlaylist: '',
     artistPlaylist: '',
@@ -42,9 +49,9 @@ const Genre = () => (
                 </CardListContainer>
             </ContentsContainer>
             <ContentsContainer>
-                {
-                    // 장르
-                }
+                <CardListContainer title="장르 Top 100" href="#">
+                    <ChartCardList items={Chartdata} unit={4} />
+                </CardListContainer>
             </ContentsContainer>
             <ContentsContainer>
                 {
