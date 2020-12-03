@@ -23,7 +23,7 @@ struct ThumbnailSection<Dest: View>: View {
                         let title = "요즘 이 곡"
                         let subtitle = "VIBE"
                         NavigationLink(
-                            destination: AlbumPlaylistView(title: title, subtitle: subtitle),
+                            destination: AlbumView(title: title, subtitle: subtitle),
                             label: {
                                 ThumbnailItem(title: title, subtitle: subtitle)
                                     .frame(width: width * .thumbnailRatio)

@@ -16,7 +16,7 @@ final class NowPlaying: ObservableObject {
         var view: some View {
             switch self {
             case let .albumPlayList(title, subtitle):
-                return AnyView(AlbumPlaylistView(title: title, subtitle: subtitle))
+                return AnyView(AlbumView(title: title, subtitle: subtitle))
             case .artist:
                 return AnyView(ArtistView())
             }

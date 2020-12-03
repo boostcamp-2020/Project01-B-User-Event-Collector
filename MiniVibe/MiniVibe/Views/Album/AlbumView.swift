@@ -12,7 +12,7 @@ enum ActiveSheet {
     case track
 }
 
-struct AlbumPlaylistView: View {
+struct AlbumView: View {
     @State private var activeSheet: ActiveSheet = .playlist
     @State private var showSheet = false
     
@@ -35,12 +35,13 @@ struct AlbumPlaylistView: View {
                         ) {
                             Section(header: PlayAndShuffle(width: geometry.size.width)) {
                                 ForEach(0..<7) { index in
-                                    TrackRowD(isMenuOpen: $showSheet,
-                                              activeSheet: $activeSheet,
-                                              order: index + 1,
+                                    TrackRowD(order: index + 1,
                                               title: "Dynamite",
                                               artist: "방탄소년단"
-                                    )
+                                    ) {
+                                        activeSheet = .track
+                                        showSheet = true
+                                    }
                                 }
                             }
                             .padding(.horizontal, geometry.size.width * .paddingRatio)
@@ -64,7 +65,6 @@ struct AlbumPlaylistView: View {
                 }
             }
             .padding(.bottom, 70)
-            .navigationTitle("\(title)")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
                 trailing: trailingBarButtons
@@ -111,7 +111,7 @@ struct AlbumPlaylistView: View {
 struct AlbumPlaylistView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AlbumPlaylistView(title: "여긴 앨범 이름이야", subtitle: "여긴 가수고")
+            AlbumView(title: "여긴 앨범 이름이야", subtitle: "여긴 가수고")
         }
     }
 }
