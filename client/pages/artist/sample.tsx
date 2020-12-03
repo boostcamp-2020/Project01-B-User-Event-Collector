@@ -28,7 +28,7 @@ const Container = styled.div`
     flex-flow: column;
     align-items: center;
     background-color: white;
-    padding: 0 0 50px 225px;
+    padding: 0 0 150px 225px;
 `;
 
 const Header = styled.div`
