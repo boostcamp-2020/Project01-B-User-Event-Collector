@@ -31,6 +31,7 @@ const App = ({ Component, pageProps }) => {
             <Head>
                 <meta charSet="utf-8" />
                 <title>miniVibe</title>
+                <link rel="shortcut icon" href="https://img.icons8.com/cute-clipart/64/000000/like.png" />
             </Head>
             <HeaderSideBar user={userData} />
             <PlayController />
