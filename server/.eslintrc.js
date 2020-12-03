@@ -13,5 +13,21 @@ module.exports = {
     rules: {
         indent: ['error', 4],
         camelcase: [0],
+        'no-unused-vars': 'off',
+        'import/extensions': [
+            'error',
+            'ignorePackages',
+            {
+                js: 'never',
+                ts: 'never',
+            },
+        ],
+    },
+    settings: {
+        'import/resolver': {
+            node: {
+                extensions: ['.js', '.ts'],
+            },
+        },
     },
 };
