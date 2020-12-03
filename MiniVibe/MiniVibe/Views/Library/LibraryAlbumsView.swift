@@ -30,10 +30,12 @@ struct LibraryAlbumsView: View {
                     columns: .init(repeating: .init(), count: 2)
                 ) {
                     ForEach(0..<10) { _ in
+                        let title = "요즘 이 곡"
+                        let subtitle = "VIBE"
                         NavigationLink(
-                            destination: AlbumView(title: "요즘 이 곡", subtitle: "VIBE"),
+                            destination: AlbumView(title: title, subtitle: subtitle),
                             label: {
-                                ThumbnailItem(title: "요즘 이 곡", subtitle: "VIBE")
+                                ThumbnailItem(title: title, subtitle: subtitle)
                             }
                         )
                         .foregroundColor(.black)

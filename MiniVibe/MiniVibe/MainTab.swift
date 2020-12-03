@@ -34,7 +34,7 @@ struct MainTab: View {
                     Image(systemName: "magnifyingglass")
                 }
             
-             Library()
+            Library()
                 .tabItem {
                     Image(systemName: "person.fill")
                 }
@@ -44,12 +44,15 @@ struct MainTab: View {
             contentFrame = value.last ?? .zero
         })
         .overlay(
-            PlayerPreview(coordinate: contentFrame)
+            PlayerPreview(coordinate: contentFrame,
+                          title: nowPlaying.title,
+                          artist: nowPlaying.artist)
                 .onTapGesture {
                     nowPlaying.isPlayerOpen.toggle()
                 }
                 .sheet(isPresented: $nowPlaying.isPlayerOpen) {
-                    PlayerView()
+                    PlayerView(title: nowPlaying.title,
+                               artist: nowPlaying.artist)
                 }
         )
     }

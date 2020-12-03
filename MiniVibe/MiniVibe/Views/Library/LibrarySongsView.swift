@@ -21,7 +21,7 @@ struct LibrarySongsView: View {
                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
                         VStack {
                             HStack {
-                                Text("9 songs")
+                                Text("50곡")
                                 Spacer()
                                 Button {
                                     
@@ -34,16 +34,18 @@ struct LibrarySongsView: View {
                                 }
                             }
                             ForEach(0..<50) { _ in
-                                TrackRowC(title: "너랑 나", artist: "아이유") {
+                                let title = "너랑 나"
+                                let artist = "아이유"
+                                TrackRowC(title: title, artist: artist) {
                                     isMenuOpen = true
+                                }
+                                .fullScreenCover(isPresented: $isMenuOpen) {
+                                    PlayerMenu(title: title, subtitle: artist)
                                 }
                             }
                         }
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)
-                }
-                .fullScreenCover(isPresented: $isMenuOpen) {
-                    PlayerMenu(title: "Among US", subtitle: "정혜일")
                 }
                 .padding(.bottom, 70)
             }

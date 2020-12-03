@@ -27,9 +27,11 @@ final class NowPlaying: ObservableObject {
     }
     
     @Published var trackId: Int?
-    @Published var isPlayerOpen: Bool = false
-    @Published var isNavigationActive: Bool = false
+    @Published var isPlayerOpen = false
+    @Published var isNavigationActive = false
     private(set) var destination: Destination?
+    let title = "Dynamite"
+    let artist = "방탄소년단"
     
     func setDestination(_ destination: Destination) -> Bool {
         guard !(isNavigationActive && self.destination == destination) else { return false }

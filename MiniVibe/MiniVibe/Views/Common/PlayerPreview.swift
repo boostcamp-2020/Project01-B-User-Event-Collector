@@ -9,8 +9,9 @@ import SwiftUI
 
 struct PlayerPreview: View {
     @State private var isPlaying = false
-    
     let coordinate: CGRect
+    let title: String
+    let artist: String
     private let height: CGFloat = 50
     private let edgeInset = EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
     
@@ -22,10 +23,10 @@ struct PlayerPreview: View {
                 .frame(height: height)
             
             VStack(alignment: .leading) {
-                Text("Love Poem")
+                Text(title)
                     .font(.system(size: 15))
                 
-                Text("아이유 (IU)")
+                Text(artist)
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
             }
@@ -67,7 +68,9 @@ struct PlayerPreview: View {
 struct PlayerPreview_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geometry in
-            PlayerPreview(coordinate: geometry.frame(in: .global))
+            PlayerPreview(coordinate: geometry.frame(in: .global),
+                          title: "Dynamite",
+                          artist: "방탄소년단")
         }
     }
 }
