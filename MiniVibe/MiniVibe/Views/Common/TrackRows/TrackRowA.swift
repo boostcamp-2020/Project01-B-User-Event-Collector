@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TrackRowA: View {
+    @Binding var isMenuOpen: Bool
+    
     let order: Int
     let title: String
     let artist: String
@@ -38,7 +40,7 @@ struct TrackRowA: View {
             Spacer()
             
             Button {
-                
+                isMenuOpen = true
             } label: {
                 Image(systemName: "ellipsis")
                     .foregroundColor(.black)
@@ -50,7 +52,7 @@ struct TrackRowA: View {
 
 struct TrackRow_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowA(order: 4, title: "Dynamite", artist: "방탄소년단")
+        TrackRowA(isMenuOpen: .constant(false), order: 4, title: "Dynamite", artist: "방탄소년단")
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

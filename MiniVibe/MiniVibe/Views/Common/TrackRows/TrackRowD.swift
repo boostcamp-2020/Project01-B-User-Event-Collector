@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TrackRowD: View {
+    @Binding var isMenuOpen: Bool
+    @Binding var activeSheet: ActiveSheet
+    
     let order: Int
     let title: String
     let artist: String
@@ -28,7 +31,10 @@ struct TrackRowD: View {
             Spacer()
             
             Button {
-                
+                activeSheet = .track
+                if activeSheet == .track {
+                    isMenuOpen = true
+                }
             } label: {
                 Image(systemName: "ellipsis")
                     .foregroundColor(.black)
@@ -41,7 +47,7 @@ struct TrackRowD: View {
 
 struct TrackRowD_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowD(order: 1, title: "작은 방 (Feat.아이유)", artist: "스윗소로우")
+        TrackRowD(isMenuOpen: .constant(false), activeSheet: .constant(.track), order: 1, title: "작은 방 (Feat.아이유)", artist: "스윗소로우")
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

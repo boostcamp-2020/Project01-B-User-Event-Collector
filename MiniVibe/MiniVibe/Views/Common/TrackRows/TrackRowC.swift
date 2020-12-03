@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TrackRowC: View {
+    @Binding var isMenuOpen: Bool
+    
     let title: String
     let artist: String
 
@@ -29,7 +31,7 @@ struct TrackRowC: View {
             Spacer()
             
             Button {
-                
+                isMenuOpen = true
             } label: {
                 Image(systemName: "ellipsis")
                     .foregroundColor(.black)
@@ -42,7 +44,7 @@ struct TrackRowC: View {
 
 struct TrackRowC_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowC(title: "작은 방 (Feat.아이유)", artist: "스윗소로우")
+        TrackRowC(isMenuOpen: .constant(false), title: "작은 방 (Feat.아이유)", artist: "스윗소로우")
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }
