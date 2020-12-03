@@ -57,6 +57,20 @@ const TrackDescriptionContainer = styled.div`
     justify-content: center;
 `;
 
+const TitleContainer = styled.div`
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 19px;
+    font-weight: 700;
+    color: #232323;
+    word-break: break-word;
+`;
+
+const ArtistContainer = styled.div`
+    font-size: 13px;
+    font-weight: 400;
+`;
+
 const LyricsContainer = styled.div`
     width: 450px;
     overflow: scroll;
@@ -84,8 +98,8 @@ const LyricModal = ({ lyrics, title, artist, src, visibility, onClickFunc } : Ly
                     <Image src = {src} variant = "lyricTrackInfo"/>
                 </TrackImageContainer>
                 <TrackDescriptionContainer>
-                    <Text>{title}</Text>
-                    <Text>{artist}</Text>
+                    <TitleContainer>{title}</TitleContainer>
+                    <ArtistContainer>{artist}</ArtistContainer>
                 </TrackDescriptionContainer>
             </TrackInfoContainer>
             <LyricsContainer>

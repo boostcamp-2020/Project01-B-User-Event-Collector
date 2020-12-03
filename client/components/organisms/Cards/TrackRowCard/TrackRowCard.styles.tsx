@@ -48,6 +48,9 @@ export const TrackMiddleElem = styled.div`
     width: 195px;
     max-width: 195px;
     padding: 15px 0 15px 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 `;
 
 const BackgroundImg = styled.div`
