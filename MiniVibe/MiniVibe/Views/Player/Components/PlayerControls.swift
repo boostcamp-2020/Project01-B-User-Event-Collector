@@ -12,10 +12,14 @@ struct PlayerControls: View {
     @Binding var isOpenMenu: Bool
     @State private var isFavorite = false
     @State private var isShuffle = false
+    let title: String
+    let artist: String
     
     var body: some View {
         VStack {
-            PlayerSliderView(title: "노래 제목", artist: "가수 이름", isOpenMenu: $isOpenMenu)
+            PlayerSliderView(title: title,
+                             artist: artist,
+                             isOpenMenu: $isOpenMenu)
                 .frame(height: 100)
             
             HStack {
@@ -67,6 +71,9 @@ struct PlayerControls: View {
 
 struct PlayerControls_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerControls(isPlaying: .constant(false), isOpenMenu: .constant(false))
+        PlayerControls(isPlaying: .constant(false),
+                       isOpenMenu: .constant(false),
+                       title: "Dynamite",
+                       artist: "방탄소년단")
     }
 }

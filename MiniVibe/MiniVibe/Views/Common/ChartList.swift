@@ -20,14 +20,16 @@ struct ChartList: View {
                     pinnedViews: [.sectionHeaders]
                 ) {
                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
+                        let title = "Dynamite"
+                        let artist = "방탄소년단"
                         ForEach(0..<50) { index in
-                            TrackRowA(isMenuOpen: $isMenuOpen, order: index + 1, title: "Dynamite", artist: "방탄소년단")
+                            TrackRowA(isMenuOpen: $isMenuOpen, order: index + 1, title: title, artist: artist)
+                        }
+                        .fullScreenCover(isPresented: $isMenuOpen) {
+                            PlayerMenu(title: title, subtitle: artist)
                         }
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)
-                }
-                .fullScreenCover(isPresented: $isMenuOpen) {
-                    PlayerMenu(title: "Among US", subtitle: "정혜일")
                 }
                 .navigationTitle(title)
                 .navigationBarTitleDisplayMode(.inline)

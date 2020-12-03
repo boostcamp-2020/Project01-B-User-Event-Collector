@@ -11,13 +11,18 @@ struct PlayerView: View {
     @EnvironmentObject var nowPlaying: NowPlaying
     @State private var isOpenMenu = false
     @State private var isOpenLyrics = false
+    let title: String
+    let artist: String
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 ScrollView {
                     VStack {
-                        Player(isOpenMenu: $isOpenMenu, isOpenLyrics: $isOpenLyrics)
+                        Player(isOpenMenu: $isOpenMenu,
+                               isOpenLyrics: $isOpenLyrics,
+                               title: title,
+                               artist: artist)
                             .frame(height: geometry.size.height)
                         
                         Divider()
@@ -32,7 +37,7 @@ struct PlayerView: View {
             }
             .animation(.easeInOut)
             .fullScreenCover(isPresented: $isOpenMenu) {
-                PlayerMenu(title: "Among US", subtitle: "정혜일")
+                PlayerMenu(title: title, subtitle: artist)
                     .environmentObject(nowPlaying)
             }
         }
@@ -41,6 +46,6 @@ struct PlayerView: View {
 
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerView()
+        PlayerView(title: "Dynamite", artist: "방탄소년단")
     }
 }

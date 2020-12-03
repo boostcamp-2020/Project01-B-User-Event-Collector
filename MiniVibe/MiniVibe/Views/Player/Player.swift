@@ -9,9 +9,10 @@ import SwiftUI
 
 struct Player: View {
     @State var isPlaying = false
-    
     @Binding var isOpenMenu: Bool
     @Binding var isOpenLyrics: Bool
+    let title: String
+    let artist: String
     
     var body: some View {
         VStack {
@@ -25,7 +26,9 @@ struct Player: View {
             Spacer()
             
             PlayerControls(isPlaying: $isPlaying,
-                           isOpenMenu: $isOpenMenu)
+                           isOpenMenu: $isOpenMenu,
+                           title: title,
+                           artist: artist)
                 
             Spacer()
             
@@ -70,6 +73,9 @@ struct Player: View {
 
 struct Player_Previews: PreviewProvider {
     static var previews: some View {
-        Player(isOpenMenu: .constant(false), isOpenLyrics: .constant(false))
+        Player(isOpenMenu: .constant(false),
+               isOpenLyrics: .constant(false),
+               title: "Dynamite",
+               artist: "방탄소년단")
     }
 }

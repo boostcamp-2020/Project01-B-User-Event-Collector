@@ -13,7 +13,6 @@ struct LibraryAlbumsView: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
-                // 정렬 부분은 구현을... 안할 것 같지만 일단 넣어는 놓음
                 HStack {
                     Text("3 albums")
                     Spacer()
@@ -31,10 +30,12 @@ struct LibraryAlbumsView: View {
                     columns: .init(repeating: .init(), count: 2)
                 ) {
                     ForEach(0..<10) { _ in
+                        let title = "요즘 이 곡"
+                        let subtitle = "VIBE"
                         NavigationLink(
-                            destination: AlbumView(title: "요즘 이 곡", subtitle: "VIBE"),
+                            destination: AlbumView(title: title, subtitle: subtitle),
                             label: {
-                                ThumbnailItem(title: "요즘 이 곡", subtitle: "VIBE")
+                                ThumbnailItem(title: title, subtitle: subtitle)
                             }
                         )
                         .foregroundColor(.black)
