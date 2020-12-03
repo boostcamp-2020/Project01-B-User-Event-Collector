@@ -46,6 +46,7 @@ struct ArtistView: View {
             .navigationTitle("방탄소년단")
             .navigationBarItems(trailing: trailingBarButtons)
             .navigationBarTitleDisplayMode(.inline)
+            .padding(.bottom, 70)
         }
     }
     
