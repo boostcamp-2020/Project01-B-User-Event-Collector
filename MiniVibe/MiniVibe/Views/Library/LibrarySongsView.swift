@@ -19,29 +19,27 @@ struct LibrarySongsView: View {
                     pinnedViews: [.sectionHeaders]
                 ) {
                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
-                        VStack {
-                            HStack {
-                                Text("50곡")
-                                Spacer()
-                                Button {
-                                    
-                                } label: {
-                                    HStack(spacing: 2) {
-                                        Image(systemName: "arrow.up.arrow.down")
-                                        Text("Recently Added")
-                                    }
-                                    .foregroundColor(.black)
+                        HStack {
+                            Text("50곡")
+                            Spacer()
+                            Button {
+                                
+                            } label: {
+                                HStack(spacing: 2) {
+                                    Image(systemName: "arrow.up.arrow.down")
+                                    Text("Recently Added")
                                 }
+                                .foregroundColor(.black)
                             }
-                            ForEach(0..<50) { _ in
-                                let title = "너랑 나"
-                                let artist = "아이유"
-                                TrackRowC(title: title, artist: artist) {
-                                    isMenuOpen = true
-                                }
-                                .fullScreenCover(isPresented: $isMenuOpen) {
-                                    PlayerMenu(title: title, subtitle: artist)
-                                }
+                        }
+                        ForEach(0..<50) { _ in
+                            let title = "너랑 나"
+                            let artist = "아이유"
+                            TrackRowC(title: title, artist: artist) {
+                                isMenuOpen = true
+                            }
+                            .fullScreenCover(isPresented: $isMenuOpen) {
+                                PlayerMenu(title: title, subtitle: artist)
                             }
                         }
                     }

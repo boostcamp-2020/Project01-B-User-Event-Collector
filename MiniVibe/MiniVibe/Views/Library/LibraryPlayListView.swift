@@ -17,47 +17,45 @@ struct LibraryPlayListView: View {
                     spacing: 20,
                     pinnedViews: [.sectionHeaders]
                 ) {
-                    VStack(spacing: 12) {
-                        HStack {
-                            Button {
-                                
-                            } label: {
-                                Image(systemName: "checkmark.circle")
-                            }
-                            .padding(4)
-                            Text("4개")
-                            Spacer()
-                            Button {
-                                
-                            } label: {
-                                HStack(spacing: 2) {
-                                    Image(systemName: "arrow.up.arrow.down")
-                                    Text("Recently Added")
-                                }
-                            }
+                    HStack {
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "checkmark.circle")
                         }
-                        .foregroundColor(.black)
-                        
-                        HStack(spacing: 24) {
-                            Image(systemName: "plus")
-                                .font(.system(size: 40, weight: .ultraLight))
-                                .frame(width: 80, height: 80)
-                                .background(Color.secondary.opacity(0.3))
-                            Text("새 플레이리스트 추가")
-                            Spacer()
-                        }
-                        
-                        ForEach(0..<10) { _ in
-                            let title = "보관함 플레이리스트"
-                            NavigationLink(
-                                destination: PlayListView(title: title, subtitle: "내가 만든 플레이리스트"),
-                                label: {
-                                    LibraryPlayListRow(title: title)
-                                })
+                        .padding(4)
+                        Text("4개")
+                        Spacer()
+                        Button {
+                            
+                        } label: {
+                            HStack(spacing: 2) {
+                                Image(systemName: "arrow.up.arrow.down")
+                                Text("Recently Added")
+                            }
                         }
                     }
-                    .padding(.horizontal, geometry.size.width * .paddingRatio)
+                    .foregroundColor(.black)
+                    
+                    HStack(spacing: 24) {
+                        Image(systemName: "plus")
+                            .font(.system(size: 40, weight: .ultraLight))
+                            .frame(width: 80, height: 80)
+                            .background(Color.secondary.opacity(0.3))
+                        Text("새 플레이리스트 추가")
+                        Spacer()
+                    }
+                    
+                    ForEach(0..<10) { _ in
+                        let title = "보관함 플레이리스트"
+                        NavigationLink(
+                            destination: PlayListView(title: title, subtitle: "내가 만든 플레이리스트"),
+                            label: {
+                                LibraryPlayListRow(title: title)
+                            })
+                    }
                 }
+                .padding(.horizontal, geometry.size.width * .paddingRatio)
                 .padding(.bottom, 70)
             }
         }
@@ -69,4 +67,3 @@ struct LibraryPlayListView_Previews: PreviewProvider {
         LibraryPlayListView()
     }
 }
-

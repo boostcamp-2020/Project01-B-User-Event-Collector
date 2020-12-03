@@ -18,46 +18,43 @@ struct LibraryArtistsView: View {
                     pinnedViews: [.sectionHeaders]
                 ) {
                     Section(header: boomAndChillButton(width: width)) {
-                        VStack(spacing: 12) {
-                            HStack {
-                                Button {
-                                    
-                                } label: {
-                                    Image(systemName: "checkmark.circle")
-                                }
-                                .padding(4)
-                                Text("10명")
-                                Spacer()
-                                Button {
-                                    
-                                } label: {
-                                    HStack(spacing: 2) {
-                                        Image(systemName: "arrow.up.arrow.down")
-                                        Text("Recently Added")
-                                    }
+                        HStack {
+                            Button {
+                                
+                            } label: {
+                                Image(systemName: "checkmark.circle")
+                            }
+                            .padding(4)
+                            Text("10명")
+                            Spacer()
+                            Button {
+                                
+                            } label: {
+                                HStack(spacing: 2) {
+                                    Image(systemName: "arrow.up.arrow.down")
+                                    Text("Recently Added")
                                 }
                             }
-                            .foregroundColor(.black)
-                            
-                            HStack {
-                                Image(systemName: "plus")
-                                    .font(.system(size: 30, weight: .ultraLight))
-                                    .frame(width: 60, height: 60)
-                                    .background(Color.secondary.opacity(0.3))
-                                    .clipShape(Circle())
-                                Text("아티스트 추가")
-                                    .foregroundColor(.black)
-                                Spacer()
-                            }
-
-                            
-                            ForEach(0..<10) { _ in
-                                NavigationLink(
-                                    destination: ArtistView(),
-                                    label: {
-                                        LibraryArtistRow(artist: "방탄소년단")
-                                    })
-                            }
+                        }
+                        .foregroundColor(.black)
+                        
+                        HStack {
+                            Image(systemName: "plus")
+                                .font(.system(size: 30, weight: .ultraLight))
+                                .frame(width: 60, height: 60)
+                                .background(Color.secondary.opacity(0.3))
+                                .clipShape(Circle())
+                            Text("아티스트 추가")
+                                .foregroundColor(.black)
+                            Spacer()
+                        }
+                        
+                        ForEach(0..<10) { _ in
+                            NavigationLink(
+                                destination: ArtistView(),
+                                label: {
+                                    LibraryArtistRow(artist: "방탄소년단")
+                                })
                         }
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)
