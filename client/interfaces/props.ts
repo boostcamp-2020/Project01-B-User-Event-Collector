@@ -76,3 +76,9 @@ export interface TrackCardProps {
     isDefault: boolean;
     isTrack: boolean;
 }
+
+export interface PlayerTrackCardProps {
+    src: string;
+    trackTitle: string;
+    artist: string;
+}

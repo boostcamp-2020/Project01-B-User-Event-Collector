@@ -11,7 +11,7 @@ const TrackCardContainer = styled.div<{ isDefault: boolean }>`
         props.isDefault &&
         css`
             padding: 8px 0;
-            height: 40px;
+            height: 56px;
         `}
 `;
 const TrackCard = ({ src, trackTitle, artist, imgVariant, isDefault, isTrack }: TrackCardProps) => (

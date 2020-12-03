@@ -3,19 +3,23 @@ import styled from 'styled-components';
 import IconButton from '@components/atoms/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import TrackCard from '@components/molecules/TrackCard';
+import { Play } from '@components/molecules/TrackPlayButton/TrackPlayButton.styles';
+import { PlayerTrackCardProps } from '@interfaces/props';
 
-interface PlayerTrackCardProps {
-    src: string;
-    trackTitle: string;
-    artist: string;
-}
-
-const PlayerTrackCardContainer = styled.div`
+const PlayerTrackCardContainer = styled.li`
     background-color: #141414;
     display: flex;
     width: 350px;
     justify-content: space-between;
-    padding: 0 12px 0 20px;
+    padding: 0 20px 0 12px;
+    &: hover ${Play} {
+        visibility: visible;
+        opacity: 60%;
+    }
+    &:hover {
+        background-color: #444;
+        cursor: move;
+    }
 `;
 const PlayerTrackCard = ({ src, trackTitle, artist }: PlayerTrackCardProps) => (
     <PlayerTrackCardContainer>
