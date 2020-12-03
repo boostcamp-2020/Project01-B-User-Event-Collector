@@ -1,11 +1,11 @@
-import React from "react";
-import Input from "./Input"
+import React from 'react';
+import Input from './Input';
 
 export default {
-  title: "Input",
-  component: Input,
-}
+    title: 'Atoms/Input',
+    component: Input,
+};
 
-export const Default = () => <Input />
+export const Default = () => <Input />;
 
-export const Search = () => <Input variant = "search"/>
+export const Search = () => <Input variant="search" />;

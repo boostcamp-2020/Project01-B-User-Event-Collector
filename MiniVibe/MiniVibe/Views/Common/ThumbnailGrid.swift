@@ -15,7 +15,13 @@ struct ThumbnailGrid: View {
                     columns: .init(repeating: .init(), count: 2)
                 ) {
                     ForEach(0..<10) { _ in
-                        ThumbnailItem()
+                        NavigationLink(
+                            destination: AlbumPlaylistView(title: "요즘 이 곡", subtitle: "VIBE"),
+                            label: {
+                                ThumbnailItem(title: "요즘 이 곡", subtitle: "VIBE")
+                            }
+                        )
+                        .foregroundColor(.black)
                     }
                 }
                 .padding(.horizontal, geometry.size.width * .paddingRatio)
@@ -27,6 +33,9 @@ struct ThumbnailGrid: View {
 
 struct ThumbnailGrid_Previews: PreviewProvider {
     static var previews: some View {
-        ThumbnailGrid()
+        NavigationView {
+            ThumbnailGrid()
+        }
+                
     }
 }

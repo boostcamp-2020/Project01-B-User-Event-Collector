@@ -15,11 +15,12 @@ struct ChartList: View {
             ScrollView {
                 LazyVGrid(
                     columns: [.init(.fixed(geometry.size.width))],
+                    spacing: 20,
                     pinnedViews: [.sectionHeaders]
                 ) {
                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
-                        ForEach(0..<100) { _ in
-                            TrackRow()
+                        ForEach(0..<50) { index in
+                            TrackRowA(order: index + 1, title: "Dynamite", artist: "방탄소년단")
                         }
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)

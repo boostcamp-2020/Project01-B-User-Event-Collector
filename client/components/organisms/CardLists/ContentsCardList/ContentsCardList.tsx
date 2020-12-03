@@ -3,7 +3,7 @@ import NewsCard from '@components/organisms/Cards/NewsCard';
 import MixtapeCard from '@components/organisms/Cards/MixtapeCard/MixtapeCard';
 import AlbumCard from '@components/organisms/Cards/AlbumCard/AlbumCard';
 import PlaylistCard from '@components/organisms/Cards/PlaylistCard/PlaylistCard';
-import LibraryArtistThumbnail from '@components/molecules/ArtistThumbnail/LibraryArtistThumbnail/LibraryArtistThumbnail';
+import NormalArtistThumbnail from '@components/molecules/ArtistThumbnail/NormalArtistThumbnail/NormalArtistThumbnail';
 import { NewsCardProps, MixtapeCardProps, LibraryArtistThumbnailProps, AlbumCardProps, PlaylistCardProps } from '@interfaces/props';
 import styled from 'styled-components';
 
@@ -42,7 +42,7 @@ const properCard = ({variant, items}: ContentsCardListProps) => {
             return (
                 items.map((item) => (
                     <Item>
-                        <LibraryArtistThumbnail {...(item as LibraryArtistThumbnailProps)} />
+                        <NormalArtistThumbnail {...(item as LibraryArtistThumbnailProps)} />
                     </Item>
                 ))
             )

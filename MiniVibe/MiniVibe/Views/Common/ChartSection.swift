@@ -20,7 +20,7 @@ struct ChartSection: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: .init(repeating: .init(.flexible(minimum: 60)), count: 5)) {
                     ForEach(0..<25) { _ in
-                        TrackRow()
+                        TrackRowB(title: "Dynamite", artist: "방탄소년단")
                     }
                     .frame(width: width * .sectionRatio)
                 }

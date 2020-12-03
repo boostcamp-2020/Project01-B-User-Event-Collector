@@ -24,17 +24,20 @@ struct Lyrics: View {
     }
     
     @State private var textSize = Size.one
+    @Binding var isOpenLyrics: Bool
     
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                LyricsTrackInfo()
+                LyricsTrackInfo {
+                    isOpenLyrics = false
+                }
                 
                 ZStack(alignment: .bottomTrailing) {
                     ScrollView {
                         Text(LyricsExample.cinderella)
                             .font(.system(size: CGFloat(15 * textSize.rawValue)))
-                            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
                     }
                     
@@ -96,7 +99,7 @@ struct Lyrics: View {
 
 struct Lyrics_Previews: PreviewProvider {
     static var previews: some View {
-        Lyrics()
+        Lyrics(isOpenLyrics: .constant(false))
     }
 }
 
@@ -110,6 +113,12 @@ struct BackgroundImage: View {
 }
 
 struct LyricsTrackInfo: View {
+    init(action: @escaping () -> Void) {
+        self.action = action
+    }
+    
+    private let action: () -> Void
+    
     var body: some View {
         HStack(spacing: 10) {
             Image("album")
@@ -127,7 +136,7 @@ struct LyricsTrackInfo: View {
             Spacer()
             
             Button {
-                
+                action()
             } label: { Image(systemName: "xmark") }
             .foregroundColor(.black)
         }

@@ -2,7 +2,7 @@ import React from 'react';
 import GenreCardList from './GenreCardList';
 
 export default {
-    title: 'GenreCardList',
+    title: 'Organisms/GenreCardList',
     component: GenreCardList,
 };
 

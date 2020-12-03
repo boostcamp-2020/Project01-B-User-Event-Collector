@@ -16,14 +16,14 @@ const HeaderContainter = styled.div`
 const TextContainer = styled.div`
     display: flex;
     flex-flow: column;
-    width: 50%;
+    width: 72%;
 `;
 
 const ButtonContainer = styled.div`
     display: flex;
-    width: 50%;
+    width: 28%;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     
 `;
 

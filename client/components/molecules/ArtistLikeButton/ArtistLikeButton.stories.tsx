@@ -1,9 +1,9 @@
-import React from "react";
-import ArtistLikeButton from "./ArtistLikeButton"
+import React from 'react';
+import ArtistLikeButton from './ArtistLikeButton';
 
 export default {
-  title: "ArtistLikeButton",
-  component: ArtistLikeButton,
-}
+    title: 'Molecules/ArtistLikeButton',
+    component: ArtistLikeButton,
+};
 
-export const Default = () => <ArtistLikeButton />
+export const Default = () => <ArtistLikeButton />;

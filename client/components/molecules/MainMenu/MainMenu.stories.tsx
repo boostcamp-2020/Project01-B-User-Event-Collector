@@ -1,9 +1,9 @@
-import React from "react";
-import MainMenu from "./MainMenu"
+import React from 'react';
+import MainMenu from './index';
 
 export default {
-  title: "MainMenu",
-  component: MainMenu,
+    title: 'Molecules/MainMenu',
+    component: MainMenu,
 };
 
-export const Default = () =>  <MainMenu />;
+export const Default = () => <MainMenu />;

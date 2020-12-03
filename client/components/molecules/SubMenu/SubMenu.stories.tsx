@@ -1,9 +1,9 @@
-import React from "react";
-import SubMenu from "./SubMenu"
+import React from 'react';
+import SubMenu from './index';
 
 export default {
-  title: "SubMenu",
-  component: SubMenu,
+    title: 'Molecules/SubMenu',
+    component: SubMenu,
 };
 
-export const Default = () =>  <SubMenu />;
+export const Default = () => <SubMenu />;

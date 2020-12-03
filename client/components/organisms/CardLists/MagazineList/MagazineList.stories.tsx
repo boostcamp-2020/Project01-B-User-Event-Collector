@@ -2,7 +2,7 @@ import React from 'react';
 import MagazineList from './MagazineList';
 import { MagazineSort } from '@interfaces/props';
 export default {
-    title: 'MagazineList',
+    title: 'Organisms/MagazineList',
     component: MagazineList,
 };
 const Magazinesdata = Array(9).fill({
