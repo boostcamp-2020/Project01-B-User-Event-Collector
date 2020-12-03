@@ -62,7 +62,7 @@ const DescriptionContainer = styled.div`
 
 
 interface DetailHeaderProps {
-    sort: 'album' | 'mixtape' | 'playlist',
+    sort: 'album' | 'mixtape' | 'playlist' | 'track',
     data: JSON
 }
 
@@ -78,7 +78,7 @@ return (
                     <Text variant = "tertiary">{data.title}</Text>
                 </TitleContainer>
                 {
-                sort === "album" ?
+                sort === "album" || 'track' ?
                 <ArtistContainer>
                     {data.artist}
                 </ArtistContainer> :
@@ -95,7 +95,8 @@ return (
                 </DescriptionContainer>
             </TextContainer>
             <ButtonContainer>
-                <HeaderButtonGroup />
+                {sort === "track" && <HeaderButtonGroup sort="track"/>}
+                {sort !== "track" && <HeaderButtonGroup />}
             </ButtonContainer>
         </DetailContainer>
     </HeaderContainter>

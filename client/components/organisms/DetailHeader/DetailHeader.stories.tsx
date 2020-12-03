@@ -68,8 +68,16 @@ const albumData = {
     `,
 };
 
+const trackData = {
+    src: 'https://musicmeta-phinf.pstatic.net/album/004/551/4551646.jpg?type=r480Fll&v=20200507115931',
+    title: '그냥',
+    artist: '이영지'
+}
+
 export const Mixtape = () => <DetailHeader sort="mixtape" data={mixtapeData} />;
 
 export const Playlist = () => <DetailHeader sort="playlist" data={playlistData} />;
 
 export const Album = () => <DetailHeader sort="album" data={albumData} />;
+
+export const Track = () => <DetailHeader sort="track" data={trackData} />;
