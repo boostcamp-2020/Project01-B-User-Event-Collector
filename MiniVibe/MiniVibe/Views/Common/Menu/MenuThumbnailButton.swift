@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct MenuThumbnailButton: View {
-    init(title: String, subtitle: String, action: @escaping () -> Void) {
+    init(title: String, subtitle: String? = nil, action: @escaping () -> Void) {
         self.title = title
         self.subtitle = subtitle
         self.action = action
     }
     
     private let title: String
-    private let subtitle: String
+    private let subtitle: String?
     private let action: () -> Void
     
     var body: some View {
@@ -28,8 +28,9 @@ struct MenuThumbnailButton: View {
                    spacing: 4) {
                 Text(title)
                     .font(.system(size: 18, weight: .bold))
-                Text(subtitle)
+                Text(subtitle ?? "")
                     .foregroundColor(.secondary)
+                    .opacity(subtitle == nil ? 0 : 1)
             }
             .lineLimit(1)
             .padding(.horizontal, 8)

@@ -27,7 +27,7 @@ struct Chart: View {
                         ChartSectionB(width: width, sectionTitle: "오늘 TOP 100")
                         ChartSectionB(width: width, sectionTitle: "국내 급상승 🔥")
                         ChartSectionB(width: width, sectionTitle: "VIBE 노래방 TOP 100 🎤")
-                        ThumbnailSection(width: width,
+                        AlbumSection(width: width,
                                          destination: ArtistAlbumGridView(
                                             title: "최신 앨범",
                                             categories: ["국내", "해외"]

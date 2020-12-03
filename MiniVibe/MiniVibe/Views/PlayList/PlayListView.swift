@@ -1,21 +1,20 @@
 //
-//  AlbumPlaylistView.swift
+//  PlayListView.swift
 //  MiniVibe
 //
-//  Created by Sue Cho on 2020/12/01.
+//  Created by TTOzzi on 2020/12/03.
 //
 
 import SwiftUI
 
-enum ActiveSheet {
-    case playlist
-    case track
-}
-
-struct AlbumPlaylistView: View {
-    @State private var activeSheet: ActiveSheet = .playlist
-    @State private var showSheet = false
+struct PlayListView: View {
+    enum ActiveSheet {
+        case playList
+        case track
+    }
     
+    @State private var activeSheet: ActiveSheet = .playList
+    @State private var showSheet = false
     let title: String
     let subtitle: String
     
@@ -34,47 +33,30 @@ struct AlbumPlaylistView: View {
                             pinnedViews: [.sectionHeaders]
                         ) {
                             Section(header: PlayAndShuffle(width: geometry.size.width)) {
-                                ForEach(0..<7) { index in
-                                    TrackRowD(isMenuOpen: $showSheet,
-                                              activeSheet: $activeSheet,
-                                              order: index + 1,
-                                              title: "Dynamite",
+                                ForEach(0..<20) { _ in
+                                    TrackRowC(title: "Dynamite",
                                               artist: "방탄소년단"
-                                    )
+                                    ) {
+                                        activeSheet = .track
+                                        showSheet = true
+                                    }
                                 }
                             }
                             .padding(.horizontal, geometry.size.width * .paddingRatio)
                         }
                     }
                     
-                    ThumbnailSection(
-                        width: width,
-                        destination: ThumbnailGridView(title: "아티스트의 다른 앨범"),
-                        title: "아티스트의 다른 앨범"
-                    )
-                    
                     ArtistSection(width: width,
-                                  sectionTitle: "비슷한 아티스트")
-                    
-                    ThumbnailSection(
-                        width: width,
-                        destination: ThumbnailList(title: "관련 플레이리스트", info: .playlist),
-                        title: "관련 플레이리스트"
-                    )
+                                  sectionTitle: "참여 아티스트")
                 }
             }
             .padding(.bottom, 70)
-            .navigationTitle("\(title)")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
                 trailing: trailingBarButtons
             )
             .fullScreenCover(isPresented: $showSheet) {
-                if activeSheet == .playlist {
-                    AlbumMenu(title: title, subtitle: subtitle)
-                } else {
-                    PlayerMenu(title: "Among US", subtitle: "정혜일")
-                }
+                PlayerMenu(title: title, subtitle: subtitle)
             }
         }
     }
@@ -94,13 +76,12 @@ struct AlbumPlaylistView: View {
             }
             
             Button {
-                activeSheet = .playlist
-                if activeSheet == .playlist {
-                    showSheet = true
-                }
+                activeSheet = .playList
+                showSheet = true
             } label: {
                 Image(systemName: "ellipsis")
             }
+            .padding(.vertical)
         }
         .font(.system(size: 17))
         .foregroundColor(.black)
@@ -108,10 +89,10 @@ struct AlbumPlaylistView: View {
     
 }
 
-struct AlbumPlaylistView_Previews: PreviewProvider {
+struct PlayListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AlbumPlaylistView(title: "여긴 앨범 이름이야", subtitle: "여긴 가수고")
+            PlayListView(title: "요즘이곡", subtitle: "VIBE")
         }
     }
 }

@@ -16,7 +16,7 @@ struct TrackRowA: View {
 
     var body: some View {
         HStack {
-            NavigationLink(destination: AlbumPlaylistView(title: title, subtitle: artist)) {
+            NavigationLink(destination: AlbumView(title: title, subtitle: artist)) {
                 Image("album")
                     .trackRowImageConfigure()
             }

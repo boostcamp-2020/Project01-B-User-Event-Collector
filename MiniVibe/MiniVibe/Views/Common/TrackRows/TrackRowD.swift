@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct TrackRowD: View {
-    @Binding var isMenuOpen: Bool
-    @Binding var activeSheet: ActiveSheet
-    
     let order: Int
     let title: String
     let artist: String
+    let menuButtonAction: () -> Void
 
     var body: some View {
         HStack {
@@ -31,10 +29,7 @@ struct TrackRowD: View {
             Spacer()
             
             Button {
-                activeSheet = .track
-                if activeSheet == .track {
-                    isMenuOpen = true
-                }
+                menuButtonAction()
             } label: {
                 Image(systemName: "ellipsis")
                     .foregroundColor(.black)
@@ -47,7 +42,7 @@ struct TrackRowD: View {
 
 struct TrackRowD_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowD(isMenuOpen: .constant(false), activeSheet: .constant(.track), order: 1, title: "작은 방 (Feat.아이유)", artist: "스윗소로우")
+        TrackRowD(order: 1, title: "작은 방 (Feat.아이유)", artist: "스윗소로우", menuButtonAction: { })
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

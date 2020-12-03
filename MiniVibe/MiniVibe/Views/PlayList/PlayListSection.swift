@@ -1,21 +1,23 @@
 //
-//  ThumbnailSection.swift
+//  PlayListSection.swift
 //  MiniVibe
 //
-//  Created by TTOzzi on 2020/11/24.
+//  Created by TTOzzi on 2020/12/03.
 //
 
 import SwiftUI
 
-struct ThumbnailSection<Dest: View>: View {
+struct PlayListSection<D: View>: View {
     @State private var isOpenMenu = false
     let width: CGFloat
-    let destination: Dest
     let title: String
+    let destination: D
     
     var body: some View {
         VStack(spacing: 8) {
-            SectionTitle(width: width, destination: destination, title: title)
+            SectionTitle(width: width,
+                         destination: destination,
+                         title: title)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {
@@ -23,7 +25,7 @@ struct ThumbnailSection<Dest: View>: View {
                         let title = "요즘 이 곡"
                         let subtitle = "VIBE"
                         NavigationLink(
-                            destination: AlbumPlaylistView(title: title, subtitle: subtitle),
+                            destination: PlayListView(title: title, subtitle: subtitle),
                             label: {
                                 ThumbnailItem(title: title, subtitle: subtitle)
                                     .frame(width: width * .thumbnailRatio)
@@ -38,9 +40,9 @@ struct ThumbnailSection<Dest: View>: View {
     }
 }
 
-struct ThumbnailSection_Previews: PreviewProvider {
+struct PlayListSection_Previews: PreviewProvider {
     static var previews: some View {
-        ThumbnailSection(width: 375, destination: Text("플레이리스트 목록"), title: "플레이리스트")
+        PlayListSection(width: 375, title: "플레이리스트", destination: Text("플레이리스트 더보기"))
             .previewLayout(.fixed(width: 375, height: 300))
     }
 }
