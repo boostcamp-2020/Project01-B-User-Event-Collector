@@ -13,7 +13,7 @@ struct LibraryArtistsView: View {
             let width = geometry.size.width
             ScrollView {
                 LazyVGrid(
-                    columns: [.init(.fixed(geometry.size.width))],
+                    columns: [.init()],
                     spacing: 20,
                     pinnedViews: [.sectionHeaders]
                 ) {
@@ -57,8 +57,9 @@ struct LibraryArtistsView: View {
                                 })
                         }
                     }
-                    .padding(.horizontal, geometry.size.width * .paddingRatio)
+
                 }
+                .padding(.horizontal, geometry.size.width * .paddingRatio)
                 .padding(.bottom, 70)
             }
         }
