@@ -41,6 +41,7 @@ struct StationList: View {
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)
                 }
+                .padding(.bottom, 20)
                 .navigationTitle("스테이션")
                 .navigationBarTitleDisplayMode(.inline)
             }

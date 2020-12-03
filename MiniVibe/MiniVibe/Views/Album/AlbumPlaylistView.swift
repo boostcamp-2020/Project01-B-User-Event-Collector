@@ -63,6 +63,7 @@ struct AlbumPlaylistView: View {
                     )
                 }
             }
+            .padding(.bottom, 70)
             .navigationTitle("\(title)")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(

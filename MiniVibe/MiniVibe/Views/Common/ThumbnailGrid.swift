@@ -25,7 +25,7 @@ struct ThumbnailGrid: View {
                     }
                 }
                 .padding(.horizontal, geometry.size.width * .paddingRatio)
-                .padding(.vertical)
+                .padding(.bottom, 70)
             }
         }
     }
