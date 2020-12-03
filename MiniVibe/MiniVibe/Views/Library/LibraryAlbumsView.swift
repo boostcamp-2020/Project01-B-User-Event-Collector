@@ -32,7 +32,7 @@ struct LibraryAlbumsView: View {
                 ) {
                     ForEach(0..<10) { _ in
                         NavigationLink(
-                            destination: AlbumView(title: "요즘 이 곡", subtitle: "VIBE"), //AlbumPlaylistView(title: "요즘 이 곡", subtitle: "VIBE"),
+                            destination: AlbumView(title: "요즘 이 곡", subtitle: "VIBE"),
                             label: {
                                 ThumbnailItem(title: "요즘 이 곡", subtitle: "VIBE")
                             }

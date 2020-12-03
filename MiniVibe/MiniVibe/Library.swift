@@ -46,7 +46,9 @@ struct Library: View {
                 Divider()
                 TabView(selection: $selection) {
                     LibrarySongsView().tag(0)
+                        .animation(nil)
                     LibrarySongsView().tag(1) // ArtistsView
+                        .animation(nil)
                     LibraryAlbumsView().tag(2)
                     LibraryAlbumsView().tag(3) // PlaylistsView
                 }
