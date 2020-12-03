@@ -27,7 +27,8 @@ const MagazineData = [
             trackTitle: 'Squre (2017)',
             artist: '백예린',
             albumTitle: 'Every letter I sent you.',
-            href: '/track/sample'
+            href: '/track/sample',
+            lyrics: '아직 없음ㅎ'
         },
         {
             albumImgSrc: 'https://musicmeta-phinf.pstatic.net/album/003/735/3735168.jpg?type=r480Fll&v=20200218131210',
@@ -35,7 +36,8 @@ const MagazineData = [
             trackTitle: 'Popo (How deep is our love?)',
             artist: '백예린',
             albumTitle: 'Every letter I sent you.',
-            href: '/track/sample'
+            href: '/track/sample',
+            lyrics: '아직 없음ㅎ'
         },
         {
             albumImgSrc: 'https://musicmeta-phinf.pstatic.net/album/003/735/3735168.jpg?type=r480Fll&v=20200218131210',
@@ -43,7 +45,8 @@ const MagazineData = [
             trackTitle: '0310',
             artist: '백예린',
             albumTitle: 'Every letter I sent you.',
-            href: '/track/sample'
+            href: '/track/sample',
+            lyrics: '아직 없음ㅎ'
         },
     ]
     },
@@ -58,7 +61,8 @@ const MagazineData = [
                 trackTitle: '바람이 분다',
                 artist: '이소라',
                 albumTitle: '눈썹달',
-                href: '/track/sample'
+                href: '/track/sample',
+                lyrics: '아직 없음ㅎ'
             },
             {
                 albumImgSrc: 'https://musicmeta-phinf.pstatic.net/album/000/029/29410.jpg?type=r480Fll&v=20191212155250',
@@ -66,7 +70,8 @@ const MagazineData = [
                 trackTitle: '이제 그만',
                 artist: '이소라',
                 albumTitle: '눈썹달',
-                href: '/track/sample'
+                href: '/track/sample',
+                lyrics: '아직 없음ㅎ'
             },
             {
                 albumImgSrc: 'https://musicmeta-phinf.pstatic.net/album/000/029/29410.jpg?type=r480Fll&v=20191212155250',
@@ -74,7 +79,8 @@ const MagazineData = [
                 trackTitle: '시시콜콜한 이야기',
                 artist: '이소라',
                 albumTitle: '눈썹달',
-                href: '/track/sample'
+                href: '/track/sample',
+                lyrics: '아직 없음ㅎ'
             },
         ]
     }

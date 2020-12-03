@@ -6,6 +6,7 @@ import CheckBox from '@components/atoms/CheckBox/CheckBox';
 import TrackPlayButton from '@components/molecules/TrackPlayButton';
 import DropDownMenu from '@components/molecules/DropdownMenu';
 import { TrackRowCardProps } from '@interfaces/props';
+import LyricModal from '@components/organisms/LyricModal/LyricModal';
 
 import {
     List,
@@ -33,15 +34,21 @@ const contentsDropDownMenu = [{
     content: '가사 보기'
 }]
 
-const TrackRowCard = ({ trackId, albumImgSrc, trackTitle, artist, albumTitle, href }: TrackRowCardProps) => {
+const TrackRowCard = ({ trackId, albumImgSrc, trackTitle, artist, albumTitle, href, lyrics }: TrackRowCardProps) => {
     const [isLiked, setIsLiked] = useState(true);
+    const [displayLyrics, setDisplayLyrics] = useState(false);
 
     const onClickUnlikeHandler = () => {
         setIsLiked(false);
     }
 
+    const onClickShowLyric = () => {
+        setDisplayLyrics(!displayLyrics);
+    }
+
     return (
     <List>
+        <LyricModal src={albumImgSrc} title={trackTitle} artist={artist} lyrics={lyrics} visibility = {displayLyrics} onClickFunc = {onClickShowLyric}/>
         <TrackLeft>
             <CheckBox id={trackId} />
             <TrackPlayBtnContainer>
@@ -69,7 +76,7 @@ const TrackRowCard = ({ trackId, albumImgSrc, trackTitle, artist, albumTitle, hr
                     <HiddenText>mp3구매</HiddenText>
                 </A>
             </Mp3>
-            <ShowLyricButton>
+            <ShowLyricButton onClick = { onClickShowLyric }>
                 <A href="#">
                     <HiddenText>가사보기</HiddenText>
                 </A>
