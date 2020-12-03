@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PlayerView: View {
+    @EnvironmentObject var nowPlaying: NowPlaying
     @State private var isOpenMenu = false
     @State private var isOpenLyrics = false
     
@@ -32,6 +33,7 @@ struct PlayerView: View {
             .animation(.easeInOut)
             .fullScreenCover(isPresented: $isOpenMenu) {
                 PlayerMenu(title: "Among US", subtitle: "정혜일")
+                    .environmentObject(nowPlaying)
             }
         }
     }
