@@ -5,7 +5,11 @@ import PlayerTrackCard from '@components/organisms/Cards/PlayerTrackCard';
 
 const ListContainer = styled.ul`
     overflow-y: auto;
-    overflow-x: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 90px;
+    right: 0;
+    z-index: 2;
 `;
 const PlayerTrackList = ({ items }: { items: PlayerTrackCardProps[] }) => (
     <ListContainer>
