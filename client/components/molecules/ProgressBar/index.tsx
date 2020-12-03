@@ -1,6 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Slider } from '@material-ui/core';
+import { convertToHHSS } from '@utils/time';
 
 const PlayerSlider = withStyles({
     root: {
@@ -34,12 +35,6 @@ const PlayerSlider = withStyles({
     },
 })(Slider);
 
-const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60).toString();
-    const seconds = (time % 60).toString();
-    return `${minutes.padStart(2, '0')}:${seconds.padStart(2, '0')}`;
-};
-
 interface ProgressBarProps {
     progress?: number;
     totalPlaytime: number;
@@ -52,7 +47,7 @@ const ProgressBar = ({ progress, totalPlaytime }: ProgressBarProps) => {
                 valueLabelDisplay="auto"
                 aria-label="player slider"
                 defaultValue={progress ? progress : 0}
-                scale={(x) => formatTime(Math.floor((totalPlaytime * x) / 100))}
+                scale={(x) => convertToHHSS(Math.floor((totalPlaytime * x) / 100))}
             />
         </>
     );
