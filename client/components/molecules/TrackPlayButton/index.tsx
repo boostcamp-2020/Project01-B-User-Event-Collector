@@ -2,9 +2,13 @@ import React from 'react';
 import Image from '@components/atoms/Image/Image';
 import { ButtonContainer, Play } from './TrackPlayButton.styles';
 
-const TrackPlayButton = ({ src }: { src: string }) => (
+interface TrackPlayButtonProps {
+    src: string;
+    imgVariant?: 'trackRowCard' | 'trackInfo';
+}
+const TrackPlayButton = ({ src, imgVariant }: TrackPlayButtonProps) => (
     <ButtonContainer>
-        <Image variant="trackRowCard" src={src} />
+        <Image variant={imgVariant} src={src} />
         <Play>
             {
                 // TODO : svg 파일 분리

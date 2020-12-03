@@ -54,8 +54,8 @@ export interface NormalArtistThumbnailProps {
 export interface ChartCardProps {
     src: string;
     rank: number;
-    singer: string;
-    songTitle: string;
+    artist: string;
+    trackTitle: string;
 }
 
 export interface TrackRowCardProps {
@@ -64,4 +64,13 @@ export interface TrackRowCardProps {
     trackTitle: string, 
     artist : string, 
     albumTitle: string
+}
+
+export interface TrackCardProps {
+    src: string;
+    trackTitle: string;
+    artist: string;
+    imgVariant: 'trackRowCard' | 'trackInfo';
+    isDefault: boolean;
+    isTrack: boolean;
 }
