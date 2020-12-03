@@ -64,6 +64,7 @@ struct AlbumPlaylistView: View {
                     title: "관련 플레이리스트"
                 )
             }
+            .padding(.bottom, 70)
             .fullScreenCover(isPresented: $showSheet) {
                 if activeSheet == .playlist {
                     AlbumMenu(title: title, subtitle: subtitle)

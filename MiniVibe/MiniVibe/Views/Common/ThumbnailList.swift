@@ -32,7 +32,8 @@ struct ThumbnailList: View {
                     Text(title),
                     displayMode: .inline
                 )
-                .padding(geometry.size.width * .paddingRatio)
+                .padding(.horizontal, geometry.size.width * .paddingRatio)
+                .padding(.bottom, 70)
             }
         }
     }

@@ -41,6 +41,7 @@ struct ChartList: View {
                             .foregroundColor(.black)
                     }
                 )
+                .padding(.bottom, 70)
             }
         }
     }
