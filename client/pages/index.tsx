@@ -5,7 +5,7 @@ import CardListContainer from "@components/organisms/CardListContainer";
 import { MagazineSort } from '@interfaces/props';
 import MagazineCardList from '@components/organisms/CardLists/MagazineList/MagazineList';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
-
+import Link from 'next/link';
 
 const mainMagazineData = 
 {
@@ -97,7 +97,7 @@ const Home = () => {
     return (
         <TodayContainer>
             <MainMagazineContainer>
-                <MainMagazineCard {...mainMagazineData} />
+                <Link href='/magazines/main'><a><MainMagazineCard {...mainMagazineData} /></a></Link>
             </MainMagazineContainer>
             <PublicContentsContainer>
                 <ContentsContainer>
