@@ -2,7 +2,7 @@ import React from 'react';
 import TrackRowList from './index';
 
 export default {
-    title: 'TrackRowList',
+    title: 'Organisms/TrackRowList',
     component: TrackRowList,
 };
 const TrackDatas = Array(20).fill({

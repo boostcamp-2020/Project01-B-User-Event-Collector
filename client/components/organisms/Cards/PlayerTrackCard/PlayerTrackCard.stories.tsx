@@ -2,7 +2,7 @@ import React from 'react';
 import PlayerTrackCard from '.';
 
 export default {
-    title: 'PlayerTrackCard',
+    title: 'Organisms/PlayerTrackCard',
     component: PlayerTrackCard,
 };
 

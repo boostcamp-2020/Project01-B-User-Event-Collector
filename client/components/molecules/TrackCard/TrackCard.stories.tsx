@@ -2,7 +2,7 @@ import React from 'react';
 import TrackCard from '.';
 
 export default {
-    title: 'TrackCard',
+    title: 'Molecules/TrackCard',
     component: TrackCard,
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import TrackInfo from '.';
 
 export default {
-    title: 'TrackInfo',
+    title: 'Molecules/TrackInfo',
     component: TrackInfo,
 };
 const TRACKTITLE = 'VVS (Feat. JUSTHIS) (Prod. GroovyRoom)';
