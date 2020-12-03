@@ -24,47 +24,51 @@ struct AlbumPlaylistView: View {
             let width: CGFloat = geometry.size.width
             
             ScrollView {
-                PlaylistAlbumInfo(title: title, subtitle: subtitle)
-                    .padding(.vertical, 10)
-                
-                LazyVGrid(
-                    columns: [.init(.fixed(geometry.size.width))],
-                    pinnedViews: [.sectionHeaders]
-                ) {
-                    Section(header: PlayAndShuffle(width: geometry.size.width)) {
-                        ForEach(0..<7) { index in
-                            TrackRowD(isMenuOpen: $showSheet,
-                                      activeSheet: $activeSheet,
-                                      order: index + 1,
-                                      title: "Dynamite",
-                                      artist: "방탄소년단"
-                            )
+                VStack(spacing: 36) {
+                    VStack {
+                        PlaylistAlbumInfo(title: title, subtitle: subtitle)
+                            .padding(.vertical, 10)
+                        
+                        LazyVGrid(
+                            columns: [.init(.fixed(geometry.size.width))],
+                            pinnedViews: [.sectionHeaders]
+                        ) {
+                            Section(header: PlayAndShuffle(width: geometry.size.width)) {
+                                ForEach(0..<7) { index in
+                                    TrackRowD(isMenuOpen: $showSheet,
+                                              activeSheet: $activeSheet,
+                                              order: index + 1,
+                                              title: "Dynamite",
+                                              artist: "방탄소년단"
+                                    )
+                                }
+                            }
+                            .padding(.horizontal, geometry.size.width * .paddingRatio)
                         }
                     }
-                    .padding(.horizontal, geometry.size.width * .paddingRatio)
+                    
+                    ThumbnailSection(
+                        width: width,
+                        destination: ThumbnailGridView(title: "아티스트의 다른 앨범"),
+                        title: "아티스트의 다른 앨범"
+                    )
+                    
+                    ArtistSection(width: width,
+                                  sectionTitle: "비슷한 아티스트")
+                    
+                    ThumbnailSection(
+                        width: width,
+                        destination: ThumbnailList(title: "관련 플레이리스트", info: .playlist),
+                        title: "관련 플레이리스트"
+                    )
                 }
-                .navigationTitle("\(title)")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(
-                    trailing: trailingBarButtons
-                )
-                
-                ThumbnailSection(
-                    width: width,
-                    destination: ThumbnailGridView(title: "아티스트의 다른 앨범"),
-                    title: "아티스트의 다른 앨범"
-                )
-                
-                ArtistSection(width: width,
-                              sectionTitle: "비슷한 아티스트")
-                
-                ThumbnailSection(
-                    width: width,
-                    destination: ThumbnailList(title: "관련 플레이리스트", info: .playlist),
-                    title: "관련 플레이리스트"
-                )
             }
             .padding(.bottom, 70)
+            .navigationTitle("\(title)")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(
+                trailing: trailingBarButtons
+            )
             .fullScreenCover(isPresented: $showSheet) {
                 if activeSheet == .playlist {
                     AlbumMenu(title: title, subtitle: subtitle)
