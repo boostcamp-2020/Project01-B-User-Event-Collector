@@ -4,9 +4,9 @@ import LibraryCardList from '@components/organisms/Library/LibraryCardList/Libra
 
 const PlaylistData = Array(9).fill({
     src: 'https://music-phinf.pstatic.net/20200504_183/1588567824216rHHs6_PNG/VIBE_%B0%F8%C5%EB_VibeAndChill.png',
-    href: 'localhost:3000',
+    href: '/playlist/sample',
     title: 'VIBE 추천 플레이리스트',
-    description: 'VIBE'
+    description: 'VIBE',
 });
 
 const LibraryContainer = styled.div`
@@ -23,22 +23,20 @@ const LibraryHeaderContainer = styled.div`
     margin: 50px 0 30px 0;
 `;
 
-const LibraryContentsContainer = styled.div`
-
-`;
+const LibraryContentsContainer = styled.div``;
 
 const PlaylistLibrary = () => {
     return (
         <LibraryContainer>
             <LibraryHeaderContainer>
-                <LibraryHeader sort = "playlist"/>
+                <LibraryHeader sort="playlist" />
             </LibraryHeaderContainer>
             <LibraryContentsContainer>
                 <LibraryCardList variant="playlist" items={PlaylistData} />
             </LibraryContentsContainer>
         </LibraryContainer>
-    )
-}
+    );
+};
 
 /*export const getServerSideProps = wrapper.getServerSideProps((context) => {
     constext.store.dispatch({
