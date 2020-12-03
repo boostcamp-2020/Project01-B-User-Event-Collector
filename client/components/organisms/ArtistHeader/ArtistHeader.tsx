@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 import Image from '@components/atoms/Image/Image';
 import Heart from '@components/atoms/Heart/Heart';
 import DropDownMenu from '@components/molecules/DropdownMenu';
@@ -47,11 +47,14 @@ const BlankDiv = styled.div`
     width: 20px;
 `;
 
-const contentsDropDownMenu = [{
-    content: '좋아요 취소'
-}, {
-    content: '공유'
-}]
+const contentsDropDownMenu = [
+    {
+        content: '좋아요 취소',
+    },
+    {
+        content: '공유',
+    },
+];
 
 interface ArtistHeaderProps {
     src: string;
@@ -62,7 +65,7 @@ interface ArtistHeaderProps {
 const ArtistHeader = ({ src, name, genre }: ArtistHeaderProps) => (
     <HeaderContainter>
         <ThumbnailContainer>
-            <Image src = {src} variant= "largeArtist"/>
+            <Image src={src} variant="largeArtist" />
         </ThumbnailContainer>
         <ContentsContainer>
             <TextContainer>
@@ -72,10 +75,7 @@ const ArtistHeader = ({ src, name, genre }: ArtistHeaderProps) => (
             <ButtonContainer>
                 <Heart isSelected={true} />
                 <BlankDiv></BlankDiv>
-                <StyledDropDown 
-                id = "artist" 
-                control = {MoreHorizIcon} 
-                menuItems = {contentsDropDownMenu}/>
+                <StyledDropDown id="artist" control={MoreHorizIcon} menuItems={contentsDropDownMenu} />
             </ButtonContainer>
         </ContentsContainer>
     </HeaderContainter>

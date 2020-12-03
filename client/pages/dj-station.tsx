@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 import StationCardList from '../components/organisms/CardLists/StationCardList/StationCardList';
 
 const StationCardsData = Array(20).fill({
@@ -51,7 +51,7 @@ const DJStation = () => {
     return (
         <Container>
             <HeaderContainer>
-                <Text variant = "tertiary">DJ 스테이션</Text>
+                <Text variant="tertiary">DJ 스테이션</Text>
             </HeaderContainer>
             <ContentsContainer>
                 <StationContainer>
@@ -72,8 +72,8 @@ const DJStation = () => {
                 </StationContainer>
             </ContentsContainer>
         </Container>
-    )
-}
+    );
+};
 
 /*export const getServerSideProps = wrapper.getServerSideProps((context) => {
     constext.store.dispatch({
