@@ -25,7 +25,7 @@ struct Library: View {
                                                  for: .normal)
     }
     
-    private let categories = ["Songs", "Artists", "Albums", "Playlists"]
+    private let categories = ["노래", "앨범", "플레이리스트", "아티스트"]
     @State private var selection = 0
     
     var body: some View {
@@ -47,10 +47,10 @@ struct Library: View {
                 TabView(selection: $selection) {
                     LibrarySongsView().tag(0)
                         .animation(nil)
-                    LibrarySongsView().tag(1) // ArtistsView
+                    LibraryAlbumsView().tag(1)
+                    LibraryAlbumsView().tag(2) // PlaylistsView
+                    LibraryArtistsView().tag(3)
                         .animation(nil)
-                    LibraryAlbumsView().tag(2)
-                    LibraryAlbumsView().tag(3) // PlaylistsView
                 }
                 .tabViewStyle(PageTabViewStyle())
             }

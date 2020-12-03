@@ -13,7 +13,6 @@ struct LibraryAlbumsView: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
-                // 정렬 부분은 구현을... 안할 것 같지만 일단 넣어는 놓음
                 HStack {
                     Text("3 albums")
                     Spacer()
