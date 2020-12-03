@@ -34,10 +34,9 @@ struct LibrarySongsView: View {
                             }
                         }
                         ForEach(0..<50) { _ in
-                            TrackRowC(isMenuOpen: $isMenuOpen,
-                                      title: "너랑 나",
-                                      artist: "아이유"
-                            )
+                            TrackRowC(title: "너랑 나", artist: "아이유") {
+                                isMenuOpen = true
+                            }
                         }
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)

@@ -29,24 +29,31 @@ struct Library: View {
     @State private var selection = 0
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Picker("Library", selection: $selection) {
-                ForEach(0..<categories.count) {
-                    Text(categories[$0])
+        GeometryReader { geometry in
+            VStack(alignment: .leading) {
+                Text("보관함")
+                    .foregroundColor(.black)
+                    .font(.title)
+                    .fontWeight(.heavy)
+                    .padding(geometry.size.width * .paddingRatio)
+                Picker("Library", selection: $selection) {
+                    ForEach(0..<categories.count) {
+                        Text(categories[$0])
+                    }
                 }
+                .pickerStyle(SegmentedPickerStyle())
+                .frame(height: 50)
+                Divider()
+                TabView(selection: $selection) {
+                    LibrarySongsView().tag(0)
+                    LibrarySongsView().tag(1) // ArtistsView
+                    LibraryAlbumsView().tag(2)
+                    LibraryAlbumsView().tag(3) // PlaylistsView
+                }
+                .tabViewStyle(PageTabViewStyle())
             }
-            .pickerStyle(SegmentedPickerStyle())
-            .frame(height: 50)
-            Divider()
-            TabView(selection: $selection) {
-                LibrarySongsView().tag(0)
-                LibrarySongsView().tag(1) // ArtistsView
-                LibraryAlbumsView().tag(2)
-                LibraryAlbumsView().tag(3) // PlaylistsView
-            }
-            .tabViewStyle(PageTabViewStyle())
+            .animation(.easeInOut)
         }
-        .animation(.easeInOut)
     }
 }
 
