@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import TrackCard from '@components/molecules/TrackCard';
-import { TrackCardProps } from '@interfaces/props';
+import { PlayerTrackCardProps } from '@interfaces/props';
+import PlayerTrackCard from '@components/organisms/Cards/PlayerTrackCard';
 
 const ListContainer = styled.ul`
     background-color: #141414;
 `;
-const PlayerTrackList = ({ items }: { items: TrackCardProps[] }) => (
+const PlayerTrackList = ({ items }: { items: PlayerTrackCardProps[] }) => (
     <ListContainer>
         {items.map((item) => (
-            <TrackCard {...(item as TrackCardProps)} />
+            <PlayerTrackCard {...(item as PlayerTrackCardProps)} />
         ))}
     </ListContainer>
 );

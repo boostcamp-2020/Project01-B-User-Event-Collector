@@ -3,12 +3,7 @@ import styled from 'styled-components';
 import IconButton from '@components/atoms/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import TrackCard from '@components/molecules/TrackCard';
-
-interface PlayerTrackCardProps {
-    src: string;
-    trackTitle: string;
-    artist: string;
-}
+import { PlayerTrackCardProps } from '@interfaces/props';
 
 const PlayerTrackCardContainer = styled.div`
     background-color: #141414;
