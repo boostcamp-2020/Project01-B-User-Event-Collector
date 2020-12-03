@@ -6,6 +6,4 @@ export default {
     component: PlayControllerButtons,
 };
 
-export const Default = () => <PlayControllerButtons playing={false} />;
-
-export const Playing = () => <PlayControllerButtons playing={true} />;
+export const Default = () => <PlayControllerButtons />;

@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
@@ -8,9 +8,9 @@ import PauseIcon from '@material-ui/icons/Pause';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 
-interface PlayControllerProps {
-    playing: boolean;
-}
+// interface PlayControllerProps {
+//     playing: boolean;
+// }
 const Container = styled.div`
     display: flex;
     justify-content: center;
@@ -44,7 +44,9 @@ const SubIconWrapper = styled.button`
     color: grey;
 `;
 
-const PlayControllerButtons = ({ playing }: PlayControllerProps) => {
+const PlayControllerButtons = () => {
+    const [playing, setPlaying] = useState(false);
+
     return (
         <Container>
             <SubIconWrapper>
@@ -53,7 +55,7 @@ const PlayControllerButtons = ({ playing }: PlayControllerProps) => {
             <SkipIconWrapper>
                 <SkipPreviousIcon style={{ fontSize: '35px' }} />
             </SkipIconWrapper>
-            <PlayIconWrapper>
+            <PlayIconWrapper onClick={() => setPlaying(!playing)}>
                 {playing ? <PauseIcon style={{ fontSize: '55px' }} /> : <PlayArrowIcon style={{ fontSize: '55px' }} />}
             </PlayIconWrapper>
             <SkipIconWrapper>

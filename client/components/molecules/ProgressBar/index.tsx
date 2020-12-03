@@ -6,6 +6,7 @@ const PlayerSlider = withStyles({
     root: {
         color: '#ff0050',
         height: 8,
+        padding: 0,
     },
     thumb: {
         height: 0,
