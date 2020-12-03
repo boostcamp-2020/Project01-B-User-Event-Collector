@@ -73,6 +73,7 @@
 		80A52145257903550051A925 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A52144257903540051A925 /* Library.swift */; };
 		80A5214A257918FF0051A925 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A52149257918FF0051A925 /* SearchBar.swift */; };
 		80A52151257927810051A925 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A52150257927810051A925 /* Search.swift */; };
+		80A5215C25793A3E0051A925 /* View+dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A5215B25793A3E0051A925 /* View+dismissKeyboard.swift */; };
 		80ABC1732574BF11003D4666 /* MiniVibeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC1722574BF11003D4666 /* MiniVibeTests.swift */; };
 		80ABC1832574C1FC003D4666 /* NetworkError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC1822574C1FC003D4666 /* NetworkError+Equatable.swift */; };
 		80ABC18D2574DFDE003D4666 /* UpNextList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ABC18C2574DFDE003D4666 /* UpNextList.swift */; };
@@ -173,6 +174,7 @@
 		80A52144257903540051A925 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		80A52149257918FF0051A925 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		80A52150257927810051A925 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		80A5215B25793A3E0051A925 /* View+dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+dismissKeyboard.swift"; sourceTree = "<group>"; };
 		80ABC1702574BF11003D4666 /* MiniVibeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniVibeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80ABC1722574BF11003D4666 /* MiniVibeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeTests.swift; sourceTree = "<group>"; };
 		80ABC1742574BF11003D4666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			children = (
 				4478F716256E817100755656 /* CGFloat+Constant.swift */,
 				80DA951C25779F52008C9DFF /* Image+TrackRowConfigure.swift */,
+				80A5215B25793A3E0051A925 /* View+dismissKeyboard.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 				44F9797F256D069600C9C224 /* RecommandedPlayListSection.swift in Sources */,
 				4478F723256E8B2B00755656 /* PlayAndShuffle.swift in Sources */,
 				44F97976256CFBA900C9C224 /* AlbumSection.swift in Sources */,
+				80A5215C25793A3E0051A925 /* View+dismissKeyboard.swift in Sources */,
 				80FA442F25763DE00092D25D /* AlbumView.swift in Sources */,
 				440D023225779A7F00477A7D /* AlbumMenu.swift in Sources */,
 				80ABC18D2574DFDE003D4666 /* UpNextList.swift in Sources */,

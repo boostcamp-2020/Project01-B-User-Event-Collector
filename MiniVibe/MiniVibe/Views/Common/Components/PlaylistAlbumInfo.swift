@@ -121,4 +121,3 @@ struct AlbumInfoExample {
     음악 작업 하다가 갑자기 슬퍼서 만들었습니다.
     """
 }
-

@@ -12,7 +12,9 @@ struct PlayAndShuffle: View {
     
     var body: some View {
         HStack(spacing: width * .spacingRatio) {
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            Button {
+                
+            } label: {
                 HStack {
                     Image(systemName: "play.fill")
                     Text("PLAY")
@@ -20,11 +22,13 @@ struct PlayAndShuffle: View {
                 .padding()
                 .foregroundColor(.black)
                 .frame(width: width * .thumbnailRatio)
-            })
+            }
             .background(Color.secondary.opacity(0.15))
             .clipShape(RoundedRectangle(cornerRadius: 5))
             
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            Button {
+                
+            } label: {
                 HStack {
                     Image(systemName: "shuffle")
                     Text("SHUFFLE")
@@ -32,7 +36,7 @@ struct PlayAndShuffle: View {
                 .padding()
                 .foregroundColor(.black)
                 .frame(width: width * .thumbnailRatio)
-            })
+            }
             .background(Color.secondary.opacity(0.15))
             .clipShape(RoundedRectangle(cornerRadius: 5))
         }

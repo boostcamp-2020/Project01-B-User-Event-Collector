@@ -64,7 +64,6 @@ struct PlayerSlider: View {
     }
 }
 
-
 struct PlayerSlider_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geometry in
