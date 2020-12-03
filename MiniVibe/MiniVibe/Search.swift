@@ -20,6 +20,10 @@ struct Search: View {
                     .padding(geometry.size.width * .paddingRatio)
                 
                 SearchBar(searchedText: $searchedText, width: geometry.size.width)
+                
+                // News
+                
+                GenreSection()
             }
         }
     }
