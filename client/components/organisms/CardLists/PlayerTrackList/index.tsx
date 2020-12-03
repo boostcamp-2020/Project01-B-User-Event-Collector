@@ -4,7 +4,8 @@ import { PlayerTrackCardProps } from '@interfaces/props';
 import PlayerTrackCard from '@components/organisms/Cards/PlayerTrackCard';
 
 const ListContainer = styled.ul`
-    background-color: #141414;
+    overflow-y: auto;
+    overflow-x: hidden;
 `;
 const PlayerTrackList = ({ items }: { items: PlayerTrackCardProps[] }) => (
     <ListContainer>
