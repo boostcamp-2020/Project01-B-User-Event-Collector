@@ -1,5 +1,8 @@
+import React from 'react';
 import styled from 'styled-components';
 import Text from '@components/atoms/Text';
+import CardListContainer from '@components/organisms/CardListContainer';
+import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 
 const Container = styled.div`
     padding-left: 225px;
@@ -7,6 +10,13 @@ const Container = styled.div`
 const Header = styled.header``;
 const Contents = styled.div``;
 const ContentsContainer = styled.div``;
+
+const Albumdata = Array(9).fill({
+    src: 'https://musicmeta-phinf.pstatic.net/album/005/102/5102890.jpg?type=r360Fll&v=20201123123608',
+    href: 'localhost:3000',
+    title: 'Blue Skies',
+    artist: 'Birdy',
+});
 
 const GenreData = {
     id: 1,
@@ -27,9 +37,9 @@ const Genre = () => (
         </Header>
         <Contents>
             <ContentsContainer>
-                {
-                    // 최신 앨범
-                }
+                <CardListContainer title={`${GenreData.title} 최신 앨범`} href="#">
+                    <ContentsCardList variant="album" items={Albumdata}></ContentsCardList>
+                </CardListContainer>
             </ContentsContainer>
             <ContentsContainer>
                 {
