@@ -9,10 +9,18 @@ import PlaylistCardList from '@components/organisms/CardLists/PlaylistCardList';
 const Container = styled.div`
     padding-left: 225px;
     padding-bottom: 90px;
+    min-width: 1284px;
 `;
-const Header = styled.header``;
+const Header = styled.header`
+    margin: 60px auto 30px auto;
+    width: 960px;
+`;
 const Contents = styled.div``;
-const ContentsContainer = styled.div``;
+const ContentsContainer = styled.div`
+    & + & {
+        border-top: 1px solid #ececec;
+    }
+`;
 
 const Albumdata = Array(9).fill({
     src: 'https://musicmeta-phinf.pstatic.net/album/005/102/5102890.jpg?type=r360Fll&v=20201123123608',
