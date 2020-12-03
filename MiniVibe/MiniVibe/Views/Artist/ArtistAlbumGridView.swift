@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ArtistAlbumGridView: View {
-    init(title: String) {
+    init(title: String, categories: [String]) {
         self.title = title
+        self.categories = categories
         UISegmentedControl.appearance().selectedSegmentTintColor = .clear
         UISegmentedControl.appearance().backgroundColor = .clear
         UISegmentedControl.appearance().setBackgroundImage(UIImage(),
@@ -30,7 +31,7 @@ struct ArtistAlbumGridView: View {
                                     for: .normal)
     }
     
-    private let categories = ["전체", "정규", "비정규", "참여"]
+    private let categories: [String]
     let title: String
     @State private var selection = 0
     
@@ -42,7 +43,7 @@ struct ArtistAlbumGridView: View {
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
-            .frame(width: 200, height: 30)
+            .frame(width: 50 * CGFloat(categories.count), height: 30)
             
             TabView(selection: $selection) {
                 ForEach(0..<categories.count) { _ in
@@ -60,7 +61,7 @@ struct ArtistAlbumGridView: View {
 struct ArtistAlbumGrid_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ArtistAlbumGridView(title: "앨범")
+            ArtistAlbumGridView(title: "앨범", categories: ["전체", "정규", "비정규", "참여"])
         }
     }
 }
