@@ -1,7 +1,7 @@
 import React from 'react';
 import A from '@components/atoms/A/A';
 import HiddenText from '@components/atoms/Text/HiddenText';
-import CheckBox from '@components/atoms/CheckBox/CheckBox';
+import CheckBox from '@components/atoms/CheckBox';
 import TrackPlayButton from '@components/molecules/TrackPlayButton';
 
 import {
