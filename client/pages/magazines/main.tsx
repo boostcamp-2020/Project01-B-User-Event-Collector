@@ -10,77 +10,63 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
 const MagazineHeaderData = {
     label: 'GENRE',
-    title: "나만 없어 그 한정판 LP 레코드",
-    description: `플로피 디스크 모양의 저장 버튼처럼 상징적 존재가 될 것 같았던 LP 레코드가 다시 규모로는 작아도 열기로는 큰 존재가 되고 있다. 특성상 한정반으로 발매될 수밖에 없는 LP 레코드와 1초의 차이로 그를 구입하지 못한 이들을 위해 LP 레코드로 발매되어 많은 사랑을 받은 음반을 모아봤다. 결국 중요한 건 음악 아닌가. 나만 없는 그 한정판 LP 레코드. 바이브에서 맘껏 들으시길. - 하박국`,
+    title: "차트를 달리는 래퍼 : 잭 할로우, 물라토",
+    description: `아직 한 달 남짓한 시간이 남았지만, 2020년 역시 힙합의 해라고 해도 과언이 아니지 않을까? 신인을 비롯한 수많은 힙합 아티스트들이 빌보드 HOT 차트 상위권을 거쳐가며 인기를 끌었기 때문이다. 그런데 최근 힙합을 잘 챙겨 듣지 않은 이들에게는 신인의 이름이 낯설 수도 있다. 올해가 가기 전 이름을 알아 두면 좋을 일곱 명의 래퍼를 확인해보자. - 힙합엘이`,
     href: '/playlist/sample'
 }
 
 const MagazineData = [
     {
-    title: '백예린 - Every Letter I Sent you',
-    src: 'https://music-phinf.pstatic.net/20201116_134/1605515912711lcfoe_JPEG/1_%B9%E9%BF%B9%B8%B0.jpeg',
-    description: '발매되기 전부터 이토록 화제를 모은 앨범이 2020년에 또 있었을까. JYP를 나간 후 백예린이 발표한 앨범 <Every letter i sent you>는 발매 전부터 후까지 쉬지 않고 크고 작은 화제를 모았다. 음원으로 발표되지 않아 많은 사람들이 라이브 영상 클립으로만 보고 들었던 ‘Square’가 수록된 것을 포함해, 18곡에 이르는 더블 시디 분량의 곡 수. 전 곡을 영어로 부른 것까지 기존 대중가요계에서는 찾기 힘든 파격이 돋보이는 앨범이었다. 2,000장 한정으로 발매된 한정판 투명 블루디스크 LP 레코드가 1분도 안 돼 동나는 건 당연한 일. 안타까운 건 이를 구입한 이들 중에는 재판매(리셀)을 목적으로 프리미엄(플미)를 붙여 판매하려는 업자도 속해 있었다는 점이다. 결국 백예린은 이후 예약 구매를 받아 제작하는 형태로 다시 LP 레코드를 제작했다. 그 역시 현재는 플미 거래되고 있다고. 이래저래 대단한 백예린이다.',
+    title: '동에 번쩍 서에 번쩍 피처링 물라토',
+    src: 'https://music-phinf.pstatic.net/20201119_227/1605769173602G013B_JPEG/%B5%CE_%B9%F8%C2%B0_%B9%AE%B4%DC%28%B9%B0%B6%F3%C5%E4%29.jpg',
+    description: '역사적인(?) 싱글 ‘WAP’의 뮤직비디오에 등장해 자신의 존재감을 뽐낸 물라토(Mulatto). 사실 그는 프로듀서 저메인 듀프리(Jermaine Dupri)의 신인 래퍼 발굴 프로그램인 <The Rap Game>에서 시즌 1 우승을 차지하며 힙합 팬들에게 이름을 일찍 알렸다. 올해에는 ‘B*tch From Da Souf’로 들어온 성공의 흐름을 이어 나가 구찌 메인(Gucci Mane), 투 체인즈(2 Chainz) 등 다양한 아티스트의 앨범에 참여하며 점차 신에서 자신의 입지를 넓혀가고 있다.',
     tracks: [
         {
-            albumImgSrc: 'https://musicmeta-phinf.pstatic.net/album/003/735/3735168.jpg?type=r480Fll&v=20200218131210',
+            albumImgSrc: "https://musicmeta-phinf.pstatic.net/album/004/728/4728886.jpg?type=r100Fll&amp;v=20200729235909",
             trackId: '1',
-            trackTitle: 'Squre (2017)',
-            artist: '백예린',
-            albumTitle: 'Every letter I sent you.',
-            href: '/track/sample',
-            lyrics: '아직 없음ㅎ'
+            trackTitle: 'Muwop (Feat. Gucci Mane)',
+            artist: 'Mulatto',
+            albumTitle: 'Muwop',
+            href: '/track/sample'
         },
         {
-            albumImgSrc: 'https://musicmeta-phinf.pstatic.net/album/003/735/3735168.jpg?type=r480Fll&v=20200218131210',
+            albumImgSrc: 'https://musicmeta-phinf.pstatic.net/album/004/815/4815118.jpg?type=r100Fll&v=20201102151535',
             trackId: '1',
             trackTitle: 'Popo (How deep is our love?)',
-            artist: '백예린',
-            albumTitle: 'Every letter I sent you.',
-            href: '/track/sample',
-            lyrics: '아직 없음ㅎ'
-        },
-        {
-            albumImgSrc: 'https://musicmeta-phinf.pstatic.net/album/003/735/3735168.jpg?type=r480Fll&v=20200218131210',
-            trackId: '1',
-            trackTitle: '0310',
-            artist: '백예린',
-            albumTitle: 'Every letter I sent you.',
-            href: '/track/sample',
-            lyrics: '아직 없음ㅎ'
+            artist: 'Mulatto, Saweetie',
+            albumTitle: 'Queen of Da Souf',
+            href: '/track/sample'
         },
     ]
     },
     {
-        title: '이소라 - 눈썹달',
-        src: 'https://music-phinf.pstatic.net/20201116_263/1605516347825ddHwx_JPEG/4_%C0%CC%BC%D2%B6%F3.jpg',
-        description: `바이닐 붐이 일면서 가장 좋은 점 중 하나는 과거의 명반을 커다란 LP 레코드를 통해 다시 소장할 수 있는 기쁨이다. 대신 아쉬운 점도 있는데 대부분의 음반이 재빨리 클릭하지 않으면 구할 수 없을뿐더러 그중 상당수가 리셀러에게 비싼 가격에 판매된다는 점이다. 최근에는 이를 막기 위해 사전예약을 받은 후 LP 레코드를 제작하는 경우도 있지만, 모든 제작자가 그렇게 친절하진 않다. 이소라의 <눈썹달>은 재발매되기 딱 좋은 요건을 갖춘 음반이다. '바람이 분다'라는 명곡 수록, 아름다운 앨범 디자인, 거기다 활동이 드문 이소라라는 가수의 신비로움까지. 이소라의 <눈썹달>은 천으로 만든 커버와 두 장의 보라색 LP로 발매 전부터 많은 이의 기대를 모았다. 하지만 지나치게 높은 가격과 겉에 비해 허전한 부클릿, A면이 모노로 녹음되어 있다는 소문과 나쁜 음질로 발매 후 리콜 논란에 휩싸이기도 했다. 그와 상관없이 음반은 리셀러에게 비싸게 판매되고 있지만.`,
+        title: '레모네이드의 은총을 받은 잭 할로우',
+        src: 'https://music-phinf.pstatic.net/20201119_200/1605769088113PEDYD_JPEG/%C3%B9_%B9%F8%C2%B0_%B9%AE%B4%DC%28%C0%E8%C7%D2%B7%CE%BF%EC%29.jpg',
+        description: `브라이슨 틸러(Bryson Tiller)와의 협업 곡 ‘THRU THE NIGHT’을 통해 떡잎부터 남다른 재능을 보여줬던 잭 할로우(Jack Harlow). 그는 “미다스의 손”이라 불리는 뮤직비디오 감독 콜 베넷(Cole Bennett)과 리리컬 레모네이드(Lyrical Lemonade)의 든든한 지원에 힘입어 ‘WHATS POPPIN’을 힙합 팬의 눈에 띄게 하는 데 성공한다. 이후, 추진력을 얻기 위해 다베이비(DaBaby), 릴 웨인(Lil Wayne) 등이 참여한 리믹스를 발표하며 빌보드 HOT 차트 2위를 달성하기에 이른다.`,
         tracks: [
             {
-                albumImgSrc: 'https://musicmeta-phinf.pstatic.net/album/000/029/29410.jpg?type=r480Fll&v=20191212155250',
+                albumImgSrc: 'https://musicmeta-phinf.pstatic.net/album/004/612/4612176.jpg?type=r480Fll&v=20200629143408',
                 trackId: '1',
-                trackTitle: '바람이 분다',
-                artist: '이소라',
-                albumTitle: '눈썹달',
-                href: '/track/sample',
-                lyrics: '아직 없음ㅎ'
+                trackTitle: 'WHATS POPPIN (Feat. DaBaby, Tory Lanez & Lil Wayne) (Remix)',
+                artist: 'Jack Harlow',
+                albumTitle: "WHATS POPPIN (Feat. DaBaby, Tory Lanez & Lil Wayne) (Remix)",
+                href: '/track/sample'
             },
             {
-                albumImgSrc: 'https://musicmeta-phinf.pstatic.net/album/000/029/29410.jpg?type=r480Fll&v=20191212155250',
+                albumImgSrc: 'https://musicmeta-phinf.pstatic.net/album/004/612/4612176.jpg?type=r480Fll&v=20200629143408',
                 trackId: '1',
-                trackTitle: '이제 그만',
-                artist: '이소라',
-                albumTitle: '눈썹달',
-                href: '/track/sample',
-                lyrics: '아직 없음ㅎ'
+                trackTitle: 'WHATS POPPIN (Feat. DaBaby, Tory Lanez & Lil Wayne) (Remix)',
+                artist: 'Jack Harlow',
+                albumTitle: "WHATS POPPIN (Feat. DaBaby, Tory Lanez & Lil Wayne) (Remix)",
+                href: '/track/sample'
             },
             {
-                albumImgSrc: 'https://musicmeta-phinf.pstatic.net/album/000/029/29410.jpg?type=r480Fll&v=20191212155250',
+                albumImgSrc: 'https://musicmeta-phinf.pstatic.net/album/004/612/4612176.jpg?type=r480Fll&v=20200629143408',
                 trackId: '1',
-                trackTitle: '시시콜콜한 이야기',
-                artist: '이소라',
-                albumTitle: '눈썹달',
-                href: '/track/sample',
-                lyrics: '아직 없음ㅎ'
+                trackTitle: 'WHATS POPPIN (Feat. DaBaby, Tory Lanez & Lil Wayne) (Remix)',
+                artist: 'Jack Harlow',
+                albumTitle: "WHATS POPPIN (Feat. DaBaby, Tory Lanez & Lil Wayne) (Remix)",
+                href: '/track/sample'
             },
         ]
     }

@@ -30,9 +30,9 @@ const SearchContainer = styled.div<SearchContainerProps>`
     top: 0;
     right: 0;
     left: 225px;
-    z-index: 50;
+    z-index: 200;
     padding: 0 30px;
-    border-bottom: 1px solid rgba(0,0,0,.1);
+    border-bottom: ${(props) => props.searching? '1px solid rgba(0,0,0,.1)' : '0'};
     background-color: hsla(0,0%,100%,.98);
     transition: height .2s;
 `
@@ -54,6 +54,7 @@ const Header = styled.header`
     bottom: 81px;
     width: 225px;
     background-color: black;
+    z-index: 200;
 `;
 
 export { LogoContainer, Logo, SearchContainer, SectionContainer, ProfileContainer, Header };
