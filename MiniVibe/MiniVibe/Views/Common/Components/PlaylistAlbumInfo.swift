@@ -33,7 +33,6 @@ struct EssentialAlbumInfo: View {
                 Image("album")
                     .resizable()
                     .aspectRatio(1, contentMode: .fit)
-                    .frame(width: 130)
             }
             
             VStack(alignment: .leading) {
@@ -49,13 +48,13 @@ struct EssentialAlbumInfo: View {
                     Image(systemName: "arrow.down.to.line")
                         .foregroundColor(.black)
                         .font(.system(size: 25, weight: .light))
-                        .padding(.bottom, 4)
                 }
             }
-            .frame(height: 130)
+            .padding(.vertical, 4)
             
             Spacer()
         }
+        .frame(height: 130)
     }
 }
 
