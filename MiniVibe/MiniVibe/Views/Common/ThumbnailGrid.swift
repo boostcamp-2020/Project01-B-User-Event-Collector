@@ -16,7 +16,7 @@ struct ThumbnailGrid: View {
                 ) {
                     ForEach(0..<10) { _ in
                         NavigationLink(
-                            destination: AlbumPlaylistView(title: "요즘 이 곡", subtitle: "VIBE"),
+                            destination: AlbumView(title: "요즘 이 곡", subtitle: "VIBE"),
                             label: {
                                 ThumbnailItem(title: "요즘 이 곡", subtitle: "VIBE")
                             }

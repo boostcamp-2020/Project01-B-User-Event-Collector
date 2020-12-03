@@ -12,7 +12,7 @@ struct MenuButton: View {
         enum DownloadType: CustomStringConvertible {
             case music
             case album
-            case playlist
+            case playList
             
             var description: String {
                 switch self {
@@ -20,7 +20,7 @@ struct MenuButton: View {
                     return "곡"
                 case .album:
                     return "앨범"
-                case .playlist:
+                case .playList:
                     return "플레이리스트"
                 }
             }

@@ -15,7 +15,6 @@ struct ArtistView: View {
             ScrollView {
                 VStack(spacing: 24) {
                     ArtistThumbnail()
-                    //ChartSectionA(width: width, sectionTitle: "노래")
                     
                     VStack {
                         SectionTitle(
@@ -33,17 +32,18 @@ struct ArtistView: View {
                         .padding(.horizontal, width * .paddingRatio)   
                     }
                     
-                    ThumbnailSection(width: width,
+                    AlbumSection(width: width,
                                      destination: ArtistAlbumGridView(
                                         title: "앨범",
                                         categories: ["전체", "정규", "비정규", "참여"]
                                      ),
                                      title: "앨범")
-                    ThumbnailSection(width: width,
-                                     destination: ThumbnailList(title: "관련 플레이리스트", info: .playlist),
-                                     title: "관련 플레이리스트")
                     ArtistSection(width: width,
                                   sectionTitle: "비슷한 아티스트")
+                    PlayListSection(width: width,
+                                    title: "관련 플레이리스트",
+                                    destination: ThumbnailList(title: "관련 플레이리스트",
+                                                               info: .playlist))
                 }
             }
             .navigationTitle("방탄소년단")

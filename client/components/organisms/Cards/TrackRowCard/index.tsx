@@ -3,6 +3,7 @@ import A from '@components/atoms/A/A';
 import HiddenText from '@components/atoms/Text/HiddenText';
 import CheckBox from '@components/atoms/CheckBox/CheckBox';
 import TrackPlayButton from '@components/molecules/TrackPlayButton';
+
 import {
     List,
     TrackLeft,
@@ -16,7 +17,7 @@ import {
     LikeOptions,
 } from './TrackRowCard.styles';
 import { TrackRowCardProps } from '@interfaces/props';
-const TrackRowCard = ({ trackId, albumImgSrc, trackTitle, artist, albumTitle }: TrackRowCardProps) => (
+const TrackRowCard = ({ trackId, albumImgSrc, trackTitle, artist, albumTitle, href }: TrackRowCardProps) => (
     <List>
         <TrackLeft>
             <CheckBox id={trackId} />
@@ -24,7 +25,7 @@ const TrackRowCard = ({ trackId, albumImgSrc, trackTitle, artist, albumTitle }: 
                 <TrackPlayButton src={albumImgSrc} imgVariant="trackRowCard" />
             </TrackPlayBtnContainer>
             <TrackTitle>
-                <A href="#">{trackTitle}</A>
+                <A href={href}>{trackTitle}</A>
             </TrackTitle>
         </TrackLeft>
         <TrackMiddle>

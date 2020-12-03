@@ -34,7 +34,7 @@ struct MainTab: View {
                     Image(systemName: "magnifyingglass")
                 }
             
-            Text("보관함")
+             Library()
                 .tabItem {
                     Image(systemName: "person.fill")
                 }

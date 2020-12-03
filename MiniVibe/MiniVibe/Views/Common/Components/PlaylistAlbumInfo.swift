@@ -13,7 +13,7 @@ struct PlaylistAlbumInfo: View {
     
     var body: some View {
         VStack {
-            EssentialAlbumInfo(title: "여긴 앨범 이름이고", subtitle: "여긴 가수")
+            EssentialAlbumInfo(title: title, subtitle: subtitle)
             OptionalAlbumInfo()
                 .padding(.horizontal, 10)
         }
