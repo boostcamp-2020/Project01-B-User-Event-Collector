@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { Play } from '@components/molecules/TrackPlayButton/TrackPlayButton.styles';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
 export const List = styled.li`
+    width: 960px;
     list-style: none;
     margin: 0;
     display: flex;
@@ -25,9 +27,11 @@ export const TrackLeft = styled(TrackArea)`
 `;
 export const TrackMiddle = styled(TrackArea)``;
 export const TrackRight = styled(TrackArea)`
+    display: flex;
     padding: 15px 0;
     width: 136px;
     justify-content: space-between;
+    align-items: center;
 `;
 export const TrackPlayBtnContainer = styled.div`
     padding-right: 7px;
@@ -68,10 +72,17 @@ export const ShowLyricButton = styled(BackgroundImg)`
         background-position: -284px -716px;
     }
 `;
-export const LikeOptions = styled(BackgroundImg)`
-    &::after {
-        background-position: -760px -325px;
-        width: 18px;
-        height: 18px;
-    }
+
+export const StyledMoreHorizIcon = styled(MoreHorizIcon)`
+    right: 5%;
+    bottom: 7%;
+    color: #999;
+    font-size: 3rem;
+`;
+
+export const Like = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
 `;
