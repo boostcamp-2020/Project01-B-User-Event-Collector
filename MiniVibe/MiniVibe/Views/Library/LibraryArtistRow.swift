@@ -18,6 +18,7 @@ struct LibraryArtistRow: View {
                 .frame(width: 60)
                 .clipShape(Circle())
             Text(artist)
+                .foregroundColor(.black)
             Spacer()
         }
     }

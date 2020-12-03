@@ -40,7 +40,11 @@ struct LibraryArtistsView: View {
                             .foregroundColor(.black)
                             
                             ForEach(0..<10) { _ in
-                                LibraryArtistRow(artist: "방탄소년단")
+                                NavigationLink(
+                                    destination: ArtistView(),
+                                    label: {
+                                        LibraryArtistRow(artist: "방탄소년단")
+                                    })
                             }
                         }
                     }
