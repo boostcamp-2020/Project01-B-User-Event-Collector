@@ -24,7 +24,7 @@ struct MainTab: View {
                     Image(systemName: "house.fill")
                 }
             
-            Text("차트")
+            Chart()
                 .tabItem {
                     Image(systemName: "chart.bar.fill")
                 }
@@ -58,6 +58,7 @@ struct MainTab: View {
 struct MainTab_Previews: PreviewProvider {
     static var previews: some View {
         MainTab()
+            .environmentObject(NowPlaying())
     }
 }
 

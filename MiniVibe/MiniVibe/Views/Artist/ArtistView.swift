@@ -15,7 +15,7 @@ struct ArtistView: View {
             ScrollView {
                 VStack(spacing: 24) {
                     ArtistThumbnail()
-                    //ChartSection(width: width, title: "노래")
+                    //ChartSectionA(width: width, sectionTitle: "노래")
                     
                     VStack {
                         SectionTitle(
