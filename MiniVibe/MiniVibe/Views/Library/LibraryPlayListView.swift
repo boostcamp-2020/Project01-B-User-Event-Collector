@@ -13,11 +13,11 @@ struct LibraryPlayListView: View {
             let width = geometry.size.width
             ScrollView {
                 LazyVGrid(
-                    columns: [.init(.fixed(geometry.size.width))],
+                    columns: [.init(.fixed(width))],
                     spacing: 20,
                     pinnedViews: [.sectionHeaders]
                 ) {
-                    VStack {
+                    VStack(spacing: 12) {
                         HStack {
                             Button {
                                 
@@ -37,6 +37,15 @@ struct LibraryPlayListView: View {
                             }
                         }
                         .foregroundColor(.black)
+                        
+                        HStack(spacing: 24) {
+                            Image(systemName: "plus")
+                                .font(.system(size: 40, weight: .ultraLight))
+                                .frame(width: 80, height: 80)
+                                .background(Color.secondary.opacity(0.3))
+                            Text("새 플레이리스트 추가")
+                            Spacer()
+                        }
                         
                         ForEach(0..<10) { _ in
                             let title = "보관함 플레이리스트"

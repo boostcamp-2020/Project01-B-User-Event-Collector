@@ -18,7 +18,7 @@ struct LibraryArtistsView: View {
                     pinnedViews: [.sectionHeaders]
                 ) {
                     Section(header: boomAndChillButton(width: width)) {
-                        VStack {
+                        VStack(spacing: 12) {
                             HStack {
                                 Button {
                                     
@@ -38,6 +38,18 @@ struct LibraryArtistsView: View {
                                 }
                             }
                             .foregroundColor(.black)
+                            
+                            HStack {
+                                Image(systemName: "plus")
+                                    .font(.system(size: 30, weight: .ultraLight))
+                                    .frame(width: 60, height: 60)
+                                    .background(Color.secondary.opacity(0.3))
+                                    .clipShape(Circle())
+                                Text("아티스트 추가")
+                                    .foregroundColor(.black)
+                                Spacer()
+                            }
+
                             
                             ForEach(0..<10) { _ in
                                 NavigationLink(
@@ -62,6 +74,7 @@ struct LibraryArtistsView: View {
                 HStack {
                     Image(systemName: "shuffle")
                     Text("BOOM")
+                        .font(.system(size: 18, weight: .semibold))
                 }
                 .padding()
                 .foregroundColor(.purple)
@@ -74,6 +87,7 @@ struct LibraryArtistsView: View {
                 HStack {
                     Image(systemName: "shuffle")
                     Text("CHILL")
+                        .font(.system(size: 18, weight: .semibold))
                 }
                 .padding()
                 .foregroundColor(.blue)
