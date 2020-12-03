@@ -11,7 +11,7 @@
     "outDir": "./build",
     "experimentalDecorators": true,
     "sourceMap": true,
-   
+    "strictPropertyInitialization": false,
   },
   "exclude": ["node_modules/"]
 }
