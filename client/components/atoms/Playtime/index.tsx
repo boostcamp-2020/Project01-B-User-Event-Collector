@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { convertToHHSS } from '@utils/time';
 
 const Container = styled.div`
-    font-size: 12px;
+    font-size: 14px;
     line-height: 14px;
     text-align: right;
 `;

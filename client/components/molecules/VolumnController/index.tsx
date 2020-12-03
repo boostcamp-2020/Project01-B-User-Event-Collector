@@ -26,6 +26,8 @@ const VolumnSlider = withStyles({
 
 const Container = styled.div`
     color: #bcbcbc;
+    display: flex;
+    align-items: center;
 `;
 
 const VolumnController = () => {
