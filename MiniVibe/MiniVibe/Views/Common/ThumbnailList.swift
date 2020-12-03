@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct ThumbnailList: View {
     enum Info {
         case playlist

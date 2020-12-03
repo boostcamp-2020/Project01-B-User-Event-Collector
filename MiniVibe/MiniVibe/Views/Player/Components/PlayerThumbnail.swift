@@ -36,6 +36,9 @@ struct PlayerThumbnail: View {
 struct PlayerThumbnail_Previews: PreviewProvider {
     static var previews: some View {
         PlayerThumbnail(image: "playListThumbnail",
-                        lyrics: "가사가사가사가사\n가사가사\n가사\n가사가사가사가사", isPlaying: .constant(false), isOpenLyrics: .constant(true))
+                        lyrics: "밥만 잘 먹더라\n배고프다랄라\n호호호",
+                        isPlaying: .constant(false),
+                        isOpenLyrics: .constant(true)
+        )
     }
 }

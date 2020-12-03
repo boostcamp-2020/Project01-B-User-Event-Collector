@@ -29,7 +29,7 @@ struct MainTab: View {
                     Image(systemName: "chart.bar.fill")
                 }
             
-            Text("검색")
+            Search()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }
