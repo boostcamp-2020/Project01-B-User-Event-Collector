@@ -45,10 +45,11 @@
 		4478F723256E8B2B00755656 /* PlayAndShuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4478F722256E8B2B00755656 /* PlayAndShuffle.swift */; };
 		447BF73B256F3E6C003B5DB7 /* MainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BF73A256F3E6C003B5DB7 /* MainTab.swift */; };
 		448FD1CE256F83050027BC57 /* MyMixtape.json in Resources */ = {isa = PBXBuildFile; fileRef = 448FD1CD256F83050027BC57 /* MyMixtape.json */; };
+		44BDF0212578F41900C0A43D /* PlayListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BDF0202578F41900C0A43D /* PlayListSection.swift */; };
 		44D7B7E725753C2D0049CDBB /* RepeatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7B7E625753C2D0049CDBB /* RepeatButton.swift */; };
 		44D7B7EA25754BF10049CDBB /* PlayerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7B7E925754BF10049CDBB /* PlayerControls.swift */; };
 		44F97972256CF2AE00C9C224 /* ThumbnailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F97971256CF2AE00C9C224 /* ThumbnailItem.swift */; };
-		44F97976256CFBA900C9C224 /* ThumbnailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F97975256CFBA900C9C224 /* ThumbnailSection.swift */; };
+		44F97976256CFBA900C9C224 /* AlbumSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F97975256CFBA900C9C224 /* AlbumSection.swift */; };
 		44F9797C256D04EA00C9C224 /* RecommandedPlayListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F9797B256D04EA00C9C224 /* RecommandedPlayListItem.swift */; };
 		44F9797F256D069600C9C224 /* RecommandedPlayListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F9797E256D069600C9C224 /* RecommandedPlayListSection.swift */; };
 		80045DDF25758C5A00F32E6C /* MultiselectTabBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80045DDE25758C5A00F32E6C /* MultiselectTabBarItems.swift */; };
@@ -135,10 +136,11 @@
 		4478F722256E8B2B00755656 /* PlayAndShuffle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAndShuffle.swift; sourceTree = "<group>"; };
 		447BF73A256F3E6C003B5DB7 /* MainTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTab.swift; sourceTree = "<group>"; };
 		448FD1CD256F83050027BC57 /* MyMixtape.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MyMixtape.json; sourceTree = "<group>"; };
+		44BDF0202578F41900C0A43D /* PlayListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListSection.swift; sourceTree = "<group>"; };
 		44D7B7E625753C2D0049CDBB /* RepeatButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatButton.swift; sourceTree = "<group>"; };
 		44D7B7E925754BF10049CDBB /* PlayerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControls.swift; sourceTree = "<group>"; };
 		44F97971256CF2AE00C9C224 /* ThumbnailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailItem.swift; sourceTree = "<group>"; };
-		44F97975256CFBA900C9C224 /* ThumbnailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailSection.swift; sourceTree = "<group>"; };
+		44F97975256CFBA900C9C224 /* AlbumSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSection.swift; sourceTree = "<group>"; };
 		44F9797B256D04EA00C9C224 /* RecommandedPlayListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandedPlayListItem.swift; sourceTree = "<group>"; };
 		44F9797E256D069600C9C224 /* RecommandedPlayListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandedPlayListSection.swift; sourceTree = "<group>"; };
 		4B64F8DD7C3A90466A7DD817 /* Pods-MiniVibe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVibe.debug.xcconfig"; path = "Target Support Files/Pods-MiniVibe/Pods-MiniVibe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -225,7 +227,6 @@
 				8065E4B9257728AF007F5990 /* Menu */,
 				8065E4C72577298C007F5990 /* Components */,
 				8084AB6C256E403900F2AAC2 /* ThumbnailRow.swift */,
-				44F97975256CFBA900C9C224 /* ThumbnailSection.swift */,
 				445919A3256E4A6F0069DAB2 /* ThumbnailGridView.swift */,
 				44139CBA25763C5F000CEEA5 /* ThumbnailGrid.swift */,
 				4478F71B256E858700755656 /* MixtapeGrid.swift */,
@@ -270,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				4466D2942578D8E000B65652 /* PlayListView.swift */,
+				44BDF0202578F41900C0A43D /* PlayListSection.swift */,
 			);
 			path = PlayList;
 			sourceTree = "<group>";
@@ -397,6 +399,7 @@
 			isa = PBXGroup;
 			children = (
 				80FA442E25763DE00092D25D /* AlbumView.swift */,
+				44F97975256CFBA900C9C224 /* AlbumSection.swift */,
 			);
 			path = Album;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				4478F717256E817100755656 /* CGFloat+Constant.swift in Sources */,
 				80045DE225758D1600F32E6C /* MultiselectTabBar.swift in Sources */,
 				80DA95252577A084008C9DFF /* TrackRowC.swift in Sources */,
+				44BDF0212578F41900C0A43D /* PlayListSection.swift in Sources */,
 				4474DC002574E2C3006FC827 /* PlayerHeader.swift in Sources */,
 				444272B8256CE2B3008BB87B /* PreviewItem.swift in Sources */,
 				444272B3256CDEC8008BB87B /* TodayTitle.swift in Sources */,
@@ -675,7 +679,7 @@
 				4478F720256E89EB00755656 /* ChartList.swift in Sources */,
 				44F9797F256D069600C9C224 /* RecommandedPlayListSection.swift in Sources */,
 				4478F723256E8B2B00755656 /* PlayAndShuffle.swift in Sources */,
-				44F97976256CFBA900C9C224 /* ThumbnailSection.swift in Sources */,
+				44F97976256CFBA900C9C224 /* AlbumSection.swift in Sources */,
 				80FA442F25763DE00092D25D /* AlbumView.swift in Sources */,
 				440D023225779A7F00477A7D /* AlbumMenu.swift in Sources */,
 				80ABC18D2574DFDE003D4666 /* UpNextList.swift in Sources */,

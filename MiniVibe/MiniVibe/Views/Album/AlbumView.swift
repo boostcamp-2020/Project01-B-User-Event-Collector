@@ -48,7 +48,7 @@ struct AlbumView: View {
                         }
                     }
                     
-                    ThumbnailSection(
+                    AlbumSection(
                         width: width,
                         destination: ThumbnailGridView(title: "아티스트의 다른 앨범"),
                         title: "아티스트의 다른 앨범"
@@ -57,9 +57,8 @@ struct AlbumView: View {
                     ArtistSection(width: width,
                                   sectionTitle: "비슷한 아티스트")
                     
-                    ThumbnailSection(
+                    PlayListSection(
                         width: width,
-                        destination: ThumbnailList(title: "관련 플레이리스트", info: .playlist),
                         title: "관련 플레이리스트"
                     )
                 }

@@ -34,17 +34,15 @@ struct Today: View {
                             PreviewSection(width: width)
                                 .aspectRatio(1.5, contentMode: .fit)
                             
-                            ThumbnailSection(width: width,
-                                             destination: MixtapeGrid(title: "나를 위한 믹스테잎"),
-                                             title: "나를 위한 믹스테잎")
+                            AlbumSection(width: width,
+                                         destination: MixtapeGrid(title: "나를 위한 믹스테잎"),
+                                         title: "나를 위한 믹스테잎")
                             
-                            ThumbnailSection(width: width,
-                                             destination: ThumbnailList(title: "즐겨듣는 플레이리스트", info: .playlist),
-                                             title: "즐겨듣는 플레이리스트")
+                            PlayListSection(width: width,
+                                         title: "즐겨듣는 플레이리스트")
                             
-                            ThumbnailSection(width: width,
-                                             destination: ThumbnailList(title: "내 취향 플레이리스트", info: .playlist),
-                                             title: "내 취향 플레이리스트")
+                            PlayListSection(width: width,
+                                         title: "내 취향 플레이리스트")
                             
                             StationSection(width: width, title: "DJ 스테이션")
                             
@@ -52,9 +50,9 @@ struct Today: View {
                             
                             RecommandedPlayListSection(width: width, title: "VIBE 추천 플레이리스트")
                             
-                            ThumbnailSection(width: width,
-                                             destination: ThumbnailGridView(title: "좋아할 최신 앨범"),
-                                             title: "좋아할 최신 앨범")
+                            AlbumSection(width: width,
+                                         destination: ThumbnailGridView(title: "좋아할 최신 앨범"),
+                                         title: "좋아할 최신 앨범")
                             
                             MagazineSection(width: width, title: "매거진")
                         }

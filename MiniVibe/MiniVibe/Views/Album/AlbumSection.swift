@@ -1,5 +1,5 @@
 //
-//  ThumbnailSection.swift
+//  AlbumSection.swift
 //  MiniVibe
 //
 //  Created by TTOzzi on 2020/11/24.
@@ -7,15 +7,17 @@
 
 import SwiftUI
 
-struct ThumbnailSection<Dest: View>: View {
+struct AlbumSection<D: View>: View {
     @State private var isOpenMenu = false
     let width: CGFloat
-    let destination: Dest
+    let destination: D
     let title: String
     
     var body: some View {
         VStack(spacing: 8) {
-            SectionTitle(width: width, destination: destination, title: title)
+            SectionTitle(width: width,
+                         destination: destination,
+                         title: title)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {
@@ -38,9 +40,9 @@ struct ThumbnailSection<Dest: View>: View {
     }
 }
 
-struct ThumbnailSection_Previews: PreviewProvider {
+struct AlbumSection_Previews: PreviewProvider {
     static var previews: some View {
-        ThumbnailSection(width: 375, destination: Text("플레이리스트 목록"), title: "플레이리스트")
+        AlbumSection(width: 375, destination: Text("앨범 목록"), title: "앨범")
             .previewLayout(.fixed(width: 375, height: 300))
     }
 }
