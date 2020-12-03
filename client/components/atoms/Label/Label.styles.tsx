@@ -40,15 +40,20 @@ const getSpanStyle = ({ selected, variant }: StyledSpanProps) => {
 };
 
 export const StyledSpan = styled.span<StyledSpanProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 80px;
   padding: 5px 16px;
   height: 29px;
   line-height: 29px;
   border: 1px solid #d7d7d7;
   border-radius: 14.5px;
   font-weight: 700;
-  margin: 0 3px;
+  margin: 0 10px 0 0;
   font-size: 14px;
   color: #aaa;
+  cursor: default;
   ${(props) => getSpanStyle(props)};
 `;
 
