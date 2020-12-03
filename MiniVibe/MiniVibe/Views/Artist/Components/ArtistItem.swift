@@ -16,8 +16,11 @@ struct ArtistItem: View {
                 .clipShape(Circle())
             
             Text("방탄소년단")
+                .font(.system(size: 17))
+                .foregroundColor(.black)
                 .lineLimit(2)
             Text("♥︎ 999")
+                .font(.system(size: 12))
                 .foregroundColor(.secondary)
         }
         .frame(width: 100)
