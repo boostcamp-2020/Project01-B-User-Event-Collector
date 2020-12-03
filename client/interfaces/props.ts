@@ -63,7 +63,8 @@ export interface TrackRowCardProps {
     albumImgSrc: string, 
     trackTitle: string, 
     artist : string, 
-    albumTitle: string
+    albumTitle: string,
+    href: string,
 }
 
 export interface TrackCardProps {
