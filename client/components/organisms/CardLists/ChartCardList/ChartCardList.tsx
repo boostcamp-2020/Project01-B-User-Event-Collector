@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import ChartCard from '@components/molecules/ChartCard/ChartCard';
 import { ChartCardProps } from '@interfaces/props';
-import CardScrollList from '@components/organisms/CardScrollList/CardScrollList';
+
 interface ChartCardListProps {
     items: ChartCardProps[];
+    unit: number;
 }
 
 const ListContainer = styled.ul`
@@ -21,12 +22,12 @@ const List = styled.li`
     display: inline-block;
     box-sizing: border-box;
 `;
-const getCardBundle = (items: ChartCardProps[]): ChartCardProps[] => {
+const getCardBundle = (items: ChartCardProps[], unit: number): ChartCardProps[] => {
     const bundle = [];
-    for (let i = 0; i < items.length; i += 5) {
+    for (let i = 0; i < items.length; i += unit) {
         bundle.push(
             <ListContainer>
-                {items.slice(i, i + 5).map((item) => (
+                {items.slice(i, i + unit).map((item) => (
                     // TODO : 차트카드(노래)의 id key 값으로 설정
                     <ChartCard {...(item as ChartCardProps)} />
                 ))}
@@ -35,14 +36,12 @@ const getCardBundle = (items: ChartCardProps[]): ChartCardProps[] => {
     }
     return bundle;
 };
-const ChartCardList = ({ items }: ChartCardListProps) => (
-    <CardScrollList>
-        <ListContainer>
-            {getCardBundle(items).map((item, idx) => (
-                <List key={idx}>{item}</List>
-            ))}
-        </ListContainer>
-    </CardScrollList>
+const ChartCardList = ({ items, unit }: ChartCardListProps) => (
+    <ListContainer>
+        {getCardBundle(items, unit).map((item, idx) => (
+            <List key={idx}>{item}</List>
+        ))}
+    </ListContainer>
 );
 
 export default ChartCardList;
