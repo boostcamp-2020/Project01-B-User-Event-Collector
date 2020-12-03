@@ -10,7 +10,7 @@ interface AProps {
 }
 
 const A = ({ children, href, onClick, variant }: AProps) => (
-    <Link href={href}>
+    <Link href={href ? href : ''}>
         <StyledA variant={variant} onClick={onClick}>
             {children}
         </StyledA>

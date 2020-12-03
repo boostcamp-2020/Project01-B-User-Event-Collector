@@ -21,7 +21,7 @@ const TrackRowCard = ({ trackId, albumImgSrc, trackTitle, artist, albumTitle }: 
         <TrackLeft>
             <CheckBox id={trackId} />
             <TrackPlayBtnContainer>
-                <TrackPlayButton src={albumImgSrc} />
+                <TrackPlayButton src={albumImgSrc} imgVariant="trackRowCard" />
             </TrackPlayBtnContainer>
             <TrackTitle>
                 <A href="#">{trackTitle}</A>
