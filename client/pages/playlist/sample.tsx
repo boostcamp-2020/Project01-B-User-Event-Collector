@@ -18,6 +18,7 @@ const TrackDatas = Array(20).fill({
     trackTitle: 'VVS (Feat. JUSTHIS) (Prod. GroovyRoom)',
     artist: '미란이',
     albumTitle: '쇼미더머니 9 Episode 1',
+    lyrics: '아직 없음ㅎ'
 });
 
 const Artistdata = Array(9).fill({

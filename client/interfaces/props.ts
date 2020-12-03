@@ -65,6 +65,7 @@ export interface TrackRowCardProps {
     artist : string, 
     albumTitle: string,
     href: string,
+    lyrics: string
 }
 
 export interface TrackCardProps {
