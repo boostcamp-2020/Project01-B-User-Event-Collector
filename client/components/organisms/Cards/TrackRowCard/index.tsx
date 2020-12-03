@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import A from '@components/atoms/A/A';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import HiddenText from '@components/atoms/Text/HiddenText';
 import CheckBox from '@components/atoms/CheckBox/CheckBox';
 import TrackPlayButton from '@components/molecules/TrackPlayButton';
+import DropDownMenu from '@components/molecules/DropdownMenu';
+import { TrackRowCardProps } from '@interfaces/props';
 
 import {
     List,
@@ -14,10 +17,30 @@ import {
     TrackMiddleElem,
     Mp3,
     ShowLyricButton,
-    LikeOptions,
+    StyledMoreHorizIcon,
+    Like
 } from './TrackRowCard.styles';
-import { TrackRowCardProps } from '@interfaces/props';
-const TrackRowCard = ({ trackId, albumImgSrc, trackTitle, artist, albumTitle, href }: TrackRowCardProps) => (
+
+const contentsDropDownMenu = [{
+    content: '좋아요'
+},{
+    content: '내 플레이리스트 추가'
+}, {
+    content: '현재재생목록에 추가'
+}, {
+    content: 'MP3 구매'
+}, {
+    content: '가사 보기'
+}]
+
+const TrackRowCard = ({ trackId, albumImgSrc, trackTitle, artist, albumTitle, href }: TrackRowCardProps) => {
+    const [isLiked, setIsLiked] = useState(true);
+
+    const onClickUnlikeHandler = () => {
+        setIsLiked(false);
+    }
+
+    return (
     <List>
         <TrackLeft>
             <CheckBox id={trackId} />
@@ -51,13 +74,18 @@ const TrackRowCard = ({ trackId, albumImgSrc, trackTitle, artist, albumTitle, hr
                     <HiddenText>가사보기</HiddenText>
                 </A>
             </ShowLyricButton>
-            <LikeOptions>
+            <Like>
+                {isLiked && <FavoriteIcon style={{ color: '#FF1150' }} fontSize = "small" onClick = {onClickUnlikeHandler}/>}
+                {!isLiked && <DropDownMenu
+                    id = "contents" 
+                    control = {StyledMoreHorizIcon} 
+                    menuItems = {contentsDropDownMenu}/>}
                 <A href="#">
                     <HiddenText>좋아요및옵션</HiddenText>
                 </A>
-            </LikeOptions>
+            </Like>
         </TrackRight>
     </List>
-);
+)};
 
 export default TrackRowCard;
