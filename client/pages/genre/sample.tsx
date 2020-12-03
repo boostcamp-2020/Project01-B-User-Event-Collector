@@ -25,13 +25,24 @@ const Chartdata = Array(30).fill({
     artist: '방탄소년단',
     trackTitle: 'dynamite',
 });
+const Artistdata = Array(9).fill({
+    name: '이영지',
+    src: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906',
+    href: 'localhost:3000',
+});
+const FeaturedPlaylistdata = Array(9).fill({
+    src: 'https://music-phinf.pstatic.net/20200504_183/1588567824216rHHs6_PNG/VIBE_%B0%F8%C5%EB_VibeAndChill.png',
+    href: 'localhost:3000',
+    title: '한국 힙합 트렌드',
+    description: 'VIBE 국내 힙합',
+});
 const GenreData = {
     id: 1,
     title: '국내 힙합',
     latestAlbum: Albumdata,
     top100: Chartdata,
-    artist: '',
-    featuredPlaylist: '',
+    artist: Artistdata,
+    featuredPlaylist: FeaturedPlaylistdata,
     artistPlaylist: '',
 };
 
@@ -45,23 +56,23 @@ const Genre = () => (
         <Contents>
             <ContentsContainer>
                 <CardListContainer title={`${GenreData.title} 최신 앨범`} href="#">
-                    <ContentsCardList variant="album" items={Albumdata}></ContentsCardList>
+                    <ContentsCardList variant="album" items={GenreData.latestAlbum} />
                 </CardListContainer>
             </ContentsContainer>
             <ContentsContainer>
                 <CardListContainer title="장르 Top 100" href="#">
-                    <ChartCardList items={Chartdata} unit={4} />
+                    <ChartCardList items={GenreData.top100} unit={4} />
                 </CardListContainer>
             </ContentsContainer>
             <ContentsContainer>
-                {
-                    // 대표아티스트
-                }
+                <CardListContainer title="대표 아티스트" href="#">
+                    <ContentsCardList variant="artist" items={GenreData.artist} />
+                </CardListContainer>
             </ContentsContainer>
             <ContentsContainer>
-                {
-                    // 추천 플레이리스트
-                }
+                <CardListContainer title={`${GenreData.title} 추천 플레이리스트`} href="#">
+                    <ContentsCardList variant="playlist" items={GenreData.featuredPlaylist} />
+                </CardListContainer>
             </ContentsContainer>
             <ContentsContainer>
                 {
