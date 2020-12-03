@@ -7,3 +7,5 @@ export default {
 };
 
 export const Default = () => <HeaderButtonGroup />;
+
+export const Track = () => <HeaderButtonGroup sort="track" />;

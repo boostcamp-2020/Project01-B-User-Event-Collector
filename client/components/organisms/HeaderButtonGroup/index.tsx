@@ -7,11 +7,13 @@ import Button from '@components/atoms/Button';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import AddButton from '@components/atoms/Button/AddButton';
+import Heart from '@components/atoms/Heart/Heart';
 
 const ButtonContainer = styled.div`
-    width: 480px;
+    width: ${props => props.sort === "track" ? '300px' : '480px'};
     height: 40px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 `;
 
@@ -27,7 +29,7 @@ const StyledMoreHorizIcon = styled(MoreHorizIcon)`
     color: black;
     font-size: 3rem;
     margin-left: 10px;
-    margin-top: 5px;
+    margin-top: 0px;
 `;
 
 const contentsDropDownMenu = [{
@@ -38,15 +40,25 @@ const contentsDropDownMenu = [{
     content: '현재재생목록에 추가'
 }, {
     content: 'MP3 구매'
-}]
+}];
 
-const HeaderButtonGroup = () => {
+interface HeaderButtonGroupProps {
+    sort?: 'track'
+}
+
+const HeaderButtonGroup = ({sort}: HeaderButtonGroupProps) => {
     return (
-        <ButtonContainer>
-            <Button variant = "primary" width='130' height='40' icon={PlayArrowIcon} >전체재생</Button>
+        <ButtonContainer sort={sort}>
+            { sort === 'track' && 
+            <Button variant = "primary" width='100' height='40' icon={PlayArrowIcon} >재생</Button> }
+            { sort !== 'track' && 
+            <Button variant = "primary" width='130' height='40' icon={PlayArrowIcon} >전체재생</Button>}
+            { sort !== 'track' && 
             <Button width='130' height='40' icon={ShuffleIcon}>랜덤재생</Button>
-            <Button>MP3 구매</Button>
-            <AddButton />
+            }
+            <Button height='40'>MP3 구매</Button>
+            { sort !== 'track' && <AddButton />}
+            { sort === 'track' && <Heart isSelected = {false}/>}
             <StyledDropDown 
             id = "contents" 
             control = {StyledMoreHorizIcon} 
