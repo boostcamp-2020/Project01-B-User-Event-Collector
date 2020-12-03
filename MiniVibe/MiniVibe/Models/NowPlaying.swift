@@ -29,7 +29,7 @@ final class NowPlaying: ObservableObject {
     private(set) var destination: Destination?
     
     func setDestination(_ destination: Destination) -> Bool {
-        guard self.destination != destination else { return false }
+        guard !(isNavigationActive && self.destination == destination) else { return false }
         self.destination = destination
         return true
     }
