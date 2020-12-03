@@ -13,7 +13,7 @@ struct GenreItem: View {
     
     var body: some View {
         Button {
-
+            print("touched!")
         } label: {
             HStack(spacing: 10) {
                 RoundedRectangle(cornerRadius: 25.0)
@@ -34,7 +34,7 @@ struct GenreItem: View {
 struct GenreSection: View {
     var body: some View {
         GeometryReader { geometry in
-            VStack(alignment: .leading){
+            VStack(alignment: .leading) {
                 Text("Genre")
                     .foregroundColor(.black)
                     .font(.system(size: 16.5))
@@ -44,6 +44,7 @@ struct GenreSection: View {
                     columns: .init(repeating: .init(), count: 2)
                 ) {
                     ForEach(0..<4) { _ in
+                        // Navigation link 안 걸었어요. 또 한 depth 타고 들어가면... 무한...반..복ㅋㅋㅋ
                         GenreItem(title: "이 노래 들어봐", width: geometry.size.width)
                     }
                 }

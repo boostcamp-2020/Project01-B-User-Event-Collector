@@ -15,19 +15,22 @@ struct SearchBar: View {
     
     var body: some View {
         HStack {
-            TextField("검색어를 입력해 주세요.", text: $searchedText)
+            TextField("검색어를 입력해 주세요.", text: $searchedText) {
+                searchedText += "입력했구만유?"
+            }
                 .padding(10)
                 .background(Color(.systemGray6))
                 .padding(10)
                 .cornerRadius(8)
                 .onTapGesture {
-                    self.isEditing = true
+                    isEditing = true
                 }
 
             if isEditing {
                 Button {
                     searchedText = ""
                     isEditing = false
+                    dismissKeyboard()
                 } label: { Text("취소") }
                 .padding(.trailing, 10)
                 .foregroundColor(.black)
