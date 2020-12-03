@@ -13,8 +13,10 @@ struct TrackRowB: View {
 
     var body: some View {
         HStack {
-            Image("album")
-                .trackRowImageConfigure()
+            NavigationLink(destination: AlbumPlaylistView(title: title, subtitle: artist)) {
+                Image("album")
+                    .trackRowImageConfigure()
+            }
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)

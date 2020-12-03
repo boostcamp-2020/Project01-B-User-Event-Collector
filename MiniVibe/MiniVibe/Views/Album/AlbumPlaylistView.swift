@@ -7,8 +7,15 @@
 
 import SwiftUI
 
+enum ActiveSheet {
+    case playlist
+    case track
+}
+
 struct AlbumPlaylistView: View {
-    @State private var isOpenMenu = false
+    @State private var activeSheet: ActiveSheet = .playlist
+    @State private var showSheet = false
+    
     let title: String
     let subtitle: String
     
@@ -26,7 +33,12 @@ struct AlbumPlaylistView: View {
                 ) {
                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
                         ForEach(0..<7) { index in
-                            TrackRowD(order: index + 1, title: "Dynamite", artist: "방탄소년단")
+                            TrackRowD(isMenuOpen: $showSheet,
+                                      activeSheet: $activeSheet,
+                                      order: index + 1,
+                                      title: "Dynamite",
+                                      artist: "방탄소년단"
+                            )
                         }
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)
@@ -52,8 +64,12 @@ struct AlbumPlaylistView: View {
                     title: "관련 플레이리스트"
                 )
             }
-            .fullScreenCover(isPresented: $isOpenMenu) {
-                AlbumMenu(title: title, subtitle: subtitle)
+            .fullScreenCover(isPresented: $showSheet) {
+                if activeSheet == .playlist {
+                    AlbumMenu(title: title, subtitle: subtitle)
+                } else {
+                    PlayerMenu(title: "Among US", subtitle: "정혜일")
+                }
             }
         }
     }
@@ -73,7 +89,10 @@ struct AlbumPlaylistView: View {
             }
             
             Button {
-                isOpenMenu = true
+                activeSheet = .playlist
+                if activeSheet == .playlist {
+                    showSheet = true
+                }
             } label: {
                 Image(systemName: "ellipsis")
             }
