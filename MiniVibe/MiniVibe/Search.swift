@@ -12,6 +12,8 @@ struct Search: View {
     
     var body: some View {
         GeometryReader { geometry in
+            let width = geometry.size.width
+            
             VStack(alignment: .leading) {
                 Text("검색")
                     .foregroundColor(.black)
@@ -19,7 +21,11 @@ struct Search: View {
                     .fontWeight(.heavy)
                     .padding(geometry.size.width * .paddingRatio)
                 
-                SearchBar(searchedText: $searchedText, width: geometry.size.width)
+                SearchBar(searchedText: $searchedText, width: width)
+                
+                NewsSection(width: width)
+                
+                GenreSection()
             }
         }
     }
