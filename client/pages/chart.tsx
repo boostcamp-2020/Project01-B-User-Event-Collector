@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 import { ChartCardProps } from '@interfaces/props';
 import ChartCardList from '@components/organisms/CardLists/ChartCardList';
 import GenreCardList from '@components/organisms/CardLists/GenreCardList';
@@ -53,17 +53,17 @@ const Chart = () => {
             <ContentsContainer>
                 <ChartContainer>
                     <CardListContainer title="오늘 TOP 100" href="/">
-                        <ChartCardList items={ChartCards} />
+                        <ChartCardList items={ChartCards} unit={5} />
                     </CardListContainer>
                 </ChartContainer>
                 <ChartContainer>
                     <CardListContainer title="국내 급상승" href="/">
-                        <ChartCardList items={ChartCards} />
+                        <ChartCardList items={ChartCards} unit={5} />
                     </CardListContainer>
                 </ChartContainer>
                 <ChartContainer>
                     <CardListContainer title="음악 검색 Top 100" href="/">
-                        <ChartCardList items={ChartCards} />
+                        <ChartCardList items={ChartCards} unit={5} />
                     </CardListContainer>
                 </ChartContainer>
                 <ChartContainer>
