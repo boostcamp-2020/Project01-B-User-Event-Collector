@@ -57,7 +57,7 @@ struct PlayerPreview: View {
     }
     
     var controlIcons: some View {
-        HStack(spacing: 10) {
+        HStack(spacing: 20) {
             Button {
                 isPlaying.toggle()
             } label: {
