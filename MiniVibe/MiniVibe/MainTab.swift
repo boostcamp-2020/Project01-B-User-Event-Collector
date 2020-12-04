@@ -10,6 +10,7 @@ import SwiftUI
 struct MainTab: View {
     @State private var contentFrame = CGRect.zero
     @State private var isPlayerPresented = false
+    @State private var tabItemSelection = 0
     @EnvironmentObject private var nowPlaying: NowPlaying
     
     init() {
@@ -18,26 +19,30 @@ struct MainTab: View {
     }
     
     var body: some View {
-        TabView {
+        TabView(selection: $tabItemSelection) {
             Today()
                 .tabItem {
                     Image(systemName: "house.fill")
                 }
+                .tag(0)
             
             Chart()
                 .tabItem {
                     Image(systemName: "chart.bar.fill")
                 }
+                .tag(1)
             
             Search()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }
+                .tag(2)
             
             Library()
                 .tabItem {
                     Image(systemName: "person.fill")
                 }
+                .tag(3)
         }
         .accentColor(.pink)
         .onPreferenceChange(Size.self, perform: { value in
