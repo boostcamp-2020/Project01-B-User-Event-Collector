@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import Text from '@components/atoms/Text';
 import CardListContainer from '@components/organisms/CardListContainer';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
-import ChartCardList from '@components/organisms/CardLists/ChartCardList/ChartCardList';
-import PlaylistCardList from '@components/organisms/CardLists/PlaylistCardList';
+import ChartCardList from '@components/organisms/CardLists/ChartCardList';
 
 const Container = styled.div`
     padding-left: 225px;
@@ -91,7 +90,7 @@ const Genre = () => (
             </ContentsContainer>
             <ContentsContainer>
                 <CardListContainer title={`${GenreData.title} 아티스트 플레이리스트`} href="#">
-                    <PlaylistCardList items={GenreData.artistPlaylist} />
+                    <ContentsCardList variant="playlist" items={GenreData.artistPlaylist} />
                 </CardListContainer>
             </ContentsContainer>
         </Contents>
