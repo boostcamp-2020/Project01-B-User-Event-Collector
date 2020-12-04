@@ -1,6 +1,6 @@
 import { ChartCardProps } from '@interfaces/props';
 import React from 'react';
-import ChartCardList from './ChartCardList';
+import ChartCardList from '.';
 
 export default {
     title: 'Organisms/ChartCardList',

@@ -21,7 +21,6 @@ const Container = styled.div`
     flex-flow: column;
     align-items: center;
     background-color: white;
-    padding: 0 0 300px 350px;
 `;
 
 const HeaderContainer = styled.div`
@@ -51,7 +50,7 @@ const DJStation = () => {
     return (
         <Container>
             <HeaderContainer>
-                <Text variant = "tertiary">DJ 스테이션</Text>
+                <Text variant="tertiary">DJ 스테이션</Text>
             </HeaderContainer>
             <ContentsContainer>
                 <StationContainer>
@@ -72,8 +71,8 @@ const DJStation = () => {
                 </StationContainer>
             </ContentsContainer>
         </Container>
-    )
-}
+    );
+};
 
 /*export const getServerSideProps = wrapper.getServerSideProps((context) => {
     constext.store.dispatch({

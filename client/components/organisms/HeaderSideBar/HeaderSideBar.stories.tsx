@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderSideBar from './HeaderSideBar';
+import HeaderSideBar from '.';
 
 export default {
     title: 'Organisms/HeaderSideBar',
