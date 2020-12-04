@@ -11,7 +11,8 @@ const Container = styled.div`
     min-width: 1284px;
 `;
 const Header = styled.header`
-    margin: 60px auto 30px auto;
+    margin: 0 auto;
+    padding: 60px 0 30px 0;
     width: 960px;
 `;
 const Contents = styled.div``;
