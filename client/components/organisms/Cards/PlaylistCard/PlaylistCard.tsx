@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import ContentsThumbnail from '@components/molecules/ContentsThumbnail/ContentsThumbnail';
 import A from '@components/atoms/A/A';
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 
 import { PlaylistCardProps } from '@interfaces/props';
 
@@ -13,8 +13,7 @@ const CardContainer = styled.div`
     height: 260px;
 `;
 
-const ThumbnailContainer = styled.div`
-`;
+const ThumbnailContainer = styled.div``;
 
 const TextContainer = styled.div`
     display: flex;
@@ -36,20 +35,20 @@ const StyledA = styled(A)`
     font-size: 16px;
 `;
 
-const PlaylistCard = ( { title, description, src, href }: PlaylistCardProps ) => (
-    <CardContainer >
+const PlaylistCard = ({ title, description, src, href }: PlaylistCardProps) => (
+    <CardContainer>
         <ThumbnailContainer>
-            <ContentsThumbnail src = {src} href = {href} sort = "" />
+            <ContentsThumbnail src={src} href={href} sort="" />
         </ThumbnailContainer>
         <TextContainer>
             <TitelContainer>
                 <StyledA href={href}>{title}</StyledA>
             </TitelContainer>
             <DescriptionContainer>
-                <Text variant = "primary">{description}</Text>
+                <Text variant="primary">{description}</Text>
             </DescriptionContainer>
         </TextContainer>
     </CardContainer>
-)
+);
 
 export default PlaylistCard;

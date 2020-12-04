@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 import Label from '@components/atoms/Label';
 import Image from '@components/atoms/Image/Image';
 import A from '@components/atoms/A/A';

@@ -1,5 +1,5 @@
 import React from 'react';
-import GenreCardList from './GenreCardList';
+import GenreCardList from '.';
 
 export default {
     title: 'Organisms/GenreCardList',

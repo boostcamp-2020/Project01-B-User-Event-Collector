@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import ContentsThumbnail from '@components/molecules/ContentsThumbnail/ContentsThumbnail';
 import A from '@components/atoms/A/A';
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 
 const CardContainer = styled.div`
     display: flex;
@@ -11,8 +11,7 @@ const CardContainer = styled.div`
     height: 261px;
 `;
 
-const ThumbnailContainer = styled.div`
-`;
+const ThumbnailContainer = styled.div``;
 
 const TextContainer = styled.div`
     display: flex;
@@ -32,26 +31,28 @@ const StyledA = styled(A)`
 `;
 
 interface NewsCardProps {
-    src: string,
-    href: string,
-    newsHref: string,
-    title: string,
-};
+    src: string;
+    href: string;
+    newsHref: string;
+    title: string;
+}
 
-const NewsCard = ( { title, src, href, newsHref }: NewsCardProps ) => (
-    <CardContainer >
+const NewsCard = ({ title, src, href, newsHref }: NewsCardProps) => (
+    <CardContainer>
         <ThumbnailContainer>
-            <ContentsThumbnail sort = "news" src = {src} href = {href} />
+            <ContentsThumbnail sort="news" src={src} href={href} />
         </ThumbnailContainer>
         <TextContainer>
             <TitelContainer>
                 <StyledA href={href}>{title}</StyledA>
             </TitelContainer>
             <DescriptionContainer>
-                <A href = {newsHref} variant = "tertiary">관련 뉴스 보기</A>
+                <A href={newsHref} variant="tertiary">
+                    관련 뉴스 보기
+                </A>
             </DescriptionContainer>
         </TextContainer>
     </CardContainer>
-)
+);
 
 export default NewsCard;

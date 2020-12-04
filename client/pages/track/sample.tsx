@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import DetailHeader from '@components/organisms//DetailHeader';
 import CardListContainer from '@components/organisms/CardListContainer';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 import AlbumCard from '@components/organisms/Cards/AlbumCard/AlbumCard';
 
 const trackData = {
@@ -115,30 +115,29 @@ const trackData = {
     
     we can find out the answer
     we can find out the answer
-    `
-}
+    `,
+};
 
 const albumdata = Array(9).fill({
-    src: "https://musicmeta-phinf.pstatic.net/album/005/102/5102890.jpg?type=r360Fll&v=20201123123608",
+    src: 'https://musicmeta-phinf.pstatic.net/album/005/102/5102890.jpg?type=r360Fll&v=20201123123608',
     href: 'localhost:3000',
-    title: "Blue Skies",
-    artist: "Birdy"
+    title: 'Blue Skies',
+    artist: 'Birdy',
 });
 
 const playlistdata = Array(9).fill({
-    src: "https://music-phinf.pstatic.net/20200504_183/1588567824216rHHs6_PNG/VIBE_%B0%F8%C5%EB_VibeAndChill.png",
+    src: 'https://music-phinf.pstatic.net/20200504_183/1588567824216rHHs6_PNG/VIBE_%B0%F8%C5%EB_VibeAndChill.png',
     href: 'localhost:3000',
-    title: "VIBE AND CHILL",
-    description: "VIBE"
+    title: 'VIBE AND CHILL',
+    description: 'VIBE',
 });
 
-const belongAlbumData = 
-{
-    src: "https://musicmeta-phinf.pstatic.net/album/004/551/4551646.jpg?type=r480Fll&v=20200507115931",
-    title: "그냥",
-    artist: "이영지",
-    releasedDate: "2020.05.07"
-}
+const belongAlbumData = {
+    src: 'https://musicmeta-phinf.pstatic.net/album/004/551/4551646.jpg?type=r480Fll&v=20200507115931',
+    title: '그냥',
+    artist: '이영지',
+    releasedDate: '2020.05.07',
+};
 
 const Container = styled.div`
     min-height: 1300px;
@@ -179,35 +178,39 @@ const Lyrics = styled.div`
     overflow: scroll;
 `;
 
-const BelongAlbum = styled.div`
-
-`;
-
+const BelongAlbum = styled.div``;
 
 const Track = () => {
     return (
         <Container>
             <Header>
-                <DetailHeader sort = "track" data = {trackData}/>
+                <DetailHeader sort="track" data={trackData} />
             </Header>
             <ContentsContainer>
                 <Contents>
-                    <ContentsHeader><Text variant='regularStrong'>가사</Text></ContentsHeader>
+                    <ContentsHeader>
+                        <Text variant="regularStrong">가사</Text>
+                    </ContentsHeader>
                     <Lyrics>
-                    {
-                    trackData.lyrics.split('\n').map( line => {
-                        return (<Text variant='primary'>{line}<br/></Text>)
-                    })
-                    }
+                        {trackData.lyrics.split('\n').map((line) => {
+                            return (
+                                <Text variant="primary">
+                                    {line}
+                                    <br />
+                                </Text>
+                            );
+                        })}
                     </Lyrics>
                 </Contents>
                 <Contents>
-                    <ContentsHeader><Text variant='regularStrong'>수록 앨범</Text></ContentsHeader>
+                    <ContentsHeader>
+                        <Text variant="regularStrong">수록 앨범</Text>
+                    </ContentsHeader>
                     <BelongAlbum>
-                        <AlbumCard 
-                        title={belongAlbumData.title} 
-                        artist={belongAlbumData.artist} 
-                        src={belongAlbumData.src} 
+                        <AlbumCard
+                            title={belongAlbumData.title}
+                            artist={belongAlbumData.artist}
+                            src={belongAlbumData.src}
                         />
                     </BelongAlbum>
                 </Contents>
@@ -223,7 +226,7 @@ const Track = () => {
                 </ScrollContents>
             </ContentsContainer>
         </Container>
-    )
-}
+    );
+};
 
 export default Track;

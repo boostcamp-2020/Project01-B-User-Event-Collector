@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Text from '../../atoms/Text/Text';
+import Text from '../../atoms/Text';
 
 const Card = styled.div`
     display: flex;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import ContentsThumbnail from '@components/molecules/ContentsThumbnail/ContentsThumbnail';
 import A from '@components/atoms/A/A';
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 
 import { MixtapeCardProps } from '@interfaces/props';
 
@@ -13,8 +13,7 @@ const CardContainer = styled.div`
     height: 240px;
 `;
 
-const ThumbnailContainer = styled.div`
-`;
+const ThumbnailContainer = styled.div``;
 
 const TextContainer = styled.div`
     display: flex;
@@ -40,20 +39,20 @@ const StyledText = styled(Text)`
     font-size: 13px;
 `;
 
-const MixtapeCard = ( { title, artist, src, href }: MixtapeCardProps ) => (
-    <CardContainer >
+const MixtapeCard = ({ title, artist, src, href }: MixtapeCardProps) => (
+    <CardContainer>
         <ThumbnailContainer>
-            <ContentsThumbnail src = {src} href = {href} sort = "" />
+            <ContentsThumbnail src={src} href={href} sort="" />
         </ThumbnailContainer>
         <TextContainer>
             <TitelContainer>
                 <StyledA href={href}>{title}</StyledA>
             </TitelContainer>
             <DescriptionContainer>
-                <StyledText variant = "primary">{artist}</StyledText>
+                <StyledText variant="primary">{artist}</StyledText>
             </DescriptionContainer>
         </TextContainer>
     </CardContainer>
-)
+);
 
 export default MixtapeCard;

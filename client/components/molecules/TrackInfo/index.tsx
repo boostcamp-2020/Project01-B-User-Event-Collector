@@ -15,6 +15,10 @@ const TrackInfoContainer = styled.div`
 const MoveInfoDetail = styled(StyledA)<{ top: boolean; track: boolean }>`
     display: block;
     line-height: 17px;
+    text-overflow: ellipsis;
+    width: 222px;
+    white-space: nowrap;
+    overflow: hidden;
     ${(props) =>
         props.top &&
         css`
@@ -27,7 +31,7 @@ const MoveInfoDetail = styled(StyledA)<{ top: boolean; track: boolean }>`
             color: #fff;
             padding-top: 2px;
             font-size: 14px;
-        `}
+        `};
 `;
 const TrackInfo = ({ trackTitle, artist, track }: TrackInfoProps) => (
     <TrackInfoContainer>

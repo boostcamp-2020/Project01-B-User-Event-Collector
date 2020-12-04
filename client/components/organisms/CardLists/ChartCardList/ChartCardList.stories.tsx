@@ -1,6 +1,6 @@
 import { ChartCardProps } from '@interfaces/props';
 import React from 'react';
-import ChartCardList from './ChartCardList';
+import ChartCardList from '.';
 
 export default {
     title: 'Organisms/ChartCardList',
@@ -13,4 +13,4 @@ const ChartCards: ChartCardProps[] = Array(30).fill({
     artist: '방탄소년단',
     trackTitle: 'dynamite',
 });
-export const Default = () => <ChartCardList items={ChartCards} />;
+export const Default = () => <ChartCardList items={ChartCards} unit={5} />;
