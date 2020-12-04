@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MainMenu from '@components/molecules/MainMenu';
 import SubMenu from '@components/molecules/SubMenu';
 import UserProfileMenu from '@components/organisms/UserProfileMenu';
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 import SearchInput from '@components/molecules/SearchInput';
 import SearchIcon from '@material-ui/icons/Search';
 import {

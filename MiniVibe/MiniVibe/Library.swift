@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Library: View {
-    
     init() {
         let segmentAppearance = UISegmentedControl.appearance()
         segmentAppearance.backgroundColor = .clear
@@ -26,12 +25,17 @@ struct Library: View {
     }
     
     private let categories = ["노래", "앨범", "플레이리스트", "아티스트"]
+    @EnvironmentObject var nowPlaying: NowPlaying
     @State private var selection = 0
     
     var body: some View {
         GeometryReader { geometry in
             NavigationView {
                 VStack(alignment: .leading) {
+                    NavigationLink(
+                        destination: nowPlaying.destination?.view,
+                        isActive: $nowPlaying.isNavigationActive) { }
+                    
                     Text("보관함")
                         .foregroundColor(.black)
                         .font(.title)
@@ -65,5 +69,6 @@ struct Library: View {
 struct Library_Previews: PreviewProvider {
     static var previews: some View {
         Library()
+            .environmentObject(NowPlaying())
     }
 }
