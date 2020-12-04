@@ -13,4 +13,4 @@ const ChartCards: ChartCardProps[] = Array(30).fill({
     artist: '방탄소년단',
     trackTitle: 'dynamite',
 });
-export const Default = () => <ChartCardList items={ChartCards} />;
+export const Default = () => <ChartCardList items={ChartCards} unit={5} />;

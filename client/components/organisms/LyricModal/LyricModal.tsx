@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 import Image from '@components/atoms/Image/Image';
 import IconButton from '@components/atoms/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
 const LyricsModalContainer = styled.div`
-    visibility : ${props => props.visible === true ? 'visible;' : 'hidden;'}
+    visibility : ${(props) => (props.visible === true ? 'visible;' : 'hidden;')}
     overflow-y: auto;
     position: fixed;
     top: 0;
@@ -42,17 +42,17 @@ const ButtonContainer = styled.div`
 `;
 
 const TrackInfoContainer = styled.div`
-    display: flex;  
+    display: flex;
     width: 450px;
 `;
 
 const TrackImageContainer = styled.div`
-    display: flex;  
+    display: flex;
     margin-right: 20px;
 `;
 
 const TrackDescriptionContainer = styled.div`
-    display: flex;  
+    display: flex;
     flex-flow: column;
     justify-content: center;
 `;
@@ -78,39 +78,43 @@ const LyricsContainer = styled.div`
 `;
 
 interface LyricModalProps {
-    src: string,
-    title: string,
-    artist: string,
-    lyrics: string,
-    visibility: boolean,
-    onClickFunc: any
+    src: string;
+    title: string;
+    artist: string;
+    lyrics: string;
+    visibility: boolean;
+    onClickFunc: any;
 }
 
-const LyricModal = ({ lyrics, title, artist, src, visibility, onClickFunc } : LyricModalProps) => {
+const LyricModal = ({ lyrics, title, artist, src, visibility, onClickFunc }: LyricModalProps) => {
     return (
-    <LyricsModalContainer visible = {visibility}>
-        <LyricsDisplayModal>
-            <ButtonContainer>
-                <IconButton icon = {CloseIcon} variant = "plainBlackRegular" onClick = { onClickFunc }/>
-            </ButtonContainer>
-            <TrackInfoContainer>
-                <TrackImageContainer>
-                    <Image src = {src} variant = "lyricTrackInfo"/>
-                </TrackImageContainer>
-                <TrackDescriptionContainer>
-                    <TitleContainer>{title}</TitleContainer>
-                    <ArtistContainer>{artist}</ArtistContainer>
-                </TrackDescriptionContainer>
-            </TrackInfoContainer>
-            <LyricsContainer>
-                {
-                lyrics?.split('\n').map( line => {
-                    return (<Text variant='primary'>{line}<br/></Text>)
-                })
-                }
-            </LyricsContainer>
-        </LyricsDisplayModal>
-    </LyricsModalContainer>
-)};
+        <LyricsModalContainer visible={visibility}>
+            <LyricsDisplayModal>
+                <ButtonContainer>
+                    <IconButton icon={CloseIcon} variant="plainBlackRegular" onClick={onClickFunc} />
+                </ButtonContainer>
+                <TrackInfoContainer>
+                    <TrackImageContainer>
+                        <Image src={src} variant="lyricTrackInfo" />
+                    </TrackImageContainer>
+                    <TrackDescriptionContainer>
+                        <TitleContainer>{title}</TitleContainer>
+                        <ArtistContainer>{artist}</ArtistContainer>
+                    </TrackDescriptionContainer>
+                </TrackInfoContainer>
+                <LyricsContainer>
+                    {lyrics?.split('\n').map((line) => {
+                        return (
+                            <Text variant="primary">
+                                {line}
+                                <br />
+                            </Text>
+                        );
+                    })}
+                </LyricsContainer>
+            </LyricsDisplayModal>
+        </LyricsModalContainer>
+    );
+};
 
 export default LyricModal;

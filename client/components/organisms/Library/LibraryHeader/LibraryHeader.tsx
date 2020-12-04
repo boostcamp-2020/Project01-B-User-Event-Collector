@@ -1,4 +1,4 @@
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 import Button from '@components/atoms/Button/Button';
 import styled from 'styled-components';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
@@ -24,35 +24,45 @@ const ButtonContainer = styled.div`
     width: 28%;
     align-items: center;
     justify-content: space-between;
-    
 `;
 
 interface LibraryHeaderProps {
-    sort: 'mixtape' | 'track' | 'artist' | 'album' | 'playlist'
+    sort: 'mixtape' | 'track' | 'artist' | 'album' | 'playlist';
 }
 
 const headerTitle = (sort) => {
     let res;
-    sort === 'mixtape' ? res = '오늘 들을 믹스테잎' :
-    sort === 'track' ? res = '노래' :
-    sort === 'artist' ? res = '아티스트' :
-    sort === 'album' ? res = '앨범' :
-    sort === 'playlist' ? res = '플레이리스트' :
-    res = "sort is wrong"
+    sort === 'mixtape'
+        ? (res = '오늘 들을 믹스테잎')
+        : sort === 'track'
+        ? (res = '노래')
+        : sort === 'artist'
+        ? (res = '아티스트')
+        : sort === 'album'
+        ? (res = '앨범')
+        : sort === 'playlist'
+        ? (res = '플레이리스트')
+        : (res = 'sort is wrong');
 
     return res;
-}
+};
 
-const LibraryHeader = ({sort}: LibraryHeaderProps) => (
+const LibraryHeader = ({ sort }: LibraryHeaderProps) => (
     <HeaderContainter>
         <TextContainer>
             <Text variant="primary">보관함</Text>
             <Text variant="tertiary">{headerTitle(sort)}</Text>
         </TextContainer>
-        { sort === 'track' && <ButtonContainer>
-            <Button variant = "primary" width='130' height='40' icon={PlayArrowIcon} >전체재생</Button>
-            <Button width='130' height='40' icon={ShuffleIcon}>랜덤재생</Button>
-        </ButtonContainer>}
+        {sort === 'track' && (
+            <ButtonContainer>
+                <Button variant="primary" width="130" height="40" icon={PlayArrowIcon}>
+                    전체재생
+                </Button>
+                <Button width="130" height="40" icon={ShuffleIcon}>
+                    랜덤재생
+                </Button>
+            </ButtonContainer>
+        )}
     </HeaderContainter>
 );
 

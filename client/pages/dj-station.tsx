@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 import StationCardList from '../components/organisms/CardLists/StationCardList/StationCardList';
 
 const StationCardsData = Array(20).fill({

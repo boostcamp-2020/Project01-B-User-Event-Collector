@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from '@components/atoms/Image/Image';
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 import TrackPlayButton from '@components/molecules/TrackPlayButton';
 import { Card, Rank, SongInfo } from './ChartCard.styles';
 

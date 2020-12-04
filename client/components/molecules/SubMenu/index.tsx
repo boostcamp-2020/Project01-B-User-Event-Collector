@@ -1,6 +1,6 @@
 import React from 'react';
 import MenuLink from '@components/atoms/MenuLink';
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 import styled from 'styled-components';
 
 const MenuTitle = styled.div`

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import Image from '@components/atoms/Image/Image';
 import A from '@components/atoms/A/A';
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 import Label from '@components/atoms/Label';
 
 const CardContainer = styled.div`
@@ -13,8 +13,7 @@ const CardContainer = styled.div`
     cursor: pointer;
 `;
 
-const ImageContainer = styled.div`
-`;
+const ImageContainer = styled.div``;
 
 const ContentsContainer = styled.div`
     display: flex;
@@ -37,36 +36,40 @@ const DescriptionContainer = styled.div`
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    word-wrap:break-word; 
+    word-wrap: break-word;
     line-height: 1.2em;
     height: 2.4em;
 `;
 
 interface MainMagazineCardProps {
-    src: string,
-    href: string,
-    title: string,
-    label: string,
-    description: string
-};
+    src: string;
+    href: string;
+    title: string;
+    label: string;
+    description: string;
+}
 
-const MainMagazineCard = ( { title, src, href, description, label }: MainMagazineCardProps ) => (
+const MainMagazineCard = ({ title, src, href, description, label }: MainMagazineCardProps) => (
     <CardContainer>
         <ImageContainer>
-            <Image variant = "primary" src = {src}/>
+            <Image variant="primary" src={src} />
         </ImageContainer>
         <ContentsContainer>
             <LabelContainer>
-                <Label selected = {true} variant = "secondary">{label}</Label>
+                <Label selected={true} variant="secondary">
+                    {label}
+                </Label>
             </LabelContainer>
             <TitleContainer>
-                <A variant = 'primary' href = {href}>{title}</A>
+                <A variant="primary" href={href}>
+                    {title}
+                </A>
             </TitleContainer>
             <DescriptionContainer>
-                <Text variant = 'primary'>{description}</Text>
+                <Text variant="primary">{description}</Text>
             </DescriptionContainer>
         </ContentsContainer>
     </CardContainer>
-)
+);
 
 export default MainMagazineCard;

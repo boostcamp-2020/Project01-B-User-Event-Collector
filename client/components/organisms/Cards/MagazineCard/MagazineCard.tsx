@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import ContentsThumbnail from '@components/molecules/ContentsThumbnail/ContentsThumbnail';
 import A from '@components/atoms/A/A';
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 import { MagazineCardProps } from '@interfaces/props';
 const CardContainer = styled.div`
     display: flex;

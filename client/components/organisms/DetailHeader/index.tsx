@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Text from '@components/atoms/Text/Text';
+import Text from '@components/atoms/Text';
 import HeaderButtonGroup from '@components/organisms/HeaderButtonGroup';
 import Image from '@components/atoms/Image/Image';
 
@@ -12,8 +12,7 @@ const HeaderContainter = styled.div`
     padding-bottom: 40px;
 `;
 
-const ImageContainer = styled.div`
-`;
+const ImageContainer = styled.div``;
 
 const DetailContainer = styled.div`
     display: flex;
@@ -22,7 +21,6 @@ const DetailContainer = styled.div`
     height: 100%;
     padding: 0;
 `;
-
 
 const TextContainer = styled.div`
     display: flex;
@@ -55,51 +53,46 @@ const DescriptionContainer = styled.div`
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    word-wrap:break-word; 
+    word-wrap: break-word;
     line-height: 1.2em;
     height: 2.4em;
 `;
 
-
 interface DetailHeaderProps {
-    sort: 'album' | 'mixtape' | 'playlist' | 'track',
-    data: JSON
+    sort: 'album' | 'mixtape' | 'playlist' | 'track';
+    data: JSON;
 }
 
-const DetailHeader = ({sort, data}: DetailHeaderProps) => {
-return (
-    <HeaderContainter>
-        <ImageContainer>
-            <Image src = {data.src} variant = ""/>
-        </ImageContainer>
-        <DetailContainer>
-            <TextContainer>
-                <TitleContainer>
-                    <Text variant = "tertiary">{data.title}</Text>
-                </TitleContainer>
-                {
-                sort === "album" || 'track' ?
-                <ArtistContainer>
-                    {data.artist}
-                </ArtistContainer> :
-                ''
-                }
-                {
-                sort === "album" && 
-                <DateGenreContainer>
-                    <Text variant = "primary">{data.releasedDate} {data.genre}</Text>
-                </DateGenreContainer>
-                }
-                <DescriptionContainer>
-                    <Text variant = "primary">{sort === "mixtape" ? data.artist : data.description}</Text>
-                </DescriptionContainer>
-            </TextContainer>
-            <ButtonContainer>
-                {sort === "track" && <HeaderButtonGroup sort="track"/>}
-                {sort !== "track" && <HeaderButtonGroup />}
-            </ButtonContainer>
-        </DetailContainer>
-    </HeaderContainter>
-)};
+const DetailHeader = ({ sort, data }: DetailHeaderProps) => {
+    return (
+        <HeaderContainter>
+            <ImageContainer>
+                <Image src={data.src} variant="" />
+            </ImageContainer>
+            <DetailContainer>
+                <TextContainer>
+                    <TitleContainer>
+                        <Text variant="tertiary">{data.title}</Text>
+                    </TitleContainer>
+                    {sort === 'album' || 'track' ? <ArtistContainer>{data.artist}</ArtistContainer> : ''}
+                    {sort === 'album' && (
+                        <DateGenreContainer>
+                            <Text variant="primary">
+                                {data.releasedDate} {data.genre}
+                            </Text>
+                        </DateGenreContainer>
+                    )}
+                    <DescriptionContainer>
+                        <Text variant="primary">{sort === 'mixtape' ? data.artist : data.description}</Text>
+                    </DescriptionContainer>
+                </TextContainer>
+                <ButtonContainer>
+                    {sort === 'track' && <HeaderButtonGroup sort="track" />}
+                    {sort !== 'track' && <HeaderButtonGroup />}
+                </ButtonContainer>
+            </DetailContainer>
+        </HeaderContainter>
+    );
+};
 
 export default DetailHeader;
