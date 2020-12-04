@@ -36,13 +36,11 @@ const getCardBundle = (items: ChartCardProps[]): ChartCardProps[] => {
     return bundle;
 };
 const ChartCardList = ({ items }: ChartCardListProps) => (
-    <CardScrollList>
-        <ListContainer>
-            {getCardBundle(items).map((item, idx) => (
-                <List key={idx}>{item}</List>
-            ))}
-        </ListContainer>
-    </CardScrollList>
+    <ListContainer>
+        {getCardBundle(items).map((item, idx) => (
+            <List key={idx}>{item}</List>
+        ))}
+    </ListContainer>
 );
 
 export default ChartCardList;
