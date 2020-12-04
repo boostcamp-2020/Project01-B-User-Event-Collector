@@ -32,8 +32,8 @@ struct Search: View {
                     
                     GenreSection()
                 }
+                .navigationBarHidden(true)
             }
-            .navigationBarHidden(true)
         }
     }
     

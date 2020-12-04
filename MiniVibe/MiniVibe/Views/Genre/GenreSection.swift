@@ -23,11 +23,10 @@ struct GenreItem: View {
             }
         }
         .foregroundColor(.black)
-        .frame(width: width * .thumbnailRatio - 5, alignment: .leading)
-        .padding(.leading, 5)
+        .frame(width: width * .thumbnailRatio, alignment: .leading)
         .padding(.vertical, 5)
         .background(Color(.systemGray6))
-        .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
+        .cornerRadius(3.0)
     }
 }
 
@@ -57,8 +56,8 @@ struct GenreSection: View {
 
 struct GenreSection_Previews: PreviewProvider {
     static var previews: some View {
-        //GenreItem(title: "국내 발라드")
         GenreSection()
+            
     }
 }
 
