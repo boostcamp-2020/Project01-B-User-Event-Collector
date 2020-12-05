@@ -9,9 +9,10 @@
     "skipLibCheck": true,                     /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true,  /* Disallow inconsistently-cased references to the same file. */
     "outDir": "./build",
-    "experimentalDecorators": true,
     "sourceMap": true,
-   
+    "strictPropertyInitialization": false,
+    "experimentalDecorators": true,      
+    "emitDecoratorMetadata": true, 
   },
   "exclude": ["node_modules/"]
 }
