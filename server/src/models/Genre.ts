@@ -3,6 +3,7 @@ import {
 } from 'typeorm';
 import Artist from './Artist';
 import Album from './Album';
+import Track from './Track';
 
 @Entity()
 class Genre {
@@ -17,6 +18,9 @@ class Genre {
 
     @OneToMany((type) => Album, (album) => album.genre)
     albums: Album[];
+
+    @OneToMany((type) => Track, (track) => track.genre)
+    tracks: Track[];
 }
 
 export default Genre;

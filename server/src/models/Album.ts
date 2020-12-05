@@ -1,8 +1,9 @@
 import {
-    Entity, PrimaryGeneratedColumn, Column, ManyToOne,
+    Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany,
 } from 'typeorm';
 import Genre from './Genre';
 import Artist from './Artist';
+import Track from './Track';
 
 @Entity()
 class Album {
@@ -26,6 +27,9 @@ class Album {
 
     @ManyToOne((type) => Artist, (artist) => artist.albums)
     artist: Artist;
+
+    @OneToMany((type) => Track, (track) => track.album)
+    tracks: Track[];
 }
 
 export default Album;
