@@ -5,7 +5,7 @@ import Head from 'next/head'; //head를 수정할 수 있게 함
 import styled from 'styled-components';
 
 import HeaderSideBar from '@components/organisms/HeaderSideBar';
-import PlayController from '@components/organisms/PlayController';
+import MusicPlayer from '@components/organisms/MusicPlayer';
 import '../assets/global.css';
 
 const Container = styled.div`
@@ -16,6 +16,20 @@ const userData = {
     id: '0',
     name: 'testUser',
 };
+
+const trackData =     
+{
+    id: 0,
+    title: '그냥',
+    artistId: 0,
+    artist: { id: 0, name: '이영지' },
+    albumId: 0,
+    album: { id: 0, title: '그냥', imageUrl: 'https://musicmeta-phinf.pstatic.net/album/004/551/4551646.jpg?type=r720Fll&v=20200507115931' },
+    lyrics: '가사입니다',
+    playtime: '217',
+};
+
+const currentPlayList = Array(30).fill(trackData);
 
 const App = ({ Component, pageProps }) => {
     useEffect(() => {
@@ -34,7 +48,7 @@ const App = ({ Component, pageProps }) => {
                 <link rel="shortcut icon" href="https://img.icons8.com/cute-clipart/64/000000/like.png" />
             </Head>
             <HeaderSideBar user={userData} />
-            <PlayController />
+            <MusicPlayer tracks = { currentPlayList }/>
             <Component {...pageProps} />
         </Container>
     );
