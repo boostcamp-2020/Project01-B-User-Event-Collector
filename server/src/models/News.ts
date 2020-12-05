@@ -20,7 +20,7 @@ class News {
     @Column()
     link: string;
 
-    @OneToOne(() => Album)
+    @OneToOne(() => Album, { nullable: false })
     @JoinColumn()
     album: Album;
 }

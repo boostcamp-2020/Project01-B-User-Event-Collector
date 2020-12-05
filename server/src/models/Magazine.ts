@@ -20,7 +20,7 @@ class Magazine {
     @Column()
     category: string;
 
-    @OneToOne(() => Playlist)
+    @OneToOne(() => Playlist, { nullable: false })
     @JoinColumn()
     playlist: Playlist;
 }

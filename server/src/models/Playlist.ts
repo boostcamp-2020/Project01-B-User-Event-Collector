@@ -1,7 +1,8 @@
 import {
-    Entity, PrimaryGeneratedColumn, Column, ManyToOne,
+    Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, JoinTable,
 } from 'typeorm';
 import User from './User';
+import Track from './Track';
 
 @Entity()
 class Playlist {
@@ -17,8 +18,12 @@ class Playlist {
     @Column()
     imagerl: string;
 
-    @ManyToOne((type) => User, (user) => user.playlists)
+    @ManyToOne((type) => User, (user) => user.playlists, { nullable: false })
     user: User;
+
+    @ManyToMany(() => Track)
+    @JoinTable({ name: 'playlist_track' })
+    tracks: Track[];
 }
 
 export default Playlist;
