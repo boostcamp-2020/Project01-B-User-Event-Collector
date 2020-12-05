@@ -16,10 +16,10 @@ class Album {
     description: string;
 
     @Column('date')
-    release_date: Date;
+    releaseDate: Date;
 
     @Column()
-    image_url: string;
+    imageUrl: string;
 
     @ManyToOne((type) => Genre, (genre) => genre.albums)
     genre: Genre;

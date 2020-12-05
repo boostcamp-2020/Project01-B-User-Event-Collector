@@ -18,8 +18,8 @@ app.use(morgan('dev'));
 
 app.use(cors());
 
-app.use('/', router);
+// app.use('/', router);
 
 app.listen(app.get('port'), () => {
-  console.log(`API Server App Listening on PORT ${app.get('port')}`);
+    console.log(`API Server App Listening on PORT ${app.get('port')}`);
 });

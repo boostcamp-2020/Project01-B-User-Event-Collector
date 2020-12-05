@@ -13,7 +13,7 @@ class Artist {
     name: string;
 
     @Column()
-    image_url: string;
+    imageUrl: string;
 
     @ManyToOne((type) => Genre, (genre) => genre.artists)
     genre: Genre;
