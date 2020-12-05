@@ -18,7 +18,10 @@ class Playlist {
     @Column()
     imagerl: string;
 
-    @ManyToOne((type) => User, (user) => user.playlists, { nullable: false })
+    @Column()
+    customized: boolean; // true: user가 만든 playlist, false: vibe에서 제공하는 playlist
+
+    @ManyToOne((type) => User, (user) => user.playlists)
     user: User;
 
     @ManyToMany(() => Track)
