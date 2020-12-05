@@ -22,10 +22,10 @@ class Album {
     @Column()
     imageUrl: string;
 
-    @ManyToOne((type) => Genre, (genre) => genre.albums)
+    @ManyToOne((type) => Genre, (genre) => genre.albums, { nullable: false })
     genre: Genre;
 
-    @ManyToOne((type) => Artist, (artist) => artist.albums)
+    @ManyToOne((type) => Artist, (artist) => artist.albums, { nullable: false })
     artist: Artist;
 
     @OneToMany((type) => Track, (track) => track.album)

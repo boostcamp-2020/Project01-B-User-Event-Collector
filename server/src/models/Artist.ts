@@ -16,7 +16,7 @@ class Artist {
     @Column()
     imageUrl: string;
 
-    @ManyToOne((type) => Genre, (genre) => genre.artists)
+    @ManyToOne((type) => Genre, (genre) => genre.artists, { nullable: false })
     genre: Genre;
 
     @OneToMany((type) => Album, (album) => album.artist)

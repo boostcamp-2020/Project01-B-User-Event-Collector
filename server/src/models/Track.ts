@@ -32,13 +32,13 @@ class Track {
     @Column()
     playtime: number;
 
-    @ManyToOne((type) => Genre, (genre) => genre.tracks)
+    @ManyToOne((type) => Genre, (genre) => genre.tracks, { nullable: false })
     genre: Genre;
 
-    @ManyToOne((type) => Artist, (artist) => artist.tracks)
+    @ManyToOne((type) => Artist, (artist) => artist.tracks, { nullable: false })
     artist: Artist;
 
-    @ManyToOne((type) => Album, (album) => album.tracks)
+    @ManyToOne((type) => Album, (album) => album.tracks, { nullable: false })
     album: Album;
 }
 
