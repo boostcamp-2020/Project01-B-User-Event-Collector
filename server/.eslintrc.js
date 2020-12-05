@@ -12,7 +12,7 @@ module.exports = {
     plugins: ['@typescript-eslint'],
     rules: {
         indent: ['error', 4],
-        camelcase: [0],
+        'import/prefer-default-export': 'off',
         'no-unused-vars': 'off',
         'import/extensions': [
             'error',

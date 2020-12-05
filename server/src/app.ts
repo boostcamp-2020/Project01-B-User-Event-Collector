@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import morgan from 'morgan';
 import 'dotenv/config';
-import router from './routes';
+import apiRouter from './routes';
 import db from './db';
 
 db();
@@ -18,7 +18,7 @@ app.use(morgan('dev'));
 
 app.use(cors());
 
-// app.use('/', router);
+app.use('/api', apiRouter);
 
 app.listen(app.get('port'), () => {
     console.log(`API Server App Listening on PORT ${app.get('port')}`);

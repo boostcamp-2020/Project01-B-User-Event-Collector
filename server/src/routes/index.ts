@@ -1,7 +1,8 @@
 import express from 'express';
-import userRouter from './user';
+import newsRouter from './news';
+
 const router = express.Router();
 
-router.use('/users', userRouter);
+router.use('/news', newsRouter);
 
 export default router;
