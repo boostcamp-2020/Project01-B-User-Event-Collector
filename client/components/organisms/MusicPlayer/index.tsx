@@ -15,20 +15,21 @@ interface HeaderContainerProps {
 }
 
 const Container = styled.div`
+    display: flex;
+    z-index: 200;
+`;
+
+const HeaderContainer = styled.div<HeaderContainerProps>`
     position: fixed;
     top: 0;
     right: 0;
     bottom: 90px;
     left: 0;
-    display: flex;
-    z-index: 20000;
-`;
-
-const HeaderContainer = styled.div<HeaderContainerProps>`
     visibility : ${(props) => (props.visible === true ? 'visible;' : 'hidden;')};
     background-color: rgba(0, 0, 0, 0.85);
     width: 100%;
     display: flex;
+    z-index: 200;
 `;
 
 const ImageContainer = styled.div`
@@ -79,6 +80,7 @@ const TrackContainer = styled.div`
 const ControllerContainer = styled.div`
     background-color: rgba(0, 0, 0, 0.7);
     display: flex;
+    z-index: 500;
 `;
 
 const PlayerTrackCardDatas = Array(20).fill({

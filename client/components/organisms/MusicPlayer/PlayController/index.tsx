@@ -22,7 +22,7 @@ const ProgresBarContainer = styled.div`
     top: -10px;
     right: 0;
     left: 0;
-    z-index: 200;
+    z-index: 500;
 `;
 
 const SectionContainer = styled.div`
