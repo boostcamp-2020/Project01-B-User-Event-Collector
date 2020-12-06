@@ -5,5 +5,5 @@ const router = express.Router();
 
 router.get('/', playlistsContoller.list);
 router.get('/:id', playlistsContoller.listById);
-
+router.post('/', playlistsContoller.create);
 export default router;

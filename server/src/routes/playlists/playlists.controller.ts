@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { getRepository } from 'typeorm';
+import { getManager, getRepository } from 'typeorm';
 import Playlist from '../../models/Playlist';
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
@@ -43,6 +43,30 @@ const listById = async (req: Request, res: Response, next: NextFunction) => {
         return res.json({ success: true, data: playlist });
     } catch (err) {
         console.error(err);
+        return res.status(500).json({ success: false, data: [] });
     }
 };
-export { list, listById };
+
+const create = async (req: Request, res: Response, next: NextFunction) => {
+    // TODO: userId 처리
+    const { title } = req.body;
+    console.log(title);
+    const userId = 1;
+
+    try {
+        const PlaylistRepository = getRepository(Playlist);
+        await PlaylistRepository.createQueryBuilder('playlist')
+            .insert()
+            .into(Playlist)
+            .values({
+                title,
+            })
+            .execute();
+
+        return res.json({ succee: true });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ success: false });
+    }
+};
+export { list, listById, create };
