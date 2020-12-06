@@ -23,9 +23,6 @@ class User {
     @Column()
     imageUrl: string;
 
-    @OneToMany((type) => Playlist, (playlist) => playlist.user)
-    playlists: Playlist[];
-
     @ManyToMany(() => Track)
     @JoinTable({ name: 'library_tracks' })
     libraryTracks: Track[];

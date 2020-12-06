@@ -12,6 +12,9 @@ class Playlist {
     @Column()
     title: string;
 
+    @Column()
+    subTitle: string;
+
     @Column({ nullable: true })
     description: string;
 
@@ -20,9 +23,6 @@ class Playlist {
 
     @Column()
     customized: boolean; // true: user가 만든 playlist, false: vibe에서 제공하는 playlist
-
-    @ManyToOne((type) => User, (user) => user.playlists)
-    user: User;
 
     @ManyToMany(() => Track)
     @JoinTable({ name: 'playlist_track' })
