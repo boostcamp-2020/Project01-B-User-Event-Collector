@@ -27,6 +27,7 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
             .leftJoinAndSelect('playlist.tracks', 'track')
             .leftJoinAndSelect('track.album', 'album')
             .leftJoinAndSelect('track.artist', 'artist')
+            .where('magazine.id = :id', { id })
             .select([
                 'magazine',
                 'playlist.id',
