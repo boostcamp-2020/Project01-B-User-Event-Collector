@@ -23,11 +23,8 @@ class Track {
     @Column()
     title: string;
 
-    @Column()
+    @Column('text')
     lyrics: string;
-
-    @Column('date')
-    releaseDate: Date;
 
     @Column()
     playtime: number;
