@@ -6,9 +6,12 @@ import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 import ChartCardList from '@components/organisms/CardLists/ChartCardList';
 
 const Container = styled.div`
-    padding-left: 225px;
-    padding-bottom: 90px;
-    min-width: 1284px;
+    padding: 0 0 225px 90px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    
 `;
 const Header = styled.header`
     margin: 0 auto;
@@ -17,6 +20,7 @@ const Header = styled.header`
 `;
 const Contents = styled.div``;
 const ContentsContainer = styled.div`
+    width: 960px;
     & + & {
         border-top: 1px solid #ececec;
     }

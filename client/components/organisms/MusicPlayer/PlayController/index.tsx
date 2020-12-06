@@ -5,6 +5,7 @@ import Playtime from '@components/atoms/Playtime';
 import VolumnController from '@components/molecules/VolumnController';
 import PlaylistDisplayButton from '@components/molecules/PlaylistDisplayButton';
 import ProgressBar from '@components/molecules/ProgressBar';
+import PlayerTrackInfo from '@components/organisms/MusicPlayer/PlayerTrackInfo';
 
 const Container = styled.div`
     position: fixed;
@@ -21,11 +22,17 @@ const ProgresBarContainer = styled.div`
     top: -10px;
     right: 0;
     left: 0;
-    z-index: 200;
+    z-index: 500;
 `;
 
 const SectionContainer = styled.div`
     padding-top: 10px;
+`;
+
+const TrackInfoContainer = styled.div`
+    position: absolute;
+    top: 23px;
+    left: 30px;
 `;
 
 const PlayButtonsContainer = styled.div`
@@ -57,24 +64,34 @@ const DisplayButtonContaier = styled.div`
     border-left: 1px solid hsla(0, 0%, 84.7%, 0.15);
 `;
 
-const PlayController = () => {
+interface PlayControllerProps {
+    track,
+    displayHeader: boolean,
+    displayHeaderHandler
+}
+
+const PlayController = ({track, displayHeader, displayHeaderHandler}: PlayControllerProps) => {
+    const data = track;
     return (
         <Container>
             <ProgresBarContainer>
-                <ProgressBar totalPlaytime={200} progress={50} />
+                <ProgressBar totalPlaytime={ data.playtime } progress={50} />
             </ProgresBarContainer>
             <SectionContainer>
+                <TrackInfoContainer>
+                    <PlayerTrackInfo track = { data }/>;
+                </TrackInfoContainer>
                 <PlayButtonsContainer>
                     <PlayControllerButtons />
                 </PlayButtonsContainer>
                 <PlaytimeContainer>
-                    <Playtime current={100} total={200} />
+                    <Playtime current={100} total={ data.playtime } />
                 </PlaytimeContainer>
                 <VolumnControllerContainer>
                     <VolumnController />
                 </VolumnControllerContainer>
                 <DisplayButtonContaier>
-                    <PlaylistDisplayButton open={true} />
+                    <PlaylistDisplayButton open={displayHeader} onClick={displayHeaderHandler}/>
                 </DisplayButtonContaier>
             </SectionContainer>
         </Container>

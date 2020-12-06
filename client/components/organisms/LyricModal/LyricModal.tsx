@@ -4,7 +4,11 @@ import Image from '@components/atoms/Image/Image';
 import IconButton from '@components/atoms/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
-const LyricsModalContainer = styled.div`
+interface LyricsModalContainer {
+    visible: boolean;
+}
+
+const LyricsModalContainer = styled.div<LyricsModalContainer>`
     visibility : ${(props) => (props.visible === true ? 'visible;' : 'hidden;')}
     overflow-y: auto;
     position: fixed;

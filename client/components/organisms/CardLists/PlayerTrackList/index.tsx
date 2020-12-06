@@ -11,12 +11,16 @@ const ListContainer = styled.ul`
     right: 0;
     z-index: 2;
 `;
-const PlayerTrackList = ({ items }: { items: PlayerTrackCardProps[] }) => (
+const PlayerTrackList = ({ items }: { items: PlayerTrackCardProps[] }) => {
+    return (
     <ListContainer>
         {items.map((item) => (
-            <PlayerTrackCard {...(item as PlayerTrackCardProps)} />
+            <PlayerTrackCard 
+            src={item.album.imageUrl}
+            trackTitle={item.title}
+            artist={item.artist.name} />
         ))}
     </ListContainer>
-);
+)};
 
 export default PlayerTrackList;
