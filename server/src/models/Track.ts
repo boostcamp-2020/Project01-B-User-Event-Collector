@@ -37,6 +37,9 @@ class Track {
 
     @ManyToOne((type) => Album, (album) => album.tracks, { nullable: false })
     album: Album;
+
+    @Column()
+    albumId: number;
 }
 
 export default Track;

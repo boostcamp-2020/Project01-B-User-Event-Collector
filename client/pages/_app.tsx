@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import HeaderSideBar from '@components/organisms/HeaderSideBar';
 import MusicPlayer from '@components/organisms/MusicPlayer';
+import FloatingSelectMenu from '@components/organisms/FloatingSelectMenu';
 import '../assets/global.css';
 
 const Container = styled.div`
@@ -48,6 +49,7 @@ const App = ({ Component, pageProps }) => {
                 <link rel="shortcut icon" href="https://img.icons8.com/cute-clipart/64/000000/like.png" />
             </Head>
             <HeaderSideBar user={userData} />
+            <FloatingSelectMenu />
             <MusicPlayer tracks = { currentPlayList }/>
             <Component {...pageProps} />
         </Container>
