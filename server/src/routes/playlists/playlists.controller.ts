@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { EntityManager, getManager, getRepository } from 'typeorm';
+import { isRegExp } from 'util';
 import * as libraryPlaylist from '../library/playlists/library.playlists.controller';
 import * as TrackController from '../tracks/tracks.controller';
 import Playlist from '../../models/Playlist';
@@ -71,20 +72,29 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
     }
 };
 
-const addTracks = async (req: Request, res: Response, next: NextFunction) => {
-    const { playlistId, tracks } = req.body;
-
+const insertTracks = async (playlistId: number, tracks: Track[]) :Promise<boolean> => {
     try {
         const manager = getManager();
         const playlist = await manager.findOne(Playlist, playlistId, { relations: ['tracks'] });
         const track = await manager.findByIds(Track, tracks);
 
-        if (!playlist || !track) return res.status(404).json({ success: false });
+        if (!playlist || !track) return false;
 
         playlist.tracks.push(...track);
         await manager.save(playlist);
+        return true;
+    } catch (err) {
+        console.log(err);
+        return false;
+    }
+};
+const addTracks = async (req: Request, res: Response, next: NextFunction) => {
+    const { playlistId, tracks } = req.body;
 
-        return res.json({ success: true });
+    try {
+        const result = await insertTracks(playlistId, tracks);
+        if (result) res.json({ success: true });
+        Error();
     } catch (err) {
         console.error(err);
         return res.status(500).json({ success: false });
@@ -97,16 +107,9 @@ const addAlbum = async (req: Request, res: Response, next: NextFunction) => {
         const tracks = await TrackController.listByAlbumId(albumId);
         if (!tracks) return res.status(404).json({ success: false });
 
-        const manager = getManager();
-        const playlist = await manager.findOne(Playlist, playlistId, { relations: ['tracks'] });
-        const track = await manager.findByIds(Track, tracks);
-
-        if (!playlist || !track) return res.status(404).json({ success: false });
-
-        playlist.tracks.push(...track);
-        await manager.save(playlist);
-
-        return res.json({ success: true });
+        const result = await insertTracks(playlistId, tracks);
+        if (result) return res.json({ success: true });
+        Error();
     } catch (err) {
         console.error(err);
         return res.status(500).json({ success: false });
