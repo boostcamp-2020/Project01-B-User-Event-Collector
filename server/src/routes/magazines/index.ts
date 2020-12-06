@@ -1,5 +1,5 @@
-const express = require('express');
-const magazineController = require('./magazines.controller');
+import express from 'express';
+import * as magazineController from './magazines.controller';
 
 const router = express.Router();
 
