@@ -6,7 +6,7 @@ interface ButtonProps {
     children: ReactNode;
     icon?: ComponentType;
     onClick?: (e: MouseEvent<HTMLElement>) => void;
-    variant?: 'primary';
+    variant?: 'primary' | 'secondary';
     width?: string;
     height?: string;
 }

@@ -1,28 +1,31 @@
 import styled from 'styled-components';
 
 interface StyledButtonProps {
-  variant?: 'primary';
+  variant?: 'primary' | 'secondary';
 }
 
 const getButtonStyle = (props: StyledButtonProps) => {
-  let color; let borderColor; let backgroundColor;
+  let color = 'black'; let border; let backgroundColor;
 
   switch (props.variant) {
     case 'primary':
       color = 'white';
-      borderColor = '#FF1150';
+      border = '1px solid #FF1150';
       backgroundColor = '#FF1150';
       break;
+    case 'secondary':
+      border = '0';
+      backgroundColor = 'rgba(0,0,0,0)';
+      break;
     default:
-      color = 'black';
-      borderColor = '#D7D7D7';
+      border = '1px solid #D7D7D7';
       backgroundColor = 'white';
       break;
   }
 
   return `
     color: ${color};
-    border: 1px solid ${borderColor};
+    border: ${border};
     background-color: ${backgroundColor};
     width: ${props.width}px;
     height: ${props.height}px;
