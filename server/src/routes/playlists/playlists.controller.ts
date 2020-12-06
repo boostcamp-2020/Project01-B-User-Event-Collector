@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { EntityManager, getManager, getRepository } from 'typeorm';
 import * as libraryPlaylist from '../library/playlists/library.playlists.controller';
+import * as TrackController from '../tracks/tracks.controller';
 import Playlist from '../../models/Playlist';
 import User from '../../models/User';
 import Track from '../../models/Track';
@@ -52,7 +53,6 @@ const listById = async (req: Request, res: Response, next: NextFunction) => {
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
     const { title } = req.body;
-    console.log(title);
 
     try {
         const PlaylistRepository = getRepository(Playlist);
@@ -72,7 +72,6 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const addTracks = async (req: Request, res: Response, next: NextFunction) => {
-    console.log(req.body);
     const { playlistId, tracks } = req.body;
 
     try {
@@ -91,6 +90,28 @@ const addTracks = async (req: Request, res: Response, next: NextFunction) => {
         return res.status(500).json({ success: false });
     }
 };
+
+const addAlbum = async (req: Request, res: Response, next: NextFunction) => {
+    const { playlistId, albumId } = req.body;
+    try {
+        const tracks = await TrackController.listByAlbumId(albumId);
+        if (!tracks) return res.status(404).json({ success: false });
+
+        const manager = getManager();
+        const playlist = await manager.findOne(Playlist, playlistId, { relations: ['tracks'] });
+        const track = await manager.findByIds(Track, tracks);
+
+        if (!playlist || !track) return res.status(404).json({ success: false });
+
+        playlist.tracks.push(...track);
+        await manager.save(playlist);
+
+        return res.json({ success: true });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ success: false });
+    }
+};
 export {
-    list, listById, create, addTracks,
+    list, listById, create, addTracks, addAlbum,
 };
