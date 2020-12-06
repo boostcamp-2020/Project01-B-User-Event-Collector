@@ -94,7 +94,7 @@ const addTracks = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const result = await insertTracks(playlistId, tracks);
         if (result) res.json({ success: true });
-        Error();
+        return res.status(500).json({ success: false });
     } catch (err) {
         console.error(err);
         return res.status(500).json({ success: false });
@@ -109,7 +109,7 @@ const addAlbum = async (req: Request, res: Response, next: NextFunction) => {
 
         const result = await insertTracks(playlistId, tracks);
         if (result) return res.json({ success: true });
-        Error();
+        return res.status(500).json({ success: false });
     } catch (err) {
         console.error(err);
         return res.status(500).json({ success: false });
