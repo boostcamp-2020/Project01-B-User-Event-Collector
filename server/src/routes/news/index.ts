@@ -1,5 +1,5 @@
-const express = require('express');
-const newsController = require('./news.controller');
+import express from 'express';
+import * as newsController from './news.controller';
 
 const router = express.Router();
 
