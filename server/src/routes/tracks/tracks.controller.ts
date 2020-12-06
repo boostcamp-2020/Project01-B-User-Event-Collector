@@ -21,8 +21,8 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
             .getMany();
 
         return res.json({
-            success: true,
-            data: [...tracks],
+            success: !!tracks,
+            data: tracks || [],
         });
     } catch (err) {
         return res.status(500).json({
@@ -53,8 +53,8 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
         if (!track) return res.status(404).json({ success: false });
 
         return res.json({
-            success: true,
-            data: track,
+            success: !!track,
+            data: track || {},
         });
     } catch (err) {
         return res.status(500).json({
