@@ -12,8 +12,8 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
             .getMany();
 
         return res.json({
-            success: true,
-            data: [...albums],
+            success: !!albums,
+            data: albums || [],
         });
     } catch (err) {
         return res.status(500).json({ success: false });
@@ -31,11 +31,9 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
             .where('album.id = :id', { id })
             .getOne();
 
-        if (!album) return res.status(404).json({ success: false });
-
         return res.json({
-            success: true,
-            data: album,
+            success: !!album,
+            data: album || {},
         });
     } catch (err) {
         return res.status(500).json({ success: false });
