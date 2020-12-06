@@ -30,7 +30,7 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
 
     const userRepository = getRepository(User);
     // const libraryTracks = await userRepository.findOne(userId, { relations: ['libraryTracks'] });
-    const libraryTracks = await userRepository.createQueryBuilder('user')
+    const user = await userRepository.createQueryBuilder('user')
         .leftJoinAndSelect('user.libraryTracks', 'library_tracks')
         .leftJoinAndSelect('library_tracks.album', 'album')
         .leftJoinAndSelect('library_tracks.artist', 'artist')
@@ -46,6 +46,8 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
             'album.imageUrl',
         ])
         .getOne();
+
+    const libraryTracks = user?.libraryTracks ? user?.libraryTracks : [];
 
     res.json({
         success: true,
