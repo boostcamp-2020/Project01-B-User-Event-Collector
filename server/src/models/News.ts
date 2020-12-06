@@ -23,6 +23,9 @@ class News {
     @OneToOne(() => Album, { nullable: false })
     @JoinColumn()
     album: Album;
+
+    @Column()
+    albumId: number;
 }
 
 export default News;
