@@ -53,4 +53,24 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-export { create, list };
+const remove = async (req: Request, res: Response, next: NextFunction) => {
+    const trackId: string = req.query.trackId as string;
+    // TODO: 인증 구현 후 수정
+    const userId = 1;
+
+    const manager = getManager();
+
+    const user = await manager.findOne(User, userId, { relations: ['libraryTracks'] });
+
+    if (!user) return res.status(401).json({ success: false });
+
+    user.libraryTracks = user.libraryTracks.filter((libraryTrack) => libraryTrack.id !== +trackId);
+
+    await manager.save(user);
+
+    res.json({
+        success: true,
+    });
+};
+
+export { create, list, remove };
