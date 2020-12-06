@@ -61,6 +61,14 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 
         playlist.title = title;
         await PlaylistRepository.insert(playlist);
+
+        req.body = {
+            playlistId: playlist.id,
+        };
+        console.log(req.body);
+        await libraryPlaylist.create(req, res, next);
+
+        Error();
     } catch (err) {
         console.error(err);
         return res.status(500).json({ success: false });
