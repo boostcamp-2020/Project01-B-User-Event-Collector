@@ -16,7 +16,7 @@ class Playlist {
     description: string;
 
     @Column()
-    imagerl: string;
+    imageUrl: string;
 
     @Column()
     customized: boolean; // true: user가 만든 playlist, false: vibe에서 제공하는 playlist
