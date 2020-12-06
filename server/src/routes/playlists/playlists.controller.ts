@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { getManager, getRepository } from 'typeorm';
+import * as libraryPlaylist from '../library/playlists/library.playlists.controller';
 import Playlist from '../../models/Playlist';
+import User from '../../models/User';
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -55,18 +57,14 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 
     try {
         const PlaylistRepository = getRepository(Playlist);
-        await PlaylistRepository.createQueryBuilder('playlist')
-            .insert()
-            .into(Playlist)
-            .values({
-                title,
-            })
-            .execute();
+        const playlist = new Playlist();
 
-        return res.json({ succee: true });
+        playlist.title = title;
+        await PlaylistRepository.insert(playlist);
     } catch (err) {
         console.error(err);
         return res.status(500).json({ success: false });
     }
 };
+
 export { list, listById, create };
