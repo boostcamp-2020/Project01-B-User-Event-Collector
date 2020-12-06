@@ -1,8 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
-import { getManager, getRepository } from 'typeorm';
+import { EntityManager, getManager, getRepository } from 'typeorm';
 import * as libraryPlaylist from '../library/playlists/library.playlists.controller';
 import Playlist from '../../models/Playlist';
 import User from '../../models/User';
+import Track from '../../models/Track';
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -50,10 +51,8 @@ const listById = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
-    // TODO: userId 처리
     const { title } = req.body;
     console.log(title);
-    const userId = 1;
 
     try {
         const PlaylistRepository = getRepository(Playlist);
@@ -65,14 +64,33 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
         req.body = {
             playlistId: playlist.id,
         };
-        console.log(req.body);
-        await libraryPlaylist.create(req, res, next);
-
-        Error();
+        return await libraryPlaylist.create(req, res, next);
     } catch (err) {
         console.error(err);
         return res.status(500).json({ success: false });
     }
 };
 
-export { list, listById, create };
+const addTracks = async (req: Request, res: Response, next: NextFunction) => {
+    console.log(req.body);
+    const { playlistId, tracks } = req.body;
+
+    try {
+        const manager = getManager();
+        const playlist = await manager.findOne(Playlist, playlistId, { relations: ['tracks'] });
+        const track = await manager.findByIds(Track, tracks);
+
+        if (!playlist || !track) return res.status(404).json({ success: false });
+
+        playlist.tracks.push(...track);
+        await manager.save(playlist);
+
+        return res.json({ success: true });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ success: false });
+    }
+};
+export {
+    list, listById, create, addTracks,
+};
