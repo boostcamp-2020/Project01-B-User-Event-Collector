@@ -62,5 +62,18 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
         });
     }
 };
+const listByAlbumId = async (id:number) : Promise<Track[]> => {
+    try {
+        const TrackRepository = getRepository(Track);
+        const tracks = TrackRepository.createQueryBuilder('track')
+            .select(['track.id'])
+            .where('track.albumId = :id', { id })
+            .getMany();
 
-export { list, findOne };
+        return tracks;
+    } catch (err) {
+        console.error(err);
+        return [];
+    }
+};
+export { list, findOne, listByAlbumId };
