@@ -20,40 +20,26 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
     }
 };
 
-// const findOne = async (req: Request, res: Response, next: NextFunction) => {
-//     const { id } = req.params;
+const findOne = async (req: Request, res: Response, next: NextFunction) => {
+    const { id } = req.params;
+    try {
+        const AlbumRepository = getRepository(Album);
+        const album = await AlbumRepository.createQueryBuilder('album')
+            .leftJoinAndSelect('album.artist', 'artist')
+            .leftJoinAndSelect('album.tracks', 'track')
+            .select(['album', 'artist.id', 'artist.name', 'track.id', 'track.title'])
+            .where('album.id = :id', { id })
+            .getOne();
 
-//     try {
-//         const MagazineRepository = getRepository(Magazine);
+        if (!album) return res.status(404).json({ success: false });
 
-//         const magazine = await MagazineRepository.createQueryBuilder('magazine')
-//             .leftJoinAndSelect('magazine.playlist', 'playlist')
-//             .leftJoinAndSelect('playlist.tracks', 'track')
-//             .leftJoinAndSelect('track.album', 'album')
-//             .leftJoinAndSelect('track.artist', 'artist')
-//             .where('magazine.id = :id', { id })
-//             .select([
-//                 'magazine',
-//                 'playlist.id',
-//                 'playlist.description',
-//                 'track',
-//                 'artist.id',
-//                 'artist.name',
-//                 'album.id',
-//                 'album.title',
-//                 'album.imageUrl',
-//             ])
-//             .getOne();
+        return res.json({
+            success: true,
+            data: album,
+        });
+    } catch (err) {
+        return res.status(500).json({ success: false });
+    }
+};
 
-//         if (!magazine) return res.status(404).json({ success: false });
-
-//         return res.json({
-//             success: true,
-//             data: magazine,
-//         });
-//     } catch (err) {
-//         return res.status(500).json({ success: false });
-//     }
-// };
-
-export { list };
+export { list, findOne };
