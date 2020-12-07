@@ -1,10 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { EntityManager, getManager, getRepository } from 'typeorm';
-import { isRegExp } from 'util';
+import { getManager, getRepository } from 'typeorm';
 import * as libraryPlaylist from '../library/playlists/library.playlists.controller';
 import * as TrackController from '../tracks/tracks.controller';
 import Playlist from '../../models/Playlist';
-import User from '../../models/User';
 import Track from '../../models/Track';
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
