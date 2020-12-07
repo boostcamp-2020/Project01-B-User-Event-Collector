@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct ThumbnailGrid: View {
+    let albums: [Album]
+    
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
                 LazyVGrid(
                     columns: .init(repeating: .init(), count: 2)
                 ) {
-                    ForEach(0..<10) { _ in
+                    ForEach(albums, id: \.id) { album in
                         NavigationLink(
-                            destination: AlbumView(viewModel: AlbumViewModel(id: 11)),
+                            destination: AlbumView(viewModel: AlbumViewModel(id: album.id)),
                             label: {
-                                ThumbnailItem(title: "요즘 이 곡", subtitle: "VIBE", imageURL: "")
+                                ThumbnailItem(title: album.title,
+                                              subtitle: album.artist.name,
+                                              imageURL: album.imageUrl)
                             }
                         )
                         .foregroundColor(.black)
@@ -34,7 +38,7 @@ struct ThumbnailGrid: View {
 struct ThumbnailGrid_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ThumbnailGrid()
+            ThumbnailGrid(albums: [])
         }
                 
     }

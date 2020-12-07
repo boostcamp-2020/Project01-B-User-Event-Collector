@@ -64,7 +64,7 @@ struct PlayListView: View {
                     trailing: trailingBarButtons
                 )
                 .fullScreenCover(isPresented: $showSheet) {
-                    PlayerMenu(title: title, subtitle: subtitle)
+                    PlayerMenu(title: title, subtitle: subtitle, imageURL: "", id: 1)
                 }
             }
         }

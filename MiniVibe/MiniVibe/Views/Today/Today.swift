@@ -38,7 +38,7 @@ struct Today: View {
                             
                             PlayListSection(width: width,
                                             title: "나를 위한 믹스테잎",
-                                            destination: MixtapeGrid(title: "나를 위한 믹스테잎"),
+                                            destination: MixtapeGrid(title: "나를 위한 믹스테잎", mixtapes: []),
                                             playlists: [])
                             
                             PlayListSection(width: width,
@@ -60,7 +60,8 @@ struct Today: View {
                             RecommandedPlayListSection(width: width, title: "VIBE 추천 플레이리스트")
                             
                             AlbumSection(width: width,
-                                         destination: ThumbnailGridView(title: "좋아할 최신 앨범"),
+                                         destination: ThumbnailGridView(title: "좋아할 최신 앨범",
+                                                                        album: viewModel.albums),
                                          title: "좋아할 최신 앨범",
                                          albums: viewModel.albums)
                             

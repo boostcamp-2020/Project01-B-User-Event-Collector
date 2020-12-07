@@ -16,7 +16,7 @@ struct PlayListMenu: View {
     var body: some View {
         VStack(spacing: 36) {
             Spacer()
-            MenuThumbnailButton(title: title) {
+            MenuThumbnailButton(title: title, imageURL: "") {
                 presentationMode.wrappedValue.dismiss()
                 if nowPlaying.setDestination(.playList(title: title, subtitle: subtitle)) {
                     nowPlaying.isNavigationActive = true
