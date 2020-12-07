@@ -13,6 +13,7 @@ struct PlayerMenu: View {
     let title: String
     let subtitle: String
     let imageURL: String
+    let id: Int
     
     var body: some View {
         VStack(spacing: 36) {
@@ -20,7 +21,7 @@ struct PlayerMenu: View {
             MenuThumbnailButton(title: title, subtitle: subtitle, imageURL: imageURL) {
                 presentationMode.wrappedValue.dismiss()
                 nowPlaying.isPlayerOpen = false
-                if nowPlaying.setDestination(.album(title: title, subtitle: subtitle)) {
+                if nowPlaying.setDestination(.album(id: id)) {
                     nowPlaying.isNavigationActive = true
                 }
             }
@@ -39,6 +40,6 @@ struct PlayerMenu: View {
 
 struct PlayerMenu_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerMenu(title: "Among US", subtitle: "정혜일", imageURL: "")
+        PlayerMenu(title: "Among US", subtitle: "정혜일", imageURL: "", id: 1)
     }
 }

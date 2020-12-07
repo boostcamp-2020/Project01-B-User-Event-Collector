@@ -19,7 +19,7 @@ struct AlbumMenu: View {
                                 subtitle: album.artist.name,
                                 imageURL: album.imageUrl) {
                 presentationMode.wrappedValue.dismiss()
-                if nowPlaying.setDestination(.album(title: album.title, subtitle: album.artist.name)) {
+                if nowPlaying.setDestination(.album(id: album.id)) {
                     nowPlaying.isNavigationActive = true
                 }
             }

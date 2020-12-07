@@ -83,7 +83,8 @@ struct AlbumView: View {
                         case let .track(info):
                             PlayerMenu(title: info.title,
                                        subtitle: album.artist.name,
-                                       imageURL: album.imageUrl)
+                                       imageURL: album.imageUrl,
+                                       id: album.id)
                         }
                     }
                 }
