@@ -32,7 +32,7 @@ struct PlayListView: View {
                 ScrollView {
                     VStack(spacing: 36) {
                         VStack {
-                            PlaylistAlbumInfo(album: Album(id: 0, title: "", description: "", releaseDate: "", artist: AlbumArtist(id: 0, name: ""), imageUrl: "", tracks: []),
+                            PlaylistAlbumInfo(album: Album(id: 0, title: "", description: "", releaseDate: "", artist: Artist(id: 0, name: ""), imageUrl: "", tracks: []),
                                               isOpenArticle: $isOpenArticle)
                                 .padding(.vertical, 10)
                             

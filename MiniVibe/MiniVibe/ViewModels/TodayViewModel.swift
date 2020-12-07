@@ -12,6 +12,7 @@ final class TodayViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     @Published var albums = [Album]()
+    @Published var tracks = [TrackInfo]()
     @Published var playlists = [Playlist]()
     @Published var magazines = [Magazine]()
     
@@ -21,6 +22,14 @@ final class TodayViewModel: ObservableObject {
                 // error 처리
             } receiveValue: { [weak self] albums in
                 self?.albums = albums
+            }
+            .store(in: &cancellables)
+        
+        useCase.loadTracks()
+            .sink { _ in
+                
+            } receiveValue: { [weak self] tracks in
+                self?.tracks = tracks
             }
             .store(in: &cancellables)
         

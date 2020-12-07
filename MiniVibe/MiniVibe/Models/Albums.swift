@@ -16,12 +16,12 @@ struct Album: Decodable {
     let title: String
     let description: String
     let releaseDate: String
-    let artist: AlbumArtist
+    let artist: Artist
     let imageUrl: String
     let tracks: [Track]?
 }
 
-struct AlbumArtist: Decodable {
+struct Artist: Decodable {
     let id: Int
     let name: String
 }

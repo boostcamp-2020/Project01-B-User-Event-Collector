@@ -10,6 +10,7 @@ import Foundation
 enum EndPoint {
     case albums
     case album(id: Int)
+    case tracks
     case magazines
     case playlists
     case newsList
@@ -22,6 +23,8 @@ enum EndPoint {
             return "/api/albums"
         case let .album(id):
             return "/api/albums/\(id)"
+        case .tracks:
+            return "/api/tracks"
         case .magazines:
             return "/api/magazines"
         case .playlists:

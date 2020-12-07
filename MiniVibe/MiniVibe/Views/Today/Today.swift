@@ -59,7 +59,7 @@ struct Today: View {
                             
                             StationSection(width: width, title: "DJ 스테이션")
                             
-                            ChartSectionA(width: width, title: "최근 들은 노래")
+                            ChartSectionA(width: width, title: "최근 들은 노래", tracks: viewModel.tracks)
                             
                             RecommandedPlayListSection(width: width, title: "VIBE 추천 플레이리스트")
                             
