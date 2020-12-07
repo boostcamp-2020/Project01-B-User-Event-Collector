@@ -13,7 +13,7 @@ struct TrackRowB: View {
 
     var body: some View {
         HStack {
-            NavigationLink(destination: AlbumView(viewModel: AlbumViewModel(id: 11))) {
+            NavigationLink(destination: AlbumView(id: 11)) {
                 Image("album")
                     .trackRowImageConfigure()
             }

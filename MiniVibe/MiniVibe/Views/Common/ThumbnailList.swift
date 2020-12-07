@@ -38,7 +38,7 @@ struct ThumbnailList: View {
         switch info {
         case let .playlist(data):
             ForEach(data, id: \.id) { playlist in
-                NavigationLink(destination: AlbumView(viewModel: AlbumViewModel(id: playlist.id))) {
+                NavigationLink(destination: AlbumView(id: playlist.id)) {
                     ThumbnailRow(imageURL: playlist.imageUrl,
                                  title: playlist.title,
                                  subtitle: playlist.subTitle)

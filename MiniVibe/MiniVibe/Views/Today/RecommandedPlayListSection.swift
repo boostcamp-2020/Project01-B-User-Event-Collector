@@ -20,7 +20,7 @@ struct RecommandedPlayListSection: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: width * .spacingRatio) {
                     ForEach(0..<5) { _ in
-                        NavigationLink(destination: AlbumView(viewModel: AlbumViewModel(id: 11))) {
+                        NavigationLink(destination: AlbumView(id: 11)) {
                             RecommandedPlayListItem()
                                 .frame(width: width * .sectionRatio)
                         }

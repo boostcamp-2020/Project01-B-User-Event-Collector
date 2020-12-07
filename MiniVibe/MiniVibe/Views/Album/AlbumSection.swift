@@ -29,7 +29,7 @@ struct AlbumSection<D: View>: View {
                 HStack(spacing: width * .spacingRatio) {
                     ForEach(albums, id: \.id) { album in
                         NavigationLink(
-                            destination: AlbumView(viewModel: AlbumViewModel(id: album.id)),
+                            destination: AlbumView(id: album.id),
                             label: {
                                 ThumbnailItem(title: album.title,
                                               subtitle: album.artist.name,
