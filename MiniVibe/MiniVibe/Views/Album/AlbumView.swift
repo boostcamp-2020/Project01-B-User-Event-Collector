@@ -8,26 +8,18 @@
 import SwiftUI
 
 struct AlbumView: View {
-    enum ActiveSheet {
-        case album
-        case track
-    }
-    
     init(viewModel: AlbumViewModel) {
         self.viewModel = viewModel
     }
     
     @ObservedObject private var viewModel: AlbumViewModel
-    @State private var activeSheet: ActiveSheet = .album
-    @State private var showSheet = false
-    @State private var isOpenArticle = false
     
     var body: some View {
         if let album = viewModel.album {
             GeometryReader { geometry in
                 let width: CGFloat = geometry.size.width
-                if isOpenArticle {
-                    Article(isOpenArticle: $isOpenArticle,
+                if viewModel.isOpenArticle {
+                    Article(isOpenArticle: $viewModel.isOpenArticle,
                             imageURL: album.imageUrl,
                             title: album.title,
                             subtitle: album.artist.name,
@@ -38,7 +30,7 @@ struct AlbumView: View {
                         VStack(spacing: 36) {
                             VStack {
                                 PlaylistAlbumInfo(album: album,
-                                                  isOpenArticle: $isOpenArticle)
+                                                  isOpenArticle: $viewModel.isOpenArticle)
                                     .padding(.vertical, 10)
                                 
                                 if let tracks = album.tracks {
@@ -52,8 +44,7 @@ struct AlbumView: View {
                                                           title: track.title,
                                                           artist: album.artist.name
                                                 ) {
-                                                    activeSheet = .track
-                                                    showSheet = true
+                                                    viewModel.send(.showTrackMenu(info: track))
                                                 }
                                             }
                                         }
@@ -85,18 +76,23 @@ struct AlbumView: View {
                     .navigationBarItems(
                         trailing: trailingBarButtons
                     )
-                    .fullScreenCover(isPresented: $showSheet) {
-                        if activeSheet == .album {
-                            AlbumMenu(title: album.title, subtitle: album.artist.name)
-                        } else {
-                            PlayerMenu(title: album.title, subtitle: album.artist.name)
+                    .fullScreenCover(isPresented: $viewModel.showSheet) {
+                        switch viewModel.activeSheet {
+                        case .album:
+                            AlbumMenu(album: album)
+                        case let .track(info):
+                            PlayerMenu(title: info.title,
+                                       subtitle: album.artist.name,
+                                       imageURL: album.imageUrl)
                         }
                     }
                 }
             }
         } else {
             Color.clear
-                .onAppear(perform: viewModel.load)
+                .onAppear {
+                    viewModel.send(.appear)
+                }
         }
     }
     
@@ -115,8 +111,7 @@ struct AlbumView: View {
             }
             
             Button {
-                activeSheet = .album
-                showSheet = true
+                viewModel.send(.showAlbumMenu)
             } label: {
                 Image(systemName: "ellipsis")
             }

@@ -12,11 +12,12 @@ struct PlayerMenu: View {
     @EnvironmentObject var nowPlaying: NowPlaying
     let title: String
     let subtitle: String
+    let imageURL: String
     
     var body: some View {
         VStack(spacing: 36) {
             Spacer()
-            MenuThumbnailButton(title: title, subtitle: subtitle) {
+            MenuThumbnailButton(title: title, subtitle: subtitle, imageURL: imageURL) {
                 presentationMode.wrappedValue.dismiss()
                 nowPlaying.isPlayerOpen = false
                 if nowPlaying.setDestination(.album(title: title, subtitle: subtitle)) {
@@ -38,6 +39,6 @@ struct PlayerMenu: View {
 
 struct PlayerMenu_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerMenu(title: "Among US", subtitle: "정혜일")
+        PlayerMenu(title: "Among US", subtitle: "정혜일", imageURL: "")
     }
 }
