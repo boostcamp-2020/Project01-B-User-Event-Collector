@@ -12,6 +12,7 @@ struct AlbumSection<D: View>: View {
     let width: CGFloat
     let destination: D
     let title: String
+    let albums: [Album]
     
     var body: some View {
         VStack(spacing: 8) {
@@ -21,13 +22,12 @@ struct AlbumSection<D: View>: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {
-                    ForEach(0..<10) { _ in
-                        let title = "요즘 이 곡"
-                        let subtitle = "VIBE"
+                    ForEach(albums, id:\.id) { album in
+                        //let album = albums[index]
                         NavigationLink(
-                            destination: AlbumView(title: title, subtitle: subtitle),
+                            destination: Text("album id: \(album.id)"), //AlbumView(id: album.id),
                             label: {
-                                ThumbnailItem(title: title, subtitle: subtitle)
+                                ThumbnailItem(title: album.title, subtitle: album.artist.name)
                                     .frame(width: width * .thumbnailRatio)
                             }
                         )
@@ -42,7 +42,7 @@ struct AlbumSection<D: View>: View {
 
 struct AlbumSection_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumSection(width: 375, destination: Text("앨범 목록"), title: "앨범")
+        AlbumSection(width: 375, destination: Text("앨범 목록"), title: "앨범", albums: [])
             .previewLayout(.fixed(width: 375, height: 300))
     }
 }

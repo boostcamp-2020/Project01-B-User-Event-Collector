@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+class AlbumViewModel: ObservableObject {
+    
+}
+
 struct AlbumView: View {
     enum ActiveSheet {
         case album
@@ -57,7 +61,7 @@ struct AlbumView: View {
                         AlbumSection(
                             width: width,
                             destination: ThumbnailGridView(title: "아티스트의 다른 앨범"),
-                            title: "아티스트의 다른 앨범"
+                            title: "아티스트의 다른 앨범", albums: []
                         )
                         
                         ArtistSection(width: width,

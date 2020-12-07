@@ -37,7 +37,7 @@ struct ArtistView: View {
                                         title: "앨범",
                                         categories: ["전체", "정규", "비정규", "참여"]
                                      ),
-                                     title: "앨범")
+                                     title: "앨범", albums: [])
                     ArtistSection(width: width,
                                   sectionTitle: "비슷한 아티스트")
                     PlayListSection(width: width,

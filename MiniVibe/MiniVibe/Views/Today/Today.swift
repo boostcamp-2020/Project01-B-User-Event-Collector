@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct Today: View {
     init() {
@@ -16,6 +17,7 @@ struct Today: View {
     }
     
     @EnvironmentObject var nowPlaying: NowPlaying
+    @StateObject var viewModel = TodayViewModel()
     
     var body: some View {
         GeometryReader { geometry in
@@ -58,7 +60,7 @@ struct Today: View {
                             
                             AlbumSection(width: width,
                                          destination: ThumbnailGridView(title: "좋아할 최신 앨범"),
-                                         title: "좋아할 최신 앨범")
+                                         title: "좋아할 최신 앨범", albums: viewModel.albums)
                             
                             MagazineSection(width: width, title: "매거진")
                         }
@@ -67,6 +69,9 @@ struct Today: View {
                     .navigationBarHidden(true)
                     .preference(key: Size.self, value: [geometry.frame(in: CoordinateSpace.global)])
                 }
+            }
+            .onAppear {
+                viewModel.load()
             }
         }
     }

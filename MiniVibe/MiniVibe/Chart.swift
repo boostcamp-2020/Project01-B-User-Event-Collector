@@ -32,7 +32,7 @@ struct Chart: View {
                                             title: "최신 앨범",
                                             categories: ["국내", "해외"]
                                          ),
-                                         title: "최신 앨범")
+                                         title: "최신 앨범", albums: [])
                     }
                     .padding(.bottom, 70)
                 }
