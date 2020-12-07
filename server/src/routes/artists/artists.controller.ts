@@ -37,6 +37,7 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
                 'track',
                 'album.id',
                 'album.title',
+                'genre.name',
                 'album.imageUrl',
                 'track_album.id',
                 'track_album.title',
