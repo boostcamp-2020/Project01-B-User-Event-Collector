@@ -29,6 +29,7 @@ struct Today: View {
                         NavigationLink(
                             destination: nowPlaying.destination?.view,
                             isActive: $nowPlaying.isNavigationActive) { }
+                            
                         VStack(spacing: 30) {
                             TodayTitle()
                                 .padding(.horizontal, width * .paddingRatio)
