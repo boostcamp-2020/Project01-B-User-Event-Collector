@@ -8,25 +8,28 @@
 import Foundation
 import Combine
 
-final class NetworkService {
+enum NetworkError: Error {
+    case invalidURL
+    case unsuccessfulResponse
+    case unknownError(message: String)
     
-    enum NetworkError: Error {
-        case invalidURL
-        case unsuccessfulResponse
-        case unknownError(message: String)
-        
-        var localizedDescription: String {
-            switch self {
-            case .invalidURL:
-                return "Invalid URL"
-            case .unsuccessfulResponse:
-                return "Unsuccessful response"
-            case .unknownError(let message):
-                return "Unknown Error: \(message)"
-            }
+    var localizedDescription: String {
+        switch self {
+        case .invalidURL:
+            return "Invalid URL"
+        case .unsuccessfulResponse:
+            return "Unsuccessful response"
+        case .unknownError(let message):
+            return "Unknown Error: \(message)"
         }
     }
-    
+}
+
+protocol NetworkServiceType {
+    func request(url: String) -> AnyPublisher<Data, NetworkError>
+}
+
+final class NetworkService: NetworkServiceType {
     private let session: URLSession
     
     init(session: URLSession = .shared) {
