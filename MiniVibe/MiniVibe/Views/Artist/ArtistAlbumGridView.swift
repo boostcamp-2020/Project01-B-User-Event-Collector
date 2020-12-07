@@ -47,7 +47,7 @@ struct ArtistAlbumGridView: View {
             
             TabView(selection: $selection) {
                 ForEach(0..<categories.count) { _ in
-                    ThumbnailGrid()
+                    ThumbnailGrid(albums: [])
                 }
             }
             .tabViewStyle(PageTabViewStyle())

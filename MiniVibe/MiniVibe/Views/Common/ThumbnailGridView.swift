@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ThumbnailGridView: View {
     let title: String
+    let album: [Album]
     
     var body: some View {
-        ThumbnailGrid()
+        ThumbnailGrid(albums: album)
             .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
     }
@@ -20,7 +21,7 @@ struct ThumbnailGridView: View {
 struct ThumbnailGridView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ThumbnailGridView(title: "좋아할 최신 앨범")
+            ThumbnailGridView(title: "좋아할 최신 앨범", album: [])
         }
     }
 }
