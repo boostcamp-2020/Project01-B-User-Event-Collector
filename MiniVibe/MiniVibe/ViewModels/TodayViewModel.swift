@@ -8,17 +8,26 @@
 import Combine
 
 final class TodayViewModel: ObservableObject {
-    let usecase = TodayUseCase()
-    var cancellables = Set<AnyCancellable>()
+    private let useCase = TodayUseCase()
+    private var cancellables = Set<AnyCancellable>()
     
     @Published var albums = [Album]()
+    @Published var magazines = [Magazine]()
     
     func load() {
-        usecase.loadAlbums()
+        useCase.loadAlbums()
             .sink { _ in
                 // error 처리
             } receiveValue: { [weak self] albums in
                 self?.albums = albums
+            }
+            .store(in: &cancellables)
+        
+        useCase.loadMagazines()
+            .sink { _ in
+                
+            } receiveValue: { [weak self] magazines in
+                self?.magazines = magazines
             }
             .store(in: &cancellables)
     }
