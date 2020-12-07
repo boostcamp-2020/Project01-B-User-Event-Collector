@@ -8,36 +8,51 @@
 import SwiftUI
 
 struct MagazineView: View {
+    @Environment(\.presentationMode) var presentationMode
+    let magazine: Magazine
+    
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width
-            let img = "https://music-phinf.pstatic.net/20201207_49/1607303728781HTub7_JPEG/0-%B4%EB%C7%A5%C0%CC%B9%CC%C1%F6_1.jpg?type=w720"
-            ScrollView {
-                LazyVGrid(
-                    columns: [.init(.fixed(geometry.size.width))],
-                    pinnedViews: [.sectionHeaders]
-                ) {
-                    MagazineItem(magazine: Magazine(id: 0,
-                                                    title: "머라이어캐리",
-                                                    imageUrl: img,
-                                                    date: "2020-11-11",
-                                                    category: "GENRE"))
-                    Section(header: PlayAndShuffle(width: geometry.size.width)) {
-                        Text(ArticleExample.content)
-                            .padding(.horizontal, width * .paddingRatio)
-                        ForEach(0..<10) { index in
-                            TrackRowE(order: index + 1, title: "아", artist: "되나?")
+
+            ZStack(alignment: .topTrailing) {
+                ScrollView {
+                    LazyVGrid(columns: [.init(.fixed(width))],
+                              pinnedViews: [.sectionHeaders]) {
+                        MagazineItem(magazine: Magazine(id: magazine.id,
+                                                        title: magazine.title,
+                                                        imageUrl: magazine.imageUrl,
+                                                        date: magazine.date,
+                                                        category: magazine.category))
+                        Section(header: PlayAndShuffle(width: geometry.size.width)) {
+                            Text(ArticleExample.content)
+                                .padding(.horizontal, width * .paddingRatio)
+                            ForEach(0..<10) { index in
+                                TrackRowE(order: index + 1, title: "아", artist: "되나?")
+                            }
                         }
+                        .padding(.horizontal, geometry.size.width * .paddingRatio)
                     }
-                    .padding(.horizontal, geometry.size.width * .paddingRatio)
                 }
+                .navigationBarHidden(true)
+                
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 20))
+                        .foregroundColor(Color.black.opacity(0.8))
+                        .padding(10) 
+                }
+                
             }
+            
         }
     }
 }
 
 struct MagazineView_Previews: PreviewProvider {
     static var previews: some View {
-        MagazineView()
+        MagazineView(magazine: Magazine(id: 0, title: "", imageUrl: "", date: "", category: ""))
     }
 }

@@ -15,7 +15,7 @@ struct ThumbnailList: View {
     
     let info: Info
     let navigationTitle: String
-
+    
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
@@ -46,13 +46,12 @@ struct ThumbnailList: View {
             }
         case let .magazine(data):
             ForEach(data, id: \.id) { magazine in
-                NavigationLink(destination: MagazineView()) {
+                NavigationLink(destination: MagazineView(magazine: magazine)) {
                     ThumbnailRow(imageURL: magazine.imageUrl,
                                  title: magazine.title,
                                  subtitle: magazine.date)
                 }
-            }
-            
+            } 
         }
     }
     

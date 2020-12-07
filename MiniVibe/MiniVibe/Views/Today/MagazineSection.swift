@@ -21,8 +21,10 @@ struct MagazineSection: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {
                     ForEach(magazines, id: \.id) {magazine in
-                        MagazineItem(magazine: magazine)
-                            .frame(width: width * .sectionRatio)
+                        NavigationLink(destination: MagazineView(magazine: magazine)) {
+                            MagazineItem(magazine: magazine)
+                                .frame(width: width * .sectionRatio)
+                        }
                     }
                 }
                 .padding(.horizontal, width * .paddingRatio)
