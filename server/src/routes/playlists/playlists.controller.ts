@@ -88,6 +88,7 @@ const insertTracks = async (playlistId: number, tracks: Track[]) :Promise<boolea
         return false;
     }
 };
+
 const addTracks = async (req: Request, res: Response, next: NextFunction) => {
     const { playlistId, tracks } = req.body;
 
@@ -115,6 +116,23 @@ const addAlbum = async (req: Request, res: Response, next: NextFunction) => {
         return res.status(500).json({ success: false });
     }
 };
+
+const addPlaylist = async (req: Request, res: Response, next: NextFunction) => {
+    const { id, playlistId } = req.body;
+    try {
+        const playlist = await trackListById(playlistId);
+        const tracks = playlist?.tracks || null;
+
+        if (!tracks) return Error();
+
+        const result = await insertTracks(id, tracks);
+        if (result) return res.json({ success: true });
+        return Error();
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ success: false });
+    }
+};
 export {
-    list, listById, create, addTracks, addAlbum,
+    list, listById, create, addTracks, addAlbum, addPlaylist,
 };
