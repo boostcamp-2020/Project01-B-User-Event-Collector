@@ -52,6 +52,8 @@
 		44B22A53257E0C8F0068A11B /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B22A52257E0C8F0068A11B /* Track.swift */; };
 		44B22A57257E0D450068A11B /* AlbumUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B22A56257E0D450068A11B /* AlbumUseCase.swift */; };
 		44B22A5B257E10CC0068A11B /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B22A5A257E10CC0068A11B /* AlbumViewModel.swift */; };
+		44B22A6D257E4B750068A11B /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B22A6C257E4B750068A11B /* ImageCache.swift */; };
+		44B22A71257E50D20068A11B /* EnvironmentValues+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B22A70257E50D20068A11B /* EnvironmentValues+ImageCache.swift */; };
 		44BD3F13257DF86B005861A1 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BD3F12257DF86B005861A1 /* ImageLoader.swift */; };
 		44BD3F1D257DF9A7005861A1 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BD3F1C257DF9A7005861A1 /* AsyncImage.swift */; };
 		44BD3F21257E0015005861A1 /* Magazines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BD3F20257E0015005861A1 /* Magazines.swift */; };
@@ -172,6 +174,8 @@
 		44B22A52257E0C8F0068A11B /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		44B22A56257E0D450068A11B /* AlbumUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumUseCase.swift; sourceTree = "<group>"; };
 		44B22A5A257E10CC0068A11B /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
+		44B22A6C257E4B750068A11B /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		44B22A70257E50D20068A11B /* EnvironmentValues+ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+ImageCache.swift"; sourceTree = "<group>"; };
 		44BD3F12257DF86B005861A1 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		44BD3F1C257DF9A7005861A1 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		44BD3F20257E0015005861A1 /* Magazines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magazines.swift; sourceTree = "<group>"; };
@@ -341,6 +345,7 @@
 				4478F716256E817100755656 /* CGFloat+Constant.swift */,
 				80DA951C25779F52008C9DFF /* Image+TrackRowConfigure.swift */,
 				80A5215B25793A3E0051A925 /* View+dismissKeyboard.swift */,
+				44B22A70257E50D20068A11B /* EnvironmentValues+ImageCache.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -554,6 +559,7 @@
 				44B22A52257E0C8F0068A11B /* Track.swift */,
 				44BD3F20257E0015005861A1 /* Magazines.swift */,
 				44BD3F12257DF86B005861A1 /* ImageLoader.swift */,
+				44B22A6C257E4B750068A11B /* ImageCache.swift */,
 				800FA866257E003D008926A5 /* Playlists.swift */,
 				80D02E07257E0E0D00A6748F /* News.swift */,
 			);
@@ -824,6 +830,7 @@
 				800FA849257DC557008926A5 /* EndPoint.swift in Sources */,
 				44139CBB25763C5F000CEEA5 /* ThumbnailGrid.swift in Sources */,
 				80D02E08257E0E0D00A6748F /* News.swift in Sources */,
+				44B22A71257E50D20068A11B /* EnvironmentValues+ImageCache.swift in Sources */,
 				80045E0E25762C1100F32E6C /* ArtistMenu.swift in Sources */,
 				440D023A2577A3E500477A7D /* MenuCloseButton.swift in Sources */,
 				44141E712577841A00A82626 /* ProfileView.swift in Sources */,
@@ -857,6 +864,7 @@
 				44139CA725763283000CEEA5 /* ArtistThumbnail.swift in Sources */,
 				44139C9D25762D17000CEEA5 /* ArtistSection.swift in Sources */,
 				80DA954E25781482008C9DFF /* ChartSectionB.swift in Sources */,
+				44B22A6D257E4B750068A11B /* ImageCache.swift in Sources */,
 				44BD3F21257E0015005861A1 /* Magazines.swift in Sources */,
 				4466D2952578D8E000B65652 /* PlayListView.swift in Sources */,
 				447BF73B256F3E6C003B5DB7 /* MainTab.swift in Sources */,
