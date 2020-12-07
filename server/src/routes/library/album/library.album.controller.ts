@@ -52,7 +52,7 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const remove = async (req: Request, res: Response, next: NextFunction) => {
-    const albumId: string = req.body.albumId as string;
+    const albumId: string = req.params.albumId as string;
     // TODO: 인증 구현 후 수정
     const userId = 1;
 

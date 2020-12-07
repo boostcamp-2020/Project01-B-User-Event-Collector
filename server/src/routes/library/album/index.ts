@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.get('/', albumController.list);
 router.post('/', albumController.create);
-router.delete('/', albumController.remove);
+router.delete('/:albumId', albumController.remove);
 
 export default router;
