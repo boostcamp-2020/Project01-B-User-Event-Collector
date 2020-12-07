@@ -18,6 +18,8 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
 
 const findOne = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
+    // TODO: 인증 구현 후 수정
+    const userId = 1;
     try {
         const ArtistRepository = getRepository(Artist);
         // TODO: 연관된 아티스트 목록 추가
@@ -25,6 +27,10 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
             .leftJoinAndSelect('artist.genre', 'genre')
             .leftJoinAndSelect('artist.tracks', 'track')
             .leftJoinAndSelect('artist.albums', 'album')
+            .leftJoinAndSelect('track.artist', 'track_artist')
+            .leftJoinAndSelect('track.album', 'track_album')
+            .loadRelationCountAndMap('track.liked', 'track.likeUsers', 'user',
+                (qb) => qb.andWhere('user.id = :userId', { userId }))
             .where('artist.id = :id', { id })
             .select([
                 'artist',
@@ -32,6 +38,11 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
                 'album.id',
                 'album.title',
                 'album.imageUrl',
+                'track_album.id',
+                'track_album.title',
+                'track_album.imageUrl',
+                'track_artist.id',
+                'track_artist.name',
             ])
             .getOne();
 
