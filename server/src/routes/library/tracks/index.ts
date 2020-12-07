@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.get('/', trackController.list);
 router.post('/', trackController.create);
-router.delete('/', trackController.remove);
+router.delete('/:trackId', trackController.remove);
 
 export default router;

@@ -23,7 +23,7 @@ class User {
     @Column()
     imageUrl: string;
 
-    @ManyToMany(() => Track)
+    @ManyToMany(() => Track, (track) => track.likeUsers)
     @JoinTable({ name: 'library_tracks' })
     libraryTracks: Track[];
 

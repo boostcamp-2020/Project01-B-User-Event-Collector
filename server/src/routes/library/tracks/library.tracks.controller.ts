@@ -56,7 +56,7 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const remove = async (req: Request, res: Response, next: NextFunction) => {
-    const trackId: string = req.query.trackId as string;
+    const trackId: string = req.params.trackId as string;
     // TODO: 인증 구현 후 수정
     const userId = 1;
 
