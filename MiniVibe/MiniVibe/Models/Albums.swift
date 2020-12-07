@@ -14,8 +14,11 @@ struct Albums: Decodable {
 struct Album: Decodable {
     let id: Int
     let title: String
+    let description: String
+    let releaseDate: String
     let artist: AlbumArtist
     let imageUrl: String
+    let tracks: [Track]?
 }
 
 struct AlbumArtist: Decodable {

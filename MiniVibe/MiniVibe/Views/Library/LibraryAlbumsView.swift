@@ -33,7 +33,7 @@ struct LibraryAlbumsView: View {
                         let title = "요즘 이 곡"
                         let subtitle = "VIBE"
                         NavigationLink(
-                            destination: AlbumView(title: title, subtitle: subtitle),
+                            destination: AlbumView(viewModel: AlbumViewModel(id: 11)),
                             label: {
                                 ThumbnailItem(title: title, subtitle: subtitle, imageURL: "")
                             }

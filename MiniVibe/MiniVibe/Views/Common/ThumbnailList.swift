@@ -41,7 +41,7 @@ struct ThumbnailList: View {
     func destination() -> some View {
         switch info {
         case .playlist:
-            AlbumView(title: "EB", subtitle: "방탄소년단")
+            AlbumView(viewModel: AlbumViewModel(id: 11))
         case .magazine:
             Text("Magazine content")
         }

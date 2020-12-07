@@ -24,14 +24,15 @@ struct PlayListView: View {
             let width: CGFloat = geometry.size.width
             if isOpenArticle {
                 Article(isOpenArticle: $isOpenArticle,
+                        imageURL: "",
                         title: title,
-                        subtitle: subtitle)
+                        subtitle: subtitle,
+                        content: "content")
             } else {
                 ScrollView {
                     VStack(spacing: 36) {
                         VStack {
-                            PlaylistAlbumInfo(title: title,
-                                              subtitle: subtitle,
+                            PlaylistAlbumInfo(album: Album(id: 0, title: "", description: "", releaseDate: "", artist: AlbumArtist(id: 0, name: ""), imageUrl: "", tracks: []),
                                               isOpenArticle: $isOpenArticle)
                                 .padding(.vertical, 10)
                             

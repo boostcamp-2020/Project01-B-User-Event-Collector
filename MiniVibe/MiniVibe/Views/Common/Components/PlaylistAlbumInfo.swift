@@ -8,40 +8,30 @@
 import SwiftUI
 
 struct PlaylistAlbumInfo: View {
-    let title: String
-    let subtitle: String
+    let album: Album
     @Binding var isOpenArticle: Bool
     
     var body: some View {
-        VStack {
-            EssentialAlbumInfo(title: title,
-                               subtitle: subtitle,
-                               isOpenArticle: $isOpenArticle)
-            OptionalAlbumInfo(isOpenArticle: $isOpenArticle)
-                .padding(.horizontal, 10)
+        VStack(alignment: .leading) {
+            essentialAlbumInfo
+            optionalAlbuminfo
         }
+        .padding(.horizontal, 10)
     }
-}
-
-struct EssentialAlbumInfo: View {
-    let title: String
-    let subtitle: String
-    @Binding var isOpenArticle: Bool
     
-    var body: some View {
+    var essentialAlbumInfo: some View {
         HStack(alignment: .top) {
             Button {
                 isOpenArticle = true
             } label: {
-                Image("album")
-                    .resizable()
+                AsyncImage(urlString: album.imageUrl)
                     .aspectRatio(1, contentMode: .fit)
             }
             
             VStack(alignment: .leading) {
-                Text("\(title)")
+                Text(album.title)
                     .font(.system(size: 18, weight: .bold))
-                Text("\(subtitle)")
+                Text(album.artist.name)
                     .font(.system(size: 16))
                     .foregroundColor(.secondary)
                 Spacer()
@@ -59,17 +49,13 @@ struct EssentialAlbumInfo: View {
         }
         .frame(height: 130)
     }
-}
-
-struct OptionalAlbumInfo: View {
-    @Binding var isOpenArticle: Bool
     
-    var body: some View {
+    var optionalAlbuminfo: some View {
         VStack(alignment: .leading) {
-            Text("2020.8.21 • 댄스 • 6곡")
+            Text(album.releaseDate)
             
             HStack {
-                Text(ArticleExample.content)
+                Text(album.description)
                     .lineLimit(1)
                 Text("더보기")
             }
@@ -84,6 +70,6 @@ struct OptionalAlbumInfo: View {
 
 struct PlaylistAlbumInfo_Previews: PreviewProvider {
     static var previews: some View {
-        PlaylistAlbumInfo(title: "여긴 앨범이고", subtitle: "여긴 가수", isOpenArticle: .constant(false))
+        PlaylistAlbumInfo(album: .init(id: 1, title: "", description: "", releaseDate: "", artist: .init(id: 1, name: ""), imageUrl: "", tracks: []), isOpenArticle: .constant(false))
     }
 }

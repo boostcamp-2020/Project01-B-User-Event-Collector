@@ -10,8 +10,10 @@ import SwiftUI
 struct Article: View {
     @Binding var isOpenArticle: Bool
     @State private var show: Bool = false
+    let imageURL: String
     let title: String
     let subtitle: String
+    let content: String
     
     var body: some View {
         VStack {
@@ -29,8 +31,7 @@ struct Article: View {
             }
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    Image("album")
-                        .resizable()
+                    AsyncImage(urlString: imageURL)
                         .aspectRatio(1, contentMode: .fit)
                     VStack(alignment: .leading, spacing: 4) {
                         Text(title)
@@ -39,7 +40,7 @@ struct Article: View {
                             .foregroundColor(.secondary)
                             .font(.system(size: 20))
                     }
-                    Text(ArticleExample.content)
+                    Text(content)
                         .foregroundColor(.secondary)
                         .font(.system(size: 16))
                 }
@@ -59,7 +60,7 @@ struct Article: View {
 
 struct Article_Previews: PreviewProvider {
     static var previews: some View {
-        Article(isOpenArticle: .constant(true), title: "Dynamite", subtitle: "방탄소년단")
+        Article(isOpenArticle: .constant(true), imageURL: "", title: "Dynamite", subtitle: "방탄소년단", content: "asdf")
     }
 }
 
