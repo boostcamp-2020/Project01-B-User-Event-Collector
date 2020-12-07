@@ -6,6 +6,7 @@ import libraryRouter from './library';
 import playlistRouter from './playlists';
 import albumRouter from './albums';
 import trackRouter from './tracks';
+import mixtapeRouter from './mixtapes';
 
 const router = express.Router();
 
@@ -16,5 +17,5 @@ router.use('/library', libraryRouter);
 router.use('/playlists', playlistRouter);
 router.use('/tracks', trackRouter);
 router.use('/albums', albumRouter);
-
+router.use('/mixtapes', mixtapeRouter);
 export default router;
