@@ -4,81 +4,111 @@ export enum MagazineSort {
 }
 
 export interface MagazineCardProps {
-    src: string,
-    href: string,
+    id: number,
     title: string,
+    imageUrl: string,
     date: string,
-    sort: MagazineSort
+    category: string
 };
 
 export interface NewsCardProps {
-    src: string,
-    href: string,
-    newsHref: string,
+    id: number,
     title: string,
+    imageUrl: string,
+    date: string,
+    link: string,
+    albumId: number
 };
 
 export interface MixtapeCardProps {
-    src: string,
-    href: string,
+    id: number,
     title: string,
-    artist: string
+    subTitle: string,
+    description: string,
+    imageUrl: string,
+    customized: boolean
 };
 
 export interface AlbumCardProps {
-    src: string,
-    href: string,
+    id: number,
     title: string,
-    artist: string
+    description: string,
+    releaseDate: string,
+    imageUrl: string,
+    artist: {
+        id: number,
+        name: string,
+    }
 };
 
 export interface PlaylistCardProps {
-    src: string,
-    href: string,
+    id: number,
     title: string,
-    description: string
+    subTitle: string,
+    description: string,
+    imageUrl: string,
+    customized: boolean
 };
 
  export interface LibraryArtistThumbnailProps {
-    name: string;
-    src: string;
-    href: string;
+    name: string,
+    src: string,
+    href: string
 }
 
 export interface NormalArtistThumbnailProps {
-    name: string;
-    src: string;
-    href: string;
+    id: number,
+    name: string,
+    imageUrl: string,
+    genre: {
+        id: number,
+        name: string,
+    }
 }
 
 export interface ChartCardProps {
-    src: string;
-    rank: number;
-    artist: string;
-    trackTitle: string;
+    id: number,
+    rank: number,
+    title: string,
+    album: {
+        id: number,
+        imageUrl: string,
+    },
+    artist: {
+        id: number,
+        name: string,
+    }
 }
 
 export interface TrackRowCardProps {
-    trackId: string, 
-    albumImgSrc: string, 
-    trackTitle: string, 
-    artist : string, 
-    albumTitle: string,
-    href: string,
-    lyrics: string
+    id: number,
+    title: string,
+    lyrics: string,
+    playtime: number,
+    albumId: number,
+    album: {
+        id: number,
+        title: string,
+        imageUrl: string
+    },
+    artist: {
+        id: number,
+        name: string
+    },
+    liked: boolean
 }
 
 export interface TrackCardProps {
-    src: string;
-    trackTitle: string;
-    artist: string;
-    imgVariant: 'trackRowCard' | 'trackInfo';
-    isDefault: boolean;
-    isTrack: boolean;
+    src: string,
+    trackTitle: string,
+    artist: string,
+    imgVariant: 'trackRowCard' | 'trackInfo',
+    isDefault: boolean,
+    isTrack: boolean,
 }
 
 export interface PlayerTrackCardProps {
-    src: string;
-    trackTitle: string;
-    artist: string;
+    src: string,
+    trackTitle: string,
+    artist: string,
 }
