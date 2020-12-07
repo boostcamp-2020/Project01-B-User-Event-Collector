@@ -29,7 +29,7 @@ const getCardBundle = (items: ChartCardProps[], unit: number): ChartCardProps[] 
             <ListContainer>
                 {items.slice(i, i + unit).map((item) => (
                     // TODO : 차트카드(노래)의 id key 값으로 설정
-                    <ChartCard {...(item as ChartCardProps)} />
+                    <ChartCard key = { item.id } {...(item as ChartCardProps)} />
                 ))}
             </ListContainer>,
         );
