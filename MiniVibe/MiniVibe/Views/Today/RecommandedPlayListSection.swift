@@ -14,7 +14,8 @@ struct RecommandedPlayListSection: View {
     var body: some View {
         VStack {
             SectionTitle(width: width,
-                         destination: ThumbnailList(title: "VIBE 추천 플레이리스트", info: .playlist),
+                         destination: ThumbnailList(info: .playlist(data: []),
+                                                    navigationTitle: title), //"VIBE 추천 플레이리스트"
                          title: title)
             
             ScrollView(.horizontal, showsIndicators: false) {

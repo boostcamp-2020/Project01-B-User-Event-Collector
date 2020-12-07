@@ -15,5 +15,7 @@ struct Magazine: Decodable {
     let id: Int
     let title: String
     let imageUrl: String
+    let date: String
     let category: String
 }
+

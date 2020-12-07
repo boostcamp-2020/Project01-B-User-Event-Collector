@@ -46,7 +46,7 @@ struct MagazineItem: View {
 
 struct Magazine_Previews: PreviewProvider {
     static var previews: some View {
-        MagazineItem(magazine: .init(id: 0, title: "매거진", imageUrl: "abc", category: "뱃지"))
+        MagazineItem(magazine: .init(id: 0, title: "매거진", imageUrl: "abc", date: "2020-12-25", category: "뱃지"))
             .previewLayout(.fixed(width: 375, height: 375))
     }
 }

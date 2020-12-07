@@ -15,9 +15,7 @@ struct NewsSection: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(newsList, id: \.id) { news in
-                    NewsItem(width: width,
-                             title: news.title,
-                             imageURL: news.imageUrl)
+                    NewsItem(width: width, news: news)
                 }
             }
             .padding(.horizontal, width * .paddingRatio)

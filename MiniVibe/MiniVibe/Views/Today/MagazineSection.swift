@@ -14,8 +14,11 @@ struct MagazineSection: View {
     
     var body: some View {
         VStack {
-            SectionTitle(width: width, destination: ThumbnailList(title: title, info: .magazine), title: title)
-            
+            SectionTitle(width: width,
+                         destination: ThumbnailList(info: .magazine(data: magazines),
+                                                    navigationTitle: title),
+                         title: title)
+
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {
                     ForEach(magazines, id: \.id) {magazine in

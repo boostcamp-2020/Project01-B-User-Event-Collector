@@ -43,8 +43,9 @@ struct ArtistView: View {
                     
                     PlayListSection(width: width,
                                     title: "관련 플레이리스트",
-                                    destination: ThumbnailList(title: "관련 플레이리스트",
-                                                               info: .playlist), playlists: [])
+                                    destination: ThumbnailList(info: .playlist(data: []),
+                                                               navigationTitle: "관련 플레이리스트"),
+                                    playlists: [])
                 }
             }
             .navigationTitle("방탄소년단")

@@ -43,14 +43,14 @@ struct Today: View {
                             
                             PlayListSection(width: width,
                                             title: "즐겨듣는 플레이리스트",
-                                            destination: ThumbnailList(title: "즐겨듣는 플레이리스트",
-                                                                       info: .playlist),
+                                            destination: ThumbnailList(info: .playlist(data: viewModel.playlists),
+                                                                       navigationTitle: "즐겨듣는 플레이리스트"),
                                             playlists: viewModel.playlists)
                             
                             PlayListSection(width: width,
                                             title: "내 취향 플레이리스트",
-                                            destination: ThumbnailList(title: "내 취향 플레이리스트",
-                                                                       info: .playlist),
+                                            destination: ThumbnailList(info: .playlist(data: viewModel.playlists),
+                                                                       navigationTitle: "내 취향 플레이리스트"),
                                             playlists: viewModel.playlists)
                             
                             StationSection(width: width, title: "DJ 스테이션")
