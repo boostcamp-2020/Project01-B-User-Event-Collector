@@ -4,12 +4,16 @@ import { getRepository } from 'typeorm';
 import Track from '../../models/Track';
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
+    // TODO: 인증 구현 후 수정
+    const userId = 1;
     try {
         const TrackRepository = getRepository(Track);
 
         const tracks = await TrackRepository.createQueryBuilder('track')
             .leftJoinAndSelect('track.album', 'album')
             .leftJoinAndSelect('track.artist', 'artist')
+            .loadRelationCountAndMap('track.liked', 'track.likeUsers', 'user',
+                (qb) => qb.andWhere('user.id = :userId', { userId }))
             .select([
                 'track',
                 'artist.id',
@@ -33,12 +37,16 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
 
 const findOne = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
+    // TODO: 인증 구현 후 수정
+    const userId = 1;
     try {
         const TrackRepository = getRepository(Track);
 
         const track = await TrackRepository.createQueryBuilder('track')
             .leftJoinAndSelect('track.album', 'album')
             .leftJoinAndSelect('track.artist', 'artist')
+            .loadRelationCountAndMap('track.liked', 'track.likeUsers', 'user',
+                (qb) => qb.andWhere('user.id = :userId', { userId }))
             .select([
                 'track',
                 'artist.id',
@@ -53,8 +61,8 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
         if (!track) return res.status(404).json({ success: false });
 
         return res.json({
-            success: !!track,
-            data: track || {},
+            success: true,
+            data: track,
         });
     } catch (err) {
         return res.status(500).json({

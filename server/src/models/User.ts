@@ -26,7 +26,7 @@ class User {
     @OneToMany((type) => Playlist, (playlist) => playlist.user)
     playlists: Playlist[];
 
-    @ManyToMany(() => Track)
+    @ManyToMany(() => Track, (track) => track.likeUsers)
     @JoinTable({ name: 'library_tracks' })
     libraryTracks: Track[];
 
