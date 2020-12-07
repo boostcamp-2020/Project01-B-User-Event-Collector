@@ -51,7 +51,7 @@ struct Today: View {
                                             title: "내 취향 플레이리스트",
                                             destination: ThumbnailList(title: "내 취향 플레이리스트",
                                                                        info: .playlist),
-                                            playlists: [])
+                                            playlists: viewModel.playlists)
                             
                             StationSection(width: width, title: "DJ 스테이션")
                             

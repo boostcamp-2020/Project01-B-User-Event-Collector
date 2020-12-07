@@ -21,7 +21,7 @@ struct TodayUseCase {
     }
     
     func loadAlbums() -> AnyPublisher<[Album], UseCaseError> {
-        return network.request(url: EndPoint.albums)
+        return network.request(url: EndPoint.albums.urlString)
             .decode(type: Albums.self, decoder: JSONDecoder())
             .mapError { error -> UseCaseError in
                 switch error {
@@ -37,7 +37,7 @@ struct TodayUseCase {
     }
     
     func loadPlaylists() -> AnyPublisher<[Playlist], UseCaseError> {
-        return network.request(url: EndPoint.playlists)
+        return network.request(url: EndPoint.playlists.urlString)
             .decode(type: Playlists.self, decoder: JSONDecoder())
             .mapError { error -> UseCaseError in
                 switch error {
@@ -55,7 +55,7 @@ struct TodayUseCase {
     }
     
     func loadMagazines() -> AnyPublisher<[Magazine], UseCaseError> {
-        return network.request(url: EndPoint.magazines)
+        return network.request(url: EndPoint.magazines.urlString)
             .decode(type: Magazines.self, decoder: JSONDecoder())
             .mapError { error -> UseCaseError in
                 switch error {
