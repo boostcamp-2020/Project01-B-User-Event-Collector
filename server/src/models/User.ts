@@ -23,9 +23,6 @@ class User {
     @Column()
     imageUrl: string;
 
-    @OneToMany((type) => Playlist, (playlist) => playlist.user)
-    playlists: Playlist[];
-
     @ManyToMany(() => Track, (track) => track.likeUsers)
     @JoinTable({ name: 'library_tracks' })
     libraryTracks: Track[];
@@ -36,7 +33,7 @@ class User {
 
     @ManyToMany(() => Artist)
     @JoinTable({ name: 'library_artists' })
-    libraryArtists: Track[];
+    libraryArtists: Artist[];
 
     @ManyToMany(() => Playlist)
     @JoinTable({ name: 'library_playlists' })

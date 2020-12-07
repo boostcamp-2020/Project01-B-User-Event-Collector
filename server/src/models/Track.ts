@@ -31,6 +31,9 @@ class Track {
 
     @ManyToMany(() => User, (user) => user.libraryTracks)
     likeUsers: User[];
+
+    @Column()
+    albumId: number;
 }
 
 export default Track;
