@@ -19,7 +19,7 @@ struct ThumbnailList: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
-                LazyVGrid(columns: [.init()]) {
+                LazyVGrid(columns: [.init()], alignment: .leading) {
                     buildList()
                         .foregroundColor(.black)
                 }
@@ -38,7 +38,8 @@ struct ThumbnailList: View {
         switch info {
         case let .playlist(data):
             ForEach(data, id: \.id) { playlist in
-                NavigationLink(destination: AlbumView(viewModel: AlbumViewModel(id: playlist.id))) {
+                let viewModel = AlbumViewModel(id: playlist.id)
+                NavigationLink(destination: AlbumView(viewModel: viewModel)) {
                     ThumbnailRow(imageURL: playlist.imageUrl,
                                  title: playlist.title,
                                  subtitle: playlist.subTitle)
@@ -46,7 +47,7 @@ struct ThumbnailList: View {
             }
         case let .magazine(data):
             ForEach(data, id: \.id) { magazine in
-                NavigationLink(destination: Text("그러고 보니 매거진 뷰가 없네")) {
+                NavigationLink(destination: MagazineView()) {
                     ThumbnailRow(imageURL: magazine.imageUrl,
                                  title: magazine.title,
                                  subtitle: magazine.date)

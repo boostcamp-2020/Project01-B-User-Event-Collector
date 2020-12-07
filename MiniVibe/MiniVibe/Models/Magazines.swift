@@ -18,4 +18,3 @@ struct Magazine: Decodable {
     let date: String
     let category: String
 }
-
