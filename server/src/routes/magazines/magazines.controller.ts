@@ -18,7 +18,8 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
 
 const findOne = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
-
+    // TODO: 인증 구현 후 수정
+    const userId = 1;
     try {
         const MagazineRepository = getRepository(Magazine);
 
@@ -27,6 +28,8 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
             .leftJoinAndSelect('playlist.tracks', 'track')
             .leftJoinAndSelect('track.album', 'album')
             .leftJoinAndSelect('track.artist', 'artist')
+            .loadRelationCountAndMap('track.liked', 'track.likeUsers', 'user',
+                (qb) => qb.andWhere('user.id = :userId', { userId }))
             .where('magazine.id = :id', { id })
             .select([
                 'magazine',
