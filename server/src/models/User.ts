@@ -33,7 +33,7 @@ class User {
 
     @ManyToMany(() => Artist)
     @JoinTable({ name: 'library_artists' })
-    libraryArtists: Track[];
+    libraryArtists: Artist[];
 
     @ManyToMany(() => Playlist)
     @JoinTable({ name: 'library_playlists' })
