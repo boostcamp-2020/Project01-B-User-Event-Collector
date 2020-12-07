@@ -41,6 +41,7 @@ const listById = async (req: Request, res: Response, next: NextFunction) => {
                 'album.title',
                 'album.imageUrl',
             ])
+            .where('playlist.id = :id', { id })
             .getOne();
 
         return res.json({ success: true, data: playlist });
