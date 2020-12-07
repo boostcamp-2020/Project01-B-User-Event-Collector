@@ -36,6 +36,24 @@ struct TodayUseCase {
             .eraseToAnyPublisher()
     }
     
+    func loadPlaylists() -> AnyPublisher<[Playlist], UseCaseError> {
+        return network.request(url: EndPoint.playlists)
+            .decode(type: Playlists.self, decoder: JSONDecoder())
+            .mapError { error -> UseCaseError in
+                switch error {
+                case is NetworkError:
+                    return .networkError
+                default:
+                    return .decodingError
+                }
+            }
+            .map({ playlist -> [Playlist] in
+                playlist.data.filter { !$0.customized }
+            })
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     func loadMagazines() -> AnyPublisher<[Magazine], UseCaseError> {
         return network.request(url: EndPoint.magazines)
             .decode(type: Magazines.self, decoder: JSONDecoder())

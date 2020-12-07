@@ -12,6 +12,7 @@ final class TodayViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     @Published var albums = [Album]()
+    @Published var playlists = [Playlist]()
     @Published var magazines = [Magazine]()
     
     func load() {
@@ -20,6 +21,14 @@ final class TodayViewModel: ObservableObject {
                 // error 처리
             } receiveValue: { [weak self] albums in
                 self?.albums = albums
+            }
+            .store(in: &cancellables)
+        
+        usecase.loadPlaylists()
+            .sink { result in
+                print(result)
+            } receiveValue: { [weak self] playlists in
+                self?.playlists = playlists
             }
             .store(in: &cancellables)
         

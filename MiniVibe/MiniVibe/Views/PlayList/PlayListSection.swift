@@ -12,6 +12,7 @@ struct PlayListSection<D: View>: View {
     let width: CGFloat
     let title: String
     let destination: D
+    let playlists: [Playlist]
     
     var body: some View {
         VStack(spacing: 8) {
@@ -21,13 +22,15 @@ struct PlayListSection<D: View>: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {
-                    ForEach(0..<10) { _ in
-                        let title = "요즘 이 곡"
-                        let subtitle = "VIBE"
+                    ForEach(playlists, id: \.id) { playlist in
                         NavigationLink(
-                            destination: PlayListView(title: title, subtitle: subtitle),
+                            // id로 playlsitview 한테 넘길거고
+                            destination: PlayListView(title: playlist.title,
+                                                      subtitle: playlist.subTitle),
                             label: {
-                                ThumbnailItem(title: title, subtitle: subtitle, imageURL: "")
+                                ThumbnailItem(title: playlist.title,
+                                              subtitle: playlist.subTitle,
+                                              imageURL: playlist.imageUrl)
                                     .frame(width: width * .thumbnailRatio)
                             }
                         )
@@ -42,7 +45,7 @@ struct PlayListSection<D: View>: View {
 
 struct PlayListSection_Previews: PreviewProvider {
     static var previews: some View {
-        PlayListSection(width: 375, title: "플레이리스트", destination: Text("플레이리스트 더보기"))
+        PlayListSection(width: 375, title: "플레이리스트", destination: Text("플레이리스트 더보기"), playlists: [])
             .previewLayout(.fixed(width: 375, height: 300))
     }
 }

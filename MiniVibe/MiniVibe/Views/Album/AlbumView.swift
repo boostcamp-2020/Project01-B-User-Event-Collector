@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-class AlbumViewModel: ObservableObject {
-    
-}
-
 struct AlbumView: View {
     enum ActiveSheet {
         case album
@@ -71,7 +67,8 @@ struct AlbumView: View {
                             width: width,
                             title: "관련 플레이리스트",
                             destination: ThumbnailList(title: "관련 플레이리스트",
-                                                       info: .playlist)
+                                                       info: .playlist),
+                            playlists: []
                         )
                     }
                     .padding(.bottom, 70)
