@@ -88,6 +88,24 @@ const insertTracks = async (playlistId: number, tracks: Track[]) :Promise<boolea
         return false;
     }
 };
+const trackListById = async (id: number) => {
+    try {
+        const PlaylistRepository = getRepository(Playlist);
+        const tracks = await PlaylistRepository.createQueryBuilder('playlist')
+            .leftJoinAndSelect('playlist.tracks', 'track')
+            .select([
+                'playlist.id',
+                'track.id',
+            ])
+            .where('playlist.id = :id', { id })
+            .getOne();
+        if (!tracks) return null;
+        return tracks;
+    } catch (err) {
+        console.error(err);
+        return null;
+    }
+};
 
 const addTracks = async (req: Request, res: Response, next: NextFunction) => {
     const { playlistId, tracks } = req.body;
