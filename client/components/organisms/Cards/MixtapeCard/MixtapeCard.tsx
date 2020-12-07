@@ -39,20 +39,24 @@ const StyledText = styled(Text)`
     font-size: 13px;
 `;
 
-const MixtapeCard = ({ title, artist, src, href }: MixtapeCardProps) => (
-    <CardContainer>
-        <ThumbnailContainer>
-            <ContentsThumbnail src={src} href={href} sort="" />
-        </ThumbnailContainer>
-        <TextContainer>
-            <TitelContainer>
-                <StyledA href={href}>{title}</StyledA>
-            </TitelContainer>
-            <DescriptionContainer>
-                <StyledText variant="primary">{artist}</StyledText>
-            </DescriptionContainer>
-        </TextContainer>
-    </CardContainer>
-);
+const MixtapeCard = ( data : MixtapeCardProps) => {
+
+    const { id, title, subtitle, description, imageUrl, customized } = data;
+
+    return (
+        <CardContainer>
+            <ThumbnailContainer>
+                <ContentsThumbnail src={imageUrl} href="/mixtape/[id]" sort="" />
+            </ThumbnailContainer>
+            <TextContainer>
+                <TitelContainer>
+                    <StyledA href="/mixtape/[id]">{title}</StyledA>
+                </TitelContainer>
+                <DescriptionContainer>
+                    <StyledText variant="primary">{description}</StyledText>
+                </DescriptionContainer>
+            </TextContainer>
+        </CardContainer>
+    )};
 
 export default MixtapeCard;

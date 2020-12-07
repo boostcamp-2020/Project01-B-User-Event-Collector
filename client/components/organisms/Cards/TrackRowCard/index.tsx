@@ -7,6 +7,7 @@ import TrackPlayButton from '@components/molecules/TrackPlayButton';
 import DropDownMenu from '@components/molecules/DropdownMenu';
 import { TrackRowCardProps } from '@interfaces/props';
 import LyricModal from '@components/organisms/LyricModal/LyricModal';
+import QueueMusicIcon from '@material-ui/icons/QueueMusic';
 
 import {
     List,
@@ -34,8 +35,13 @@ const contentsDropDownMenu = [{
     content: '가사 보기'
 }]
 
-const TrackRowCard = ({ trackId, albumImgSrc, trackTitle, artist, albumTitle, href, lyrics }: TrackRowCardProps) => {
-    const [isLiked, setIsLiked] = useState(true);
+const TrackRowCard = ( data : TrackRowCardProps ) => {
+    
+    const { id, title, lyrics, album, artist, liked } = data;
+    const { id: albumId, title: albumTitle, imageUrl} = album;
+    const { id: artistId, name: artistName } = artist;
+
+    const [isLiked, setIsLiked] = useState(liked);
     const [displayLyrics, setDisplayLyrics] = useState(false);
 
     const onClickUnlikeHandler = () => {
@@ -48,24 +54,24 @@ const TrackRowCard = ({ trackId, albumImgSrc, trackTitle, artist, albumTitle, hr
 
     return (
     <List>
-        <LyricModal src={albumImgSrc} title={trackTitle} artist={artist} lyrics={lyrics} visibility = {displayLyrics} onClickFunc = {onClickShowLyric}/>
+        <LyricModal src={imageUrl} title={albumTitle} artist={artistName} lyrics={lyrics} visibility = {displayLyrics} onClickFunc = {onClickShowLyric}/>
         <TrackLeft>
-            <CheckBox id={trackId} />
+            <CheckBox id={id} />
             <TrackPlayBtnContainer>
-                <TrackPlayButton src={albumImgSrc} imgVariant="trackRowCard" />
+                <TrackPlayButton src={imageUrl} imgVariant="trackRowCard" />
             </TrackPlayBtnContainer>
             <TrackTitle>
-                <A href={href}>{trackTitle}</A>
+                <A href="/track/[id]">{title}</A>
             </TrackTitle>
         </TrackLeft>
         <TrackMiddle>
             <TrackMiddleElem>
-                <A href="#" variant="tertiary">
-                    {artist}
+                <A href="/artist/[id]" variant="tertiary">
+                    {artistName}
                 </A>
             </TrackMiddleElem>
             <TrackMiddleElem>
-                <A href="#" variant="tertiary">
+                <A href="/album/[id]" variant="tertiary">
                     {albumTitle}
                 </A>
             </TrackMiddleElem>
@@ -77,13 +83,11 @@ const TrackRowCard = ({ trackId, albumImgSrc, trackTitle, artist, albumTitle, hr
                 </A>
             </Mp3>
             <ShowLyricButton onClick = { onClickShowLyric }>
-                <A href="#">
-                    <HiddenText>가사보기</HiddenText>
-                </A>
+                <QueueMusicIcon style={{ color: '#999' }}/>
             </ShowLyricButton>
             <Like>
-                {isLiked && <FavoriteIcon style={{ color: '#FF1150' }} fontSize = "small" onClick = {onClickUnlikeHandler}/>}
-                {!isLiked && <DropDownMenu
+                {(isLiked == 1) && <FavoriteIcon style={{ color: '#FF1150' }} fontSize = "small" onClick = {onClickUnlikeHandler}/>}
+                {(isLiked == 0) && <DropDownMenu
                     id = "contents" 
                     control = {StyledMoreHorizIcon} 
                     menuItems = {contentsDropDownMenu}/>}

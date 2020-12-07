@@ -33,20 +33,23 @@ const StyledA = styled(A)`
     font-size: 16px;
 `;
 
-const MagazineCard = ({ title, date, src, href, sort }: MagazineCardProps) => (
-    <CardContainer sort={sort}>
+const MagazineCard = ( data : MagazineCardProps ) => {
+    const { id, title, imageUrl, date, category } = data;
+
+    return(
+    <CardContainer>
         <ThumbnailContainer>
-            <ContentsThumbnail src={src} href={href} sort={sort} />
+            <ContentsThumbnail src={imageUrl} href="magazine/[id]" sort='todayMagazine' />
         </ThumbnailContainer>
         <TextContainer>
             <TitelContainer>
-                <StyledA href={href}>{title}</StyledA>
+                <StyledA href="magazine/[id]">{title}</StyledA>
             </TitelContainer>
             <DescriptionContainer>
                 <Text variant="primary">{date}</Text>
             </DescriptionContainer>
         </TextContainer>
     </CardContainer>
-);
+)};
 
 export default MagazineCard;

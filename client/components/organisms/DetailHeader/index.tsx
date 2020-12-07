@@ -59,22 +59,22 @@ const DescriptionContainer = styled.div`
 `;
 
 interface DetailHeaderProps {
-    sort: 'album' | 'mixtape' | 'playlist' | 'track';
-    data: JSON;
+    sort: 'album' | 'mixtape' | 'playlist' | 'track',
+    data
 }
 
 const DetailHeader = ({ sort, data }: DetailHeaderProps) => {
     return (
         <HeaderContainter>
             <ImageContainer>
-                <Image src={data.src} variant="" />
+                <Image src={sort === "album" || "mixtape" ? data.imageUrl : data.album.imageUrl} variant="" />
             </ImageContainer>
             <DetailContainer>
                 <TextContainer>
                     <TitleContainer>
                         <Text variant="tertiary">{data.title}</Text>
                     </TitleContainer>
-                    {sort === 'album' || 'track' ? <ArtistContainer>{data.artist}</ArtistContainer> : ''}
+                    {sort === 'album' || 'track' ? <ArtistContainer>{data.artist?.name}</ArtistContainer> : ''}
                     {sort === 'album' && (
                         <DateGenreContainer>
                             <Text variant="primary">
@@ -83,7 +83,7 @@ const DetailHeader = ({ sort, data }: DetailHeaderProps) => {
                         </DateGenreContainer>
                     )}
                     <DescriptionContainer>
-                        <Text variant="primary">{sort === 'mixtape' ? data.artist : data.description}</Text>
+                        <Text variant="primary">{data.description}</Text>
                     </DescriptionContainer>
                 </TextContainer>
                 <ButtonContainer>

@@ -19,11 +19,15 @@ const ArtistName = styled.div`
     font-weight: 400;
 `;
 
-const NormalArtistThumbnail = ({ name, src, href }: NormalArtistThumbnailProps) => (
-    <Card>
-        <Image variant = "regularArtist" src = {src}/>
-        <ArtistName>{name}</ArtistName>
-    </Card>
-  );
+const NormalArtistThumbnail = ( data : NormalArtistThumbnailProps ) => {
+    const { id, name, imageUrl } = data;
+
+    return (
+        <Card>
+            <Image variant = "regularArtist" src = {imageUrl}/>
+            <ArtistName>{name}</ArtistName>
+        </Card>
+      )
+};
   
   export default NormalArtistThumbnail;

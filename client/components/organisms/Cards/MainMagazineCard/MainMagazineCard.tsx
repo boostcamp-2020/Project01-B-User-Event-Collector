@@ -42,34 +42,38 @@ const DescriptionContainer = styled.div`
 `;
 
 interface MainMagazineCardProps {
-    src: string;
-    href: string;
-    title: string;
-    label: string;
-    description: string;
+    id: number,
+    imageUrl: string,
+    title: string,
+    description: string,
+    date: string,
+    category: string
 }
 
-const MainMagazineCard = ({ title, src, href, description, label }: MainMagazineCardProps) => (
-    <CardContainer>
-        <ImageContainer>
-            <Image variant="primary" src={src} />
-        </ImageContainer>
-        <ContentsContainer>
-            <LabelContainer>
-                <Label selected={true} variant="secondary">
-                    {label}
-                </Label>
-            </LabelContainer>
-            <TitleContainer>
-                <A variant="primary" href={href}>
-                    {title}
-                </A>
-            </TitleContainer>
-            <DescriptionContainer>
-                <Text variant="primary">{description}</Text>
-            </DescriptionContainer>
-        </ContentsContainer>
-    </CardContainer>
-);
+const MainMagazineCard = ( data : MainMagazineCardProps) => {
+    const {id, imageUrl, title, description, date, category } = data;
+    return (
+        <CardContainer>
+            <ImageContainer>
+                <Image variant="primary" src={imageUrl} />
+            </ImageContainer>
+            <ContentsContainer>
+                <LabelContainer>
+                    <Label selected={true} variant="secondary">
+                        {category}
+                    </Label>
+                </LabelContainer>
+                <TitleContainer>
+                    <A variant="primary" href="magazine/[id]">
+                        {title}
+                    </A>
+                </TitleContainer>
+                <DescriptionContainer>
+                    <Text variant="primary">{description}</Text>
+                </DescriptionContainer>
+            </ContentsContainer>
+        </CardContainer>
+    )
+};
 
 export default MainMagazineCard;

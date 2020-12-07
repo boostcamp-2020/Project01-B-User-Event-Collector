@@ -29,16 +29,21 @@ const ArtistLikeButtonContainer = styled.div`
     z-index: 10;
 `;
 
-const LibraryArtistThumbnail = ({ name, src, href }: LibraryArtistThumbnailProps) => (
-    <Card>
-        <Image variant="regularArtist" src={src} />
-        <ArtistLikeButtonContainer>
-            <ArtistLikeButton />
-        </ArtistLikeButtonContainer>
-        <Link href={href}>
-            <ArtistName>{name}</ArtistName>
-        </Link>
-    </Card>
-);
+const LibraryArtistThumbnail = ( data : LibraryArtistThumbnailProps) => {
+
+    const { id, name, imageUrl } = data;
+
+    return (
+        <Card>
+            <Image variant="regularArtist" src={imageUrl} />
+            <ArtistLikeButtonContainer>
+                <ArtistLikeButton />
+            </ArtistLikeButtonContainer>
+            <Link href="/artist/[id]">
+                <ArtistName>{name}</ArtistName>
+            </Link>
+        </Card>
+    )
+}
 
 export default LibraryArtistThumbnail;

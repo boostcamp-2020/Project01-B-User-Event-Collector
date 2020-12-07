@@ -35,20 +35,25 @@ const StyledA = styled(A)`
     font-size: 16px;
 `;
 
-const PlaylistCard = ({ title, description, src, href }: PlaylistCardProps) => (
-    <CardContainer>
-        <ThumbnailContainer>
-            <ContentsThumbnail src={src} href={href} sort="" />
-        </ThumbnailContainer>
-        <TextContainer>
-            <TitelContainer>
-                <StyledA href={href}>{title}</StyledA>
-            </TitelContainer>
-            <DescriptionContainer>
-                <Text variant="primary">{description}</Text>
-            </DescriptionContainer>
-        </TextContainer>
-    </CardContainer>
-);
+const PlaylistCard = ( data : PlaylistCardProps) => {
+
+    const { id, title, subtitle, description, imageUrl, customized } = data;
+
+    return (
+        <CardContainer>
+            <ThumbnailContainer>
+                <ContentsThumbnail src={imageUrl} href="/playlist/[id]" sort="" />
+            </ThumbnailContainer>
+            <TextContainer>
+                <TitelContainer>
+                    <StyledA href="/playlist/[id]">{title}</StyledA>
+                </TitelContainer>
+                <DescriptionContainer>
+                    <Text variant="primary">{description}</Text>
+                </DescriptionContainer>
+            </TextContainer>
+        </CardContainer>
+    )
+};
 
 export default PlaylistCard;
