@@ -25,8 +25,8 @@ final class TodayViewModel: ObservableObject {
             .store(in: &cancellables)
         
         useCase.loadPlaylists()
-            .sink { result in
-                print(result)
+            .sink { _ in
+                
             } receiveValue: { [weak self] playlists in
                 self?.playlists = playlists
             }

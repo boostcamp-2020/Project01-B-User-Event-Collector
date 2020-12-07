@@ -12,4 +12,5 @@ struct EndPoint {
     static let albums = "\(baseURL)/api/albums"
     static let magazines = "\(baseURL)/api/magazines"
     static let playlists = "\(baseURL)/api/playlists"
+    static let newsList = "\(baseURL)/api/news" // 뉴스 전체 목록을 뽑아올 주소
 }
