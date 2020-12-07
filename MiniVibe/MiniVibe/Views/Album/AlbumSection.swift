@@ -22,12 +22,13 @@ struct AlbumSection<D: View>: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {
-                    ForEach(albums, id:\.id) { album in
-                        //let album = albums[index]
+                    ForEach(albums, id: \.id) { album in
                         NavigationLink(
                             destination: Text("album id: \(album.id)"), //AlbumView(id: album.id),
                             label: {
-                                ThumbnailItem(title: album.title, subtitle: album.artist.name)
+                                ThumbnailItem(title: album.title,
+                                              subtitle: album.artist.name,
+                                              imageURL: album.imageUrl)
                                     .frame(width: width * .thumbnailRatio)
                             }
                         )

@@ -18,7 +18,7 @@ struct ThumbnailGrid: View {
                         NavigationLink(
                             destination: AlbumView(title: "요즘 이 곡", subtitle: "VIBE"),
                             label: {
-                                ThumbnailItem(title: "요즘 이 곡", subtitle: "VIBE")
+                                ThumbnailItem(title: "요즘 이 곡", subtitle: "VIBE", imageURL: "")
                             }
                         )
                         .foregroundColor(.black)

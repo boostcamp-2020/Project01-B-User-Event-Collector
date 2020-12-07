@@ -35,7 +35,7 @@ struct LibraryAlbumsView: View {
                         NavigationLink(
                             destination: AlbumView(title: title, subtitle: subtitle),
                             label: {
-                                ThumbnailItem(title: title, subtitle: subtitle)
+                                ThumbnailItem(title: title, subtitle: subtitle, imageURL: "")
                             }
                         )
                         .foregroundColor(.black)

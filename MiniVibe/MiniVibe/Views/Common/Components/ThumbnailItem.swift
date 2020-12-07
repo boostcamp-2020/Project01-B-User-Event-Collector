@@ -10,11 +10,11 @@ import SwiftUI
 struct ThumbnailItem: View {
     let title: String
     let subtitle: String
+    let imageURL: String
     
     var body: some View {
         VStack(alignment: .leading) {
-            Image("playListThumbnail")
-                .resizable()
+            AsyncImage(urlString: imageURL)
                 .aspectRatio(1, contentMode: .fit)
             
             Text(title)
@@ -24,12 +24,13 @@ struct ThumbnailItem: View {
                 .font(.system(size: 12))
                 .foregroundColor(.secondary)
         }
+        .lineLimit(1)
     }
 }
 
 struct ThumbnailItem_Previews: PreviewProvider {
     static var previews: some View {
-        ThumbnailItem(title: "요즘 이 곡", subtitle: "VIBE")
+        ThumbnailItem(title: "요즘 이 곡", subtitle: "VIBE", imageURL: "")
             .previewLayout(.fixed(width: 375, height: 415))
     }
 }

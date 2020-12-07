@@ -27,7 +27,7 @@ struct PlayListSection<D: View>: View {
                         NavigationLink(
                             destination: PlayListView(title: title, subtitle: subtitle),
                             label: {
-                                ThumbnailItem(title: title, subtitle: subtitle)
+                                ThumbnailItem(title: title, subtitle: subtitle, imageURL: "")
                                     .frame(width: width * .thumbnailRatio)
                             }
                         )
