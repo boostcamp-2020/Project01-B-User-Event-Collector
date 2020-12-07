@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct PlayListSection<D: View>: View {
+    init(width: CGFloat, title: String, playlists: [Playlist], @ViewBuilder destination: @escaping () -> D) {
+        self.width = width
+        self.title = title
+        self.playlists = playlists
+        self.destination = destination
+    }
+    
     @State private var isOpenMenu = false
     let width: CGFloat
     let title: String

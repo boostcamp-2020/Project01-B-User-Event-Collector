@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct AlbumSection<D: View>: View {
+    init(width: CGFloat, title: String, albums: [Album], @ViewBuilder destination: @escaping () -> D) {
+        self.width = width
+        self.title = title
+        self.albums = albums
+        self.destination = destination
+    }
+    
     @State private var isOpenMenu = false
     let width: CGFloat
     let title: String
