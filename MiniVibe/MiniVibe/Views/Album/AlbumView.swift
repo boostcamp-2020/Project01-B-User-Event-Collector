@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct AlbumView: View {
-    init(viewModel: AlbumViewModel) {
-        self.viewModel = viewModel
+    init(id: Int) {
+        self.id = id
     }
     
-    @ObservedObject private var viewModel: AlbumViewModel
+    @StateObject private var viewModel = AlbumViewModel()
+    private let id: Int
     
     var body: some View {
         if let album = viewModel.album {
@@ -25,7 +26,6 @@ struct AlbumView: View {
                             subtitle: album.artist.name,
                             content: album.description)
                 } else {
-                    
                     ScrollView {
                         VStack(spacing: 36) {
                             VStack {
@@ -91,12 +91,12 @@ struct AlbumView: View {
         } else {
             Color.clear
                 .onAppear {
-                    viewModel.send(.appear)
+                    viewModel.send(.appear(albumID: id))
                 }
         }
     }
     
-    var trailingBarButtons: some View {
+    private var trailingBarButtons: some View {
         HStack(spacing: 10) {
             Button {
                 
@@ -126,7 +126,7 @@ struct AlbumView: View {
 struct AlbumPlaylistView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AlbumView(viewModel: .init(id: 11))
+            AlbumView(id: 11)
         }
     }
 }

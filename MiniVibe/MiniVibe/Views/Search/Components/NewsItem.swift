@@ -23,7 +23,7 @@ struct NewsItem: View {
                     .bold()
             }
             
-            NavigationLink(destination: AlbumView(viewModel: AlbumViewModel(id: news.albumId))) {
+            NavigationLink(destination: AlbumView(id: news.albumId)) {
                 HStack(spacing: width * .spacingRatio) {
                     Image(systemName: "play.circle.fill")
                     Text("음악듣기")

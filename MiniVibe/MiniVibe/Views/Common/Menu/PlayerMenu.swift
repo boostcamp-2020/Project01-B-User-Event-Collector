@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PlayerMenu: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var nowPlaying: NowPlaying
     let title: String
     let subtitle: String
     let imageURL: String
@@ -18,14 +17,7 @@ struct PlayerMenu: View {
     var body: some View {
         VStack(spacing: 36) {
             Spacer()
-            MenuThumbnailButton(title: title, subtitle: subtitle, imageURL: imageURL) {
-                presentationMode.wrappedValue.dismiss()
-                nowPlaying.isPlayerOpen = false
-                if nowPlaying.setDestination(.album(id: id)) {
-                    nowPlaying.isNavigationActive = true
-                }
-            }
-            
+            MenuThumbnailButton(title: title, subtitle: subtitle, imageURL: imageURL)
             MenuButton(type: .like(true))
             MenuButton(type: .exclude)
             MenuButton(type: .download(.music))

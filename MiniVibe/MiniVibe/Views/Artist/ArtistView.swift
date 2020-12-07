@@ -23,7 +23,7 @@ struct ArtistView: View {
                         
                         VStack(spacing: 12) {
                             ForEach(0..<5) { _ in
-                                TrackRowB(title: "Dynamite", artist: "방탄소년단")
+                                TrackRowB(track: .init(id: 0, title: "Dynamite", lyrics: "", albumId: 0, album: .init(title: "", imageUrl: ""), artist: .init(id: 0, name: "방탄소년단")))
                             }
                             .frame(width: width * .sectionRatio)
                         }

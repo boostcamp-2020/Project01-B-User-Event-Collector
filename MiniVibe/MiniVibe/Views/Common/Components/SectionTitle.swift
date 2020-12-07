@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct SectionTitle<D: View>: View {
+    init(width: CGFloat, title: String, @ViewBuilder destination: @escaping () -> D) {
+        self.width = width
+        self.title = title
+        self.destination = destination
+    }
+    
     let width: CGFloat
     let title: String
     let destination: () -> D

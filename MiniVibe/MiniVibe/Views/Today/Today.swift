@@ -29,6 +29,7 @@ struct Today: View {
                         NavigationLink(
                             destination: nowPlaying.destination?.view,
                             isActive: $nowPlaying.isNavigationActive) { }
+                            
                         VStack(spacing: 30) {
                             TodayTitle()
                                 .padding(.horizontal, width * .paddingRatio)
@@ -58,7 +59,7 @@ struct Today: View {
                             
                             StationSection(width: width, title: "DJ 스테이션")
                             
-                            ChartSectionA(width: width, title: "최근 들은 노래")
+                            ChartSectionA(width: width, title: "최근 들은 노래", tracks: viewModel.tracks)
                             
                             RecommandedPlayListSection(width: width, title: "VIBE 추천 플레이리스트")
                             

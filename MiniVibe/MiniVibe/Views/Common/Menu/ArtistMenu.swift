@@ -13,11 +13,7 @@ struct ArtistMenu: View {
     var body: some View {
         VStack(spacing: 36) {
             Spacer()
-            Button {
-                // artist 화면에서 가수메뉴를 띄웠을 경우 그대로 창이 닫힘
-                    // 혹시 artist menu가 다른 곳에서 선택된다면 고쳐야 함
-                presentationMode.wrappedValue.dismiss()
-            } label: {
+            HStack {
                 Image("artist")
                     .resizable()
                     .aspectRatio(1, contentMode: .fit)
@@ -36,9 +32,6 @@ struct ArtistMenu: View {
                 .padding(.horizontal, 8)
                 
                 Spacer()
-                
-                Image(systemName: "chevron.right")
-                    .foregroundColor(.secondary)
             }
             .foregroundColor(.black)
             .padding(.horizontal)
