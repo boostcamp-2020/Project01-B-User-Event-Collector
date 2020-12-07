@@ -13,10 +13,9 @@ struct RecommandedPlayListSection: View {
     
     var body: some View {
         VStack {
-            SectionTitle(width: width,
-                         destination: ThumbnailList(info: .playlist(data: []),
-                                                    navigationTitle: title), //"VIBE 추천 플레이리스트"
-                         title: title)
+            SectionTitle(width: width, title: title) {
+                ThumbnailList(info: .playlist(data: []), navigationTitle: title) //"VIBE 추천 플레이리스트"
+            }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: width * .spacingRatio) {

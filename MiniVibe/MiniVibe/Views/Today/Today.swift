@@ -38,20 +38,23 @@ struct Today: View {
                             
                             PlayListSection(width: width,
                                             title: "나를 위한 믹스테잎",
-                                            destination: MixtapeGrid(title: "나를 위한 믹스테잎", mixtapes: []),
-                                            playlists: [])
+                                            playlists: []) {
+                                MixtapeGrid(title: "나를 위한 믹스테잎", mixtapes: [])
+                            }
                             
                             PlayListSection(width: width,
                                             title: "즐겨듣는 플레이리스트",
-                                            destination: ThumbnailList(info: .playlist(data: viewModel.playlists),
-                                                                       navigationTitle: "즐겨듣는 플레이리스트"),
-                                            playlists: viewModel.playlists)
+                                            playlists: viewModel.playlists) {
+                                ThumbnailList(info: .playlist(data: viewModel.playlists),
+                                                           navigationTitle: "즐겨듣는 플레이리스트")
+                            }
                             
                             PlayListSection(width: width,
                                             title: "내 취향 플레이리스트",
-                                            destination: ThumbnailList(info: .playlist(data: viewModel.playlists),
-                                                                       navigationTitle: "내 취향 플레이리스트"),
-                                            playlists: viewModel.playlists)
+                                            playlists: viewModel.playlists) {
+                                ThumbnailList(info: .playlist(data: viewModel.playlists),
+                                                           navigationTitle: "내 취향 플레이리스트")
+                            }
                             
                             StationSection(width: width, title: "DJ 스테이션")
                             
@@ -60,10 +63,11 @@ struct Today: View {
                             RecommandedPlayListSection(width: width, title: "VIBE 추천 플레이리스트")
                             
                             AlbumSection(width: width,
-                                         destination: ThumbnailGridView(title: "좋아할 최신 앨범",
-                                                                        album: viewModel.albums),
                                          title: "좋아할 최신 앨범",
-                                         albums: viewModel.albums)
+                                         albums: viewModel.albums) {
+                                ThumbnailGridView(title: "좋아할 최신 앨범",
+                                                               album: viewModel.albums)
+                            }
                             
                             MagazineSection(width: width,
                                             magazines: viewModel.magazines)

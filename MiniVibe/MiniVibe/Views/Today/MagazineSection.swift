@@ -14,10 +14,9 @@ struct MagazineSection: View {
     
     var body: some View {
         VStack {
-            SectionTitle(width: width,
-                         destination: ThumbnailList(info: .magazine(data: magazines),
-                                                    navigationTitle: title),
-                         title: title)
+            SectionTitle(width: width, title: title) {
+                ThumbnailList(info: .magazine(data: magazines), navigationTitle: title)
+            }
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {

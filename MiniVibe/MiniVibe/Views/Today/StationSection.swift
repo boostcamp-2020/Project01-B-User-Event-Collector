@@ -13,7 +13,9 @@ struct StationSection: View {
     
     var body: some View {
         VStack {
-            SectionTitle(width: width, destination: StationList(), title: title)
+            SectionTitle(width: width, title: title) {
+                StationList()
+            }
             
             StationStack(width: width)
         }

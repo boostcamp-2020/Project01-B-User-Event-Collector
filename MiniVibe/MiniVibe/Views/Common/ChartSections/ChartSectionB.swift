@@ -13,9 +13,9 @@ struct ChartSectionB: View {
     
     var body: some View {
         VStack {
-            SectionTitle(width: width,
-                         destination: ChartList(title: sectionTitle),
-                         title: sectionTitle)
+            SectionTitle(width: width,title: sectionTitle) {
+                ChartList(title: sectionTitle)
+            }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 // 무조건 100개

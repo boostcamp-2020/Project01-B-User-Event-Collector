@@ -10,16 +10,14 @@ import SwiftUI
 struct AlbumSection<D: View>: View {
     @State private var isOpenMenu = false
     let width: CGFloat
-    let destination: D
     let title: String
     let albums: [Album]
+    let destination: () -> D
     
     var body: some View {
         VStack(spacing: 8) {
-            SectionTitle(width: width,
-                         destination: destination,
-                         title: title)
-            
+            SectionTitle(width: width, title: title, destination: destination)
+                         
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {
                     ForEach(albums, id: \.id) { album in
@@ -43,7 +41,9 @@ struct AlbumSection<D: View>: View {
 
 struct AlbumSection_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumSection(width: 375, destination: Text("앨범 목록"), title: "앨범", albums: [])
-            .previewLayout(.fixed(width: 375, height: 300))
+        AlbumSection(width: 375, title: "앨범", albums: []) {
+            Text("앨범 목록")
+        }
+        .previewLayout(.fixed(width: 375, height: 300))
     }
 }

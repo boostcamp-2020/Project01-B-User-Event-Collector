@@ -24,6 +24,19 @@ final class NowPlaying: ObservableObject {
                 return AnyView(ArtistView())
             }
         }
+        
+        static func == (lhs: Self, rhs: Self) -> Bool {
+            switch (lhs, rhs) {
+            case let (.album(lhsId), .album(rhsId)):
+                return lhsId == rhsId
+            case let (.playList(lhsTitle, lhsSubtitle), .playList(rhsTitle, rhsSubtitle)):
+                return lhsTitle == rhsTitle && lhsSubtitle == rhsSubtitle
+            case (.artist, .artist):
+                return true
+            default:
+                return false
+            }
+        }
     }
     
     @Published var trackId: Int?
@@ -43,4 +56,5 @@ final class NowPlaying: ObservableObject {
         self.destination = destination
         return true
     }
+    
 }

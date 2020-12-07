@@ -53,11 +53,9 @@ struct AlbumView: View {
                                 }
                             }
                             
-                            AlbumSection(
-                                width: width,
-                                destination: ThumbnailGridView(title: "아티스트의 다른 앨범", album: []),
-                                title: "아티스트의 다른 앨범", albums: []
-                            )
+                            AlbumSection(width: width, title: "아티스트의 다른 앨범", albums: []) {
+                                ThumbnailGridView(title: "아티스트의 다른 앨범", album: [])
+                            }
                             
                             ArtistSection(width: width,
                                           sectionTitle: "비슷한 아티스트")
@@ -65,10 +63,11 @@ struct AlbumView: View {
                             PlayListSection(
                                 width: width,
                                 title: "관련 플레이리스트",
-                                destination: ThumbnailList(info: .playlist(data: []),
-                                                           navigationTitle: "관련 플레이리스트"),
                                 playlists: []
-                            )
+                            ) {
+                                ThumbnailList(info: .playlist(data: []),
+                                                           navigationTitle: "관련 플레이리스트")
+                            }
                         }
                         .padding(.bottom, 70)
                     }

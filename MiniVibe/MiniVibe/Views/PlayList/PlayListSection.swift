@@ -11,14 +11,12 @@ struct PlayListSection<D: View>: View {
     @State private var isOpenMenu = false
     let width: CGFloat
     let title: String
-    let destination: D
     let playlists: [Playlist]
+    let destination: () -> D
     
     var body: some View {
         VStack(spacing: 8) {
-            SectionTitle(width: width,
-                         destination: destination,
-                         title: title)
+            SectionTitle(width: width, title: title, destination: destination)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {
@@ -45,7 +43,9 @@ struct PlayListSection<D: View>: View {
 
 struct PlayListSection_Previews: PreviewProvider {
     static var previews: some View {
-        PlayListSection(width: 375, title: "플레이리스트", destination: Text("플레이리스트 더보기"), playlists: [])
+        PlayListSection(width: 375, title: "플레이리스트", playlists: []) {
+            Text("플레이리스트 더보기")
+        }
             .previewLayout(.fixed(width: 375, height: 300))
     }
 }

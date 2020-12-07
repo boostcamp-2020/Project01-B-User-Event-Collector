@@ -13,9 +13,9 @@ struct ChartSectionA: View {
     
     var body: some View {
         VStack {
-            SectionTitle(width: width,
-                         destination: ChartList(title: title),
-                         title: title)
+            SectionTitle(width: width, title: title) {
+                ChartList(title: title)
+            }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: .init(repeating: .init(.flexible(minimum: 60)), count: 5)) {

@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SectionTitle<D: View>: View {
     let width: CGFloat
-    let destination: D
     let title: String
+    let destination: () -> D
     
     var body: some View {
         NavigationLink(
-            destination: destination,
+            destination: destination(),
             label: {
                 HStack {
                     Text(title)
@@ -35,7 +35,9 @@ struct SectionTitle<D: View>: View {
 
 struct SectionTitle_Previews: PreviewProvider {
     static var previews: some View {
-        SectionTitle(width: 375, destination: Text("Hello"), title: "최근 들은 노래")
-            .previewLayout(.fixed(width: 375, height: 50))
+        SectionTitle(width: 375, title: "최근 들은 노래") {
+            Text("Hello")
+        }
+        .previewLayout(.fixed(width: 375, height: 50))
     }
 }
