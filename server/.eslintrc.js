@@ -14,6 +14,7 @@ module.exports = {
         indent: ['error', 4],
         'import/prefer-default-export': 'off',
         'no-unused-vars': 'off',
+        'no-console': 'off',
         'import/extensions': [
             'error',
             'ignorePackages',
