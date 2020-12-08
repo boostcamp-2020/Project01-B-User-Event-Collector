@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import Head from 'next/head'; //head를 수정할 수 있게 함
 import styled from 'styled-components';
 
+import wrapper from '../store/configureStore';
+import withReduxSaga from "next-redux-saga";
+
 import HeaderSideBar from '@components/organisms/HeaderSideBar';
 import MusicPlayer from '@components/organisms/MusicPlayer';
 import FloatingSelectMenu from '@components/organisms/FloatingSelectMenu';
@@ -67,4 +70,4 @@ App.propTypes = {
     Component: PropTypes.elementType.isRequired,
 };
 
-export default App;
+export default wrapper.withRedux(withReduxSaga(App));
