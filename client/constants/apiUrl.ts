@@ -7,7 +7,8 @@ const apiUrl = {
     mixtape: `${baseUrl}/library/mixtapes`,
     album: `${baseUrl}/albums`,
     libraryAlbum: `${baseUrl}/library/albums`,
-    libraryTrack: `${baseUrl}/library/tracks`
+    libraryTrack: `${baseUrl}/library/tracks`,
+    libraryArtist: `${baseUrl}/library/artists`
 };
 
 export default apiUrl;
