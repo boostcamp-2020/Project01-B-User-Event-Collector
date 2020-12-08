@@ -14,6 +14,15 @@ class Magazine {
     @Column()
     imageUrl: string;
 
+    @Column('text')
+    description: string;
+
+    @Column()
+    subTitle: string;
+
+    @Column('text')
+    content: string;
+
     @Column('date')
     date: Date;
 

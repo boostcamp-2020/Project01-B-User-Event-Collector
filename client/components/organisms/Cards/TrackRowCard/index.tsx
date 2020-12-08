@@ -58,20 +58,20 @@ const TrackRowCard = ( data : TrackRowCardProps ) => {
         <TrackLeft>
             <CheckBox id={id} />
             <TrackPlayBtnContainer>
-                <TrackPlayButton src={imageUrl} imgVariant="trackRowCard" />
+                <TrackPlayButton data={data} imgVariant="trackRowCard" />
             </TrackPlayBtnContainer>
             <TrackTitle>
-                <A href="/track/[id]">{title}</A>
+                <A href={"/track/"+id}>{title}</A>
             </TrackTitle>
         </TrackLeft>
         <TrackMiddle>
             <TrackMiddleElem>
-                <A href="/artist/[id]" variant="tertiary">
+                <A href={"/artist/"+artistId} variant="tertiary">
                     {artistName}
                 </A>
             </TrackMiddleElem>
             <TrackMiddleElem>
-                <A href="/album/[id]" variant="tertiary">
+                <A href={"/album/"+albumId} variant="tertiary">
                     {albumTitle}
                 </A>
             </TrackMiddleElem>

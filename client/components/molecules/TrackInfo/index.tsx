@@ -4,8 +4,7 @@ import StyledA from '@components/atoms/A/A.styles';
 import { Track } from '@components/organisms/Library/LibraryHeader/LibraryHeader.stories';
 
 interface TrackInfoProps {
-    trackTitle: string;
-    artist: string;
+    data,
     track: boolean;
 }
 const TrackInfoContainer = styled.div`
@@ -33,15 +32,18 @@ const MoveInfoDetail = styled(StyledA)<{ top: boolean; track: boolean }>`
             font-size: 14px;
         `};
 `;
-const TrackInfo = ({ trackTitle, artist, track }: TrackInfoProps) => (
-    <TrackInfoContainer>
-        <MoveInfoDetail href="#" variant="fourth" top={true} track={track}>
-            {trackTitle}
-        </MoveInfoDetail>
-        <MoveInfoDetail href="#" variant="tertiary" top={track ? false : true} track={track}>
-            {artist}
-        </MoveInfoDetail>
-    </TrackInfoContainer>
-);
+const TrackInfo = ({ data , track }: TrackInfoProps) => {
+    const { id, title, artistId, artist } = data;
+    const { name: artistName } = artist;
+    return(
+        <TrackInfoContainer>
+            <MoveInfoDetail href={"/track/"+id} variant="fourth" top={true} track={track}>
+                {title}
+            </MoveInfoDetail>
+            <MoveInfoDetail href={"/artist/"+artistId} variant="tertiary" top={track ? false : true} track={track}>
+                {artistName}
+            </MoveInfoDetail>
+        </TrackInfoContainer>
+    )};
 
 export default TrackInfo;

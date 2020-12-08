@@ -36,11 +36,11 @@ const NewsCard = ( data : NewsCardProps) => {
     return (
         <CardContainer>
             <ThumbnailContainer>
-                <ContentsThumbnail sort="news" src={imageUrl} href="/album/[id]" />
+                <ContentsThumbnail sort="news" src={imageUrl} href={"/album/"+albumId} />
             </ThumbnailContainer>
             <TextContainer>
                 <TitleContainer>
-                    <StyledA href="/album/[id]">{title}</StyledA>
+                    <StyledA href={"/album/"+albumId}>{title}</StyledA>
                 </TitleContainer>
                 <DescriptionContainer>
                     <A href={link} variant="tertiary">

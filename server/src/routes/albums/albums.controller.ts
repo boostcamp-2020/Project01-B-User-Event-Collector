@@ -34,7 +34,7 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
             .loadRelationCountAndMap('track.liked', 'track.likeUsers', 'user',
                 (qb) => qb.andWhere('user.id = :userId', { userId }))
             .select([
-                'album', 'artist.id', 'artist.name', 'track.id', 'track.title',
+                'album', 'artist.id', 'artist.name', 'track.id', 'track.title', 'track.lyrics',
                 'track_artist.id', 'track_artist.name',
                 'track_album.id', 'track_album.title', 'track_album.imageUrl',
             ])

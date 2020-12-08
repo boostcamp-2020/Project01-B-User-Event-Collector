@@ -67,7 +67,7 @@ const DetailHeader = ({ sort, data }: DetailHeaderProps) => {
     return (
         <HeaderContainter>
             <ImageContainer>
-                <Image src={sort === "album" || "mixtape" ? data.imageUrl : data.album.imageUrl} variant="" />
+                <Image src={sort === "track" ? data.album.imageUrl : data.imageUrl } variant="" />
             </ImageContainer>
             <DetailContainer>
                 <TextContainer>

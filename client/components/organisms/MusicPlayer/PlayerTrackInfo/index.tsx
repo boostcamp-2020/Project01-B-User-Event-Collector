@@ -6,6 +6,7 @@ import Heart from '@components/atoms/Heart/Heart';
 import TrackCard from '@components/molecules/TrackCard';
 import DropDownMenu from '@components/molecules/DropdownMenu';
 import LyricModal from '@components/organisms/LyricModal/LyricModal';
+import QueueMusicIcon from '@material-ui/icons/QueueMusic';
 
 interface PlayerTrackInfoProps {
     track
@@ -66,23 +67,21 @@ const contentsDropDownMenu = [{
     content: '가사 보기'
 }]
 
-const PlayerTrackInfo = (track) => {
+const PlayerTrackInfo = ({track}) => {
     const [displayLyrics, setDisplayLyrics] = useState(false);
 
     const onClickShowLyric = () => {
         setDisplayLyrics(!displayLyrics);
     }
 
-    const data = track.track;
+    const data = track;
 
     return (
         <Container>
             <LyricModal src={data.album.imageUrl} title={data.title} artist={data.artist.name} lyrics={data.lyrics} visibility = {displayLyrics} onClickFunc = {onClickShowLyric}/>
             <TrackCardContainer>
                 <TrackCard
-                src={data.album.imageUrl}
-                trackTitle={data.title}
-                artist={data.artist.name}
+                data = {track} 
                 imgVariant="trackInfo"
                 isDefault={false}
                 isTrack={true}
@@ -92,6 +91,7 @@ const PlayerTrackInfo = (track) => {
                 <Heart isSelected = {true} sort = "musicPlayer" />
             </LikeButtonContainer>
             <ShowLyricButton onClick = { onClickShowLyric }>
+                <QueueMusicIcon style={{ color: '#999' }} />
             </ShowLyricButton>
             <DropDownContainer>
                 <DropDownMenu

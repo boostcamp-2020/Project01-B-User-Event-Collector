@@ -42,11 +42,11 @@ const PlaylistCard = ( data : PlaylistCardProps) => {
     return (
         <CardContainer>
             <ThumbnailContainer>
-                <ContentsThumbnail src={imageUrl} href="/playlist/[id]" sort="" />
+                <ContentsThumbnail src={imageUrl} href={"/playlist/"+id} sort="" />
             </ThumbnailContainer>
             <TextContainer>
                 <TitelContainer>
-                    <StyledA href="/playlist/[id]">{title}</StyledA>
+                    <StyledA href={"/playlist/"+id}>{title}</StyledA>
                 </TitelContainer>
                 <DescriptionContainer>
                     <Text variant="primary">{description}</Text>

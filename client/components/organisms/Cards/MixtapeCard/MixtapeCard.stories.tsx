@@ -6,13 +6,15 @@ export default {
     component: MixtapeCard,
 };
 
-const STORY_SRC =
-    'https://vibeapp.music.naver.com/vibe/v1/cover/mix/2487724,3553414,2836707,4551646/favorite/favorite/';
-const STORY_HREF = 'localhost:3000';
-
-const STORY_TITLE = '최애 믹스테잎';
-const STORY_ARTIST = '김승민, Ariana Grande, 이영지, Dua Lipa, Lana Del Rey';
+const Mixtapedata = {
+    id: 1,
+    title: "나를 위한 믹스테잎",
+    subTitle: "",
+    description: "Lana Del Rey, Dua Lipa, 이영지",
+    imageUrl: "https://vibeapp.music.naver.com/vibe/v1/cover/mix/3171155,2487724,3553414,635724/favorite/favorite/",
+    customized: false
+};
 
 export const Default = () => (
-    <MixtapeCard title={STORY_TITLE} artist={STORY_ARTIST} src={STORY_SRC} href={STORY_HREF} />
+    <MixtapeCard {...(Mixtapedata)} />
 );
