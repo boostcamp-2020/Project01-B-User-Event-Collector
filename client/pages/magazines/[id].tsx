@@ -7,6 +7,8 @@ import Button from '@components/atoms/Button';
 import TrackRowList from '@components/organisms/CardLists/TrackRowList';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import { request } from '@utils/apis';
+import apiUrl from '@constants/apiUrl';
 
 const magazineData = 
 {
@@ -182,7 +184,7 @@ const WholeTrackTitleContainer = styled.div`
     font-weight: 700;
 `;
 
-const MagazineDetail = () => {
+const MagazineDetail = ({ magazineData }) => {
     return (
         <Container>
             <Header>
@@ -193,7 +195,7 @@ const MagazineDetail = () => {
                     {magazineData.title}
                 </TitleContainer>
                 <DescriptionContainer>
-                    {magazineData.playlist.description}
+                    {magazineData.description}
                 </DescriptionContainer>
                 <PlaylistLinkConainer>
                     <A href = {'/playlist/'+magazineData.playlist.id} variant="tertiary">플레이리스트 보기 ></A>
@@ -206,13 +208,13 @@ const MagazineDetail = () => {
             <ContentsContainer>
                 <ContentsBox>
                     <ContentsTitleContainer>
-                        {magazineData.title}
+                        {magazineData.subTitle}
                     </ContentsTitleContainer>
                     <ContentsImageContainer>
                         <img src={magazineData.imageUrl} width = "960px"/>
                     </ContentsImageContainer>
                     <ContentsDescriptionContainer>
-                        {magazineData.playlist.description}
+                        {magazineData.content}
                     </ContentsDescriptionContainer>
                     <ContentsTrackListContainer>
                         <TrackRowList items={magazineData.playlist.tracks} />
@@ -231,4 +233,22 @@ const MagazineDetail = () => {
     )   
 }
 
+
+export async function getServerSideProps(context) {
+    const { id } = context.query;
+
+    const magazineData = await request(`${apiUrl.magazine}/${id}`);
+
+    if (!magazineData) {
+        return {
+            notFound: true,
+        };
+    }
+
+    return {
+        props: {
+            magazineData
+        },
+    };
+}
 export default MagazineDetail;
