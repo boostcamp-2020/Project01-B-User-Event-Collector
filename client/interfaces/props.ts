@@ -51,8 +51,9 @@ export interface PlaylistCardProps {
 };
 
  export interface LibraryArtistThumbnailProps {
+    id: number,
     name: string,
-    src: string,
+    imageUrl: string,
     href: string
 }
 
