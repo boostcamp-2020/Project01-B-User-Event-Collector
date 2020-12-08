@@ -1,10 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { EntityManager, getManager, getRepository } from 'typeorm';
-import { isRegExp } from 'util';
+import { getManager, getRepository } from 'typeorm';
 import * as libraryPlaylist from '../library/playlists/library.playlists.controller';
 import * as TrackController from '../tracks/tracks.controller';
 import Playlist from '../../models/Playlist';
-import User from '../../models/User';
 import Track from '../../models/Track';
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
@@ -47,6 +45,7 @@ const listById = async (req: Request, res: Response, next: NextFunction) => {
                 'album.title',
                 'album.imageUrl',
             ])
+            .where('playlist.id = :id', { id })
             .getOne();
 
         return res.json({ success: true, data: playlist });
@@ -92,6 +91,25 @@ const insertTracks = async (playlistId: number, tracks: Track[]) :Promise<boolea
         return false;
     }
 };
+const trackListById = async (id: number) => {
+    try {
+        const PlaylistRepository = getRepository(Playlist);
+        const tracks = await PlaylistRepository.createQueryBuilder('playlist')
+            .leftJoinAndSelect('playlist.tracks', 'track')
+            .select([
+                'playlist.id',
+                'track.id',
+            ])
+            .where('playlist.id = :id', { id })
+            .getOne();
+        if (!tracks) return null;
+        return tracks;
+    } catch (err) {
+        console.error(err);
+        return null;
+    }
+};
+
 const addTracks = async (req: Request, res: Response, next: NextFunction) => {
     const { playlistId, tracks } = req.body;
 
@@ -119,6 +137,23 @@ const addAlbum = async (req: Request, res: Response, next: NextFunction) => {
         return res.status(500).json({ success: false });
     }
 };
+
+const addPlaylist = async (req: Request, res: Response, next: NextFunction) => {
+    const { id, playlistId } = req.body;
+    try {
+        const playlist = await trackListById(playlistId);
+        const tracks = playlist?.tracks || null;
+
+        if (!tracks) return Error();
+
+        const result = await insertTracks(id, tracks);
+        if (result) return res.json({ success: true });
+        return Error();
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ success: false });
+    }
+};
 export {
-    list, listById, create, addTracks, addAlbum,
+    list, listById, create, addTracks, addAlbum, addPlaylist,
 };

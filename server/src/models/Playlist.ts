@@ -1,7 +1,6 @@
 import {
     Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, JoinTable,
 } from 'typeorm';
-import User from './User';
 import Track from './Track';
 
 @Entity()
