@@ -55,7 +55,10 @@ const TrackRowCard = (data: TrackRowCardProps) => {
     const onClickShowLyric = () => {
         setDisplayLyrics(!displayLyrics);
     };
-
+    const onChangeCheckRow = (e) => {
+        const list = e.target.closest('LI');
+        list.classList.toggle('checked');
+    };
     return (
         <List>
             <LyricModal
@@ -67,7 +70,7 @@ const TrackRowCard = (data: TrackRowCardProps) => {
                 onClickFunc={onClickShowLyric}
             />
             <TrackLeft>
-                <CheckBox id={id} />
+                <CheckBox id={id} onChange={onChangeCheckRow} />
                 <TrackPlayBtnContainer>
                     <TrackPlayButton data={data} imgVariant="trackRowCard" />
                 </TrackPlayBtnContainer>

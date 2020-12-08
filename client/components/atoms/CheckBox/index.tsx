@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 interface CheckBoxProps {
     id: string;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    checked: boolean;
 }
 
 const StyledCheckBox = styled.div`
@@ -31,14 +33,11 @@ const Input = styled.input`
         border: none;
     }
 `;
-const onClickCheckBox = (e) => {
-    const list = e.target.closest('LI');
-    e.target.checked ? list.classList.add('checked') : list.classList.remove('checked');
-};
-const CheckBox = ({ id }: CheckBoxProps) => (
+
+const CheckBox = ({ id, onChange, checked }: CheckBoxProps) => (
     <StyledCheckBox>
-        <Input type="checkbox" id={id} onClick={onClickCheckBox} />
-        <label htmlFor={id} />
+        <Input type="checkbox" id={`checkRow_${id}`} onChange={onChange} checked={checked} />
+        <label htmlFor={`checkRow_${id}`} />
     </StyledCheckBox>
 );
 
