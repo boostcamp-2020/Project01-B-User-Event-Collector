@@ -14,11 +14,12 @@ const TrackCardContainer = styled.div<{ isDefault: boolean }>`
             height: 56px;
         `}
 `;
-const TrackCard = ({ src, trackTitle, artist, imgVariant, isDefault, isTrack }: TrackCardProps) => (
+const TrackCard = ({ data, imgVariant, isDefault, isTrack }: TrackCardProps) => {
+return (
     <TrackCardContainer isDefault={isDefault}>
-        <TrackPlayButton src={src} imgVariant={imgVariant} />
-        <TrackInfo trackTitle={trackTitle} artist={artist} track={isTrack} />
+        <TrackPlayButton data = {data} imgVariant={imgVariant} />
+        <TrackInfo data = {data} track={isTrack} />
     </TrackCardContainer>
-);
+)};
 
 export default TrackCard;

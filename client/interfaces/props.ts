@@ -99,9 +99,7 @@ export interface TrackRowCardProps {
 }
 
 export interface TrackCardProps {
-    src: string,
-    trackTitle: string,
-    artist: string,
+    data,
     imgVariant: 'trackRowCard' | 'trackInfo',
     isDefault: boolean,
     isTrack: boolean,

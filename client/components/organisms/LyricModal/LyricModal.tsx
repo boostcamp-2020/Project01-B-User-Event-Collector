@@ -107,9 +107,9 @@ const LyricModal = ({ lyrics, title, artist, src, visibility, onClickFunc }: Lyr
                     </TrackDescriptionContainer>
                 </TrackInfoContainer>
                 <LyricsContainer>
-                    {lyrics?.split('\n').map((line) => {
+                    {lyrics?.split('\n').map((line, idx) => {
                         return (
-                            <Text variant="primary">
+                            <Text key={idx} variant="primary">
                                 {line}
                                 <br />
                             </Text>

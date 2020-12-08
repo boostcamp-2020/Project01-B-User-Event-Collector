@@ -41,14 +41,14 @@ const AlbumCard = ( data : AlbumCardProps) => {
     return (
         <CardContainer>
             <ThumbnailContainer>
-                <ContentsThumbnail src={imageUrl} href="album/[id]" sort="" />
+                <ContentsThumbnail src={imageUrl} href={"/album/"+id} sort="" />
             </ThumbnailContainer>
             <TextContainer>
                 <TitelContainer>
-                    <StyledA href="album/[id]">{title}</StyledA>
+                    <StyledA href={"/album/"+id}>{title}</StyledA>
                 </TitelContainer>
                 <DescriptionContainer>
-                    <Text variant="primary">{artistName}</Text>
+                    <StyledA variant="tertiary" href={"/artist/"+id}>{artistName}</StyledA>
                 </DescriptionContainer>
             </TextContainer>
         </CardContainer>

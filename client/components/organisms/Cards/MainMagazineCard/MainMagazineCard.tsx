@@ -64,7 +64,7 @@ const MainMagazineCard = ( data : MainMagazineCardProps) => {
                     </Label>
                 </LabelContainer>
                 <TitleContainer>
-                    <A variant="primary" href="magazine/[id]">
+                    <A variant="primary" href={"/magazine/"+id}>
                         {title}
                     </A>
                 </TitleContainer>
