@@ -33,9 +33,9 @@ struct LibraryAlbumsView: View {
                         let title = "요즘 이 곡"
                         let subtitle = "VIBE"
                         NavigationLink(
-                            destination: AlbumView(title: title, subtitle: subtitle),
+                            destination: AlbumView(id: 11),
                             label: {
-                                ThumbnailItem(title: title, subtitle: subtitle)
+                                ThumbnailItem(title: title, subtitle: subtitle, imageURL: "")
                             }
                         )
                         .foregroundColor(.black)

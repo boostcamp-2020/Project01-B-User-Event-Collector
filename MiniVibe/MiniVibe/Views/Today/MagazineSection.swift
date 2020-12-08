@@ -9,17 +9,22 @@ import SwiftUI
 
 struct MagazineSection: View {
     let width: CGFloat
-    let title: String
+    let title = "매거진"
+    let magazines: [Magazine]
     
     var body: some View {
         VStack {
-            SectionTitle(width: width, destination: ThumbnailList(title: "매거진", info: .magazine), title: title)
-            
+            SectionTitle(width: width, title: title) {
+                ThumbnailList(info: .magazine(data: magazines), navigationTitle: title)
+            }
+
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {
-                    ForEach(0..<10) { _ in
-                        MagazineItem()
-                            .frame(width: width * .sectionRatio)
+                    ForEach(magazines, id: \.id) {magazine in
+                        NavigationLink(destination: MagazineView(magazine: magazine)) {
+                            MagazineItem(magazine: magazine)
+                                .frame(width: width * .sectionRatio)
+                        }
                     }
                 }
                 .padding(.horizontal, width * .paddingRatio)
@@ -30,7 +35,7 @@ struct MagazineSection: View {
 
 struct MagazineSection_Previews: PreviewProvider {
     static var previews: some View {
-        MagazineSection(width: 375, title: "매거진")
+        MagazineSection(width: 375, magazines: [])
             .previewLayout(.fixed(width: 375, height: 450))
     }
 }

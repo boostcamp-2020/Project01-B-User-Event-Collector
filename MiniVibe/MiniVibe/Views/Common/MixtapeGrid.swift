@@ -9,9 +9,10 @@ import SwiftUI
 
 struct MixtapeGrid: View {
     let title: String
+    let mixtapes: [Album]
     
     var body: some View {
-        ThumbnailGridView(title: title)
+        ThumbnailGridView(title: title, album: mixtapes)
             .navigationBarItems(
                 trailing: Button {
                     
@@ -28,7 +29,7 @@ struct MixtapeGrid: View {
 struct MixtapeGrid_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            MixtapeGrid(title: "나를 위한 믹스테잎")
+            MixtapeGrid(title: "나를 위한 믹스테잎", mixtapes: [])
         }
     }
 }

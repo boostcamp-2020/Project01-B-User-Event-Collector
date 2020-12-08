@@ -8,26 +8,32 @@
 import SwiftUI
 
 struct AlbumSection<D: View>: View {
+    init(width: CGFloat, title: String, albums: [Album], @ViewBuilder destination: @escaping () -> D) {
+        self.width = width
+        self.title = title
+        self.albums = albums
+        self.destination = destination
+    }
+    
     @State private var isOpenMenu = false
     let width: CGFloat
-    let destination: D
     let title: String
+    let albums: [Album]
+    let destination: () -> D
     
     var body: some View {
         VStack(spacing: 8) {
-            SectionTitle(width: width,
-                         destination: destination,
-                         title: title)
-            
+            SectionTitle(width: width, title: title, destination: destination)
+                         
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {
-                    ForEach(0..<10) { _ in
-                        let title = "요즘 이 곡"
-                        let subtitle = "VIBE"
+                    ForEach(albums, id: \.id) { album in
                         NavigationLink(
-                            destination: AlbumView(title: title, subtitle: subtitle),
+                            destination: AlbumView(id: album.id),
                             label: {
-                                ThumbnailItem(title: title, subtitle: subtitle)
+                                ThumbnailItem(title: album.title,
+                                              subtitle: album.artist.name,
+                                              imageURL: album.imageUrl)
                                     .frame(width: width * .thumbnailRatio)
                             }
                         )
@@ -42,7 +48,9 @@ struct AlbumSection<D: View>: View {
 
 struct AlbumSection_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumSection(width: 375, destination: Text("앨범 목록"), title: "앨범")
-            .previewLayout(.fixed(width: 375, height: 300))
+        AlbumSection(width: 375, title: "앨범", albums: []) {
+            Text("앨범 목록")
+        }
+        .previewLayout(.fixed(width: 375, height: 300))
     }
 }

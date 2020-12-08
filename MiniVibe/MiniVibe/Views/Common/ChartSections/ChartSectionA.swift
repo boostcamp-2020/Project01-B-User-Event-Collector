@@ -10,17 +10,18 @@ import SwiftUI
 struct ChartSectionA: View {
     let width: CGFloat
     let title: String
+    let tracks: [TrackInfo]
     
     var body: some View {
         VStack {
-            SectionTitle(width: width,
-                         destination: ChartList(title: title),
-                         title: title)
+            SectionTitle(width: width, title: title) {
+                ChartList(title: title)
+            }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: .init(repeating: .init(.flexible(minimum: 60)), count: 5)) {
-                    ForEach(0..<25) { _ in
-                        TrackRowB(title: "Dynamite", artist: "방탄소년단")
+                    ForEach(tracks, id: \.id) { track in
+                        TrackRowB(track: track)
                     }
                     .frame(width: width * .sectionRatio)
                 }
@@ -32,7 +33,7 @@ struct ChartSectionA: View {
 
 struct ChartSectionA_Previews: PreviewProvider {
     static var previews: some View {
-        ChartSectionA(width: 375, title: "최근 들은 노래")
+        ChartSectionA(width: 375, title: "최근 들은 노래", tracks: [])
             .previewLayout(.fixed(width: 375, height: 420))
     }
 }

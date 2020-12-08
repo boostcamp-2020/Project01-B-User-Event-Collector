@@ -9,21 +9,14 @@ import SwiftUI
 
 struct PlayerMenu: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var nowPlaying: NowPlaying
     let title: String
     let subtitle: String
+    let imageURL: String
     
     var body: some View {
         VStack(spacing: 36) {
             Spacer()
-            MenuThumbnailButton(title: title, subtitle: subtitle) {
-                presentationMode.wrappedValue.dismiss()
-                nowPlaying.isPlayerOpen = false
-                if nowPlaying.setDestination(.album(title: title, subtitle: subtitle)) {
-                    nowPlaying.isNavigationActive = true
-                }
-            }
-            
+            MenuThumbnailButton(title: title, subtitle: subtitle, imageURL: imageURL)
             MenuButton(type: .like(true))
             MenuButton(type: .exclude)
             MenuButton(type: .download(.music))
@@ -38,6 +31,6 @@ struct PlayerMenu: View {
 
 struct PlayerMenu_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerMenu(title: "Among US", subtitle: "정혜일")
+        PlayerMenu(title: "Among US", subtitle: "정혜일", imageURL: "")
     }
 }

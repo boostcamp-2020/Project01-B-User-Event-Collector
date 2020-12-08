@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct Today: View {
     init() {
@@ -16,6 +17,7 @@ struct Today: View {
     }
     
     @EnvironmentObject var nowPlaying: NowPlaying
+    @StateObject private var viewModel = TodayViewModel()
     
     var body: some View {
         GeometryReader { geometry in
@@ -27,6 +29,7 @@ struct Today: View {
                         NavigationLink(
                             destination: nowPlaying.destination?.view,
                             isActive: $nowPlaying.isNavigationActive) { }
+                            
                         VStack(spacing: 30) {
                             TodayTitle()
                                 .padding(.horizontal, width * .paddingRatio)
@@ -36,37 +39,48 @@ struct Today: View {
                             
                             PlayListSection(width: width,
                                             title: "나를 위한 믹스테잎",
-                                            destination: MixtapeGrid(title: "나를 위한 믹스테잎"))
+                                            playlists: []) {
+                                MixtapeGrid(title: "나를 위한 믹스테잎", mixtapes: [])
+                            }
                             
                             PlayListSection(width: width,
                                             title: "즐겨듣는 플레이리스트",
-                                            destination: ThumbnailList(title: "즐겨듣는 플레이리스트",
-                                                                       info: .playlist)
-                            )
+                                            playlists: viewModel.playlists) {
+                                ThumbnailList(info: .playlist(data: viewModel.playlists),
+                                                           navigationTitle: "즐겨듣는 플레이리스트")
+                            }
                             
                             PlayListSection(width: width,
                                             title: "내 취향 플레이리스트",
-                                            destination: ThumbnailList(title: "내 취향 플레이리스트",
-                                                                       info: .playlist)
-                            )
+                                            playlists: viewModel.playlists) {
+                                ThumbnailList(info: .playlist(data: viewModel.playlists),
+                                                           navigationTitle: "내 취향 플레이리스트")
+                            }
                             
                             StationSection(width: width, title: "DJ 스테이션")
                             
-                            ChartSectionA(width: width, title: "최근 들은 노래")
+                            ChartSectionA(width: width, title: "최근 들은 노래", tracks: viewModel.tracks)
                             
                             RecommandedPlayListSection(width: width, title: "VIBE 추천 플레이리스트")
                             
                             AlbumSection(width: width,
-                                         destination: ThumbnailGridView(title: "좋아할 최신 앨범"),
-                                         title: "좋아할 최신 앨범")
+                                         title: "좋아할 최신 앨범",
+                                         albums: viewModel.albums) {
+                                ThumbnailGridView(title: "좋아할 최신 앨범",
+                                                               album: viewModel.albums)
+                            }
                             
-                            MagazineSection(width: width, title: "매거진")
+                            MagazineSection(width: width,
+                                            magazines: viewModel.magazines)
                         }
                         .padding(.bottom, 70)
                     }
                     .navigationBarHidden(true)
                     .preference(key: Size.self, value: [geometry.frame(in: CoordinateSpace.global)])
                 }
+            }
+            .onAppear {
+                viewModel.load()
             }
         }
     }

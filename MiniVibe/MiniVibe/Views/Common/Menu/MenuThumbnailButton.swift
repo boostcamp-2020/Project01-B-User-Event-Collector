@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct MenuThumbnailButton: View {
-    init(title: String, subtitle: String? = nil, action: @escaping () -> Void) {
+    init(title: String, subtitle: String? = nil, imageURL: String) {
         self.title = title
         self.subtitle = subtitle
-        self.action = action
+        self.imageURL = imageURL
     }
     
     private let title: String
     private let subtitle: String?
-    private let action: () -> Void
+    private let imageURL: String
     
     var body: some View {
-        Button(action: action) {
-            Image("playListThumbnail")
-                .resizable()
+        HStack {
+            AsyncImage(urlString: imageURL)
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 80)
             VStack(alignment: .leading,
@@ -35,8 +34,6 @@ struct MenuThumbnailButton: View {
             .lineLimit(1)
             .padding(.horizontal, 8)
             Spacer()
-            Image(systemName: "chevron.right")
-                .foregroundColor(.secondary)
         }
         .foregroundColor(.black)
         .padding(.horizontal)
@@ -45,6 +42,6 @@ struct MenuThumbnailButton: View {
 
 struct MenuThumbnailButton_Previews: PreviewProvider {
     static var previews: some View {
-        MenuThumbnailButton(title: "Dynamite", subtitle: "방탄소년단", action: { })
+        MenuThumbnailButton(title: "Dynamite", subtitle: "방탄소년단", imageURL: "")
     }
 }

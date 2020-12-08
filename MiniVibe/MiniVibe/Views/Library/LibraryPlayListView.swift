@@ -49,7 +49,7 @@ struct LibraryPlayListView: View {
                     ForEach(0..<10) { _ in
                         let title = "보관함 플레이리스트"
                         NavigationLink(
-                            destination: PlayListView(title: title, subtitle: "내가 만든 플레이리스트"),
+                            destination: PlayListView(id: 0),
                             label: {
                                 LibraryPlayListRow(title: title)
                             })

@@ -17,33 +17,35 @@ struct ArtistView: View {
                     ArtistThumbnail()
                     
                     VStack {
-                        SectionTitle(
-                            width: width,
-                            destination: ChartList(title: "노래"),
-                            title: "노래"
-                        )
-
+                        SectionTitle(width: width, title: "노래") {
+                            ChartList(title: "노래")
+                        }
+                        
                         VStack(spacing: 12) {
                             ForEach(0..<5) { _ in
-                                TrackRowB(title: "Dynamite", artist: "방탄소년단")
+                                TrackRowB(track: .init(id: 0, title: "Dynamite", lyrics: "", albumId: 0, album: .init(title: "", imageUrl: ""), artist: .init(id: 0, name: "방탄소년단")))
                             }
                             .frame(width: width * .sectionRatio)
                         }
                         .padding(.horizontal, width * .paddingRatio)   
                     }
                     
-                    AlbumSection(width: width,
-                                     destination: ArtistAlbumGridView(
-                                        title: "앨범",
-                                        categories: ["전체", "정규", "비정규", "참여"]
-                                     ),
-                                     title: "앨범")
+                    AlbumSection(width: width, title: "앨범", albums: []) {
+                        ArtistAlbumGridView(
+                            title: "앨범",
+                            categories: ["전체", "정규", "비정규", "참여"]
+                        )
+                    }
+                    
                     ArtistSection(width: width,
                                   sectionTitle: "비슷한 아티스트")
+                    
                     PlayListSection(width: width,
                                     title: "관련 플레이리스트",
-                                    destination: ThumbnailList(title: "관련 플레이리스트",
-                                                               info: .playlist))
+                                    playlists: []) {
+                        ThumbnailList(info: .playlist(data: []),
+                                      navigationTitle: "관련 플레이리스트")
+                    }
                 }
             }
             .navigationTitle("방탄소년단")

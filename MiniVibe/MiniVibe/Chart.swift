@@ -27,12 +27,12 @@ struct Chart: View {
                         ChartSectionB(width: width, sectionTitle: "오늘 TOP 100")
                         ChartSectionB(width: width, sectionTitle: "국내 급상승 🔥")
                         ChartSectionB(width: width, sectionTitle: "VIBE 노래방 TOP 100 🎤")
-                        AlbumSection(width: width,
-                                         destination: ArtistAlbumGridView(
-                                            title: "최신 앨범",
-                                            categories: ["국내", "해외"]
-                                         ),
-                                         title: "최신 앨범")
+                        AlbumSection(width: width, title: "최신 앨범", albums: []) {
+                            ArtistAlbumGridView(
+                               title: "최신 앨범",
+                               categories: ["국내", "해외"]
+                            )
+                        }
                     }
                     .padding(.bottom, 70)
                 }

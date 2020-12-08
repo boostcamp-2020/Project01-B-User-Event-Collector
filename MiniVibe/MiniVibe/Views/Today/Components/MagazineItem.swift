@@ -8,8 +8,10 @@
 import SwiftUI
 
 private struct Badge: View {
+    let title: String
+    
     var body: some View {
-        Text("Genre".uppercased())
+        Text(title.uppercased())
             .font(.custom("American Typewriter", size: 18))
             .fontWeight(.heavy)
             .foregroundColor(.white)
@@ -22,23 +24,20 @@ private struct Badge: View {
 }
 
 struct MagazineItem: View {
+    let magazine: Magazine
+    
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            Image("magazine")
-                .resizable()
+            AsyncImage(urlString: magazine.imageUrl)
                 .aspectRatio(1, contentMode: .fit)
             
             VStack(alignment: .leading) {
-                Badge()
+                Badge(title: magazine.category)
                 
-                Text("""
-                    New Release #17:
-                    마일리 사이러스, 방탄소년단
-                    """
-                )
-                .foregroundColor(.white)
-                .font(.system(size: 24))
-                .fontWeight(.semibold)
+                Text(magazine.title)
+                    .foregroundColor(.white)
+                    .font(.system(size: 24))
+                    .fontWeight(.semibold)
             }
             .padding()
         }
@@ -47,7 +46,7 @@ struct MagazineItem: View {
 
 struct Magazine_Previews: PreviewProvider {
     static var previews: some View {
-        MagazineItem()
+        MagazineItem(magazine: .init(id: 0, title: "매거진", imageUrl: "abc", date: "2020-12-25", category: "뱃지"))
             .previewLayout(.fixed(width: 375, height: 375))
     }
 }
