@@ -31,7 +31,7 @@ struct ArtistView: View {
                         
                         VStack {
                             SectionTitle(width: width, title: "노래") {
-                                ChartList(title: "노래")
+                                ChartList(title: "노래", tracks: artist.tracks)
                             }
                             
                             VStack(spacing: 12) {

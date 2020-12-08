@@ -26,6 +26,7 @@ struct TrackInfo: Decodable {
 }
 
 struct TrackAlbum: Decodable {
+    let id: Int
     let title: String
     let imageUrl: String
 }

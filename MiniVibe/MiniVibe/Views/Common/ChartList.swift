@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ChartList: View {
-    @State private var isMenuOpen = false
     let title: String
+    let tracks: [TrackInfo]
     
     var body: some View {
         GeometryReader { geometry in
@@ -20,13 +20,8 @@ struct ChartList: View {
                     pinnedViews: [.sectionHeaders]
                 ) {
                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
-                        let title = "Dynamite"
-                        let artist = "방탄소년단"
-                        ForEach(0..<50) { index in
-                            TrackRowA(isMenuOpen: $isMenuOpen, order: index + 1, title: title, artist: artist)
-                        }
-                        .fullScreenCover(isPresented: $isMenuOpen) {
-                            PlayerMenu(track: .init(id: 0, title: "Dynamite", lyrics: "", albumId: 3, album: .init(title: "Dynamite", imageUrl: ""), artist: .init(id: 11, name: "방탄소년단")))
+                        ForEach(tracks, id: \.id) { track in
+                            TrackRowA(order: 1, track: track)
                         }
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)
@@ -52,7 +47,7 @@ struct ChartList: View {
 struct ChartList_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ChartList(title: "최근 들은 노래")
+            ChartList(title: "최근 들은 노래", tracks: [])
         }
     }
 }

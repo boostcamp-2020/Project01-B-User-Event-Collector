@@ -31,6 +31,6 @@ struct PlayerMenu: View {
 
 struct PlayerMenu_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerMenu(track: .init(id: 0, title: "", lyrics: "", albumId: 0, album: .init(title: "", imageUrl: ""), artist: .init(id: 0, name: "")))
+        PlayerMenu(track: .init(id: 0, title: "", lyrics: "", albumId: 0, album: .init(id: 0, title: "", imageUrl: ""), artist: .init(id: 0, name: "")))
     }
 }
