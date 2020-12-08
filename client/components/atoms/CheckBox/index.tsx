@@ -1,11 +1,10 @@
-import { LinkTwoTone } from '@material-ui/icons';
 import React from 'react';
 import styled from 'styled-components';
-
 interface CheckBoxProps {
     id: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     checked: boolean;
+    allCheck: boolean;
 }
 
 const StyledCheckBox = styled.div`
@@ -34,11 +33,18 @@ const Input = styled.input`
     }
 `;
 
-const CheckBox = ({ id, onChange, checked }: CheckBoxProps) => (
-    <StyledCheckBox>
-        <Input type="checkbox" id={`checkRow_${id}`} onChange={onChange} checked={checked} />
-        <label htmlFor={`checkRow_${id}`} />
-    </StyledCheckBox>
-);
+const CheckBox = ({ id, allCheck, onChange, checked }: CheckBoxProps) => {
+    return (
+        <StyledCheckBox>
+            <Input
+                type="checkbox"
+                id={allCheck ? `checkAll` : `checkRow_${id}`}
+                onChange={onChange}
+                checked={checked}
+            />
+            <label htmlFor={`checkRow_${id}`} />
+        </StyledCheckBox>
+    );
+};
 
 export default CheckBox;
