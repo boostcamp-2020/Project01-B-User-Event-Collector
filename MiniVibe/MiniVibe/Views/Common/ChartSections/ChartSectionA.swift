@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChartSectionA: View {
+    @EnvironmentObject private var eventLogger: EventLogger
     let width: CGFloat
     let title: String
     let tracks: [TrackInfo]
@@ -16,6 +17,8 @@ struct ChartSectionA: View {
         VStack {
             SectionTitle(width: width, title: title) {
                 ChartList(title: title)
+                    .logTransition(eventLogger: eventLogger,
+                                   identifier: .chart(id: 100))
             }
             
             ScrollView(.horizontal, showsIndicators: false) {

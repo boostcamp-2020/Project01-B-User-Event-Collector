@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Chart: View {
-    @EnvironmentObject private var nowPlaying: NowPlaying
     
     var body: some View {
         GeometryReader { geometry in
@@ -16,9 +15,6 @@ struct Chart: View {
             NavigationView {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
-                        NavigationLink(
-                            destination: nowPlaying.destination?.view,
-                            isActive: $nowPlaying.isNavigationActive) { }
                         Text("차트")
                             .foregroundColor(.black)
                             .font(.title)
@@ -45,6 +41,5 @@ struct Chart: View {
 struct Chart_Previews: PreviewProvider {
     static var previews: some View {
         Chart()
-            .environmentObject(NowPlaying())
     }
 }

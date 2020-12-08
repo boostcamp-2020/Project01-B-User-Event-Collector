@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Search: View {
-    @EnvironmentObject var nowPlaying: NowPlaying
     @StateObject private var viewModel = SearchViewModel()
     @State private var searchedText = ""
     
@@ -17,10 +16,6 @@ struct Search: View {
             let width = geometry.size.width
             NavigationView {
                 VStack(alignment: .leading) {
-                    NavigationLink(
-                        destination: nowPlaying.destination?.view,
-                        isActive: $nowPlaying.isNavigationActive) { }
-                    
                     Text("검색")
                         .foregroundColor(.black)
                         .font(.title)
