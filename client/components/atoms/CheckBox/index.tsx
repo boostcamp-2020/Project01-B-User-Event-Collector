@@ -1,3 +1,4 @@
+import { LinkTwoTone } from '@material-ui/icons';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -30,10 +31,13 @@ const Input = styled.input`
         border: none;
     }
 `;
-
+const onClickCheckBox = (e) => {
+    const list = e.target.closest('LI');
+    e.target.checked ? list.classList.add('checked') : list.classList.remove('checked');
+};
 const CheckBox = ({ id }: CheckBoxProps) => (
     <StyledCheckBox>
-        <Input type="checkbox" id={id} />
+        <Input type="checkbox" id={id} onClick={onClickCheckBox} />
         <label htmlFor={id} />
     </StyledCheckBox>
 );

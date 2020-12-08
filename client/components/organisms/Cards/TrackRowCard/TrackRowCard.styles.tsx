@@ -8,6 +8,9 @@ export const List = styled.li`
     margin: 0;
     display: flex;
     justify-content: space-between;
+    &.checked {
+        background-color: #ededed66;
+    }
     &:hover ${Play} {
         visibility: visible;
         opacity: 60%;
