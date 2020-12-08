@@ -13,6 +13,7 @@ struct ThumbnailList: View {
         case magazine(data: [Magazine])
     }
     
+    @EnvironmentObject private var eventLogger: EventLogger
     let info: Info
     let navigationTitle: String
     
@@ -38,7 +39,11 @@ struct ThumbnailList: View {
         switch info {
         case let .playlist(data):
             ForEach(data, id: \.id) { playlist in
-                NavigationLink(destination: AlbumView(id: playlist.id)) {
+                NavigationLink(destination:
+                                PlayListView(id: playlist.id)
+                                .logTransition(eventLogger: eventLogger,
+                                               identifier: .playlist(id: playlist.id))
+                ) {
                     ThumbnailRow(imageURL: playlist.imageUrl ?? "",
                                  title: playlist.title,
                                  subtitle: playlist.subTitle ?? "")
@@ -46,7 +51,11 @@ struct ThumbnailList: View {
             }
         case let .magazine(data):
             ForEach(data, id: \.id) { magazine in
-                NavigationLink(destination: MagazineView(magazine: magazine)) {
+                NavigationLink(destination:
+                                MagazineView(magazine: magazine)
+                                .logTransition(eventLogger: eventLogger,
+                                               identifier: .magazine(id: magazine.id))
+                ) {
                     ThumbnailRow(imageURL: magazine.imageUrl,
                                  title: magazine.title,
                                  subtitle: magazine.date)

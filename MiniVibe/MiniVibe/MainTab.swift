@@ -10,7 +10,7 @@ import SwiftUI
 struct MainTab: View {
     @State private var contentFrame = CGRect.zero
     @State private var isPlayerPresented = false
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var eventLogger: EventLogger
     
     init() {
         UITabBar.appearance().barTintColor = .systemBackground
@@ -18,45 +18,46 @@ struct MainTab: View {
     }
     
     var body: some View {
-        TabView(selection: $nowPlaying.tabItemSelection) {
+        TabView(selection: $eventLogger.tabViewSelection) {
             Today()
                 .tabItem {
                     Image(systemName: "house.fill")
                 }
-                .tag(0)
+                .tag(ViewIdentifier.today)
             
             Chart()
                 .tabItem {
                     Image(systemName: "chart.bar.fill")
                 }
-                .tag(1)
+                .tag(ViewIdentifier.charts)
             
             Search()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }
-                .tag(2)
+                .tag(ViewIdentifier.search)
             
             Library()
                 .tabItem {
                     Image(systemName: "person.fill")
                 }
-                .tag(3)
+                .tag(ViewIdentifier.library)
         }
         .accentColor(.pink)
         .onPreferenceChange(Size.self, perform: { value in
             contentFrame = value.last ?? .zero
         })
         .overlay(
-            PlayerPreview(coordinate: contentFrame,
-                          title: nowPlaying.title,
-                          artist: nowPlaying.artist)
+            PlayerPreview(isPlayerPresented: $isPlayerPresented,
+                          coordinate: contentFrame,
+                          title: "Dynamite",
+                          artist: "방탄소년단")
                 .onTapGesture {
-                    nowPlaying.isPlayerOpen.toggle()
+                    isPlayerPresented.toggle()
                 }
-                .sheet(isPresented: $nowPlaying.isPlayerOpen) {
-                    PlayerView(title: nowPlaying.title,
-                               artist: nowPlaying.artist)
+                .sheet(isPresented: $isPlayerPresented) {
+                    PlayerView(title: "Dynamite",
+                               artist: "방탄소년단")
                 }
         )
     }
@@ -65,7 +66,6 @@ struct MainTab: View {
 struct MainTab_Previews: PreviewProvider {
     static var previews: some View {
         MainTab()
-            .environmentObject(NowPlaying())
     }
 }
 

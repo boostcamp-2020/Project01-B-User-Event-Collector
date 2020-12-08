@@ -5,8 +5,8 @@ import CardListContainer from '@components/organisms/CardListContainer';
 import MagazineCardList from '@components/organisms/CardLists/MagazineList/MagazineList';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 import Link from 'next/link';
-import { request } from '../utils/apis';
-import apiUrl from '../constants/apiUrl';
+import { request } from '@utils/apis';
+import apiUrl from '@constants/apiUrl';
 
 const TodayContainer = styled.div`
     height: 100%;

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AlbumMenu: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var eventLogger: EventLogger
     let album: Album
     
     var body: some View {
@@ -25,6 +26,7 @@ struct AlbumMenu: View {
                 presentationMode.wrappedValue.dismiss()
             }
         }
+        .logTransition(eventLogger: eventLogger, identifier: .albumMenu(id: album.id))
     }
 }
 

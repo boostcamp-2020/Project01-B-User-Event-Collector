@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlayerView: View {
-    @EnvironmentObject var nowPlaying: NowPlaying
+    @EnvironmentObject var eventLogger: EventLogger
     @State private var isOpenMenu = false
     @State private var isOpenLyrics = false
     let title: String
@@ -33,13 +33,14 @@ struct PlayerView: View {
                 }
                 if isOpenLyrics {
                     Lyrics(isOpenLyrics: $isOpenLyrics)
+                        .logTransition(eventLogger: eventLogger, identifier: .lyrics(id: 100))
                 }
             }
             .animation(.easeInOut)
             .fullScreenCover(isPresented: $isOpenMenu) {
                 PlayerMenu(title: title, subtitle: artist, imageURL: "")
-                    .environmentObject(nowPlaying)
             }
+            .logTransition(eventLogger: eventLogger, identifier: .player)
         }
     }
 }

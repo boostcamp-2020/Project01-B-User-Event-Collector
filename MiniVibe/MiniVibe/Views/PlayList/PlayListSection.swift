@@ -15,6 +15,7 @@ struct PlayListSection<D: View>: View {
         self.destination = destination
     }
     
+    @EnvironmentObject private var eventLogger: EventLogger
     @State private var isOpenMenu = false
     let width: CGFloat
     let title: String
@@ -29,7 +30,11 @@ struct PlayListSection<D: View>: View {
                 HStack(spacing: width * .spacingRatio) {
                     ForEach(playlists, id: \.id) { playlist in
                         NavigationLink(
-                            destination: PlayListView(id: playlist.id),
+                            destination:
+                                PlayListView(id: playlist.id)
+                                .logTransition(eventLogger: eventLogger,
+                                               identifier: .playlist(id: playlist.id))
+                            ,
                             label: {
                                 ThumbnailItem(title: playlist.title,
                                               subtitle: playlist.subTitle ?? "",
@@ -51,6 +56,6 @@ struct PlayListSection_Previews: PreviewProvider {
         PlayListSection(width: 375, title: "플레이리스트", playlists: []) {
             Text("플레이리스트 더보기")
         }
-            .previewLayout(.fixed(width: 375, height: 300))
+        .previewLayout(.fixed(width: 375, height: 300))
     }
 }

@@ -16,7 +16,7 @@ struct Today: View {
         UINavigationBar.appearance().standardAppearance = appearance
     }
     
-    @EnvironmentObject var nowPlaying: NowPlaying
+    @EnvironmentObject var eventLogger: EventLogger
     @StateObject private var viewModel = TodayViewModel()
     
     var body: some View {
@@ -26,10 +26,6 @@ struct Today: View {
             NavigationView {
                 ScrollView {
                     VStack {
-                        NavigationLink(
-                            destination: nowPlaying.destination?.view,
-                            isActive: $nowPlaying.isNavigationActive) { }
-                            
                         VStack(spacing: 30) {
                             TodayTitle()
                                 .padding(.horizontal, width * .paddingRatio)
@@ -41,20 +37,26 @@ struct Today: View {
                                             title: "나를 위한 믹스테잎",
                                             playlists: []) {
                                 MixtapeGrid(title: "나를 위한 믹스테잎", mixtapes: [])
+                                    .logTransition(eventLogger: eventLogger,
+                                                   identifier: .mixtapes)
                             }
                             
                             PlayListSection(width: width,
                                             title: "즐겨듣는 플레이리스트",
                                             playlists: viewModel.playlists) {
                                 ThumbnailList(info: .playlist(data: viewModel.playlists),
-                                                           navigationTitle: "즐겨듣는 플레이리스트")
+                                              navigationTitle: "즐겨듣는 플레이리스트")
+                                    .logTransition(eventLogger: eventLogger,
+                                                   identifier: .playlists(id: 0))
                             }
                             
                             PlayListSection(width: width,
                                             title: "내 취향 플레이리스트",
                                             playlists: viewModel.playlists) {
                                 ThumbnailList(info: .playlist(data: viewModel.playlists),
-                                                           navigationTitle: "내 취향 플레이리스트")
+                                              navigationTitle: "내 취향 플레이리스트")
+                                    .logTransition(eventLogger: eventLogger,
+                                                   identifier: .playlists(id: 1))
                             }
                             
                             StationSection(width: width, title: "DJ 스테이션")
@@ -67,7 +69,9 @@ struct Today: View {
                                          title: "좋아할 최신 앨범",
                                          albums: viewModel.albums) {
                                 ThumbnailGridView(title: "좋아할 최신 앨범",
-                                                               album: viewModel.albums)
+                                                  album: viewModel.albums)
+                                    .logTransition(eventLogger: eventLogger,
+                                                   identifier: .recommendedRecentAlbum)
                             }
                             
                             MagazineSection(width: width,
@@ -89,6 +93,5 @@ struct Today: View {
 struct Today_Previews: PreviewProvider {
     static var previews: some View {
         Today()
-            .environmentObject(NowPlaying())
     }
 }

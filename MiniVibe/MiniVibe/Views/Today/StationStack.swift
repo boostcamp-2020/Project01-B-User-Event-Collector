@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StationStack: View {
+    @EnvironmentObject private var eventLogger: EventLogger
     let width: CGFloat
     
     var body: some View {
