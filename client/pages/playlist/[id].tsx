@@ -8,16 +8,6 @@ import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 import { request } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
 
-const Artistdata = Array(9).fill({
-    id: 3,
-    name: '이영지',
-    imageUrl: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg',
-    genre: {
-        id: 1,
-        name: '랩/힙합',
-    },
-});
-
 const Container = styled.div`
     min-height: 1300px;
     display: flex;
