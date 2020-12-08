@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ArtistSection: View {
+    @StateObject private var viewModel = ArtistSectionViewModel()
     let width: CGFloat
     let sectionTitle: String
     
@@ -19,16 +20,19 @@ struct ArtistSection: View {
             ScrollView(.horizontal,
                        showsIndicators: false) {
                 HStack(spacing: 16) {
-                    ForEach(0..<10) { _ in
+                    ForEach(viewModel.artists, id: \.id) { artist in
                         NavigationLink(
-                            destination: ArtistView(id: 3),
+                            destination: ArtistView(id: artist.id),
                             label: {
-                                ArtistItem()
+                                ArtistItem(artist: artist)
                             })
                     }
                 }
                 .padding(.horizontal, width * .paddingRatio)
             }
+        }
+        .onAppear {
+            viewModel.load()
         }
     }
 }

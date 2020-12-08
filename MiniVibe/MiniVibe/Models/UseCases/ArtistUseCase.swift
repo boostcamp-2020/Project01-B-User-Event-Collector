@@ -19,6 +19,22 @@ struct ArtistUseCase {
         self.network = network
     }
     
+    func loadArtists() -> AnyPublisher<[Artist], UseCaseError> {
+        return network.request(url: EndPoint.artists.urlString)
+            .decode(type: Artists.self, decoder: JSONDecoder())
+            .mapError { error -> UseCaseError in
+                switch error {
+                case is NetworkError:
+                    return .networkError
+                default:
+                    return .decodingError
+                }
+            }
+            .map(\.data)
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     func loadArtist(with id: Int) -> AnyPublisher<ArtistInfo, UseCaseError> {
         return network.request(url: EndPoint.artist(id: id).urlString)
             .decode(type: ArtistResponse.self, decoder: JSONDecoder())
