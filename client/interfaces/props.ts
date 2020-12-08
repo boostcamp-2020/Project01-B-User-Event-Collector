@@ -50,10 +50,11 @@ export interface PlaylistCardProps {
     customized: boolean;
 }
 
-export interface LibraryArtistThumbnailProps {
-    name: string;
-    src: string;
-    href: string;
+ export interface LibraryArtistThumbnailProps {
+    id: number,
+    name: string,
+    imageUrl: string,
+    href: string
 }
 
 export interface NormalArtistThumbnailProps {
