@@ -33,17 +33,12 @@ const PlaylistLibrary = ({ playlistData }) => {
     );
 };
 
-/*export const getServerSideProps = wrapper.getServerSideProps((context) => {
-    constext.store.dispatch({
-        type: LOAD_USER_REQUEST,
-    });
-})*/
-export async function getServerSideProps() {
+export const getServerSideProps = async () => {
     const playlistData = await request(apiUrl.libraryPlaylist);
     return {
         props: {
             playlistData,
         },
     };
-}
+};
 export default PlaylistLibrary;

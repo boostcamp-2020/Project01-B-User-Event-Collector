@@ -42,20 +42,12 @@ const TrackLibrary = ({ trackData }) => {
         </LibraryContainer>
     );
 };
-
-/*export const getServerSideProps = wrapper.getServerSideProps((context) => {
-    constext.store.dispatch({
-        type: LOAD_USER_REQUEST,
-    });
-})*/
-
-export async function getServerSideProps() {
+export const getServerSideProps = async () => {
     const trackData = await request(apiUrl.libraryTrack);
-    console.log(trackData);
     return {
         props: {
             trackData,
         },
     };
-}
+};
 export default TrackLibrary;

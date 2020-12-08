@@ -33,13 +33,12 @@ const AlbumLibrary = ({ albumData }) => {
     );
 };
 
-export async function getServerSideProps() {
+export const getServerSideProps = async () => {
     const albumData = await request(apiUrl.libraryAlbum);
-
     return {
         props: {
             albumData,
         },
     };
-}
+};
 export default AlbumLibrary;

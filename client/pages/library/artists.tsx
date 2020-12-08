@@ -33,17 +33,12 @@ const ArtistLibrary = ({ artistData }) => {
     );
 };
 
-/*export const getServerSideProps = wrapper.getServerSideProps((context) => {
-    constext.store.dispatch({
-        type: LOAD_USER_REQUEST,
-    });
-})*/
-export async function getServerSideProps() {
+export const getServerSideProps = async () => {
     const artistData = await request(apiUrl.libraryArtist);
     return {
         props: {
             artistData,
         },
     };
-}
+};
 export default ArtistLibrary;
