@@ -21,7 +21,7 @@ struct ArtistSection: View {
                 HStack(spacing: 16) {
                     ForEach(0..<10) { _ in
                         NavigationLink(
-                            destination: ArtistView(),
+                            destination: ArtistView(id: 3),
                             label: {
                                 ArtistItem()
                             })

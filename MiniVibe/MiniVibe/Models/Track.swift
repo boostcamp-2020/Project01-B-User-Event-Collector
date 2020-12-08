@@ -17,6 +17,11 @@ struct TrackResponse: Decodable {
 }
 
 struct TrackInfo: Decodable {
+    struct Artist: Decodable {
+        let id: Int
+        let name: String
+    }
+    
     let id: Int
     let title: String
     let lyrics: String
