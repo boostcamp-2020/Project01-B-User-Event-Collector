@@ -14,7 +14,7 @@ const ChartCard = ( data : ChartCardProps) => {
 
     return (
         <Card>
-            <TrackPlayButton src={imageUrl} imgVariant="trackRowCard" />
+            <TrackPlayButton data={data} imgVariant="trackRowCard" />
             <Rank>
                 <Text>{rank.toString()}</Text>
             </Rank>
