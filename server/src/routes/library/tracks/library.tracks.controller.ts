@@ -19,7 +19,7 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 
     await manager.save(user);
 
-    res.json({
+    return res.json({
         success: true,
     });
 };
@@ -70,7 +70,7 @@ const remove = async (req: Request, res: Response, next: NextFunction) => {
 
     await manager.save(user);
 
-    res.json({
+    return res.json({
         success: true,
     });
 };
