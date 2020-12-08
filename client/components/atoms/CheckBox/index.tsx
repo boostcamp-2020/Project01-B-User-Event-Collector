@@ -24,9 +24,9 @@ const Input = styled.input`
     }
     &:checked + label {
         background-image: linear-gradient(transparent, transparent),
-            url(https://vibe.naver.com/img/sp_vibe.cc4cc861.svg);
-        background-size: 808px 764px;
-        background-position: -440px -744px;
+            url(https://vibe.naver.com/img/sp_vibe.7af837ac.svg);
+        background-size: 1118px 1081px;
+        background-position: -816px -860px;
         border: none;
     }
 `;
