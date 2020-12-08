@@ -104,7 +104,7 @@ const Home = () => {
     return (
         <TodayContainer>
             <MainMagazineContainer>
-                <Link href='/magazines/main'><a><MainMagazineCard {...mainMagazineData} /></a></Link>
+                <Link href={"/magazines/"+mainMagazineData.id}><a><MainMagazineCard {...mainMagazineData} /></a></Link>
             </MainMagazineContainer>
             <PublicContentsContainer>
                 <ContentsContainer>
