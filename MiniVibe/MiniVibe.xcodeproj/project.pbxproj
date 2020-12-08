@@ -75,6 +75,7 @@
 		800FA851257DC71E008926A5 /* TodayUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FA850257DC71E008926A5 /* TodayUseCase.swift */; };
 		800FA855257DD72B008926A5 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FA854257DD72B008926A5 /* TodayViewModel.swift */; };
 		800FA867257E003D008926A5 /* Playlists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FA866257E003D008926A5 /* Playlists.swift */; };
+		8033A7AA257FA7B100B1C321 /* NowPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8033A7A9257FA7B100B1C321 /* NowPlaying.swift */; };
 		805E28AE256BBD52007AF5F1 /* MiniVibeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805E28AD256BBD52007AF5F1 /* MiniVibeApp.swift */; };
 		805E28B2256BBD53007AF5F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805E28B1256BBD53007AF5F1 /* Assets.xcassets */; };
 		805E28B5256BBD53007AF5F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805E28B4256BBD53007AF5F1 /* Preview Assets.xcassets */; };
@@ -198,6 +199,7 @@
 		800FA850257DC71E008926A5 /* TodayUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUseCase.swift; sourceTree = "<group>"; };
 		800FA854257DD72B008926A5 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		800FA866257E003D008926A5 /* Playlists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlists.swift; sourceTree = "<group>"; };
+		8033A7A9257FA7B100B1C321 /* NowPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlaying.swift; sourceTree = "<group>"; };
 		805E28AA256BBD52007AF5F1 /* MiniVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805E28AD256BBD52007AF5F1 /* MiniVibeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeApp.swift; sourceTree = "<group>"; };
 		805E28B1256BBD53007AF5F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 				44BD3F20257E0015005861A1 /* Magazines.swift */,
 				800FA866257E003D008926A5 /* Playlists.swift */,
 				80D02E07257E0E0D00A6748F /* News.swift */,
+				8033A7A9257FA7B100B1C321 /* NowPlaying.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -878,6 +881,7 @@
 				447BF73B256F3E6C003B5DB7 /* MainTab.swift in Sources */,
 				44F9797C256D04EA00C9C224 /* RecommandedPlayListItem.swift in Sources */,
 				4474DC062574E8DB006FC827 /* PlayerSlider.swift in Sources */,
+				8033A7AA257FA7B100B1C321 /* NowPlaying.swift in Sources */,
 				444272BB256CE701008BB87B /* PreviewSection.swift in Sources */,
 				800FA84D257DC5EA008926A5 /* Albums.swift in Sources */,
 				80EB9FE5256D04A000CD99FD /* MagazineItem.swift in Sources */,
