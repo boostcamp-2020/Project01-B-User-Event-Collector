@@ -8,9 +8,14 @@
 import Foundation
 
 class NowPlaying: ObservableObject {
+    struct UpNextTrack {
+        let id: Int
+        let title: String
+        let artist: Artist
+        let imageUrl: String
+    }
+    
     @Published var isPlaying: Bool = false
     @Published var isPlayerPresented: Bool = false
-    @Published var upNext = [Int]() // Track.id
+    @Published var upNext = [UpNextTrack]()
 }
-
-// 비어있다면? 기본 값을 보여주어야 하지 않을까

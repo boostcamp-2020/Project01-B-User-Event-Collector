@@ -18,6 +18,9 @@ struct UpNextList: View {
     
     @State private var isAutoPlay: Bool = true
     @State private var editMode = EditMode.active
+    @EnvironmentObject private var nowPlaying: NowPlaying
+    
+    
     @State private var tracks: [Item] = (0..<20).map {
         Item(title: "Track #\($0)")
     }
@@ -44,7 +47,7 @@ struct UpNextList: View {
             
             VStack(spacing: 0) {
                 List(selection: $selectedTracks) {
-                    ForEach(tracks, id: \.self) { track in
+                    ForEach(nowPlaying.upNext, id: \.id) { track in
                         Text(track.title)
                     }
                     .onMove(perform: onMove(source:destination:))

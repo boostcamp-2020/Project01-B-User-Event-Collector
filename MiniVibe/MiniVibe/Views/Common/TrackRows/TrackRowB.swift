@@ -27,7 +27,10 @@ struct TrackRowB: View {
                     .foregroundColor(.secondary)
             }
             .onTapGesture {
-                nowPlaying.upNext.append(track.id)
+                nowPlaying.upNext.append(NowPlaying.UpNextTrack(id: track.id,
+                                                                title: track.title,
+                                                                artist: track.artist,
+                                                                imageUrl: track.album.imageUrl))
             }
             
             Spacer()
