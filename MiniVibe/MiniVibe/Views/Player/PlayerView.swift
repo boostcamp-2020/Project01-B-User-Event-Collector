@@ -38,7 +38,7 @@ struct PlayerView: View {
             }
             .animation(.easeInOut)
             .fullScreenCover(isPresented: $isOpenMenu) {
-                PlayerMenu(title: title, subtitle: artist, imageURL: "")
+                PlayerMenu(track: .init(id: 0, title: "Dynamite", lyrics: "", albumId: 3, album: .init(title: "Dynamite", imageUrl: ""), artist: .init(id: 11, name: "방탄소년단")))
             }
             .logTransition(eventLogger: eventLogger, identifier: .player)
         }

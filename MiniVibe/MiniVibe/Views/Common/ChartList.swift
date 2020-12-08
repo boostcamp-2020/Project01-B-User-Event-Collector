@@ -26,7 +26,7 @@ struct ChartList: View {
                             TrackRowA(isMenuOpen: $isMenuOpen, order: index + 1, title: title, artist: artist)
                         }
                         .fullScreenCover(isPresented: $isMenuOpen) {
-                            PlayerMenu(title: title, subtitle: artist, imageURL: "")
+                            PlayerMenu(track: .init(id: 0, title: "Dynamite", lyrics: "", albumId: 3, album: .init(title: "Dynamite", imageUrl: ""), artist: .init(id: 11, name: "방탄소년단")))
                         }
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)

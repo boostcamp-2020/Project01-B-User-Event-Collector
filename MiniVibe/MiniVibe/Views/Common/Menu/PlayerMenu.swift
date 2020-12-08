@@ -9,14 +9,14 @@ import SwiftUI
 
 struct PlayerMenu: View {
     @Environment(\.presentationMode) var presentationMode
-    let title: String
-    let subtitle: String
-    let imageURL: String
+    let track: TrackInfo
     
     var body: some View {
         VStack(spacing: 36) {
             Spacer()
-            MenuThumbnailButton(title: title, subtitle: subtitle, imageURL: imageURL)
+            MenuThumbnailButton(title: track.title,
+                                subtitle: track.artist.name,
+                                imageURL: track.album.imageUrl)
             MenuButton(type: .like(true))
             MenuButton(type: .exclude)
             MenuButton(type: .download(.music))
@@ -31,6 +31,6 @@ struct PlayerMenu: View {
 
 struct PlayerMenu_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerMenu(title: "Among US", subtitle: "정혜일", imageURL: "")
+        PlayerMenu(track: .init(id: 0, title: "", lyrics: "", albumId: 0, album: .init(title: "", imageUrl: ""), artist: .init(id: 0, name: "")))
     }
 }

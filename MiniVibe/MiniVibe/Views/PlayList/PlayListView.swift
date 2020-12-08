@@ -68,9 +68,7 @@ struct PlayListView: View {
                         case .playlist:
                             PlayListMenu(playlist: playlist)
                         case let .track(info):
-                            PlayerMenu(title: info.title,
-                                       subtitle: info.artist.name,
-                                       imageURL: info.album.imageUrl)
+                            PlayerMenu(track: info)
                         }
                     }
                 }

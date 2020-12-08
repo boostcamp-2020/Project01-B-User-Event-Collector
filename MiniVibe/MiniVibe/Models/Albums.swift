@@ -23,5 +23,5 @@ struct Album: Decodable {
     let releaseDate: String
     let artist: Artist
     let imageUrl: String
-    let tracks: [Track]?
+    let tracks: [TrackInfo]?
 }
