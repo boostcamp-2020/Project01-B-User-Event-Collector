@@ -51,7 +51,7 @@ const Playlist = ({ playlistData, trackData, artistData }) => {
                 <DetailHeader sort="playlist" data={playlistData} />
             </Header>
             <ContentsContainer>
-                {trackData && trackData.legnth > 0 ? (
+                {trackData && trackData.length > 0 ? (
                     <>
                         <ContentsButtonGroup />
                         <TrackListContainer>
@@ -77,6 +77,8 @@ export async function getServerSideProps(context) {
     const playlistData = await request(apiUrl.playlist + `/${id}`);
     const trackData = playlistData?.tracks;
     const artistData = playlistData?.relatedArtists;
+    console.log(trackData);
+    console.log(trackData && trackData.legnth > 0);
 
     return {
         props: {
