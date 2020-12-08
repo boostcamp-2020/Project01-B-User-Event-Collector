@@ -21,18 +21,17 @@ const PlayerTrackCardContainer = styled.li`
         cursor: move;
     }
 `;
-const PlayerTrackCard = ({ src, trackTitle, artist }: PlayerTrackCardProps) => (
-    <PlayerTrackCardContainer>
-        <TrackCard
-            src={src}
-            trackTitle={trackTitle}
-            artist={artist}
-            imgVariant="trackRowCard"
-            isDefault={true}
-            isTrack={true}
-        />
-        <IconButton variant="plainGreyRegular" icon={CloseIcon} />
-    </PlayerTrackCardContainer>
-);
+const PlayerTrackCard = ({ data, artist }: PlayerTrackCardProps) => {
+    return (
+        <PlayerTrackCardContainer>
+            <TrackCard
+                data = { data } 
+                imgVariant="trackRowCard"
+                isDefault={true}
+                isTrack={true}
+            />
+            <IconButton variant="plainGreyRegular" icon={CloseIcon} />
+        </PlayerTrackCardContainer>
+    )};
 
 export default PlayerTrackCard;
