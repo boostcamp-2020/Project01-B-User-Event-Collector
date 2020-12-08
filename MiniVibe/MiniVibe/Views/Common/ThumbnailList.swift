@@ -15,11 +15,11 @@ struct ThumbnailList: View {
     
     let info: Info
     let navigationTitle: String
-
+    
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
-                LazyVGrid(columns: [.init()]) {
+                LazyVGrid(columns: [.init()], alignment: .leading) {
                     buildList()
                         .foregroundColor(.black)
                 }
@@ -46,13 +46,12 @@ struct ThumbnailList: View {
             }
         case let .magazine(data):
             ForEach(data, id: \.id) { magazine in
-                NavigationLink(destination: Text("그러고 보니 매거진 뷰가 없네")) {
+                NavigationLink(destination: MagazineView(magazine: magazine)) {
                     ThumbnailRow(imageURL: magazine.imageUrl,
                                  title: magazine.title,
                                  subtitle: magazine.date)
                 }
-            }
-            
+            } 
         }
     }
     
