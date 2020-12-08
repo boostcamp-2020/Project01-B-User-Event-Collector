@@ -8,7 +8,8 @@ const apiUrl = {
     album: `${baseUrl}/albums`,
     libraryAlbum: `${baseUrl}/library/albums`,
     libraryTrack: `${baseUrl}/library/tracks`,
-    libraryArtist: `${baseUrl}/library/artists`
+    libraryArtist: `${baseUrl}/library/artists`,
+    linraryPlaylist: `${baseUrl}/library/playlists`
 };
 
 export default apiUrl;
