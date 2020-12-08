@@ -92,7 +92,7 @@ const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata })
     );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const [Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata] = await Promise.all([
         request(apiUrl.magazine),
         request(apiUrl.news),
