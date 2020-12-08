@@ -20,12 +20,16 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
 
 const listById = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
+    // TODO: 인증 구현 후 수 정
+    const userId = 1;
     try {
         const PlaylistRepository = getRepository(Playlist);
         const playlist = await PlaylistRepository.createQueryBuilder('playlist')
             .leftJoinAndSelect('playlist.tracks', 'track')
             .leftJoinAndSelect('track.artist', 'artist')
             .leftJoinAndSelect('track.album', 'album')
+            .loadRelationCountAndMap('track.liked', 'track.likeUsers', 'user',
+                (qb) => qb.andWhere('user.id = :userId', { userId }))
             .select([
                 'playlist.id',
                 'playlist.title',

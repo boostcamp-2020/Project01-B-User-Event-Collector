@@ -47,4 +47,27 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
         return res.status(500).json({ success: false });
     }
 };
-export { create, list };
+
+const remove = async (req: Request, res: Response, next: NextFunction) => {
+    const playlistId: string = req.params.playlistId as string;
+    // TODO: 인증 구현 후 수정
+    const userId = 1;
+
+    const manager = getManager();
+
+    const user = await manager.findOne(User, userId, { relations: ['libraryPlaylists'] });
+
+    if (!user) return res.status(401).json({ success: false });
+
+    user.libraryPlaylists = user.libraryPlaylists.filter(
+        (libraryPlaylist) => libraryPlaylist.id !== +playlistId,
+    );
+
+    await manager.save(user);
+
+    res.json({
+        success: true,
+    });
+};
+
+export { create, list, remove };

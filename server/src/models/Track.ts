@@ -1,19 +1,10 @@
-// Table Track {
-//     id int [pk, increment]
-//     title varchar
-//     artist_id int [ref: > Artist.id]
-//     lyrics varchar
-//     album_id int [ref: > Album.id]
-//     genre_id int [ref: > Genre.id]
-//     playtime int
-//   }
-
 import {
-    Entity, PrimaryGeneratedColumn, Column, ManyToOne,
+    Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany,
 } from 'typeorm';
 import Genre from './Genre';
 import Artist from './Artist';
 import Album from './Album';
+import User from './User';
 
 @Entity()
 class Track {
@@ -37,6 +28,9 @@ class Track {
 
     @ManyToOne((type) => Album, (album) => album.tracks, { nullable: false })
     album: Album;
+
+    @ManyToMany(() => User, (user) => user.libraryTracks)
+    likeUsers: User[];
 
     @Column()
     albumId: number;

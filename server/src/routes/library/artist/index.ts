@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.get('/', artistController.list);
 router.post('/', artistController.create);
-router.delete('/', artistController.remove);
+router.delete('/:artistId', artistController.remove);
 
 export default router;

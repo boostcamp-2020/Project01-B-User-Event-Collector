@@ -49,7 +49,7 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const remove = async (req: Request, res: Response, next: NextFunction) => {
-    const artistId: string = req.body.artistId as string;
+    const artistId: string = req.params.artistId as string;
     // TODO: 인증 구현 후 수정
     const userId = 1;
 
