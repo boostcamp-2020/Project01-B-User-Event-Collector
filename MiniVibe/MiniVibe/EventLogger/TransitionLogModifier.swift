@@ -14,10 +14,10 @@ struct TransitionLogModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .onAppear {
-                eventLogger.onAppear(identifier: identifier)
+                eventLogger.send(.appear(identifier: identifier))
             }
             .onDisappear {
-                eventLogger.onDisappear()
+                eventLogger.send(.disAppear(identifier: identifier))
             }
     }
 }

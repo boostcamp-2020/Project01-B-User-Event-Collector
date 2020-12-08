@@ -42,6 +42,8 @@ struct Today: View {
                                             title: "나를 위한 믹스테잎",
                                             playlists: []) {
                                 MixtapeGrid(title: "나를 위한 믹스테잎", mixtapes: [])
+                                    .logTransition(eventLogger: eventLogger,
+                                                   identifier: .mixtapes)
                             }
                             
                             PlayListSection(width: width,
@@ -49,6 +51,8 @@ struct Today: View {
                                             playlists: viewModel.playlists) {
                                 ThumbnailList(info: .playlist(data: viewModel.playlists),
                                               navigationTitle: "즐겨듣는 플레이리스트")
+                                    .logTransition(eventLogger: eventLogger,
+                                                   identifier: .playlists(id: 0))
                             }
                             
                             PlayListSection(width: width,
@@ -56,6 +60,8 @@ struct Today: View {
                                             playlists: viewModel.playlists) {
                                 ThumbnailList(info: .playlist(data: viewModel.playlists),
                                               navigationTitle: "내 취향 플레이리스트")
+                                    .logTransition(eventLogger: eventLogger,
+                                                   identifier: .playlists(id: 1))
                             }
                             
                             StationSection(width: width, title: "DJ 스테이션")

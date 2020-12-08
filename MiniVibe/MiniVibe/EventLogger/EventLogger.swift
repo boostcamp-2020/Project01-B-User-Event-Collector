@@ -10,31 +10,18 @@ import Foundation
 final class EventLogger: ObservableObject {
     enum Event {
         case search(text: String)
+        case appear(identifier: ViewIdentifier)
+        case disAppear(identifier: ViewIdentifier)
+        case tabViewTransition(current: ViewIdentifier, destination: ViewIdentifier)
     }
-    
-    private var viewLoggers = [
-        ViewLogger(root: .today),
-        ViewLogger(root: .chart),
-        ViewLogger(root: .search),
-        ViewLogger(root: .library)
-    ]
-    @Published var tabViewSelection = 0 {
+
+    @Published var tabViewSelection: ViewIdentifier = .today {
         didSet {
-            print("\(oldValue) -> \(tabViewSelection)")
+            guard oldValue != tabViewSelection else { return }
+            send(.tabViewTransition(current: oldValue, destination: tabViewSelection))
         }
     }
-    var currentViewLogger: ViewLogger {
-        return viewLoggers[tabViewSelection]
-    }
-    
-    func onAppear(identifier: ViewIdentifier) {
-        currentViewLogger.viewAppear(identifier: identifier)
-    }
-    
-    func onDisappear() {
-        currentViewLogger.viewDisappear()
-    }
-    
+
     func send(_ event: Event) {
         print(event)
     }

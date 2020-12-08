@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PlayerView: View {
+    @EnvironmentObject var eventLogger: EventLogger
     @EnvironmentObject var nowPlaying: NowPlaying
     @State private var isOpenMenu = false
     @State private var isOpenLyrics = false
@@ -33,6 +34,7 @@ struct PlayerView: View {
                 }
                 if isOpenLyrics {
                     Lyrics(isOpenLyrics: $isOpenLyrics)
+                        .logTransition(eventLogger: eventLogger, identifier: .lyrics(id: 100))
                 }
             }
             .animation(.easeInOut)
@@ -40,6 +42,7 @@ struct PlayerView: View {
                 PlayerMenu(title: title, subtitle: artist, imageURL: "")
                     .environmentObject(nowPlaying)
             }
+            .logTransition(eventLogger: eventLogger, identifier: .player)
         }
     }
 }

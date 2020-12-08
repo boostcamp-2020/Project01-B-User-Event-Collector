@@ -24,25 +24,25 @@ struct MainTab: View {
                 .tabItem {
                     Image(systemName: "house.fill")
                 }
-                .tag(0)
+                .tag(ViewIdentifier.today)
             
             Chart()
                 .tabItem {
                     Image(systemName: "chart.bar.fill")
                 }
-                .tag(1)
+                .tag(ViewIdentifier.charts)
             
             Search()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }
-                .tag(2)
+                .tag(ViewIdentifier.search)
             
             Library()
                 .tabItem {
                     Image(systemName: "person.fill")
                 }
-                .tag(3)
+                .tag(ViewIdentifier.library)
         }
         .accentColor(.pink)
         .onPreferenceChange(Size.self, perform: { value in
