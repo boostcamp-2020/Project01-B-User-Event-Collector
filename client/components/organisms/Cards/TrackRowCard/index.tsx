@@ -58,7 +58,7 @@ const TrackRowCard = ( data : TrackRowCardProps ) => {
         <TrackLeft>
             <CheckBox id={id} />
             <TrackPlayBtnContainer>
-                <TrackPlayButton src={imageUrl} imgVariant="trackRowCard" />
+                <TrackPlayButton data={data} imgVariant="trackRowCard" />
             </TrackPlayBtnContainer>
             <TrackTitle>
                 <A href={"/track/"+id}>{title}</A>
