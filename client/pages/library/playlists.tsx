@@ -45,7 +45,7 @@ export async function getServerSideProps() {
         headers: {
             'Content-Type': 'application/json',
         },
-        url: apiUrl.linraryPlaylist,
+        url: apiUrl.libraryPlaylist,
     });
     const playlistData = response.data.data;
     return {
