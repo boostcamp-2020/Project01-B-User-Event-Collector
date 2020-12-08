@@ -34,7 +34,6 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
             .select([
                 'magazine',
                 'playlist.id',
-                'playlist.description',
                 'track',
                 'artist.id',
                 'artist.name',
