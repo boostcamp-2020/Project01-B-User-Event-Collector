@@ -8,6 +8,7 @@
 import Foundation
 
 enum EndPoint {
+    case mixtapes
     case albums
     case album(id: Int)
     case tracks
@@ -15,11 +16,15 @@ enum EndPoint {
     case playlists
     case playlist(id: Int)
     case newsList
+    case artists
+    case artist(id: Int)
     
     static private let baseURL = "http://101.101.209.213:3000"
     
     private var path: String {
         switch self {
+        case .mixtapes:
+            return "/api/mixtapes"
         case .albums:
             return "/api/albums"
         case let .album(id):
@@ -34,6 +39,10 @@ enum EndPoint {
             return "/api/playlists/\(id)"
         case .newsList:
             return "/api/news"
+        case .artists:
+            return "/api/artists"
+        case let .artist(id):
+            return "/api/artists/\(id)"
         }
     }
     

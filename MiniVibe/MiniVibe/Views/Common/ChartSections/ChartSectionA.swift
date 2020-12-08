@@ -16,7 +16,7 @@ struct ChartSectionA: View {
     var body: some View {
         VStack {
             SectionTitle(width: width, title: title) {
-                ChartList(title: title)
+                ChartList(title: title, tracks: tracks)
                     .logTransition(eventLogger: eventLogger,
                                    identifier: .chart(id: 100))
             }

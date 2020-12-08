@@ -14,7 +14,7 @@ struct ChartSectionB: View {
     var body: some View {
         VStack {
             SectionTitle(width: width, title: sectionTitle) {
-                ChartList(title: sectionTitle)
+                ChartList(title: sectionTitle, tracks: [])
             }
             
             ScrollView(.horizontal, showsIndicators: false) {

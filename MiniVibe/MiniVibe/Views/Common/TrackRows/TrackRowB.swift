@@ -13,7 +13,7 @@ struct TrackRowB: View {
 
     var body: some View {
         HStack {
-            NavigationLink(destination: AlbumView(id: track.albumId)) {
+            NavigationLink(destination: AlbumView(id: track.albumId ?? 0)) {
                 AsyncImage(urlString: track.album.imageUrl)
                     .frame(width: 50, height: 50)
                     .border(Color.gray, width: 0.7)
@@ -40,7 +40,7 @@ struct TrackRowB: View {
 
 struct TrackRowB_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowB(track: .init(id: 0, title: "", lyrics: "", albumId: 0, album: .init(title: "", imageUrl: ""), artist: .init(id: 0, name: "")))
+        TrackRowB(track: .init(id: 0, title: "", lyrics: "", albumId: 0, album: .init(id: 0, title: "", imageUrl: ""), artist: .init(id: 0, name: "")))
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }
