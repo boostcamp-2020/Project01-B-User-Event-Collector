@@ -13,7 +13,6 @@ struct MiniVibeApp: App {
         WindowGroup {
             MainTab()
                 .environmentObject(EventLogger())
-                .environmentObject(NowPlaying())
         }
     }
 }

@@ -11,7 +11,6 @@ struct MainTab: View {
     @State private var contentFrame = CGRect.zero
     @State private var isPlayerPresented = false
     @EnvironmentObject private var eventLogger: EventLogger
-    @EnvironmentObject private var nowPlaying: NowPlaying
     
     init() {
         UITabBar.appearance().barTintColor = .systemBackground
@@ -49,15 +48,16 @@ struct MainTab: View {
             contentFrame = value.last ?? .zero
         })
         .overlay(
-            PlayerPreview(coordinate: contentFrame,
-                          title: nowPlaying.title,
-                          artist: nowPlaying.artist)
+            PlayerPreview(isPlayerPresented: $isPlayerPresented,
+                          coordinate: contentFrame,
+                          title: "Dynamite",
+                          artist: "방탄소년단")
                 .onTapGesture {
-                    nowPlaying.isPlayerOpen.toggle()
+                    isPlayerPresented.toggle()
                 }
-                .sheet(isPresented: $nowPlaying.isPlayerOpen) {
-                    PlayerView(title: nowPlaying.title,
-                               artist: nowPlaying.artist)
+                .sheet(isPresented: $isPlayerPresented) {
+                    PlayerView(title: "Dynamite",
+                               artist: "방탄소년단")
                 }
         )
     }
@@ -66,7 +66,6 @@ struct MainTab: View {
 struct MainTab_Previews: PreviewProvider {
     static var previews: some View {
         MainTab()
-            .environmentObject(NowPlaying())
     }
 }
 

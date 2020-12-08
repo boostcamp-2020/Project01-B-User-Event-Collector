@@ -17,7 +17,6 @@ struct Today: View {
     }
     
     @EnvironmentObject var eventLogger: EventLogger
-    @EnvironmentObject var nowPlaying: NowPlaying
     @StateObject private var viewModel = TodayViewModel()
     
     var body: some View {
@@ -27,10 +26,6 @@ struct Today: View {
             NavigationView {
                 ScrollView {
                     VStack {
-                        NavigationLink(
-                            destination: nowPlaying.destination?.view,
-                            isActive: $nowPlaying.isNavigationActive) { }
-                        
                         VStack(spacing: 30) {
                             TodayTitle()
                                 .padding(.horizontal, width * .paddingRatio)
@@ -98,6 +93,5 @@ struct Today: View {
 struct Today_Previews: PreviewProvider {
     static var previews: some View {
         Today()
-            .environmentObject(NowPlaying())
     }
 }
