@@ -8,6 +8,10 @@
 import Foundation
 
 final class EventLogger: ObservableObject {
+    enum Event {
+        case search(text: String)
+    }
+    
     private var viewLoggers = [
         ViewLogger(root: .today),
         ViewLogger(root: .chart),
@@ -29,5 +33,9 @@ final class EventLogger: ObservableObject {
     
     func onDisappear() {
         currentViewLogger.viewDisappear()
+    }
+    
+    func send(_ event: Event) {
+        print(event)
     }
 }
