@@ -3,7 +3,6 @@ import { useState } from 'react';
 
 import PlayerTrackList from '@components/organisms/CardLists/PlayerTrackList';
 import PlayController from '@components/organisms/MusicPlayer/PlayController';
-import ContentsThumbnailStories from '@components/molecules/ContentsThumbnail/ContentsThumbnail.stories';
 import { Console } from 'console';
 
 interface MusicPlayerProps {
@@ -82,12 +81,6 @@ const ControllerContainer = styled.div`
     display: flex;
     z-index: 500;
 `;
-
-const PlayerTrackCardDatas = Array(20).fill({
-    src: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906',
-    trackTitle: 'VVS (Feat. JUSTHIS) (Prod. GroovyRoom)',
-    artist: '나는가수다',
-});
 
 const MusicPlayer = ({tracks} : MusicPlayerProps) => {
     const [nowPlaying, setNowPlaying] = useState(tracks[0]);

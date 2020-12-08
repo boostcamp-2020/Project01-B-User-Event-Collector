@@ -14,15 +14,15 @@ const ChartCard = ( data : ChartCardProps) => {
 
     return (
         <Card>
-            <TrackPlayButton src={imageUrl} imgVariant="trackRowCard" />
+            <TrackPlayButton data={data} imgVariant="trackRowCard" />
             <Rank>
                 <Text>{rank.toString()}</Text>
             </Rank>
             <SongInfo>
-                <A href="/track/[id]">
+                <A href={"/track/"+id}>
                     {title}
                 </A>
-                <A href="/artist/[id]" variant="tertiary">
+                <A href={"/artist/"+artistId} variant="tertiary">
                     {artistName}
                 </A>
             </SongInfo>

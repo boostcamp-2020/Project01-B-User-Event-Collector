@@ -43,7 +43,7 @@ const MagazineCard = ( data : MagazineCardProps ) => {
         </ThumbnailContainer>
         <TextContainer>
             <TitelContainer>
-                <StyledA href="magazine/[id]">{title}</StyledA>
+                <StyledA href={"/magazine/"+id}>{title}</StyledA>
             </TitelContainer>
             <DescriptionContainer>
                 <Text variant="primary">{date}</Text>
