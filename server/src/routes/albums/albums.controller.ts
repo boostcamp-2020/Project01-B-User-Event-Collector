@@ -41,9 +41,15 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
             .where('album.id = :id', { id })
             .getOne();
 
+        const relatedAlbums = await AlbumRepository.createQueryBuilder('album')
+            .leftJoinAndSelect('album.artist', 'artist')
+            .where('album.id != :id and artist.id = :artistId', { id, artistId: album?.artist.id })
+            .select(['album', 'artist.id', 'artist.name'])
+            .getMany();
+
         return res.json({
-            success: !!album,
-            data: album || {},
+            success: true,
+            data: { ...album, relatedAlbums },
         });
     } catch (err) {
         return res.status(500).json({ success: false });
