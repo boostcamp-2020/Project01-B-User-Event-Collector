@@ -61,6 +61,9 @@ struct ArtistView: View {
                         }
                     }
                 }
+                .sheet(isPresented: $viewModel.isOpenMenu) {
+                    ArtistMenu(artist: artist)
+                }
                 .navigationTitle(artist.name)
                 .navigationBarItems(trailing: trailingBarButtons)
                 .navigationBarTitleDisplayMode(.inline)
@@ -69,7 +72,7 @@ struct ArtistView: View {
         } else {
             Color.clear
                 .onAppear {
-                    viewModel.load(artistID: id)
+                    viewModel.send(.appear(artistID: id))
                 }
         }
     }
@@ -81,7 +84,7 @@ struct ArtistView: View {
             } label: {  Image(systemName: "heart") }
             
             Button {
-                
+                viewModel.send(.showArtistMenu)
             } label: { Image(systemName: "ellipsis")  }
         }
         .font(.system(size: 17))
