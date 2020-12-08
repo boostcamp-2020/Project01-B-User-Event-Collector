@@ -6,13 +6,15 @@ export default {
     component: MagazineCard,
 };
 
-const STORY_SRC = 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906';
-const STORY_HREF = 'localhost:3000';
-const STORY_SORT = ['todayMagazine'];
-const STORY_TITLE = `이 주의 디깅 #77 
-이영지 새 앨범 발표`;
-const STORY_DATE = '2020.11.25';
+const Magazinedata =
+{
+    id: 1,
+    title: "나만 없어 그 한정판\nLP 레코드",
+    imageUrl: "https://music-phinf.pstatic.net/20201116_25/1605515795782Xy0Kf_JPEG/0-%B4%EB%C7%A5%C0%CC%B9%CC%C1%F6-%C1%A4%B9%E6%C7%FC_11.jpg?type=w720",
+    date: "2020-11-19",
+    category: "gerne"
+}
 
 export const TodayMagazine = () => (
-    <MagazineCard title={STORY_TITLE} date={STORY_DATE} src={STORY_SRC} href={STORY_HREF} sort={STORY_SORT[0]} />
+    <MagazineCard {...(Magazinedata)} />
 );

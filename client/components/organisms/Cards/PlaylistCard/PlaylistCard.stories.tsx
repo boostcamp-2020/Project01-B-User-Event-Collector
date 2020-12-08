@@ -6,12 +6,16 @@ export default {
     component: PlaylistCard,
 };
 
-const STORY_SRC = 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=f674_674_repre3&v=2020113005';
-const STORY_HREF = 'localhost:3000';
-
-const STORY_TITLE = '이영지 대표곡';
-const STORY_DESCRIPTION = 'VIBE';
+const playlistData =
+{
+    id: 1,
+    title: "VIBE AND CHILL",
+    subTitle: "",
+    description: "VIBE",
+    imageUrl: "https://music-phinf.pstatic.net/20200504_183/1588567824216rHHs6_PNG/VIBE_%B0%F8%C5%EB_VibeAndChill.png",
+    customized: false
+}
 
 export const Default = () => (
-    <PlaylistCard title={STORY_TITLE} description={STORY_DESCRIPTION} src={STORY_SRC} href={STORY_HREF} />
+    <PlaylistCard {...(playlistData)} />
 );

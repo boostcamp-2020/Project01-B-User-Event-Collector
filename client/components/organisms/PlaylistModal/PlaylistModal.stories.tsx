@@ -8,10 +8,12 @@ export default {
 
 const data = 
 { 
-    id: 0, 
-    imageUrl: "https://musicmeta-phinf.pstatic.net/album/002/440/2440250.jpg?type=r420Fll&v=20200218150707", 
-    title: '내가 만든 플레이리스트', 
-    trackCount: 50
+    "id": 1,
+    "title": "나만 없어 그 한정판 LP 레코드",
+    "subTitle": "",
+    "description": null,
+    "imageUrl": "https://music-phinf.pstatic.net/20200109_13/15785370058255nAVe_PNG/%C0%CC%B4%DE%C0%C7%B3%EB%B7%A1_%C1%A4%B9%E6%C7%FC.png",
+    "customized": false
 }
 
 const playlistData = Array(15).fill(data);
