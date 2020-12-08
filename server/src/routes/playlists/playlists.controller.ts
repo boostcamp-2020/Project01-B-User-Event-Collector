@@ -4,6 +4,7 @@ import * as libraryPlaylist from '../library/playlists/library.playlists.control
 import * as TrackController from '../tracks/tracks.controller';
 import Playlist from '../../models/Playlist';
 import Track from '../../models/Track';
+import Artist from '../../models/Artist';
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -46,7 +47,14 @@ const listById = async (req: Request, res: Response, next: NextFunction) => {
             .where('playlist.id = :id', { id })
             .getOne();
 
-        return res.json({ success: true, data: playlist });
+        const relatedArtistIds = [...new Set(playlist?.tracks.map((track) => track.artist.id))];
+
+        const ArtistRepository = getRepository(Artist);
+        const relatedArtists = await ArtistRepository.createQueryBuilder('artist')
+            .where('artist.id IN (:relatedArtistIds)', { relatedArtistIds })
+            .getMany();
+
+        return res.json({ success: true, data: { ...playlist, relatedArtists } });
     } catch (err) {
         console.error(err);
         return res.status(500).json({ success: false, data: [] });
