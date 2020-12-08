@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct PlayerPreview: View {
-    @State private var isPlaying = false
-    
+    @EnvironmentObject private var nowPlaying: NowPlaying
     let coordinate: CGRect
     let title: String
     let artist: String
@@ -58,9 +57,9 @@ struct PlayerPreview: View {
     var controlIcons: some View {
         HStack(spacing: 20) {
             Button {
-                isPlaying.toggle()
+                nowPlaying.isPlaying.toggle()
             } label: {
-                isPlaying ? Image(systemName: "pause.fill") : Image(systemName: "play.fill")
+                nowPlaying.isPlaying ? Image(systemName: "pause.fill") : Image(systemName: "play.fill")
             }
             
             Button {

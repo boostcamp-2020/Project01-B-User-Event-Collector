@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct Player: View {
-    @State var isPlaying = false
     @Binding var isOpenMenu: Bool
     @Binding var isOpenLyrics: Bool
+    @EnvironmentObject private var nowPlaying: NowPlaying
     let title: String
     let artist: String
     
@@ -21,12 +21,13 @@ struct Player: View {
             Spacer()
             
             PlayerThumbnail(image: "playListThumbnail",
-                            lyrics: "가사가사가사가사\n가사가사\n가사\n가사가사가사가사", isPlaying: $isPlaying, isOpenLyrics: $isOpenLyrics)
+                            lyrics: "가사가사가사가사\n가사가사\n가사\n가사가사가사가사",
+                            isPlaying: $nowPlaying.isPlaying,
+                            isOpenLyrics: $isOpenLyrics)
             
             Spacer()
             
-            PlayerControls(isPlaying: $isPlaying,
-                           isOpenMenu: $isOpenMenu,
+            PlayerControls(isOpenMenu: $isOpenMenu,
                            title: title,
                            artist: artist)
                 
