@@ -33,13 +33,9 @@ struct Today: View {
                             PreviewSection(width: width)
                                 .aspectRatio(1.5, contentMode: .fit)
                             
-                            PlayListSection(width: width,
-                                            title: "나를 위한 믹스테잎",
-                                            playlists: []) {
-                                MixtapeGrid(title: "나를 위한 믹스테잎", mixtapes: [])
-                                    .logTransition(eventLogger: eventLogger,
-                                                   identifier: .mixtapes)
-                            }
+                            MixtapeSection(width: width,
+                                           title: "나를 위한 믹스테잎",
+                                           mixtapes: viewModel.mixtapes)
                             
                             PlayListSection(width: width,
                                             title: "즐겨듣는 플레이리스트",
