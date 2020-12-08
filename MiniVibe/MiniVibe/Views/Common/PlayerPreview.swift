@@ -10,21 +10,22 @@ import SwiftUI
 struct PlayerPreview: View {
     @EnvironmentObject private var nowPlaying: NowPlaying
     let coordinate: CGRect
-    let title: String
-    let artist: String
+    let title: String // 얘네도 실제로 값 받기 시작하면
+    let artist: String // 바뀌겠지
     private let height: CGFloat = 50
     private let edgeInset = EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
     
     var body: some View {
         VStack {
             HStack {
-                albumInfo
+                playingTrackInfo()
                 
                 Spacer()
-                
-                controlIcons
+                    
+                previewControlIcons()
+                //controlIcons
                     .font(.system(size: 20))
-                    .foregroundColor(.black)
+                    //.foregroundColor(.black)
             }
             .frame(height: height)
             .padding(edgeInset)
@@ -37,9 +38,15 @@ struct PlayerPreview: View {
         
     }
     
-    @ViewBuilder
-    var albumInfo: some View {
-        Image("album")
+    @ViewBuilder private func playingTrackInfo() -> some View {
+        var image: UIImage = UIImage(named: "placeholder") ?? UIImage()
+        var title: String = "What's on today?"
+        var artist: String = "Tap the play button"
+        if !nowPlaying.upNext.isEmpty {
+            // 현재 재생 곡에 해당하는 image, title, subtitle
+        }
+        
+        Image(uiImage: image)
             .resizable()
             .aspectRatio(1, contentMode: .fit)
             .frame(height: height)
@@ -53,26 +60,34 @@ struct PlayerPreview: View {
                 .foregroundColor(.secondary)
         }
     }
-    
-    var controlIcons: some View {
-        HStack(spacing: 20) {
+
+    private func previewControlIcons() -> some View {
+        var emptyUpNext: Bool = nowPlaying.upNext.isEmpty
+        var iconColor: Color = emptyUpNext ? Color.secondary : Color.black
+            
+        return HStack(spacing: 20) {
             Button {
                 nowPlaying.isPlaying.toggle()
             } label: {
                 nowPlaying.isPlaying ? Image(systemName: "pause.fill") : Image(systemName: "play.fill")
             }
+            .foregroundColor(.black)
             
             Button {
                 
             } label: {
                 Image(systemName: "forward.fill")
             }
+            .disabled(emptyUpNext)
+            .foregroundColor(iconColor)
             
             Button {
                 
             } label: {
                 Image(systemName: "music.note.list")
             }
+            .disabled(emptyUpNext)
+            .foregroundColor(iconColor)
         }
     }
 }

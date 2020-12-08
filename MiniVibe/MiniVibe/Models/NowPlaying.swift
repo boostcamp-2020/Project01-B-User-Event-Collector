@@ -12,3 +12,6 @@ class NowPlaying: ObservableObject {
     @Published var isPlayerPresented: Bool = false
     @Published var upNext = [Track]()
 }
+
+
+// 비어있다면? 기본 값을 보여주어야 하지 않을까

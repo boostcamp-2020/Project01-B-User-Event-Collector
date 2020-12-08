@@ -53,7 +53,9 @@ struct MainTab: View {
                           title: "Dynamite",
                           artist: "방탄소년단")
                 .onTapGesture {
-                    nowPlaying.isPlayerPresented.toggle()
+                    if !nowPlaying.upNext.isEmpty {
+                        nowPlaying.isPlayerPresented.toggle()
+                    }
                 }
                 .sheet(isPresented: $nowPlaying.isPlayerPresented) {
                     PlayerView(title: "Dynamite",
