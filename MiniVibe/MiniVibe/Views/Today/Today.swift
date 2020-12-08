@@ -16,6 +16,7 @@ struct Today: View {
         UINavigationBar.appearance().standardAppearance = appearance
     }
     
+    @EnvironmentObject var eventLogger: EventLogger
     @EnvironmentObject var nowPlaying: NowPlaying
     @StateObject private var viewModel = TodayViewModel()
     
@@ -29,7 +30,7 @@ struct Today: View {
                         NavigationLink(
                             destination: nowPlaying.destination?.view,
                             isActive: $nowPlaying.isNavigationActive) { }
-                            
+                        
                         VStack(spacing: 30) {
                             TodayTitle()
                                 .padding(.horizontal, width * .paddingRatio)
@@ -47,14 +48,14 @@ struct Today: View {
                                             title: "즐겨듣는 플레이리스트",
                                             playlists: viewModel.playlists) {
                                 ThumbnailList(info: .playlist(data: viewModel.playlists),
-                                                           navigationTitle: "즐겨듣는 플레이리스트")
+                                              navigationTitle: "즐겨듣는 플레이리스트")
                             }
                             
                             PlayListSection(width: width,
                                             title: "내 취향 플레이리스트",
                                             playlists: viewModel.playlists) {
                                 ThumbnailList(info: .playlist(data: viewModel.playlists),
-                                                           navigationTitle: "내 취향 플레이리스트")
+                                              navigationTitle: "내 취향 플레이리스트")
                             }
                             
                             StationSection(width: width, title: "DJ 스테이션")
@@ -67,7 +68,9 @@ struct Today: View {
                                          title: "좋아할 최신 앨범",
                                          albums: viewModel.albums) {
                                 ThumbnailGridView(title: "좋아할 최신 앨범",
-                                                               album: viewModel.albums)
+                                                  album: viewModel.albums)
+                                    .logTransition(eventLogger: eventLogger,
+                                                   identifier: .recommendedRecentAlbum)
                             }
                             
                             MagazineSection(width: width,

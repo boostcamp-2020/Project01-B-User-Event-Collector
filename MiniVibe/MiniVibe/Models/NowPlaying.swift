@@ -23,11 +23,6 @@ final class NowPlaying: ObservableObject {
     @Published var trackId: Int?
     @Published var isPlayerOpen = false
     @Published var isNavigationActive = false
-    @Published var tabItemSelection = 0 {
-        didSet {
-            isNavigationActive = false
-        }
-    }
     private(set) var destination: Destination?
     let title = "Dynamite"
     let artist = "방탄소년단"

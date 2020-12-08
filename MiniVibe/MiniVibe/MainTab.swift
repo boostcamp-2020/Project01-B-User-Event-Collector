@@ -10,6 +10,7 @@ import SwiftUI
 struct MainTab: View {
     @State private var contentFrame = CGRect.zero
     @State private var isPlayerPresented = false
+    @EnvironmentObject private var eventLogger: EventLogger
     @EnvironmentObject private var nowPlaying: NowPlaying
     
     init() {
@@ -18,7 +19,7 @@ struct MainTab: View {
     }
     
     var body: some View {
-        TabView(selection: $nowPlaying.tabItemSelection) {
+        TabView(selection: $eventLogger.tabViewSelection) {
             Today()
                 .tabItem {
                     Image(systemName: "house.fill")
