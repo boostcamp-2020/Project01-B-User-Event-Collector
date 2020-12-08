@@ -23,6 +23,7 @@
           "components/*"
       ],
       "@utils/*":["utils/*"],
+      "@constants/*":["constants/*"],
       "@hooks/*":["hooks/*"],
       "@stores/*":["stores/*"],
       "@interfaces/*":["interfaces/*"]
