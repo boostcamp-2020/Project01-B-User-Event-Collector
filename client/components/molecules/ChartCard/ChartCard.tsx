@@ -19,10 +19,10 @@ const ChartCard = ( data : ChartCardProps) => {
                 <Text>{rank.toString()}</Text>
             </Rank>
             <SongInfo>
-                <A href="/track/[id]">
+                <A href={"/track/"+id}>
                     {title}
                 </A>
-                <A href="/artist/[id]" variant="tertiary">
+                <A href={"/artist/"+artistId} variant="tertiary">
                     {artistName}
                 </A>
             </SongInfo>

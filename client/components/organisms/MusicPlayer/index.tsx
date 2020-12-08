@@ -3,7 +3,6 @@ import { useState } from 'react';
 
 import PlayerTrackList from '@components/organisms/CardLists/PlayerTrackList';
 import PlayController from '@components/organisms/MusicPlayer/PlayController';
-import ContentsThumbnailStories from '@components/molecules/ContentsThumbnail/ContentsThumbnail.stories';
 import { Console } from 'console';
 
 interface MusicPlayerProps {
