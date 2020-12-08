@@ -8,14 +8,24 @@
 import Foundation
 
 class NowPlaying: ObservableObject {
-    struct UpNextTrack {
-        let id: Int
-        let title: String
-        let artist: Artist
-        let imageUrl: String
-    }
     
     @Published var isPlaying: Bool = false
     @Published var isPlayerPresented: Bool = false
     @Published var upNext = [UpNextTrack]()
+    @Published var selectedTracks = Set<UpNextTrack>()
+}
+
+struct UpNextTrack: Hashable {
+    let id: Int
+    let title: String
+    let artist: Artist
+    let imageUrl: String
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: UpNextTrack, rhs: UpNextTrack) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
