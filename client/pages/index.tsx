@@ -1,68 +1,12 @@
 import styled from 'styled-components';
 
-import MainMagazineCard from "@components/organisms/Cards/MainMagazineCard/MainMagazineCard";
-import CardListContainer from "@components/organisms/CardListContainer";
-import { MagazineSort } from '@interfaces/props';
+import MainMagazineCard from '@components/organisms/Cards/MainMagazineCard/MainMagazineCard';
+import CardListContainer from '@components/organisms/CardListContainer';
 import MagazineCardList from '@components/organisms/CardLists/MagazineList/MagazineList';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 import Link from 'next/link';
-
-const mainMagazineData = 
-{
-    id: 0,
-    imageUrl: "https://music-phinf.pstatic.net/20201119_255/1605768990292DkTAH_JPEG/%B4%EB%C7%A5-%C0%CC%B9%CC%C1%F61.jpg?type=w720",
-    title: "차트를 달리는 래퍼 : 잭 할로우, 물라토",
-    description: "아직 한 달 남짓한 시간이 남았지만, 2020년 역시 힙합의 해라고 해도 과언이 아니지 않을까? 신인을 비롯한 수많은 힙합 아티스트들이 빌보드 HOT 차트 상위권을 거쳐가며 인기를 끌었기 때문이다. 그런데 최근 힙합을 잘 챙겨 듣지 않은 이들에게는 신인의 이름이 낯설 수도 있다. 올해가 가기 전 이름을 알아 두면 좋을 일곱 명의 래퍼를 확인해보자. - 힙합엘이",
-    date: "2020-11-19",
-    category: "gerne"
-}
-
-const Magazinesdata = Array(9).fill({
-        id: 1,
-        title: "나만 없어 그 한정판\nLP 레코드",
-        imageUrl: "https://music-phinf.pstatic.net/20201116_25/1605515795782Xy0Kf_JPEG/0-%B4%EB%C7%A5%C0%CC%B9%CC%C1%F6-%C1%A4%B9%E6%C7%FC_11.jpg?type=w720",
-        date: "2020-11-19",
-        category: "gerne"
-    });
-
-const Newsdata = Array(9).fill({
-    id: 2,
-    title: "블랙핑크가 데뷔 첫 온라인 콘서트를 합니다",
-    imageUrl: "https://music-phinf.pstatic.net/20201204_242/1607046595052EDJxR_JPEG/blackpink_400.jpg?type=f310_182",
-    date: "2020-12-06",
-    link: "https://www.yna.co.kr/view/AKR20201203094500005?section=entertainment/pop-song",
-    albumId: 9
-});
-
-const Albumdata = Array(9).fill({
-    id: 11,
-    title: "그냥",
-    description: "이영지의 새로운 싱글앨범 <그냥>이 발매되었다.\n\n이번 곡은 아티스트 이영지가 그 동안 보여줘 왔던 기존 곡들과는 사뭇 다른 감성으로 우리에게 다가온다.\n\n2019년 11월 첫번째 발표곡 <암실>을 시작으로 약 6개월간 5곡의 작품을 발표한 이영지는 자신의 음악적 스펙트럼을 계속해서 확장해 나가며 다양한 음악을 우리에게 선사하고 있다.\n\n감성짙은 이번 싱글앨범 <그냥>은 우리에게 그녀의 또 다른 새로운 시작을 알리고 있다.",
-    releaseDate: "2020-05-07",
-    imageUrl: "https://musicmeta-phinf.pstatic.net/album/004/551/4551646.jpg",
-    artist: {
-        id: 3,
-        name: "이영지"
-    }
-});
-
-const Mixtapedata = Array(9).fill({
-    id: 1,
-    title: "나를 위한 믹스테잎",
-    subTitle: "",
-    description: "Lana Del Rey, Dua Lipa, 이영지",
-    imageUrl: "https://vibeapp.music.naver.com/vibe/v1/cover/mix/3171155,2487724,3553414,635724/favorite/favorite/",
-    customized: false
-});
-
-const Playlistdata = Array(9).fill({
-    id: 1,
-    title: "VIBE AND CHILL",
-    subTitle: "",
-    description: "VIBE",
-    imageUrl: "https://music-phinf.pstatic.net/20200504_183/1588567824216rHHs6_PNG/VIBE_%B0%F8%C5%EB_VibeAndChill.png",
-    customized: false
-});
+import { request } from '../utils/apis';
+import apiUrl from '../constants/apiUrl';
 
 const TodayContainer = styled.div`
     height: 100%;
@@ -99,17 +43,21 @@ const ContentsContainer = styled.div`
     border-bottom: 1px solid #dddddd;
 `;
 
-const Home = () => {
+const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata }) => {
     //TODO: isLogined state 이용하여 <UserContentsContainer> 부분은 로그인 했을 때만 보이도록 수정
     return (
         <TodayContainer>
             <MainMagazineContainer>
-                <Link href={"/magazines/"+mainMagazineData.id}><a><MainMagazineCard {...mainMagazineData} /></a></Link>
+                <Link href="/magazines/main">
+                    <a>
+                        <MainMagazineCard {...Magazinesdata[0]} />
+                    </a>
+                </Link>
             </MainMagazineContainer>
             <PublicContentsContainer>
                 <ContentsContainer>
                     <CardListContainer title="매거진" href="/">
-                        <MagazineCardList variant="row" items={Magazinesdata} />
+                        <MagazineCardList variant="row" items={Magazinesdata.slice(1)} />
                     </CardListContainer>
                 </ContentsContainer>
                 <ContentsContainer>
@@ -141,13 +89,28 @@ const Home = () => {
                 </ContentsContainer>
             </UserContentsContainer>
         </TodayContainer>
-    )
-}
+    );
+};
 
-/*export const getServerSideProps = wrapper.getServerSideProps((context) => {
-    constext.store.dispatch({
-        type: LOAD_USER_REQUEST,
-    });
-})*/
+export async function getServerSideProps() {
+    const [Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata] = await Promise.all([
+        request(apiUrl.magazine),
+        request(apiUrl.news),
+        request(apiUrl.playlist),
+        request(apiUrl.album),
+        request(apiUrl.mixtape),
+    ]);
+    // TODO: error handling
+
+    return {
+        props: {
+            Magazinesdata,
+            Newsdata,
+            Playlistdata,
+            Albumdata,
+            Mixtapedata,
+        },
+    };
+}
 
 export default Home;
