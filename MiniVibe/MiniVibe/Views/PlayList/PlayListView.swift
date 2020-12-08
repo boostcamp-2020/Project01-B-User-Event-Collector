@@ -8,65 +8,78 @@
 import SwiftUI
 
 struct PlayListView: View {
-    enum ActiveSheet {
-        case playList
-        case track
+    init(id: Int) {
+        self.id = id
     }
     
-    @State private var activeSheet: ActiveSheet = .playList
-    @State private var showSheet = false
-    @State private var isOpenArticle = false
-    let title: String
-    let subtitle: String
+    @StateObject private var viewModel = PlaylistViewModel()
+    private let id: Int
     
     var body: some View {
-        GeometryReader { geometry in
-            let width: CGFloat = geometry.size.width
-            if isOpenArticle {
-                Article(isOpenArticle: $isOpenArticle,
-                        imageURL: "",
-                        title: title,
-                        subtitle: subtitle,
-                        content: "content")
-            } else {
-                ScrollView {
-                    VStack(spacing: 36) {
-                        VStack {
-                            PlaylistAlbumInfo(album: Album(id: 0, title: "", description: "", releaseDate: "", artist: Artist(id: 0, name: ""), imageUrl: "", tracks: []),
-                                              isOpenArticle: $isOpenArticle)
-                                .padding(.vertical, 10)
-                            
-                            LazyVGrid(
-                                columns: [.init(.fixed(geometry.size.width))],
-                                pinnedViews: [.sectionHeaders]
-                            ) {
-                                Section(header: PlayAndShuffle(width: geometry.size.width)) {
-                                    ForEach(0..<20) { _ in
-                                        TrackRowC(title: "Dynamite",
-                                                  artist: "방탄소년단"
-                                        ) {
-                                            activeSheet = .track
-                                            showSheet = true
+        if let playlist = viewModel.playlist {
+            GeometryReader { geometry in
+                let width: CGFloat = geometry.size.width
+                if viewModel.isOpenArticle {
+                    Article(isOpenArticle: $viewModel.isOpenArticle,
+                            imageURL: playlist.imageUrl ?? "",
+                            title: playlist.title,
+                            subtitle: playlist.subTitle ?? "",
+                            content: playlist.description ?? "")
+                } else {
+                    ScrollView {
+                        VStack(spacing: 36) {
+                            VStack {
+                                PlaylistAlbumInfo(isOpenArticle: $viewModel.isOpenArticle,
+                                                  imageURL: playlist.imageUrl ?? "",
+                                                  title: playlist.title,
+                                                  subtitle: playlist.subTitle ?? "",
+                                                  description: "",
+                                                  article: playlist.description ?? "")
+                                    .padding(.vertical, 10)
+                                
+                                LazyVGrid(
+                                    columns: [.init(.fixed(geometry.size.width))],
+                                    pinnedViews: [.sectionHeaders]
+                                ) {
+                                    Section(header: PlayAndShuffle(width: geometry.size.width)) {
+                                        ForEach(playlist.tracks ?? [], id: \.id) { track in
+                                            TrackRowC(title: "Dynamite",
+                                                      artist: "방탄소년단"
+                                            ) {
+                                                viewModel.send(.showTrackMenu(info: track))
+                                            }
                                         }
                                     }
+                                    .padding(.horizontal, geometry.size.width * .paddingRatio)
                                 }
-                                .padding(.horizontal, geometry.size.width * .paddingRatio)
                             }
+                            
+                            ArtistSection(width: width,
+                                          sectionTitle: "참여 아티스트")
                         }
-                        
-                        ArtistSection(width: width,
-                                      sectionTitle: "참여 아티스트")
+                        .padding(.bottom, 70)
                     }
-                    .padding(.bottom, 70)
-                }
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(
-                    trailing: trailingBarButtons
-                )
-                .fullScreenCover(isPresented: $showSheet) {
-                    PlayerMenu(title: title, subtitle: subtitle, imageURL: "", id: 1)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarItems(
+                        trailing: trailingBarButtons
+                    )
+                    .fullScreenCover(isPresented: $viewModel.showSheet) {
+                        switch viewModel.activeSheet {
+                        case .playlist:
+                            PlayListMenu(playlist: playlist)
+                        case let .track(info):
+                            PlayerMenu(title: info.title,
+                                       subtitle: info.artist.name,
+                                       imageURL: info.album.imageUrl)
+                        }
+                    }
                 }
             }
+        } else {
+            Color.clear
+                .onAppear {
+                    viewModel.send(.appear(playlistID: id))
+                }
         }
     }
     
@@ -85,8 +98,7 @@ struct PlayListView: View {
             }
             
             Button {
-                activeSheet = .playList
-                showSheet = true
+                viewModel.send(.showPlaylistMenu)
             } label: {
                 Image(systemName: "ellipsis")
             }
@@ -101,7 +113,7 @@ struct PlayListView: View {
 struct PlayListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PlayListView(title: "요즘이곡", subtitle: "VIBE")
+            PlayListView(id: 0)
         }
     }
 }

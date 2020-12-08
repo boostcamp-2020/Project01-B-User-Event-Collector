@@ -39,7 +39,7 @@ struct LibrarySongsView: View {
                                 isMenuOpen = true
                             }
                             .fullScreenCover(isPresented: $isMenuOpen) {
-                                PlayerMenu(title: title, subtitle: artist, imageURL: "", id: 0)
+                                PlayerMenu(title: title, subtitle: artist, imageURL: "")
                             }
                         }
                     }

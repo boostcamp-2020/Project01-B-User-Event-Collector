@@ -39,9 +39,9 @@ struct ThumbnailList: View {
         case let .playlist(data):
             ForEach(data, id: \.id) { playlist in
                 NavigationLink(destination: AlbumView(id: playlist.id)) {
-                    ThumbnailRow(imageURL: playlist.imageUrl,
+                    ThumbnailRow(imageURL: playlist.imageUrl ?? "",
                                  title: playlist.title,
-                                 subtitle: playlist.subTitle)
+                                 subtitle: playlist.subTitle ?? "")
                 }
             }
         case let .magazine(data):

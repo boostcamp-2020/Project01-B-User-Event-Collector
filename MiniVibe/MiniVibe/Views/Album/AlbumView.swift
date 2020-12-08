@@ -29,8 +29,12 @@ struct AlbumView: View {
                     ScrollView {
                         VStack(spacing: 36) {
                             VStack {
-                                PlaylistAlbumInfo(album: album,
-                                                  isOpenArticle: $viewModel.isOpenArticle)
+                                PlaylistAlbumInfo(isOpenArticle: $viewModel.isOpenArticle,
+                                                  imageURL: album.imageUrl,
+                                                  title: album.title,
+                                                  subtitle: album.artist.name,
+                                                  description: album.releaseDate,
+                                                  article: album.description)
                                     .padding(.vertical, 10)
                                 
                                 if let tracks = album.tracks {
@@ -82,8 +86,7 @@ struct AlbumView: View {
                         case let .track(info):
                             PlayerMenu(title: info.title,
                                        subtitle: album.artist.name,
-                                       imageURL: album.imageUrl,
-                                       id: album.id)
+                                       imageURL: album.imageUrl)
                         }
                     }
                 }

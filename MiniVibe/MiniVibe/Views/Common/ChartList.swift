@@ -26,7 +26,7 @@ struct ChartList: View {
                             TrackRowA(isMenuOpen: $isMenuOpen, order: index + 1, title: title, artist: artist)
                         }
                         .fullScreenCover(isPresented: $isMenuOpen) {
-                            PlayerMenu(title: title, subtitle: artist, imageURL: "", id: 1)
+                            PlayerMenu(title: title, subtitle: artist, imageURL: "")
                         }
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)

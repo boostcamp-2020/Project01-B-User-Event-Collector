@@ -12,7 +12,6 @@ struct PlayerMenu: View {
     let title: String
     let subtitle: String
     let imageURL: String
-    let id: Int
     
     var body: some View {
         VStack(spacing: 36) {
@@ -32,6 +31,6 @@ struct PlayerMenu: View {
 
 struct PlayerMenu_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerMenu(title: "Among US", subtitle: "정혜일", imageURL: "", id: 1)
+        PlayerMenu(title: "Among US", subtitle: "정혜일", imageURL: "")
     }
 }

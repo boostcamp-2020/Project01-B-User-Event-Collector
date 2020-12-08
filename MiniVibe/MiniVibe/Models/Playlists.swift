@@ -14,8 +14,9 @@ struct Playlists: Decodable {
 struct Playlist: Decodable {
     let id: Int
     let title: String
-    let subTitle: String
+    let subTitle: String?
     let description: String?
-    let imageUrl: String
+    let imageUrl: String?
     let customized: Bool
+    let tracks: [TrackInfo]?
 }

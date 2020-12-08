@@ -13,6 +13,7 @@ enum EndPoint {
     case tracks
     case magazines
     case playlists
+    case playlist(id: Int)
     case newsList
     
     static private let baseURL = "http://101.101.209.213:3000"
@@ -29,6 +30,8 @@ enum EndPoint {
             return "/api/magazines"
         case .playlists:
             return "/api/playlists"
+        case let .playlist(id):
+            return "/api/playlists/\(id)"
         case .newsList:
             return "/api/news"
         }

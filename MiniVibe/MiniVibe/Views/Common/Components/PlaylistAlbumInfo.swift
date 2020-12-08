@@ -8,30 +8,34 @@
 import SwiftUI
 
 struct PlaylistAlbumInfo: View {
-    let album: Album
     @Binding var isOpenArticle: Bool
+    let imageURL: String
+    let title: String
+    let subtitle: String
+    let description: String
+    let article: String
     
     var body: some View {
         VStack(alignment: .leading) {
-            essentialAlbumInfo
-            optionalAlbuminfo
+            essentialInfo
+            optionalInfo
         }
         .padding(.horizontal, 10)
     }
     
-    var essentialAlbumInfo: some View {
+    var essentialInfo: some View {
         HStack(alignment: .top) {
             Button {
                 isOpenArticle = true
             } label: {
-                AsyncImage(urlString: album.imageUrl)
+                AsyncImage(urlString: imageURL)
                     .aspectRatio(1, contentMode: .fit)
             }
             
             VStack(alignment: .leading) {
-                Text(album.title)
+                Text(title)
                     .font(.system(size: 18, weight: .bold))
-                Text(album.artist.name)
+                Text(subtitle)
                     .font(.system(size: 16))
                     .foregroundColor(.secondary)
                 Spacer()
@@ -50,12 +54,12 @@ struct PlaylistAlbumInfo: View {
         .frame(height: 130)
     }
     
-    var optionalAlbuminfo: some View {
+    var optionalInfo: some View {
         VStack(alignment: .leading) {
-            Text(album.releaseDate)
+            Text(description)
             
             HStack {
-                Text(album.description)
+                Text(article)
                     .lineLimit(1)
                 Text("더보기")
             }
@@ -70,6 +74,6 @@ struct PlaylistAlbumInfo: View {
 
 struct PlaylistAlbumInfo_Previews: PreviewProvider {
     static var previews: some View {
-        PlaylistAlbumInfo(album: .init(id: 1, title: "", description: "", releaseDate: "", artist: .init(id: 1, name: ""), imageUrl: "", tracks: []), isOpenArticle: .constant(false))
+        PlaylistAlbumInfo(isOpenArticle: .constant(false), imageURL: "", title: "", subtitle: "", description: "", article: "")
     }
 }

@@ -29,13 +29,11 @@ struct PlayListSection<D: View>: View {
                 HStack(spacing: width * .spacingRatio) {
                     ForEach(playlists, id: \.id) { playlist in
                         NavigationLink(
-                            // id로 playlsitview 한테 넘길거고
-                            destination: PlayListView(title: playlist.title,
-                                                      subtitle: playlist.subTitle),
+                            destination: PlayListView(id: playlist.id),
                             label: {
                                 ThumbnailItem(title: playlist.title,
-                                              subtitle: playlist.subTitle,
-                                              imageURL: playlist.imageUrl)
+                                              subtitle: playlist.subTitle ?? "",
+                                              imageURL: playlist.imageUrl ?? "")
                                     .frame(width: width * .thumbnailRatio)
                             }
                         )

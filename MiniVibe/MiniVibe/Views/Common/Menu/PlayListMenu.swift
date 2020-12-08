@@ -9,13 +9,12 @@ import SwiftUI
 
 struct PlayListMenu: View {
     @Environment(\.presentationMode) var presentationMode
-    let title: String
-    let subtitle: String
+    let playlist: Playlist
     
     var body: some View {
         VStack(spacing: 36) {
             Spacer()
-            MenuThumbnailButton(title: title, imageURL: "")
+            MenuThumbnailButton(title: playlist.title, imageURL: playlist.imageUrl ?? "")
             MenuButton(type: .download(.playList))
             MenuButton(type: .like(false))
             MenuButton(type: .addToPlaylist)
@@ -29,6 +28,6 @@ struct PlayListMenu: View {
 
 struct PlayListMenu_Previews: PreviewProvider {
     static var previews: some View {
-        PlayListMenu(title: "Dynamite", subtitle: "방탄소년단")
+        PlayListMenu(playlist: .init(id: 0, title: "", subTitle: "", description: "", imageUrl: "", customized: false, tracks: []))
     }
 }

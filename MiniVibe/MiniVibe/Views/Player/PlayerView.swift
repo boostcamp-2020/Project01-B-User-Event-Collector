@@ -37,7 +37,7 @@ struct PlayerView: View {
             }
             .animation(.easeInOut)
             .fullScreenCover(isPresented: $isOpenMenu) {
-                PlayerMenu(title: title, subtitle: artist, imageURL: "", id: 1)
+                PlayerMenu(title: title, subtitle: artist, imageURL: "")
                     .environmentObject(nowPlaying)
             }
         }
