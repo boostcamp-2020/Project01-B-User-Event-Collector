@@ -3,10 +3,12 @@ import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHe
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
 
 const PlaylistData = Array(9).fill({
-    src: 'https://music-phinf.pstatic.net/20200504_183/1588567824216rHHs6_PNG/VIBE_%B0%F8%C5%EB_VibeAndChill.png',
-    href: '/playlist/sample',
-    title: 'VIBE 추천 플레이리스트',
-    description: 'VIBE',
+    id: 1,
+    title: "VIBE AND CHILL",
+    subTitle: "",
+    description: "VIBE",
+    imageUrl: "https://music-phinf.pstatic.net/20200504_183/1588567824216rHHs6_PNG/VIBE_%B0%F8%C5%EB_VibeAndChill.png",
+    customized: false
 });
 
 const LibraryContainer = styled.div`

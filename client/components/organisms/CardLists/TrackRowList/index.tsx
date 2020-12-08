@@ -11,7 +11,7 @@ const ListContainer = styled.ul`
 const TrackRowList = ({ items }: { items: TrackRowCardProps[] }) => (
     <ListContainer>
         {items.map((item) => (
-            <TrackRowCard {...(item as TrackRowCardProps)} />
+            <TrackRowCard key= {item.id} {...(item as TrackRowCardProps)} />
         ))}
     </ListContainer>
 );

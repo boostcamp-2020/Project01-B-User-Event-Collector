@@ -22,6 +22,8 @@ export const Rank = styled.div`
     text-align: center;
 `;
 export const SongInfo = styled.div`
+    display: flex;
+    flex-flow: column;
     padding: 0 20px 0 12px;
     line-height: 21px;
 `;

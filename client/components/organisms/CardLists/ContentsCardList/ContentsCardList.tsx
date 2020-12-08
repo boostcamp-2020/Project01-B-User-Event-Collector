@@ -34,7 +34,7 @@ const properCard = ({variant, items}: ContentsCardListProps) => {
             return (
                 items.map((item) => (
                     <Item>
-                        <MixtapeCard {...(item as MixtapeCardProps)} />
+                        <MixtapeCard key = {item.id} {...(item as MixtapeCardProps)} />
                     </Item>
                 ))
             )
@@ -42,7 +42,7 @@ const properCard = ({variant, items}: ContentsCardListProps) => {
             return (
                 items.map((item) => (
                     <Item>
-                        <NormalArtistThumbnail {...(item as LibraryArtistThumbnailProps)} />
+                        <NormalArtistThumbnail key = {item.id} {...(item as LibraryArtistThumbnailProps)} />
                     </Item>
                 ))
             )
@@ -50,7 +50,7 @@ const properCard = ({variant, items}: ContentsCardListProps) => {
             return (
                 items.map((item) => (
                     <Item>
-                        <AlbumCard {...(item as AlbumCardProps)} />
+                        <AlbumCard key = {item.id} {...(item as AlbumCardProps)} />
                     </Item>
                 ))
             )
@@ -58,7 +58,7 @@ const properCard = ({variant, items}: ContentsCardListProps) => {
             return (
                 items.map((item) => (
                     <Item>
-                        <PlaylistCard {...(item as PlaylistCardProps)} />
+                        <PlaylistCard key = {item.id} {...(item as PlaylistCardProps)} />
                     </Item>
                 ))
             )
@@ -66,7 +66,7 @@ const properCard = ({variant, items}: ContentsCardListProps) => {
             return (
                 items.map((item) => (
                     <Item>
-                        <NewsCard {...item} />
+                        <NewsCard key = {item.id} {...item} />
                     </Item>
                 ))
             )

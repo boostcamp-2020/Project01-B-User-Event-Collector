@@ -34,20 +34,25 @@ const StyledA = styled(A)`
     font-size: 16px;
 `;
 
-const AlbumCard = ({ title, artist, src, href }: AlbumCardProps) => (
-    <CardContainer>
-        <ThumbnailContainer>
-            <ContentsThumbnail src={src} href={href} sort="" />
-        </ThumbnailContainer>
-        <TextContainer>
-            <TitelContainer>
-                <StyledA href={href}>{title}</StyledA>
-            </TitelContainer>
-            <DescriptionContainer>
-                <Text variant="primary">{artist}</Text>
-            </DescriptionContainer>
-        </TextContainer>
-    </CardContainer>
-);
+const AlbumCard = ( data : AlbumCardProps) => {
+    const { id, title, description, releaseDate, imageUrl, artist } = data;
+    const { id: artistId, name: artistName } = artist;
+
+    return (
+        <CardContainer>
+            <ThumbnailContainer>
+                <ContentsThumbnail src={imageUrl} href="album/[id]" sort="" />
+            </ThumbnailContainer>
+            <TextContainer>
+                <TitelContainer>
+                    <StyledA href="album/[id]">{title}</StyledA>
+                </TitelContainer>
+                <DescriptionContainer>
+                    <Text variant="primary">{artistName}</Text>
+                </DescriptionContainer>
+            </TextContainer>
+        </CardContainer>
+    )
+};
 
 export default AlbumCard;

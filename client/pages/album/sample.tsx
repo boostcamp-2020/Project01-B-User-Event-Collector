@@ -5,42 +5,46 @@ import ContentsButtonGroup from '@components/organisms/ContentsButtonGroup';
 import CardListContainer from '@components/organisms/CardListContainer';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 
-const TrackDatas = Array(20).fill({
-    albumImgSrc: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906',
-    trackId: '1',
-    trackTitle: 'VVS (Feat. JUSTHIS) (Prod. GroovyRoom)',
-    artist: '미란이',
-    albumTitle: '쇼미더머니 9 Episode 1',
-    lyrics: '아직 없음ㅎ'
-});
-
 const albumData = 
 {
-    src: "https://musicmeta-phinf.pstatic.net/album/004/491/4491829.jpg?type=r360Fll&v=20200808020212",
-    title: "Rio Loves Tokyo Part 1",
-    artist: "김승민",
-    releasedDate: "2020.03.20",
-    genre: "랩/힙합",
-    description: `1. 10°0' 0° N 118°50 0° E (Feat. ASH ISLAND)
-    LYRICS BY 김승민, ASH ISLAND
-    COMPOSED BY 김승민, Minit, Chiic
-    ARRANGED BY Minit, Chiic
-    GUITAR BY Chiic
-    Mixed by 배재한 @등대사운드
-    Mastered by 배재한 @등대사운드
-        
-    2. MIA
-    LYRICS BY 김승민
-    COMPOSED BY 김승민, Minit, Chiic
-    ARRANGED BY Minit, Chiic
-    GUITAR BY Chiic
-    Mixed by 배재한 @등대사운드`
+    id: 11,
+    title: "그냥",
+    description: "이영지의 새로운 싱글앨범 <그냥>이 발매되었다.\n\n이번 곡은 아티스트 이영지가 그 동안 보여줘 왔던 기존 곡들과는 사뭇 다른 감성으로 우리에게 다가온다.\n\n2019년 11월 첫번째 발표곡 <암실>을 시작으로 약 6개월간 5곡의 작품을 발표한 이영지는 자신의 음악적 스펙트럼을 계속해서 확장해 나가며 다양한 음악을 우리에게 선사하고 있다.\n\n감성짙은 이번 싱글앨범 <그냥>은 우리에게 그녀의 또 다른 새로운 시작을 알리고 있다.",
+    releaseDate: "2020-05-07",
+    imageUrl: "https://musicmeta-phinf.pstatic.net/album/004/551/4551646.jpg",
+    artist: {
+        id: 3,
+        name: "이영지"
+    },
+    tracks: [
+        {
+            id: 4,
+            title: "그냥",
+            artist: {
+                id: 3,
+                name: "이영지"
+            },
+            album: {
+                id: 11,
+                title: "그냥",
+                imageUrl: "https://musicmeta-phinf.pstatic.net/album/004/551/4551646.jpg"
+            },
+            liked: 0
+        }
+    ]
 }
 
+const TrackDatas = albumData.tracks;
+
+
 const Artistdata = Array(9).fill({
-    name: '이영지',
-    src: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906',
-    href: 'localhost:3000',
+    id: 3,
+    name: "이영지",
+    imageUrl: "https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg",
+    genre: {
+        id: 1,
+        name: "랩/힙합"
+    }
 });
 
 const Container = styled.div`

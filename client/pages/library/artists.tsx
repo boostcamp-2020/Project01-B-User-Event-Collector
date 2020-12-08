@@ -3,9 +3,13 @@ import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHe
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
 
 const Artistdata = Array(9).fill({
-    name: '이영지',
-    src: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906',
-    href: '/artist/sample',
+    id: 3,
+    name: "이영지",
+    imageUrl: "https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg",
+    genre: {
+        id: 1,
+        name: "랩/힙합"
+    }
 });
 
 const LibraryContainer = styled.div`
