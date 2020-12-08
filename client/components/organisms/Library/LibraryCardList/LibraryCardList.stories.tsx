@@ -6,36 +6,49 @@ export default {
     component: LibraryCardList,
 };
 
-const MixtapesData = Array(9).fill({
-    src: 'https://vibeapp.music.naver.com/vibe/v1/cover/mix/3171155,2487724,3553414,635724/favorite/favorite/',
-    href: 'localhost:3000',
-    title: `최애 믹스테잎`,
-    artist: 'Lana Del Rey, 이영지, Dua Lipa',
-});
-
-const AritstData = Array(9).fill({
-    src: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg?type=ff300_300&v=20191231151906',
-    name: '이영지',
-    href: 'localhost:3000',
-});
-
 const AlbumData = Array(9).fill({
-    src: 'https://musicmeta-phinf.pstatic.net/album/004/491/4491829.jpg?type=r360Fll&v=20200808020212',
-    href: 'localhost:3000',
-    title: 'Rio Loves Tokyo Part 1',
-    artist: '김승민',
+    id: 11,
+    title: "그냥",
+    description: "이영지의 새로운 싱글앨범 <그냥>이 발매되었다.\n\n이번 곡은 아티스트 이영지가 그 동안 보여줘 왔던 기존 곡들과는 사뭇 다른 감성으로 우리에게 다가온다.\n\n2019년 11월 첫번째 발표곡 <암실>을 시작으로 약 6개월간 5곡의 작품을 발표한 이영지는 자신의 음악적 스펙트럼을 계속해서 확장해 나가며 다양한 음악을 우리에게 선사하고 있다.\n\n감성짙은 이번 싱글앨범 <그냥>은 우리에게 그녀의 또 다른 새로운 시작을 알리고 있다.",
+    releaseDate: "2020-05-07",
+    imageUrl: "https://musicmeta-phinf.pstatic.net/album/004/551/4551646.jpg",
+    artist: {
+        id: 3,
+        name: "이영지"
+    }
+});
+
+const MixtapeData = Array(9).fill({
+    id: 1,
+    title: "나를 위한 믹스테잎",
+    subTitle: "",
+    description: "Lana Del Rey, Dua Lipa, 이영지",
+    imageUrl: "https://vibeapp.music.naver.com/vibe/v1/cover/mix/3171155,2487724,3553414,635724/favorite/favorite/",
+    customized: false
 });
 
 const PlaylistData = Array(9).fill({
-    src: 'https://music-phinf.pstatic.net/20200504_183/1588567824216rHHs6_PNG/VIBE_%B0%F8%C5%EB_VibeAndChill.png',
-    href: 'localhost:3000',
-    title: 'VIBE 추천 플레이리스트',
-    description: 'VIBE',
+    id: 1,
+    title: "VIBE AND CHILL",
+    subTitle: "",
+    description: "VIBE",
+    imageUrl: "https://music-phinf.pstatic.net/20200504_183/1588567824216rHHs6_PNG/VIBE_%B0%F8%C5%EB_VibeAndChill.png",
+    customized: false
 });
 
-export const Mixtape = () => <LibraryCardList variant="mixtape" items={MixtapesData} />;
+const ArtistData = Array(9).fill({
+    id: 3,
+    name: "이영지",
+    imageUrl: "https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg",
+    genre: {
+        id: 1,
+        name: "랩/힙합"
+    }
+});
 
-export const Artist = () => <LibraryCardList variant="artist" items={AritstData} />;
+export const Mixtape = () => <LibraryCardList variant="mixtape" items={MixtapeData} />;
+
+export const Artist = () => <LibraryCardList variant="artist" items={ArtistData} />;
 
 export const Album = () => <LibraryCardList variant="album" items={AlbumData} />;
 
