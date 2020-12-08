@@ -48,11 +48,13 @@ const listById = async (req: Request, res: Response, next: NextFunction) => {
             .getOne();
 
         const relatedArtistIds = [...new Set(playlist?.tracks.map((track) => track.artist.id))];
-
-        const ArtistRepository = getRepository(Artist);
-        const relatedArtists = await ArtistRepository.createQueryBuilder('artist')
-            .where('artist.id IN (:relatedArtistIds)', { relatedArtistIds })
-            .getMany();
+        let relatedArtists: { id: number, name: string, imageUrl: string }[] = [];
+        if (relatedArtistIds.length > 0) {
+            const ArtistRepository = getRepository(Artist);
+            relatedArtists = await ArtistRepository.createQueryBuilder('artist')
+                .where('artist.id IN (:relatedArtistIds)', { relatedArtistIds })
+                .getMany();
+        }
 
         return res.json({ success: true, data: { ...playlist, relatedArtists } });
     } catch (err) {
