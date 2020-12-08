@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHeader';
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
-import axios from 'axios';
 import apiUrl from 'constants/apiUrl';
+import { request } from '@utils/apis';
 
 const LibraryContainer = styled.div`
     width: 100%;
@@ -39,15 +39,7 @@ const ArtistLibrary = ({ artistData }) => {
     });
 })*/
 export async function getServerSideProps() {
-    const response = await axios({
-        method: 'GET',
-        withCredentials: true,
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        url: apiUrl.libraryArtist,
-    });
-    const artistData = response.data.data;
+    const artistData = await request(apiUrl.libraryArtist);
     return {
         props: {
             artistData,
