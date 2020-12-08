@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:4500/api/';
+const baseUrl = 'http://localhost:4500/api';
 
 const apiUrl = {
     magazine: `${baseUrl}/magazines`,

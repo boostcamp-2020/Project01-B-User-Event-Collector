@@ -2,11 +2,10 @@ import styled from 'styled-components';
 
 import MainMagazineCard from '@components/organisms/Cards/MainMagazineCard/MainMagazineCard';
 import CardListContainer from '@components/organisms/CardListContainer';
-import { MagazineSort } from '@interfaces/props';
 import MagazineCardList from '@components/organisms/CardLists/MagazineList/MagazineList';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 import Link from 'next/link';
-import { fetchListData } from '../utils/apis';
+import { request } from '../utils/apis';
 import apiUrl from '../constants/apiUrl';
 
 const TodayContainer = styled.div`
@@ -93,18 +92,15 @@ const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata })
     );
 };
 
-/*export const getServerSideProps = wrapper.getServerSideProps((context) => {
-    constext.store.dispatch({
-        type: LOAD_USER_REQUEST,
-    });
-})*/
-
 export async function getStaticProps() {
-    const Magazinesdata = await fetchListData(apiUrl.magazine);
-    const Newsdata = await fetchListData(apiUrl.news);
-    const Playlistdata = await fetchListData(apiUrl.playlist);
-    const Albumdata = await fetchListData(apiUrl.album);
-    const Mixtapedata = await fetchListData(apiUrl.mixtape);
+    const [Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata] = await Promise.all([
+        request(apiUrl.magazine),
+        request(apiUrl.news),
+        request(apiUrl.playlist),
+        request(apiUrl.album),
+        request(apiUrl.mixtape),
+    ]);
+    // TODO: error handling
 
     return {
         props: {
@@ -113,7 +109,7 @@ export async function getStaticProps() {
             Playlistdata,
             Albumdata,
             Mixtapedata,
-        }, // will be passed to the page component as props
+        },
     };
 }
 
