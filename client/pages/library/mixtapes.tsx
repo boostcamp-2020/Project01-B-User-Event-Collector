@@ -1,15 +1,8 @@
 import styled from 'styled-components';
 import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHeader';
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
-
-const Mixtapedata = Array(9).fill({
-    id: 1,
-    title: "나를 위한 믹스테잎",
-    subTitle: "",
-    description: "Lana Del Rey, Dua Lipa, 이영지",
-    imageUrl: "https://vibeapp.music.naver.com/vibe/v1/cover/mix/3171155,2487724,3553414,635724/favorite/favorite/",
-    customized: false
-});
+import axios from 'axios';
+import apiUrl from 'constants/apiUrl';
 
 const LibraryContainer = styled.div`
     width: 100%;
@@ -27,14 +20,14 @@ const LibraryHeaderContainer = styled.div`
 
 const LibraryContentsContainer = styled.div``;
 
-const MixtapeLibrary = () => {
+const MixtapeLibrary = ({ mixtapeData }) => {
     return (
         <LibraryContainer>
             <LibraryHeaderContainer>
                 <LibraryHeader sort="mixtape" />
             </LibraryHeaderContainer>
             <LibraryContentsContainer>
-                <LibraryCardList variant="mixtape" items={Mixtapedata} />
+                <LibraryCardList variant="mixtape" items={mixtapeData} />
             </LibraryContentsContainer>
         </LibraryContainer>
     );
@@ -45,5 +38,20 @@ const MixtapeLibrary = () => {
         type: LOAD_USER_REQUEST,
     });
 })*/
-
+export async function getServerSideProps() {
+    const response = await axios({
+        method: 'GET',
+        withCredentials: true,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        url: apiUrl.libraryMixtape,
+    });
+    const mixtapeData = response.data.data;
+    return {
+        props: {
+            mixtapeData,
+        },
+    };
+}
 export default MixtapeLibrary;
