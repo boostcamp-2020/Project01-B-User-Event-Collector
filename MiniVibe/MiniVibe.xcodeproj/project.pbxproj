@@ -29,6 +29,8 @@
 		445D3A16257F35EC0002D2DE /* EventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D3A15257F35EC0002D2DE /* EventLogger.swift */; };
 		445D3A1C257F38620002D2DE /* ViewIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D3A1B257F38620002D2DE /* ViewIdentifier.swift */; };
 		445D3A22257F441B0002D2DE /* TransitionLogModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D3A21257F441B0002D2DE /* TransitionLogModifier.swift */; };
+		445D3A3B257FBF3D0002D2DE /* Mixtape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D3A3A257FBF3D0002D2DE /* Mixtape.swift */; };
+		445D3A3F257FC46D0002D2DE /* MixtapeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D3A3E257FC46D0002D2DE /* MixtapeSection.swift */; };
 		4466D2952578D8E000B65652 /* PlayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466D2942578D8E000B65652 /* PlayListView.swift */; };
 		4474DBFD2574DF78006FC827 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4474DBFC2574DF78006FC827 /* Player.swift */; };
 		4474DC002574E2C3006FC827 /* PlayerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4474DBFF2574E2C3006FC827 /* PlayerHeader.swift */; };
@@ -151,6 +153,8 @@
 		445D3A15257F35EC0002D2DE /* EventLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLogger.swift; sourceTree = "<group>"; };
 		445D3A1B257F38620002D2DE /* ViewIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewIdentifier.swift; sourceTree = "<group>"; };
 		445D3A21257F441B0002D2DE /* TransitionLogModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionLogModifier.swift; sourceTree = "<group>"; };
+		445D3A3A257FBF3D0002D2DE /* Mixtape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mixtape.swift; sourceTree = "<group>"; };
+		445D3A3E257FC46D0002D2DE /* MixtapeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixtapeSection.swift; sourceTree = "<group>"; };
 		4466D2942578D8E000B65652 /* PlayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListView.swift; sourceTree = "<group>"; };
 		4474DBFC2574DF78006FC827 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4474DBFF2574E2C3006FC827 /* PlayerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHeader.swift; sourceTree = "<group>"; };
@@ -291,7 +295,6 @@
 				8084AB6C256E403900F2AAC2 /* ThumbnailRow.swift */,
 				445919A3256E4A6F0069DAB2 /* ThumbnailGridView.swift */,
 				44139CBA25763C5F000CEEA5 /* ThumbnailGrid.swift */,
-				4478F71B256E858700755656 /* MixtapeGrid.swift */,
 				8084AB6F256E409B00F2AAC2 /* ThumbnailList.swift */,
 				4478F71F256E89EB00755656 /* ChartList.swift */,
 				8087AC7A256F3E4D001F6369 /* PlayerPreview.swift */,
@@ -327,6 +330,15 @@
 				44BD3F12257DF86B005861A1 /* ImageLoader.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		445D3A42257FC47A0002D2DE /* Mixtape */ = {
+			isa = PBXGroup;
+			children = (
+				4478F71B256E858700755656 /* MixtapeGrid.swift */,
+				445D3A3E257FC46D0002D2DE /* MixtapeSection.swift */,
+			);
+			path = Mixtape;
 			sourceTree = "<group>";
 		};
 		445E69232575E7B200C7BF21 /* Player */ = {
@@ -472,6 +484,7 @@
 				44219931256E7B2300ECF4A0 /* Today */,
 				445E69232575E7B200C7BF21 /* Player */,
 				8065E4B82577289C007F5990 /* Artist */,
+				445D3A42257FC47A0002D2DE /* Mixtape */,
 				8065E4C225772949007F5990 /* Album */,
 				4466D2932578D8CF00B65652 /* PlayList */,
 				80A52148257918D90051A925 /* Search */,
@@ -570,6 +583,7 @@
 				44BD3F20257E0015005861A1 /* Magazines.swift */,
 				800FA866257E003D008926A5 /* Playlists.swift */,
 				80D02E07257E0E0D00A6748F /* News.swift */,
+				445D3A3A257FBF3D0002D2DE /* Mixtape.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -843,6 +857,8 @@
 				80EB9FF5256DE8A300CD99FD /* Today.swift in Sources */,
 				44139CB525763960000CEEA5 /* ArtistAlbumGridView.swift in Sources */,
 				80813997257E657A00A5B6AD /* MagazineView.swift in Sources */,
+				445D3A3F257FC46D0002D2DE /* MixtapeSection.swift in Sources */,
+				445D3A3B257FBF3D0002D2DE /* Mixtape.swift in Sources */,
 				445919B1256E5CEA0069DAB2 /* StationStack.swift in Sources */,
 				4478F720256E89EB00755656 /* ChartList.swift in Sources */,
 				800FA855257DD72B008926A5 /* TodayViewModel.swift in Sources */,

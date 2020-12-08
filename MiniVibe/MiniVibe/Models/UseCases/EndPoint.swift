@@ -8,6 +8,7 @@
 import Foundation
 
 enum EndPoint {
+    case mixtapes
     case albums
     case album(id: Int)
     case tracks
@@ -20,6 +21,8 @@ enum EndPoint {
     
     private var path: String {
         switch self {
+        case .mixtapes:
+            return "/api/mixtapes"
         case .albums:
             return "/api/albums"
         case let .album(id):
