@@ -45,10 +45,9 @@ export async function getServerSideProps() {
         headers: {
             'Content-Type': 'application/json',
         },
-        url: apiUrl.libraryAlbum,
+        url: apiUrl.libraryArtist,
     });
     const artistData = response.data.data;
-    console.log(artistData);
     return {
         props: {
             artistData,
