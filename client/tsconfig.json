@@ -23,6 +23,7 @@
           "components/*"
       ],
       "@utils/*":["utils/*"],
+      "@constants/*":["constants/*"],
       "@hooks/*":["hooks/*"],
       "@stores/*":["stores/*"],
       "@interfaces/*":["interfaces/*"]
@@ -31,7 +32,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx", "utils/apis.js"
   ],
   "exclude": [
     "node_modules"

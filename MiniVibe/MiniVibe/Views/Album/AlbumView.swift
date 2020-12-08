@@ -12,10 +12,17 @@ struct AlbumView: View {
         self.id = id
     }
     
+    @EnvironmentObject private var eventLogger: EventLogger
     @StateObject private var viewModel = AlbumViewModel()
     private let id: Int
     
     var body: some View {
+        content
+            .logTransition(eventLogger: eventLogger, identifier: .album(id: id))
+    }
+    
+    @ViewBuilder
+    private var content: some View {
         if let album = viewModel.album {
             GeometryReader { geometry in
                 let width: CGFloat = geometry.size.width
@@ -84,9 +91,7 @@ struct AlbumView: View {
                         case .album:
                             AlbumMenu(album: album)
                         case let .track(info):
-                            PlayerMenu(title: info.title,
-                                       subtitle: album.artist.name,
-                                       imageURL: album.imageUrl)
+                            PlayerMenu(track: info)
                         }
                     }
                 }

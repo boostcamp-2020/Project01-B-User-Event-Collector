@@ -14,7 +14,6 @@ struct PlayerSliderView: View {
     let totalDuration: String = "3:21"
     @State private var playbackTime: String? = "0:00"
     @Binding var isOpenMenu: Bool
-    @EnvironmentObject var nowPlaying: NowPlaying
     
     var body: some View {
         GeometryReader { geometry in
@@ -42,12 +41,6 @@ struct PlayerSliderView: View {
                     Text(artist)
                         .font(.system(size: 16))
                         .foregroundColor(.secondary)
-                }
-                .onTapGesture {
-                    nowPlaying.isPlayerOpen = false
-                    if nowPlaying.setDestination(.artist) {
-                        nowPlaying.isNavigationActive = true
-                    }
                 }
                 
                 Spacer()
