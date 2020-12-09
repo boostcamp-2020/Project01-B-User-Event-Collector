@@ -23,6 +23,7 @@ export const contentType = {
 
 export const dataType = {
     magaznie: 'magazine',
+    news: 'news',
     album: 'album',
     artist: 'artist',
     mixtape: 'mixtape',
