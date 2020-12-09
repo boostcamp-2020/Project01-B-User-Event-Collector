@@ -8,6 +8,6 @@ interface ComponentInfo {
     };
 }
 
-const ComponentInfoContext = createContext<ComponentInfo | null>(null);
+const ComponentInfoContext = createContext<ComponentInfo>({ componentId: '' });
 
 export default ComponentInfoContext;

@@ -4,6 +4,11 @@ export const page = {
 
 export const contentType = {
     magaznie: 'magazine',
+    news: 'news',
+    recommendedPlaylist: 'recommended-playlist',
+    customizedPlaylist: 'customized-playlist',
+    mixtape: 'mixtape',
+    customizedAlbum: 'customzied-album',
 };
 
 export const dataType = {
