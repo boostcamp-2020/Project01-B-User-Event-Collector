@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct ThumbnailRow: View {
     let imageURL: String
@@ -14,7 +15,8 @@ struct ThumbnailRow: View {
     
     var body: some View {
         HStack(spacing: 15) {
-            AsyncImage(urlString: imageURL)
+            KFImage(URL(string: imageURL))
+                .resizable()
                 .frame(width: 80, height: 80)
             
             VStack(alignment: .leading, spacing: 5) {

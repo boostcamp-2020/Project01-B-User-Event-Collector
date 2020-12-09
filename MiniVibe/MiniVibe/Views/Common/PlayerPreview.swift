@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct PlayerPreview: View {
     @EnvironmentObject private var nowPlaying: NowPlaying
@@ -34,7 +35,8 @@ struct PlayerPreview: View {
     }
     
     @ViewBuilder private func playingTrackInfo() -> some View {
-        AsyncImage(urlString: nowPlaying.playingTrack?.album.imageUrl ?? "")
+        KFImage(URL(string: nowPlaying.playingTrack?.album.imageUrl ?? ""))
+            .resizable()
             .frame(width: height, height: height)
         
         VStack(alignment: .leading) {
