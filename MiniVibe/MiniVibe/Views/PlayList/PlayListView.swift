@@ -21,7 +21,7 @@ struct PlayListView: View {
                 let width: CGFloat = geometry.size.width
                 if viewModel.isOpenArticle {
                     Article(isOpenArticle: $viewModel.isOpenArticle,
-                            imageURL: playlist.imageUrl ?? "",
+                            imageURL: playlist.imageUrl,
                             title: playlist.title,
                             subtitle: playlist.subTitle ?? "",
                             content: playlist.description ?? "")
@@ -30,7 +30,7 @@ struct PlayListView: View {
                         VStack(spacing: 36) {
                             VStack {
                                 PlaylistAlbumInfo(isOpenArticle: $viewModel.isOpenArticle,
-                                                  imageURL: playlist.imageUrl ?? "",
+                                                  imageURL: playlist.imageUrl ,
                                                   title: playlist.title,
                                                   subtitle: playlist.subTitle ?? "",
                                                   description: "",

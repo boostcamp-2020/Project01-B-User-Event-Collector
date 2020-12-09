@@ -38,7 +38,7 @@ struct PlayListSection<D: View>: View {
                             label: {
                                 ThumbnailItem(title: playlist.title,
                                               subtitle: playlist.subTitle ?? "",
-                                              imageURL: playlist.imageUrl ?? "")
+                                              imageURL: playlist.imageUrl)
                                     .frame(width: width * .thumbnailRatio)
                             }
                         )

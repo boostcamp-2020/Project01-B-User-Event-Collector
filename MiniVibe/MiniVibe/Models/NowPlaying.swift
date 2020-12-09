@@ -18,7 +18,7 @@ class NowPlaying: ObservableObject {
 struct UpNextTrack: Hashable {
     let id: Int
     let title: String
-    let artist: Artist
+    let artist: TrackInfo.Artist
     let imageUrl: String
     
     func hash(into hasher: inout Hasher) {
