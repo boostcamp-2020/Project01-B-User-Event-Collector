@@ -109,7 +109,6 @@
 		80D02E04257E0DD300A6748F /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D02E03257E0DD300A6748F /* SearchUseCase.swift */; };
 		80D02E08257E0E0D00A6748F /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D02E07257E0E0D00A6748F /* News.swift */; };
 		80D02E10257E0EFF00A6748F /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D02E0F257E0EFF00A6748F /* NewsItem.swift */; };
-		80DA951D25779F52008C9DFF /* Image+TrackRowConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DA951C25779F52008C9DFF /* Image+TrackRowConfigure.swift */; };
 		80DA952125779FE9008C9DFF /* TrackRowB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DA952025779FE9008C9DFF /* TrackRowB.swift */; };
 		80DA95252577A084008C9DFF /* TrackRowC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DA95242577A084008C9DFF /* TrackRowC.swift */; };
 		80DA95332577A681008C9DFF /* TrackRowD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DA95322577A681008C9DFF /* TrackRowD.swift */; };
@@ -243,7 +242,6 @@
 		80D02E03257E0DD300A6748F /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
 		80D02E07257E0E0D00A6748F /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		80D02E0F257E0EFF00A6748F /* NewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
-		80DA951C25779F52008C9DFF /* Image+TrackRowConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+TrackRowConfigure.swift"; sourceTree = "<group>"; };
 		80DA952025779FE9008C9DFF /* TrackRowB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRowB.swift; sourceTree = "<group>"; };
 		80DA95242577A084008C9DFF /* TrackRowC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRowC.swift; sourceTree = "<group>"; };
 		80DA95322577A681008C9DFF /* TrackRowD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRowD.swift; sourceTree = "<group>"; };
@@ -376,7 +374,6 @@
 			isa = PBXGroup;
 			children = (
 				4478F716256E817100755656 /* CGFloat+Constant.swift */,
-				80DA951C25779F52008C9DFF /* Image+TrackRowConfigure.swift */,
 				80A5215B25793A3E0051A925 /* View+dismissKeyboard.swift */,
 				44B22A70257E50D20068A11B /* EnvironmentValues+ImageCache.swift */,
 			);
@@ -854,7 +851,6 @@
 				4474DBFD2574DF78006FC827 /* Player.swift in Sources */,
 				805E28D3256BDC4A007AF5F1 /* TrackRowA.swift in Sources */,
 				80C6207A256CF21600B5C375 /* StationItem.swift in Sources */,
-				80DA951D25779F52008C9DFF /* Image+TrackRowConfigure.swift in Sources */,
 				44D5FAC2257FD89E00A3E91C /* ArtistUseCase.swift in Sources */,
 				80FA4433257640330092D25D /* PlaylistAlbumInfo.swift in Sources */,
 				441357EA25764C8900DC0746 /* ArtistView.swift in Sources */,

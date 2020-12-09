@@ -41,7 +41,7 @@ final class PlaylistViewModel: ObservableObject {
     }
     
     private func load(playlistID: Int) {
-        useCase.loadAlbum(with: playlistID)
+        useCase.loadPlaylist(with: playlistID)
             .sink { _ in
 
             } receiveValue: { [weak self] playlist in
