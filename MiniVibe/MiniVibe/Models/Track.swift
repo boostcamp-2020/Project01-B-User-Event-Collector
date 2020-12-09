@@ -7,6 +7,17 @@
 
 import Foundation
 
+let trackinfo: TrackInfo = TrackInfo(id: 0,
+                                     title: "작은 방 (Feat.아이유)",
+                                     lyrics: "",
+                                     albumId: 0,
+                                     album:
+                                        TrackAlbum(id: 0,
+                                                   title: "",
+                                                   imageUrl: ""),
+                                     artist: TrackInfo.Artist(id: 1,
+                                                              name: "스윗소로우"))
+
 struct TrackResponse: Decodable {
     let data: [TrackInfo]
 }
