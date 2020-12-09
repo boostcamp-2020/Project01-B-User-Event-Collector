@@ -16,11 +16,25 @@ struct PlayerMenu: View {
         VStack(spacing: 36) {
             Spacer()
             MenuThumbnailButton()
-            MenuButton(type: .like(nowPlaying.playingTrack?.liked ?? 0))
-            MenuButton(type: .exclude)
-            MenuButton(type: .download(.music))
-            MenuButton(type: .addToPlaylist)
-            MenuButton(type: .share)
+            MenuButton(type: .like(nowPlaying.playingTrack?.liked ?? 0)) {
+                if nowPlaying.playingTrack?.liked == 1 {
+                    nowPlaying.cancelLikedTrack(id: nowPlaying.playingTrack?.id ?? 0)
+                } else {
+                    nowPlaying.likeTrack(id: nowPlaying.playingTrack?.id ?? 0)
+                }
+            }
+            MenuButton(type: .exclude) {
+                
+            }
+            MenuButton(type: .download(.music)) {
+                
+            }
+            MenuButton(type: .addToPlaylist) {
+                
+            }
+            MenuButton(type: .share) {
+                
+            }
             MenuCloseButton {
                 presentationMode.wrappedValue.dismiss()
             }

@@ -16,10 +16,18 @@ struct AlbumMenu: View {
         VStack(spacing: 36) {
             Spacer()
             MenuThumbnailButton()
-            MenuButton(type: .download(.album))
-            MenuButton(type: .like(0))
-            MenuButton(type: .addToPlaylist)
-            MenuButton(type: .share)
+            MenuButton(type: .download(.album)) {
+                
+            }
+            MenuButton(type: .like(0)) {
+                
+            }
+            MenuButton(type: .addToPlaylist) {
+                
+            }
+            MenuButton(type: .share) {
+                
+            }
             MenuCloseButton {
                 presentationMode.wrappedValue.dismiss()
             }

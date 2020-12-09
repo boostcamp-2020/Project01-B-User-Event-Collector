@@ -64,10 +64,16 @@ struct MenuButton: View {
     }
     
     let type: MenuButtonType
+    let action: () -> Void
+    
+    init(type: MenuButtonType, action: @escaping () -> Void) {
+        self.type = type
+        self.action = action
+    }
     
     var body: some View {
         Button {
-            
+            action()
         } label: {
             HStack(spacing: 0) {
                 Image(systemName: type.imageName)
@@ -88,6 +94,6 @@ struct MenuButton: View {
 
 struct MenuButton_Previews: PreviewProvider {
     static var previews: some View {
-        MenuButton(type: .like(1))
+        MenuButton(type: .like(0), action: {})
     }
 }
