@@ -39,26 +39,33 @@ struct PlayerPreview: View {
     }
     
     @ViewBuilder private func playingTrackInfo() -> some View {
-        var image: UIImage = UIImage(named: "placeholder") ?? UIImage()
-        var title: String = "What's on today?"
-        var artist: String = "Tap the play button"
-        if !nowPlaying.upNext.isEmpty {
-            // 현재 재생 곡에 해당하는 image, title, subtitle
-        }
         
-        Image(uiImage: image)
-            .resizable()
-            .aspectRatio(1, contentMode: .fit)
-            .frame(height: height)
+//        var imageUrl = "placeholder"
+//        var title = "What's on today?"
+//        var artist = "Tap the play button"
+//
+//        if !nowPlaying.upNext.isEmpty {
+//            let firstTrack = nowPlaying.upNext[0]
+//            imageUrl = firstTrack.album.imageUrl
+//            title = firstTrack.title
+//            artist = firstTrack.artist.name
+//        }
         
-        VStack(alignment: .leading) {
-            Text(title)
-                .font(.system(size: 15))
+       
+        
+            AsyncImage(urlString: nowPlaying.upNext.first?.album.imageUrl ?? "")
+                .frame(width: height, height: height)
             
-            Text(artist)
-                .font(.system(size: 12))
-                .foregroundColor(.secondary)
-        }
+            VStack(alignment: .leading) {
+                Text(nowPlaying.upNext.first?.title ?? "What's on today?")
+                    .font(.system(size: 15))
+                
+                Text(nowPlaying.upNext.first?.artist.name ?? "Tap the play button")
+                    .font(.system(size: 12))
+                    .foregroundColor(.secondary)
+            }
+        
+        
     }
 
     private func previewControlIcons() -> some View {

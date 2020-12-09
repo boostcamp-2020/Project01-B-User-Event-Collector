@@ -15,12 +15,9 @@ class NowPlaying: ObservableObject {
     @Published var selectedTracks = Set<TrackInfo>()
     
     func addTrack(track: TrackInfo) {
-        if !upNext.contains(track) {
-            upNext.append(track)
+        if let index = upNext.firstIndex(of: track) {
+            upNext.insert(upNext.remove(at: index), at: 0)
         } else {
-            if let index = upNext.firstIndex(of: track) {
-                upNext.remove(at: index)
-            }
             upNext.insert(track, at: 0)
         }
     }
