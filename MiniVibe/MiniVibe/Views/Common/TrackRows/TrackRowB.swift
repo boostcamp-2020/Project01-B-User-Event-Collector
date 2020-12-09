@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct TrackRowB: View {
     @EnvironmentObject private var nowPlaying: NowPlaying
@@ -14,7 +15,8 @@ struct TrackRowB: View {
     var body: some View {
         HStack {
             NavigationLink(destination: AlbumView(id: track.albumId ?? 0)) {
-                AsyncImage(urlString: track.album.imageUrl)
+                KFImage(URL(string: track.album.imageUrl))
+                    .resizable()
                     .frame(width: 50, height: 50)
                     .border(Color.gray, width: 0.7)
             }

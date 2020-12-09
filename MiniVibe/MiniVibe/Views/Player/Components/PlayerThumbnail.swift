@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct PlayerThumbnail: View {
     let image: String
@@ -15,7 +16,7 @@ struct PlayerThumbnail: View {
     
     var body: some View {
         VStack {
-            Image(image)
+            KFImage(URL(string: image))
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .scaleEffect(isPlaying ? 1 : 0.9)

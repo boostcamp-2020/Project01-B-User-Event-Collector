@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct NewsItem: View {
     let width: CGFloat
@@ -15,7 +16,7 @@ struct NewsItem: View {
         VStack(alignment: .trailing, spacing: width * .spacingRatio) {
             // VStack 선택시 news url로 가게 될텐데, 그럴려면 news 전체를 받아오면 되고
             VStack {
-                AsyncImage(urlString: news.imageUrl)
+                KFImage(URL(string: news.imageUrl))
                     .aspectRatio(3, contentMode: .fit)
                 
                 Text(news.title)

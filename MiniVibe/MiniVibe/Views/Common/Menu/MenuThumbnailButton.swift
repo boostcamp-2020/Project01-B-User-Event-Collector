@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct MenuThumbnailButton: View {
     init(title: String, subtitle: String? = nil, imageURL: String) {
@@ -20,7 +21,8 @@ struct MenuThumbnailButton: View {
     
     var body: some View {
         HStack {
-            AsyncImage(urlString: imageURL)
+            KFImage(URL(string: imageURL))
+                .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 80)
             VStack(alignment: .leading,

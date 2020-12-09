@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct UpNextList: View {
     init() {
@@ -38,7 +39,8 @@ struct UpNextList: View {
                 List(selection: $nowPlaying.selectedTracks) {
                     ForEach(nowPlaying.upNext, id: \.self) { track in
                         HStack(spacing: 10) {
-                            AsyncImage(urlString: track.album.imageUrl)
+                            KFImage(URL(string: track.album.imageUrl))
+                                .resizable()
                                 .frame(width: 50, height: 50)
                             VStack(alignment: .leading) {
                                 Text(track.title)

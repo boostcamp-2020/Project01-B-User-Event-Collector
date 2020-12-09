@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct ArtistItem: View {
     let artist: Artist
     
     var body: some View {
         VStack {
-            AsyncImage(urlString: artist.imageUrl)
+            KFImage(URL(string: artist.imageUrl))
+                .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .clipShape(Circle())
             
