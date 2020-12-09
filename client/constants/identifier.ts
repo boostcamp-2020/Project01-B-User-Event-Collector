@@ -1,6 +1,10 @@
 export const page = {
     today: 'today',
     libraryAlbum: 'library-album',
+    libraryArtist: 'library-artist',
+    libraryMixtape: 'library-mixtape',
+    libraryPlaylist: 'library-playlist',
+    libraryTrack: 'library-track',
 };
 
 export const contentType = {
@@ -12,6 +16,9 @@ export const contentType = {
     mixtape: 'mixtape',
     customizedAlbum: 'customzied-album',
     album: 'album',
+    artist: 'artist',
+    playlist: 'playlist',
+    track: 'track',
 };
 
 export const dataType = {
@@ -19,4 +26,5 @@ export const dataType = {
     album: 'album',
     artist: 'artist',
     mixtape: 'mixtape',
+    playlist: 'playlist',
 };

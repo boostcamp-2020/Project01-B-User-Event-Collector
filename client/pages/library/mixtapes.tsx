@@ -3,6 +3,9 @@ import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHe
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
 import apiUrl from 'constants/apiUrl';
 import { request } from '@utils/apis';
+import ComponentInfoContext from '@utils/context/ComponentInfoContext';
+import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
+import { page, contentType } from '@constants/identifier';
 
 const LibraryContainer = styled.div`
     width: 100%;
@@ -22,14 +25,18 @@ const LibraryContentsContainer = styled.div``;
 
 const MixtapeLibrary = ({ mixtapeData }) => {
     return (
-        <LibraryContainer>
-            <LibraryHeaderContainer>
-                <LibraryHeader sort="mixtape" />
-            </LibraryHeaderContainer>
-            <LibraryContentsContainer>
-                <LibraryCardList variant="mixtape" items={mixtapeData} />
-            </LibraryContentsContainer>
-        </LibraryContainer>
+        <ComponentInfoContext.Provider value={{ componentId: page.libraryMixtape }}>
+            <LibraryContainer>
+                <LibraryHeaderContainer>
+                    <LibraryHeader sort="mixtape" />
+                </LibraryHeaderContainer>
+                <LibraryContentsContainer>
+                    <ComponentInfoWrapper componentId={contentType.mixtape}>
+                        <LibraryCardList variant="mixtape" items={mixtapeData} />
+                    </ComponentInfoWrapper>
+                </LibraryContentsContainer>
+            </LibraryContainer>
+        </ComponentInfoContext.Provider>
     );
 };
 

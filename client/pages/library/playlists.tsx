@@ -3,6 +3,9 @@ import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHe
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
 import apiUrl from 'constants/apiUrl';
 import { request } from '@utils/apis';
+import ComponentInfoContext from '@utils/context/ComponentInfoContext';
+import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
+import { page, contentType } from '@constants/identifier';
 
 const LibraryContainer = styled.div`
     width: 100%;
@@ -22,14 +25,18 @@ const LibraryContentsContainer = styled.div``;
 
 const PlaylistLibrary = ({ playlistData }) => {
     return (
-        <LibraryContainer>
-            <LibraryHeaderContainer>
-                <LibraryHeader sort="playlist" />
-            </LibraryHeaderContainer>
-            <LibraryContentsContainer>
-                <LibraryCardList variant="playlist" items={playlistData} />
-            </LibraryContentsContainer>
-        </LibraryContainer>
+        <ComponentInfoContext.Provider value={{ componentId: page.libraryPlaylist }}>
+            <LibraryContainer>
+                <LibraryHeaderContainer>
+                    <LibraryHeader sort="playlist" />
+                </LibraryHeaderContainer>
+                <LibraryContentsContainer>
+                    <ComponentInfoWrapper componentId={contentType.playlist}>
+                        <LibraryCardList variant="playlist" items={playlistData} />
+                    </ComponentInfoWrapper>
+                </LibraryContentsContainer>
+            </LibraryContainer>
+        </ComponentInfoContext.Provider>
     );
 };
 
