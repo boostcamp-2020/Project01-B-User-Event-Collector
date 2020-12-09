@@ -11,12 +11,21 @@ final class TodayViewModel: ObservableObject {
     private let useCase = TodayUseCase()
     private var cancellables = Set<AnyCancellable>()
     
+    @Published var mixtapes = [Mixtape]()
     @Published var albums = [Album]()
     @Published var tracks = [TrackInfo]()
     @Published var playlists = [Playlist]()
     @Published var magazines = [Magazine]()
     
     func load() {
+        useCase.loadMixtapes()
+            .sink { _ in
+                
+            } receiveValue: { [weak self] mixtapes in
+                self?.mixtapes = mixtapes
+            }
+            .store(in: &cancellables)
+        
         useCase.loadAlbums()
             .sink { _ in
                 // error 처리

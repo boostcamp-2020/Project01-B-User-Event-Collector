@@ -20,6 +20,22 @@ struct TodayUseCase {
         self.network = network
     }
     
+    func loadMixtapes() -> AnyPublisher<[Mixtape], UseCaseError> {
+        return network.request(url: EndPoint.mixtapes.urlString)
+            .decode(type: Mixtapes.self, decoder: JSONDecoder())
+            .mapError { error -> UseCaseError in
+                switch error {
+                case is NetworkError:
+                    return .networkError
+                default:
+                    return .decodingError
+                }
+            }
+            .map(\.data)
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     func loadAlbums() -> AnyPublisher<[Album], UseCaseError> {
         return network.request(url: EndPoint.albums.urlString)
             .decode(type: Albums.self, decoder: JSONDecoder())
