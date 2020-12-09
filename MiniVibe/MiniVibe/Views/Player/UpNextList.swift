@@ -38,7 +38,7 @@ struct UpNextList: View {
                 List(selection: $nowPlaying.selectedTracks) {
                     ForEach(nowPlaying.upNext, id: \.self) { track in
                         HStack(spacing: 10) {
-                            AsyncImage(urlString: track.imageUrl)
+                            AsyncImage(urlString: track.album.imageUrl)
                                 .frame(width: 50, height: 50)
                             VStack(alignment: .leading) {
                                 Text(track.title)
@@ -87,8 +87,11 @@ struct UpNextList: View {
     }
     
     private func onMove(source: IndexSet, destination: Int) {
+        var destinationIndex: Int = 0
         nowPlaying.upNext.move(fromOffsets: source, toOffset: destination)
-        print("source \(source.first!) -> destination \(destination)")
+        guard let sourceIndex = source.first else { return }
+        destinationIndex = sourceIndex < destination ?  destination - 1 : destination
+        print("source \(sourceIndex) -> destination \(destinationIndex)")
     }
     
     @ViewBuilder
