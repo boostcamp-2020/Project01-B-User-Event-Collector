@@ -37,7 +37,7 @@ const LibraryArtistThumbnail = (data: LibraryArtistThumbnailProps) => {
             <ArtistLikeButtonContainer>
                 <ArtistLikeButton />
             </ArtistLikeButtonContainer>
-            <Link href={`/artists/${id}`}>
+            <Link href={`/artist/${id}`}>
                 <ArtistName>{name}</ArtistName>
             </Link>
         </Card>

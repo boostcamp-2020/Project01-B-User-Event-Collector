@@ -45,11 +45,11 @@ const MixtapeCard = (data: MixtapeCardProps) => {
     return (
         <CardContainer>
             <ThumbnailContainer>
-                <ContentsThumbnail src={imageUrl} href={'/playlists/' + id} sort="" />
+                <ContentsThumbnail src={imageUrl} href={'/playlist/' + id} sort="" />
             </ThumbnailContainer>
             <TextContainer>
                 <TitelContainer>
-                    <StyledA href={'/playlists/' + id}>{title}</StyledA>
+                    <StyledA href={'/playlist/' + id}>{title}</StyledA>
                 </TitelContainer>
                 <DescriptionContainer>
                     <StyledText variant="primary">{subTitle}</StyledText>
