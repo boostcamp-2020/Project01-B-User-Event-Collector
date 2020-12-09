@@ -28,4 +28,5 @@ export const dataType = {
     artist: 'artist',
     mixtape: 'mixtape',
     playlist: 'playlist',
+    track: 'track',
 };
