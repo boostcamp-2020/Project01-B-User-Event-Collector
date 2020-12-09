@@ -62,7 +62,10 @@ struct PlayerPreview: View {
             .foregroundColor(.black)
             
             Button {
-                
+                nowPlaying.playNextTrack()
+                if !nowPlaying.isPlaying {
+                    nowPlaying.isPlaying = true
+                }
             } label: {
                 Image(systemName: "forward.fill")
             }

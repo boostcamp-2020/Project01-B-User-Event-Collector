@@ -13,6 +13,7 @@ final class EventLogger: ObservableObject {
         case appear(identifier: ViewIdentifier)
         case disAppear(identifier: ViewIdentifier)
         case tabViewTransition(current: ViewIdentifier, destination: ViewIdentifier)
+        
     }
 
     @Published var tabViewSelection: ViewIdentifier = .today {

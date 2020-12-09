@@ -24,4 +24,9 @@ class NowPlaying: ObservableObject {
             upNext.insert(track, at: 0)
         }
     }
+    
+    func playNextTrack() {
+        upNext.insert(upNext.remove(at: 0), at: upNext.count)
+    }
+
 }
