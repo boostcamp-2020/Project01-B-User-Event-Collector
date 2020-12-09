@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct ArtistMenu: View {
     @Environment(\.presentationMode) var presentationMode
@@ -15,7 +16,8 @@ struct ArtistMenu: View {
         VStack(spacing: 36) {
             Spacer()
             HStack {
-                AsyncImage(urlString: artist.imageUrl)
+                KFImage(URL(string: artist.imageUrl))
+                    .resizable()
                     .aspectRatio(1, contentMode: .fit)
                     .frame(width: 80)
                     .clipShape(Circle())

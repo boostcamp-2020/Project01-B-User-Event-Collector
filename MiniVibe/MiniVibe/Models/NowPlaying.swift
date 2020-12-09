@@ -13,15 +13,20 @@ class NowPlaying: ObservableObject {
     @Published var isPlayerPresented: Bool = false
     @Published var upNext = [TrackInfo]()
     @Published var selectedTracks = Set<TrackInfo>()
+    var playingTrack: TrackInfo? {
+        return upNext.first
+    }
     
     func addTrack(track: TrackInfo) {
-        if !upNext.contains(track) {
-            upNext.append(track)
+        if let index = upNext.firstIndex(of: track) {
+            upNext.insert(upNext.remove(at: index), at: 0)
         } else {
-            if let index = upNext.firstIndex(of: track) {
-                upNext.remove(at: index)
-            }
             upNext.insert(track, at: 0)
         }
     }
+    
+    func playNextTrack() {
+        upNext.insert(upNext.remove(at: 0), at: upNext.count)
+    }
+
 }
