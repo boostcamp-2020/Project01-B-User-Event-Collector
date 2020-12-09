@@ -43,9 +43,7 @@ struct PlayListView: View {
                                 ) {
                                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
                                         ForEach(playlist.tracks ?? [], id: \.id) { track in
-                                            TrackRowC(title: "Dynamite",
-                                                      artist: "방탄소년단"
-                                            ) {
+                                            TrackRowC(track: track) {
                                                 viewModel.send(.showTrackMenu(info: track))
                                             }
                                         }

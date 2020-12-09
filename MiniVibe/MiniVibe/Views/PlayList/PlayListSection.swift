@@ -26,6 +26,7 @@ struct PlayListSection<D: View>: View {
         VStack(spacing: 8) {
             SectionTitle(width: width, title: title, destination: destination)
             
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {
                     ForEach(playlists, id: \.id) { playlist in

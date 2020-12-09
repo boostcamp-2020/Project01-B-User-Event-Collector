@@ -51,10 +51,7 @@ struct AlbumView: View {
                                     ) {
                                         Section(header: PlayAndShuffle(width: geometry.size.width)) {
                                             ForEach(tracks, id: \.id) { track in
-                                                TrackRowD(order: 1,
-                                                          title: track.title,
-                                                          artist: album.artist.name
-                                                ) {
+                                                TrackRowD(track: track, order: 1) {
                                                     viewModel.send(.showTrackMenu(info: track))
                                                 }
                                             }

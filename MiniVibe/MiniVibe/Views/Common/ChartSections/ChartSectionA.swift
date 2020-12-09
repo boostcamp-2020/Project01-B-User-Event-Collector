@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChartSectionA: View {
+    @EnvironmentObject private var nowPlaying: NowPlaying
     @EnvironmentObject private var eventLogger: EventLogger
     let width: CGFloat
     let title: String
@@ -25,6 +26,7 @@ struct ChartSectionA: View {
                 LazyHGrid(rows: .init(repeating: .init(.flexible(minimum: 60)), count: 5)) {
                     ForEach(tracks, id: \.id) { track in
                         TrackRowB(track: track)
+                            
                     }
                     .frame(width: width * .sectionRatio)
                 }
