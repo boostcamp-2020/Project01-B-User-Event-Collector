@@ -56,8 +56,7 @@ struct MainTab: View {
                     }
                 }
                 .sheet(isPresented: $nowPlaying.isPlayerPresented) {
-                    PlayerView(title: "Dynamite",
-                               artist: "방탄소년단")
+                    PlayerView()
                 }
         )
     }

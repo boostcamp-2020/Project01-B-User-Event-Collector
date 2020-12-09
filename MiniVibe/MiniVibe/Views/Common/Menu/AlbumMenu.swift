@@ -15,9 +15,7 @@ struct AlbumMenu: View {
     var body: some View {
         VStack(spacing: 36) {
             Spacer()
-            MenuThumbnailButton(title: album.title,
-                                subtitle: album.artist.name,
-                                imageURL: album.imageUrl)
+            MenuThumbnailButton()
             MenuButton(type: .download(.album))
             MenuButton(type: .like(false))
             MenuButton(type: .addToPlaylist)

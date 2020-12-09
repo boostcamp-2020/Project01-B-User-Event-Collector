@@ -27,7 +27,6 @@ struct PlayerThumbnail: View {
                 .onTapGesture {
                     isOpenLyrics = true
                 }
-            
         }
     }
 }

@@ -14,9 +14,7 @@ struct PlayerMenu: View {
     var body: some View {
         VStack(spacing: 36) {
             Spacer()
-            MenuThumbnailButton(title: track.title,
-                                subtitle: track.artist.name,
-                                imageURL: track.album.imageUrl)
+            MenuThumbnailButton()
             MenuButton(type: .like(true))
             MenuButton(type: .exclude)
             MenuButton(type: .download(.music))
