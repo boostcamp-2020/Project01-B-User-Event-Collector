@@ -29,14 +29,14 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
             .leftJoinAndSelect('artist.albums', 'album')
             .leftJoinAndSelect('track.artist', 'track_artist')
             .leftJoinAndSelect('track.album', 'track_album')
+            .leftJoinAndSelect('album.artist', 'album_artist')
             .loadRelationCountAndMap('track.liked', 'track.likeUsers', 'user',
                 (qb) => qb.andWhere('user.id = :userId', { userId }))
             .where('artist.id = :id', { id })
             .select([
                 'artist',
                 'track',
-                'album.id',
-                'album.title',
+                'album',
                 'genre.name',
                 'album.imageUrl',
                 'track_album.id',
@@ -44,6 +44,8 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
                 'track_album.imageUrl',
                 'track_artist.id',
                 'track_artist.name',
+                'album_artist.id',
+                'album_artist.name',
             ])
             .getOne();
 
