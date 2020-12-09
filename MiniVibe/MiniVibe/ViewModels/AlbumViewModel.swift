@@ -11,12 +11,12 @@ final class AlbumViewModel: ObservableObject {
     enum Input {
         case appear(albumID: Int)
         case showAlbumMenu
-        case showTrackMenu(info: Track)
+        case showTrackMenu(info: TrackInfo)
     }
     
     enum ActiveSheet {
         case album
-        case track(info: Track)
+        case track(info: TrackInfo)
     }
     
     private let useCase = AlbumUseCase()

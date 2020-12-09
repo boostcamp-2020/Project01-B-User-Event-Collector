@@ -6,6 +6,7 @@ const apiUrl = {
     playlist: `${baseUrl}/playlists`,
     mixtape: `${baseUrl}/library/mixtapes`,
     album: `${baseUrl}/albums`,
+    artist: `${baseUrl}/artists`,
     libraryAlbum: `${baseUrl}/library/albums`,
     libraryTrack: `${baseUrl}/library/tracks`,
     libraryArtist: `${baseUrl}/library/artists`,

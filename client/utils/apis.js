@@ -14,7 +14,7 @@ export const request = async (url, option) => {
     try {
         const { data } = await axios({ ...options, url });
         return data.data;
-    } catch (error) {
+    } catch (err) {
         // TODO : error handling
         console.log(error);
     }

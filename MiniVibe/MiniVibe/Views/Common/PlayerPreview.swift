@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct PlayerPreview: View {
+    @Binding var isPlayerPresented: Bool
     @State private var isPlaying = false
-    @EnvironmentObject var nowPlaying: NowPlaying
     
     let coordinate: CGRect
     let title: String
@@ -71,7 +71,7 @@ struct PlayerPreview: View {
             }
             
             Button {
-                nowPlaying.isPlayerOpen.toggle()
+                isPlayerPresented.toggle()
             } label: {
                 Image(systemName: "music.note.list")
             }
@@ -82,7 +82,8 @@ struct PlayerPreview: View {
 struct PlayerPreview_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geometry in
-            PlayerPreview(coordinate: geometry.frame(in: .global),
+            PlayerPreview(isPlayerPresented: .constant(true),
+                          coordinate: geometry.frame(in: .global),
                           title: "Dynamite",
                           artist: "방탄소년단")
         }

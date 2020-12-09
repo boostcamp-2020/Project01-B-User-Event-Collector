@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct TrackRowA: View {
-    @Binding var isMenuOpen: Bool
-    
+    @State private var isMenuOpen = false
     let order: Int
-    let title: String
-    let artist: String
+    let track: TrackInfo
 
     var body: some View {
         HStack {
-            NavigationLink(destination: AlbumView(id: 11)) {
-                Image("album")
-                    .trackRowImageConfigure()
+            NavigationLink(destination: AlbumView(id: track.album.id)) {
+                AsyncImage(urlString: track.album.imageUrl)
+                    .frame(width: 50, height: 50)
+                    .border(Color.gray, width: 0.7)
             }
             
             HStack(alignment: .top) {
@@ -27,10 +26,10 @@ struct TrackRowA: View {
                     .padding(.horizontal, 4)
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(title)
+                    Text(track.title)
                         .font(.title3)
                     
-                    Text(artist)
+                    Text(track.artist.name)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
@@ -47,12 +46,15 @@ struct TrackRowA: View {
                     .padding()
             }
         }
+        .fullScreenCover(isPresented: $isMenuOpen) {
+            PlayerMenu(track: track)
+        }
     }
 }
 
 struct TrackRow_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowA(isMenuOpen: .constant(false), order: 4, title: "Dynamite", artist: "방탄소년단")
+        TrackRowA(order: 0, track: .init(id: 0, title: "", lyrics: "", albumId: 0, album: .init(id: 0, title: "", imageUrl: ""), artist: .init(id: 0, name: "")))
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

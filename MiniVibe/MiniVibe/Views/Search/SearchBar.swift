@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchBar: View {
+    @EnvironmentObject var eventLogger: EventLogger
     @State private var isEditing = false
     @Binding var searchedText: String
     
@@ -15,9 +16,10 @@ struct SearchBar: View {
     
     var body: some View {
         HStack {
-            TextField("검색어를 입력해 주세요.", text: $searchedText, onCommit: {
-                searchedText += "입력했구만유?"
-            })
+            TextField("검색어를 입력해 주세요.", text: $searchedText) {
+                // onCommit:
+                eventLogger.send(.search(text: searchedText))
+            }
             .padding(10)
             .background(Color(.systemGray6))
             .padding(10)
