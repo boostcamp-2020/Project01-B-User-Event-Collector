@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TrackRowC: View {
+    @EnvironmentObject private var nowPlaying: NowPlaying
     let title: String
     let artist: String
     let menuButtonAction: () -> Void
@@ -26,6 +27,11 @@ struct TrackRowC: View {
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
+            // let track: TrackInfo 와 같이 생기면 아래 onTapGesture 추가하기
+                // upnext에 추가하는 코드임
+//            .onTapGesture {
+//                nowPlaying.upNext.append(track.id)
+//            }
             
             Spacer()
             

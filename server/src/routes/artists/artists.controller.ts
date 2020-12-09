@@ -49,6 +49,8 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
             ])
             .getOne();
 
+        if (!artist) return res.status(404).json({ success: false });
+
         return res.json({
             success: true,
             data: artist,
