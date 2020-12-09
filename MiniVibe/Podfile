@@ -7,5 +7,5 @@ target 'MiniVibe' do
 
   # Pods for MiniVibe
   pod 'SwiftLint'
-  pod 'Kingfisher'
+  pod 'Kingfisher/SwiftUI'
 end
