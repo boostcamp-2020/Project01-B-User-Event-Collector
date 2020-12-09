@@ -26,6 +26,11 @@ final class NowPlaying: ObservableObject {
         }
     }
     
+    func deleteTrack() {
+        selectedTracks.forEach { upNext.remove(at: upNext.firstIndex(of: $0) ?? -1) }
+        
+    }
+    
     func playNextTrack() {
         isPlaying = true
         upNext.insert(upNext.remove(at: 0), at: upNext.count)

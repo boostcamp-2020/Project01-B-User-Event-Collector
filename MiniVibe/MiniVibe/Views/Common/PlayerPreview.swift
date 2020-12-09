@@ -70,7 +70,7 @@ struct PlayerPreview: View {
             .foregroundColor(iconColor)
             
             Button {
-                
+                nowPlaying.isPlayerPresented = true
             } label: {
                 Image(systemName: "music.note.list")
             }
