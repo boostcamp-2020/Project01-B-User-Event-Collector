@@ -13,10 +13,9 @@ interface IProps {
 const ComponentInfoWrapper = ({ children, componentId, data }: IProps) => {
     const componentInfo = useContext(ComponentInfoContext);
     componentInfo.componentId += `_${componentId}`;
+    componentInfo.data = data ? data : componentInfo.data;
 
-    return (
-        <ComponentInfoContext.Provider value={{ ...componentInfo, ...data }}>{children}</ComponentInfoContext.Provider>
-    );
+    return <ComponentInfoContext.Provider value={componentInfo}>{children}</ComponentInfoContext.Provider>;
 };
 
 export default ComponentInfoWrapper;
