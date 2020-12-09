@@ -52,11 +52,9 @@ const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata })
         <ComponentInfoContext.Provider value={{ componentId: page.today }}>
             <TodayContainer>
                 <MainMagazineContainer>
-                    <Link href="/magazines/main">
-                        <a>
-                            <MainMagazineCard {...Magazinesdata[0]} />
-                        </a>
-                    </Link>
+                    <ComponentInfoWrapper componentId={contentType.mainMagazine}>
+                        <MainMagazineCard {...Magazinesdata[0]} />
+                    </ComponentInfoWrapper>
                 </MainMagazineContainer>
                 <PublicContentsContainer>
                     <ContentsContainer>
