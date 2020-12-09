@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PlayerControls: View {
     @EnvironmentObject private var nowPlaying: NowPlaying
-    //@Binding var isPlaying: Bool
     @Binding var isOpenMenu: Bool
     @State private var isFavorite = false
     @State private var isShuffle = false

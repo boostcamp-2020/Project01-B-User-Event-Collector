@@ -49,9 +49,7 @@ struct MainTab: View {
             contentFrame = value.last ?? .zero
         })
         .overlay(
-            PlayerPreview(coordinate: contentFrame,
-                          title: "Dynamite",
-                          artist: "방탄소년단")
+            PlayerPreview(coordinate: contentFrame)
                 .onTapGesture {
                     if !nowPlaying.upNext.isEmpty {
                         nowPlaying.isPlayerPresented.toggle()
