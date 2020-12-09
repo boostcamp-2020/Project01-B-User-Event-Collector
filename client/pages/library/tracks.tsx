@@ -4,6 +4,7 @@ import TrackRowList from '@components/organisms/CardLists/TrackRowList';
 import ContentsButtonGroup from '@components/organisms/ContentsButtonGroup';
 import apiUrl from 'constants/apiUrl';
 import { request } from '@utils/apis';
+import NoDataContainer from '@components/molecules/NoDataContainer';
 
 const LibraryContainer = styled.div`
     width: 100%;
@@ -33,12 +34,16 @@ const TrackLibrary = ({ trackData }) => {
             <LibraryHeaderContainer>
                 <LibraryHeader sort="track" />
             </LibraryHeaderContainer>
-            <LibraryContentsContainer>
-                <ContentsButtonGroup />
-                <LibraryTrackListContainer>
-                    <TrackRowList items={trackData} />
-                </LibraryTrackListContainer>
-            </LibraryContentsContainer>
+            {trackData.length !== 0 ? (
+                <LibraryContentsContainer>
+                    <ContentsButtonGroup />
+                    <LibraryTrackListContainer>
+                        <TrackRowList items={trackData} />
+                    </LibraryTrackListContainer>
+                </LibraryContentsContainer>
+            ) : (
+                <NoDataContainer type="track" />
+            )}
         </LibraryContainer>
     );
 };

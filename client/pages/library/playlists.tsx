@@ -3,6 +3,7 @@ import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHe
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
 import apiUrl from 'constants/apiUrl';
 import { request } from '@utils/apis';
+import NoDataContainer from '@components/molecules/NoDataContainer';
 
 const LibraryContainer = styled.div`
     width: 100%;
@@ -26,9 +27,13 @@ const PlaylistLibrary = ({ playlistData }) => {
             <LibraryHeaderContainer>
                 <LibraryHeader sort="playlist" />
             </LibraryHeaderContainer>
-            <LibraryContentsContainer>
-                <LibraryCardList variant="playlist" items={playlistData} />
-            </LibraryContentsContainer>
+            {playlistData.length !== 0 ? (
+                <LibraryContentsContainer>
+                    <LibraryCardList variant="playlist" items={playlistData} />
+                </LibraryContentsContainer>
+            ) : (
+                <NoDataContainer type="playlist" />
+            )}
         </LibraryContainer>
     );
 };

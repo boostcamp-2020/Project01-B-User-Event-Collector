@@ -32,7 +32,7 @@ const AlbumLibrary = ({ albumData }) => {
                     <LibraryCardList variant="album" items={albumData} />
                 </LibraryContentsContainer>
             ) : (
-                <NoDataContainer />
+                <NoDataContainer type="album" />
             )}
         </LibraryContainer>
     );

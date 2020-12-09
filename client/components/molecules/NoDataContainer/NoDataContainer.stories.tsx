@@ -6,4 +6,4 @@ export default {
     component: NoDataContainer,
 };
 
-export const Defatul = () => <NoDataContainer />;
+export const Defatul = () => <NoDataContainer type="album" />;

@@ -3,6 +3,7 @@ import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHe
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
 import apiUrl from 'constants/apiUrl';
 import { request } from '@utils/apis';
+import NoDataContainer from '@components/molecules/NoDataContainer';
 
 const LibraryContainer = styled.div`
     width: 100%;
@@ -26,9 +27,13 @@ const MixtapeLibrary = ({ mixtapeData }) => {
             <LibraryHeaderContainer>
                 <LibraryHeader sort="mixtape" />
             </LibraryHeaderContainer>
-            <LibraryContentsContainer>
-                <LibraryCardList variant="mixtape" items={mixtapeData} />
-            </LibraryContentsContainer>
+            {mixtapeData.length !== 0 ? (
+                <LibraryContentsContainer>
+                    <LibraryCardList variant="mixtape" items={mixtapeData} />
+                </LibraryContentsContainer>
+            ) : (
+                <NoDataContainer type="mixtape" />
+            )}
         </LibraryContainer>
     );
 };
