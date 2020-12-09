@@ -9,8 +9,7 @@ import SwiftUI
 
 struct TrackRowC: View {
     @EnvironmentObject private var nowPlaying: NowPlaying
-    let title: String
-    let artist: String
+    let track: TrackInfo
     let menuButtonAction: () -> Void
 
     var body: some View {
@@ -20,28 +19,31 @@ struct TrackRowC: View {
                     .trackRowImageConfigure()
             }
             
-            VStack(alignment: .leading, spacing: 4) {
-                Text(title)
-                    .font(.title3)
-                Text(artist)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+            Button {
+                nowPlaying.addTrack(track: track)
+            } label: {
+                VStack(alignment: .leading, spacing: 4) {
+                    Spacer()
+                    Text(track.title)
+                        .font(.system(size: 17))
+                        .foregroundColor(.black)
+                        
+                    Text(track.artist.name)
+                        .font(.system(size: 13))
+                        .foregroundColor(.secondary)
+                    Spacer()
+                }
+                Spacer()
             }
-            // let track: TrackInfo 와 같이 생기면 아래 onTapGesture 추가하기
-                // upnext에 추가하는 코드임
-//            .onTapGesture {
-//                nowPlaying.upNext.append(track.id)
-//            }
-            
-            Spacer()
             
             Button {
                 menuButtonAction()
             } label: {
                 Image(systemName: "ellipsis")
                     .foregroundColor(.black)
+                    .padding()
             }
-            .padding()
+            
         }
         .padding(.vertical, 8)
     }
@@ -49,7 +51,7 @@ struct TrackRowC: View {
 
 struct TrackRowC_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowC(title: "작은 방 (Feat.아이유)", artist: "스윗소로우", menuButtonAction: { })
+        TrackRowC(track: trackinfo, menuButtonAction: {})
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

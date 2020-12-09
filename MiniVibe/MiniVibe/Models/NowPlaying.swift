@@ -11,21 +11,17 @@ class NowPlaying: ObservableObject {
     
     @Published var isPlaying: Bool = false
     @Published var isPlayerPresented: Bool = false
-    @Published var upNext = [UpNextTrack]()
-    @Published var selectedTracks = Set<UpNextTrack>()
-}
-
-struct UpNextTrack: Hashable {
-    let id: Int
-    let title: String
-    let artist: Artist
-    let imageUrl: String
+    @Published var upNext = [TrackInfo]()
+    @Published var selectedTracks = Set<TrackInfo>()
     
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    
-    static func == (lhs: UpNextTrack, rhs: UpNextTrack) -> Bool {
-        return lhs.id == rhs.id
+    func addTrack(track: TrackInfo) {
+        if !upNext.contains(track) {
+            upNext.append(track)
+        } else {
+            if let index = upNext.firstIndex(of: track) {
+                upNext.remove(at: index)
+            }
+            upNext.insert(track, at: 0)
+        }
     }
 }

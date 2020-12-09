@@ -10,10 +10,10 @@ import SwiftUI
 struct TrackRowA: View {
     @EnvironmentObject private var nowPlaying: NowPlaying
     @State private var isMenuOpen = false
-
+    
     let order: Int
     let track: TrackInfo
-
+    
     var body: some View {
         HStack {
             NavigationLink(destination: AlbumView(id: track.album.id)) {
@@ -22,28 +22,27 @@ struct TrackRowA: View {
                     .border(Color.gray, width: 0.7)
             }
             
-            HStack(alignment: .top) {
+            Button {
+                nowPlaying.addTrack(track: track)
+            } label: {
                 Text("\(order)")
                     .font(.title3)
                     .padding(.horizontal, 4)
+                    .foregroundColor(.black)
                 
                 VStack(alignment: .leading, spacing: 4) {
+                    Spacer()
                     Text(track.title)
-                        .font(.title3)
+                        .font(.system(size: 17))
+                        .foregroundColor(.black)
                     
                     Text(track.artist.name)
-                        .font(.subheadline)
+                        .font(.system(size: 13))
                         .foregroundColor(.secondary)
+                    Spacer()
                 }
-                // let track: TrackInfo 와 같이 생기면 아래 onTapGesture 추가하기
-                    // upnext에 추가하는 코드임
-//                .onTapGesture {
-//                    nowPlaying.upNext.append(track.id)
-//                }
+                Spacer()
             }
-            .scaledToFit()
-            
-            Spacer()
             
             Button {
                 isMenuOpen = true
@@ -61,7 +60,7 @@ struct TrackRowA: View {
 
 struct TrackRow_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowA(order: 0, track: .init(id: 0, title: "", lyrics: "", albumId: 0, album: .init(id: 0, title: "", imageUrl: ""), artist: .init(id: 0, name: "")))
+        TrackRowA(order: 0, track: .init(id: 0, title: "ABCDEFG", lyrics: "", albumId: 0, album: .init(id: 0, title: "", imageUrl: ""), artist: .init(id: 0, name: "aaaa")))
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

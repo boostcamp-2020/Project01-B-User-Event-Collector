@@ -19,28 +19,29 @@ struct TrackRowB: View {
                     .border(Color.gray, width: 0.7)
             }
             
-            VStack(alignment: .leading, spacing: 4) {
-                Text(track.title)
-                    .font(.system(size: 17))
-                Text(track.artist.name)
-                    .font(.system(size: 13))
-                    .foregroundColor(.secondary)
+            Button {
+                nowPlaying.addTrack(track: track)
+            } label: {
+                VStack(alignment: .leading, spacing: 4) {
+                    Spacer()
+                    Text(track.title)
+                        .font(.system(size: 17))
+                        .foregroundColor(.black)
+                        
+                    Text(track.artist.name)
+                        .font(.system(size: 13))
+                        .foregroundColor(.secondary)
+                    Spacer()
+                }
+                Spacer()
             }
-            .onTapGesture {
-                nowPlaying.upNext.append(UpNextTrack(id: track.id,
-                                                     title: track.title,
-                                                     artist: track.artist,
-                                                     imageUrl: track.album.imageUrl))
-            }
-            
-            Spacer()
         }
     }
 }
 
 struct TrackRowB_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowB(track: .init(id: 0, title: "", lyrics: "", albumId: 0, album: .init(id: 0, title: "", imageUrl: ""), artist: .init(id: 0, name: "")))
+        TrackRowB(track: .init(id: 0, title: "ABCD", lyrics: "", albumId: 0, album: .init(id: 0, title: "", imageUrl: ""), artist: .init(id: 0, name: "aaaa")))
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }
