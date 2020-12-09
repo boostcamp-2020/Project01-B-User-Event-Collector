@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct PlaylistAlbumInfo: View {
     @Binding var isOpenArticle: Bool
@@ -28,7 +29,8 @@ struct PlaylistAlbumInfo: View {
             Button {
                 isOpenArticle = true
             } label: {
-                AsyncImage(urlString: imageURL)
+                KFImage(URL(string: imageURL))
+                    .resizable()
                     .aspectRatio(1, contentMode: .fit)
             }
             

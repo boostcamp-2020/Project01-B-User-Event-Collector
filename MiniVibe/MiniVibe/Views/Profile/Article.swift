@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct Article: View {
     @Binding var isOpenArticle: Bool
@@ -31,7 +32,8 @@ struct Article: View {
             }
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    AsyncImage(urlString: imageURL)
+                    KFImage(URL(string: imageURL))
+                        .resizable()
                         .aspectRatio(1, contentMode: .fit)
                     VStack(alignment: .leading, spacing: 4) {
                         Text(title)

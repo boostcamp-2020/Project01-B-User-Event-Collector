@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 private struct Badge: View {
     let title: String
@@ -28,7 +29,8 @@ struct MagazineItem: View {
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            AsyncImage(urlString: magazine.imageUrl)
+            KFImage(URL(string: magazine.imageUrl))
+                .resizable()
                 .aspectRatio(1, contentMode: .fit)
             
             VStack(alignment: .leading) {
