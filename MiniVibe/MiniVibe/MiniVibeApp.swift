@@ -28,17 +28,6 @@ struct MiniVibeApp: App {
                         print("active")
                     case .inactive:
                         print("inactive")
-                        
-                        do {
-                            let transitions = try persistentContainer.viewContext
-                                .fetch(Transition.fetchRequest()) as? [Transition]
-                            transitions?.forEach {
-                                print($0.description)
-                            }
-                        } catch {
-                            print(error)
-                        }
-                        
                     case .background:
                         print("background")
                     @unknown default:
