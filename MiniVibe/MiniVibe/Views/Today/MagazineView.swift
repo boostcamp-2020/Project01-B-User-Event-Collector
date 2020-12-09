@@ -28,7 +28,7 @@ struct MagazineView: View {
                             Text(ArticleExample.content)
                                 .padding(.horizontal, width * .paddingRatio)
                             ForEach(0..<10) { index in
-                                TrackRowE(order: 0, track: trackinfo)
+                                TrackRowE(order: index, track: trackinfo)
                             }
                         }
                         .padding(.horizontal, geometry.size.width * .paddingRatio)

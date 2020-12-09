@@ -85,6 +85,8 @@
 		805E28D3256BDC4A007AF5F1 /* TrackRowA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805E28D2256BDC4A007AF5F1 /* TrackRowA.swift */; };
 		805E28D7256BDE90007AF5F1 /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805E28D6256BDE90007AF5F1 /* SectionTitle.swift */; };
 		805E28DA256BDFE6007AF5F1 /* ChartSectionA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805E28D9256BDFE6007AF5F1 /* ChartSectionA.swift */; };
+		806D272925812DA8002580B3 /* TrackUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806D272825812DA8002580B3 /* TrackUseCase.swift */; };
+		806D273125815903002580B3 /* UseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806D273025815903002580B3 /* UseCaseError.swift */; };
 		807B698D256FAC2F00DAF867 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807B698C256FAC2F00DAF867 /* NetworkService.swift */; };
 		80813997257E657A00A5B6AD /* MagazineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80813996257E657A00A5B6AD /* MagazineView.swift */; };
 		8084AB6D256E403900F2AAC2 /* ThumbnailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084AB6C256E403900F2AAC2 /* ThumbnailRow.swift */; };
@@ -212,6 +214,8 @@
 		805E28D2256BDC4A007AF5F1 /* TrackRowA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRowA.swift; sourceTree = "<group>"; };
 		805E28D6256BDE90007AF5F1 /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
 		805E28D9256BDFE6007AF5F1 /* ChartSectionA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSectionA.swift; sourceTree = "<group>"; };
+		806D272825812DA8002580B3 /* TrackUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackUseCase.swift; sourceTree = "<group>"; };
+		806D273025815903002580B3 /* UseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseError.swift; sourceTree = "<group>"; };
 		807B698C256FAC2F00DAF867 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		80813996257E657A00A5B6AD /* MagazineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineView.swift; sourceTree = "<group>"; };
 		8084AB6C256E403900F2AAC2 /* ThumbnailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailRow.swift; sourceTree = "<group>"; };
@@ -406,12 +410,14 @@
 		800FA858257DD756008926A5 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				800FA848257DC557008926A5 /* EndPoint.swift */,
+				806D273025815903002580B3 /* UseCaseError.swift */,
 				800FA850257DC71E008926A5 /* TodayUseCase.swift */,
 				44B22A56257E0D450068A11B /* AlbumUseCase.swift */,
 				44ACE45E257E6B9B00EA5479 /* PlaylistUseCase.swift */,
 				80D02E03257E0DD300A6748F /* SearchUseCase.swift */,
 				44D5FAC1257FD89E00A3E91C /* ArtistUseCase.swift */,
-				800FA848257DC557008926A5 /* EndPoint.swift */,
+				806D272825812DA8002580B3 /* TrackUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -874,6 +880,7 @@
 				80051692257F17FA00D7EF4C /* ViewLogger.swift in Sources */,
 				4478F723256E8B2B00755656 /* PlayAndShuffle.swift in Sources */,
 				44F97976256CFBA900C9C224 /* AlbumSection.swift in Sources */,
+				806D273125815903002580B3 /* UseCaseError.swift in Sources */,
 				44ACE463257E7E9500EA5479 /* PlaylistViewModel.swift in Sources */,
 				800FA851257DC71E008926A5 /* TodayUseCase.swift in Sources */,
 				80A5215C25793A3E0051A925 /* View+dismissKeyboard.swift in Sources */,
@@ -904,6 +911,7 @@
 				8033A7AA257FA7B100B1C321 /* NowPlaying.swift in Sources */,
 				444272BB256CE701008BB87B /* PreviewSection.swift in Sources */,
 				800FA84D257DC5EA008926A5 /* Albums.swift in Sources */,
+				806D272925812DA8002580B3 /* TrackUseCase.swift in Sources */,
 				80EB9FE5256D04A000CD99FD /* MagazineItem.swift in Sources */,
 				80A52145257903550051A925 /* Library.swift in Sources */,
 			);

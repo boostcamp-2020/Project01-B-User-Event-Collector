@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PlayerMenu: View {
+    @EnvironmentObject private var nowPlaying: NowPlaying
     @Environment(\.presentationMode) var presentationMode
     let track: TrackInfo
     
@@ -15,7 +16,7 @@ struct PlayerMenu: View {
         VStack(spacing: 36) {
             Spacer()
             MenuThumbnailButton()
-            MenuButton(type: .like(true))
+            MenuButton(type: .like(nowPlaying.playingTrack?.liked ?? 0))
             MenuButton(type: .exclude)
             MenuButton(type: .download(.music))
             MenuButton(type: .addToPlaylist)
@@ -29,6 +30,6 @@ struct PlayerMenu: View {
 
 struct PlayerMenu_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerMenu(track: .init(id: 0, title: "", lyrics: "", albumId: 0, album: .init(id: 0, title: "", imageUrl: ""), artist: .init(id: 0, name: "")))
+        PlayerMenu(track: trackinfo)
     }
 }

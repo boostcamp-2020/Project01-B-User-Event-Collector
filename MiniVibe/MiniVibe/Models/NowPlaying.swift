@@ -6,9 +6,9 @@
 //
 
 import Foundation
+import Combine
 
-class NowPlaying: ObservableObject {
-    
+final class NowPlaying: ObservableObject {
     @Published var isPlaying: Bool = false
     @Published var isPlayerPresented: Bool = false
     @Published var upNext = [TrackInfo]()
@@ -29,6 +29,32 @@ class NowPlaying: ObservableObject {
     func playNextTrack() {
         isPlaying = true
         upNext.insert(upNext.remove(at: 0), at: upNext.count)
+    }
+    
+    func likeTrack(id: Int) {
+        let usecase = TrackUseCase()
+        var cancellables = Set<AnyCancellable>()
+        usecase.likeTrack(like: LikeTrack(trackId: id)) //sink로 받고 에러처리만 하면 될 듯?
+            .sink { result in
+                print(result)
+            } receiveValue: { _ in
+                
+            }
+            .store(in: &cancellables)
+        upNext[0].liked = 1
+    }
+    
+    func cancelLikedTrack(id: Int) {
+        let usecase = TrackUseCase()
+        var cancellables = Set<AnyCancellable>()
+        usecase.cancelLikedTrack(id: id)
+            .sink { result in
+                print(result)
+            } receiveValue: { _ in
+                
+            }
+            .store(in: &cancellables)
+        upNext[0].liked = 0
     }
 
 }

@@ -11,11 +11,11 @@ final class TodayViewModel: ObservableObject {
     private let useCase = TodayUseCase()
     private var cancellables = Set<AnyCancellable>()
     
-    @Published var mixtapes = [Mixtape]()
-    @Published var albums = [Album]()
-    @Published var tracks = [TrackInfo]()
-    @Published var playlists = [Playlist]()
-    @Published var magazines = [Magazine]()
+    @Published private(set) var mixtapes = [Mixtape]()
+    @Published private(set) var albums = [Album]()
+    @Published private(set) var tracks = [TrackInfo]()
+    @Published private(set) var playlists = [Playlist]()
+    @Published private(set) var magazines = [Magazine]()
     
     func load() {
         useCase.loadMixtapes()

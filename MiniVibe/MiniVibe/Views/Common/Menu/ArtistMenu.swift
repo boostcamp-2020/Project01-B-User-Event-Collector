@@ -38,7 +38,7 @@ struct ArtistMenu: View {
             .foregroundColor(.black)
             .padding(.horizontal)
             
-            MenuButton(type: .like(true))
+            MenuButton(type: .like(0))
             MenuButton(type: .exclude)
             MenuButton(type: .share)
             MenuCloseButton {

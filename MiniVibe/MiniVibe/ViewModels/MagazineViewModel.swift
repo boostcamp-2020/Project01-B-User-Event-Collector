@@ -16,7 +16,7 @@ class MagazineViewModel: ObservableObject {
     
     func load(using id: Int) {
         useCase.loadMagazine(using: id)
-            .sink { result in
+            .sink { _ in
                 // error 처리
             } receiveValue: { [weak self] magazine in
                 self?.magazine = magazine

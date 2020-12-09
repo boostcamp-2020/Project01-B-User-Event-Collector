@@ -16,7 +16,7 @@ struct PlayListMenu: View {
             Spacer()
             MenuThumbnailButton()
             MenuButton(type: .download(.playList))
-            MenuButton(type: .like(false))
+            MenuButton(type: .like(0))
             MenuButton(type: .addToPlaylist)
             MenuButton(type: .share)
             MenuCloseButton {

@@ -17,7 +17,7 @@ struct AlbumMenu: View {
             Spacer()
             MenuThumbnailButton()
             MenuButton(type: .download(.album))
-            MenuButton(type: .like(false))
+            MenuButton(type: .like(0))
             MenuButton(type: .addToPlaylist)
             MenuButton(type: .share)
             MenuCloseButton {

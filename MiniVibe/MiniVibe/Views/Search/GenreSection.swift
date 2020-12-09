@@ -60,4 +60,3 @@ struct GenreSection_Previews: PreviewProvider {
             
     }
 }
-
