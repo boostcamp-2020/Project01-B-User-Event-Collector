@@ -6,18 +6,20 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct ArtistThumbnail: View {
+    let artist: ArtistInfo
+    
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            Image("artist")
-                .resizable()
+            KFImage(URL(string: artist.imageUrl))
                 .scaledToFit()
             
             VStack(alignment: .leading) {
-                Text("방탄소년단")
+                Text(artist.name)
                     .font(.system(size: 32, weight: .bold))
-                Text("댄스, 랩/힙합 • 2013.6.12 • 좋아요 999")
+                Text(artist.genre.name)
                     .font(.system(size: 14))
             }
             .foregroundColor(.white)
@@ -30,7 +32,7 @@ struct ArtistThumbnail: View {
 struct ArtistThumbnail_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            ArtistThumbnail()
+            ArtistThumbnail(artist: .init(id: 0, name: "", imageUrl: "", genre: .init(name: ""), tracks: [], albums: []))
             Spacer()
         }
     }

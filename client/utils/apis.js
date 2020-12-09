@@ -16,6 +16,6 @@ export const request = async (url, option) => {
         return data.data;
     } catch (err) {
         // TODO : error handling
-        console.log(err);
+        console.log(error);
     }
 };

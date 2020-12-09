@@ -6,27 +6,23 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct PlayerPreview: View {
-    @Binding var isPlayerPresented: Bool
-    @State private var isPlaying = false
-    
+    @EnvironmentObject private var nowPlaying: NowPlaying
     let coordinate: CGRect
-    let title: String
-    let artist: String
     private let height: CGFloat = 50
     private let edgeInset = EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
     
     var body: some View {
         VStack {
             HStack {
-                albumInfo
+                playingTrackInfo()
                 
                 Spacer()
-                
-                controlIcons
+                    
+                previewControlIcons()
                     .font(.system(size: 20))
-                    .foregroundColor(.black)
             }
             .frame(height: height)
             .padding(edgeInset)
@@ -36,45 +32,53 @@ struct PlayerPreview: View {
                 y: coordinate.height - (height / 2 + edgeInset.bottom)
             )
         }
-        
     }
     
-    @ViewBuilder
-    var albumInfo: some View {
-        Image("album")
+    @ViewBuilder private func playingTrackInfo() -> some View {
+        KFImage(URL(string: nowPlaying.playingTrack?.album.imageUrl ?? ""))
             .resizable()
-            .aspectRatio(1, contentMode: .fit)
-            .frame(height: height)
+            .frame(width: height, height: height)
         
         VStack(alignment: .leading) {
-            Text(title)
+            Text(nowPlaying.playingTrack?.title ?? "What's on today?")
                 .font(.system(size: 15))
             
-            Text(artist)
+            Text(nowPlaying.playingTrack?.artist.name ?? "Tap the play button")
                 .font(.system(size: 12))
                 .foregroundColor(.secondary)
         }
     }
-    
-    var controlIcons: some View {
-        HStack(spacing: 20) {
+
+    private func previewControlIcons() -> some View {
+        let emptyUpNext: Bool = nowPlaying.upNext.isEmpty
+        let iconColor: Color = emptyUpNext ? Color.secondary : Color.black
+            
+        return HStack(spacing: 20) {
             Button {
-                isPlaying.toggle()
+                nowPlaying.isPlaying.toggle()
             } label: {
-                isPlaying ? Image(systemName: "pause.fill") : Image(systemName: "play.fill")
+                nowPlaying.isPlaying ? Image(systemName: "pause.fill") : Image(systemName: "play.fill")
             }
+            .foregroundColor(.black)
+            
+            Button {
+                nowPlaying.playNextTrack()
+                if !nowPlaying.isPlaying {
+                    nowPlaying.isPlaying = true
+                }
+            } label: {
+                Image(systemName: "forward.fill")
+            }
+            .disabled(emptyUpNext)
+            .foregroundColor(iconColor)
             
             Button {
                 
             } label: {
-                Image(systemName: "forward.fill")
-            }
-            
-            Button {
-                isPlayerPresented.toggle()
-            } label: {
                 Image(systemName: "music.note.list")
             }
+            .disabled(emptyUpNext)
+            .foregroundColor(iconColor)
         }
     }
 }
@@ -82,10 +86,7 @@ struct PlayerPreview: View {
 struct PlayerPreview_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geometry in
-            PlayerPreview(isPlayerPresented: .constant(true),
-                          coordinate: geometry.frame(in: .global),
-                          title: "Dynamite",
-                          artist: "방탄소년단")
+            PlayerPreview(coordinate: geometry.frame(in: .global))
         }
     }
 }

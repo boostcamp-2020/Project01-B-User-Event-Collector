@@ -1,1 +1,6 @@
-disabled_rules: trailing_whitespace
+disabled_rules:
+    - trailing_whitespace
+    - identifier_name
+
+excluded:
+    - Pods

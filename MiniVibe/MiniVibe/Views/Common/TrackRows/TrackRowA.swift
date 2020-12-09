@@ -6,38 +6,45 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct TrackRowA: View {
-    @Binding var isMenuOpen: Bool
+    @EnvironmentObject private var nowPlaying: NowPlaying
+    @State private var isMenuOpen = false
     
     let order: Int
-    let title: String
-    let artist: String
-
+    let track: TrackInfo
+    
     var body: some View {
         HStack {
-            NavigationLink(destination: AlbumView(id: 11)) {
-                Image("album")
-                    .trackRowImageConfigure()
+            NavigationLink(destination: AlbumView(id: track.album.id)) {
+                KFImage(URL(string: track.album.imageUrl))
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .border(Color.gray, width: 0.7)
             }
             
-            HStack(alignment: .top) {
+            Button {
+                nowPlaying.addTrack(track: track)
+            } label: {
                 Text("\(order)")
                     .font(.title3)
                     .padding(.horizontal, 4)
+                    .foregroundColor(.black)
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(title)
-                        .font(.title3)
+                    Spacer()
+                    Text(track.title)
+                        .font(.system(size: 17))
+                        .foregroundColor(.black)
                     
-                    Text(artist)
-                        .font(.subheadline)
+                    Text(track.artist.name)
+                        .font(.system(size: 13))
                         .foregroundColor(.secondary)
+                    Spacer()
                 }
+                Spacer()
             }
-            .scaledToFit()
-            
-            Spacer()
             
             Button {
                 isMenuOpen = true
@@ -47,12 +54,15 @@ struct TrackRowA: View {
                     .padding()
             }
         }
+        .fullScreenCover(isPresented: $isMenuOpen) {
+            PlayerMenu(track: track)
+        }
     }
 }
 
 struct TrackRow_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowA(isMenuOpen: .constant(false), order: 4, title: "Dynamite", artist: "방탄소년단")
+        TrackRowA(order: 0, track: .init(id: 0, title: "ABCDEFG", lyrics: "", albumId: 0, album: .init(id: 0, title: "", imageUrl: ""), artist: .init(id: 0, name: "aaaa")))
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

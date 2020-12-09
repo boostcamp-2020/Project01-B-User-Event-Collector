@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PlayerView: View {
+    @EnvironmentObject var nowPlaying: NowPlaying
     @EnvironmentObject var eventLogger: EventLogger
     @State private var isOpenMenu = false
     @State private var isOpenLyrics = false
@@ -19,10 +20,7 @@ struct PlayerView: View {
             ZStack {
                 ScrollView {
                     VStack {
-                        Player(isOpenMenu: $isOpenMenu,
-                               isOpenLyrics: $isOpenLyrics,
-                               title: title,
-                               artist: artist)
+                        Player(isOpenMenu: $isOpenMenu, isOpenLyrics: $isOpenLyrics)
                             .frame(height: geometry.size.height)
                         
                         Divider()
@@ -38,7 +36,7 @@ struct PlayerView: View {
             }
             .animation(.easeInOut)
             .fullScreenCover(isPresented: $isOpenMenu) {
-                PlayerMenu(title: title, subtitle: artist, imageURL: "")
+                PlayerMenu(track: trackinfo)
             }
             .logTransition(eventLogger: eventLogger, identifier: .player)
         }

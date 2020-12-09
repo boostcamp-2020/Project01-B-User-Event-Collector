@@ -8,27 +8,29 @@
 import SwiftUI
 
 struct Player: View {
-    @State var isPlaying = false
     @Binding var isOpenMenu: Bool
     @Binding var isOpenLyrics: Bool
-    let title: String
-    let artist: String
+    @EnvironmentObject private var nowPlaying: NowPlaying
     
     var body: some View {
+        
         VStack {
             PlayerHeader(title: "오늘 Top 100")
             
             Spacer()
-            
-            PlayerThumbnail(image: "playListThumbnail",
-                            lyrics: "가사가사가사가사\n가사가사\n가사\n가사가사가사가사", isPlaying: $isPlaying, isOpenLyrics: $isOpenLyrics)
-            
-            Spacer()
-            
-            PlayerControls(isPlaying: $isPlaying,
-                           isOpenMenu: $isOpenMenu,
-                           title: title,
-                           artist: artist)
+
+            if let track = nowPlaying.playingTrack {
+                PlayerThumbnail(image: track.album.imageUrl,
+                                lyrics: track.lyrics,
+                                isPlaying: $nowPlaying.isPlaying,
+                                isOpenLyrics: $isOpenLyrics)
+                
+                Spacer()
+                
+                PlayerControls(isOpenMenu: $isOpenMenu,
+                               title: track.title,
+                               artist: track.artist.name)
+            }
                 
             Spacer()
             
@@ -74,8 +76,6 @@ struct Player: View {
 struct Player_Previews: PreviewProvider {
     static var previews: some View {
         Player(isOpenMenu: .constant(false),
-               isOpenLyrics: .constant(false),
-               title: "Dynamite",
-               artist: "방탄소년단")
+               isOpenLyrics: .constant(false))
     }
 }

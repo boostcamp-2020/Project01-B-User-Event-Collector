@@ -10,6 +10,7 @@ import SwiftUI
 struct MainTab: View {
     @State private var contentFrame = CGRect.zero
     @State private var isPlayerPresented = false
+    @EnvironmentObject private var nowPlaying: NowPlaying
     @EnvironmentObject private var eventLogger: EventLogger
     
     init() {
@@ -48,14 +49,13 @@ struct MainTab: View {
             contentFrame = value.last ?? .zero
         })
         .overlay(
-            PlayerPreview(isPlayerPresented: $isPlayerPresented,
-                          coordinate: contentFrame,
-                          title: "Dynamite",
-                          artist: "방탄소년단")
+            PlayerPreview(coordinate: contentFrame)
                 .onTapGesture {
-                    isPlayerPresented.toggle()
+                    if !nowPlaying.upNext.isEmpty {
+                        nowPlaying.isPlayerPresented.toggle()
+                    }
                 }
-                .sheet(isPresented: $isPlayerPresented) {
+                .sheet(isPresented: $nowPlaying.isPlayerPresented) {
                     PlayerView(title: "Dynamite",
                                artist: "방탄소년단")
                 }

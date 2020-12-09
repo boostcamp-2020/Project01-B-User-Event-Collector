@@ -21,7 +21,7 @@ struct PlayListView: View {
                 let width: CGFloat = geometry.size.width
                 if viewModel.isOpenArticle {
                     Article(isOpenArticle: $viewModel.isOpenArticle,
-                            imageURL: playlist.imageUrl ?? "",
+                            imageURL: playlist.imageUrl,
                             title: playlist.title,
                             subtitle: playlist.subTitle ?? "",
                             content: playlist.description ?? "")
@@ -30,7 +30,7 @@ struct PlayListView: View {
                         VStack(spacing: 36) {
                             VStack {
                                 PlaylistAlbumInfo(isOpenArticle: $viewModel.isOpenArticle,
-                                                  imageURL: playlist.imageUrl ?? "",
+                                                  imageURL: playlist.imageUrl ,
                                                   title: playlist.title,
                                                   subtitle: playlist.subTitle ?? "",
                                                   description: "",
@@ -43,9 +43,7 @@ struct PlayListView: View {
                                 ) {
                                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
                                         ForEach(playlist.tracks ?? [], id: \.id) { track in
-                                            TrackRowC(title: "Dynamite",
-                                                      artist: "방탄소년단"
-                                            ) {
+                                            TrackRowC(track: track) {
                                                 viewModel.send(.showTrackMenu(info: track))
                                             }
                                         }
@@ -68,9 +66,7 @@ struct PlayListView: View {
                         case .playlist:
                             PlayListMenu(playlist: playlist)
                         case let .track(info):
-                            PlayerMenu(title: info.title,
-                                       subtitle: info.artist.name,
-                                       imageURL: info.album.imageUrl)
+                            PlayerMenu(track: info)
                         }
                     }
                 }

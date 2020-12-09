@@ -35,11 +35,11 @@ struct LibrarySongsView: View {
                         ForEach(0..<50) { _ in
                             let title = "너랑 나"
                             let artist = "아이유"
-                            TrackRowC(title: title, artist: artist) {
+                            TrackRowC(track: trackinfo) {
                                 isMenuOpen = true
                             }
                             .fullScreenCover(isPresented: $isMenuOpen) {
-                                PlayerMenu(title: title, subtitle: artist, imageURL: "")
+                                PlayerMenu(track: .init(id: 0, title: "Dynamite", lyrics: "", albumId: 3, album: .init(id: 0, title: "Dynamite", imageUrl: ""), artist: .init(id: 11, name: "방탄소년단")))
                             }
                         }
                     }

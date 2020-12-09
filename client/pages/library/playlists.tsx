@@ -1,15 +1,8 @@
 import styled from 'styled-components';
 import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHeader';
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
-
-const PlaylistData = Array(9).fill({
-    id: 1,
-    title: "VIBE AND CHILL",
-    subTitle: "",
-    description: "VIBE",
-    imageUrl: "https://music-phinf.pstatic.net/20200504_183/1588567824216rHHs6_PNG/VIBE_%B0%F8%C5%EB_VibeAndChill.png",
-    customized: false
-});
+import apiUrl from 'constants/apiUrl';
+import { request } from '@utils/apis';
 
 const LibraryContainer = styled.div`
     width: 100%;
@@ -27,23 +20,25 @@ const LibraryHeaderContainer = styled.div`
 
 const LibraryContentsContainer = styled.div``;
 
-const PlaylistLibrary = () => {
+const PlaylistLibrary = ({ playlistData }) => {
     return (
         <LibraryContainer>
             <LibraryHeaderContainer>
                 <LibraryHeader sort="playlist" />
             </LibraryHeaderContainer>
             <LibraryContentsContainer>
-                <LibraryCardList variant="playlist" items={PlaylistData} />
+                <LibraryCardList variant="playlist" items={playlistData} />
             </LibraryContentsContainer>
         </LibraryContainer>
     );
 };
 
-/*export const getServerSideProps = wrapper.getServerSideProps((context) => {
-    constext.store.dispatch({
-        type: LOAD_USER_REQUEST,
-    });
-})*/
-
+export const getServerSideProps = async () => {
+    const playlistData = await request(apiUrl.libraryPlaylist);
+    return {
+        props: {
+            playlistData,
+        },
+    };
+};
 export default PlaylistLibrary;

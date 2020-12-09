@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlayerControls: View {
-    @Binding var isPlaying: Bool
+    @EnvironmentObject private var nowPlaying: NowPlaying
     @Binding var isOpenMenu: Bool
     @State private var isFavorite = false
     @State private var isShuffle = false
@@ -38,9 +38,9 @@ struct PlayerControls: View {
                 Spacer()
                 
                 Button {
-                    isPlaying.toggle()
+                    nowPlaying.isPlaying.toggle()
                 } label: {
-                    Image(systemName: isPlaying ? "pause.fill" : "play.fill")
+                    Image(systemName: nowPlaying.isPlaying ? "pause.fill" : "play.fill")
                         .foregroundColor(.black)
                         .font(.system(size: 40))
                         .frame(height: 40)
@@ -71,9 +71,6 @@ struct PlayerControls: View {
 
 struct PlayerControls_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerControls(isPlaying: .constant(false),
-                       isOpenMenu: .constant(false),
-                       title: "Dynamite",
-                       artist: "방탄소년단")
+        PlayerControls(isOpenMenu: .constant(false), title: "곰인형", artist: "린")
     }
 }

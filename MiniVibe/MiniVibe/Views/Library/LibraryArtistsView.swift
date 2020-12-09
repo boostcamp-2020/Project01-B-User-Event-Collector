@@ -50,7 +50,7 @@ struct LibraryArtistsView: View {
                         }
                         
                         ForEach(0..<10) { _ in
-                            NavigationLink(destination: ArtistView()) {
+                            NavigationLink(destination: ArtistView(id: 3)) {
                                 LibraryArtistRow(artist: "방탄소년단")
                             }
                         }

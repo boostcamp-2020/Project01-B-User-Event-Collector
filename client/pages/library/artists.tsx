@@ -1,16 +1,8 @@
 import styled from 'styled-components';
 import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHeader';
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
-
-const Artistdata = Array(9).fill({
-    id: 3,
-    name: "이영지",
-    imageUrl: "https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg",
-    genre: {
-        id: 1,
-        name: "랩/힙합"
-    }
-});
+import apiUrl from 'constants/apiUrl';
+import { request } from '@utils/apis';
 
 const LibraryContainer = styled.div`
     width: 100%;
@@ -28,23 +20,25 @@ const LibraryHeaderContainer = styled.div`
 
 const LibraryContentsContainer = styled.div``;
 
-const ArtistLibrary = () => {
+const ArtistLibrary = ({ artistData }) => {
     return (
         <LibraryContainer>
             <LibraryHeaderContainer>
                 <LibraryHeader sort="artist" />
             </LibraryHeaderContainer>
             <LibraryContentsContainer>
-                <LibraryCardList variant="artist" items={Artistdata} />
+                <LibraryCardList variant="artist" items={artistData} />
             </LibraryContentsContainer>
         </LibraryContainer>
     );
 };
 
-/*export const getServerSideProps = wrapper.getServerSideProps((context) => {
-    constext.store.dispatch({
-        type: LOAD_USER_REQUEST,
-    });
-})*/
-
+export const getServerSideProps = async () => {
+    const artistData = await request(apiUrl.libraryArtist);
+    return {
+        props: {
+            artistData,
+        },
+    };
+};
 export default ArtistLibrary;

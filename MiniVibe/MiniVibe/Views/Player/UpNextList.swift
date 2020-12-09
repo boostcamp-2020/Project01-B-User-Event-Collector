@@ -6,25 +6,18 @@
 //
 
 import SwiftUI
-
-struct Item: Hashable {
-    var title: String
-}
+import KingfisherSwiftUI
 
 struct UpNextList: View {
     init() {
         UITableView.appearance().showsVerticalScrollIndicator = false
     }
-    
-    @State private var isAutoPlay: Bool = true
+
     @State private var editMode = EditMode.active
-    @State private var tracks: [Item] = (0..<20).map {
-        Item(title: "Track #\($0)")
-    }
-    @State private var selectedTracks = Set<Item>()
+    @EnvironmentObject private var nowPlaying: NowPlaying
     
-    var selectionCount: Int {
-        return selectedTracks.count
+    private var selectionCount: Int {
+        return nowPlaying.selectedTracks.count
     }
     
     var body: some View {
@@ -43,30 +36,25 @@ struct UpNextList: View {
             .padding()
             
             VStack(spacing: 0) {
-                List(selection: $selectedTracks) {
-                    ForEach(tracks, id: \.self) { track in
-                        Text(track.title)
-                    }
-                    .onMove(perform: onMove(source:destination:))
-                    
-                    Toggle(isOn: $isAutoPlay) {
-                        VStack(alignment: .leading) {
-                            Text("Auto Play")
-                                .font(.subheadline)
-                            
-                            Text("Play similar songs endlessly")
-                                .font(.caption)
-                                .foregroundColor(.gray)
+                List(selection: $nowPlaying.selectedTracks) {
+                    ForEach(nowPlaying.upNext, id: \.self) { track in
+                        HStack(spacing: 10) {
+                            KFImage(URL(string: track.album.imageUrl))
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                            VStack(alignment: .leading) {
+                                Text(track.title)
+                                Text(track.artist.name)
+                            }
                         }
                     }
+                    .onMove(perform: onMove(source:destination:))
                 }
                 .environment(\.editMode, .constant(EditMode.active))
                 
-                if selectedTracks.count > 0 {
-                    MultiselectTabBar(
-                        barItems: [AddToPlaylist(), Save(), Delete()]
-                    )
-                    .frame(height: 48)
+                if selectionCount > 0 {
+                    MultiselectTabBar(barItems: [AddToPlaylist(), Save(), Delete()])
+                        .frame(height: 48)
                 }
             }
         }
@@ -87,24 +75,32 @@ struct UpNextList: View {
             } label: {
                 Image(systemName: "magnifyingglass")
             }
-        } else if selectionCount == tracks.count {
+        } else if selectionCount == nowPlaying.upNext.count {
             Button {
-                selectedTracks.removeAll()
+                nowPlaying.selectedTracks.removeAll()
             } label: {
                 Text("Deselect All")
             }
         } else {
             Button {
-                tracks.forEach { selectedTracks.insert($0) }
+                nowPlaying.upNext.forEach { nowPlaying.selectedTracks.insert($0) }
             } label: { Text("Select All") }
         }
+    }
+    
+    private func onMove(source: IndexSet, destination: Int) {
+        var destinationIndex: Int = 0
+        nowPlaying.upNext.move(fromOffsets: source, toOffset: destination)
+        guard let sourceIndex = source.first else { return }
+        destinationIndex = sourceIndex < destination ?  destination - 1 : destination
+        print("source \(sourceIndex) -> destination \(destinationIndex)")
     }
     
     @ViewBuilder
     var trailingBarItem: some View {
         if selectionCount > 0 {
             Button {
-                selectedTracks.removeAll()
+                nowPlaying.selectedTracks.removeAll()
             } label: { Text("Done") }
         } else {
             Button {
@@ -112,10 +108,6 @@ struct UpNextList: View {
                 // sheet 내리기
             } label: { Image(systemName: "chevron.down") }
         }
-    }
-    
-    private func onMove(source: IndexSet, destination: Int) {
-        tracks.move(fromOffsets: source, toOffset: destination)
     }
     
 }

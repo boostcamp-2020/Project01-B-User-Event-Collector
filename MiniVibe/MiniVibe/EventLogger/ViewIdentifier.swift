@@ -16,6 +16,7 @@ enum ViewIdentifier: CustomStringConvertible, Hashable {
     case album(id: Int)
     case albumMenu(id: Int)
     case mixtapes
+    case mixtape(id: Int)
     case playlist(id: Int)
     case playlists(id: Int) // 각각의 플레이리스트 목록에 id가 있다고 가정(현재 API에는 구현되어있지 않음)
     case magazine(id: Int)
@@ -43,6 +44,8 @@ enum ViewIdentifier: CustomStringConvertible, Hashable {
             return "album menu \(id)"
         case .mixtapes:
             return "mixtapes"
+        case let .mixtape(id):
+            return "mixtape \(id)"
         case let .playlist(id):
             return "playlist \(id)"
         case let .playlists(id):

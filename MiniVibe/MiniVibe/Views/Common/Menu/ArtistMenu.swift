@@ -6,15 +6,17 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct ArtistMenu: View {
     @Environment(\.presentationMode) var presentationMode
+    let artist: ArtistInfo
     
     var body: some View {
         VStack(spacing: 36) {
             Spacer()
             HStack {
-                Image("artist")
+                KFImage(URL(string: artist.imageUrl))
                     .resizable()
                     .aspectRatio(1, contentMode: .fit)
                     .frame(width: 80)
@@ -22,10 +24,10 @@ struct ArtistMenu: View {
                 
                 VStack(alignment: .leading,
                        spacing: 4) {
-                    Text("임창정")
+                    Text(artist.name)
                         .font(.system(size: 18, weight: .bold))
                     
-                    Text("♥︎ 16K")
+                    Text("♥︎ 999")
                         .foregroundColor(.secondary)
                 }
                 .lineLimit(1)
@@ -48,6 +50,6 @@ struct ArtistMenu: View {
 
 struct ArtistMenu_Previews: PreviewProvider {
     static var previews: some View {
-        ArtistMenu()
+        ArtistMenu(artist: .init(id: 0, name: "", imageUrl: "", genre: .init(name: ""), tracks: [], albums: []))
     }
 }
