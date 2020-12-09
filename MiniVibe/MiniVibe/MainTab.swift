@@ -44,7 +44,7 @@ struct MainTab: View {
                 }
                 .tag(ViewIdentifier.library)
             
-            EventLogView()
+            EventLogView(viewModel: .init(eventLogger: eventLogger))
                 .tabItem {
                     Image(systemName: "pencil.and.ellipsis.rectangle")
                 }
