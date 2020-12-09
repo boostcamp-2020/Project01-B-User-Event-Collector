@@ -15,8 +15,9 @@ struct TrackRowC: View {
     var body: some View {
         HStack {
             NavigationLink(destination: AlbumView(id: 11)) {
-                Image("album")
-                    .trackRowImageConfigure()
+                AsyncImage(urlString: track.album.imageUrl)
+                    .frame(width: 50, height: 50)
+                    .border(Color.gray, width: 0.7)
             }
             
             Button {
