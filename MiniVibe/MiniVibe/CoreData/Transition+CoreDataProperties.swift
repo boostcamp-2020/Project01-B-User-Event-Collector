@@ -25,6 +25,6 @@ extension Transition {
 
 extension Transition {
     public override var description: String {
-        return "\(timestamp) - Event: \(event), Page: \(page), Component: \(componentId)"
+        return "\(timestamp)\nEvent: \(event)\nPage: \(page)\nComponent: \(componentId)"
     }
 }

@@ -31,7 +31,8 @@ final class EventLogger: ObservableObject {
     
     @Published var tabViewSelection: ViewIdentifier = .today {
         didSet {
-            guard oldValue != tabViewSelection else { return }
+            guard oldValue != tabViewSelection,
+                  tabViewSelection != .none else { return }
             send(.tabViewTransition(identifier: tabViewSelection))
         }
     }

@@ -22,6 +22,7 @@ struct MiniVibeApp: App {
             MainTab()
                 .environmentObject(NowPlaying())
                 .environmentObject(EventLogger(persistentContainer: persistentContainer))
+                .environment(\.managedObjectContext, persistentContainer.viewContext)
                 .onChange(of: scenePhase) { newScenePhase in
                     switch newScenePhase {
                     case .active:

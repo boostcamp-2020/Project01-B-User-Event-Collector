@@ -43,25 +43,38 @@ struct MainTab: View {
                     Image(systemName: "person.fill")
                 }
                 .tag(ViewIdentifier.library)
+            
+            EventLogView()
+                .tabItem {
+                    Image(systemName: "pencil.and.ellipsis.rectangle")
+                }
+                .tag(ViewIdentifier.none)
         }
         .accentColor(.pink)
         .onPreferenceChange(Size.self, perform: { value in
             contentFrame = value.last ?? .zero
         })
         .overlay(
-            PlayerPreview(coordinate: contentFrame,
-                          title: "Dynamite",
-                          artist: "방탄소년단")
-                .onTapGesture {
-                    if !nowPlaying.upNext.isEmpty {
-                        nowPlaying.isPlayerPresented.toggle()
-                    }
-                }
-                .sheet(isPresented: $nowPlaying.isPlayerPresented) {
-                    PlayerView(title: "Dynamite",
-                               artist: "방탄소년단")
-                }
+            player
         )
+    }
+    
+    @ViewBuilder
+    private var player: some View {
+        if eventLogger.tabViewSelection != .none {
+        PlayerPreview(coordinate: contentFrame,
+                      title: "Dynamite",
+                      artist: "방탄소년단")
+            .onTapGesture {
+                if !nowPlaying.upNext.isEmpty {
+                    nowPlaying.isPlayerPresented.toggle()
+                }
+            }
+            .sheet(isPresented: $nowPlaying.isPlayerPresented) {
+                PlayerView(title: "Dynamite",
+                           artist: "방탄소년단")
+            }
+        }
     }
 }
 
