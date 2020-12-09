@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TrackRowB: View {
+    @EnvironmentObject private var nowPlaying: NowPlaying
     let track: TrackInfo
 
     var body: some View {
@@ -24,6 +25,12 @@ struct TrackRowB: View {
                 Text(track.artist.name)
                     .font(.system(size: 13))
                     .foregroundColor(.secondary)
+            }
+            .onTapGesture {
+                nowPlaying.upNext.append(UpNextTrack(id: track.id,
+                                                     title: track.title,
+                                                     artist: track.artist,
+                                                     imageUrl: track.album.imageUrl))
             }
             
             Spacer()
