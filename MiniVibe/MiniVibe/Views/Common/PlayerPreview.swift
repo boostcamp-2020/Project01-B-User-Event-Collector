@@ -63,9 +63,6 @@ struct PlayerPreview: View {
             
             Button {
                 nowPlaying.playNextTrack()
-                if !nowPlaying.isPlaying {
-                    nowPlaying.isPlaying = true
-                }
             } label: {
                 Image(systemName: "forward.fill")
             }

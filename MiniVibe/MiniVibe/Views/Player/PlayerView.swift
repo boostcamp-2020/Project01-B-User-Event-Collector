@@ -20,7 +20,7 @@ struct PlayerView: View {
             ZStack {
                 ScrollView {
                     VStack {
-                        Player(isOpenMenu: $isOpenMenu, isOpenLyrics: $isOpenLyrics)
+                        Player(isMenuOpen: $isOpenMenu, isLyricsOpen: $isOpenLyrics)
                             .frame(height: geometry.size.height)
                         
                         Divider()

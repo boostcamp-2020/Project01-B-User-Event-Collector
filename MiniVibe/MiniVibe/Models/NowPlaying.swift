@@ -18,6 +18,7 @@ class NowPlaying: ObservableObject {
     }
     
     func addTrack(track: TrackInfo) {
+        isPlaying = true
         if let index = upNext.firstIndex(of: track) {
             upNext.insert(upNext.remove(at: index), at: 0)
         } else {
@@ -26,6 +27,7 @@ class NowPlaying: ObservableObject {
     }
     
     func playNextTrack() {
+        isPlaying = true
         upNext.insert(upNext.remove(at: 0), at: upNext.count)
     }
 
