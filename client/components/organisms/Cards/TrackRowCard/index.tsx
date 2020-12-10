@@ -8,7 +8,7 @@ import DropDownMenu from '@components/molecules/DropdownMenu';
 import { TrackRowCardProps } from '@interfaces/props';
 import LyricModal from '@components/organisms/LyricModal/LyricModal';
 import PlaylistModal from '@components/organisms/PlaylistModal';
-import { likeRequest, request, unlikeRequest } from '@utils/apis';
+import { likeRequest, request, unlikeRequest, addTracksToPlaylist } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
 import {
     List,
@@ -107,7 +107,15 @@ const TrackRowCard = (data: TrackRowCardProps) => {
     const handleClick = (e) => {
         setAnchorEl(e.currentTarget);
     };
-
+    const addToPlaylist = (e) => {
+        addTracksToPlaylist(apiUrl.addTracksToPlaylist, {
+            data: {
+                playlistId: parseInt(e.currentTarget.firstChild.innerText),
+                tracks: [id],
+            },
+        });
+        setPlaylistModal({ visibility: false, data: [] });
+    };
     const onChangeCheckRow = (e) => {
         const list = e.target.closest('LI');
         list.classList.toggle('checked');
@@ -125,6 +133,7 @@ const TrackRowCard = (data: TrackRowCardProps) => {
             <PlaylistModal
                 visibility={playlistModal.visibility}
                 data={playlistModal.data}
+                handleClick={addToPlaylist}
                 onClickFunc={onClickShowPlaylist}
             ></PlaylistModal>
             <TrackLeft>
