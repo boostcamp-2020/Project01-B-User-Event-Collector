@@ -25,12 +25,12 @@ enum NetworkError: Error {
     }
 }
 
-enum RequestType {
+enum RequestType: CustomStringConvertible {
     case get
     case post
     case delete
-    
-    var toString: String {
+
+    var description: String {
         switch self {
         case .get:
             return "GET"
@@ -59,7 +59,7 @@ final class NetworkService: NetworkServiceType {
                 .eraseToAnyPublisher()
         }
         var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = type.toString
+        urlRequest.httpMethod = type.description
         urlRequest.httpBody = body
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         return session.dataTaskPublisher(for: urlRequest)
@@ -68,7 +68,6 @@ final class NetworkService: NetworkServiceType {
                       (200..<300).contains(response.statusCode) else {
                     throw NetworkError.unsuccessfulResponse
                 }
-                print(data)
                 return data
             }
             .mapError { (error) -> NetworkError in

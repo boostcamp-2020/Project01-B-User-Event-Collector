@@ -13,7 +13,7 @@ struct GenreItem: View {
     
     var body: some View {
         Button {
-            print("touched!")
+            
         } label: {
             HStack(spacing: 10) {
                 RoundedRectangle(cornerRadius: 25.0)

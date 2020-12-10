@@ -16,10 +16,6 @@ struct LikeTrackResponse: Decodable {
     let success: Bool
 }
 
-struct CancelLikeTrackResponse: Decodable {
-    let success: Bool
-}
-
 struct TrackUseCase {
     private let network: NetworkServiceType
     
@@ -51,7 +47,7 @@ struct TrackUseCase {
     
     func cancelLikedTrack(id: Int) -> AnyPublisher<Bool, UseCaseError> {
         return network.request(url: EndPoint.cancelLike(id: id).urlString, request: .delete, body: nil)
-            .decode(type: CancelLikeTrackResponse.self, decoder: JSONDecoder())
+            .decode(type: LikeTrackResponse.self, decoder: JSONDecoder())
             .mapError { error -> UseCaseError in
                 switch error {
                 case is NetworkError:

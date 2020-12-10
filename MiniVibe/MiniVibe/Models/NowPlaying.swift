@@ -16,6 +16,8 @@ final class NowPlaying: ObservableObject {
     var playingTrack: TrackInfo? {
         return upNext.first
     }
+    let usecase = TrackUseCase()
+    var cancellables = Set<AnyCancellable>()
     
     func addTrack(track: TrackInfo) {
         isPlaying = true
@@ -27,8 +29,13 @@ final class NowPlaying: ObservableObject {
     }
     
     func deleteTrack() {
-        selectedTracks.forEach { upNext.remove(at: upNext.firstIndex(of: $0) ?? -1) }
-        
+        selectedTracks.forEach { track in
+            guard let index = upNext.firstIndex(of: track) else {
+                selectedTracks.removeAll()
+                return
+            }
+            upNext.remove(at: index)
+        }
     }
     
     func playNextTrack() {
@@ -37,11 +44,9 @@ final class NowPlaying: ObservableObject {
     }
     
     func likeTrack(id: Int) {
-        let usecase = TrackUseCase()
-        var cancellables = Set<AnyCancellable>()
         usecase.likeTrack(like: LikeTrack(trackId: id)) //sink로 받고 에러처리만 하면 될 듯?
-            .sink { result in
-                print(result)
+            .sink { _ in
+                
             } receiveValue: { _ in
                 
             }
@@ -50,11 +55,9 @@ final class NowPlaying: ObservableObject {
     }
     
     func cancelLikedTrack(id: Int) {
-        let usecase = TrackUseCase()
-        var cancellables = Set<AnyCancellable>()
         usecase.cancelLikedTrack(id: id)
-            .sink { result in
-                print(result)
+            .sink { _ in
+                
             } receiveValue: { _ in
                 
             }
