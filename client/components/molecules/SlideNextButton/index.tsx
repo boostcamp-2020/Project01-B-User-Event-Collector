@@ -4,7 +4,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Circle from '../../atoms/Circle/Circle';
 
 interface SlideNextButtonProps {
-    onClick: (e: MouseEvent<HTMLElement>) => void;
+    onClick?: (e: MouseEvent<HTMLElement>) => void;
 }
 
 const SlideNextButton = ({ onClick }: SlideNextButtonProps) => {

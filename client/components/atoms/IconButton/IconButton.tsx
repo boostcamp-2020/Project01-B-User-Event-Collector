@@ -16,7 +16,7 @@ const IconButton = ({
   onClick, icon: Icon, variant,
 }: IconButtonProps) => (
   <StyledIconButton variant={variant} onClick={onClick}>
-    <Icon style={{ fontSize: variant === 'plainGreySmall'? 13 : 16 }} />
+    <Icon />
   </StyledIconButton>
 );
 

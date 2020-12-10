@@ -17,9 +17,8 @@ const PlayerTrackList = ({ items }: { items: PlayerTrackCardProps[] }) => {
     <ListContainer>
         {items.map((item) => (
             <PlayerTrackCard 
-            key={item.id}
-            data={item}
-            artist={item.artist.name} />
+            key = {item.id}
+            data = {item} />
         ))}
     </ListContainer>
 )};

@@ -3,17 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Menu, { MenuProps } from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-interface DropdownMenuProps {
-    id: string;
-    control?: ComponentType<{
-        onClick?: (e: MouseEvent<HTMLElement>) => void;
-    }>;
-    menuItems: {
-        content: string;
-        handleClick?: (e: MouseEvent<HTMLElement>) => void;
-    }[];
-    children?: ReactNode;
-}
+import { DropdownMenuProps } from '@interfaces/props';
 
 const StyledMenu = withStyles({
     paper: {

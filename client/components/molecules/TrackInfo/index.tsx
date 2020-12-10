@@ -2,11 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import StyledA from '@components/atoms/A/A.styles';
 import { Track } from '@components/organisms/Library/LibraryHeader/LibraryHeader.stories';
+import { TrackInfoProps } from '@interfaces/props';
 
-interface TrackInfoProps {
-    data,
-    track: boolean;
-}
 const TrackInfoContainer = styled.div`
     padding: 0 20px 0 12px;
     line-height: 20px;

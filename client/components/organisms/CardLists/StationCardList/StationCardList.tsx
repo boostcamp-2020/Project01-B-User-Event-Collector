@@ -21,8 +21,8 @@ const StyledList = styled.li`
 `;
 const StationCardList = ({ items }: StationCardListProps) => (
     <ListContainer>
-        {items.map((item) => (
-            <StyledList>
+        {items.map((item, idx) => (
+            <StyledList key={idx}>
                 <StationCard {...(item as StationCardProps)} />
             </StyledList>
         ))}

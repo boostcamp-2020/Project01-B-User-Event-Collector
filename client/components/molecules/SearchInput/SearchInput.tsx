@@ -30,7 +30,7 @@ const IconContainer = styled.div`
 // `;
 
 interface SearchInputProps {
-    onClose: () => void;
+    onClose?: () => void;
 }
 
 const SearchInput = ({ onClose }: SearchInputProps) => (

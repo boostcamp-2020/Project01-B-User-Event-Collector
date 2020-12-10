@@ -1,7 +1,7 @@
 import React from 'react';
 import { func, node, string } from 'prop-types';
 
-import StyledImage from './Image.styles.tsx';
+import StyledImage from './Image.styles';
 
 const Image = ({
   variant, src

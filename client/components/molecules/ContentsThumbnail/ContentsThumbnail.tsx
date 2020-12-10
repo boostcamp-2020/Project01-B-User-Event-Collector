@@ -5,6 +5,7 @@ import Image from '../../atoms/Image/Image';
 import PlayButton from '../PlayButton/PlayButton';
 import DropDownMenu from '../DropdownMenu';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import { ContentsThumbnailProps } from '@interfaces/props';
 
 const ButtonContainer = styled.div`
     display: flex;
@@ -61,13 +62,7 @@ const contentsDropDownMenu = [{
     content: 'MP3 구매'
 }]
 
-interface ContentsThumbnailProps {
-    src: string,
-    href: string,
-    sort: 'news' | 'mainMagazine' | 'normalMagazine' | 'recommendPlaylist' | 'normalPlaylist'
-};
-
-const ContentsThumbnail = ( { src, href, sort } ) => (
+const ContentsThumbnail = ( { src, href, sort }: ContentsThumbnailProps ) => (
     <ThumbnailContainer>
         <StyledImage src = {src} variant = { sort === 'news' ? 'news' : 
                                 sort === 'todayMagazine' || sort === 'recommendPlaylist' ? 'primary' : 

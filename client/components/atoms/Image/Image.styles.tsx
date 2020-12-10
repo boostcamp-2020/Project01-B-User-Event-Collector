@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-const getImageStyle = (props) => {
+interface StyledImageProps {
+  variant?: 'primary' | 'todayMagazine' | 'normalMagazine' | 'news' | 'detailThumbnail' | 'trackRowCard' | 'trackInfo' | 'lyricTrackInfo' | 'smallArtist' | 'regularArtist' | 'largeArtist';
+}
+
+const getImageStyle = (props: StyledImageProps) => {
   let width; let height; 
   let borderRadius = '0%';
   let position = 'static';
@@ -68,7 +72,7 @@ const getImageStyle = (props) => {
   `;
 };
 
-export const StyledImage = styled.img`
+export const StyledImage = styled.img<StyledImageProps>`
   ${(props) => getImageStyle(props)};
   object-fit: cover;
 `;

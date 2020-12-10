@@ -1,13 +1,12 @@
 import React from 'react';
 import { func, node, string } from 'prop-types';
 
-import StyledInput from './Input.styles.tsx';
+import StyledInput from './Input.styles';
+import { InputProps } from '@interfaces/props';
 
-const Input = ({
-  onClick, variant, 
-}) => {
-  if (variant === 'search') return <StyledInput variant={variant} onClick={onClick} placeholder='VIBE 검색' />;
-  return <StyledInput variant={variant} onClick={onClick} placeholder='플레이리스트 이름을 입력해 주세요' />;
+const Input = ({variant}: InputProps) => {
+  if (variant === 'search') return <StyledInput type = "text" variant={variant} placeholder='VIBE 검색' />;
+  return <StyledInput type = "text" variant={variant} placeholder='플레이리스트 이름을 입력해 주세요' />;
 };
 
 // Expected prop values
