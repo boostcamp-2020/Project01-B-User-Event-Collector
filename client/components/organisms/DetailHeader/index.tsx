@@ -1,4 +1,8 @@
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
+
+import { addToUpNext, addToUpNextAndPlay } from 'reducers/musicPlayer';
 
 import Text from '@components/atoms/Text';
 import HeaderButtonGroup from '@components/organisms/HeaderButtonGroup';
@@ -64,6 +68,11 @@ interface DetailHeaderProps {
 }
 
 const DetailHeader = ({ sort, data }: DetailHeaderProps) => {
+    const dispatch = useDispatch();
+    const onAddUpNextHandler = () => {
+        sort === 'track'? dispatch(addToUpNextAndPlay([data])) : dispatch(addToUpNextAndPlay(data.tracks));
+    }
+
     return (
         <HeaderContainter>
             <ImageContainer>
@@ -87,8 +96,8 @@ const DetailHeader = ({ sort, data }: DetailHeaderProps) => {
                     </DescriptionContainer>
                 </TextContainer>
                 <ButtonContainer>
-                    {sort === 'track' && <HeaderButtonGroup sort="track" />}
-                    {sort !== 'track' && <HeaderButtonGroup />}
+                    {sort === 'track' && <HeaderButtonGroup sort="track" onAddUpNextHandler = {onAddUpNextHandler}/>}
+                    {sort !== 'track' && <HeaderButtonGroup onAddUpNextHandler = {onAddUpNextHandler}/>}
                 </ButtonContainer>
             </DetailContainer>
         </HeaderContainter>
