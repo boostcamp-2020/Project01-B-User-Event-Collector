@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import A from '@components/atoms/A/A';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import HiddenText from '@components/atoms/Text/HiddenText';
@@ -8,7 +8,7 @@ import DropDownMenu from '@components/molecules/DropdownMenu';
 import { TrackRowCardProps } from '@interfaces/props';
 import LyricModal from '@components/organisms/LyricModal/LyricModal';
 import PlaylistModal from '@components/organisms/PlaylistModal';
-import { likeRequest, request, unlikeRequest, addTracksToPlaylist } from '@utils/apis';
+import { unlikeRequest, addTracksToPlaylist } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
 import {
     List,
@@ -23,6 +23,7 @@ import {
     StyledMoreHorizIcon,
     Like,
 } from './TrackRowCard.styles';
+import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 
 const contentsDropDownMenu = [
     {
@@ -53,8 +54,7 @@ const likeAction = async (isLiked, type, id) => {
         : await unlikeRequest(url);
 };
 const TrackRowCard = (data: TrackRowCardProps) => {
-    // TODO : component 정보에서 type 가져오기
-    const type = 'track';
+    const componentInfo = useContext(ComponentInfoContext);
     const { id, title, lyrics, album, artist, liked } = data;
     const { id: albumId, title: albumTitle, imageUrl } = album;
     const { id: artistId, name: artistName } = artist;
@@ -62,11 +62,10 @@ const TrackRowCard = (data: TrackRowCardProps) => {
     const [isLiked, setIsLiked] = useState(liked);
     const [displayLyrics, setDisplayLyrics] = useState(false);
     const [playlistModal, setPlaylistModal] = useState({ visibility: false, data: [] });
-    const [anchorEl, setAnchorEl] = useState(null);
 
     const onClickUnlikeHandler = () => {
         setIsLiked(0);
-        likeAction(!isLiked, type, id);
+        unlikeRequest(`${apiUrl.like}${componentInfo.data.type}s/${componentInfo.data.id}`);
     };
 
     const onClickShowLyric = () => {
@@ -77,35 +76,6 @@ const TrackRowCard = (data: TrackRowCardProps) => {
             visibility: false,
             data: [],
         });
-    };
-    const handleClose = (e) => {
-        switch (e.currentTarget.innerText) {
-            case contentsDropDownMenu[0].content:
-                likeAction(!isLiked, type, id);
-                setIsLiked(1);
-                break;
-            case contentsDropDownMenu[1].content:
-                request(apiUrl.libraryPlaylist).then((data) => {
-                    setPlaylistModal({
-                        visibility: true,
-                        data: data,
-                    });
-                });
-                break;
-            case contentsDropDownMenu[2].content:
-                break;
-            case contentsDropDownMenu[3].content:
-                break;
-            case contentsDropDownMenu[4].content:
-                setDisplayLyrics(!displayLyrics);
-                break;
-            default:
-                break;
-        }
-        setAnchorEl(null);
-    };
-    const handleClick = (e) => {
-        setAnchorEl(e.currentTarget);
     };
     const addToPlaylist = (e) => {
         addTracksToPlaylist(apiUrl.addTracksToPlaylist, {
@@ -175,9 +145,7 @@ const TrackRowCard = (data: TrackRowCardProps) => {
                             id="contents"
                             control={StyledMoreHorizIcon}
                             menuItems={contentsDropDownMenu}
-                            handleClick={handleClick}
-                            handleClose={handleClose}
-                            anchorEl={anchorEl}
+                            state={{ setIsLiked, setDisplayLyrics, setPlaylistModal }}
                         />
                     )}
                     <A href="#">
