@@ -11,7 +11,7 @@ import Foundation
 protocol EventLogType {
     var event: String { get }
     var userId: Int { get }
-    var timestamp: String { get }
+    var timestamp: Date { get }
     
     func save(context: NSManagedObjectContext)
 }

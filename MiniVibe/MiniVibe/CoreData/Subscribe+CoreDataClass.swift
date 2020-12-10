@@ -21,7 +21,7 @@ extension Subscribe {
     }
 
     @NSManaged public var userId: Int
-    @NSManaged public var timestamp: String
+    @NSManaged public var timestamp: Date
     @NSManaged public var componentId: String
     @NSManaged public var event: String
 
@@ -47,6 +47,3 @@ extension Subscribe: Encodable {
         try container.encode(event, forKey: .componentId)
     }
 }
-
-
-

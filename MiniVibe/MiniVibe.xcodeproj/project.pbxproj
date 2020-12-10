@@ -84,6 +84,7 @@
 		800FA851257DC71E008926A5 /* TodayUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FA850257DC71E008926A5 /* TodayUseCase.swift */; };
 		800FA855257DD72B008926A5 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FA854257DD72B008926A5 /* TodayViewModel.swift */; };
 		800FA867257E003D008926A5 /* Playlists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FA866257E003D008926A5 /* Playlists.swift */; };
+		801AE36A25826ED1004F1947 /* MoveTrackLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801AE36925826ED1004F1947 /* MoveTrackLog.swift */; };
 		8033A7AA257FA7B100B1C321 /* NowPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8033A7A9257FA7B100B1C321 /* NowPlaying.swift */; };
 		805E28AE256BBD52007AF5F1 /* MiniVibeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805E28AD256BBD52007AF5F1 /* MiniVibeApp.swift */; };
 		805E28B2256BBD53007AF5F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805E28B1256BBD53007AF5F1 /* Assets.xcassets */; };
@@ -92,8 +93,9 @@
 		805E28D7256BDE90007AF5F1 /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805E28D6256BDE90007AF5F1 /* SectionTitle.swift */; };
 		805E28DA256BDFE6007AF5F1 /* ChartSectionA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805E28D9256BDFE6007AF5F1 /* ChartSectionA.swift */; };
 		80609237258226B20032FBE0 /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80609236258226B20032FBE0 /* Transitions.swift */; };
-		8060924F258255A60032FBE0 /* Subscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8060924E258255A60032FBE0 /* Subscribe.swift */; };
+		8060924F258255A60032FBE0 /* SubscribeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8060924E258255A60032FBE0 /* SubscribeLog.swift */; };
 		8060925825825B880032FBE0 /* Subscribe+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8060925625825B880032FBE0 /* Subscribe+CoreDataClass.swift */; };
+		80609260258261B90032FBE0 /* MoveTrack+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8060925E258261B90032FBE0 /* MoveTrack+CoreDataClass.swift */; };
 		806D272925812DA8002580B3 /* TrackUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806D272825812DA8002580B3 /* TrackUseCase.swift */; };
 		806D273125815903002580B3 /* UseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806D273025815903002580B3 /* UseCaseError.swift */; };
 		807B698D256FAC2F00DAF867 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807B698C256FAC2F00DAF867 /* NetworkService.swift */; };
@@ -220,6 +222,7 @@
 		800FA850257DC71E008926A5 /* TodayUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUseCase.swift; sourceTree = "<group>"; };
 		800FA854257DD72B008926A5 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		800FA866257E003D008926A5 /* Playlists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlists.swift; sourceTree = "<group>"; };
+		801AE36925826ED1004F1947 /* MoveTrackLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveTrackLog.swift; sourceTree = "<group>"; };
 		8033A7A9257FA7B100B1C321 /* NowPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlaying.swift; sourceTree = "<group>"; };
 		805E28AA256BBD52007AF5F1 /* MiniVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805E28AD256BBD52007AF5F1 /* MiniVibeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeApp.swift; sourceTree = "<group>"; };
@@ -230,8 +233,9 @@
 		805E28D6256BDE90007AF5F1 /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
 		805E28D9256BDFE6007AF5F1 /* ChartSectionA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSectionA.swift; sourceTree = "<group>"; };
 		80609236258226B20032FBE0 /* Transitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
-		8060924E258255A60032FBE0 /* Subscribe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscribe.swift; sourceTree = "<group>"; };
+		8060924E258255A60032FBE0 /* SubscribeLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeLog.swift; sourceTree = "<group>"; };
 		8060925625825B880032FBE0 /* Subscribe+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subscribe+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8060925E258261B90032FBE0 /* MoveTrack+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoveTrack+CoreDataClass.swift"; sourceTree = "<group>"; };
 		806D272825812DA8002580B3 /* TrackUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackUseCase.swift; sourceTree = "<group>"; };
 		806D273025815903002580B3 /* UseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseError.swift; sourceTree = "<group>"; };
 		807B698C256FAC2F00DAF867 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -348,6 +352,7 @@
 		4437E5D22580C55200B02799 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				8060925E258261B90032FBE0 /* MoveTrack+CoreDataClass.swift */,
 				8060925625825B880032FBE0 /* Subscribe+CoreDataClass.swift */,
 				44E39B2F2580E6EA00968B0A /* Transition+CoreDataClass.swift */,
 				444A88A42580E36000F6CB09 /* Event.xcdatamodeld */,
@@ -539,7 +544,8 @@
 			children = (
 				44A90ADC25822F420032CD82 /* EventType.swift */,
 				80609236258226B20032FBE0 /* Transitions.swift */,
-				8060924E258255A60032FBE0 /* Subscribe.swift */,
+				8060924E258255A60032FBE0 /* SubscribeLog.swift */,
+				801AE36925826ED1004F1947 /* MoveTrackLog.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -866,6 +872,7 @@
 				805E28D7256BDE90007AF5F1 /* SectionTitle.swift in Sources */,
 				80DA95332577A681008C9DFF /* TrackRowD.swift in Sources */,
 				80A52168257942F70051A925 /* GenreSection.swift in Sources */,
+				80609260258261B90032FBE0 /* MoveTrack+CoreDataClass.swift in Sources */,
 				4471B1B12581625900647CA0 /* EventLogViewModel.swift in Sources */,
 				445919AD256E559D0069DAB2 /* StationList.swift in Sources */,
 				44D7B7E725753C2D0049CDBB /* RepeatButton.swift in Sources */,
@@ -906,6 +913,7 @@
 				80609237258226B20032FBE0 /* Transitions.swift in Sources */,
 				80DE47E125795DFA008A9E13 /* NewsSection.swift in Sources */,
 				80C6207D256CFBA100B5C375 /* StationSection.swift in Sources */,
+				801AE36A25826ED1004F1947 /* MoveTrackLog.swift in Sources */,
 				80045DFA257602A900F32E6C /* Lyrics.swift in Sources */,
 				44B22A57257E0D450068A11B /* AlbumUseCase.swift in Sources */,
 				800FA849257DC557008926A5 /* EndPoint.swift in Sources */,
@@ -929,7 +937,7 @@
 				80051692257F17FA00D7EF4C /* ViewLogger.swift in Sources */,
 				4478F723256E8B2B00755656 /* PlayAndShuffle.swift in Sources */,
 				44F97976256CFBA900C9C224 /* AlbumSection.swift in Sources */,
-				8060924F258255A60032FBE0 /* Subscribe.swift in Sources */,
+				8060924F258255A60032FBE0 /* SubscribeLog.swift in Sources */,
 				806D273125815903002580B3 /* UseCaseError.swift in Sources */,
 				44ACE463257E7E9500EA5479 /* PlaylistViewModel.swift in Sources */,
 				800FA851257DC71E008926A5 /* TodayUseCase.swift in Sources */,

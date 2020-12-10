@@ -23,10 +23,9 @@ extension SubscribeLogType {
     }
 }
 
-//구독권의 종류가 여러가지라면 나눌 수 있음
-struct SubscribeTicket: SubscribeLogType {
+struct SubscribeLog: SubscribeLogType {
     let userId: Int
-    let timestamp: String
+    let timestamp: Date
     let componentId: String
     let event: String
 }

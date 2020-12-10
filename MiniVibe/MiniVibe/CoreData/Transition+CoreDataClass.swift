@@ -24,7 +24,7 @@ extension Transition {
     @NSManaged public var userId: Int
     @NSManaged public var page: String
     @NSManaged public var componentId: String
-    @NSManaged public var timestamp: String
+    @NSManaged public var timestamp: Date
 
 }
 
