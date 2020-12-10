@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { clearAllTracks } from 'reducers/selectedTrack';
+
 import CheckBox from '@components/atoms/CheckBox';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@components/atoms/IconButton';
@@ -82,8 +84,13 @@ const PlayButtonContainer = styled.div`
 `;
 
 const FloatingSelectMenu = () => {
+    const dispatch = useDispatch();
     const { tracks } = useSelector(state =>  state.selectedTrack);
     const selectedTrackCount = tracks.length;
+
+    const onClickCloseButtonHandler = () => {
+        dispatch(clearAllTracks());
+    }
 
     return (
         <Container visibility={selectedTrackCount !== 0}>
@@ -96,7 +103,7 @@ const FloatingSelectMenu = () => {
                     {selectedTrackCount}곡 선택
                 </SelectedTrackCounter>
                 <CloseButtonContainer>
-                    <IconButton variant="plainBlackRegular" icon={CloseIcon} />
+                    <IconButton variant="plainBlackRegular" icon={CloseIcon} onClick={onClickCloseButtonHandler}/>
                 </CloseButtonContainer>
             </SelectAreaContainer>
             <ButttonAreaContainer>
