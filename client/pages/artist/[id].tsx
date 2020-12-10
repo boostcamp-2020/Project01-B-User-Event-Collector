@@ -7,6 +7,9 @@ import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 import Text from '@components/atoms/Text';
 import { request } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
+import { page, contentType } from '@constants/identifier';
+import ComponentInfoContext from '@utils/context/ComponentInfoContext';
+import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 
 const Container = styled.div`
     min-height: 1300px;
@@ -36,28 +39,34 @@ const ArtistListContainer = styled.div``;
 
 const Artist = ({ artistData, trackData }) => {
     return (
-        <Container>
-            <Header>
-                <ArtistHeader src={artistData.imageUrl} name={artistData.name} genre={artistData.genre.name} />
-            </Header>
-            <ContentsContainer>
-                {trackData && trackData.length > 0 ? (
-                    <>
-                        <ContentsButtonGroup />
-                        <TrackListContainer>
-                            <TrackRowList items={trackData} />
-                        </TrackListContainer>
-                    </>
-                ) : (
-                    <Text>아티스트의 곡이 없습니다.</Text>
-                )}
-                {/* <ArtistListContainer>
+        <ComponentInfoContext.Provider value={{ componentId: page.artist }}>
+            <Container>
+                <ComponentInfoWrapper componentId={contentType.summaryHeader}>
+                    <Header>
+                        <ArtistHeader src={artistData.imageUrl} name={artistData.name} genre={artistData.genre.name} />
+                    </Header>
+                </ComponentInfoWrapper>
+                <ContentsContainer>
+                    <ComponentInfoWrapper componentId={contentType.track}>
+                        {trackData && trackData.length > 0 ? (
+                            <>
+                                <ContentsButtonGroup />
+                                <TrackListContainer>
+                                    <TrackRowList items={trackData} />
+                                </TrackListContainer>
+                            </>
+                        ) : (
+                            <Text>아티스트의 곡이 없습니다.</Text>
+                        )}
+                    </ComponentInfoWrapper>
+                    {/* <ArtistListContainer>
                     <CardListContainer title="연관 아티스트">
                         <ContentsCardList variant="artist" items={Artistdata} />
                     </CardListContainer>
                 </ArtistListContainer> */}
-            </ContentsContainer>
-        </Container>
+                </ContentsContainer>
+            </Container>
+        </ComponentInfoContext.Provider>
     );
 };
 

@@ -5,6 +5,9 @@ export const page = {
     libraryMixtape: 'library-mixtape',
     libraryPlaylist: 'library-playlist',
     libraryTrack: 'library-track',
+    album: 'album',
+    artist: 'artist',
+    playlist: 'playlist',
 };
 
 export const contentType = {
@@ -19,6 +22,8 @@ export const contentType = {
     artist: 'artist',
     playlist: 'playlist',
     track: 'track',
+    summaryHeader: 'summary-header', // 상세 페이지 헤더
+    relatedArtistAlbum: 'related-artist-album',
 };
 
 export const dataType = {
