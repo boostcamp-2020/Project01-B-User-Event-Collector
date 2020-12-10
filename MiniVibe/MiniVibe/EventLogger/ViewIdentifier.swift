@@ -8,6 +8,7 @@
 import Foundation
 
 enum ViewIdentifier: CustomStringConvertible, Hashable {
+    case none
     case today
     case charts
     case search
@@ -28,6 +29,8 @@ enum ViewIdentifier: CustomStringConvertible, Hashable {
     
     var description: String {
         switch self {
+        case .none:
+            return "none"
         case .today:
             return "today"
         case .charts:
