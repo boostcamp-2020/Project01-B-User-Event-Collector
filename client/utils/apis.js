@@ -1,7 +1,6 @@
 import axios from 'axios';
 export const requestOptions = {
     method: 'GET',
-    withCredentials: true,
     headers: {
         'Content-Type': 'application/json',
     },
@@ -27,8 +26,7 @@ const likeRequestOptions = {
 export const likeRequest = async (url, option) => {
     const options = { ...likeRequestOptions, ...option };
     try {
-        const a = await axios({ ...options, url });
-        console.log(a);
+        await axios({ ...options, url });
     } catch (err) {
         console.error(err);
     }
@@ -43,9 +41,22 @@ const unlikeOptions = {
 export const unlikeRequest = async (url, option) => {
     const options = { ...unlikeOptions, ...option };
     try {
-        const a = await axios({ ...options, url });
-        console.log(a);
-        return;
+        await axios({ ...options, url });
+    } catch (err) {
+        console.error(err);
+    }
+};
+const addTracksToPlaylistOptions = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+};
+export const addTracksToPlaylist = async (url, option) => {
+    const options = { ...addTracksToPlaylistOptions, ...option };
+    console.log(options);
+    try {
+        await axios({ ...options, url });
     } catch (err) {
         console.error(err);
     }
