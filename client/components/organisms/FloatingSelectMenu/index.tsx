@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import CheckBox from '@components/atoms/CheckBox';
 import CloseIcon from '@material-ui/icons/Close';
@@ -10,7 +11,11 @@ import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import QueueMusicIcon from '@material-ui/icons/QueueMusic';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 
-const Container = styled.div`
+interface ContainerProps {
+    visibility: boolean
+}
+
+const Container = styled.div<ContainerProps>`
     position: fixed;
     top: 0;
     right: 0;
@@ -23,7 +28,7 @@ const Container = styled.div`
     display: flex;
     flex-flow: column;
     align-items: center;
-    visibility: hidden;
+    visibility: ${(props) => props.visibility ? "visible" : "hidden"}
 `;
 
 const SelectAreaContainer = styled.div`
@@ -77,9 +82,11 @@ const PlayButtonContainer = styled.div`
 `;
 
 const FloatingSelectMenu = () => {
-    const [selectedTrackCount, setSelectedTrackCount] = useState(0);
+    const { tracks } = useSelector(state =>  state.selectedTrack);
+    const selectedTrackCount = tracks.length;
+
     return (
-        <Container>
+        <Container visibility={selectedTrackCount !== 0}>
             <SelectAreaContainer>
                 <CheckBoxContainer><CheckBox id= "floatingMenu"/></CheckBoxContainer>
                 <CheckBoxSpan>
