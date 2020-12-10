@@ -8,6 +8,7 @@ export const page = {
     album: 'album',
     artist: 'artist',
     playlist: 'playlist',
+    magazine: 'magazine',
 };
 
 // 모든 page에 공통적으로 들어가는 컴포넌트 id
@@ -31,6 +32,7 @@ export const contentType = {
     track: 'track',
     summaryHeader: 'summary-header', // 상세 페이지 헤더
     relatedArtistAlbum: 'related-artist-album',
+    article: 'article',
 
     // music player 관련
     playController: 'play-controller',
