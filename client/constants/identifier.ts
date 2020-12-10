@@ -7,6 +7,7 @@ export const page = {
     libraryTrack: 'library-track',
     album: 'album',
     artist: 'artist',
+    track: 'track',
     playlist: 'playlist',
     magazine: 'magazine',
 };

@@ -9,11 +9,9 @@ import ShuffleIcon from '@material-ui/icons/Shuffle';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import { request } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
-import { page, contentType, dataType } from '@constants/identifier';
+import { page, contentType } from '@constants/identifier';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
-
-
 
 const Container = styled.div`
     min-height: 1300px;
@@ -29,7 +27,7 @@ const Container = styled.div`
 const Header = styled.div`
     display: flex;
     flex-flow: column;
-    background-color: rgba(0,0,0,0.85);
+    background-color: rgba(0, 0, 0, 0.85);
     justify-content: center;
     align-items: center;
     margin: 0 0 20px 0;
@@ -95,9 +93,7 @@ const ContentsTitleContainer = styled.div`
     margin: 20px 0;
 `;
 
-const ContentsImageContainer = styled.div`
-
-`;
+const ContentsImageContainer = styled.div``;
 
 const ContentsDescriptionContainer = styled.div`
     padding: 8px 0;
@@ -108,13 +104,9 @@ const ContentsDescriptionContainer = styled.div`
     margin: 20px 0;
 `;
 
-const ContentsTrackListContainer = styled.div`
+const ContentsTrackListContainer = styled.div``;
 
-`;
-
-const WholeTrackListContainer = styled.div`
-
-`;
+const WholeTrackListContainer = styled.div``;
 
 const WholeTrackTitleContainer = styled.div`
     padding: 8px 0;
@@ -125,40 +117,42 @@ const WholeTrackTitleContainer = styled.div`
 
 const MagazineDetail = ({ magazineData }) => {
     return (
-        <ComponentInfoContext.Provider value={{ componentId: page.magazine, data: { type: dataType.magaznie, id: magazineData.id} }}>
+        <ComponentInfoContext.Provider value={{ componentId: `${page.magazine}-${magazineData.id}` }}>
             <Container>
                 <ComponentInfoWrapper componentId={contentType.summaryHeader}>
                     <Header>
                         <LabelContainer>
-                            <Label selected = {true} variant = "secondary">{magazineData.category}</Label>
+                            <Label selected={true} variant="secondary">
+                                {magazineData.category}
+                            </Label>
                         </LabelContainer>
-                        <TitleContainer>
-                            {magazineData.title}
-                        </TitleContainer>
-                        <DescriptionContainer>
-                            {magazineData.description}
-                        </DescriptionContainer>
-                        <PlaylistLinkConainer>
-                            <A href = {'/playlist/'+magazineData.playlist.id} variant="tertiary">플레이리스트 보기 ></A>
-                        </PlaylistLinkConainer>
-                        <ButtonContainer>
-                            <Button variant = "primary" width='130' height='40' icon={PlayArrowIcon} >전체재생</Button>
-                            <Button width='130' height='40' icon={ShuffleIcon}>랜덤재생</Button>
-                        </ButtonContainer>
+                        <TitleContainer>{magazineData.title}</TitleContainer>
+                        <DescriptionContainer>{magazineData.description}</DescriptionContainer>
+                        <ComponentInfoWrapper componentId={contentType.playlist}>
+                            <PlaylistLinkConainer>
+                                <A href={'/playlist/' + magazineData.playlist.id} variant="tertiary">
+                                    플레이리스트 보기
+                                </A>
+                            </PlaylistLinkConainer>
+                            <ButtonContainer>
+                                <Button variant="primary" width="130" height="40" icon={PlayArrowIcon}>
+                                    전체재생
+                                </Button>
+                                <Button width="130" height="40" icon={ShuffleIcon}>
+                                    랜덤재생
+                                </Button>
+                            </ButtonContainer>
+                        </ComponentInfoWrapper>
                     </Header>
                 </ComponentInfoWrapper>
                 <ComponentInfoWrapper componentId={contentType.article}>
                     <ContentsContainer>
                         <ContentsBox>
-                            <ContentsTitleContainer>
-                                {magazineData.subTitle}
-                            </ContentsTitleContainer>
+                            <ContentsTitleContainer>{magazineData.subTitle}</ContentsTitleContainer>
                             <ContentsImageContainer>
-                                <img src={magazineData.imageUrl} width = "960px"/>
+                                <img src={magazineData.imageUrl} width="960px" />
                             </ContentsImageContainer>
-                            <ContentsDescriptionContainer>
-                                {magazineData.content}
-                            </ContentsDescriptionContainer>
+                            <ContentsDescriptionContainer>{magazineData.content}</ContentsDescriptionContainer>
                             <ComponentInfoWrapper componentId={contentType.track}>
                                 <ContentsTrackListContainer>
                                     <TrackRowList items={magazineData.playlist.tracks} />
@@ -168,9 +162,7 @@ const MagazineDetail = ({ magazineData }) => {
                         <ContentsBox>
                             <ComponentInfoWrapper componentId={contentType.track}>
                                 <WholeTrackListContainer>
-                                    <WholeTrackTitleContainer>
-                                        {magazineData.title}
-                                    </WholeTrackTitleContainer>
+                                    <WholeTrackTitleContainer>{magazineData.title}</WholeTrackTitleContainer>
                                     <TrackRowList items={magazineData.playlist.tracks} />
                                 </WholeTrackListContainer>
                             </ComponentInfoWrapper>
@@ -179,9 +171,8 @@ const MagazineDetail = ({ magazineData }) => {
                 </ComponentInfoWrapper>
             </Container>
         </ComponentInfoContext.Provider>
-    )   
-}
-
+    );
+};
 
 export async function getServerSideProps(context) {
     const { id } = context.query;
@@ -197,7 +188,7 @@ export async function getServerSideProps(context) {
 
     return {
         props: {
-            magazineData
+            magazineData,
         },
     };
 }

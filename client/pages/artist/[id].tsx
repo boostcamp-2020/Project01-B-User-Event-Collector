@@ -39,7 +39,7 @@ const ArtistListContainer = styled.div``;
 
 const Artist = ({ artistData, trackData }) => {
     return (
-        <ComponentInfoContext.Provider value={{ componentId: page.artist }}>
+        <ComponentInfoContext.Provider value={{ componentId: `${page.artist}-${artistData.id}` }}>
             <Container>
                 <ComponentInfoWrapper componentId={contentType.summaryHeader}>
                     <Header>
