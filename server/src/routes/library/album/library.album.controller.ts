@@ -44,7 +44,6 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
         .getOne();
 
     const libraryAlbums = user?.libraryAlbums ? user?.libraryAlbums : [];
-
     res.json({
         success: true,
         data: libraryAlbums,

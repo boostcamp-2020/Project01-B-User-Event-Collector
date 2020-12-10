@@ -3,6 +3,7 @@ import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHe
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
 import apiUrl from 'constants/apiUrl';
 import { request } from '@utils/apis';
+import NoDataContainer from '@components/molecules/NoDataContainer';
 
 const LibraryContainer = styled.div`
     width: 100%;
@@ -26,15 +27,20 @@ const AlbumLibrary = ({ albumData }) => {
             <LibraryHeaderContainer>
                 <LibraryHeader sort="album" />
             </LibraryHeaderContainer>
-            <LibraryContentsContainer>
-                <LibraryCardList variant="album" items={albumData} />
-            </LibraryContentsContainer>
+            {albumData.length !== 0 ? (
+                <LibraryContentsContainer>
+                    <LibraryCardList variant="album" items={albumData} />
+                </LibraryContentsContainer>
+            ) : (
+                <NoDataContainer type="album" />
+            )}
         </LibraryContainer>
     );
 };
 
 export const getServerSideProps = async () => {
     const albumData = await request(apiUrl.libraryAlbum);
+    console.log(albumData);
     return {
         props: {
             albumData,
