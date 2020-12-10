@@ -7,7 +7,7 @@ import TrackPlayButton from '@components/molecules/TrackPlayButton';
 import DropDownMenu from '@components/molecules/DropdownMenu';
 import { TrackRowCardProps } from '@interfaces/props';
 import LyricModal from '@components/organisms/LyricModal/LyricModal';
-import { likeRequest } from '@utils/apis';
+import { likeRequest, unlikeRequest } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
 import {
     List,
@@ -41,12 +41,15 @@ const contentsDropDownMenu = [
     },
 ];
 
-const likeAction = async (type, id) => {
-    await likeRequest(`${apiUrl.like}${type}s`, {
-        data: {
-            trackId: id,
-        },
-    });
+const likeAction = async (isLiked, type, id) => {
+    const url = `${apiUrl.like}${type}s/${!isLiked ? id : ''}`;
+    isLiked
+        ? await likeRequest(url, {
+              data: {
+                  trackId: id,
+              },
+          })
+        : await unlikeRequest(url);
 };
 
 const TrackRowCard = (data: TrackRowCardProps) => {
@@ -61,6 +64,7 @@ const TrackRowCard = (data: TrackRowCardProps) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const onClickUnlikeHandler = () => {
         setIsLiked(0);
+        likeAction(!isLiked, type, id);
     };
 
     const onClickShowLyric = () => {
@@ -69,7 +73,7 @@ const TrackRowCard = (data: TrackRowCardProps) => {
     const handleClose = (e) => {
         switch (e.currentTarget.innerText) {
             case contentsDropDownMenu[0].content:
-                likeAction(type, id);
+                likeAction(!isLiked, type, id);
                 setIsLiked(1);
                 break;
             case contentsDropDownMenu[1].content:
