@@ -20,7 +20,7 @@ export const request = async (url, option) => {
     }
 };
 
-export const likeRequest = async (url, option) => {
+export const addToLibrary = async (url, option) => {
     const options = { ...getRequestOptions('POST', option) };
     try {
         await axios({ ...options, url });
@@ -29,7 +29,7 @@ export const likeRequest = async (url, option) => {
     }
 };
 
-export const unlikeRequest = async (url, option) => {
+export const deleteFromLibrary = async (url, option) => {
     const options = { ...getRequestOptions('DELETE', option) };
     try {
         await axios({ ...options, url });

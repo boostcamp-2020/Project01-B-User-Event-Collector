@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import dropDownMenu from '@constants/dropDownMenu';
-import { likeRequest, unlikeRequest, request } from '@utils/apis';
+import { addToLibrary, deleteFromLibrary, request } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
 import { useState } from 'react';
 
@@ -17,7 +17,7 @@ const useDropDownAction = ({ anchorEl, setAnchorEl, state }) => {
         console.log(content);
         switch (content) {
             case dropDownMenu.like:
-                likeRequest(`${apiUrl.like}${data.type}s`, {
+                addToLibrary(`${apiUrl.like}${data.type}s`, {
                     data: {
                         id: data.id,
                     },
@@ -26,7 +26,7 @@ const useDropDownAction = ({ anchorEl, setAnchorEl, state }) => {
                 break;
             case dropDownMenu.unlike:
                 state.setIsLiked(0);
-                unlikeRequest(`${apiUrl.like}${data.type}/${data.id}`);
+                deleteFromLibrary(`${apiUrl.like}${data.type}/${data.id}`);
                 break;
             case dropDownMenu.addToPlaylist:
                 request(apiUrl.libraryPlaylist).then((data) => {
@@ -44,8 +44,10 @@ const useDropDownAction = ({ anchorEl, setAnchorEl, state }) => {
                 state.setDisplayLyrics(true);
                 break;
             case dropDownMenu.buyMP3:
+                // TODO: mp3 구매 이벤트 로그 쏘기
                 break;
             case dropDownMenu.share:
+                // TODO: 공유 이벤트 로그 쏘기
                 break;
             default:
                 break;

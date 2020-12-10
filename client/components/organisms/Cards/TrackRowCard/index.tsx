@@ -8,7 +8,7 @@ import DropDownMenu from '@components/molecules/DropdownMenu';
 import { TrackRowCardProps } from '@interfaces/props';
 import LyricModal from '@components/organisms/LyricModal/LyricModal';
 import PlaylistModal from '@components/organisms/PlaylistModal';
-import { unlikeRequest, addTracksToPlaylist } from '@utils/apis';
+import { deleteFromLibrary, addTracksToPlaylist } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
 import {
     List,
@@ -43,16 +43,6 @@ const contentsDropDownMenu = [
     },
 ];
 
-const likeAction = async (isLiked, type, id) => {
-    const url = `${apiUrl.like}${type}s/${!isLiked ? id : ''}`;
-    isLiked
-        ? await likeRequest(url, {
-              data: {
-                  trackId: id,
-              },
-          })
-        : await unlikeRequest(url);
-};
 const TrackRowCard = (data: TrackRowCardProps) => {
     const componentInfo = useContext(ComponentInfoContext);
     const { id, title, lyrics, album, artist, liked } = data;
@@ -65,7 +55,7 @@ const TrackRowCard = (data: TrackRowCardProps) => {
 
     const onClickUnlikeHandler = () => {
         setIsLiked(0);
-        unlikeRequest(`${apiUrl.like}${componentInfo.data.type}s/${componentInfo.data.id}`);
+        deleteFromLibrary(`${apiUrl.like}${componentInfo.data.type}s/${componentInfo.data.id}`);
     };
 
     const onClickShowLyric = () => {
