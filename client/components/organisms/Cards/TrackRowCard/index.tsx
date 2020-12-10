@@ -49,7 +49,7 @@ const TrackRowCard = (data: TrackRowCardProps) => {
     const [displayLyrics, setDisplayLyrics] = useState(false);
 
     const onClickUnlikeHandler = () => {
-        setIsLiked(false);
+        setIsLiked(0);
     };
 
     const onClickShowLyric = () => {

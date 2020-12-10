@@ -38,14 +38,12 @@ const StyledMenu = withStyles({
 const DropdownMenu = ({ id, control: ControlComponent, menuItems, children }: DropdownMenuProps) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
+    const handleClick = (e) => {
+        setAnchorEl(e.currentTarget);
     };
-
-    const handleClose = () => {
+    const handleClose = (e) => {
         setAnchorEl(null);
     };
-
     return (
         <>
             {ControlComponent && (
@@ -62,11 +60,11 @@ const DropdownMenu = ({ id, control: ControlComponent, menuItems, children }: Dr
                 </span>
             )}
             <StyledMenu id={id} anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-                {menuItems.map(({ content, handleClick }) => (
+                {menuItems.map(({ content }) => (
                     <MenuItem
                         onClick={(e) => {
                             handleClick(e);
-                            handleClose();
+                            handleClose(e);
                         }}
                     >
                         {content}
