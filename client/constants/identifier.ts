@@ -10,6 +10,13 @@ export const page = {
     playlist: 'playlist',
 };
 
+// 모든 page에 공통적으로 들어가는 컴포넌트 id
+export const componentType = {
+    mainHeader: 'main-header',
+    musicPlayer: 'music-player',
+    floatingSelectMenu: 'select-menu',
+};
+
 export const contentType = {
     magaznie: 'magazine',
     mainMagazine: 'main-magazine',
@@ -24,6 +31,10 @@ export const contentType = {
     track: 'track',
     summaryHeader: 'summary-header', // 상세 페이지 헤더
     relatedArtistAlbum: 'related-artist-album',
+
+    // music player 관련
+    playController: 'play-controller',
+    upNext: 'up-next',
 };
 
 export const dataType = {
