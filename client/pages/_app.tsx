@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head'; //head를 수정할 수 있게 함
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 import wrapper from '../store/configureStore';
 import withReduxSaga from 'next-redux-saga';
@@ -14,15 +15,11 @@ import '../assets/global.css';
 
 import { componentType } from '@constants/identifier';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
+import useTransitionEventLog from '@hooks/useTransitionEventLog';
 
 const Container = styled.div`
     background-color: white;
 `;
-
-const userData = {
-    id: '0',
-    name: 'testUser',
-};
 
 const trackData = {
     id: 3,
@@ -46,6 +43,10 @@ const trackData = {
 const currentPlayList = Array(30).fill(trackData);
 
 const App = ({ Component, pageProps }) => {
+    const user = useSelector((state) => state.user);
+
+    useTransitionEventLog({ userId: user.id });
+
     useEffect(() => {
         // Remove the server-side injected CSS.
         const jssStyles = document.querySelector('#jss-server-side');
@@ -62,7 +63,7 @@ const App = ({ Component, pageProps }) => {
                 <link rel="shortcut icon" href="https://img.icons8.com/cute-clipart/64/000000/like.png" />
             </Head>
             <ComponentInfoContext.Provider value={{ componentId: componentType.mainHeader }}>
-                <HeaderSideBar user={userData} />
+                <HeaderSideBar user={user} />
             </ComponentInfoContext.Provider>
             <ComponentInfoContext.Provider value={{ componentId: componentType.floatingSelectMenu }}>
                 <FloatingSelectMenu />
