@@ -5,6 +5,9 @@ import A from '@components/atoms/A/A';
 import Text from '@components/atoms/Text';
 import Label from '@components/atoms/Label';
 
+import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
+import { dataType } from '@constants/identifier';
+
 const CardContainer = styled.div`
     display: flex;
     width: 960px;
@@ -42,38 +45,40 @@ const DescriptionContainer = styled.div`
 `;
 
 interface MainMagazineCardProps {
-    id: number,
-    imageUrl: string,
-    title: string,
-    description: string,
-    date: string,
-    category: string
+    id: number;
+    imageUrl: string;
+    title: string;
+    description: string;
+    date: string;
+    category: string;
 }
 
-const MainMagazineCard = ( data : MainMagazineCardProps) => {
-    const {id, imageUrl, title, description, date, category } = data;
+const MainMagazineCard = (data: MainMagazineCardProps) => {
+    const { id, imageUrl, title, description, date, category } = data;
     return (
-        <CardContainer>
-            <ImageContainer>
-                <Image variant="primary" src={imageUrl} />
-            </ImageContainer>
-            <ContentsContainer>
-                <LabelContainer>
-                    <Label selected={true} variant="secondary">
-                        {category}
-                    </Label>
-                </LabelContainer>
-                <TitleContainer>
-                    <A variant="primary" href={"/magazine/"+id}>
-                        {title}
-                    </A>
-                </TitleContainer>
-                <DescriptionContainer>
-                    <Text variant="primary">{description}</Text>
-                </DescriptionContainer>
-            </ContentsContainer>
-        </CardContainer>
-    )
+        <ComponentInfoWrapper componentId={`${id}`} data={{ type: dataType.magaznie, id }}>
+            <CardContainer>
+                <ImageContainer>
+                    <Image variant="primary" src={imageUrl} />
+                </ImageContainer>
+                <ContentsContainer>
+                    <LabelContainer>
+                        <Label selected={true} variant="secondary">
+                            {category}
+                        </Label>
+                    </LabelContainer>
+                    <TitleContainer>
+                        <A variant="primary" href={'/magazine/' + id}>
+                            {title}
+                        </A>
+                    </TitleContainer>
+                    <DescriptionContainer>
+                        <Text variant="primary">{description}</Text>
+                    </DescriptionContainer>
+                </ContentsContainer>
+            </CardContainer>
+        </ComponentInfoWrapper>
+    );
 };
 
 export default MainMagazineCard;

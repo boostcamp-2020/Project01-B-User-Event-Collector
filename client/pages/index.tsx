@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import MainMagazineCard from '@components/organisms/Cards/MainMagazineCard/MainMagazineCard';
 import CardListContainer from '@components/organisms/CardListContainer';
 import MagazineCardList from '@components/organisms/CardLists/MagazineList/MagazineList';
@@ -7,6 +6,9 @@ import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 import Link from 'next/link';
 import { request } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
+import { page, contentType } from '@constants/identifier';
+import ComponentInfoContext from '@utils/context/ComponentInfoContext';
+import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 
 const TodayContainer = styled.div`
     height: 100%;
@@ -45,54 +47,67 @@ const ContentsContainer = styled.div`
 
 const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata }) => {
     //TODO: isLogined state 이용하여 <UserContentsContainer> 부분은 로그인 했을 때만 보이도록 수정
+
     return (
-        <TodayContainer>
-            <MainMagazineContainer>
-                <Link href="/magazines/main">
-                    <a>
+        <ComponentInfoContext.Provider value={{ componentId: page.today }}>
+            <TodayContainer>
+                <MainMagazineContainer>
+                    <ComponentInfoWrapper componentId={contentType.mainMagazine}>
                         <MainMagazineCard {...Magazinesdata[0]} />
-                    </a>
-                </Link>
-            </MainMagazineContainer>
-            <PublicContentsContainer>
-                <ContentsContainer>
-                    <CardListContainer title="매거진" href="/">
-                        <MagazineCardList variant="row" items={Magazinesdata.slice(1)} />
-                    </CardListContainer>
-                </ContentsContainer>
-                <ContentsContainer>
-                    <CardListContainer title="NEWS">
-                        <ContentsCardList variant="news" items={Newsdata} />
-                    </CardListContainer>
-                </ContentsContainer>
-                <ContentsContainer>
-                    <CardListContainer title="VIBE 추천 플레이리스트" href="/">
-                        <ContentsCardList variant="playlist" items={Playlistdata} />
-                    </CardListContainer>
-                </ContentsContainer>
-            </PublicContentsContainer>
-            <UserContentsContainer>
-                <ContentsContainer>
-                    <CardListContainer title="내 취향 플레이리스트" href="/">
-                        <ContentsCardList variant="playlist" items={Playlistdata} />
-                    </CardListContainer>
-                </ContentsContainer>
-                <ContentsContainer>
-                    <CardListContainer title="나를 위한 믹스테잎">
-                        <ContentsCardList variant="mixtape" items={Mixtapedata} />
-                    </CardListContainer>
-                </ContentsContainer>
-                <ContentsContainer>
-                    <CardListContainer title="좋아할 최신 앨범" href="/">
-                        <ContentsCardList variant="album" items={Albumdata} />
-                    </CardListContainer>
-                </ContentsContainer>
-            </UserContentsContainer>
-        </TodayContainer>
+                    </ComponentInfoWrapper>
+                </MainMagazineContainer>
+                <PublicContentsContainer>
+                    <ContentsContainer>
+                        <ComponentInfoWrapper componentId={contentType.magaznie}>
+                            <CardListContainer title="매거진" href="/">
+                                <MagazineCardList variant="row" items={Magazinesdata.slice(1)} />
+                            </CardListContainer>
+                        </ComponentInfoWrapper>
+                    </ContentsContainer>
+                    <ContentsContainer>
+                        <ComponentInfoWrapper componentId={contentType.news}>
+                            <CardListContainer title="NEWS">
+                                <ContentsCardList variant="news" items={Newsdata} />
+                            </CardListContainer>
+                        </ComponentInfoWrapper>
+                    </ContentsContainer>
+                    <ContentsContainer>
+                        <ComponentInfoWrapper componentId={contentType.recommendedPlaylist}>
+                            <CardListContainer title="VIBE 추천 플레이리스트" href="/">
+                                <ContentsCardList variant="playlist" items={Playlistdata} />
+                            </CardListContainer>
+                        </ComponentInfoWrapper>
+                    </ContentsContainer>
+                </PublicContentsContainer>
+                <UserContentsContainer>
+                    <ContentsContainer>
+                        <ComponentInfoWrapper componentId={contentType.recommendedPlaylist}>
+                            <CardListContainer title="내 취향 플레이리스트" href="/">
+                                <ContentsCardList variant="playlist" items={Playlistdata} />
+                            </CardListContainer>
+                        </ComponentInfoWrapper>
+                    </ContentsContainer>
+                    <ContentsContainer>
+                        <ComponentInfoWrapper componentId={contentType.mixtape}>
+                            <CardListContainer title="나를 위한 믹스테잎">
+                                <ContentsCardList variant="mixtape" items={Mixtapedata} />
+                            </CardListContainer>
+                        </ComponentInfoWrapper>
+                    </ContentsContainer>
+                    <ContentsContainer>
+                        <ComponentInfoWrapper componentId={contentType.customizedAlbum}>
+                            <CardListContainer title="좋아할 최신 앨범" href="/">
+                                <ContentsCardList variant="album" items={Albumdata} />
+                            </CardListContainer>
+                        </ComponentInfoWrapper>
+                    </ContentsContainer>
+                </UserContentsContainer>
+            </TodayContainer>
+        </ComponentInfoContext.Provider>
     );
 };
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
     const [Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata] = await Promise.all([
         request(apiUrl.magazine),
         request(apiUrl.news),
@@ -100,6 +115,7 @@ export async function getServerSideProps() {
         request(apiUrl.album),
         request(apiUrl.mixtape),
     ]);
+
     // TODO: error handling
 
     return {

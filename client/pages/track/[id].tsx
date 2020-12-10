@@ -6,6 +6,9 @@ import Text from '@components/atoms/Text';
 import AlbumCard from '@components/organisms/Cards/AlbumCard/AlbumCard';
 import { request } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
+import { page, contentType, dataType } from '@constants/identifier';
+import ComponentInfoContext from '@utils/context/ComponentInfoContext';
+import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 
 const albumdata = Array(9).fill({
     id: 11,
@@ -72,46 +75,57 @@ const BelongAlbum = styled.div``;
 
 const Track = ({ trackData, belongAlbumData }) => {
     return (
-        <Container>
-            <Header>
-                <DetailHeader sort="track" data={trackData} />
-            </Header>
-            <ContentsContainer>
-                <Contents>
-                    <ContentsHeader>
-                        <Text variant="regularStrong">가사</Text>
-                    </ContentsHeader>
-                    <Lyrics>
-                        {trackData.lyrics.split('\n').map((line) => {
-                            return (
-                                <Text variant="primary">
-                                    {line}
-                                    <br />
-                                </Text>
-                            );
-                        })}
-                    </Lyrics>
-                </Contents>
-                <Contents>
-                    <ContentsHeader>
-                        <Text variant="regularStrong">수록 앨범</Text>
-                    </ContentsHeader>
-                    <BelongAlbum>
-                        <AlbumCard {...belongAlbumData} />
-                    </BelongAlbum>
-                </Contents>
-                <ScrollContents>
-                    <CardListContainer title="관련 아티스트 앨범">
-                        <ContentsCardList variant="album" items={albumdata} />
-                    </CardListContainer>
-                </ScrollContents>
-                <ScrollContents>
-                    <CardListContainer title="관련 플레이리스트">
-                        <ContentsCardList variant="playlist" items={playlistdata} />
-                    </CardListContainer>
-                </ScrollContents>
-            </ContentsContainer>
-        </Container>
+        <ComponentInfoContext.Provider
+            value={{ componentId: `${page.track}-${trackData.id}`, data: { type: dataType.track, id: trackData.id } }}
+        >
+            <Container>
+                <ComponentInfoWrapper componentId={contentType.summaryHeader}>
+                    <Header>
+                        <DetailHeader sort="track" data={trackData} />
+                    </Header>
+                </ComponentInfoWrapper>
+                <ContentsContainer>
+                    <Contents>
+                        <ContentsHeader>
+                            <Text variant="regularStrong">가사</Text>
+                        </ContentsHeader>
+                        <Lyrics>
+                            {trackData.lyrics.split('\n').map((line) => {
+                                return (
+                                    <Text variant="primary">
+                                        {line}
+                                        <br />
+                                    </Text>
+                                );
+                            })}
+                        </Lyrics>
+                    </Contents>
+                    <Contents>
+                        <ComponentInfoWrapper
+                            componentId={contentType.album}
+                            data={{ type: dataType.album, id: belongAlbumData.id }}
+                        >
+                            <ContentsHeader>
+                                <Text variant="regularStrong">수록 앨범</Text>
+                            </ContentsHeader>
+                            <BelongAlbum>
+                                <AlbumCard {...belongAlbumData} />
+                            </BelongAlbum>
+                        </ComponentInfoWrapper>
+                    </Contents>
+                    <ScrollContents>
+                        <CardListContainer title="관련 아티스트 앨범">
+                            <ContentsCardList variant="album" items={albumdata} />
+                        </CardListContainer>
+                    </ScrollContents>
+                    <ScrollContents>
+                        <CardListContainer title="관련 플레이리스트">
+                            <ContentsCardList variant="playlist" items={playlistdata} />
+                        </CardListContainer>
+                    </ScrollContents>
+                </ContentsContainer>
+            </Container>
+        </ComponentInfoContext.Provider>
     );
 };
 
@@ -119,7 +133,7 @@ export async function getServerSideProps(context) {
     const { id } = context.query;
 
     const trackData = await request(`${apiUrl.track}/${id}`);
-    const belongAlbumData = { ...trackData.album, artist: trackData.artist };
+    const belongAlbumData = { ...trackData?.album, artist: trackData?.artist };
 
     if (!trackData) {
         return {

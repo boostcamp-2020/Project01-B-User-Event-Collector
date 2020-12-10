@@ -3,6 +3,9 @@ import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHe
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
 import apiUrl from 'constants/apiUrl';
 import { request } from '@utils/apis';
+import ComponentInfoContext from '@utils/context/ComponentInfoContext';
+import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
+import { page, contentType } from '@constants/identifier';
 import NoDataContainer from '@components/molecules/NoDataContainer';
 
 const LibraryContainer = styled.div`
@@ -23,18 +26,22 @@ const LibraryContentsContainer = styled.div``;
 
 const ArtistLibrary = ({ artistData }) => {
     return (
-        <LibraryContainer>
-            <LibraryHeaderContainer>
-                <LibraryHeader sort="artist" />
-            </LibraryHeaderContainer>
-            {artistData.length !== 0 ? (
-                <LibraryContentsContainer>
-                    <LibraryCardList variant="artist" items={artistData} />
-                </LibraryContentsContainer>
-            ) : (
-                <NoDataContainer type="artist" />
-            )}
-        </LibraryContainer>
+        <ComponentInfoContext.Provider value={{ componentId: page.libraryArtist }}>
+            <LibraryContainer>
+                <LibraryHeaderContainer>
+                    <LibraryHeader sort="artist" />
+                </LibraryHeaderContainer>
+                {artistData.length !== 0 ? (
+                      <LibraryContentsContainer>
+                          <ComponentInfoWrapper componentId={contentType.artist}>
+                              <LibraryCardList variant="artist" items={artistData} />
+                          </ComponentInfoWrapper>
+                      </LibraryContentsContainer>
+                  ) : (
+                      <NoDataContainer type="artist" />
+                  )}
+            </LibraryContainer>
+        </ComponentInfoContext.Provider>
     );
 };
 
