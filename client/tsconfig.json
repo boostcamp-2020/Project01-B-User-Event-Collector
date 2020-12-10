@@ -25,6 +25,7 @@
       "@utils/*":["utils/*"],
       "@constants/*":["constants/*"],
       "@hooks/*":["hooks/*"],
+      "@reducers/*":["reducers/*"],
       "@stores/*":["stores/*"],
       "@interfaces/*":["interfaces/*"]
     }
