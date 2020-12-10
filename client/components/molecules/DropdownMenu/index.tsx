@@ -1,10 +1,9 @@
-import React, { ReactNode, MouseEvent, ComponentType } from 'react';
+import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Menu, { MenuProps } from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { likeRequest } from '@utils/apis';
-import apiUrl from '@constants/apiUrl';
 import { DropdownMenuProps } from '@interfaces/props';
+import useDropDownAction from '@hooks/useDropDownAction';
 
 const StyledMenu = withStyles({
     paper: {
@@ -26,15 +25,9 @@ const StyledMenu = withStyles({
     />
 ));
 
-const DropdownMenu = ({
-    id,
-    control: ControlComponent,
-    menuItems,
-    children,
-    handleClose,
-    handleClick,
-    anchorEl,
-}: DropdownMenuProps) => {
+const DropdownMenu = ({ id, control: ControlComponent, menuItems, children, state }: DropdownMenuProps) => {
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [handleClick, handleClose] = useDropDownAction({ anchorEl, setAnchorEl, state });
     return (
         <>
             {ControlComponent && (
