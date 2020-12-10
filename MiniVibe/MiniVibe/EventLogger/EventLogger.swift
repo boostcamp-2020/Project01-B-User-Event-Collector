@@ -43,7 +43,13 @@ final class EventLogger: ObservableObject {
         let likeLogs = (try? persistentContainer.viewContext
                             .fetch(Like.fetchRequest()) as? [EventPrintable]) ?? []
         
-        return (transitions + searchLogs + likeLogs)
+        let subscribeLogs = (try? persistentContainer.viewContext
+                                .fetch(Subscribe.fetchRequest()) as? [EventPrintable]) ?? []
+        
+        let moveTrackLogs = (try? persistentContainer.viewContext
+                                .fetch(MoveTrack.fetchRequest()) as? [EventPrintable]) ?? []
+        
+        return (transitions + searchLogs + likeLogs + subscribeLogs + moveTrackLogs)
             .sorted { $0.timestamp > $1.timestamp }
     }
 }

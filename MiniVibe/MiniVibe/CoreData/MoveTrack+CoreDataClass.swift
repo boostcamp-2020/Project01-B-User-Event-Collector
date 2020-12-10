@@ -29,9 +29,9 @@ extension MoveTrack {
 
 }
 
-extension MoveTrack {
+extension MoveTrack: EventPrintable {
     public override var description: String {
-        return "\(timestamp)\nEvent: \(event)\nTrackID: \(trackId)\nSource Index: \(source) -> Destination Index: \(destination)"
+        return "\(timestamp.timestampFormat())\nEvent: \(event)\nTrackID: \(trackId)\nSource Index: \(source) -> Destination Index: \(destination)"
     }
 }
 

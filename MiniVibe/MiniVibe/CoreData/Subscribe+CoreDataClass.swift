@@ -27,9 +27,9 @@ extension Subscribe {
 
 }
 
-extension Subscribe {
+extension Subscribe: EventPrintable {
     public override var description: String {
-        return "\(timestamp)\nEvent: \(event)\nComponent: \(componentId)"
+        return "\(timestamp.timestampFormat())\nEvent: \(event)\nComponent: \(componentId)"
     }
 }
 

@@ -55,6 +55,7 @@ struct PlayerControls: View {
                         nowPlaying.likeTrack(id: nowPlaying.playingTrack?.id ?? 0)
                     }
                     
+                    // TO DO: action에서 분리해내기
                     eventLogger.send(LikeLog(userId: 0,
                                              componentId: "PlayerLikeButton",
                                              data: .init(type: "Track",

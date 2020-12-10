@@ -25,7 +25,6 @@ extension SubscribeLogType {
 
 struct SubscribeLog: SubscribeLogType {
     let userId: Int
-    let timestamp: Date
+    let timestamp = Date()
     let componentId: String
-    let event: String
 }

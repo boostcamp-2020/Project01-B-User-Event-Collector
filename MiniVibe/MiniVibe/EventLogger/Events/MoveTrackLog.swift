@@ -28,7 +28,6 @@ extension MoveTrackLogType {
 }
 
 struct MoveTrackLog: MoveTrackLogType {
-    let event: String
     let userId: Int
     let trackId: Int
     let source: Int
