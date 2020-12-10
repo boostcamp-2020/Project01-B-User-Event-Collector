@@ -30,7 +30,7 @@ extension Search {
 
 extension Search: EventPrintable {
     public override var description: String {
-        return "\(timestamp)\nEvent: \(event)\ntext: \(text)\nComponent: \(componentId)"
+        return "\(timestamp.timestampFormat())\nEvent: \(event)\ntext: \(text)\nComponent: \(componentId)"
     }
 }
 

@@ -39,6 +39,7 @@ final class EventLogger: ObservableObject {
                             .fetch(Transition.fetchRequest()) as? [EventPrintable]) ?? []
         let searchLogs = (try? persistentContainer.viewContext
                             .fetch(Search.fetchRequest()) as? [EventPrintable]) ?? []
-        return transitions + searchLogs
+        
+        return (transitions + searchLogs).sorted { $0.timestamp > $1.timestamp }
     }
 }
