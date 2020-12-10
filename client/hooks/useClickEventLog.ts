@@ -9,8 +9,8 @@ function useClickEventLog({ userId, href }) {
     const router = useRouter();
 
     const handleClick = () => {
-        eventLogger('click', {
-            userId: handleClick,
+        eventLogger('Click', {
+            userId,
             page: router.asPath,
             targetPage: href,
             ...componentInfo,
