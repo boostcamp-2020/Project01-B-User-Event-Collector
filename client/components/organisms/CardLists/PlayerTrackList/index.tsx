@@ -16,14 +16,15 @@ const ListContainer = styled.ul`
 
 const PlayerTrackList = ({ items }: { items: PlayerTrackCardProps[] }) => {
     return (
-        <ListContainer>
-            {items.map((item) => (
-                <ComponentInfoWrapper componentId={`${item.id}`} data={{ type: dataType.track, id: item.id }}>
-                    <PlayerTrackCard key={item.id} data={item} artist={item.artist.name} />
-                </ComponentInfoWrapper>
-            ))}
-        </ListContainer>
-    );
-};
+    <ListContainer>
+        {items.map((item) => (
+          <ComponentInfoWrapper componentId={`${item.id}`} data={{ type: dataType.track, id: item.id }}>
+              <PlayerTrackCard 
+              key = {item.id}
+              data = {item} />
+           </ComponentInfoWrapper>
+        ))}
+    </ListContainer>
+)};
 
 export default PlayerTrackList;

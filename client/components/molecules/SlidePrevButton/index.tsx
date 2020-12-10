@@ -4,7 +4,7 @@ import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import Circle from '@components/atoms/Circle/Circle';
 
 interface SlidePrevButtonProps {
-    onClick: (e: MouseEvent<HTMLElement>) => void;
+    onClick?: (e: MouseEvent<HTMLElement>) => void;
 }
 
 const SlidePrevButton = ({ onClick }: SlidePrevButtonProps) => {

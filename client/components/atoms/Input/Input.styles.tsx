@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { InputProps } from '@interfaces/props';
 
-const getInputStyle = (props) => {
+const getInputStyle = (props: InputProps) => {
   let placeholderColor; let backgroundColor;
   let fontSize; let fontWeight;
   let width = '70%'; let height = '20px';
@@ -34,7 +35,7 @@ const getInputStyle = (props) => {
   `;
 };
 
-export const StyledInput = styled.input`
+export const StyledInput = styled.input<InputProps>`
   display: inline-flex;
   justify-content: center;
   align-items: center;

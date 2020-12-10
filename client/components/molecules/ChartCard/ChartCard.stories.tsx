@@ -1,6 +1,6 @@
 import React from 'react';
 import ChartCard from './ChartCard';
-import ChartCardProps from '@interface/props';
+import { ChartCardProps } from '@interfaces/props';
 
 export default {
     title: 'Molecules/ChartCard',

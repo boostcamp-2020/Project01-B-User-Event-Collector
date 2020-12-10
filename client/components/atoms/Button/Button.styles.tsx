@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 interface StyledButtonProps {
   variant?: 'primary' | 'secondary';
+  width?: string;
+  height?: string;
 }
 
 const getButtonStyle = (props: StyledButtonProps) => {

@@ -21,7 +21,7 @@ const PlayerTrackCardContainer = styled.li`
         cursor: move;
     }
 `;
-const PlayerTrackCard = ({ data, artist }: PlayerTrackCardProps) => {
+const PlayerTrackCard = ({ data }: PlayerTrackCardProps) => {
     return (
         <PlayerTrackCardContainer>
             <TrackCard

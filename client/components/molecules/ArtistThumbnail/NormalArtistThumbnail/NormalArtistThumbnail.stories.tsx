@@ -1,6 +1,6 @@
 import React from 'react';
 import NormalArtistThumbnail from './NormalArtistThumbnail';
-import NormalArtistThumbnailProps from '@interface/props';
+import { NormalArtistThumbnailProps } from '@interfaces/props';
 
 export default {
     title: 'Molecules/NormalArtistThumbnail',
