@@ -198,8 +198,8 @@
 		44D7B7E625753C2D0049CDBB /* RepeatButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatButton.swift; sourceTree = "<group>"; };
 		44D7B7E925754BF10049CDBB /* PlayerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControls.swift; sourceTree = "<group>"; };
 		44D858F9257F338900CA794E /* EventUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUseCase.swift; sourceTree = "<group>"; };
-		44E39B2E2580E6EA00968B0A /* Transition+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Transition+CoreDataProperties.swift"; path = "/Users/ttozzi/Project01-B-User-Event-Collector/MiniVibe/MiniVibe/CoreData/Transition+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		44E39B2F2580E6EA00968B0A /* Transition+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Transition+CoreDataClass.swift"; path = "/Users/ttozzi/Project01-B-User-Event-Collector/MiniVibe/MiniVibe/CoreData/Transition+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		44E39B2E2580E6EA00968B0A /* Transition+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Transition+CoreDataProperties.swift"; path = "/Users/sue/Documents/Activities/BoostCamp2020/Membership/Project01-B-User-Event-Collector/MiniVibe/MiniVibe/CoreData/Transition+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		44E39B2F2580E6EA00968B0A /* Transition+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Transition+CoreDataClass.swift"; path = "/Users/sue/Documents/Activities/BoostCamp2020/Membership/Project01-B-User-Event-Collector/MiniVibe/MiniVibe/CoreData/Transition+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		44F7BBF02579419800DFA4AC /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		44F97971256CF2AE00C9C224 /* ThumbnailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailItem.swift; sourceTree = "<group>"; };
 		44F97975256CFBA900C9C224 /* AlbumSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSection.swift; sourceTree = "<group>"; };
@@ -1203,18 +1203,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCVersionGroup section */
-		444A88A42580E36000F6CB09 /* Event.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				444A88A52580E36000F6CB09 /* Event.xcdatamodel */,
-			);
-			currentVersion = 444A88A52580E36000F6CB09 /* Event.xcdatamodel */;
-			path = Event.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 /* Begin XCRemoteSwiftPackageReference section */
 		44FDE9992580D3480032E5C6 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -1233,6 +1221,19 @@
 			productName = KingfisherSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		444A88A42580E36000F6CB09 /* Event.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				444A88A52580E36000F6CB09 /* Event.xcdatamodel */,
+			);
+			currentVersion = 444A88A52580E36000F6CB09 /* Event.xcdatamodel */;
+			path = Event.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 805E28A2256BBD52007AF5F1 /* Project object */;
 }

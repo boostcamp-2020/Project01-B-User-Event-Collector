@@ -9,4 +9,5 @@ enum UseCaseError: Error {
     case networkError
     case decodingError
     case encodingError
+    case unknownError
 }

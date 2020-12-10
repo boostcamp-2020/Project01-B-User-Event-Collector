@@ -24,20 +24,23 @@ struct TrackUseCase {
     }
     
     func likeTrack(like: LikeTrack) -> AnyPublisher<Bool, UseCaseError> {
-        // #1 : Just로 트랙을 방출시키고 encode 하고 플랫맵으로 network 퍼블리셔로 매핑 (stream으로 이어짐)
-        // #2 : Encode
-        guard let data = try? JSONEncoder().encode(like) else {
-            return Fail(error: UseCaseError.encodingError)
-                .eraseToAnyPublisher()
-        }
-        return network.request(url: EndPoint.like.urlString, request: .post, body: data)
+        return Just(like)
+            .encode(encoder: JSONEncoder())
+            .flatMap { data in
+                return network.request(url: EndPoint.like.urlString, request: .post, body: data)
+                    .mapError { $0 }
+            }
             .decode(type: LikeTrackResponse.self, decoder: JSONDecoder())
             .mapError { error -> UseCaseError in
                 switch error {
                 case is NetworkError:
                     return .networkError
-                default:
+                case is DecodingError:
                     return .decodingError
+                case is EncodingError:
+                    return .encodingError
+                default:
+                    return .unknownError
                 }
             }
             .map(\.success)

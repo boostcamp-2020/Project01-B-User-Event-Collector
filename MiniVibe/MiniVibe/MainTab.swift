@@ -60,7 +60,7 @@ struct MainTab: View {
     @ViewBuilder
     private var player: some View {
         if eventLogger.tabViewSelection != .none {
-        PlayerPreview(coordinate: contentFrame)
+            PlayerPreview(coordinate: contentFrame)
                 .onTapGesture {
                     if !nowPlaying.upNext.isEmpty {
                         nowPlaying.isPlayerPresented.toggle()
@@ -69,6 +69,7 @@ struct MainTab: View {
                 .sheet(isPresented: $nowPlaying.isPlayerPresented) {
                     PlayerView()
                 }
+        }
     }
 }
 
