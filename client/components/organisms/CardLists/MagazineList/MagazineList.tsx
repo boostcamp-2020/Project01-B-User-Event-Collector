@@ -2,18 +2,21 @@ import React from 'react';
 import MagazineCard from '@components/organisms/Cards/MagazineCard';
 import { List, Item } from './MagazineList.styles';
 import { MagazineCardProps } from '@interfaces/props';
+import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
+import { dataType } from '@constants/identifier';
 
 interface MagazineListProps {
-    variant?: string,
+    variant?: string;
     items: MagazineCardProps[];
 }
-
 
 const MagazineList = ({ variant, items }: MagazineListProps) => (
     <List variant={variant}>
         {items.map((item) => (
             <Item variant={variant}>
-                <MagazineCard {...(item as MagazineCardProps)} />
+                <ComponentInfoWrapper componentId={`${item.id}`} data={{ type: dataType.magaznie, id: item.id }}>
+                    <MagazineCard {...(item as MagazineCardProps)} />
+                </ComponentInfoWrapper>
             </Item>
         ))}
     </List>

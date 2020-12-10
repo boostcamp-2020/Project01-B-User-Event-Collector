@@ -14,11 +14,19 @@ struct PlayListMenu: View {
     var body: some View {
         VStack(spacing: 36) {
             Spacer()
-            MenuThumbnailButton(title: playlist.title, imageURL: playlist.imageUrl ?? "")
-            MenuButton(type: .download(.playList))
-            MenuButton(type: .like(false))
-            MenuButton(type: .addToPlaylist)
-            MenuButton(type: .share)
+            MenuThumbnailButton()
+            MenuButton(type: .download(.playList)) {
+                
+            }
+            MenuButton(type: .like(0)) {
+                
+            }
+            MenuButton(type: .addToPlaylist) {
+                
+            }
+            MenuButton(type: .share) {
+                
+            }
             MenuCloseButton {
                 presentationMode.wrappedValue.dismiss()
             }

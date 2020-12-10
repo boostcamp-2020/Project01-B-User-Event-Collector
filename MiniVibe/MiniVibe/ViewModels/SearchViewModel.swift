@@ -11,7 +11,7 @@ final class SearchViewModel: ObservableObject {
     private let useCase = SearchUseCase()
     private var cancellables = Set<AnyCancellable>()
     
-    @Published var newsList = [News]()
+    @Published private(set) var newsList = [News]()
     
     func load() {
         useCase.loadNews()
@@ -23,5 +23,3 @@ final class SearchViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 }
-
-

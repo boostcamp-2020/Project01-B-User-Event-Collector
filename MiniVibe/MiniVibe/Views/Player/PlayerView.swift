@@ -8,21 +8,17 @@
 import SwiftUI
 
 struct PlayerView: View {
+    @EnvironmentObject var nowPlaying: NowPlaying
     @EnvironmentObject var eventLogger: EventLogger
     @State private var isOpenMenu = false
     @State private var isOpenLyrics = false
-    let title: String
-    let artist: String
-    
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 ScrollView {
                     VStack {
-                        Player(isOpenMenu: $isOpenMenu,
-                               isOpenLyrics: $isOpenLyrics,
-                               title: title,
-                               artist: artist)
+                        Player(isMenuOpen: $isOpenMenu, isLyricsOpen: $isOpenLyrics)
                             .frame(height: geometry.size.height)
                         
                         Divider()
@@ -38,7 +34,7 @@ struct PlayerView: View {
             }
             .animation(.easeInOut)
             .fullScreenCover(isPresented: $isOpenMenu) {
-                PlayerMenu(track: .init(id: 0, title: "Dynamite", lyrics: "", albumId: 3, album: .init(id: 0, title: "Dynamite", imageUrl: ""), artist: .init(id: 11, name: "방탄소년단")))
+                PlayerMenu(track: trackinfo)
             }
             .logTransition(eventLogger: eventLogger, identifier: .player)
         }
@@ -47,6 +43,6 @@ struct PlayerView: View {
 
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerView(title: "Dynamite", artist: "방탄소년단")
+        PlayerView()
     }
 }

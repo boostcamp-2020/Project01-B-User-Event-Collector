@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct ArtistThumbnail: View {
     let artist: ArtistInfo
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            AsyncImage(urlString: artist.imageUrl)
+            KFImage(URL(string: artist.imageUrl))
                 .scaledToFit()
             
             VStack(alignment: .leading) {

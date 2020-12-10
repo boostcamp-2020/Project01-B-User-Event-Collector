@@ -20,7 +20,7 @@ struct ArtistUseCase {
     }
     
     func loadArtists() -> AnyPublisher<[Artist], UseCaseError> {
-        return network.request(url: EndPoint.artists.urlString)
+        return network.request(url: EndPoint.artists.urlString, request: .get, body: nil)
             .decode(type: Artists.self, decoder: JSONDecoder())
             .mapError { error -> UseCaseError in
                 switch error {
@@ -36,7 +36,7 @@ struct ArtistUseCase {
     }
     
     func loadArtist(with id: Int) -> AnyPublisher<ArtistInfo, UseCaseError> {
-        return network.request(url: EndPoint.artist(id: id).urlString)
+        return network.request(url: EndPoint.artist(id: id).urlString, request: .get, body: nil)
             .decode(type: ArtistResponse.self, decoder: JSONDecoder())
             .mapError { error -> UseCaseError in
                 switch error {

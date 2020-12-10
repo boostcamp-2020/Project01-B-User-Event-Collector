@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct ThumbnailItem: View {
     let title: String
@@ -14,7 +15,8 @@ struct ThumbnailItem: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            AsyncImage(urlString: imageURL)
+            KFImage(URL(string: imageURL))
+                .resizable()
                 .aspectRatio(1, contentMode: .fit)
             
             Text(title)

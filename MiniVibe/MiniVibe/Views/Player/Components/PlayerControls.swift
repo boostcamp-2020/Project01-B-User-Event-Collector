@@ -9,9 +9,7 @@ import SwiftUI
 
 struct PlayerControls: View {
     @EnvironmentObject private var nowPlaying: NowPlaying
-    //@Binding var isPlaying: Bool
     @Binding var isOpenMenu: Bool
-    @State private var isFavorite = false
     @State private var isShuffle = false
     let title: String
     let artist: String
@@ -50,10 +48,14 @@ struct PlayerControls: View {
                 Spacer()
                 
                 Button {
-                    isFavorite.toggle()
+                    if nowPlaying.playingTrack?.liked == 1 {
+                        nowPlaying.cancelLikedTrack(id: nowPlaying.playingTrack?.id ?? 0)
+                    } else {
+                        nowPlaying.likeTrack(id: nowPlaying.playingTrack?.id ?? 0)
+                    }
                 } label: {
-                    Image(systemName: isFavorite ? "heart.fill" : "heart")
-                        .foregroundColor(isFavorite ? .pink : .secondary)
+                    Image(systemName: nowPlaying.playingTrack?.liked == 1 ? "heart.fill" : "heart")
+                        .foregroundColor(nowPlaying.playingTrack?.liked == 1 ? .pink : .secondary)
                         .font(.system(size: 32))
                 }
                 

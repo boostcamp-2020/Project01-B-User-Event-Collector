@@ -6,15 +6,15 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct UpNextList: View {
     init() {
         UITableView.appearance().showsVerticalScrollIndicator = false
     }
-
-    @State private var editMode = EditMode.active
-    @EnvironmentObject private var nowPlaying: NowPlaying
     
+    @EnvironmentObject private var nowPlaying: NowPlaying
+    @State private var editMode = EditMode.active
     private var selectionCount: Int {
         return nowPlaying.selectedTracks.count
     }
@@ -38,7 +38,8 @@ struct UpNextList: View {
                 List(selection: $nowPlaying.selectedTracks) {
                     ForEach(nowPlaying.upNext, id: \.self) { track in
                         HStack(spacing: 10) {
-                            AsyncImage(urlString: track.imageUrl)
+                            KFImage(URL(string: track.album.imageUrl))
+                                .resizable()
                                 .frame(width: 50, height: 50)
                             VStack(alignment: .leading) {
                                 Text(track.title)
@@ -50,11 +51,13 @@ struct UpNextList: View {
                 }
                 .environment(\.editMode, .constant(EditMode.active))
                 
-                if selectionCount > 0 {
-                    MultiselectTabBar(barItems: [AddToPlaylist(), Save(), Delete()])
+                if nowPlaying.selectedTracks.count > 0 {
+                    MultiselectTabBar()
+                        .ignoresSafeArea(.all, edges: .bottom)
                         .frame(height: 48)
                 }
             }
+            
         }
     }
     
@@ -87,8 +90,10 @@ struct UpNextList: View {
     }
     
     private func onMove(source: IndexSet, destination: Int) {
+        var destinationIndex: Int = 0
         nowPlaying.upNext.move(fromOffsets: source, toOffset: destination)
-        print("source \(source.first!) -> destination \(destination)")
+        guard let sourceIndex = source.first else { return }
+        destinationIndex = sourceIndex < destination ?  destination - 1 : destination
     }
     
     @ViewBuilder

@@ -20,7 +20,6 @@ final class ArtistViewModel: ObservableObject {
     @Published private(set) var artist: ArtistInfo?
     @Published var isOpenMenu = false
     
-    
     func send(_ input: Input) {
         switch input {
         case let .appear(artistID):

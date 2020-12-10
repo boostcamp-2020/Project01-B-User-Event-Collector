@@ -3,6 +3,10 @@ import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHe
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
 import apiUrl from 'constants/apiUrl';
 import { request } from '@utils/apis';
+import ComponentInfoContext from '@utils/context/ComponentInfoContext';
+import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
+import { page, contentType } from '@constants/identifier';
+import NoDataContainer from '@components/molecules/NoDataContainer';
 
 const LibraryContainer = styled.div`
     width: 100%;
@@ -22,19 +26,29 @@ const LibraryContentsContainer = styled.div``;
 
 const AlbumLibrary = ({ albumData }) => {
     return (
-        <LibraryContainer>
-            <LibraryHeaderContainer>
-                <LibraryHeader sort="album" />
-            </LibraryHeaderContainer>
-            <LibraryContentsContainer>
-                <LibraryCardList variant="album" items={albumData} />
-            </LibraryContentsContainer>
-        </LibraryContainer>
+        <ComponentInfoContext.Provider value={{ componentId: page.libraryAlbum }}>
+            <LibraryContainer>
+                <LibraryHeaderContainer>
+                    <LibraryHeader sort="album" />
+                </LibraryHeaderContainer>
+               {albumData.length !== 0 ? (
+                    <LibraryContentsContainer>
+                        <ComponentInfoWrapper componentId={contentType.album}>
+                          <LibraryCardList variant="album" items={albumData} />
+                        </ComponentInfoWrapper>
+                    </LibraryContentsContainer>
+                ) : (
+                    <NoDataContainer type="album" />
+                )}
+            </LibraryContainer>
+        </ComponentInfoContext.Provider>
+
     );
 };
 
 export const getServerSideProps = async () => {
     const albumData = await request(apiUrl.libraryAlbum);
+    console.log(albumData);
     return {
         props: {
             albumData,

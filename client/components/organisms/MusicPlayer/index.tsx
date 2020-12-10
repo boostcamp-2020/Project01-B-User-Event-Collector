@@ -3,10 +3,12 @@ import { useState } from 'react';
 
 import PlayerTrackList from '@components/organisms/CardLists/PlayerTrackList';
 import PlayController from '@components/organisms/MusicPlayer/PlayController';
-import { Console } from 'console';
+
+import { contentType } from '@constants/identifier';
+import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 
 interface MusicPlayerProps {
-    tracks
+    tracks;
 }
 
 interface HeaderContainerProps {
@@ -24,7 +26,7 @@ const HeaderContainer = styled.div<HeaderContainerProps>`
     right: 0;
     bottom: 90px;
     left: 0;
-    visibility : ${(props) => (props.visible === true ? 'visible;' : 'hidden;')};
+    visibility: ${(props) => (props.visible === true ? 'visible;' : 'hidden;')};
     background-color: rgba(0, 0, 0, 0.85);
     width: 100%;
     display: flex;
@@ -82,35 +84,40 @@ const ControllerContainer = styled.div`
     z-index: 500;
 `;
 
-const MusicPlayer = ({tracks} : MusicPlayerProps) => {
+const MusicPlayer = ({ tracks }: MusicPlayerProps) => {
     const [nowPlaying, setNowPlaying] = useState(tracks[0]);
     const [displayHeader, setDisplayHeader] = useState(false);
 
     const displayHeaderHandler = () => {
         setDisplayHeader(!displayHeader);
-    }
+    };
 
     return (
         <Container>
-            <HeaderContainer visible = { displayHeader } >
-                <ImageContainer>
-                    <StyledImage src = { nowPlaying.album.imageUrl } />
-                </ImageContainer>
-                <TrackListContainer>
-                    <TrackHeaderContainer>이어지는 노래</TrackHeaderContainer>
-                    <TrackContainer>
-                        <PlayerTrackList items={ tracks } />
-                    </TrackContainer>
-                </TrackListContainer>
-            </HeaderContainer>
-            <ControllerContainer>
-                <PlayController 
-                track = { nowPlaying } 
-                displayHeader = { displayHeader } 
-                displayHeaderHandler = { displayHeaderHandler } />
-            </ControllerContainer>
+            <ComponentInfoWrapper componentId={contentType.upNext}>
+                <HeaderContainer visible={displayHeader}>
+                    <ImageContainer>
+                        <StyledImage src={nowPlaying.album.imageUrl} />
+                    </ImageContainer>
+                    <TrackListContainer>
+                        <TrackHeaderContainer>이어지는 노래</TrackHeaderContainer>
+                        <TrackContainer>
+                            <PlayerTrackList items={tracks} />
+                        </TrackContainer>
+                    </TrackListContainer>
+                </HeaderContainer>
+            </ComponentInfoWrapper>
+            <ComponentInfoWrapper componentId={contentType.playController}>
+                <ControllerContainer>
+                    <PlayController
+                        track={nowPlaying}
+                        displayHeader={displayHeader}
+                        displayHeaderHandler={displayHeaderHandler}
+                    />
+                </ControllerContainer>
+            </ComponentInfoWrapper>
         </Container>
-    )
-}
+    );
+};
 
 export default MusicPlayer;
