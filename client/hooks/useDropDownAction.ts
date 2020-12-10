@@ -13,8 +13,6 @@ const useDropDownAction = ({ anchorEl, setAnchorEl, state }) => {
     };
     const handleClose = (e) => {
         const content = e.currentTarget.innerText;
-        console.log('....?');
-        console.log(content);
         switch (content) {
             case dropDownMenu.like:
                 addToLibrary(`${apiUrl.like}${data.type}s`, {
@@ -37,6 +35,11 @@ const useDropDownAction = ({ anchorEl, setAnchorEl, state }) => {
                 });
                 break;
             case dropDownMenu.addToLibrary:
+                addToLibrary(`${apiUrl.like}${data.type}s`, {
+                    data: {
+                        id: data.id,
+                    },
+                });
                 break;
             case dropDownMenu.addToUpNext:
                 break;
