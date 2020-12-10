@@ -94,7 +94,6 @@ struct UpNextList: View {
         nowPlaying.upNext.move(fromOffsets: source, toOffset: destination)
         guard let sourceIndex = source.first else { return }
         destinationIndex = sourceIndex < destination ?  destination - 1 : destination
-        print("source \(sourceIndex) -> destination \(destinationIndex)")
     }
     
     @ViewBuilder

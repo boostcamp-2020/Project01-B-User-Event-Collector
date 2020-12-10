@@ -24,6 +24,6 @@ final class EventLogger: ObservableObject {
     }
 
     func send(_ event: Event) {
-        print(event)
+        
     }
 }
