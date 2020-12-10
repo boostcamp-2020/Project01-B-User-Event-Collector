@@ -91,6 +91,8 @@
 		800FA855257DD72B008926A5 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FA854257DD72B008926A5 /* TodayViewModel.swift */; };
 		800FA867257E003D008926A5 /* Playlists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FA866257E003D008926A5 /* Playlists.swift */; };
 		801AE36A25826ED1004F1947 /* MoveTrackLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801AE36925826ED1004F1947 /* MoveTrackLog.swift */; };
+		802187E325828B79009A4D95 /* Engagement+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802187E125828B79009A4D95 /* Engagement+CoreDataClass.swift */; };
+		802187EA25828BDE009A4D95 /* EngagementLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802187E925828BDE009A4D95 /* EngagementLog.swift */; };
 		8033A7AA257FA7B100B1C321 /* NowPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8033A7A9257FA7B100B1C321 /* NowPlaying.swift */; };
 		805E28AE256BBD52007AF5F1 /* MiniVibeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805E28AD256BBD52007AF5F1 /* MiniVibeApp.swift */; };
 		805E28B2256BBD53007AF5F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805E28B1256BBD53007AF5F1 /* Assets.xcassets */; };
@@ -235,6 +237,8 @@
 		800FA854257DD72B008926A5 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		800FA866257E003D008926A5 /* Playlists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlists.swift; sourceTree = "<group>"; };
 		801AE36925826ED1004F1947 /* MoveTrackLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveTrackLog.swift; sourceTree = "<group>"; };
+		802187E125828B79009A4D95 /* Engagement+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Engagement+CoreDataClass.swift"; sourceTree = "<group>"; };
+		802187E925828BDE009A4D95 /* EngagementLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngagementLog.swift; sourceTree = "<group>"; };
 		8033A7A9257FA7B100B1C321 /* NowPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlaying.swift; sourceTree = "<group>"; };
 		805E28AA256BBD52007AF5F1 /* MiniVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805E28AD256BBD52007AF5F1 /* MiniVibeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVibeApp.swift; sourceTree = "<group>"; };
@@ -364,6 +368,7 @@
 		4437E5D22580C55200B02799 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				802187E125828B79009A4D95 /* Engagement+CoreDataClass.swift */,
 				8060925E258261B90032FBE0 /* MoveTrack+CoreDataClass.swift */,
 				8060925625825B880032FBE0 /* Subscribe+CoreDataClass.swift */,
 				440F109F2582750900FD3FF4 /* LogData.swift */,
@@ -564,6 +569,7 @@
 				440F109B25826C6B00FD3FF4 /* LikeLog.swift */,
 				8060924E258255A60032FBE0 /* SubscribeLog.swift */,
 				801AE36925826ED1004F1947 /* MoveTrackLog.swift */,
+				802187E925828BDE009A4D95 /* EngagementLog.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -884,6 +890,7 @@
 				80D02E04257E0DD300A6748F /* SearchUseCase.swift in Sources */,
 				800FA867257E003D008926A5 /* Playlists.swift in Sources */,
 				44F97972256CF2AE00C9C224 /* ThumbnailItem.swift in Sources */,
+				802187E325828B79009A4D95 /* Engagement+CoreDataClass.swift in Sources */,
 				440F10952582693800FD3FF4 /* Like+CoreDataClass.swift in Sources */,
 				4474DC032574E6BC006FC827 /* PlayerThumbnail.swift in Sources */,
 				80A5214A257918FF0051A925 /* SearchBar.swift in Sources */,
@@ -895,6 +902,7 @@
 				4471B1B12581625900647CA0 /* EventLogViewModel.swift in Sources */,
 				445919AD256E559D0069DAB2 /* StationList.swift in Sources */,
 				44D7B7E725753C2D0049CDBB /* RepeatButton.swift in Sources */,
+				802187EA25828BDE009A4D95 /* EngagementLog.swift in Sources */,
 				444A88A62580E36000F6CB09 /* Event.xcdatamodeld in Sources */,
 				44E39B312580E6EA00968B0A /* Transition+CoreDataClass.swift in Sources */,
 				44B22A5B257E10CC0068A11B /* AlbumViewModel.swift in Sources */,
