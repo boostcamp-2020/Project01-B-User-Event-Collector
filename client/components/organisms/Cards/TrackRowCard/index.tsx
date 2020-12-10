@@ -7,7 +7,8 @@ import TrackPlayButton from '@components/molecules/TrackPlayButton';
 import DropDownMenu from '@components/molecules/DropdownMenu';
 import { TrackRowCardProps } from '@interfaces/props';
 import LyricModal from '@components/organisms/LyricModal/LyricModal';
-
+import { likeRequest } from '@utils/apis';
+import apiUrl from '@constants/apiUrl';
 import {
     List,
     TrackLeft,
@@ -40,14 +41,24 @@ const contentsDropDownMenu = [
     },
 ];
 
+const likeAction = async (type, id) => {
+    await likeRequest(`${apiUrl.like}${type}s`, {
+        data: {
+            trackId: id,
+        },
+    });
+};
+
 const TrackRowCard = (data: TrackRowCardProps) => {
+    // TODO : component 정보에서 type 가져오기
+    const type = 'track';
     const { id, title, lyrics, album, artist, liked } = data;
     const { id: albumId, title: albumTitle, imageUrl } = album;
     const { id: artistId, name: artistName } = artist;
 
     const [isLiked, setIsLiked] = useState(liked);
     const [displayLyrics, setDisplayLyrics] = useState(false);
-
+    const [anchorEl, setAnchorEl] = useState(null);
     const onClickUnlikeHandler = () => {
         setIsLiked(0);
     };
@@ -55,6 +66,30 @@ const TrackRowCard = (data: TrackRowCardProps) => {
     const onClickShowLyric = () => {
         setDisplayLyrics(!displayLyrics);
     };
+    const handleClose = (e) => {
+        switch (e.currentTarget.innerText) {
+            case contentsDropDownMenu[0].content:
+                likeAction(type, id);
+                setIsLiked(1);
+                break;
+            case contentsDropDownMenu[1].content:
+                break;
+            case contentsDropDownMenu[2].content:
+                break;
+            case contentsDropDownMenu[3].content:
+                break;
+            case contentsDropDownMenu[4].content:
+                setDisplayLyrics(!displayLyrics);
+                break;
+            default:
+                break;
+        }
+        setAnchorEl(null);
+    };
+    const handleClick = (e) => {
+        setAnchorEl(e.currentTarget);
+    };
+
     const onChangeCheckRow = (e) => {
         const list = e.target.closest('LI');
         list.classList.toggle('checked');
@@ -104,7 +139,14 @@ const TrackRowCard = (data: TrackRowCardProps) => {
                         <FavoriteIcon style={{ color: '#FF1150' }} fontSize="small" onClick={onClickUnlikeHandler} />
                     )}
                     {isLiked == 0 && (
-                        <DropDownMenu id="contents" control={StyledMoreHorizIcon} menuItems={contentsDropDownMenu} />
+                        <DropDownMenu
+                            id="contents"
+                            control={StyledMoreHorizIcon}
+                            menuItems={contentsDropDownMenu}
+                            handleClick={handleClick}
+                            handleClose={handleClose}
+                            anchorEl={anchorEl}
+                        />
                     )}
                     <A href="#">
                         <HiddenText>좋아요및옵션</HiddenText>
