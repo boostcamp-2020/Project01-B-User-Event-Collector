@@ -7,7 +7,7 @@ import CardListContainer from '@components/organisms/CardListContainer';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 import { request } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
-import { page, contentType } from '@constants/identifier';
+import { page, contentType, dataType } from '@constants/identifier';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 
@@ -39,7 +39,12 @@ const ArtistListContainer = styled.div``;
 
 const Playlist = ({ playlistData, trackData, artistData }) => {
     return (
-        <ComponentInfoContext.Provider value={{ componentId: `${page.playlist}-${playlistData.id}` }}>
+        <ComponentInfoContext.Provider
+            value={{
+                componentId: `${page.playlist}-${playlistData.id}`,
+                data: { type: dataType.playlist, id: playlistData.id },
+            }}
+        >
             <Container>
                 <ComponentInfoWrapper componentId={contentType.summaryHeader}>
                     <Header>

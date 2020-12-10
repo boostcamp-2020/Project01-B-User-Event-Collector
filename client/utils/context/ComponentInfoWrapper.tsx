@@ -3,7 +3,7 @@ import ComponentInfoContext from './ComponentInfoContext';
 
 interface IProps {
     children: ReactNode;
-    componentId: string;
+    componentId?: string;
     data?: {
         type: string;
         id: number;
@@ -13,8 +13,8 @@ interface IProps {
 const ComponentInfoWrapper = ({ children, componentId, data }: IProps) => {
     const componentInfo = useContext(ComponentInfoContext);
     const newComponentInfo = { ...componentInfo };
-    newComponentInfo.componentId += `_${componentId}`;
-    newComponentInfo.data = data ? data : newComponentInfo.data;
+    if (componentId) newComponentInfo.componentId += `_${componentId}`;
+    if (data) newComponentInfo.data = data;
 
     return <ComponentInfoContext.Provider value={newComponentInfo}>{children}</ComponentInfoContext.Provider>;
 };

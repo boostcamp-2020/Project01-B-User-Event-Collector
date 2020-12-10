@@ -75,7 +75,9 @@ const BelongAlbum = styled.div``;
 
 const Track = ({ trackData, belongAlbumData }) => {
     return (
-        <ComponentInfoContext.Provider value={{ componentId: `${page.track}-${trackData.id}` }}>
+        <ComponentInfoContext.Provider
+            value={{ componentId: `${page.track}-${trackData.id}`, data: { type: dataType.track, id: trackData.id } }}
+        >
             <Container>
                 <ComponentInfoWrapper componentId={contentType.summaryHeader}>
                     <Header>
@@ -99,7 +101,10 @@ const Track = ({ trackData, belongAlbumData }) => {
                         </Lyrics>
                     </Contents>
                     <Contents>
-                        <ComponentInfoWrapper componentId={contentType.album}>
+                        <ComponentInfoWrapper
+                            componentId={contentType.album}
+                            data={{ type: dataType.album, id: belongAlbumData.id }}
+                        >
                             <ContentsHeader>
                                 <Text variant="regularStrong">수록 앨범</Text>
                             </ContentsHeader>
@@ -128,7 +133,7 @@ export async function getServerSideProps(context) {
     const { id } = context.query;
 
     const trackData = await request(`${apiUrl.track}/${id}`);
-    const belongAlbumData = { ...trackData.album, artist: trackData.artist };
+    const belongAlbumData = { ...trackData?.album, artist: trackData?.artist };
 
     if (!trackData) {
         return {
