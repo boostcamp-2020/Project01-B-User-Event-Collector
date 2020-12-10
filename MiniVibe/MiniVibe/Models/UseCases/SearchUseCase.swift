@@ -16,7 +16,7 @@ struct SearchUseCase {
     }
     
     func loadNews() -> AnyPublisher<[News], UseCaseError> {
-        return network.request(url: EndPoint.newsList.urlString)
+        return network.request(url: EndPoint.newsList.urlString, request: .get, body: nil)
             .decode(type: NewsList.self, decoder: JSONDecoder())
             .mapError { error -> UseCaseError in
                 switch error {

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct Player: View {
-    @Binding var isOpenMenu: Bool
-    @Binding var isOpenLyrics: Bool
+    @Binding var isMenuOpen: Bool
+    @Binding var isLyricsOpen: Bool
     @EnvironmentObject private var nowPlaying: NowPlaying
     
     var body: some View {
@@ -20,14 +20,11 @@ struct Player: View {
             Spacer()
 
             if let track = nowPlaying.playingTrack {
-                PlayerThumbnail(image: track.album.imageUrl,
-                                lyrics: track.lyrics,
-                                isPlaying: $nowPlaying.isPlaying,
-                                isOpenLyrics: $isOpenLyrics)
+                PlayerThumbnail(isOpenLyrics: $isLyricsOpen)
                 
                 Spacer()
                 
-                PlayerControls(isOpenMenu: $isOpenMenu,
+                PlayerControls(isOpenMenu: $isMenuOpen,
                                title: track.title,
                                artist: track.artist.name)
             }
@@ -75,7 +72,7 @@ struct Player: View {
 
 struct Player_Previews: PreviewProvider {
     static var previews: some View {
-        Player(isOpenMenu: .constant(false),
-               isOpenLyrics: .constant(false))
+        Player(isMenuOpen: .constant(false),
+               isLyricsOpen: .constant(false))
     }
 }

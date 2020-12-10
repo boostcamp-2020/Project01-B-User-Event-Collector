@@ -16,7 +16,8 @@ let trackinfo: TrackInfo = TrackInfo(id: 0,
                                                    title: "",
                                                    imageUrl: ""),
                                      artist: TrackInfo.Artist(id: 1,
-                                                              name: "스윗소로우"))
+                                                              name: "스윗소로우"),
+                                     liked: 1)
 
 struct TrackResponse: Decodable {
     let data: [TrackInfo]
@@ -34,6 +35,7 @@ struct TrackInfo: Decodable, Hashable {
     let albumId: Int?
     let album: TrackAlbum
     let artist: Artist
+    var liked: Int // 1 = like, 0 = hate
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)

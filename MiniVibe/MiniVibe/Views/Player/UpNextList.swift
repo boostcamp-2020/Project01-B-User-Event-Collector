@@ -12,10 +12,9 @@ struct UpNextList: View {
     init() {
         UITableView.appearance().showsVerticalScrollIndicator = false
     }
-
-    @State private var editMode = EditMode.active
-    @EnvironmentObject private var nowPlaying: NowPlaying
     
+    @EnvironmentObject private var nowPlaying: NowPlaying
+    @State private var editMode = EditMode.active
     private var selectionCount: Int {
         return nowPlaying.selectedTracks.count
     }
@@ -52,11 +51,13 @@ struct UpNextList: View {
                 }
                 .environment(\.editMode, .constant(EditMode.active))
                 
-                if selectionCount > 0 {
-                    MultiselectTabBar(barItems: [AddToPlaylist(), Save(), Delete()])
+                if nowPlaying.selectedTracks.count > 0 {
+                    MultiselectTabBar()
+                        .ignoresSafeArea(.all, edges: .bottom)
                         .frame(height: 48)
                 }
             }
+            
         }
     }
     
@@ -93,7 +94,6 @@ struct UpNextList: View {
         nowPlaying.upNext.move(fromOffsets: source, toOffset: destination)
         guard let sourceIndex = source.first else { return }
         destinationIndex = sourceIndex < destination ?  destination - 1 : destination
-        print("source \(sourceIndex) -> destination \(destinationIndex)")
     }
     
     @ViewBuilder

@@ -54,24 +54,21 @@ struct MainTab: View {
         .onPreferenceChange(Size.self, perform: { value in
             contentFrame = value.last ?? .zero
         })
-        .overlay(
-            player
-        )
+        .overlay(player)
     }
     
     @ViewBuilder
     private var player: some View {
         if eventLogger.tabViewSelection != .none {
-        PlayerPreview(coordinate: contentFrame)
-            .onTapGesture {
-                if !nowPlaying.upNext.isEmpty {
-                    nowPlaying.isPlayerPresented.toggle()
+            PlayerPreview(coordinate: contentFrame)
+                .onTapGesture {
+                    if !nowPlaying.upNext.isEmpty {
+                        nowPlaying.isPlayerPresented.toggle()
+                    }
                 }
-            }
-            .sheet(isPresented: $nowPlaying.isPlayerPresented) {
-                PlayerView(title: "Dynamite",
-                           artist: "방탄소년단")
-            }
+                .sheet(isPresented: $nowPlaying.isPlayerPresented) {
+                    PlayerView()
+                }
         }
     }
 }

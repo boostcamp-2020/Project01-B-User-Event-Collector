@@ -20,7 +20,7 @@ struct AlbumUseCase {
     }
     
     func loadAlbum(with id: Int) -> AnyPublisher<Album, UseCaseError> {
-        return network.request(url: EndPoint.album(id: id).urlString)
+        return network.request(url: EndPoint.album(id: id).urlString, request: .get, body: nil)
             .decode(type: AlbumResponse.self, decoder: JSONDecoder())
             .mapError { error -> UseCaseError in
                 switch error {

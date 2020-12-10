@@ -62,7 +62,7 @@ struct TrackRowA: View {
 
 struct TrackRow_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowA(order: 0, track: .init(id: 0, title: "ABCDEFG", lyrics: "", albumId: 0, album: .init(id: 0, title: "", imageUrl: ""), artist: .init(id: 0, name: "aaaa")))
+        TrackRowA(order: 0, track: trackinfo)
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

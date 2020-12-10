@@ -21,7 +21,7 @@ struct ChartSectionB: View {
                 // 무조건 100개
                 LazyHGrid(rows: .init(repeating: .init(.flexible(minimum: 60)), count: 5)) {
                     ForEach(0..<100) { index in
-                        TrackRowE(order: 0, track: trackinfo)
+                        TrackRowE(order: index, track: trackinfo)
                     }
                     .frame(width: width * .sectionRatio)
                 }

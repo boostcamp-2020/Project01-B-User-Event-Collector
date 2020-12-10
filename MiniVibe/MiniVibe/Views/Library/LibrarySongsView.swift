@@ -39,7 +39,7 @@ struct LibrarySongsView: View {
                                 isMenuOpen = true
                             }
                             .fullScreenCover(isPresented: $isMenuOpen) {
-                                PlayerMenu(track: .init(id: 0, title: "Dynamite", lyrics: "", albumId: 3, album: .init(id: 0, title: "Dynamite", imageUrl: ""), artist: .init(id: 11, name: "방탄소년단")))
+                                PlayerMenu(track: trackinfo)
                             }
                         }
                     }

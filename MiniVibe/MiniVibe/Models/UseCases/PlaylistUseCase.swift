@@ -20,7 +20,7 @@ struct PlaylistUseCase {
     }
     
     func loadPlaylist(with id: Int) -> AnyPublisher<Playlist, UseCaseError> {
-        return network.request(url: EndPoint.playlist(id: id).urlString)
+        return network.request(url: EndPoint.playlist(id: id).urlString, request: .get, body: nil)
             .decode(type: PlaylistResponse.self, decoder: JSONDecoder())
             .mapError { error -> UseCaseError in
                 switch error {
