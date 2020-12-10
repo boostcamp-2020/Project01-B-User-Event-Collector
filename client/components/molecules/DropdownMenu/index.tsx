@@ -2,6 +2,8 @@ import React, { ReactNode, MouseEvent, ComponentType } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Menu, { MenuProps } from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { likeRequest } from '@utils/apis';
+import apiUrl from '@constants/apiUrl';
 
 interface DropdownMenuProps {
     id: string;
@@ -13,6 +15,9 @@ interface DropdownMenuProps {
         handleClick?: (e: MouseEvent<HTMLElement>) => void;
     }[];
     children?: ReactNode;
+    handleClick?: (e: MouseEvent<HTMLElement>) => void;
+    handleClose?: (e: MouseEvent<HTMLElement>) => void;
+    anchorEl?: Element | ((element: Element) => Element);
 }
 
 const StyledMenu = withStyles({
@@ -35,15 +40,15 @@ const StyledMenu = withStyles({
     />
 ));
 
-const DropdownMenu = ({ id, control: ControlComponent, menuItems, children }: DropdownMenuProps) => {
-    const [anchorEl, setAnchorEl] = React.useState(null);
-
-    const handleClick = (e) => {
-        setAnchorEl(e.currentTarget);
-    };
-    const handleClose = (e) => {
-        setAnchorEl(null);
-    };
+const DropdownMenu = ({
+    id,
+    control: ControlComponent,
+    menuItems,
+    children,
+    handleClose,
+    handleClick,
+    anchorEl,
+}: DropdownMenuProps) => {
     return (
         <>
             {ControlComponent && (
