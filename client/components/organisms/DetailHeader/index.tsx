@@ -69,7 +69,7 @@ interface DetailHeaderProps {
 
 const DetailHeader = ({ sort, data }: DetailHeaderProps) => {
     const dispatch = useDispatch();
-    const onAddUpNextHandler = () => {
+    const onAddUpNextAndPlayHandler = () => {
         sort === 'track'? dispatch(addToUpNextAndPlay([data])) : dispatch(addToUpNextAndPlay(data.tracks));
     }
 
@@ -96,8 +96,8 @@ const DetailHeader = ({ sort, data }: DetailHeaderProps) => {
                     </DescriptionContainer>
                 </TextContainer>
                 <ButtonContainer>
-                    {sort === 'track' && <HeaderButtonGroup sort="track" onAddUpNextHandler = {onAddUpNextHandler}/>}
-                    {sort !== 'track' && <HeaderButtonGroup onAddUpNextHandler = {onAddUpNextHandler}/>}
+                    {sort === 'track' && <HeaderButtonGroup sort="track" onAddUpNextHandler = {onAddUpNextAndPlayHandler}/>}
+                    {sort !== 'track' && <HeaderButtonGroup onAddUpNextHandler = {onAddUpNextAndPlayHandler}/>}
                 </ButtonContainer>
             </DetailContainer>
         </HeaderContainter>

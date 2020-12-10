@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { clearAllTracks } from 'reducers/selectedTrack';
+import { addToUpNext, addToUpNextAndPlay } from 'reducers/musicPlayer';
 
 import CheckBox from '@components/atoms/CheckBox';
 import CloseIcon from '@material-ui/icons/Close';
@@ -88,6 +89,14 @@ const FloatingSelectMenu = () => {
     const { tracks } = useSelector(state =>  state.selectedTrack);
     const selectedTrackCount = tracks.length;
 
+    const onAddUpNextAndPlayHandler = () => {
+        dispatch(addToUpNextAndPlay(tracks));
+    }
+
+    const onAddUpNextHandler = () => {
+        dispatch(addToUpNext(tracks));
+    }
+
     const onClickCloseButtonHandler = () => {
         dispatch(clearAllTracks());
     }
@@ -107,11 +116,16 @@ const FloatingSelectMenu = () => {
                 </CloseButtonContainer>
             </SelectAreaContainer>
             <ButttonAreaContainer>
-                <Button variant="secondary" height="40" icon={PlaylistPlayIcon}>현재재생목록에 추가</Button>
+                <Button variant="secondary" height="40" icon={PlaylistPlayIcon} onClick = {onAddUpNextHandler}>현재재생목록에 추가</Button>
                 <Button variant="secondary" height="40" icon={QueueMusicIcon}>추가</Button>
                 <Button variant="secondary" height="40" icon={MusicNoteIcon}>MP3 구매</Button>
                 <PlayButtonContainer>
-                    <Button variant="primary" width="120" height="40" icon={PlayArrowIcon}>재생</Button>
+                    <Button 
+                    variant="primary" 
+                    width="120" 
+                    height="40" 
+                    icon={PlayArrowIcon}
+                    onClick={onAddUpNextAndPlayHandler}>재생</Button>
                 </PlayButtonContainer>
             </ButttonAreaContainer>
         </Container>
