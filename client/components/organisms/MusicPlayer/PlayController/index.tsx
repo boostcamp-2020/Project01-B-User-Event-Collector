@@ -6,7 +6,6 @@ import VolumnController from '@components/molecules/VolumnController';
 import PlaylistDisplayButton from '@components/molecules/PlaylistDisplayButton';
 import ProgressBar from '@components/molecules/ProgressBar';
 import PlayerTrackInfo from '@components/organisms/MusicPlayer/PlayerTrackInfo';
-import { playPrevTrack, playNextTrack } from 'reducers/musicPlayer';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Container = styled.div`
