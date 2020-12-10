@@ -43,13 +43,24 @@ struct MainTab: View {
                     Image(systemName: "person.fill")
                 }
                 .tag(ViewIdentifier.library)
+            
+            EventLogView(viewModel: .init(eventLogger: eventLogger))
+                .tabItem {
+                    Image(systemName: "pencil.and.ellipsis.rectangle")
+                }
+                .tag(ViewIdentifier.none)
         }
         .accentColor(.pink)
         .onPreferenceChange(Size.self, perform: { value in
             contentFrame = value.last ?? .zero
         })
-        .overlay(
-            PlayerPreview(coordinate: contentFrame)
+        .overlay(player)
+    }
+    
+    @ViewBuilder
+    private var player: some View {
+        if eventLogger.tabViewSelection != .none {
+        PlayerPreview(coordinate: contentFrame)
                 .onTapGesture {
                     if !nowPlaying.upNext.isEmpty {
                         nowPlaying.isPlayerPresented.toggle()
@@ -58,7 +69,6 @@ struct MainTab: View {
                 .sheet(isPresented: $nowPlaying.isPlayerPresented) {
                     PlayerView()
                 }
-        )
     }
 }
 
