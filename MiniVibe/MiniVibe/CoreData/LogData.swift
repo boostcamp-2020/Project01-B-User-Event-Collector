@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class LogData: NSObject, Encodable {
+public final class LogData: NSSecureUnarchiveFromDataTransformer, Encodable {
     let type: String
     let id: Int
     

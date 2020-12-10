@@ -29,9 +29,19 @@ final class EventLogger: ObservableObject {
     }
     
     func reset() {
-        let request: NSFetchRequest<NSFetchRequestResult> = Transition.fetchRequest()
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
-        _ = try? persistentContainer.viewContext.execute(deleteRequest)
+        let fetchRequsts: [NSFetchRequest<NSFetchRequestResult>]
+            = [Transition.fetchRequest(),
+               Search.fetchRequest(),
+               Like.fetchRequest(),
+               Subscribe.fetchRequest(),
+               MoveTrack.fetchRequest()]
+        
+        let deleteRequests: [NSBatchDeleteRequest]
+            = fetchRequsts.map { NSBatchDeleteRequest(fetchRequest: $0) }
+
+        deleteRequests.forEach {
+            _ = try? persistentContainer.viewContext.execute($0)
+        }
     }
     
     func events() -> [EventPrintable] {
