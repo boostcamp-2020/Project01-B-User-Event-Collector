@@ -24,7 +24,7 @@ final class EventLogger: ObservableObject {
         self.persistentContainer = persistentContainer
     }
     
-    func send(_ event: TransitionLogType) {
+    func send(_ event: EventType) {
         event.save(context: persistentContainer.viewContext)
     }
     
@@ -37,15 +37,4 @@ final class EventLogger: ObservableObject {
     func events() -> [Transition] {
         return (try? persistentContainer.viewContext.fetch(Transition.fetchRequest()) as? [Transition]) ?? []
     }
-    
-//    private func saveTransition(transition: TransitionLogType, event: String, identifier: String, componentId: String) {
-//        let context = persistentContainer.viewContext
-//        let transition = Transition(context: context)
-//        transition.userId = 0
-//        transition.componentId = componentId
-//        transition.event = event
-//        transition.page = identifier
-//        transition.timestamp = Date().timestampFormat()
-//        try? context.save()
-//    }
 }

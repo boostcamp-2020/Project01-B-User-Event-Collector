@@ -5,17 +5,12 @@
 //  Created by Sue Cho on 2020/12/10.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
-protocol TransitionLogType {
-    var event: String { get }
-    var userId: Int { get }
+protocol TransitionLogType: EventLogType {
     var componentId: String { get }
     var page: String { get }
-    var timestamp: String { get }
-    
-    func save(context: NSManagedObjectContext)
 }
 
 extension TransitionLogType {
@@ -32,7 +27,6 @@ extension TransitionLogType {
 }
 
 struct Appear: TransitionLogType {
-    let event = "Appear"
     let userId: Int
     let componentId: String
     let page: String
@@ -40,7 +34,6 @@ struct Appear: TransitionLogType {
 }
 
 struct Disappear: TransitionLogType {
-    let event = "Disappear"
     let userId: Int
     let componentId: String
     let page: String
@@ -48,7 +41,6 @@ struct Disappear: TransitionLogType {
 }
 
 struct TabViewTransition: TransitionLogType {
-    let event = "TabViewTransition"
     let userId: Int
     let componentId: String
     let page: String
