@@ -30,19 +30,19 @@ struct Appear: TransitionLogType {
     let userId: Int
     let componentId: String
     let page: String
-    let timestamp = Date().timestampFormat()
+    let timestamp = Date()
 }
 
 struct Disappear: TransitionLogType {
     let userId: Int
     let componentId: String
     let page: String
-    let timestamp = Date().timestampFormat()
+    let timestamp = Date()
 }
 
 struct TabViewTransition: TransitionLogType {
     let userId: Int
     let componentId: String
     let page: String
-    let timestamp = Date().timestampFormat()
+    let timestamp = Date()
 }

@@ -24,11 +24,11 @@ extension Search {
     @NSManaged public var event: String
     @NSManaged public var userId: Int
     @NSManaged public var text: String
-    @NSManaged public var timestamp: String
+    @NSManaged public var timestamp: Date
 
 }
 
-extension Search {
+extension Search: EventPrintable {
     public override var description: String {
         return "\(timestamp)\nEvent: \(event)\ntext: \(text)\nComponent: \(componentId)"
     }

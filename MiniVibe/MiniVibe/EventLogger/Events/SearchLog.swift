@@ -28,5 +28,5 @@ struct SearchLog: SearchLogType {
     let userId: Int
     let componentId: String
     let text: String
-    let timestamp: String
+    let timestamp: Date = Date()
 }

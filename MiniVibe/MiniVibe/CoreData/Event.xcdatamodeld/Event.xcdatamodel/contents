@@ -4,14 +4,14 @@
         <attribute name="componentId" optional="YES" attributeType="String"/>
         <attribute name="event" optional="YES" attributeType="String"/>
         <attribute name="text" optional="YES" attributeType="String"/>
-        <attribute name="timestamp" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Transition" representedClassName="Transition" syncable="YES">
         <attribute name="componentId" optional="YES" attributeType="String"/>
         <attribute name="event" optional="YES" attributeType="String"/>
         <attribute name="page" optional="YES" attributeType="String"/>
-        <attribute name="timestamp" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
