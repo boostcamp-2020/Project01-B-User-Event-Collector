@@ -6,6 +6,9 @@ import CardListContainer from '@components/organisms/CardListContainer';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 import { request } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
+import { page, contentType, dataType } from '@constants/identifier';
+import ComponentInfoContext from '@utils/context/ComponentInfoContext';
+import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 
 const Container = styled.div`
     min-height: 1300px;
@@ -35,29 +38,39 @@ const ArtistListContainer = styled.div``;
 
 const Album = ({ albumData, trackData, relatedAlbumData }) => {
     return (
-        <Container>
-            <Header>
-                <DetailHeader sort="album" data={albumData} />
-            </Header>
-            <ContentsContainer>
-                <ContentsButtonGroup />
-                <TrackListContainer>
-                    <TrackRowList items={trackData} />
-                </TrackListContainer>
-                {relatedAlbumData && relatedAlbumData.length > 0 && (
-                    <ContentsContainer>
-                        <CardListContainer title="관련 아티스트 앨범">
-                            <ContentsCardList variant="album" items={relatedAlbumData} />
-                        </CardListContainer>
-                    </ContentsContainer>
-                )}
-                {/* <ArtistListContainer>
+        <ComponentInfoContext.Provider
+            value={{ componentId: `${page.album}-${albumData.id}`, data: { type: dataType.album, id: albumData.id } }}
+        >
+            <Container>
+                <ComponentInfoWrapper componentId={contentType.summaryHeader}>
+                    <Header>
+                        <DetailHeader sort="album" data={albumData} />
+                    </Header>
+                </ComponentInfoWrapper>
+                <ContentsContainer>
+                    <ComponentInfoWrapper componentId={contentType.track}>
+                        <ContentsButtonGroup />
+                        <TrackListContainer>
+                            <TrackRowList items={trackData} />
+                        </TrackListContainer>
+                    </ComponentInfoWrapper>
+                    {relatedAlbumData && relatedAlbumData.length > 0 && (
+                        <ComponentInfoWrapper componentId={contentType.relatedArtistAlbum}>
+                            <ContentsContainer>
+                                <CardListContainer title="관련 아티스트 앨범">
+                                    <ContentsCardList variant="album" items={relatedAlbumData} />
+                                </CardListContainer>
+                            </ContentsContainer>
+                        </ComponentInfoWrapper>
+                    )}
+                    {/* <ArtistListContainer>
                     <CardListContainer title="연관 아티스트">
                         <ContentsCardList variant="artist" items={Artistdata} />
                     </CardListContainer>
                 </ArtistListContainer> */}
-            </ContentsContainer>
-        </Container>
+                </ContentsContainer>
+            </Container>
+        </ComponentInfoContext.Provider>
     );
 };
 

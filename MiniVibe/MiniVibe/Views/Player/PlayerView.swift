@@ -12,15 +12,13 @@ struct PlayerView: View {
     @EnvironmentObject var eventLogger: EventLogger
     @State private var isOpenMenu = false
     @State private var isOpenLyrics = false
-    let title: String
-    let artist: String
-    
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 ScrollView {
                     VStack {
-                        Player(isOpenMenu: $isOpenMenu, isOpenLyrics: $isOpenLyrics)
+                        Player(isMenuOpen: $isOpenMenu, isLyricsOpen: $isOpenLyrics)
                             .frame(height: geometry.size.height)
                         
                         Divider()
@@ -45,6 +43,6 @@ struct PlayerView: View {
 
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerView(title: "Dynamite", artist: "방탄소년단")
+        PlayerView()
     }
 }

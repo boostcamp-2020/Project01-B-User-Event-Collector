@@ -38,9 +38,15 @@ struct ArtistMenu: View {
             .foregroundColor(.black)
             .padding(.horizontal)
             
-            MenuButton(type: .like(true))
-            MenuButton(type: .exclude)
-            MenuButton(type: .share)
+            MenuButton(type: .like(0)) {
+                
+            }
+            MenuButton(type: .exclude) {
+                
+            }
+            MenuButton(type: .share) {
+                
+            }
             MenuCloseButton {
                 presentationMode.wrappedValue.dismiss()
             }

@@ -8,11 +8,6 @@
 import Foundation
 import Combine
 
-enum UseCaseError: Error {
-    case networkError
-    case decodingError
-}
-
 struct TodayUseCase {
     private let network: NetworkServiceType
     
@@ -21,7 +16,7 @@ struct TodayUseCase {
     }
     
     func loadMixtapes() -> AnyPublisher<[Mixtape], UseCaseError> {
-        return network.request(url: EndPoint.mixtapes.urlString)
+        return network.request(url: EndPoint.mixtapes.urlString, request: .get, body: nil)
             .decode(type: Mixtapes.self, decoder: JSONDecoder())
             .mapError { error -> UseCaseError in
                 switch error {
@@ -37,7 +32,7 @@ struct TodayUseCase {
     }
     
     func loadAlbums() -> AnyPublisher<[Album], UseCaseError> {
-        return network.request(url: EndPoint.albums.urlString)
+        return network.request(url: EndPoint.albums.urlString, request: .get, body: nil)
             .decode(type: Albums.self, decoder: JSONDecoder())
             .mapError { error -> UseCaseError in
                 switch error {
@@ -53,7 +48,7 @@ struct TodayUseCase {
     }
     
     func loadPlaylists() -> AnyPublisher<[Playlist], UseCaseError> {
-        return network.request(url: EndPoint.playlists.urlString)
+        return network.request(url: EndPoint.playlists.urlString, request: .get, body: nil)
             .decode(type: Playlists.self, decoder: JSONDecoder())
             .mapError { error -> UseCaseError in
                 switch error {
@@ -71,7 +66,7 @@ struct TodayUseCase {
     }
     
     func loadTracks() -> AnyPublisher<[TrackInfo], UseCaseError> {
-        return network.request(url: EndPoint.tracks.urlString)
+        return network.request(url: EndPoint.tracks.urlString, request: .get, body: nil)
             .decode(type: TrackResponse.self, decoder: JSONDecoder())
             .mapError { error -> UseCaseError in
                 switch error {
@@ -87,7 +82,7 @@ struct TodayUseCase {
     }
     
     func loadMagazines() -> AnyPublisher<[Magazine], UseCaseError> {
-        return network.request(url: EndPoint.magazines.urlString)
+        return network.request(url: EndPoint.magazines.urlString, request: .get, body: nil)
             .decode(type: Magazines.self, decoder: JSONDecoder())
             .mapError { error -> UseCaseError in
                 switch error {

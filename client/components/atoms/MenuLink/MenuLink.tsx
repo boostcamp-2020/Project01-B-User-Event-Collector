@@ -1,7 +1,9 @@
 import React, { ReactNode, ComponentType } from 'react';
-import { useRouter } from 'next/router'
-import Link from 'next/link'
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import useClickEventLog from '@hooks/useClickEventLog';
 
 interface MenuLinkProps {
     children: ReactNode;
@@ -14,8 +16,8 @@ interface styledLinkProps {
     selected?: boolean;
 }
 
-const StyledLink = styled.a<styledLinkProps>` 
-  cursor: pointer;
+const StyledLink = styled.a<styledLinkProps>`
+    cursor: pointer;
     display: flex;
     align-items: center;
     font-size: 16px;
@@ -34,22 +36,22 @@ const IconWrapper = styled.div`
     margin-right: 10px;
 `;
 
-const MenuLink = ({
-  children, href, icon: Icon, selected,
-}: MenuLinkProps) => {
-  const router = useRouter();
+const MenuLink = ({ children, href, icon: Icon, selected }: MenuLinkProps) => {
+    const router = useRouter();
+    const user = useSelector((state) => state.user);
+    const handleClick = useClickEventLog({ userId: user.id, href });
 
-  return (
-    <Link href={href}>
-      <StyledLink selected={selected? selected : router.pathname === href}>
-        { Icon && (
-          <IconWrapper>
-            <Icon />
-          </IconWrapper>
-        )}
-        {children}
-      </StyledLink>
-    </Link>
+    return (
+        <Link href={href}>
+            <StyledLink selected={selected ? selected : router.pathname === href} onClick={handleClick}>
+                {Icon && (
+                    <IconWrapper>
+                        <Icon />
+                    </IconWrapper>
+                )}
+                {children}
+            </StyledLink>
+        </Link>
     );
 };
 

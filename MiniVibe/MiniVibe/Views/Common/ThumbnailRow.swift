@@ -34,7 +34,6 @@ struct ThumbnailRow: View {
     }
 }
 
-
 struct ThumbnailRow_Previews: PreviewProvider {
     static var previews: some View {
         ThumbnailRow(imageURL: "", title: "나만 없어 그 한정판 LP 레코드", subtitle: "2020-12-12")

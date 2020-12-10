@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { PlayerTrackCardProps } from '@interfaces/props';
 import PlayerTrackCard from '@components/organisms/Cards/PlayerTrackCard';
+import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
+import { dataType } from '@constants/identifier';
 
 const ListContainer = styled.ul`
     overflow-y: auto;
@@ -16,10 +18,11 @@ const PlayerTrackList = ({ items }: { items: PlayerTrackCardProps[] }) => {
     return (
     <ListContainer>
         {items.map((item) => (
-            <PlayerTrackCard 
-            key={item.id}
-            data={item}
-            artist={item.artist.name} />
+          <ComponentInfoWrapper componentId={`${item.id}`} data={{ type: dataType.track, id: item.id }}>
+              <PlayerTrackCard 
+              key = {item.id}
+              data = {item} />
+           </ComponentInfoWrapper>
         ))}
     </ListContainer>
 )};

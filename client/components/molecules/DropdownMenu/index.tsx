@@ -4,21 +4,7 @@ import Menu, { MenuProps } from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { likeRequest } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
-
-interface DropdownMenuProps {
-    id: string;
-    control?: ComponentType<{
-        onClick?: (e: MouseEvent<HTMLElement>) => void;
-    }>;
-    menuItems: {
-        content: string;
-        handleClick?: (e: MouseEvent<HTMLElement>) => void;
-    }[];
-    children?: ReactNode;
-    handleClick?: (e: MouseEvent<HTMLElement>) => void;
-    handleClose?: (e: MouseEvent<HTMLElement>) => void;
-    anchorEl?: Element | ((element: Element) => Element);
-}
+import { DropdownMenuProps } from '@interfaces/props';
 
 const StyledMenu = withStyles({
     paper: {

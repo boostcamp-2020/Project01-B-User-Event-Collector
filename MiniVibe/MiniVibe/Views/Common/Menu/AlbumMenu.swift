@@ -15,13 +15,19 @@ struct AlbumMenu: View {
     var body: some View {
         VStack(spacing: 36) {
             Spacer()
-            MenuThumbnailButton(title: album.title,
-                                subtitle: album.artist.name,
-                                imageURL: album.imageUrl)
-            MenuButton(type: .download(.album))
-            MenuButton(type: .like(false))
-            MenuButton(type: .addToPlaylist)
-            MenuButton(type: .share)
+            MenuThumbnailButton()
+            MenuButton(type: .download(.album)) {
+                
+            }
+            MenuButton(type: .like(0)) {
+                
+            }
+            MenuButton(type: .addToPlaylist) {
+                
+            }
+            MenuButton(type: .share) {
+                
+            }
             MenuCloseButton {
                 presentationMode.wrappedValue.dismiss()
             }

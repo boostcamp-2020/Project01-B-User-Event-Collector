@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MultiselectTabBar: View {
-    var barItems: [CustomTabbarItem]
+    @EnvironmentObject private var nowPlaying: NowPlaying
     
     var body: some View {
         ZStack {
@@ -16,32 +16,31 @@ struct MultiselectTabBar: View {
                 .foregroundColor(Color.pink)
             
             HStack {
-                ForEach(barItems, id: \.caption) { item in
-                    Spacer()
+                TabbarButton(type: .addToPlaylist) {
                     
-                    Button {
-                        // action
-                        item.itemFunction()
-                    } label: {
-                        VStack(spacing: 5) {
-                            item.icon
-                                .font(.system(size: 20))
-                            
-                            Text(item.caption)
-                                .font(.caption)
-                        }
-                    }
-                    .foregroundColor(.white)
+                }
+                
+                Spacer()
+                
+                TabbarButton(type: .save) {
                     
-                    Spacer()
+                }
+                
+                Spacer()
+                
+                TabbarButton(type: .delete) {
+                    nowPlaying.deleteTrack()
+                    nowPlaying.selectedTracks.removeAll()
                 }
             }
+            .foregroundColor(.white)
+            .padding(.horizontal, 50)
         }
     }
 }
 
 struct MultiselectTabBar_Previews: PreviewProvider {
     static var previews: some View {
-        MultiselectTabBar(barItems: [AddToPlaylist(), Delete()])
+        MultiselectTabBar()
     }
 }

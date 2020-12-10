@@ -4,7 +4,7 @@ import MenuOpenIcon from '@material-ui/icons/MenuOpen';
 
 interface DisplayButtonProps {
     open: boolean;
-    onClick
+    onClick?
 }
 
 const Container = styled.div<DisplayButtonProps>`

@@ -25,8 +25,25 @@ enum NetworkError: Error {
     }
 }
 
+enum RequestType: CustomStringConvertible {
+    case get
+    case post
+    case delete
+
+    var description: String {
+        switch self {
+        case .get:
+            return "GET"
+        case .post:
+            return "POST"
+        case .delete:
+            return "DELETE"
+        }
+    }
+}
+
 protocol NetworkServiceType {
-    func request(url: String) -> AnyPublisher<Data, NetworkError>
+    func request(url: String, request type: RequestType, body: Data?) -> AnyPublisher<Data, NetworkError>
 }
 
 final class NetworkService: NetworkServiceType {
@@ -36,12 +53,15 @@ final class NetworkService: NetworkServiceType {
         self.session = session
     }
     
-    func request(url: String) -> AnyPublisher<Data, NetworkError> {
+    func request(url: String, request type: RequestType, body: Data?) -> AnyPublisher<Data, NetworkError> {
         guard let url = URL(string: url) else {
             return Fail(error: NetworkError.invalidURL)
                 .eraseToAnyPublisher()
         }
-        let urlRequest = URLRequest(url: url)
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = type.description
+        urlRequest.httpBody = body
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         return session.dataTaskPublisher(for: urlRequest)
             .tryMap { (data, response) -> Data in
                 guard let response = response as? HTTPURLResponse,

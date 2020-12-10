@@ -26,7 +26,7 @@ struct MenuButton: View {
             }
         }
         
-        case like(Bool)
+        case like(Int)
         case exclude
         case download(DownloadType)
         case addToPlaylist
@@ -35,7 +35,7 @@ struct MenuButton: View {
         var imageName: String {
             switch self {
             case let .like(isLike):
-                return isLike ? "heart.fill" : "heart"
+                return isLike == 1 ? "heart.fill" : "heart"
             case .exclude:
                 return "smiley"
             case .download:
@@ -50,7 +50,7 @@ struct MenuButton: View {
         var title: String {
             switch self {
             case let .like(isLike):
-                return isLike ? "좋아요 취소" : "좋아요"
+                return isLike == 1 ? "좋아요 취소" : "좋아요"
             case .exclude:
                 return "이 노래 제외"
             case let .download(type):
@@ -64,14 +64,20 @@ struct MenuButton: View {
     }
     
     let type: MenuButtonType
+    let action: () -> Void
+    
+    init(type: MenuButtonType, action: @escaping () -> Void) {
+        self.type = type
+        self.action = action
+    }
     
     var body: some View {
         Button {
-            
+            action()
         } label: {
             HStack(spacing: 0) {
                 Image(systemName: type.imageName)
-                    .foregroundColor(type == .like(true) ? .pink : .black)
+                    .foregroundColor(type == .like(1) ? .pink : .black)
                     .font(.system(size: 24))
                     .frame(width: 24, height: 24)
                     .padding(.horizontal)
@@ -88,6 +94,6 @@ struct MenuButton: View {
 
 struct MenuButton_Previews: PreviewProvider {
     static var previews: some View {
-        MenuButton(type: .like(true))
+        MenuButton(type: .like(0), action: {})
     }
 }

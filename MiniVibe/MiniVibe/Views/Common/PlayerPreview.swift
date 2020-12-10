@@ -63,9 +63,6 @@ struct PlayerPreview: View {
             
             Button {
                 nowPlaying.playNextTrack()
-                if !nowPlaying.isPlaying {
-                    nowPlaying.isPlaying = true
-                }
             } label: {
                 Image(systemName: "forward.fill")
             }
@@ -73,7 +70,7 @@ struct PlayerPreview: View {
             .foregroundColor(iconColor)
             
             Button {
-                
+                nowPlaying.isPlayerPresented = true
             } label: {
                 Image(systemName: "music.note.list")
             }

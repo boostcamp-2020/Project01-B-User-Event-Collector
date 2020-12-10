@@ -4,6 +4,10 @@ import TrackRowList from '@components/organisms/CardLists/TrackRowList';
 import ContentsButtonGroup from '@components/organisms/ContentsButtonGroup';
 import apiUrl from 'constants/apiUrl';
 import { request } from '@utils/apis';
+import ComponentInfoContext from '@utils/context/ComponentInfoContext';
+import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
+import { page, contentType } from '@constants/identifier';
+import NoDataContainer from '@components/molecules/NoDataContainer';
 
 const LibraryContainer = styled.div`
     width: 100%;
@@ -29,19 +33,28 @@ const LibraryTrackListContainer = styled.div`
 
 const TrackLibrary = ({ trackData }) => {
     return (
-        <LibraryContainer>
-            <LibraryHeaderContainer>
-                <LibraryHeader sort="track" />
-            </LibraryHeaderContainer>
-            <LibraryContentsContainer>
-                <ContentsButtonGroup />
-                <LibraryTrackListContainer>
-                    <TrackRowList items={trackData} />
-                </LibraryTrackListContainer>
-            </LibraryContentsContainer>
-        </LibraryContainer>
+        <ComponentInfoContext.Provider value={{ componentId: page.libraryTrack }}>
+            <LibraryContainer>
+                <LibraryHeaderContainer>
+                    <LibraryHeader sort="track" />
+                </LibraryHeaderContainer>
+                {trackData.length !== 0 ? (
+                    <LibraryContentsContainer>
+                        <ComponentInfoWrapper componentId={contentType.track}>
+                            <ContentsButtonGroup />
+                            <LibraryTrackListContainer>
+                                <TrackRowList items={trackData} />
+                            </LibraryTrackListContainer>
+                        </ComponentInfoWrapper>
+                    </LibraryContentsContainer>
+                ) : (
+                    <NoDataContainer type="track" />
+                )}
+            </LibraryContainer>
+        </ComponentInfoContext.Provider>
     );
 };
+
 export const getServerSideProps = async () => {
     const trackData = await request(apiUrl.libraryTrack);
     return {

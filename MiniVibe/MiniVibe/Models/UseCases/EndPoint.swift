@@ -19,6 +19,10 @@ enum EndPoint {
     case artists
     case artist(id: Int)
     
+    
+    case like // 좋아요
+    case cancelLike(id: Int) // 좋아요 취소
+    
     static private let baseURL = "http://101.101.209.213:3000"
     
     private var path: String {
@@ -43,6 +47,11 @@ enum EndPoint {
             return "/api/artists"
         case let .artist(id):
             return "/api/artists/\(id)"
+            
+        case .like:
+            return "/api/library/tracks"
+        case let .cancelLike(id):
+            return "/api/library/tracks/\(id)"
         }
     }
     

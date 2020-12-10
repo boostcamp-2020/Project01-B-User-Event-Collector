@@ -1,6 +1,21 @@
+import React, { ReactNode, MouseEvent, ComponentType } from 'react';
+
 export enum MagazineSort {
     main = 'todayMagazine',
     normal = 'todayMagazine',
+}
+
+export interface StationCardProps {
+
+}
+
+export interface TrackInfoProps {
+    data,
+    track: boolean;
+}
+
+export interface InputProps {
+    variant?: string;
 }
 
 export interface MagazineCardProps {
@@ -20,13 +35,19 @@ export interface NewsCardProps {
     albumId: number;
 }
 
+export interface ContentsThumbnailProps {
+    src: string;
+    href: string;
+    sort?: 'news' | 'mainMagazine' | 'normalMagazine' | 'recommendPlaylist' | 'normalPlaylist' | 'todayMagazine';
+};
+
 export interface MixtapeCardProps {
-    id: number;
-    title: string;
-    subTitle: string;
-    description: string;
-    imageUrl: string;
-    customized: boolean;
+    id?: number;
+    title?: string;
+    subTitle?: string;
+    description?: string;
+    imageUrl?: string;
+    customized?: boolean;
 }
 
 export interface AlbumCardProps {
@@ -51,10 +72,13 @@ export interface PlaylistCardProps {
 }
 
  export interface LibraryArtistThumbnailProps {
-    id: number,
-    name: string,
-    imageUrl: string,
-    href: string
+    id: number;
+    name: string;
+    imageUrl: string;
+    genre: {
+        id: number;
+        name: string;
+    }
 }
 
 export interface NormalArtistThumbnailProps {
@@ -107,7 +131,24 @@ export interface TrackCardProps {
 }
 
 export interface PlayerTrackCardProps {
-    src: string;
-    trackTitle: string;
-    artist: string;
+    id : number;
+    title : string;
+    artistId: number;
+    albumId: number;
+    lyrics: string;
+    artist: { id: number; name: string; },
+    album: { id: number; title: string; imageUrl: string; }
+}
+
+export interface DropdownMenuProps {
+    id: string;
+    control?: any;
+    menuItems: {
+        content: string;
+        handleClick?: (e: MouseEvent<HTMLElement>) => void;
+    }[];
+    children?: ReactNode;
+    handleClick?: (e: MouseEvent<HTMLElement>) => void;
+    handleClose?: (e: MouseEvent<HTMLElement>) => void;
+    anchorEl?: Element | ((element: Element) => Element);
 }
