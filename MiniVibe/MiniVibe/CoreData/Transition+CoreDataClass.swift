@@ -28,9 +28,9 @@ extension Transition {
 
 }
 
-extension Transition {
+extension Transition: EventPrintable {
     public override var description: String {
-        return "\(timestamp)\nEvent: \(event)\nPage: \(page)\nComponent: \(componentId)"
+        return "\(timestamp.timestampFormat())\nEvent: \(event)\nPage: \(page)\nComponent: \(componentId)"
     }
 }
 

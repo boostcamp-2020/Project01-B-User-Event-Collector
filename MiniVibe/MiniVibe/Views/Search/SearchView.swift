@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Search: View {
+struct SearchView: View {
     @StateObject private var viewModel = SearchViewModel()
     @State private var searchedText = ""
     
@@ -41,6 +41,6 @@ struct Search: View {
 
 struct Genre_Previews: PreviewProvider {
     static var previews: some View {
-        Search()
+        SearchView()
     }
 }

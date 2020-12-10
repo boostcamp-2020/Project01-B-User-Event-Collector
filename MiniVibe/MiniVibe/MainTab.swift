@@ -32,7 +32,7 @@ struct MainTab: View {
                 }
                 .tag(ViewIdentifier.charts)
             
-            Search()
+            SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }

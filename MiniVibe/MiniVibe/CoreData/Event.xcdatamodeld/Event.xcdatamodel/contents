@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Search" representedClassName="Search" syncable="YES">
+        <attribute name="componentId" optional="YES" attributeType="String"/>
+        <attribute name="event" optional="YES" attributeType="String"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="MoveTrack" representedClassName="MoveTrack" syncable="YES">
         <attribute name="destination" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="event" optional="YES" attributeType="String"/>
@@ -22,6 +29,7 @@
         <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
+        <element name="Search" positionX="-63" positionY="18" width="128" height="104"/>
         <element name="MoveTrack" positionX="-54" positionY="36" width="128" height="119"/>
         <element name="Subscribe" positionX="-63" positionY="18" width="128" height="89"/>
         <element name="Transition" positionX="-63" positionY="-18" width="128" height="104"/>

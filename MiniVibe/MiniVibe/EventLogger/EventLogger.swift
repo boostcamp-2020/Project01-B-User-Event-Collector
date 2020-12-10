@@ -34,7 +34,12 @@ final class EventLogger: ObservableObject {
         _ = try? persistentContainer.viewContext.execute(deleteRequest)
     }
     
-    func events() -> [Transition] {
-        return (try? persistentContainer.viewContext.fetch(Transition.fetchRequest()) as? [Transition]) ?? []
+    func events() -> [EventPrintable] {
+        let transitions = (try? persistentContainer.viewContext
+                            .fetch(Transition.fetchRequest()) as? [EventPrintable]) ?? []
+        let searchLogs = (try? persistentContainer.viewContext
+                            .fetch(Search.fetchRequest()) as? [EventPrintable]) ?? []
+        
+        return (transitions + searchLogs).sorted { $0.timestamp > $1.timestamp }
     }
 }
