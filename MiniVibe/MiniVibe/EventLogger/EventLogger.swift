@@ -24,7 +24,7 @@ final class EventLogger: ObservableObject {
         self.persistentContainer = persistentContainer
     }
     
-    func send(_ event: EventType) {
+    func send(_ event: EventLogType) {
         event.save(context: persistentContainer.viewContext)
     }
     
