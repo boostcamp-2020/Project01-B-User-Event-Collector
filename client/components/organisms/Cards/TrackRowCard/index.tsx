@@ -7,7 +7,8 @@ import TrackPlayButton from '@components/molecules/TrackPlayButton';
 import DropDownMenu from '@components/molecules/DropdownMenu';
 import { TrackRowCardProps } from '@interfaces/props';
 import LyricModal from '@components/organisms/LyricModal/LyricModal';
-import { likeRequest, unlikeRequest } from '@utils/apis';
+import PlaylistModal from '@components/organisms/PlaylistModal';
+import { likeRequest, request, unlikeRequest } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
 import {
     List,
@@ -51,7 +52,6 @@ const likeAction = async (isLiked, type, id) => {
           })
         : await unlikeRequest(url);
 };
-
 const TrackRowCard = (data: TrackRowCardProps) => {
     // TODO : component 정보에서 type 가져오기
     const type = 'track';
@@ -61,7 +61,9 @@ const TrackRowCard = (data: TrackRowCardProps) => {
 
     const [isLiked, setIsLiked] = useState(liked);
     const [displayLyrics, setDisplayLyrics] = useState(false);
+    const [playlistModal, setPlaylistModal] = useState({ visibility: false, data: [] });
     const [anchorEl, setAnchorEl] = useState(null);
+
     const onClickUnlikeHandler = () => {
         setIsLiked(0);
         likeAction(!isLiked, type, id);
@@ -70,6 +72,12 @@ const TrackRowCard = (data: TrackRowCardProps) => {
     const onClickShowLyric = () => {
         setDisplayLyrics(!displayLyrics);
     };
+    const onClickShowPlaylist = () => {
+        setPlaylistModal({
+            visibility: false,
+            data: [],
+        });
+    };
     const handleClose = (e) => {
         switch (e.currentTarget.innerText) {
             case contentsDropDownMenu[0].content:
@@ -77,6 +85,12 @@ const TrackRowCard = (data: TrackRowCardProps) => {
                 setIsLiked(1);
                 break;
             case contentsDropDownMenu[1].content:
+                request(apiUrl.libraryPlaylist).then((data) => {
+                    setPlaylistModal({
+                        visibility: true,
+                        data: data,
+                    });
+                });
                 break;
             case contentsDropDownMenu[2].content:
                 break;
@@ -108,6 +122,11 @@ const TrackRowCard = (data: TrackRowCardProps) => {
                 visibility={displayLyrics}
                 onClickFunc={onClickShowLyric}
             />
+            <PlaylistModal
+                visibility={playlistModal.visibility}
+                data={playlistModal.data}
+                onClickFunc={onClickShowPlaylist}
+            ></PlaylistModal>
             <TrackLeft>
                 <CheckBox id={id} onChange={onChangeCheckRow} />
                 <TrackPlayBtnContainer>
