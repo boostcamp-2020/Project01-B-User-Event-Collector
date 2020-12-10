@@ -6,6 +6,7 @@ import { request } from '@utils/apis';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 import { page, contentType } from '@constants/identifier';
+import NoDataContainer from '@components/molecules/NoDataContainer';
 
 const LibraryContainer = styled.div`
     width: 100%;
@@ -30,11 +31,15 @@ const ArtistLibrary = ({ artistData }) => {
                 <LibraryHeaderContainer>
                     <LibraryHeader sort="artist" />
                 </LibraryHeaderContainer>
-                <LibraryContentsContainer>
-                    <ComponentInfoWrapper componentId={contentType.artist}>
-                        <LibraryCardList variant="artist" items={artistData} />
-                    </ComponentInfoWrapper>
-                </LibraryContentsContainer>
+                {artistData.length !== 0 ? (
+                      <LibraryContentsContainer>
+                          <ComponentInfoWrapper componentId={contentType.artist}>
+                              <LibraryCardList variant="artist" items={artistData} />
+                          </ComponentInfoWrapper>
+                      </LibraryContentsContainer>
+                  ) : (
+                      <NoDataContainer type="artist" />
+                  )}
             </LibraryContainer>
         </ComponentInfoContext.Provider>
     );

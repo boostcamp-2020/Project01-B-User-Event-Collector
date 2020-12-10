@@ -26,6 +26,7 @@ struct PlayListSection<D: View>: View {
         VStack(spacing: 8) {
             SectionTitle(width: width, title: title, destination: destination)
             
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: width * .spacingRatio) {
                     ForEach(playlists, id: \.id) { playlist in
@@ -38,7 +39,7 @@ struct PlayListSection<D: View>: View {
                             label: {
                                 ThumbnailItem(title: playlist.title,
                                               subtitle: playlist.subTitle ?? "",
-                                              imageURL: playlist.imageUrl ?? "")
+                                              imageURL: playlist.imageUrl)
                                     .frame(width: width * .thumbnailRatio)
                             }
                         )

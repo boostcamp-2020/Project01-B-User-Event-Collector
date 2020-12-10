@@ -64,7 +64,7 @@ struct TodayUseCase {
                 }
             }
             .map({ playlist -> [Playlist] in
-                playlist.data.filter { !$0.customized }
+                playlist.data.filter { !($0.customized ?? false) }
             })
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()

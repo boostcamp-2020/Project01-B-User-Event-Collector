@@ -44,7 +44,7 @@ struct ThumbnailList: View {
                                 .logTransition(eventLogger: eventLogger,
                                                identifier: .playlist(id: playlist.id))
                 ) {
-                    ThumbnailRow(imageURL: playlist.imageUrl ?? "",
+                    ThumbnailRow(imageURL: playlist.imageUrl,
                                  title: playlist.title,
                                  subtitle: playlist.subTitle ?? "")
                 }

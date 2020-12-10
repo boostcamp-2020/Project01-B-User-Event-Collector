@@ -6,6 +6,7 @@ import { request } from '@utils/apis';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 import { page, contentType } from '@constants/identifier';
+import NoDataContainer from '@components/molecules/NoDataContainer';
 
 const LibraryContainer = styled.div`
     width: 100%;
@@ -30,18 +31,24 @@ const AlbumLibrary = ({ albumData }) => {
                 <LibraryHeaderContainer>
                     <LibraryHeader sort="album" />
                 </LibraryHeaderContainer>
-                <LibraryContentsContainer>
-                    <ComponentInfoWrapper componentId={contentType.album}>
-                        <LibraryCardList variant="album" items={albumData} />
-                    </ComponentInfoWrapper>
-                </LibraryContentsContainer>
+               {albumData.length !== 0 ? (
+                    <LibraryContentsContainer>
+                        <ComponentInfoWrapper componentId={contentType.album}>
+                          <LibraryCardList variant="album" items={albumData} />
+                        </ComponentInfoWrapper>
+                    </LibraryContentsContainer>
+                ) : (
+                    <NoDataContainer type="album" />
+                )}
             </LibraryContainer>
         </ComponentInfoContext.Provider>
+
     );
 };
 
 export const getServerSideProps = async () => {
     const albumData = await request(apiUrl.libraryAlbum);
+    console.log(albumData);
     return {
         props: {
             albumData,
