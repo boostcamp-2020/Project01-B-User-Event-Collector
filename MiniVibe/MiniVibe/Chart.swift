@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Chart: View {
+    @EnvironmentObject private var eventLogger: EventLogger
     
     var body: some View {
         GeometryReader { geometry in
@@ -28,6 +29,8 @@ struct Chart: View {
                                title: "최신 앨범",
                                categories: ["국내", "해외"]
                             )
+                            .logTransition(eventLogger: eventLogger,
+                                           identifier: .latestAlbumList, componentId: .sectionTitle(category: "최신 앨범"))
                         }
                     }
                     .padding(.bottom, 70)

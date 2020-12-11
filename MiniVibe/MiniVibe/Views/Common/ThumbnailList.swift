@@ -42,7 +42,8 @@ struct ThumbnailList: View {
                 NavigationLink(destination:
                                 PlayListView(id: playlist.id)
                                 .logTransition(eventLogger: eventLogger,
-                                               identifier: .playlist(id: playlist.id))
+                                               identifier: .playlist(id: playlist.id),
+                                               componentId: ComponentId.playlistRow)
                 ) {
                     ThumbnailRow(imageURL: playlist.imageUrl,
                                  title: playlist.title,
@@ -54,7 +55,8 @@ struct ThumbnailList: View {
                 NavigationLink(destination:
                                 MagazineView(magazine: magazine)
                                 .logTransition(eventLogger: eventLogger,
-                                               identifier: .magazine(id: magazine.id))
+                                               identifier: .magazine(id: magazine.id),
+                                               componentId: ComponentId.magazineRow)
                 ) {
                     ThumbnailRow(imageURL: magazine.imageUrl,
                                  title: magazine.title,

@@ -43,7 +43,8 @@ struct Today: View {
                                 ThumbnailList(info: .playlist(data: viewModel.playlists),
                                               navigationTitle: "즐겨듣는 플레이리스트")
                                     .logTransition(eventLogger: eventLogger,
-                                                   identifier: .playlists(id: 0))
+                                                   identifier: .playlists(id: 0),
+                                                   componentId: .sectionTitle(category: "즐겨듣는 플레이리스트"))
                             }
                             
                             PlayListSection(width: width,
@@ -52,7 +53,8 @@ struct Today: View {
                                 ThumbnailList(info: .playlist(data: viewModel.playlists),
                                               navigationTitle: "내 취향 플레이리스트")
                                     .logTransition(eventLogger: eventLogger,
-                                                   identifier: .playlists(id: 1))
+                                                   identifier: .playlists(id: 1),
+                                                   componentId: .sectionTitle(category: "내 취향 플레이리스트"))
                             }
                             
                             StationSection(width: width, title: "DJ 스테이션")
@@ -67,7 +69,8 @@ struct Today: View {
                                 ThumbnailGridView(title: "좋아할 최신 앨범",
                                                   album: viewModel.albums)
                                     .logTransition(eventLogger: eventLogger,
-                                                   identifier: .recommendedRecentAlbum)
+                                                   identifier: .recommendedRecentAlbum,
+                                                   componentId: .sectionTitle(category: "좋아할 최신 앨범"))
                             }
                             
                             MagazineSection(width: width,

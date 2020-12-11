@@ -10,12 +10,18 @@ import KingfisherSwiftUI
 
 struct TrackRowC: View {
     @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var eventLogger: EventLogger
     let track: TrackInfo
     let menuButtonAction: () -> Void
 
     var body: some View {
         HStack {
-            NavigationLink(destination: AlbumView(id: 11)) {
+            NavigationLink(destination:
+                            AlbumView(id: track.album.id)
+                            .logTransition(eventLogger: eventLogger,
+                                           identifier: .album(id: track.album.id),
+                                           componentId: .trackRowThumbnail)
+            ) {
                 KFImage(URL(string: track.album.imageUrl))
                     .resizable()
                     .frame(width: 50, height: 50)
