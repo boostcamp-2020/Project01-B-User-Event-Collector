@@ -9,6 +9,10 @@ import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 import { page, contentType } from '@constants/identifier';
 import NoDataContainer from '@components/molecules/NoDataContainer';
 
+import { useSelector, useDispatch } from 'react-redux';
+
+import { addToUpNext, addToUpNextAndPlay } from 'reducers/musicPlayer';
+
 const LibraryContainer = styled.div`
     width: 100%;
     min-height: 1300px;
@@ -32,11 +36,15 @@ const LibraryTrackListContainer = styled.div`
 `;
 
 const TrackLibrary = ({ trackData }) => {
+    const dispatch = useDispatch();
+    const onAddUpNextAndPlayHandler = () => {
+        dispatch(addToUpNextAndPlay(trackData));
+    }
     return (
         <ComponentInfoContext.Provider value={{ componentId: page.libraryTrack }}>
             <LibraryContainer>
                 <LibraryHeaderContainer>
-                    <LibraryHeader sort="track" />
+                    <LibraryHeader sort="track" onAddUpNextAndPlayHandler={onAddUpNextAndPlayHandler}/>
                 </LibraryHeaderContainer>
                 {trackData.length !== 0 ? (
                     <LibraryContentsContainer>

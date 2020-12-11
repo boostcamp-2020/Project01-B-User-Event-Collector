@@ -28,6 +28,7 @@ const ButtonContainer = styled.div`
 
 interface LibraryHeaderProps {
     sort: 'mixtape' | 'track' | 'artist' | 'album' | 'playlist';
+    onAddUpNextAndPlayHandler?: any;
 }
 
 const headerTitle = (sort) => {
@@ -47,7 +48,9 @@ const headerTitle = (sort) => {
     return res;
 };
 
-const LibraryHeader = ({ sort }: LibraryHeaderProps) => (
+const LibraryHeader = ({ sort, onAddUpNextAndPlayHandler }: LibraryHeaderProps) => {
+
+    return(
     <HeaderContainter>
         <TextContainer>
             <Text variant="primary">보관함</Text>
@@ -55,7 +58,7 @@ const LibraryHeader = ({ sort }: LibraryHeaderProps) => (
         </TextContainer>
         {sort === 'track' && (
             <ButtonContainer>
-                <Button variant="primary" width="130" height="40" icon={PlayArrowIcon}>
+                <Button variant="primary" width="130" height="40" icon={PlayArrowIcon} onClick={onAddUpNextAndPlayHandler}>
                     전체재생
                 </Button>
                 <Button width="130" height="40" icon={ShuffleIcon}>
@@ -64,6 +67,6 @@ const LibraryHeader = ({ sort }: LibraryHeaderProps) => (
             </ButtonContainer>
         )}
     </HeaderContainter>
-);
+)};
 
 export default LibraryHeader;
