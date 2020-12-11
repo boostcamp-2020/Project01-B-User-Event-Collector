@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import A from '@components/atoms/A/A';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import QueueMusicIcon from '@material-ui/icons/QueueMusic';
 import HiddenText from '@components/atoms/Text/HiddenText';
 import CheckBox from '@components/atoms/CheckBox';
 import TrackPlayButton from '@components/molecules/TrackPlayButton';
@@ -95,7 +96,7 @@ const TrackRowCard = (data: TrackRowCardProps) => {
                 </A>
             </Mp3>
             <ShowLyricButton onClick = { onClickShowLyric }>
-                <QueueMusicIcon style={{ color: '#999' }}/>
+
             </ShowLyricButton>
             <Like>
                 {(isLiked == 1) && <FavoriteIcon style={{ color: '#FF1150' }} fontSize = "small" onClick = {onClickUnlikeHandler}/>}
