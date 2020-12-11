@@ -48,19 +48,15 @@ struct Player: View {
             
             Spacer()
             
-            Button {
-                // TO DO: action에서 분리하기
-                eventLogger.send(SubscribeLog(userId: 0,
-                                              componentId: "미리듣기"))
-            } label: {
-                HStack(spacing: 2) {
-                    Text("미리듣기 중")
-                    Image(systemName: "info.circle")
-                }
-                .foregroundColor(.pink)
-                .font(.system(size: 12))
+            HStack(spacing: 2) {
+                Text("미리듣기 중")
+                Image(systemName: "info.circle")
             }
-            
+            .foregroundColor(.pink)
+            .font(.system(size: 12))
+            .logSubscription(eventLogger: eventLogger,
+                             componentId: "")
+
             Spacer()
             
             Button {

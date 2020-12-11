@@ -13,6 +13,7 @@ struct UpNextList: View {
         UITableView.appearance().showsVerticalScrollIndicator = false
     }
     
+    @EnvironmentObject private var eventLogger: EventLogger
     @EnvironmentObject private var nowPlaying: NowPlaying
     @State private var editMode = EditMode.active
     private var selectionCount: Int {
@@ -57,7 +58,6 @@ struct UpNextList: View {
                         .frame(height: 48)
                 }
             }
-            
         }
     }
     
@@ -90,10 +90,15 @@ struct UpNextList: View {
     }
     
     private func onMove(source: IndexSet, destination: Int) {
-        var destinationIndex: Int = 0
-        nowPlaying.upNext.move(fromOffsets: source, toOffset: destination)
         guard let sourceIndex = source.first else { return }
-        destinationIndex = sourceIndex < destination ?  destination - 1 : destination
+        nowPlaying.upNext.move(fromOffsets: source, toOffset: destination)
+        let destinationIndex = sourceIndex < destination ?  destination - 1 : destination
+        if sourceIndex != destinationIndex {
+            eventLogger.send(MoveTrackLog(userId: 0,
+                                          trackId: nowPlaying.upNext[destinationIndex].id,
+                                          source: sourceIndex,
+                                          destination: destinationIndex))
+        }
     }
     
     @ViewBuilder

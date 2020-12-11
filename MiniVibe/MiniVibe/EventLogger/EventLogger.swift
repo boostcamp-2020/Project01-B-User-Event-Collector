@@ -34,7 +34,9 @@ final class EventLogger: ObservableObject {
                Search.fetchRequest(),
                Like.fetchRequest(),
                Subscribe.fetchRequest(),
-               MoveTrack.fetchRequest()]
+               MoveTrack.fetchRequest(),
+               Engagement.fetchRequest()
+            ]
         
         let deleteRequests: [NSBatchDeleteRequest]
             = fetchRequsts.map { NSBatchDeleteRequest(fetchRequest: $0) }
@@ -59,7 +61,10 @@ final class EventLogger: ObservableObject {
         let moveTrackLogs = (try? persistentContainer.viewContext
                                 .fetch(MoveTrack.fetchRequest()) as? [EventPrintable]) ?? []
         
-        return (transitions + searchLogs + likeLogs + subscribeLogs + moveTrackLogs)
+        let engagementLogs = (try? persistentContainer.viewContext
+                                .fetch(Engagement.fetchRequest()) as? [EventPrintable]) ?? []
+        
+        return (transitions + searchLogs + likeLogs + subscribeLogs + moveTrackLogs + engagementLogs)
             .sorted { $0.timestamp > $1.timestamp }
     }
 }

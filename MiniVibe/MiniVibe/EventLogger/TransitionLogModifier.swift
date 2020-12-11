@@ -27,8 +27,28 @@ struct TransitionLogModifier: ViewModifier {
     }
 }
 
+struct SubscribeLogModifier: ViewModifier {
+    let eventLogger: EventLogger
+    let componentId: String
+    
+    func body(content: Content) -> some View {
+        content
+            .onTapGesture {
+                eventLogger.send(SubscribeLog(userId: 0,
+                                              componentId: componentId))
+            }
+    }
+}
+
 extension View {
+   
     func logTransition(eventLogger: EventLogger, identifier: ViewIdentifier, componentId: ComponentId) -> some View {
         modifier(TransitionLogModifier(eventLogger: eventLogger, identifier: identifier, componentId: componentId))
     }
+    
+    func logSubscription(eventLogger: EventLogger, componentId: String) -> some View {
+        modifier(SubscribeLogModifier(eventLogger: eventLogger,
+                                      componentId: componentId))
+    }
+    
 }
