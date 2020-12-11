@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PlayerControls: View {
     @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var eventLogger: EventLogger
     @Binding var isOpenMenu: Bool
     @State private var isShuffle = false
     let title: String
@@ -53,6 +54,13 @@ struct PlayerControls: View {
                     } else {
                         nowPlaying.likeTrack(id: nowPlaying.playingTrack?.id ?? 0)
                     }
+                    
+                    // TO DO: action에서 분리해내기
+                    eventLogger.send(LikeLog(userId: 0,
+                                             componentId: "PlayerLikeButton",
+                                             data: .init(type: "Track",
+                                                         id: nowPlaying.playingTrack?.id ?? 0),
+                                             isLike: nowPlaying.playingTrack?.liked == 1))
                 } label: {
                     Image(systemName: nowPlaying.playingTrack?.liked == 1 ? "heart.fill" : "heart")
                         .foregroundColor(nowPlaying.playingTrack?.liked == 1 ? .pink : .secondary)

@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct TodayTitle: View {
+    @EnvironmentObject private var eventLogger: EventLogger
+    
     var body: some View {
         HStack {
             Button {
+                // TO DO: action에서 분리하기
+                eventLogger.send(SubscribeLog(userId: 0,
+                                              componentId: "내돈내듣"))
                 
             } label: {
                 Text("#내돈내듣 VIBE")

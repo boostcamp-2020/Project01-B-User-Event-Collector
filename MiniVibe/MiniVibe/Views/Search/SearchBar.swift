@@ -16,10 +16,11 @@ struct SearchBar: View {
     
     var body: some View {
         HStack {
-            TextField("검색어를 입력해 주세요.", text: $searchedText) {
-                // onCommit:
-                eventLogger.send(.search(text: searchedText))
-            }
+            TextField("검색어를 입력해 주세요.", text: $searchedText, onCommit: {
+                eventLogger.send(SearchLog(userId: 0,
+                                           componentId: "searchBar",
+                                           text: searchedText))
+            })
             .padding(10)
             .background(Color(.systemGray6))
             .padding(10)

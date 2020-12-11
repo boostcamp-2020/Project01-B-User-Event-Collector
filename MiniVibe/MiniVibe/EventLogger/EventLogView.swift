@@ -43,7 +43,7 @@ struct EventLogView: View {
         }
     }
     
-    private func eventList(events: [Transition]) -> some View {
+    private func eventList(events: [EventPrintable]) -> some View {
         List(events, id: \.description) { event in
             Text(event.description)
         }

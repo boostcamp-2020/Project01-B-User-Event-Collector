@@ -1,51 +1,52 @@
 //
-//  Transition+CoreDataClass.swift
-//  
+//  Save+CoreDataClass.swift
+//  MiniVibe
 //
-//  Created by TTOzzi on 2020/12/09.
+//  Created by TTOzzi on 2020/12/11.
 //
 //
 
 import Foundation
 import CoreData
 
-@objc(Transition)
-public class Transition: NSManagedObject {
-    
+@objc(Save)
+public class Save: NSManagedObject {
+
 }
 
-extension Transition {
+extension Save {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Transition> {
-        return NSFetchRequest<Transition>(entityName: "Transition")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Save> {
+        return NSFetchRequest<Save>(entityName: "Save")
     }
 
     @NSManaged public var event: String
     @NSManaged public var userId: Int
-    @NSManaged public var page: String
     @NSManaged public var componentId: String
+    @NSManaged public var data: LogData
     @NSManaged public var timestamp: Date
 
 }
 
-extension Transition: EventPrintable {
+extension Save: EventPrintable {
     public override var description: String {
-        return "\(timestamp.timestampFormat())\nEvent: \(event)\nPage: \(page)\nComponent: \(componentId)"
+        return "\(timestamp.timestampFormat())\nEvent: \(event)\nData: \(data)\nComponent: \(componentId)"
     }
 }
 
-extension Transition: Encodable {
+extension Save: Encodable {
     
     enum CodingKeys: CodingKey {
-        case event, userId, page, componentId, timestamp
+        case event, userId, componentId, data, timestamp
     }
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(event, forKey: .event)
         try container.encode(userId, forKey: .userId)
-        try container.encode(page, forKey: .page)
         try container.encode(componentId, forKey: .componentId)
+        try container.encode(data, forKey: .data)
         try container.encode(timestamp, forKey: .timestamp)
     }
 }
+

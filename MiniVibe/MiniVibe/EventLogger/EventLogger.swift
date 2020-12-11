@@ -8,31 +8,14 @@
 import CoreData
 
 final class EventLogger: ObservableObject {
-    enum Event: CustomStringConvertible {
-        case search(text: String)
-        case appear(identifier: ViewIdentifier)
-        case disAppear(identifier: ViewIdentifier)
-        case tabViewTransition(identifier: ViewIdentifier)
-        
-        var description: String {
-            switch self {
-            case .search:
-                return "search"
-            case .appear:
-                return "appear"
-            case .disAppear:
-                return "disAppear"
-            case .tabViewTransition:
-                return "tabViewTransition"
-            }
-        }
-    }
     
     @Published var tabViewSelection: ViewIdentifier = .today {
         didSet {
             guard oldValue != tabViewSelection,
                   tabViewSelection != .none else { return }
-            send(.tabViewTransition(identifier: tabViewSelection))
+            send(TabViewTransition(userId: 0,
+                                   componentId: tabViewSelection.description,
+                                   page: tabViewSelection.description))
         }
     }
     private let persistentContainer: NSPersistentContainer
@@ -41,37 +24,42 @@ final class EventLogger: ObservableObject {
         self.persistentContainer = persistentContainer
     }
     
-    func send(_ event: Event) {
-        switch event {
-        case .search:
-            break
-        case let .appear(identifier),
-             let .disAppear(identifier),
-             let .tabViewTransition(identifier):
-            saveTransition(event: event.description,
-                           identifier: identifier.description,
-                           componentId: "componentId")
-        }
+    func send(_ event: EventLogType) {
+        event.save(context: persistentContainer.viewContext)
     }
     
     func reset() {
-        let request: NSFetchRequest<NSFetchRequestResult> = Transition.fetchRequest()
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
-        _ = try? persistentContainer.viewContext.execute(deleteRequest)
+        let fetchRequsts: [NSFetchRequest<NSFetchRequestResult>]
+            = [Transition.fetchRequest(),
+               Search.fetchRequest(),
+               Like.fetchRequest(),
+               Subscribe.fetchRequest(),
+               MoveTrack.fetchRequest()]
+        
+        let deleteRequests: [NSBatchDeleteRequest]
+            = fetchRequsts.map { NSBatchDeleteRequest(fetchRequest: $0) }
+
+        deleteRequests.forEach {
+            _ = try? persistentContainer.viewContext.execute($0)
+        }
     }
     
-    func events() -> [Transition] {
-        return (try? persistentContainer.viewContext.fetch(Transition.fetchRequest()) as? [Transition]) ?? []
-    }
-    
-    private func saveTransition(event: String, identifier: String, componentId: String) {
-        let context = persistentContainer.viewContext
-        let transition = Transition(context: context)
-        transition.userId = 0
-        transition.componentId = componentId
-        transition.event = event
-        transition.page = identifier
-        transition.timestamp = Date().timestampFormat()
-        try? context.save()
+    func events() -> [EventPrintable] {
+        let transitions = (try? persistentContainer.viewContext
+                            .fetch(Transition.fetchRequest()) as? [EventPrintable]) ?? []
+        let searchLogs = (try? persistentContainer.viewContext
+                            .fetch(Search.fetchRequest()) as? [EventPrintable]) ?? []
+        
+        let likeLogs = (try? persistentContainer.viewContext
+                            .fetch(Like.fetchRequest()) as? [EventPrintable]) ?? []
+        
+        let subscribeLogs = (try? persistentContainer.viewContext
+                                .fetch(Subscribe.fetchRequest()) as? [EventPrintable]) ?? []
+        
+        let moveTrackLogs = (try? persistentContainer.viewContext
+                                .fetch(MoveTrack.fetchRequest()) as? [EventPrintable]) ?? []
+        
+        return (transitions + searchLogs + likeLogs + subscribeLogs + moveTrackLogs)
+            .sorted { $0.timestamp > $1.timestamp }
     }
 }

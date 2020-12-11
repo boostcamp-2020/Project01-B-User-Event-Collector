@@ -15,7 +15,7 @@ final class EventLogViewModel: ObservableObject {
     
     enum State {
         case idle
-        case loaded(events: [Transition])
+        case loaded(events: [EventPrintable])
         case empty
     }
     

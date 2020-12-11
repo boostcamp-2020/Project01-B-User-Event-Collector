@@ -11,6 +11,7 @@ struct Player: View {
     @Binding var isMenuOpen: Bool
     @Binding var isLyricsOpen: Bool
     @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var eventLogger: EventLogger
     
     var body: some View {
         
@@ -48,7 +49,9 @@ struct Player: View {
             Spacer()
             
             Button {
-                
+                // TO DO: action에서 분리하기
+                eventLogger.send(SubscribeLog(userId: 0,
+                                              componentId: "미리듣기"))
             } label: {
                 HStack(spacing: 2) {
                     Text("미리듣기 중")
