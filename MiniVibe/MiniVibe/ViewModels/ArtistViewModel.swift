@@ -23,7 +23,7 @@ final class ArtistViewModel: ObservableObject {
     func send(_ input: Input) {
         switch input {
         case let .appear(artistID):
-            load(artistID: artistID)
+                    load(artistID: artistID)
         case .showArtistMenu:
             isOpenMenu = true
         }

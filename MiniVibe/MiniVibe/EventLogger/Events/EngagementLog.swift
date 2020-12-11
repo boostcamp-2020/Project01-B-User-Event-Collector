@@ -18,20 +18,21 @@ extension EngagementLogType {
         engagement.event = event
         engagement.userId = userId
         engagement.timestamp = timestamp
+        try? context.save()
     }
 }
 
 struct Active: EngagementLogType {
-    var userId: Int
-    var timestamp = Date()
+    let userId: Int
+    let timestamp = Date()
 }
 
 struct Background: EngagementLogType {
-    var userId: Int
-    var timestamp = Date()
+    let userId: Int
+    let timestamp = Date()
 }
 
 struct Terminate: EngagementLogType {
-    var userId: Int
-    var timestamp = Date()
+    let userId: Int
+    let timestamp = Date()
 }

@@ -11,7 +11,6 @@ protocol LikeLogType: EventLogType {
     var componentId: String { get }
     var data: LogData { get }
     var isLike: Bool { get }
-    var timestamp: Date { get }
 }
 
 extension LikeLogType {

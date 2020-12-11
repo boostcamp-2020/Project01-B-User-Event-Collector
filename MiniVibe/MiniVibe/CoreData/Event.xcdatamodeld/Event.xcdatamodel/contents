@@ -41,12 +41,20 @@
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
+    <entity name="UpnextChange" representedClassName="UpnextChange" syncable="YES">
+        <attribute name="componentId" optional="YES" attributeType="String"/>
+        <attribute name="event" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="trackId" optional="YES" attributeType="Transformable" valueTransformerName=""/>
+        <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <elements>
-        <element name="Like" positionX="-54" positionY="45" width="128" height="119"/>
-        <element name="Search" positionX="-63" positionY="18" width="128" height="104"/>
-        <element name="MoveTrack" positionX="-54" positionY="36" width="128" height="119"/>
-        <element name="Subscribe" positionX="-63" positionY="18" width="128" height="89"/>
-        <element name="Transition" positionX="-63" positionY="-18" width="128" height="104"/>
-        <element name="Engagement" positionX="-54" positionY="63" width="128" height="74"/>
+        <element name="Engagement" positionX="-71.125732421875" positionY="9.207550048828125" width="128" height="74"/>
+        <element name="Like" positionX="-107.5771484375" positionY="136.6798706054688" width="128" height="119"/>
+        <element name="MoveTrack" positionX="-262.615966796875" positionY="14.43283081054688" width="128" height="119"/>
+        <element name="Search" positionX="-133.276123046875" positionY="-171.7523651123047" width="128" height="104"/>
+        <element name="Subscribe" positionX="161.641845703125" positionY="-102.7346343994141" width="128" height="89"/>
+        <element name="Transition" positionX="177.115234375" positionY="14.45686340332031" width="128" height="104"/>
+        <element name="UpnextChange" positionX="171.63525390625" positionY="128.6602783203125" width="128" height="104"/>
     </elements>
 </model>
