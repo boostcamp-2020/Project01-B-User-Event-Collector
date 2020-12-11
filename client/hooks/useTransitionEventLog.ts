@@ -10,7 +10,7 @@ function useClickEventLog({ userId }) {
         eventLogger('Transition', {
             userId,
             // page: router.asPath,
-            targetPage: url,
+            page: url,
         });
     };
 
