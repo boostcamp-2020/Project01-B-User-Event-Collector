@@ -33,7 +33,9 @@ struct SubscribeLogModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .onTapGesture {
-                eventLogger.send(SubscribeLog(userId: 0, componentId: componentId))
+                print("event logger should be saved")
+                eventLogger.send(SubscribeLog(userId: 0,
+                                              componentId: componentId))
             }
     }
 }

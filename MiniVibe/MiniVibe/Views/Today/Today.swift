@@ -27,7 +27,7 @@ struct Today: View {
                 ScrollView {
                     VStack {
                         VStack(spacing: 30) {
-                            TodayTitle()
+                            TodayTitle(width: width)
                                 .padding(.horizontal, width * .paddingRatio)
                             
                             PreviewSection(width: width)
