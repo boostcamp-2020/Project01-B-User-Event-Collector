@@ -26,6 +26,7 @@
         <attribute name="data" optional="YES" attributeType="Transformable"/>
         <attribute name="event" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
     <entity name="Play" representedClassName="Play" syncable="YES">
         <attribute name="componentId" optional="YES" attributeType="String"/>
         <attribute name="event" optional="YES" attributeType="String"/>
