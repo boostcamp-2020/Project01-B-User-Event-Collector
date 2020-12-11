@@ -15,6 +15,7 @@ struct AlbumSection<D: View>: View {
         self.destination = destination
     }
     
+    @EnvironmentObject private var eventLogger: EventLogger
     @State private var isOpenMenu = false
     let width: CGFloat
     let title: String
@@ -29,7 +30,12 @@ struct AlbumSection<D: View>: View {
                 HStack(spacing: width * .spacingRatio) {
                     ForEach(albums, id: \.id) { album in
                         NavigationLink(
-                            destination: AlbumView(id: album.id),
+                            destination:
+                                AlbumView(id: album.id)
+                                .logTransition(eventLogger: eventLogger,
+                                               identifier: .album(id: album.id),
+                                               componentId: .albumItem)
+                            ,
                             label: {
                                 ThumbnailItem(title: album.title,
                                               subtitle: album.artist.name,

@@ -29,14 +29,15 @@ struct PlayerView: View {
                 }
                 if isOpenLyrics {
                     Lyrics(isOpenLyrics: $isOpenLyrics)
-                        .logTransition(eventLogger: eventLogger, identifier: .lyrics(id: 100))
+                        .logTransition(eventLogger: eventLogger,
+                                       identifier: .lyrics(id: 100),
+                                       componentId: ComponentId.lyrics)
                 }
             }
             .animation(.easeInOut)
             .fullScreenCover(isPresented: $isOpenMenu) {
                 PlayerMenu(track: trackinfo)
             }
-            .logTransition(eventLogger: eventLogger, identifier: .player)
         }
     }
 }

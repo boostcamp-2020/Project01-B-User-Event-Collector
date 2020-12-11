@@ -19,7 +19,8 @@ struct MixtapeSection: View {
                 MixtapeGrid(title: title,
                             mixtapes: mixtapes)
                     .logTransition(eventLogger: eventLogger,
-                                   identifier: .mixtapes)
+                                   identifier: .mixtapes,
+                                   componentId: ComponentId.sectionTitle(category: title))
             }
             
             ScrollView(.horizontal, showsIndicators: false) {
@@ -28,7 +29,7 @@ struct MixtapeSection: View {
                         NavigationLink(
                             destination:
                                 Text("MixtapeView")
-                                .logTransition(eventLogger: eventLogger, identifier: .mixtape(id: mixtape.id))
+                                .logTransition(eventLogger: eventLogger, identifier: .mixtape(id: mixtape.id), componentId: ComponentId.mixtapeItem)
                             ,
                             label: {
                                 ThumbnailItem(title: mixtape.title,
