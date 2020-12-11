@@ -7,6 +7,7 @@ import useDropDownAction from '@hooks/useDropDownAction';
 import PlaylistModal from '@components/organisms/PlaylistModal';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import apiUrl from '@constants/apiUrl';
+import { addToPlaylist } from '@utils/apis';
 const StyledMenu = withStyles({
     paper: {
         border: '1px solid #d3d4d5',
@@ -34,13 +35,24 @@ const DropdownMenu = ({ id, control: ControlComponent, menuItems, children, stat
 
     state['setPlaylistModal'] = setPlaylistModal;
     const [handleClick, handleClose] = useDropDownAction({ anchorEl, setAnchorEl, state });
-    const onClickShowPlaylist = () => {
+    const removePlaylistModal = () => {
         setPlaylistModal({
             visibility: false,
             data: [],
         });
     };
-    const onClickHandler = (e) => {};
+    const onClickHandler = (e) => {
+        const playlistId = e.currentTarget.firstChild.innerText;
+        const url = `${apiUrl.playlist}/${componentInfo.data.type}`;
+        const reqBodyData = {
+            data: {
+                id: parseInt(playlistId),
+                data: [componentInfo.data.id],
+            },
+        };
+        addToPlaylist(url, reqBodyData);
+        removePlaylistModal();
+    };
     return (
         <>
             {ControlComponent && (
@@ -72,7 +84,7 @@ const DropdownMenu = ({ id, control: ControlComponent, menuItems, children, stat
                 visibility={playlistModal.visibility}
                 data={playlistModal.data}
                 handleClick={onClickHandler}
-                onClickFunc={onClickShowPlaylist}
+                onClickFunc={removePlaylistModal}
             />
         </>
     );
