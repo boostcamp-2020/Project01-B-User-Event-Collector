@@ -91,10 +91,12 @@ const FloatingSelectMenu = () => {
 
     const onAddUpNextAndPlayHandler = () => {
         dispatch(addToUpNextAndPlay(tracks));
+        dispatch(clearAllTracks());
     }
 
     const onAddUpNextHandler = () => {
         dispatch(addToUpNext(tracks));
+        dispatch(clearAllTracks());
     }
 
     const onClickCloseButtonHandler = () => {
