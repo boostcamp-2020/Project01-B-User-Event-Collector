@@ -52,9 +52,7 @@ struct ArtistView: View {
                             )
                             .logTransition(eventLogger: eventLogger,
                                            identifier: .artistAlbumList,
-                                           
                                            componentId: .sectionTitle(category: "앨범"))
-
                         }
                         
                         ArtistSection(width: width,
@@ -67,7 +65,6 @@ struct ArtistView: View {
                                           navigationTitle: "관련 플레이리스트")
                                 .logTransition(eventLogger: eventLogger,
                                                identifier: .playlists(id: 0),
-                                               
                                                componentId: .sectionTitle(category: "관련 플레이리스트"))
                         }
                     }

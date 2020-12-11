@@ -22,7 +22,7 @@ enum ViewIdentifier: CustomStringConvertible, Hashable {
     case mixtape(id: Int)
     case playlist(id: Int)
     case playlistMenu(id: Int)
-    case playlists(id: Int) // 각각의 플레이리스트 목록에 id가 있다고 가정(현재 API에는 구현되어있지 않음)
+    case playlists(id: Int)
     case magazine(id: Int)
     case magazineList
     case station
