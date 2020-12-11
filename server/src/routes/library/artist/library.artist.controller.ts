@@ -4,14 +4,14 @@ import User from '../../../models/User';
 import Artist from '../../../models/Artist';
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
-    const { artistId } = req.body;
+    const { id } = req.body;
     // TODO: 인증 구현 후 수정
     const userId = 1;
 
     const manager = getManager();
 
     const user = await manager.findOne(User, userId, { relations: ['libraryArtists'] });
-    const artist = await manager.findOne(Artist, artistId);
+    const artist = await manager.findOne(Artist, id);
 
     if (!user || !artist) return res.status(404).json({ success: false });
 
@@ -29,7 +29,6 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
     const userId = 1;
 
     const userRepository = getRepository(User);
-    // const libraryArtists = await userRepository.findOne(userId, { relations: ['libraryArtists'] });
     const user = await userRepository.createQueryBuilder('user')
         .leftJoinAndSelect('user.libraryArtists', 'library_artists')
         .select([
@@ -59,7 +58,8 @@ const remove = async (req: Request, res: Response, next: NextFunction) => {
 
     if (!user) return res.status(401).json({ success: false });
 
-    user.libraryArtists = user.libraryArtists.filter((libraryArtist) => libraryArtist.id !== +artistId);
+    user.libraryArtists = user.libraryArtists
+        .filter((libraryArtist) => libraryArtist.id !== +artistId);
 
     await manager.save(user);
 

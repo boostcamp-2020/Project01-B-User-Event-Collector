@@ -75,7 +75,7 @@ const ArtistHeader = ({ src, name, genre }: ArtistHeaderProps) => (
             <ButtonContainer>
                 <Heart isSelected={true} />
                 <BlankDiv></BlankDiv>
-                <StyledDropDown id="artist" control={MoreHorizIcon} menuItems={contentsDropDownMenu} />
+                <StyledDropDown id="artist" control={MoreHorizIcon} menuItems={contentsDropDownMenu} state={{}} />
             </ButtonContainer>
         </ContentsContainer>
     </HeaderContainter>

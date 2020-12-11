@@ -4,14 +4,14 @@ import User from '../../../models/User';
 import Track from '../../../models/Track';
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
-    const { trackId } = req.body;
+    const { id } = req.body;
     // TODO: 인증 구현 후 수정
     const userId = 1;
 
     const manager = getManager();
 
     const user = await manager.findOne(User, userId, { relations: ['libraryTracks'] });
-    const track = await manager.findOne(Track, trackId);
+    const track = await manager.findOne(Track, id);
 
     if (!user || !track) return res.status(404).json({ success: false });
 

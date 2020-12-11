@@ -4,12 +4,12 @@ import Playlist from '../../../models/Playlist';
 import User from '../../../models/User';
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
-    const { playlistId } = req.body;
+    const { id } = req.body;
     const userId = 1;
     try {
         const manager = getManager();
         const user = await manager.findOne(User, userId, { relations: ['libraryPlaylists'] });
-        const playlist = await manager.findOne(Playlist, playlistId);
+        const playlist = await manager.findOne(Playlist, id);
 
         if (!user || !playlist) return res.status(404).json({ success: false });
 
@@ -24,7 +24,7 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
-    const userId = 2;
+    const userId = 1;
 
     try {
         const UserRepository = getRepository(User);

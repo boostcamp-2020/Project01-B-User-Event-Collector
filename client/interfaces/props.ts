@@ -148,4 +148,5 @@ export interface DropdownMenuProps {
         handleClick?: (e: MouseEvent<HTMLElement>) => void;
     }[];
     children?: ReactNode;
+    state: object
 }

@@ -9,7 +9,7 @@ import LyricModal from '@components/organisms/LyricModal/LyricModal';
 import QueueMusicIcon from '@material-ui/icons/QueueMusic';
 
 interface PlayerTrackInfoProps {
-    track
+    track;
 }
 
 const BackgroundImg = styled.div`
@@ -35,9 +35,7 @@ const Container = styled.div`
     align-items: center;
 `;
 
-const TrackCardContainer = styled.div`
-
-`;
+const TrackCardContainer = styled.div``;
 
 const LikeButtonContainer = styled.div`
     width: 30px;
@@ -59,48 +57,51 @@ const StyledMoreHorizIcon = styled(MoreHorizIcon)`
     font-size: 3rem;
 `;
 
-const contentsDropDownMenu = [{
-    content: '좋아요'
-},{
-    content: '내 플레이리스트 추가'
-}, {
-    content: '가사 보기'
-}]
+const contentsDropDownMenu = [
+    {
+        content: '좋아요',
+    },
+    {
+        content: '내 플레이리스트 추가',
+    },
+    {
+        content: '가사 보기',
+    },
+];
 
-const PlayerTrackInfo = ({track}) => {
+const PlayerTrackInfo = ({ track }) => {
     const [displayLyrics, setDisplayLyrics] = useState(false);
 
     const onClickShowLyric = () => {
         setDisplayLyrics(!displayLyrics);
-    }
+    };
 
     const data = track;
 
     return (
         <Container>
-            <LyricModal src={data.album.imageUrl} title={data.title} artist={data.artist.name} lyrics={data.lyrics} visibility = {displayLyrics} onClickFunc = {onClickShowLyric}/>
+            <LyricModal
+                src={data.album.imageUrl}
+                title={data.title}
+                artist={data.artist.name}
+                lyrics={data.lyrics}
+                visibility={displayLyrics}
+                onClickFunc={onClickShowLyric}
+            />
             <TrackCardContainer>
-                <TrackCard
-                data = {track} 
-                imgVariant="trackInfo"
-                isDefault={false}
-                isTrack={true}
-                />
+                <TrackCard data={track} imgVariant="trackInfo" isDefault={false} isTrack={true} />
             </TrackCardContainer>
             <LikeButtonContainer>
-                <Heart isSelected = {true} sort = "musicPlayer" />
+                <Heart isSelected={true} sort="musicPlayer" />
             </LikeButtonContainer>
-            <ShowLyricButton onClick = { onClickShowLyric }>
+            <ShowLyricButton onClick={onClickShowLyric}>
                 <QueueMusicIcon style={{ color: '#999' }} />
             </ShowLyricButton>
             <DropDownContainer>
-                <DropDownMenu
-                        id = "contents" 
-                        control = {StyledMoreHorizIcon} 
-                        menuItems = {contentsDropDownMenu}/>
+                <DropDownMenu id="contents" control={StyledMoreHorizIcon} menuItems={contentsDropDownMenu} state={{}} />
             </DropDownContainer>
         </Container>
-    )
-}
+    );
+};
 
 export default PlayerTrackInfo;

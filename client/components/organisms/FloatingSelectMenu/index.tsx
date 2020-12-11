@@ -118,9 +118,9 @@ const FloatingSelectMenu = () => {
                 </CloseButtonContainer>
             </SelectAreaContainer>
             <ButttonAreaContainer>
-                <Button variant="secondary" height="40" icon={PlaylistPlayIcon} onClick = {onAddUpNextHandler}>현재재생목록에 추가</Button>
-                <Button variant="secondary" height="40" icon={QueueMusicIcon}>추가</Button>
-                <Button variant="secondary" height="40" icon={MusicNoteIcon}>MP3 구매</Button>
+                <Button variant="secondary" width="130" height="40" icon={PlaylistPlayIcon} onClick = {onAddUpNextHandler}>현재재생목록에 추가</Button>
+                <Button variant="secondary" width="130" height="40" icon={QueueMusicIcon}>추가</Button>
+                <Button variant="secondary" width="130" height="40" icon={MusicNoteIcon}>MP3 구매</Button>
                 <PlayButtonContainer>
                     <Button 
                     variant="primary" 

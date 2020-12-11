@@ -4,14 +4,14 @@ import User from '../../../models/User';
 import Album from '../../../models/Album';
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
-    const { albumId } = req.body;
+    const { id } = req.body;
     // TODO: 인증 구현 후 수정
     const userId = 1;
 
     const manager = getManager();
 
     const user = await manager.findOne(User, userId, { relations: ['libraryAlbums'] });
-    const album = await manager.findOne(Album, albumId);
+    const album = await manager.findOne(Album, id);
 
     if (!user || !album) return res.status(404).json({ success: false });
 

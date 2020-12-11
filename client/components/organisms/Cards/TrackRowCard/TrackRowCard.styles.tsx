@@ -8,6 +8,9 @@ export const List = styled.li`
     margin: 0;
     display: flex;
     justify-content: space-between;
+    &.checked {
+        background-color: #ededed66;
+    }
     &:hover ${Play} {
         visibility: visible;
         opacity: 60%;
@@ -57,8 +60,8 @@ const BackgroundImg = styled.div`
     &::after {
         content: '';
         background-image: linear-gradient(transparent, transparent),
-            url(https://vibe.naver.com/img/sp_vibe.cc4cc861.svg);
-        background-size: 808px 764px;
+            url(https://vibe.naver.com/img/sp_vibe.7af837ac.svg);
+        background-size: 1118px 1081px;
         display: inline-block;
         width: 20px;
         height: 20px;
@@ -66,13 +69,13 @@ const BackgroundImg = styled.div`
 `;
 export const Mp3 = styled(BackgroundImg)`
     &::after {
-        background-position: -710px -562px;
+        background-position: -307px -860px;
         width: 30px;
     }
 `;
 export const ShowLyricButton = styled(BackgroundImg)`
     &::after {
-        background-position: -284px -716px;
+        background-position: -969px -986px;
     }
 `;
 
