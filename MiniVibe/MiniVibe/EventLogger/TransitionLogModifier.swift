@@ -27,7 +27,9 @@ struct TransitionLogModifier: ViewModifier {
 }
 
 extension View {
+    
     func logTransition(eventLogger: EventLogger, identifier: ViewIdentifier) -> some View {
         modifier(TransitionLogModifier(eventLogger: eventLogger, identifier: identifier))
     }
+    
 }
