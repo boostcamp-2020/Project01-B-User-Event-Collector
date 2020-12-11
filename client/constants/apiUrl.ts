@@ -12,7 +12,9 @@ const apiUrl = {
     libraryTrack: `${baseUrl}/library/tracks`,
     libraryArtist: `${baseUrl}/library/artists`,
     libraryPlaylist: `${baseUrl}/library/playlists`,
-    libraryMixtape: `${baseUrl}/library/mixtapes`
+    libraryMixtape: `${baseUrl}/library/mixtapes`,
+    like: `${baseUrl}/library/`,
+    addTracksToPlaylist:`${baseUrl}/playlists/tracks`
 };
 
 export default apiUrl;

@@ -26,7 +26,7 @@ const Container = styled.div<ContainerProps>`
     z-index: 2000;
     border-bottom: 1px solid #e4e4e4;
     background-color: #f2f2f2;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.07);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.07);
     height: 150px;
     display: flex;
     flex-flow: column;
@@ -61,7 +61,7 @@ const CheckBoxSpan = styled.span`
 const SelectedTrackCounter = styled.div`
     display: flex;
     align-items: center;
-    color: #FF1150;
+    color: #ff1150;
     font-weight: 600;
     height: 75px;
     width: 800px;
@@ -83,34 +83,37 @@ const ButttonAreaContainer = styled.div`
 const PlayButtonContainer = styled.div`
     margin-left: 450px;
 `;
-
+const onChangeCheckAll = (e) => {};
 const FloatingSelectMenu = () => {
-    const dispatch = useDispatch();
-    const { tracks } = useSelector(state =>  state.selectedTrack);
-    const selectedTrackCount = tracks.length;
+const dispatch = useDispatch();
+const { tracks } = useSelector(state =>  state.selectedTrack);
+const selectedTrackCount = tracks.length;
 
-    const onAddUpNextAndPlayHandler = () => {
-        dispatch(addToUpNextAndPlay(tracks));
-    }
+const onAddUpNextAndPlayHandler = () => {
+    dispatch(addToUpNextAndPlay(tracks));
+}
 
-    const onAddUpNextHandler = () => {
-        dispatch(addToUpNext(tracks));
-    }
+const onAddUpNextHandler = () => {
+    dispatch(addToUpNext(tracks));
+}
 
-    const onClickCloseButtonHandler = () => {
-        dispatch(clearAllTracks());
-    }
+const onClickCloseButtonHandler = () => {
+    dispatch(clearAllTracks());
+}
+
 
     return (
         <Container visibility={selectedTrackCount !== 0}>
             <SelectAreaContainer>
-                <CheckBoxContainer><CheckBox id= "floatingMenu"/></CheckBoxContainer>
-                <CheckBoxSpan>
-                    전체선택
-                </CheckBoxSpan>
-                <SelectedTrackCounter>
-                    {selectedTrackCount}곡 선택
-                </SelectedTrackCounter>
+                <CheckBoxContainer>
+                    <CheckBox
+                        id="checkAll"
+                        onChange={onChangeCheckAll}
+                        checked={!checkState.isAllChecked || checkState.checkedCnt === 0 ? false : true}
+                    />
+                </CheckBoxContainer>
+                <CheckBoxSpan>전체선택</CheckBoxSpan>
+                <SelectedTrackCounter>{checkState.checkedCnt}곡 선택</SelectedTrackCounter>
                 <CloseButtonContainer>
                     <IconButton variant="plainBlackRegular" icon={CloseIcon} onClick={onClickCloseButtonHandler}/>
                 </CloseButtonContainer>
@@ -129,7 +132,7 @@ const FloatingSelectMenu = () => {
                 </PlayButtonContainer>
             </ButttonAreaContainer>
         </Container>
-    )
-}
+    );
+};
 
 export default FloatingSelectMenu;

@@ -65,24 +65,25 @@ const PlaylistContainer = styled.div`
 `;
 
 interface PlaylistModalProps {
-    data,
+    data;
     visibility: boolean;
     onClickFunc?: any;
+    handleClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
-const PlaylistModal = ({ data, visibility, onClickFunc }: PlaylistModalProps) => {
+const PlaylistModal = ({ data, visibility, onClickFunc, handleClick }: PlaylistModalProps) => {
     return (
         <ModalContainer visible={visibility}>
             <Modal>
                 <ButtonContainer>
                     <IconButton icon={CloseIcon} variant="plainBlackRegular" onClick={onClickFunc} />
                 </ButtonContainer>
-                <HeaderContainer>
-                    내 플레이리스트에 추가
-                </HeaderContainer>
+                <HeaderContainer>내 플레이리스트에 추가</HeaderContainer>
                 <PlaylistContainer>
                     <NewPlaylistButton />
-                    {data.map(d => <PlaylistRowCard data = {d} />)}
+                    {data.map((d) => (
+                        <PlaylistRowCard data={d} onClickFunc={handleClick} />
+                    ))}
                 </PlaylistContainer>
             </Modal>
         </ModalContainer>

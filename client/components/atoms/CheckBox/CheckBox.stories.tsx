@@ -7,4 +7,5 @@ export default {
 };
 
 const STORY_ID = '1';
-export const Default = () => <CheckBox id={STORY_ID} />;
+const onChange = (e) => {};
+export const Default = () => <CheckBox id={STORY_ID} checked={false} onChange={onChange} />;

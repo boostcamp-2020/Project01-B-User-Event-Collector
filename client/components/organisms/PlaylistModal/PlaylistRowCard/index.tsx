@@ -3,7 +3,7 @@ import Text from '@components/atoms/Text';
 import Image from '@components/atoms/Image/Image';
 
 interface PlaylistRowCardProps {
-    data,
+    data;
     onClickFunc?: any;
 }
 
@@ -46,19 +46,25 @@ const TrackCountContainer = styled.div`
     align-items: center;
     width: 250px;
 `;
-
+const Id = styled.span`
+    width: 0;
+    display: block;
+    height: 0;
+    text-indent: -999999px;
+`;
 const PlaylistRowCard = ({ data, onClickFunc }: PlaylistRowCardProps) => {
     return (
-        <Container>
+        <Container onClick={onClickFunc}>
+            <Id>{data.id}</Id>
             <ImageContainer>
-                <Image src = {data.imageUrl} variant="trackInfo" />
+                <Image src={data.imageUrl} variant="trackInfo" />
             </ImageContainer>
             <TextContainer>
                 <TitleContainer>
                     <Text>{data.title}</Text>
                 </TitleContainer>
                 <TrackCountContainer>
-                    <Text variant="primary">{data.trackCount}곡</Text>
+                    <Text variant="primary">{data.subTitle}</Text>
                 </TrackCountContainer>
             </TextContainer>
         </Container>
