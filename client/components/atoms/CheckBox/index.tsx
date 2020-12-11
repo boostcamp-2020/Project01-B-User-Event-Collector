@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import styled from 'styled-components';
+
+import { selectTrack, unselectTrack } from 'reducers/selectedTrack';
+import { TrackRowCardProps } from 'interfaces/props';
 
 interface CheckBoxProps {
     id: string;
+    data: TrackRowCardProps;
 }
 
 const StyledCheckBox = styled.div`
@@ -31,11 +37,20 @@ const Input = styled.input`
     }
 `;
 
-const CheckBox = ({ id }: CheckBoxProps) => (
-    <StyledCheckBox>
-        <Input type="checkbox" id={id} />
-        <label htmlFor={id} />
-    </StyledCheckBox>
-);
+const CheckBox = ({ id, data }: CheckBoxProps) => {
+    const dispatch = useDispatch();
+    const [checked, setChecked] = useState(false);
+
+    const onChangeHandler = () => {
+        setChecked((checked) => (!checked));
+        !checked? dispatch(selectTrack(data)):dispatch(unselectTrack(data.id));
+    }
+
+    return(
+        <StyledCheckBox>
+            <Input type="checkbox" id={id} checked = {checked} onChange = {onChangeHandler}/>
+            <label htmlFor={id} />
+        </StyledCheckBox>
+        )};
 
 export default CheckBox;

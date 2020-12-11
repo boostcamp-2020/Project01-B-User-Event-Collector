@@ -56,7 +56,7 @@ const TrackRowCard = ( data : TrackRowCardProps ) => {
     <List>
         <LyricModal src={imageUrl} title={albumTitle} artist={artistName} lyrics={lyrics} visibility = {displayLyrics} onClickFunc = {onClickShowLyric}/>
         <TrackLeft>
-            <CheckBox id={id} />
+            <CheckBox id={id} data={data}/>
             <TrackPlayBtnContainer>
                 <TrackPlayButton data={data} imgVariant="trackRowCard" />
             </TrackPlayBtnContainer>
