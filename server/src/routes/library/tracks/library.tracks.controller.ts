@@ -34,11 +34,14 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
         .leftJoinAndSelect('user.libraryTracks', 'library_tracks')
         .leftJoinAndSelect('library_tracks.album', 'album')
         .leftJoinAndSelect('library_tracks.artist', 'artist')
+        .loadRelationCountAndMap('library_tracks.liked', 'library_tracks.likeUsers', 'user',
+                (qb) => qb.andWhere('user.id = :userId', { userId }))
         .select([
             'user.id',
             'library_tracks.id',
             'library_tracks.title',
             'library_tracks.lyrics',
+            'library_tracks.playtime',
             'artist.id',
             'artist.name',
             'album.id',

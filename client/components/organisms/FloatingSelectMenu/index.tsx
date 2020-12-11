@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { clearAllTracks } from 'reducers/selectedTrack';
+import { addToUpNext, addToUpNextAndPlay } from 'reducers/musicPlayer';
 
 import CheckBox from '@components/atoms/CheckBox';
 import CloseIcon from '@material-ui/icons/Close';
@@ -10,7 +14,11 @@ import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import QueueMusicIcon from '@material-ui/icons/QueueMusic';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 
-const Container = styled.div`
+interface ContainerProps {
+    visibility: boolean
+}
+
+const Container = styled.div<ContainerProps>`
     position: fixed;
     top: 0;
     right: 0;
@@ -23,7 +31,7 @@ const Container = styled.div`
     display: flex;
     flex-flow: column;
     align-items: center;
-    visibility: hidden;
+    visibility: ${(props) => props.visibility ? "visible" : "hidden"}
 `;
 
 const SelectAreaContainer = styled.div`
@@ -77,13 +85,25 @@ const PlayButtonContainer = styled.div`
 `;
 const onChangeCheckAll = (e) => {};
 const FloatingSelectMenu = () => {
-    const [checkState, setCheckState] = useState({
-        checkedCnt: 0,
-        isAllChecked: false,
-    });
+const dispatch = useDispatch();
+const { tracks } = useSelector(state =>  state.selectedTrack);
+const selectedTrackCount = tracks.length;
+
+const onAddUpNextAndPlayHandler = () => {
+    dispatch(addToUpNextAndPlay(tracks));
+}
+
+const onAddUpNextHandler = () => {
+    dispatch(addToUpNext(tracks));
+}
+
+const onClickCloseButtonHandler = () => {
+    dispatch(clearAllTracks());
+}
+
 
     return (
-        <Container>
+        <Container visibility={selectedTrackCount !== 0}>
             <SelectAreaContainer>
                 <CheckBoxContainer>
                     <CheckBox
@@ -95,23 +115,20 @@ const FloatingSelectMenu = () => {
                 <CheckBoxSpan>전체선택</CheckBoxSpan>
                 <SelectedTrackCounter>{checkState.checkedCnt}곡 선택</SelectedTrackCounter>
                 <CloseButtonContainer>
-                    <IconButton variant="plainBlackRegular" icon={CloseIcon} />
+                    <IconButton variant="plainBlackRegular" icon={CloseIcon} onClick={onClickCloseButtonHandler}/>
                 </CloseButtonContainer>
             </SelectAreaContainer>
             <ButttonAreaContainer>
-                <Button variant="secondary" height="40" icon={PlaylistPlayIcon}>
-                    현재재생목록에 추가
-                </Button>
-                <Button variant="secondary" height="40" icon={QueueMusicIcon}>
-                    추가
-                </Button>
-                <Button variant="secondary" height="40" icon={MusicNoteIcon}>
-                    MP3 구매
-                </Button>
+                <Button variant="secondary" height="40" icon={PlaylistPlayIcon} onClick = {onAddUpNextHandler}>현재재생목록에 추가</Button>
+                <Button variant="secondary" height="40" icon={QueueMusicIcon}>추가</Button>
+                <Button variant="secondary" height="40" icon={MusicNoteIcon}>MP3 구매</Button>
                 <PlayButtonContainer>
-                    <Button variant="primary" width="120" height="40" icon={PlayArrowIcon}>
-                        재생
-                    </Button>
+                    <Button 
+                    variant="primary" 
+                    width="120" 
+                    height="40" 
+                    icon={PlayArrowIcon}
+                    onClick={onAddUpNextAndPlayHandler}>재생</Button>
                 </PlayButtonContainer>
             </ButttonAreaContainer>
         </Container>

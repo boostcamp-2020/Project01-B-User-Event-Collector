@@ -64,50 +64,42 @@ const TrackRowCard = (data: TrackRowCardProps) => {
         list.classList.toggle('checked');
     };
     return (
-        <List>
-            <LyricModal
-                src={imageUrl}
-                title={albumTitle}
-                artist={artistName}
-                lyrics={lyrics}
-                visibility={displayLyrics}
-                onClickFunc={onClickShowLyric}
-            />
-            <TrackLeft>
-                <CheckBox id={id} onChange={onChangeCheckRow} />
-                <TrackPlayBtnContainer>
-                    <TrackPlayButton data={data} imgVariant="trackRowCard" />
-                </TrackPlayBtnContainer>
-                <TrackTitle>
-                    <A href={'/track/' + id}>{title}</A>
-                </TrackTitle>
-            </TrackLeft>
-            <TrackMiddle>
-                <TrackMiddleElem>
-                    <A href={'/artist/' + artistId} variant="tertiary">
-                        {artistName}
-                    </A>
-                </TrackMiddleElem>
-                <TrackMiddleElem>
-                    <A href={'/album/' + albumId} variant="tertiary">
-                        {albumTitle}
-                    </A>
-                </TrackMiddleElem>
-            </TrackMiddle>
-            <TrackRight>
-                <Mp3>
-                    <A href="#">
-                        <HiddenText>mp3구매</HiddenText>
-                    </A>
-                </Mp3>
-                <ShowLyricButton onClick={onClickShowLyric}>
-                    {/* <QueueMusicIcon style={{ color: '#999' }}/> */}
-                </ShowLyricButton>
-                <Like>
-                    {isLiked == 1 && (
-                        <FavoriteIcon style={{ color: '#FF1150' }} fontSize="small" onClick={onClickUnlikeHandler} />
-                    )}
-                    {isLiked == 0 && (
+
+    <List>
+        <LyricModal src={imageUrl} title={albumTitle} artist={artistName} lyrics={lyrics} visibility = {displayLyrics} onClickFunc = {onClickShowLyric}/>
+        <TrackLeft>
+            <CheckBox id={id} data={data}/>
+            <TrackPlayBtnContainer>
+                <TrackPlayButton data={data} imgVariant="trackRowCard" />
+            </TrackPlayBtnContainer>
+            <TrackTitle>
+                <A href={"/track/"+id}>{title}</A>
+            </TrackTitle>
+        </TrackLeft>
+        <TrackMiddle>
+            <TrackMiddleElem>
+                <A href={"/artist/"+artistId} variant="tertiary">
+                    {artistName}
+                </A>
+            </TrackMiddleElem>
+            <TrackMiddleElem>
+                <A href={"/album/"+albumId} variant="tertiary">
+                    {albumTitle}
+                </A>
+            </TrackMiddleElem>
+        </TrackMiddle>
+        <TrackRight>
+            <Mp3>
+                <A href="#">
+                    <HiddenText>mp3구매</HiddenText>
+                </A>
+            </Mp3>
+            <ShowLyricButton onClick = { onClickShowLyric }>
+                <QueueMusicIcon style={{ color: '#999' }}/>
+            </ShowLyricButton>
+            <Like>
+                {(isLiked == 1) && <FavoriteIcon style={{ color: '#FF1150' }} fontSize = "small" onClick = {onClickUnlikeHandler}/>}
+                {isLiked == 0 && (
                         <DropDownMenu
                             id="contents"
                             control={StyledMoreHorizIcon}
@@ -115,13 +107,12 @@ const TrackRowCard = (data: TrackRowCardProps) => {
                             state={{ setIsLiked, setDisplayLyrics }}
                         />
                     )}
-                    <A href="#">
-                        <HiddenText>좋아요및옵션</HiddenText>
-                    </A>
-                </Like>
-            </TrackRight>
-        </List>
-    );
-};
+                <A href="#">
+                    <HiddenText>좋아요및옵션</HiddenText>
+                </A>
+            </Like>
+        </TrackRight>
+    </List>
+)};
 
 export default TrackRowCard;

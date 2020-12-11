@@ -6,6 +6,7 @@ import VolumnController from '@components/molecules/VolumnController';
 import PlaylistDisplayButton from '@components/molecules/PlaylistDisplayButton';
 import ProgressBar from '@components/molecules/ProgressBar';
 import PlayerTrackInfo from '@components/organisms/MusicPlayer/PlayerTrackInfo';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Container = styled.div`
     position: fixed;
@@ -72,6 +73,8 @@ interface PlayControllerProps {
 
 const PlayController = ({track, displayHeader, displayHeaderHandler}: PlayControllerProps) => {
     const data = track;
+    const dispatch = useDispatch();
+    const { nowPlaying, playTime, upNextTracks } = useSelector(state => state.musicPlayer);
     return (
         <Container>
             <ProgresBarContainer>
@@ -85,7 +88,7 @@ const PlayController = ({track, displayHeader, displayHeaderHandler}: PlayContro
                     <PlayControllerButtons />
                 </PlayButtonsContainer>
                 <PlaytimeContainer>
-                    <Playtime current={100} total={ data.playtime } />
+                    <Playtime current={playTime} total={ data.playtime } />
                 </PlaytimeContainer>
                 <VolumnControllerContainer>
                     <VolumnController />
