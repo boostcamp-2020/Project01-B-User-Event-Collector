@@ -41,6 +41,7 @@ struct SubscribeLogModifier: ViewModifier {
 }
 
 extension View {
+   
     func logTransition(eventLogger: EventLogger, identifier: ViewIdentifier, componentId: ComponentId) -> some View {
         modifier(TransitionLogModifier(eventLogger: eventLogger, identifier: identifier, componentId: componentId))
     }
