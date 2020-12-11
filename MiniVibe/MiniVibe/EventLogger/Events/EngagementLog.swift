@@ -22,6 +22,11 @@ extension EngagementLogType {
     }
 }
 
+struct Active: EngagementLogType {
+    let userId: Int
+    let timestamp = Date()
+}
+
 struct Foreground: EngagementLogType {
     let userId: Int
     let timestamp = Date()

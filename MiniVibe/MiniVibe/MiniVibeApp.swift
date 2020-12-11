@@ -26,6 +26,9 @@ struct MiniVibeApp: App {
             MainTab()
                 .environmentObject(NowPlaying())
                 .environmentObject(eventLogger)
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+                    eventLogger.send(Active(userId: 0))
+                }
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
                     eventLogger.send(Background(userId: 0))
                 }
