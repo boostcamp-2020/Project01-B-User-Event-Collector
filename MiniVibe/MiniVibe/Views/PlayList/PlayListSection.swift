@@ -33,7 +33,8 @@ struct PlayListSection<D: View>: View {
                             destination:
                                 PlayListView(id: playlist.id)
                                 .logTransition(eventLogger: eventLogger,
-                                               identifier: .playlist(id: playlist.id))
+                                               identifier: .playlist(id: playlist.id),
+                                               componentId: .playlistItem(section: title))
                             ,
                             label: {
                                 ThumbnailItem(title: playlist.title,

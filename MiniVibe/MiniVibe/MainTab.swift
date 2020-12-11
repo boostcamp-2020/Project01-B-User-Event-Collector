@@ -68,6 +68,9 @@ struct MainTab: View {
                 }
                 .sheet(isPresented: $nowPlaying.isPlayerPresented) {
                     PlayerView()
+                        .logTransition(eventLogger: eventLogger,
+                                       identifier: .player,
+                                       componentId: ComponentId.playerPreview)
                 }
         }
     }
