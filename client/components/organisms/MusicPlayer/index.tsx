@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import PlayerTrackList from '@components/organisms/CardLists/PlayerTrackList';
 import PlayController from '@components/organisms/MusicPlayer/PlayController';
 
-import { contentType } from '@constants/identifier';
-import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
+import { contentType } from 'constants/identifier';
+import ComponentInfoWrapper from 'utils/context/ComponentInfoWrapper';
 
 interface MusicPlayerProps {
     tracks;
@@ -84,8 +85,9 @@ const ControllerContainer = styled.div`
     z-index: 500;
 `;
 
-const MusicPlayer = ({ tracks }: MusicPlayerProps) => {
-    const [nowPlaying, setNowPlaying] = useState(tracks[0]);
+const MusicPlayer = () => {
+    const dispatch = useDispatch();
+    const { nowPlaying, playTime, upNextTracks } = useSelector(state => state.musicPlayer);
     const [displayHeader, setDisplayHeader] = useState(false);
 
     const displayHeaderHandler = () => {
@@ -102,7 +104,7 @@ const MusicPlayer = ({ tracks }: MusicPlayerProps) => {
                     <TrackListContainer>
                         <TrackHeaderContainer>이어지는 노래</TrackHeaderContainer>
                         <TrackContainer>
-                            <PlayerTrackList items={tracks} />
+                            <PlayerTrackList items={upNextTracks} />
                         </TrackContainer>
                     </TrackListContainer>
                 </HeaderContainer>

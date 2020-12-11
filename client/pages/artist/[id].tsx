@@ -55,7 +55,6 @@ const Artist = ({ artistData, trackData }) => {
                     <ComponentInfoWrapper componentId={contentType.track}>
                         {trackData && trackData.length > 0 ? (
                             <>
-                                <ContentsButtonGroup />
                                 <TrackListContainer>
                                     <TrackRowList items={trackData} />
                                 </TrackListContainer>
