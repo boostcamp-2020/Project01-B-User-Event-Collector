@@ -10,7 +10,7 @@ import AddButton from '@components/atoms/Button/AddButton';
 import Heart from '@components/atoms/Heart/Heart';
 
 const ButtonContainer = styled.div`
-    width: ${props => props.sort === "track" ? '300px' : '480px'};
+    width: ${(props) => (props.sort === 'track' ? '300px' : '480px')};
     height: 40px;
     display: flex;
     align-items: center;
@@ -32,39 +32,49 @@ const StyledMoreHorizIcon = styled(MoreHorizIcon)`
     margin-top: 0px;
 `;
 
-const contentsDropDownMenu = [{
-    content: '내 플레이리스트 추가'
-}, {
-    content: '보관함에 추가'
-}, {
-    content: '현재재생목록에 추가'
-}, {
-    content: 'MP3 구매'
-}];
+const contentsDropDownMenu = [
+    {
+        content: '내 플레이리스트 추가',
+    },
+    {
+        content: '보관함에 추가',
+    },
+    {
+        content: '현재재생목록에 추가',
+    },
+    {
+        content: 'MP3 구매',
+    },
+];
 
 interface HeaderButtonGroupProps {
-    sort?: 'track'
+    sort?: 'track';
 }
 
-const HeaderButtonGroup = ({sort}: HeaderButtonGroupProps) => {
+const HeaderButtonGroup = ({ sort }: HeaderButtonGroupProps) => {
     return (
         <ButtonContainer sort={sort}>
-            { sort === 'track' && 
-            <Button variant = "primary" width='100' height='40' icon={PlayArrowIcon} >재생</Button> }
-            { sort !== 'track' && 
-            <Button variant = "primary" width='130' height='40' icon={PlayArrowIcon} >전체재생</Button>}
-            { sort !== 'track' && 
-            <Button width='130' height='40' icon={ShuffleIcon}>랜덤재생</Button>
-            }
-            <Button height='40'>MP3 구매</Button>
-            { sort !== 'track' && <AddButton />}
-            { sort === 'track' && <Heart isSelected = {false}/>}
-            <StyledDropDown 
-            id = "contents" 
-            control = {StyledMoreHorizIcon} 
-            menuItems = {contentsDropDownMenu}/>
+            {sort === 'track' && (
+                <Button variant="primary" width="100" height="40" icon={PlayArrowIcon}>
+                    재생
+                </Button>
+            )}
+            {sort !== 'track' && (
+                <Button variant="primary" width="130" height="40" icon={PlayArrowIcon}>
+                    전체재생
+                </Button>
+            )}
+            {sort !== 'track' && (
+                <Button width="130" height="40" icon={ShuffleIcon}>
+                    랜덤재생
+                </Button>
+            )}
+            <Button height="40">MP3 구매</Button>
+            {sort !== 'track' && <AddButton />}
+            {sort === 'track' && <Heart isSelected={false} />}
+            <StyledDropDown id="contents" control={StyledMoreHorizIcon} menuItems={contentsDropDownMenu} state={{}} />
         </ButtonContainer>
-    )
-}
+    );
+};
 
 export default HeaderButtonGroup;

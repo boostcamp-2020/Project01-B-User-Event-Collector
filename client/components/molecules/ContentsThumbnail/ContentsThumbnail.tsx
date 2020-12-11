@@ -26,7 +26,7 @@ const ThumbnailContainer = styled.div`
     padding: 0;
     margin: 0;
     text-align: center;
-    &:hover ${ButtonContainer}{
+    &:hover ${ButtonContainer} {
         visibility: visible;
         transition: 0.2s ease-in;
         opacity: 100%;
@@ -52,29 +52,40 @@ const StyledMoreHorizIcon = styled(MoreHorizIcon)`
     font-size: 3rem;
 `;
 
-const contentsDropDownMenu = [{
-    content: '내 플레이리스트 추가'
-}, {
-    content: '보관함에 추가'
-}, {
-    content: '현재재생목록에 추가'
-}, {
-    content: 'MP3 구매'
-}]
+const contentsDropDownMenu = [
+    {
+        content: '내 플레이리스트 추가',
+    },
+    {
+        content: '보관함에 추가',
+    },
+    {
+        content: '현재재생목록에 추가',
+    },
+    {
+        content: 'MP3 구매',
+    },
+];
 
-const ContentsThumbnail = ( { src, href, sort }: ContentsThumbnailProps ) => (
+const ContentsThumbnail = ({ src, href, sort }: ContentsThumbnailProps) => (
     <ThumbnailContainer>
-        <StyledImage src = {src} variant = { sort === 'news' ? 'news' : 
-                                sort === 'todayMagazine' || sort === 'recommendPlaylist' ? 'primary' : 
-                                sort === 'normalMagazine' ? 'normalMagazine' : ''}/>
+        <StyledImage
+            src={src}
+            variant={
+                sort === 'news'
+                    ? 'news'
+                    : sort === 'todayMagazine' || sort === 'recommendPlaylist'
+                    ? 'primary'
+                    : sort === 'normalMagazine'
+                    ? 'normalMagazine'
+                    : ''
+            }
+        />
         <ButtonContainer>
             <PlayButton />
-            <StyledDropDown 
-            id = "contents" 
-            control = {StyledMoreHorizIcon} 
-            menuItems = {contentsDropDownMenu}/>
+            <StyledDropDown id="contents" control={StyledMoreHorizIcon} menuItems={contentsDropDownMenu} state={{}} />
         </ButtonContainer>
     </ThumbnailContainer>
-)
+);
 
 export default ContentsThumbnail;
