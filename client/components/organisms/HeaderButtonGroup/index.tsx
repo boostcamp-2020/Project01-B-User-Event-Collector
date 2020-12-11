@@ -43,16 +43,17 @@ const contentsDropDownMenu = [{
 }];
 
 interface HeaderButtonGroupProps {
-    sort?: 'track'
+    sort?: 'track';
+    onAddUpNextHandler: any;
 }
 
-const HeaderButtonGroup = ({sort}: HeaderButtonGroupProps) => {
+const HeaderButtonGroup = ({sort, onAddUpNextHandler}: HeaderButtonGroupProps) => {
     return (
         <ButtonContainer sort={sort}>
             { sort === 'track' && 
-            <Button variant = "primary" width='100' height='40' icon={PlayArrowIcon} >재생</Button> }
+            <Button variant = "primary" width='100' height='40' icon={PlayArrowIcon} onClick={onAddUpNextHandler}>재생</Button> }
             { sort !== 'track' && 
-            <Button variant = "primary" width='130' height='40' icon={PlayArrowIcon} >전체재생</Button>}
+            <Button variant = "primary" width='130' height='40' icon={PlayArrowIcon} onClick={onAddUpNextHandler}>전체재생</Button>}
             { sort !== 'track' && 
             <Button width='130' height='40' icon={ShuffleIcon}>랜덤재생</Button>
             }

@@ -22,6 +22,12 @@ export const unselectTrack = (id: number) => {
     }
 }
 
+export const clearAllTracks = () => {
+    return {
+        type: 'CLEAR_All_TRACKS'
+    }
+}
+
 const reducer = (state: SelectedTrack = initialState, action) => {
     switch (action.type) {
         case 'SELECT_TRACK':
@@ -32,6 +38,10 @@ const reducer = (state: SelectedTrack = initialState, action) => {
             const updatedTracks = state.tracks.filter(e => e.id !== action.id);
             return {
                 tracks: updatedTracks
+            }
+        case 'CLEAR_All_TRACKS':
+            return {
+                tracks: []
             }
         default: 
             return state;

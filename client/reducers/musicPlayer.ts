@@ -175,6 +175,20 @@ export const playPrevTrack = () => {
     }
 }
 
+export const addToUpNext = (data) => {
+    return {
+        type: 'ADD_TO_UPNEXT',
+        data
+    }
+}
+
+export const addToUpNextAndPlay = (data) => {
+    return {
+        type: 'ADD_TO_UPNEXT_AND_PLAY',
+        data
+    }
+}
+
 const getNextTrack = (state) => {
     const nowPlayingIdx = state.upNextTracks.findIndex(t => t.id === state.nowPlaying.id);
     const nextTrackIdx = nowPlayingIdx === state.upNextTracks.length - 1 ? nowPlayingIdx : nowPlayingIdx + 1;
@@ -202,6 +216,17 @@ const reducer = (state: MusicPlayer = initialState, action) => {
                 ...state,
                 playTime: 0,
                 nowPlaying: prevTrack
+            }
+        case 'ADD_TO_UPNEXT':
+            return {
+                ...state,
+                upNextTracks: [...state.upNextTracks, ...action.data],
+            }
+        case 'ADD_TO_UPNEXT_AND_PLAY':
+            return {
+                upNextTracks: [...state.upNextTracks, ...action.data],
+                playTime: 0,
+                nowPlaying: action.data[0]
             }
         default: 
             return state;
