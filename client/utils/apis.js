@@ -37,7 +37,7 @@ export const deleteFromLibrary = async (url, option) => {
         console.error(err);
     }
 };
-export const addTracksToPlaylist = async (url, option) => {
+export const addToPlaylist = async (url, option) => {
     const options = { ...getRequestOptions('POST', option) };
     try {
         await axios({ ...options, url });

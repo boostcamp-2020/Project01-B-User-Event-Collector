@@ -119,10 +119,10 @@ const trackListById = async (id: number) => {
 };
 
 const addTracks = async (req: Request, res: Response, next: NextFunction) => {
-    const { playlistId, tracks } = req.body;
+    const { id, data } = req.body;
 
     try {
-        const result = await insertTracks(playlistId, tracks);
+        const result = await insertTracks(id, data);
         if (result) res.json({ success: true });
         return res.status(500).json({ success: false });
     } catch (err) {
@@ -132,12 +132,13 @@ const addTracks = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const addAlbum = async (req: Request, res: Response, next: NextFunction) => {
-    const { playlistId, albumId } = req.body;
+    console.log(req.body);
+    const { id, data } = req.body;
     try {
-        const tracks = await TrackController.listByAlbumId(albumId);
+        const tracks = await TrackController.listByAlbumId(data[0]);
         if (!tracks) return res.status(404).json({ success: false });
 
-        const result = await insertTracks(playlistId, tracks);
+        const result = await insertTracks(id, tracks);
         if (result) return res.json({ success: true });
         return res.status(500).json({ success: false });
     } catch (err) {
@@ -147,9 +148,9 @@ const addAlbum = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const addPlaylist = async (req: Request, res: Response, next: NextFunction) => {
-    const { id, playlistId } = req.body;
+    const { id, data } = req.body;
     try {
-        const playlist = await trackListById(playlistId);
+        const playlist = await trackListById(data[0]);
         const tracks = playlist?.tracks || null;
 
         if (!tracks) return Error();
