@@ -1,5 +1,5 @@
 //
-//  Play+CoreDataClass.swift
+//  Share+CoreDataClass.swift
 //  MiniVibe
 //
 //  Created by Sue Cho on 2020/12/11.
@@ -9,45 +9,43 @@
 import Foundation
 import CoreData
 
-@objc(Play)
-public class Play: NSManagedObject {
+@objc(Share)
+public class Share: NSManagedObject {
 
 }
 
-extension Play {
+extension Share {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Play> {
-        return NSFetchRequest<Play>(entityName: "Play")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Share> {
+        return NSFetchRequest<Share>(entityName: "Share")
     }
 
     @NSManaged public var event: String
     @NSManaged public var userId: Int
-    @NSManaged public var trackId: Int
     @NSManaged public var componentId: String
-    @NSManaged public var isPlay: Bool
+    @NSManaged public var data: LogData
     @NSManaged public var timestamp: Date
 
 }
 
-extension Play: EventPrintable {
+extension Share: EventPrintable { 
     public override var description: String {
-        return "\(timestamp.timestampFormat())\nEvent: \(event)\nTrackID: \(trackId)\nisPlay: \(isPlay)"
+        return "\(timestamp.timestampFormat())\nEvent: \(event)\nData: \(data)\nComponent: \(componentId)"
     }
 }
 
-extension Play: Encodable {
+extension Share: Encodable {
 
     enum CodingKeys: CodingKey {
-        case event, userId, trackId, componentId, isPlay, timestamp
+        case event, userId, componentId, data, timestamp
     }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(event, forKey: .event)
         try container.encode(userId, forKey: .userId)
-        try container.encode(trackId, forKey: .trackId)
         try container.encode(componentId, forKey: .componentId)
-        try container.encode(isPlay, forKey: .isPlay)
+        try container.encode(data, forKey: .data)
         try container.encode(timestamp, forKey: .timestamp)
     }
 }

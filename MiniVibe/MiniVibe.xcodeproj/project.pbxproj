@@ -92,6 +92,8 @@
 		800FA867257E003D008926A5 /* Playlists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FA866257E003D008926A5 /* Playlists.swift */; };
 		8016AB6A2583ABBE00573485 /* Play+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AB682583ABBE00573485 /* Play+CoreDataClass.swift */; };
 		8016AB712583AC9B00573485 /* PlayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AB702583AC9B00573485 /* PlayLog.swift */; };
+		8016AB782583AF3B00573485 /* Share+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AB762583AF3B00573485 /* Share+CoreDataClass.swift */; };
+		8016AB7F2583B21500573485 /* ShareLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AB7E2583B21500573485 /* ShareLog.swift */; };
 		801AE36A25826ED1004F1947 /* MoveTrackLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801AE36925826ED1004F1947 /* MoveTrackLog.swift */; };
 		802187E325828B79009A4D95 /* Engagement+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802187E125828B79009A4D95 /* Engagement+CoreDataClass.swift */; };
 		802187EA25828BDE009A4D95 /* EngagementLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802187E925828BDE009A4D95 /* EngagementLog.swift */; };
@@ -242,6 +244,8 @@
 		800FA866257E003D008926A5 /* Playlists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlists.swift; sourceTree = "<group>"; };
 		8016AB682583ABBE00573485 /* Play+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Play+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8016AB702583AC9B00573485 /* PlayLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLog.swift; sourceTree = "<group>"; };
+		8016AB762583AF3B00573485 /* Share+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Share+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8016AB7E2583B21500573485 /* ShareLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLog.swift; sourceTree = "<group>"; };
 		801AE36925826ED1004F1947 /* MoveTrackLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveTrackLog.swift; sourceTree = "<group>"; };
 		802187E125828B79009A4D95 /* Engagement+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Engagement+CoreDataClass.swift"; sourceTree = "<group>"; };
 		802187E925828BDE009A4D95 /* EngagementLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngagementLog.swift; sourceTree = "<group>"; };
@@ -376,6 +380,7 @@
 		4437E5D22580C55200B02799 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				8016AB762583AF3B00573485 /* Share+CoreDataClass.swift */,
 				8016AB682583ABBE00573485 /* Play+CoreDataClass.swift */,
 				80AB73CF25838AB4005ADA9A /* UpnextChange+CoreDataClass.swift */,
 				802187E125828B79009A4D95 /* Engagement+CoreDataClass.swift */,
@@ -582,6 +587,7 @@
 				802187E925828BDE009A4D95 /* EngagementLog.swift */,
 				80AB73D725838B8F005ADA9A /* UpnextChangeLog.swift */,
 				8016AB702583AC9B00573485 /* PlayLog.swift */,
+				8016AB7E2583B21500573485 /* ShareLog.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -914,6 +920,7 @@
 				80609260258261B90032FBE0 /* MoveTrack+CoreDataClass.swift in Sources */,
 				4471B1B12581625900647CA0 /* EventLogViewModel.swift in Sources */,
 				445919AD256E559D0069DAB2 /* StationList.swift in Sources */,
+				8016AB782583AF3B00573485 /* Share+CoreDataClass.swift in Sources */,
 				44D7B7E725753C2D0049CDBB /* RepeatButton.swift in Sources */,
 				802187EA25828BDE009A4D95 /* EngagementLog.swift in Sources */,
 				444A88A62580E36000F6CB09 /* Event.xcdatamodeld in Sources */,
@@ -1005,6 +1012,7 @@
 				805E28AE256BBD52007AF5F1 /* MiniVibeApp.swift in Sources */,
 				447ECD3825791B9800EE1435 /* LibraryArtistRow.swift in Sources */,
 				80045DFE257608B000F32E6C /* PlayerSliderView.swift in Sources */,
+				8016AB7F2583B21500573485 /* ShareLog.swift in Sources */,
 				44056D152575DD5100BF8337 /* PlayerView.swift in Sources */,
 				44139CA725763283000CEEA5 /* ArtistThumbnail.swift in Sources */,
 				8016AB6A2583ABBE00573485 /* Play+CoreDataClass.swift in Sources */,
