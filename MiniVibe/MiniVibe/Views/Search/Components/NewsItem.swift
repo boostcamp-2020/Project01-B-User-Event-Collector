@@ -9,12 +9,12 @@ import SwiftUI
 import KingfisherSwiftUI
 
 struct NewsItem: View {
+    @EnvironmentObject private var eventLogger: EventLogger
     let width: CGFloat
     let news: News
     
     var body: some View {
         VStack(alignment: .trailing, spacing: width * .spacingRatio) {
-            // VStack 선택시 news url로 가게 될텐데, 그럴려면 news 전체를 받아오면 되고
             VStack {
                 KFImage(URL(string: news.imageUrl))
                     .aspectRatio(3, contentMode: .fit)
@@ -24,7 +24,12 @@ struct NewsItem: View {
                     .bold()
             }
             
-            NavigationLink(destination: AlbumView(id: news.albumId)) {
+            NavigationLink(destination:
+                            AlbumView(id: news.albumId)
+                            .logTransition(eventLogger: eventLogger,
+                                           identifier: .album(id: news.albumId),
+                                           componentId: .newsItem)
+            ) {
                 HStack(spacing: width * .spacingRatio) {
                     Image(systemName: "play.circle.fill")
                     Text("음악듣기")

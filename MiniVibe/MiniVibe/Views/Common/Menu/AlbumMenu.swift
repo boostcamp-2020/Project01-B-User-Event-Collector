@@ -32,7 +32,6 @@ struct AlbumMenu: View {
                 presentationMode.wrappedValue.dismiss()
             }
         }
-        .logTransition(eventLogger: eventLogger, identifier: .albumMenu(id: album.id))
     }
 }
 

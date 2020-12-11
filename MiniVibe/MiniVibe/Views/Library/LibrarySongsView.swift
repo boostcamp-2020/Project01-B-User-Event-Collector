@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LibrarySongsView: View {
+    @EnvironmentObject private var eventLogger: EventLogger
     @State private var isMenuOpen = false
     
     var body: some View {
@@ -40,6 +41,10 @@ struct LibrarySongsView: View {
                             }
                             .fullScreenCover(isPresented: $isMenuOpen) {
                                 PlayerMenu(track: trackinfo)
+                                    .logTransition(eventLogger: eventLogger,
+                                                   identifier: .playerMenu(id: trackinfo.id),
+                                                   componentId: .trackMenuButton
+                                    )
                             }
                         }
                     }

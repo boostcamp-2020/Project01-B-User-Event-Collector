@@ -18,7 +18,6 @@ struct AlbumView: View {
     
     var body: some View {
         content
-            .logTransition(eventLogger: eventLogger, identifier: .album(id: id))
     }
     
     @ViewBuilder
@@ -32,6 +31,9 @@ struct AlbumView: View {
                             title: album.title,
                             subtitle: album.artist.name,
                             content: album.description)
+                        .logTransition(eventLogger: eventLogger,
+                                       identifier: .article,
+                                       componentId: .albumDescription)
                 } else {
                     ScrollView {
                         VStack(spacing: 36) {
@@ -87,8 +89,14 @@ struct AlbumView: View {
                         switch viewModel.activeSheet {
                         case .album:
                             AlbumMenu(album: album)
+                                .logTransition(eventLogger: eventLogger,
+                                               identifier: .albumMenu(id: album.id),
+                                               componentId: .albumMenuButton)
                         case let .track(info):
                             PlayerMenu(track: info)
+                                .logTransition(eventLogger: eventLogger,
+                                               identifier: .playerMenu(id: info.id),
+                                               componentId: .trackMenuButton)
                         }
                     }
                 }

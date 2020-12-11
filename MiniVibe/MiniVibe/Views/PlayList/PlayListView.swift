@@ -12,6 +12,7 @@ struct PlayListView: View {
         self.id = id
     }
     
+    @EnvironmentObject private var eventLogger: EventLogger
     @StateObject private var viewModel = PlaylistViewModel()
     private let id: Int
     
@@ -25,6 +26,9 @@ struct PlayListView: View {
                             title: playlist.title,
                             subtitle: playlist.subTitle ?? "",
                             content: playlist.description ?? "")
+                        .logTransition(eventLogger: eventLogger,
+                                       identifier: .article,
+                                       componentId: .playlistDescription)
                 } else {
                     ScrollView {
                         VStack(spacing: 36) {
@@ -65,8 +69,14 @@ struct PlayListView: View {
                         switch viewModel.activeSheet {
                         case .playlist:
                             PlayListMenu(playlist: playlist)
+                                .logTransition(eventLogger: eventLogger,
+                                               identifier: .playlistMenu(id: playlist.id),
+                                               componentId: .playlistMenuButton)
                         case let .track(info):
                             PlayerMenu(track: info)
+                                .logTransition(eventLogger: eventLogger,
+                                               identifier: .playerMenu(id: info.id),
+                                               componentId: .trackMenuButton)
                         }
                     }
                 }
