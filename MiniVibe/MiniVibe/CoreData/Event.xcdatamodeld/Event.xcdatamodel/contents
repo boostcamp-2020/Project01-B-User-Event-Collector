@@ -21,6 +21,12 @@
         <attribute name="trackId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
+    <entity name="Save" representedClassName="Save" syncable="YES">
+        <attribute name="componentId" optional="YES" attributeType="String"/>
+        <attribute name="data" optional="YES" attributeType="Transformable"/>
+        <attribute name="event" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
     <entity name="Play" representedClassName="Play" syncable="YES">
         <attribute name="componentId" optional="YES" attributeType="String"/>
         <attribute name="event" optional="YES" attributeType="String"/>
@@ -71,6 +77,7 @@
         <element name="Subscribe" positionX="161.641845703125" positionY="-102.7346343994141" width="128" height="89"/>
         <element name="Transition" positionX="177.115234375" positionY="14.45686340332031" width="128" height="104"/>
         <element name="UpnextChange" positionX="171.63525390625" positionY="128.6602783203125" width="128" height="104"/>
+        <element name="Save" positionX="-54" positionY="-9" width="128" height="104"/>
         <element name="Play" positionX="-54" positionY="-9" width="128" height="119"/>
         <element name="Share" positionX="-45" positionY="0" width="128" height="104"/>
     </elements>
