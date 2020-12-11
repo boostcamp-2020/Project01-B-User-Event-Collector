@@ -7,9 +7,9 @@ import TrackPlayButton from '@components/molecules/TrackPlayButton';
 import DropDownMenu from '@components/molecules/DropdownMenu';
 import { TrackRowCardProps } from '@interfaces/props';
 import LyricModal from '@components/organisms/LyricModal/LyricModal';
-import PlaylistModal from '@components/organisms/PlaylistModal';
-import { deleteFromLibrary, addTracksToPlaylist } from '@utils/apis';
+import { deleteFromLibrary } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
+import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import {
     List,
     TrackLeft,
@@ -23,7 +23,6 @@ import {
     StyledMoreHorizIcon,
     Like,
 } from './TrackRowCard.styles';
-import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 
 const contentsDropDownMenu = [
     {
@@ -51,7 +50,6 @@ const TrackRowCard = (data: TrackRowCardProps) => {
 
     const [isLiked, setIsLiked] = useState(liked);
     const [displayLyrics, setDisplayLyrics] = useState(false);
-    const [playlistModal, setPlaylistModal] = useState({ visibility: false, data: [] });
 
     const onClickUnlikeHandler = () => {
         setIsLiked(0);
@@ -60,21 +58,6 @@ const TrackRowCard = (data: TrackRowCardProps) => {
 
     const onClickShowLyric = () => {
         setDisplayLyrics(!displayLyrics);
-    };
-    const onClickShowPlaylist = () => {
-        setPlaylistModal({
-            visibility: false,
-            data: [],
-        });
-    };
-    const addToPlaylist = (e) => {
-        addTracksToPlaylist(apiUrl.addTracksToPlaylist, {
-            data: {
-                playlistId: parseInt(e.currentTarget.firstChild.innerText),
-                tracks: [id],
-            },
-        });
-        setPlaylistModal({ visibility: false, data: [] });
     };
     const onChangeCheckRow = (e) => {
         const list = e.target.closest('LI');
@@ -90,12 +73,6 @@ const TrackRowCard = (data: TrackRowCardProps) => {
                 visibility={displayLyrics}
                 onClickFunc={onClickShowLyric}
             />
-            <PlaylistModal
-                visibility={playlistModal.visibility}
-                data={playlistModal.data}
-                handleClick={addToPlaylist}
-                onClickFunc={onClickShowPlaylist}
-            ></PlaylistModal>
             <TrackLeft>
                 <CheckBox id={id} onChange={onChangeCheckRow} />
                 <TrackPlayBtnContainer>
@@ -135,7 +112,7 @@ const TrackRowCard = (data: TrackRowCardProps) => {
                             id="contents"
                             control={StyledMoreHorizIcon}
                             menuItems={contentsDropDownMenu}
-                            state={{ setIsLiked, setDisplayLyrics, setPlaylistModal }}
+                            state={{ setIsLiked, setDisplayLyrics }}
                         />
                     )}
                     <A href="#">

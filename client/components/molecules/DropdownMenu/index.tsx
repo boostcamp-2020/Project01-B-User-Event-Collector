@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Menu, { MenuProps } from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { DropdownMenuProps } from '@interfaces/props';
 import useDropDownAction from '@hooks/useDropDownAction';
-
+import PlaylistModal from '@components/organisms/PlaylistModal';
+import ComponentInfoContext from '@utils/context/ComponentInfoContext';
+import apiUrl from '@constants/apiUrl';
 const StyledMenu = withStyles({
     paper: {
         border: '1px solid #d3d4d5',
@@ -27,7 +29,18 @@ const StyledMenu = withStyles({
 
 const DropdownMenu = ({ id, control: ControlComponent, menuItems, children, state }: DropdownMenuProps) => {
     const [anchorEl, setAnchorEl] = useState(null);
+    const componentInfo = useContext(ComponentInfoContext);
+    const [playlistModal, setPlaylistModal] = useState({ visibility: false, data: [] });
+
+    state['setPlaylistModal'] = setPlaylistModal;
     const [handleClick, handleClose] = useDropDownAction({ anchorEl, setAnchorEl, state });
+    const onClickShowPlaylist = () => {
+        setPlaylistModal({
+            visibility: false,
+            data: [],
+        });
+    };
+    const onClickHandler = (e) => {};
     return (
         <>
             {ControlComponent && (
@@ -55,6 +68,12 @@ const DropdownMenu = ({ id, control: ControlComponent, menuItems, children, stat
                     </MenuItem>
                 ))}
             </StyledMenu>
+            <PlaylistModal
+                visibility={playlistModal.visibility}
+                data={playlistModal.data}
+                handleClick={onClickHandler}
+                onClickFunc={onClickShowPlaylist}
+            />
         </>
     );
 };
