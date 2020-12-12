@@ -99,7 +99,7 @@ struct ArtistView: View {
             } label: { Image(systemName: "ellipsis")  }
         }
         .font(.system(size: 17))
-        .foregroundColor(.black)
+        .foregroundColor(.primary)
     }
 }
 

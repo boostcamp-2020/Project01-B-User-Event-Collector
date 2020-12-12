@@ -20,10 +20,10 @@ struct PlayAndShuffle: View {
                     Text("PLAY")
                 }
                 .padding()
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
                 .frame(width: width * .thumbnailRatio)
             }
-            .background(Color.secondary.opacity(0.15))
+            .background(Color.playAndShuffle)
             .clipShape(RoundedRectangle(cornerRadius: 5))
             
             Button {
@@ -34,13 +34,12 @@ struct PlayAndShuffle: View {
                     Text("SHUFFLE")
                 }
                 .padding()
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
                 .frame(width: width * .thumbnailRatio)
             }
-            .background(Color.secondary.opacity(0.15))
+            .background(Color.playAndShuffle)
             .clipShape(RoundedRectangle(cornerRadius: 5))
         }
-        .background(Color.white)
     }
 }
 
@@ -48,5 +47,6 @@ struct PlayAndShuffle_Previews: PreviewProvider {
     static var previews: some View {
         PlayAndShuffle(width: 375)
             .previewLayout(.fixed(width: 375, height: 80))
+            .previewInAllColorSchemes
     }
 }

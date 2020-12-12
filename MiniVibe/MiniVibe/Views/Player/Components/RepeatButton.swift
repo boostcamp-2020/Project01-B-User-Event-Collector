@@ -41,7 +41,7 @@ struct RepeatButton: View {
             type.next()
         } label: {
             Image(systemName: type.imageName)
-                .foregroundColor(type == .none ? .secondary : .pink)
+                .foregroundColor(type == .none ? .secondary : .accentColor)
         }
     }
 }

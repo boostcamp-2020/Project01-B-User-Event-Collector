@@ -34,6 +34,7 @@ struct UpNextList: View {
                 trailingBarItem
             }
             .padding()
+            .foregroundColor(.primary)
             
             VStack(spacing: 0) {
                 List(selection: $nowPlaying.selectedTracks) {
@@ -44,7 +45,12 @@ struct UpNextList: View {
                                 .frame(width: 50, height: 50)
                             VStack(alignment: .leading) {
                                 Text(viewModel.track.title)
+                                    .font(.system(size: 13))
+                                    .foregroundColor(.primary)
+                                
                                 Text(viewModel.track.artist.name)
+                                    .font(.system(size: 11))
+                                    .foregroundColor(.secondary)
                             }
                         }
                     }

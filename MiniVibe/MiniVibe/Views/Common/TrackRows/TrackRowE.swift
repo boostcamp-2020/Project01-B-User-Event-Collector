@@ -29,32 +29,15 @@ struct TrackRowE: View {
                                            identifier: .album(id: track.album.id),
                                            componentId: .trackRowThumbnail)
             ) {
-                KFImage(URL(string: track.album.imageUrl))
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .border(Color.gray, width: 0.7)
+                TrackRowImage(imageUrl: track.album.imageUrl)
             }
             
             Button {
                 nowPlaying.addTrack(track: viewModel)
             } label: {
-                Text("\(order)")
-                    .font(.title3)
-                    .padding(.horizontal, 4)
-                    .foregroundColor(.black)
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    Spacer()
-                    Text(track.title)
-                        .font(.system(size: 17))
-                        .foregroundColor(.black)
-                    
-                    Text(track.artist.name)
-                        .font(.system(size: 13))
-                        .foregroundColor(.secondary)
-                    Spacer()
-                }
-                Spacer()
+                TrackRowInfoA(order: order,
+                               title: track.title,
+                               artist: track.artist.name)
             }
         }
     }
@@ -62,7 +45,12 @@ struct TrackRowE: View {
 
 struct TrackRowE_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowE(viewModel: .init(track: trackinfo, eventLogger: EventLogger(persistentContainer: .init())), order: 3)
-            .previewLayout(.fixed(width: 375, height: 80))
+        HStack {
+            TrackRowImage(imageUrl: "")
+            TrackRowInfoA(order: 3, title: "마음", artist: "아이유(IU)")
+        }
+        .previewLayout(.fixed(width: 375, height: 80))
+        .previewInAllColorSchemes
+            
     }
 }

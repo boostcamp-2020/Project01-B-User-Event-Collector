@@ -11,8 +11,8 @@ import KingfisherSwiftUI
 struct TrackRowA: View {
     @EnvironmentObject private var eventLogger: EventLogger
     @EnvironmentObject private var nowPlaying: NowPlaying
-    @State private var isMenuOpen = false
     @StateObject private var viewModel: TrackViewModel
+    @State private var isMenuOpen = false
     private let order: Int
     
     init(viewModel: TrackViewModel, order: Int) {
@@ -23,47 +23,26 @@ struct TrackRowA: View {
     var body: some View {
         let track = viewModel.track
         HStack {
-            NavigationLink(destination:
-                            AlbumView(viewModel: .init(id: track.album.id,
-                                                       eventLogger: eventLogger))
+            NavigationLink(destination: AlbumView(viewModel: .init(id: track.album.id,
+                                                                   eventLogger: eventLogger))
                             .logTransition(eventLogger: eventLogger,
                                            identifier: .album(id: track.album.id),
-                                           componentId: .trackRowThumbnail)
-            ) {
-                KFImage(URL(string: track.album.imageUrl))
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .border(Color.gray, width: 0.7)
+                                           componentId: .trackRowThumbnail)) {
+                TrackRowImage(imageUrl: track.album.imageUrl)
             }
             
             Button {
                 nowPlaying.addTrack(track: viewModel)
             } label: {
-                Text("\(order)")
-                    .font(.title3)
-                    .padding(.horizontal, 4)
-                    .foregroundColor(.black)
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    Spacer()
-                    Text(track.title)
-                        .font(.system(size: 17))
-                        .foregroundColor(.black)
-                    
-                    Text(track.artist.name)
-                        .font(.system(size: 13))
-                        .foregroundColor(.secondary)
-                    Spacer()
-                }
-                Spacer()
+                TrackRowInfoA(order: order,
+                              title: track.title,
+                              artist: track.artist.name)
             }
             
             Button {
                 isMenuOpen = true
             } label: {
-                Image(systemName: "ellipsis")
-                    .foregroundColor(.black)
-                    .padding()
+                TrackRowMenu()
             }
         }
         .fullScreenCover(isPresented: $isMenuOpen) {
@@ -74,7 +53,12 @@ struct TrackRowA: View {
 
 struct TrackRow_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowA(viewModel: .init(track: trackinfo, eventLogger: EventLogger(persistentContainer: .init())), order: 3)
-            .previewLayout(.fixed(width: 375, height: 80))
+        HStack {
+            TrackRowImage(imageUrl: "")
+            TrackRowInfoA(order: 1, title: "마음", artist: "아이유")
+            TrackRowMenu()
+        }
+        .previewLayout(.fixed(width: 375, height: 80))
+        .previewInAllColorSchemes
     }
 }

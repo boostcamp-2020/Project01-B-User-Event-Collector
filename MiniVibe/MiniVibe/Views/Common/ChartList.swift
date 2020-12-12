@@ -38,7 +38,7 @@ struct ChartList: View {
                         
                         Image(systemName: "checkmark.circle")
                             .font(.system(size: 17))
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                     }
                 )
                 .padding(.bottom, 70)

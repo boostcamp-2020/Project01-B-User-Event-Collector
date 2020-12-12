@@ -50,7 +50,7 @@ struct Player: View {
                 Text("미리듣기 중")
                 Image(systemName: "info.circle")
             }
-            .foregroundColor(.pink)
+            .foregroundColor(.accentColor)
             .font(.system(size: 12))
             .logSubscription(eventLogger: eventLogger,
                              componentId: "")

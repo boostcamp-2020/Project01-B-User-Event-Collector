@@ -22,7 +22,7 @@ struct ThumbnailList: View {
             ScrollView {
                 LazyVGrid(columns: [.init()], alignment: .leading) {
                     buildList()
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                 }
                 .navigationBarTitle(
                     Text(navigationTitle),

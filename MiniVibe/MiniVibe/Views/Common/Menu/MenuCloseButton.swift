@@ -17,13 +17,16 @@ struct MenuCloseButton: View {
     var body: some View {
         VStack(spacing: 0) {
             Divider()
+            
             Button {
                 action()
             } label: {
                 Spacer()
+                
                 Text("닫기")
                     .foregroundColor(.secondary)
                     .font(.system(size: 18))
+                
                 Spacer()
             }
             .padding(.vertical)
@@ -34,5 +37,7 @@ struct MenuCloseButton: View {
 struct MenuCloseButton_Previews: PreviewProvider {
     static var previews: some View {
         MenuCloseButton(action: { })
+            .previewLayout(.fixed(width: 375, height: 80))
+            .previewInAllColorSchemes
     }
 }

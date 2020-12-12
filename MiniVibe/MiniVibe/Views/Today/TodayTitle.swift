@@ -14,7 +14,7 @@ struct TodayTitle: View {
     var body: some View {
         HStack {
             Text("#내돈내듣 VIBE")
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
                 .font(.title)
                 .fontWeight(.heavy)
                 .logSubscription(eventLogger: eventLogger,

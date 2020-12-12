@@ -30,7 +30,7 @@ struct LibrarySongsView: View {
                                     Image(systemName: "arrow.up.arrow.down")
                                     Text("Recently Added")
                                 }
-                                .foregroundColor(.black)
+                                .foregroundColor(.primary)
                             }
                         }
                         ForEach(0..<50) { _ in

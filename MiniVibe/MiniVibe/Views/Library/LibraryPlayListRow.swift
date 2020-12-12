@@ -23,8 +23,9 @@ struct LibraryPlayListRow: View {
             
             VStack(alignment: .leading) {
                 Text(title)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                     .font(.system(size: 17))
+                
                 Text("10곡")
                     .foregroundColor(.secondary)
                     .font(.system(size: 14))

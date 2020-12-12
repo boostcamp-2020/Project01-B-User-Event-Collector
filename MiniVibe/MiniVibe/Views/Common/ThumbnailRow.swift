@@ -38,5 +38,6 @@ struct ThumbnailRow_Previews: PreviewProvider {
     static var previews: some View {
         ThumbnailRow(imageURL: "", title: "나만 없어 그 한정판 LP 레코드", subtitle: "2020-12-12")
             .previewLayout(.fixed(width: 375, height: 100))
+            .previewInAllColorSchemes
     }
 }

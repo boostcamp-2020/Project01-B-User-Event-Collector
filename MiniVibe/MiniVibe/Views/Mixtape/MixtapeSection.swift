@@ -29,8 +29,10 @@ struct MixtapeSection: View {
                         NavigationLink(
                             destination:
                                 Text("MixtapeView")
-                                .logTransition(eventLogger: eventLogger, identifier: .mixtape(id: mixtape.id), componentId: ComponentId.mixtapeItem)
-                            ,
+                                .logTransition(eventLogger: eventLogger,
+                                               identifier: .mixtape(id: mixtape.id),
+                                               componentId: ComponentId.mixtapeItem
+                                ),
                             label: {
                                 ThumbnailItem(title: mixtape.title,
                                               subtitle: mixtape.subTitle,
@@ -39,7 +41,7 @@ struct MixtapeSection: View {
                             }
                         )
                     }
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                 }
                 .padding(.horizontal, width * .paddingRatio)
             }

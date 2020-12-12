@@ -24,18 +24,7 @@ struct TrackRowD: View {
             Button {
                 nowPlaying.addTrack(track: viewModel)
             } label: {
-                HStack {
-                    HStack {
-                        Text("\(order)")
-                            .font(.title3)
-                            .bold()
-                            .padding(.horizontal, 4)
-                        
-                        Text(viewModel.track.title)
-                            .font(.title3)
-                    }
-                    .padding(.vertical, 10)
-                }
+                TrackRowInfoC(order: order, title: viewModel.track.title)
             }
             
             Spacer()
@@ -47,14 +36,22 @@ struct TrackRowD: View {
             }
             .padding()
         }
-        .foregroundColor(.black)
+        .foregroundColor(.primary)
         .padding(.vertical, 8)
     }
 }
 
 struct TrackRowD_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowD(viewModel: .init(track: trackinfo, eventLogger: EventLogger(persistentContainer: .init())), order: 1, menuButtonAction: { _ in })
-            .previewLayout(.fixed(width: 375, height: 80))
+        HStack {
+            TrackRowInfoC(order: 1, title: "How You Like That")
+            Spacer()
+            Image(systemName: "ellipsis")
+                .padding()
+        }
+        .foregroundColor(.primary)
+        .padding(.vertical, 8)
+        .previewLayout(.fixed(width: 375, height: 80))
+        .previewInAllColorSchemes
     }
 }
