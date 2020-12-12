@@ -14,11 +14,8 @@ import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import QueueMusicIcon from '@material-ui/icons/QueueMusic';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 
-interface ContainerProps {
-    visibility: boolean
-}
 
-const Container = styled.div<ContainerProps>`
+const Container = styled.div`
     position: fixed;
     top: 0;
     right: 0;
@@ -30,8 +27,7 @@ const Container = styled.div<ContainerProps>`
     height: 150px;
     display: flex;
     flex-flow: column;
-    align-items: center;
-    visibility: ${(props) => props.visibility ? "visible" : "hidden"}
+    align-items: center;  
 `;
 
 const SelectAreaContainer = styled.div`
@@ -64,7 +60,7 @@ const SelectedTrackCounter = styled.div`
     color: #FF1150;
     font-weight: 600;
     height: 75px;
-    width: 800px;
+    width: 920px;
 `;
 
 const CloseButtonContainer = styled.div`
@@ -104,12 +100,8 @@ const FloatingSelectMenu = () => {
     }
 
     return (
-        <Container visibility={selectedTrackCount !== 0}>
+        <Container>
             <SelectAreaContainer>
-                <CheckBoxContainer><CheckBox id= "floatingMenu"/></CheckBoxContainer>
-                <CheckBoxSpan>
-                    전체선택
-                </CheckBoxSpan>
                 <SelectedTrackCounter>
                     {selectedTrackCount}곡 선택
                 </SelectedTrackCounter>

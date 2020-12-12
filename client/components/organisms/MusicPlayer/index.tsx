@@ -8,10 +8,6 @@ import PlayController from '@components/organisms/MusicPlayer/PlayController';
 import { contentType } from 'constants/identifier';
 import ComponentInfoWrapper from 'utils/context/ComponentInfoWrapper';
 
-interface MusicPlayerProps {
-    tracks;
-}
-
 interface HeaderContainerProps {
     visible: boolean;
 }

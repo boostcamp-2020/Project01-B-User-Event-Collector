@@ -10,10 +10,10 @@ import {
     LibraryArtistThumbnailProps,
     AlbumCardProps,
     PlaylistCardProps,
-} from '@interfaces/props';
+} from 'interfaces/props';
 import styled from 'styled-components';
-import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
-import { dataType } from '@constants/identifier';
+import ComponentInfoWrapper from 'utils/context/ComponentInfoWrapper';
+import { dataType } from 'constants/identifier';
 
 export const List = styled.ul`
     display: flex;
@@ -74,7 +74,7 @@ const properCard = ({ variant, items }: ContentsCardListProps) => {
             return items.map((item) => (
                 <ComponentInfoWrapper componentId={`${item.id}`} data={{ type: dataType.news, id: item.id }}>
                     <Item>
-                        <NewsCard key={item.id} {...item} />
+                        <NewsCard key={item.id} {...(item as NewsCardProps)} />
                     </Item>
                 </ComponentInfoWrapper>
             ));

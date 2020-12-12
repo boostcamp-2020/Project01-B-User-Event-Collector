@@ -1,7 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Slider } from '@material-ui/core';
-import { convertToHHSS } from '@utils/time';
+import { convertToHHSS } from 'utils/time';
 
 const PlayerSlider = withStyles({
     root: {

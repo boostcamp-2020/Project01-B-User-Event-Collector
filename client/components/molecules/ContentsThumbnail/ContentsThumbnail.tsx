@@ -5,7 +5,7 @@ import Image from '../../atoms/Image/Image';
 import PlayButton from '../PlayButton/PlayButton';
 import DropDownMenu from '../DropdownMenu';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import { ContentsThumbnailProps } from '@interfaces/props';
+import { ContentsThumbnailProps } from 'interfaces/props';
 
 const ButtonContainer = styled.div`
     display: flex;

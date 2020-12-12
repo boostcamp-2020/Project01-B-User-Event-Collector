@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PlayerTrackCardProps } from '@interfaces/props';
+import { PlayerTrackCardProps } from 'interfaces/props';
 import PlayerTrackCard from '@components/organisms/Cards/PlayerTrackCard';
-import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
-import { dataType } from '@constants/identifier';
+import ComponentInfoWrapper from 'utils/context/ComponentInfoWrapper';
+import { dataType } from 'constants/identifier';
 
 const ListContainer = styled.ul`
     overflow-y: auto;

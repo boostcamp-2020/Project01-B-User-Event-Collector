@@ -4,6 +4,8 @@ import Image from '@components/atoms/Image/Image';
 import IconButton from '@components/atoms/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
+import { LyricModalProps } from 'interfaces/props';
+
 interface LyricsModalContainer {
     visible: boolean;
 }
@@ -80,15 +82,6 @@ const LyricsContainer = styled.div`
     overflow: scroll;
     margin: 20px 0;
 `;
-
-interface LyricModalProps {
-    src: string;
-    title: string;
-    artist: string;
-    lyrics: string;
-    visibility: boolean;
-    onClickFunc: any;
-}
 
 const LyricModal = ({ lyrics, title, artist, src, visibility, onClickFunc }: LyricModalProps) => {
     return (
