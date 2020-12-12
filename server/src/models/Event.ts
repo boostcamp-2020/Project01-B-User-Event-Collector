@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 import {
     IEvent, IClickEvent, ITransitionEvent, ISearchEvent, ILikeEvent, IShareEvent,
-    IAddToPlaylistEvent,
+    IAddToPlaylistEvent, ISubscribeEvent,
 } from '../types/event';
 
 const options = {
@@ -58,7 +58,11 @@ const addToPlaylistSchema = {
     playlistId: { type: Number, required: true },
 };
 
-const Event = mongoose.model<IEvent|IClickEvent|ITransitionEvent|ISearchEvent|ILikeEvent|IShareEvent|IAddToPlaylistEvent>('Event', new Schema(eventSchema, options));
+const subscribeEventSchema = {
+    componentId: { type: String, required: true },
+};
+
+const Event = mongoose.model<IEvent|IClickEvent|ITransitionEvent|ISearchEvent|ILikeEvent|IShareEvent|IAddToPlaylistEvent|ISubscribeEvent>('Event', new Schema(eventSchema, options));
 
 // Click Event
 const ClickEvent = Event.discriminator<IClickEvent>('Click', new Schema(clickEventSchema, options));
@@ -85,5 +89,8 @@ const TerminateEvent = Event.discriminator<IEvent>('Terminate', new Schema(event
 
 // AddToPlaylist Event
 const AddToPlaylsitEvent = Event.discriminator<IAddToPlaylistEvent>('AddToPlaylsit', new Schema(addToPlaylistSchema, options));
+
+// Subscribe Event
+const SubscribeEvent = Event.discriminator<ISubscribeEvent>('Subscribe', new Schema(subscribeEventSchema, options));
 
 export default Event;

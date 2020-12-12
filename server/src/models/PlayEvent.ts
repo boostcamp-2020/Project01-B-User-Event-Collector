@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import {
-    IEvent, IPlayEvent, IPlayNowEvent, IUpNextChangeEvent, ISaveEvent, ISubscribeEvent, IMoveTrack,
+    IEvent, IPlayEvent, IPlayNowEvent, IUpNextChangeEvent, ISaveEvent, IMoveTrack,
 } from '../types/event';
 
 const options = {
@@ -48,11 +48,7 @@ const moveTrackEventSchema = {
     destination: { type: Number, required: true },
 };
 
-const subscribeEventSchema = {
-    componentId: { type: String, required: true },
-};
-
-const Event = mongoose.model<IEvent|IPlayEvent|IPlayNowEvent|IUpNextChangeEvent|ISaveEvent|ISubscribeEvent|IMoveTrack>('PlayEvent', new Schema(eventSchema, options));
+const Event = mongoose.model<IEvent|IPlayEvent|IPlayNowEvent|IUpNextChangeEvent|ISaveEvent|IMoveTrack>('PlayEvent', new Schema(eventSchema, options));
 
 // Play/Pause Event
 const PlayEvent = Event.discriminator<IPlayEvent>('Play', new Schema(playEventSchema, options));
@@ -69,8 +65,5 @@ const SaveEvent = Event.discriminator<ISaveEvent>('Save', new Schema(saveEventSc
 
 // MoveTrack Event
 const MoveTrackEvent = Event.discriminator<IMoveTrack>('MoveTrack', new Schema(moveTrackEventSchema, options));
-
-// Subscribe Event
-const SubscribeEvent = Event.discriminator<ISubscribeEvent>('Subscribe', new Schema(subscribeEventSchema, options));
 
 export default Event;

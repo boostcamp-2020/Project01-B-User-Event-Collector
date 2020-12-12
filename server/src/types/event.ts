@@ -50,6 +50,10 @@ interface IAddToPlaylistEvent extends IEvent {
     playlistId: number,
 }
 
+interface ISubscribeEvent extends IEvent {
+    componentId: string,
+}
+
 // play event
 
 interface IPlayEvent extends IEvent {
@@ -82,10 +86,6 @@ interface IMoveTrack extends IEvent {
     trackId: number,
     source: number,
     destination: number,
-}
-
-interface ISubscribeEvent extends IEvent {
-    componentId: string,
 }
 
 export {
