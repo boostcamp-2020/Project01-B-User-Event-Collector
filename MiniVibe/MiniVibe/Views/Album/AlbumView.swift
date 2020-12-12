@@ -89,7 +89,7 @@ struct AlbumView: View {
                     .fullScreenCover(isPresented: $viewModel.showSheet) {
                         switch viewModel.activeSheet {
                         case .album:
-                            AlbumMenu(album: album)
+                            AlbumMenu(viewModel: viewModel)
                                 .logTransition(eventLogger: eventLogger,
                                                identifier: .albumMenu(id: album.id),
                                                componentId: .albumMenuButton)
@@ -113,7 +113,7 @@ struct AlbumView: View {
     private var trailingBarButtons: some View {
         HStack(spacing: 10) {
             Button {
-                
+                viewModel.send(.like)
             } label: {
                 Image(systemName: "heart")
             }
@@ -140,7 +140,8 @@ struct AlbumView: View {
 struct AlbumPlaylistView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AlbumView(viewModel: AlbumViewModel(id: 11))
+            AlbumView(viewModel: AlbumViewModel(id: 11,
+                                                eventLogger: EventLogger(persistentContainer: .init())))
         }
     }
 }

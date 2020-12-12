@@ -23,7 +23,8 @@ struct TrackRowE: View {
         HStack {
             let track = viewModel.track
             NavigationLink(destination:
-                            AlbumView(viewModel: .init(id: track.album.id))
+                            AlbumView(viewModel: .init(id: track.album.id,
+                                                       eventLogger: eventLogger))
                             .logTransition(eventLogger: eventLogger,
                                            identifier: .album(id: track.album.id),
                                            componentId: .trackRowThumbnail)

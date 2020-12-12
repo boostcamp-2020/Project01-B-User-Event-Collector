@@ -12,6 +12,7 @@ final class AlbumViewModel: ObservableObject {
         case appear
         case showAlbumMenu
         case showTrackMenu(info: TrackViewModel)
+        case like
     }
     
     enum ActiveSheet {
@@ -20,6 +21,7 @@ final class AlbumViewModel: ObservableObject {
     }
     
     private let useCase = AlbumUseCase()
+    private let eventLogger: EventLoggerType
     private var cancellables = Set<AnyCancellable>()
     private let id: Int
     @Published private(set) var album: Album?
@@ -27,8 +29,9 @@ final class AlbumViewModel: ObservableObject {
     @Published var showSheet = false
     @Published var isOpenArticle = false
     
-    init(id: Int) {
+    init(id: Int, eventLogger: EventLoggerType) {
         self.id = id
+        self.eventLogger = eventLogger
     }
     
     func send(_ input: Input) {
@@ -41,6 +44,8 @@ final class AlbumViewModel: ObservableObject {
         case let .showTrackMenu(info):
             activeSheet = .track(info: info)
             showSheet = true
+        case .like:
+            like()
         }
     }
     
@@ -52,5 +57,12 @@ final class AlbumViewModel: ObservableObject {
                 self?.album = album
             }
             .store(in: &cancellables)
+    }
+    
+    private func like() {
+        eventLogger.send(LikeLog(userId: 0,
+                                 data: .init(type: "Album",
+                                             id: id),
+                                 isLike: true))
     }
 }
