@@ -9,23 +9,24 @@ import SwiftUI
 import KingfisherSwiftUI
 
 struct MenuThumbnailButton: View {
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    let imageUrl: String
+    let title: String
+    let subtitle: String
     
     var body: some View {
 
         HStack {
-            KFImage(URL(string: nowPlaying.playingTrack?.album.imageUrl ?? ""))
+            KFImage(URL(string: imageUrl))
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 80)
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(nowPlaying.playingTrack?.title ?? "")
+                Text(title)
                     .font(.system(size: 18, weight: .bold))
 
-                Text(nowPlaying.playingTrack?.artist.name ?? "")
+                Text(subtitle)
                     .foregroundColor(.secondary)
-                    .opacity(nowPlaying.playingTrack?.artist == nil ? 0 : 1)
             }
             .lineLimit(1)
             .padding(.horizontal, 8)
@@ -40,6 +41,6 @@ struct MenuThumbnailButton: View {
 
 struct MenuThumbnailButton_Previews: PreviewProvider {
     static var previews: some View {
-        MenuThumbnailButton()
+        MenuThumbnailButton(imageUrl: "", title: "", subtitle: "")
     }
 }

@@ -7,7 +7,11 @@
 
 import CoreData
 
-final class EventLogger: ObservableObject {
+protocol EventLoggerType {
+    func send(_ event: EventLogType)
+}
+
+final class EventLogger: EventLoggerType, ObservableObject {
     
     @Published var tabViewSelection: ViewIdentifier = .today {
         didSet {

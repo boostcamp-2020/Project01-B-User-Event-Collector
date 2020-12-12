@@ -13,13 +13,14 @@ struct PlayerThumbnail: View {
     @Binding var isOpenLyrics: Bool
     
     var body: some View {
+        let track = nowPlaying.playingTrack?.track
         VStack {
-            KFImage(URL(string: nowPlaying.playingTrack?.album.imageUrl ?? ""))
+            KFImage(URL(string: track?.album.imageUrl ?? ""))
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .scaleEffect(nowPlaying.isPlaying ? 1 : 0.9)
             
-            Text(nowPlaying.playingTrack?.lyrics ?? "")
+            Text(track?.lyrics ?? "")
                 .font(.system(size: 14))
                 .foregroundColor(.secondary)
                 .lineLimit(2)

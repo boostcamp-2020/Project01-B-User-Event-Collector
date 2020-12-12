@@ -37,14 +37,14 @@ struct UpNextList: View {
             
             VStack(spacing: 0) {
                 List(selection: $nowPlaying.selectedTracks) {
-                    ForEach(nowPlaying.upNext, id: \.self) { track in
+                    ForEach(nowPlaying.upNext, id: \.self) { viewModel in
                         HStack(spacing: 10) {
-                            KFImage(URL(string: track.album.imageUrl))
+                            KFImage(URL(string: viewModel.track.album.imageUrl))
                                 .resizable()
                                 .frame(width: 50, height: 50)
                             VStack(alignment: .leading) {
-                                Text(track.title)
-                                Text(track.artist.name)
+                                Text(viewModel.track.title)
+                                Text(viewModel.track.artist.name)
                             }
                         }
                     }
@@ -95,7 +95,7 @@ struct UpNextList: View {
         let destinationIndex = sourceIndex < destination ?  destination - 1 : destination
         if sourceIndex != destinationIndex {
             eventLogger.send(MoveTrackLog(userId: 0,
-                                          trackId: nowPlaying.upNext[destinationIndex].id,
+                                          trackId: nowPlaying.upNext[destinationIndex].track.id,
                                           source: sourceIndex,
                                           destination: destinationIndex))
         }

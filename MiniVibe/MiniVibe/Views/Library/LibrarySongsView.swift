@@ -34,13 +34,11 @@ struct LibrarySongsView: View {
                             }
                         }
                         ForEach(0..<50) { _ in
-                            let title = "너랑 나"
-                            let artist = "아이유"
-                            TrackRowC(track: trackinfo) {
+                            TrackRowC(viewModel: .init(track: trackinfo, eventLogger: eventLogger)) { _ in
                                 isMenuOpen = true
                             }
                             .fullScreenCover(isPresented: $isMenuOpen) {
-                                PlayerMenu(track: trackinfo)
+                                PlayerMenu(viewModel: .init(track: trackinfo, eventLogger: eventLogger))
                                     .logTransition(eventLogger: eventLogger,
                                                    identifier: .playerMenu(id: trackinfo.id),
                                                    componentId: .trackMenuButton

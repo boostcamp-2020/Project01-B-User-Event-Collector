@@ -12,14 +12,20 @@ struct TrackRowA: View {
     @EnvironmentObject private var eventLogger: EventLogger
     @EnvironmentObject private var nowPlaying: NowPlaying
     @State private var isMenuOpen = false
+    @StateObject private var viewModel: TrackViewModel
+    private let order: Int
     
-    let order: Int
-    let track: TrackInfo
+    init(viewModel: TrackViewModel, order: Int) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+        self.order = order
+    }
     
     var body: some View {
+        let track = viewModel.track
         HStack {
             NavigationLink(destination:
-                            AlbumView(id: track.album.id)
+                            AlbumView(viewModel: .init(id: track.album.id,
+                                                       eventLogger: eventLogger))
                             .logTransition(eventLogger: eventLogger,
                                            identifier: .album(id: track.album.id),
                                            componentId: .trackRowThumbnail)
@@ -31,7 +37,7 @@ struct TrackRowA: View {
             }
             
             Button {
-                nowPlaying.addTrack(track: track)
+                nowPlaying.addTrack(track: viewModel)
             } label: {
                 Text("\(order)")
                     .font(.title3)
@@ -61,14 +67,14 @@ struct TrackRowA: View {
             }
         }
         .fullScreenCover(isPresented: $isMenuOpen) {
-            PlayerMenu(track: track)
+            PlayerMenu(viewModel: viewModel)
         }
     }
 }
 
 struct TrackRow_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowA(order: 0, track: trackinfo)
+        TrackRowA(viewModel: .init(track: trackinfo, eventLogger: EventLogger(persistentContainer: .init())), order: 3)
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

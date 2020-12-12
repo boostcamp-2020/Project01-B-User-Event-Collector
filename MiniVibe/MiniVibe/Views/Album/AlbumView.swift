@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct AlbumView: View {
-    init(id: Int) {
-        self.id = id
+    init(viewModel: AlbumViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
     }
     
     @EnvironmentObject private var eventLogger: EventLogger
-    @StateObject private var viewModel = AlbumViewModel()
-    private let id: Int
+    @StateObject private var viewModel: AlbumViewModel
     
     var body: some View {
         content
@@ -53,8 +52,10 @@ struct AlbumView: View {
                                     ) {
                                         Section(header: PlayAndShuffle(width: geometry.size.width)) {
                                             ForEach(tracks, id: \.id) { track in
-                                                TrackRowD(track: track, order: 1) {
-                                                    viewModel.send(.showTrackMenu(info: track))
+                                                TrackRowD(viewModel: TrackViewModel(track: track,
+                                                                                    eventLogger: eventLogger),
+                                                          order: 1) {
+                                                    viewModel.send(.showTrackMenu(info: $0))
                                                 }
                                             }
                                         }
@@ -88,14 +89,14 @@ struct AlbumView: View {
                     .fullScreenCover(isPresented: $viewModel.showSheet) {
                         switch viewModel.activeSheet {
                         case .album:
-                            AlbumMenu(album: album)
+                            AlbumMenu(viewModel: viewModel)
                                 .logTransition(eventLogger: eventLogger,
                                                identifier: .albumMenu(id: album.id),
                                                componentId: .albumMenuButton)
                         case let .track(info):
-                            PlayerMenu(track: info)
+                            PlayerMenu(viewModel: info)
                                 .logTransition(eventLogger: eventLogger,
-                                               identifier: .playerMenu(id: info.id),
+                                               identifier: .playerMenu(id: info.track.id),
                                                componentId: .trackMenuButton)
                         }
                     }
@@ -104,7 +105,7 @@ struct AlbumView: View {
         } else {
             Color.clear
                 .onAppear {
-                    viewModel.send(.appear(albumID: id))
+                    viewModel.send(.appear)
                 }
         }
     }
@@ -112,7 +113,7 @@ struct AlbumView: View {
     private var trailingBarButtons: some View {
         HStack(spacing: 10) {
             Button {
-                
+                viewModel.send(.like)
             } label: {
                 Image(systemName: "heart")
             }
@@ -139,7 +140,8 @@ struct AlbumView: View {
 struct AlbumPlaylistView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AlbumView(id: 11)
+            AlbumView(viewModel: AlbumViewModel(id: 11,
+                                                eventLogger: EventLogger(persistentContainer: .init())))
         }
     }
 }
