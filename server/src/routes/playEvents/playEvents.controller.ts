@@ -9,9 +9,9 @@ export const create = async (req: Request, res: Response, next: NextFunction) =>
     } catch (err) {
         switch (err.name) {
         case 'ValidationError':
-            return res.status(404).json({ success: false, message: 'Invalid Parameters' });
+            return res.status(400).json({ success: false, message: 'Invalid Parameters' });
         case 'MongooseError':
-            return res.status(404).json({ success: false, message: 'Invalid Event name' });
+            return res.status(400).json({ success: false, message: 'Invalid Event name' });
         default:
             return res.status(500).json({ success: false });
         }
