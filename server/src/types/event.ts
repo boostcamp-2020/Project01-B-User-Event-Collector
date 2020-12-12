@@ -7,6 +7,7 @@ interface IData {
 
 interface IEvent extends mongoose.Document {
     event: string,
+    platform: string, // Web or iOS
     userId?: number,
     timestamp: Date,
 }
@@ -24,8 +25,20 @@ interface ITransitionEvent extends IEvent {
 }
 
 interface ISearchEvent extends IEvent {
-    page: string,
+    componentId?: string,
+    page?: string,
     text: string,
+}
+
+interface ILikeEvent extends IEvent {
+    componentId: string,
+    data: IData,
+    isLike: boolean, // like or unlike
+}
+
+interface IShareEvent extends IEvent {
+    componentId: string,
+    data: IData,
 }
 
 interface IAddTopUpNextEvent extends IEvent {
@@ -37,4 +50,6 @@ interface IPlayControlEvent extends IEvent {
     trackId: number,
 }
 
-export { IEvent, IClickEvent, ITransitionEvent };
+export {
+    IEvent, IClickEvent, ITransitionEvent, ISearchEvent, ILikeEvent, IShareEvent,
+};
