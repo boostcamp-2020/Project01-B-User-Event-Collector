@@ -78,7 +78,17 @@ interface ISaveEvent extends IEvent {
     },
 }
 
+interface IMoveTrack extends IEvent {
+    trackId: number,
+    source: number,
+    destination: number,
+}
+
+interface ISubscribeEvent extends IEvent {
+    componentId: string,
+}
+
 export {
     IEvent, IClickEvent, ITransitionEvent, ISearchEvent, ILikeEvent, IShareEvent, IAddToPlaylistEvent,
-    IPlayEvent, IPlayNowEvent, IUpNextChangeEvent, ISaveEvent,
+    IPlayEvent, IPlayNowEvent, IUpNextChangeEvent, ISaveEvent, ISubscribeEvent, IMoveTrack,
 };

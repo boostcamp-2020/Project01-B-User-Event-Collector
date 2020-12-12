@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import {
-    IEvent, IPlayEvent, IPlayNowEvent, IUpNextChangeEvent, ISaveEvent,
+    IEvent, IPlayEvent, IPlayNowEvent, IUpNextChangeEvent, ISaveEvent, ISubscribeEvent, IMoveTrack,
 } from '../types/event';
 
 const options = {
@@ -42,7 +42,17 @@ const saveEventSchema = {
     data: { type: dataSchema, required: true },
 };
 
-const Event = mongoose.model<IEvent|IPlayEvent|IPlayNowEvent|IUpNextChangeEvent|ISaveEvent>('PlayEvent', new Schema(eventSchema, options));
+const moveTrackEventSchema = {
+    trackId: { type: Number, required: true },
+    source: { type: Number, required: true },
+    destination: { type: Number, required: true },
+};
+
+const subscribeEventSchema = {
+    componentId: { type: String, required: true },
+};
+
+const Event = mongoose.model<IEvent|IPlayEvent|IPlayNowEvent|IUpNextChangeEvent|ISaveEvent|ISubscribeEvent|IMoveTrack>('PlayEvent', new Schema(eventSchema, options));
 
 // Play/Pause Event
 const PlayEvent = Event.discriminator<IPlayEvent>('Play', new Schema(playEventSchema, options));
@@ -57,9 +67,15 @@ const RemoveFromUpnext = Event.discriminator<IUpNextChangeEvent>('RemoveFromUpne
 // Save Event
 const SaveEvent = Event.discriminator<ISaveEvent>('Save', new Schema(saveEventSchema, options));
 
+// MoveTrack Event
+const MoveTrackEvent = Event.discriminator<IMoveTrack>('MoveTrack', new Schema(moveTrackEventSchema, options));
+
+// Subscribe Event
+const SubscribeEvent = Event.discriminator<ISubscribeEvent>('Subscribe', new Schema(subscribeEventSchema, options));
+
 Event.create({
     platform: 'iOS',
-    event: 'Save',
+    event: 'Subscribe',
     componentId: 'comp_id',
     timestamp: Date.now(),
     userId: 1,
