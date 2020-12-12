@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct PlayerMenu: View {
-    @EnvironmentObject private var nowPlaying: NowPlaying
     @Environment(\.presentationMode) var presentationMode
-    let track: TrackInfo
+    @EnvironmentObject private var nowPlaying: NowPlaying
+    @ObservedObject var viewModel: TrackViewModel
     
     var body: some View {
         VStack(spacing: 36) {
             Spacer()
-            MenuThumbnailButton()
-            MenuButton(type: .like(nowPlaying.playingTrack?.liked ?? 0)) {
-                if nowPlaying.playingTrack?.liked == 1 {
-                    nowPlaying.cancelLikedTrack(id: nowPlaying.playingTrack?.id ?? 0)
-                } else {
-                    nowPlaying.likeTrack(id: nowPlaying.playingTrack?.id ?? 0)
-                }
+            let track = viewModel.track
+            MenuThumbnailButton(imageUrl: track.album.imageUrl,
+                                title: track.title,
+                                subtitle: track.artist.name)
+            MenuButton(type: .like(track.liked)) {
+                viewModel.like()
             }
             MenuButton(type: .exclude) {
                 
@@ -44,6 +43,6 @@ struct PlayerMenu: View {
 
 struct PlayerMenu_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerMenu(track: trackinfo)
+        PlayerMenu(viewModel: .init(track: trackinfo))
     }
 }

@@ -38,7 +38,7 @@ struct ArtistView: View {
                             
                             VStack(spacing: 12) {
                                 ForEach(artist.tracks, id: \.id) { track in
-                                    TrackRowB(track: track)
+                                    TrackRowB(viewModel: .init(track: track))
                                 }
                                 .frame(width: width * .sectionRatio)
                             }

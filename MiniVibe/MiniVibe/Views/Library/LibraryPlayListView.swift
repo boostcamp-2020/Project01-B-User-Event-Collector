@@ -52,7 +52,7 @@ struct LibraryPlayListView: View {
                         let title = "보관함 플레이리스트"
                         NavigationLink(
                             destination:
-                                PlayListView(id: 0)
+                                PlayListView(viewModel: .init(id: 0))
                                 .logTransition(eventLogger: eventLogger,
                                                identifier: .playlist(id: 0),
                                                componentId: .playlistRow)

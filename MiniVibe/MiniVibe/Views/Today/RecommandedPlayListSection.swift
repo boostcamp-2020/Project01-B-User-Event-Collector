@@ -25,7 +25,7 @@ struct RecommandedPlayListSection: View {
                 LazyHStack(spacing: width * .spacingRatio) {
                     ForEach(0..<5) { _ in
                         NavigationLink(destination:
-                                        AlbumView(id: 11)
+                                        AlbumView(viewModel: .init(id: 11))
                                         .logTransition(eventLogger: eventLogger,
                                                        identifier: .album(id: 11),
                                                        componentId: .playlistItem(section: title))

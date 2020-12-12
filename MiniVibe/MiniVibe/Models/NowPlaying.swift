@@ -11,15 +11,15 @@ import Combine
 final class NowPlaying: ObservableObject {
     @Published var isPlaying: Bool = false
     @Published var isPlayerPresented: Bool = false
-    @Published var upNext = [TrackInfo]()
-    @Published var selectedTracks = Set<TrackInfo>()
-    var playingTrack: TrackInfo? {
+    @Published var upNext = [TrackViewModel]()
+    @Published var selectedTracks = Set<TrackViewModel>()
+    var playingTrack: TrackViewModel? {
         return upNext.first
     }
     let usecase = TrackUseCase()
     var cancellables = Set<AnyCancellable>()
     
-    func addTrack(track: TrackInfo) {
+    func addTrack(track: TrackViewModel) {
         isPlaying = true
         if let index = upNext.firstIndex(of: track) {
             upNext.insert(upNext.remove(at: index), at: 0)
@@ -42,27 +42,4 @@ final class NowPlaying: ObservableObject {
         isPlaying = true
         upNext.insert(upNext.remove(at: 0), at: upNext.count)
     }
-    
-    func likeTrack(id: Int) {
-        usecase.likeTrack(like: LikeTrack(trackId: id)) //sink로 받고 에러처리만 하면 될 듯?
-            .sink { _ in
-                
-            } receiveValue: { _ in
-                
-            }
-            .store(in: &cancellables)
-        upNext[0].liked = 1
-    }
-    
-    func cancelLikedTrack(id: Int) {
-        usecase.cancelLikedTrack(id: id)
-            .sink { _ in
-                
-            } receiveValue: { _ in
-                
-            }
-            .store(in: &cancellables)
-        upNext[0].liked = 0
-    }
-
 }

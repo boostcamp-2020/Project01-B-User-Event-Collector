@@ -25,7 +25,7 @@ struct NewsItem: View {
             }
             
             NavigationLink(destination:
-                            AlbumView(id: news.albumId)
+                            AlbumView(viewModel: .init(id: news.albumId))
                             .logTransition(eventLogger: eventLogger,
                                            identifier: .album(id: news.albumId),
                                            componentId: .newsItem)

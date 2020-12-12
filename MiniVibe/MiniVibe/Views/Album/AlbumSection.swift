@@ -31,7 +31,7 @@ struct AlbumSection<D: View>: View {
                     ForEach(albums, id: \.id) { album in
                         NavigationLink(
                             destination:
-                                AlbumView(id: album.id)
+                                AlbumView(viewModel: .init(id: album.id))
                                 .logTransition(eventLogger: eventLogger,
                                                identifier: .album(id: album.id),
                                                componentId: .albumItem)

@@ -37,7 +37,7 @@ struct Lyrics: View {
             
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
-                    Text(nowPlaying.playingTrack?.lyrics ?? "")
+                    Text(nowPlaying.playingTrack?.track.lyrics ?? "")
                         .font(.system(size: CGFloat(15 * textSize.rawValue)))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
@@ -60,7 +60,7 @@ struct Lyrics_Previews: PreviewProvider {
 struct BackgroundImage: View {
     @EnvironmentObject private var nowPlaying: NowPlaying
     var body: some View {
-        KFImage(URL(string: nowPlaying.playingTrack?.album.imageUrl ?? ""))
+        KFImage(URL(string: nowPlaying.playingTrack?.track.album.imageUrl ?? ""))
             .resizable()
             .scaledToFill()
             .overlay(Color.white.blur(radius: 300))
@@ -79,14 +79,14 @@ struct LyricsTrackInfo: View {
     
     var body: some View {
         HStack(spacing: 10) {
-            KFImage(URL(string: nowPlaying.playingTrack?.album.imageUrl ?? ""))
+            KFImage(URL(string: nowPlaying.playingTrack?.track.album.imageUrl ?? ""))
                 .resizable()
                 .scaledToFit()
             
             VStack(alignment: .leading) {
-                Text(nowPlaying.playingTrack?.album.title ?? "Unknown")
+                Text(nowPlaying.playingTrack?.track.album.title ?? "Unknown")
                     .font(.title3)
-                Text(nowPlaying.playingTrack?.artist.name ?? "Unknown")
+                Text(nowPlaying.playingTrack?.track.artist.name ?? "Unknown")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }

@@ -19,17 +19,14 @@ struct Player: View {
             PlayerHeader(title: "오늘 Top 100")
             
             Spacer()
-
-            if let track = nowPlaying.playingTrack {
-                PlayerThumbnail(isOpenLyrics: $isLyricsOpen)
-                
-                Spacer()
-                
-                PlayerControls(isOpenMenu: $isMenuOpen,
-                               title: track.title,
-                               artist: track.artist.name)
-            }
-                
+            
+            PlayerThumbnail(isOpenLyrics: $isLyricsOpen)
+            
+            Spacer()
+            
+            PlayerControls(isOpenMenu: $isMenuOpen, viewModel: nowPlaying.playingTrack ?? .init(track: trackinfo))
+                .environmentObject(nowPlaying)
+            
             Spacer()
             
             footer
@@ -56,7 +53,7 @@ struct Player: View {
             .font(.system(size: 12))
             .logSubscription(eventLogger: eventLogger,
                              componentId: "")
-
+            
             Spacer()
             
             Button {

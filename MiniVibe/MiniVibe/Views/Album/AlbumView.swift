@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct AlbumView: View {
-    init(id: Int) {
-        self.id = id
+    init(viewModel: AlbumViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
     }
     
     @EnvironmentObject private var eventLogger: EventLogger
-    @StateObject private var viewModel = AlbumViewModel()
-    private let id: Int
+    @StateObject private var viewModel: AlbumViewModel
     
     var body: some View {
         content
@@ -53,8 +52,9 @@ struct AlbumView: View {
                                     ) {
                                         Section(header: PlayAndShuffle(width: geometry.size.width)) {
                                             ForEach(tracks, id: \.id) { track in
-                                                TrackRowD(track: track, order: 1) {
-                                                    viewModel.send(.showTrackMenu(info: track))
+                                                let trackViewModel = TrackViewModel(track: track)
+                                                TrackRowD(viewModel: trackViewModel, order: 1) {
+                                                    viewModel.send(.showTrackMenu(info: $0))
                                                 }
                                             }
                                         }
@@ -93,9 +93,9 @@ struct AlbumView: View {
                                                identifier: .albumMenu(id: album.id),
                                                componentId: .albumMenuButton)
                         case let .track(info):
-                            PlayerMenu(track: info)
+                            PlayerMenu(viewModel: info)
                                 .logTransition(eventLogger: eventLogger,
-                                               identifier: .playerMenu(id: info.id),
+                                               identifier: .playerMenu(id: info.track.id),
                                                componentId: .trackMenuButton)
                         }
                     }
@@ -104,7 +104,7 @@ struct AlbumView: View {
         } else {
             Color.clear
                 .onAppear {
-                    viewModel.send(.appear(albumID: id))
+                    viewModel.send(.appear)
                 }
         }
     }
@@ -139,7 +139,7 @@ struct AlbumView: View {
 struct AlbumPlaylistView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AlbumView(id: 11)
+            AlbumView(viewModel: AlbumViewModel(id: 11))
         }
     }
 }

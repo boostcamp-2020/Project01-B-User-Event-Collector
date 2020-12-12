@@ -40,7 +40,7 @@ struct ThumbnailList: View {
         case let .playlist(data):
             ForEach(data, id: \.id) { playlist in
                 NavigationLink(destination:
-                                PlayListView(id: playlist.id)
+                                PlayListView(viewModel: .init(id: playlist.id))
                                 .logTransition(eventLogger: eventLogger,
                                                identifier: .playlist(id: playlist.id),
                                                componentId: ComponentId.playlistRow)

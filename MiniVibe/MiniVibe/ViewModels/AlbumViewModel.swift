@@ -9,28 +9,32 @@ import Combine
 
 final class AlbumViewModel: ObservableObject {
     enum Input {
-        case appear(albumID: Int)
+        case appear
         case showAlbumMenu
-        case showTrackMenu(info: TrackInfo)
+        case showTrackMenu(info: TrackViewModel)
     }
     
     enum ActiveSheet {
         case album
-        case track(info: TrackInfo)
+        case track(info: TrackViewModel)
     }
     
     private let useCase = AlbumUseCase()
     private var cancellables = Set<AnyCancellable>()
-    
+    private let id: Int
     @Published private(set) var album: Album?
     @Published private(set) var activeSheet: ActiveSheet = .album
     @Published var showSheet = false
     @Published var isOpenArticle = false
     
+    init(id: Int) {
+        self.id = id
+    }
+    
     func send(_ input: Input) {
         switch input {
-        case let .appear(albumID):
-            load(albumID: albumID)
+        case .appear:
+            load()
         case .showAlbumMenu:
             activeSheet = .album
             showSheet = true
@@ -40,8 +44,8 @@ final class AlbumViewModel: ObservableObject {
         }
     }
     
-    private func load(albumID: Int) {
-        useCase.loadAlbum(with: albumID)
+    private func load() {
+        useCase.loadAlbum(with: id)
             .sink { _ in
                 
             } receiveValue: { [weak self] album in

@@ -12,7 +12,7 @@ struct PlayerView: View {
     @EnvironmentObject var eventLogger: EventLogger
     @State private var isOpenMenu = false
     @State private var isOpenLyrics = false
-
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -36,7 +36,9 @@ struct PlayerView: View {
             }
             .animation(.easeInOut)
             .fullScreenCover(isPresented: $isOpenMenu) {
-                PlayerMenu(track: trackinfo)
+                if let viewModel = nowPlaying.playingTrack {
+                    PlayerMenu(viewModel: viewModel)
+                }
             }
         }
     }
