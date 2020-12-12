@@ -45,7 +45,7 @@ struct PlayListSection<D: View>: View {
                             }
                         )
                     }
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                 }
                 .padding(.horizontal, width * .paddingRatio)
             }

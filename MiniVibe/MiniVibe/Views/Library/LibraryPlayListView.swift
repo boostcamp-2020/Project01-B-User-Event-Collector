@@ -37,7 +37,7 @@ struct LibraryPlayListView: View {
                             }
                         }
                     }
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                     
                     HStack(spacing: 24) {
                         Image(systemName: "plus")

@@ -27,26 +27,13 @@ struct TrackRowB: View {
                                             identifier: .album(id: track.album.id),
                                             componentId: .trackRowThumbnail)
             ) {
-                KFImage(URL(string: track.album.imageUrl))
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .border(Color.gray, width: 0.7)
+                TrackRowImage(imageUrl: track.album.imageUrl)
             }
             
             Button {
                 nowPlaying.addTrack(track: viewModel)
             } label: {
-                VStack(alignment: .leading, spacing: 4) {
-                    Spacer()
-                    Text(track.title)
-                        .font(.system(size: 17))
-                        .foregroundColor(.black)
-                        
-                    Text(track.artist.name)
-                        .font(.system(size: 13))
-                        .foregroundColor(.secondary)
-                    Spacer()
-                }
+                TrackRowInfoB(title: track.title, artist: track.artist.name)
                 Spacer()
             }
         }
@@ -55,7 +42,12 @@ struct TrackRowB: View {
 
 struct TrackRowB_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowB(viewModel: .init(track: trackinfo, eventLogger: EventLogger(persistentContainer: .init())))
-            .previewLayout(.fixed(width: 375, height: 80))
+        HStack {
+            TrackRowImage(imageUrl: "")
+            TrackRowInfoB(title: "붉은 노을", artist: "이문세")
+            Spacer()
+        }
+        .previewLayout(.fixed(width: 375, height: 80))
+        .previewInAllColorSchemes
     }
 }

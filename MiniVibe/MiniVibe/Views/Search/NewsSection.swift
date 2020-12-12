@@ -16,6 +16,7 @@ struct NewsSection: View {
             HStack {
                 ForEach(newsList, id: \.id) { news in
                     NewsItem(width: width, news: news)
+                        .frame(width: width * .sectionRatio, height: 250)
                 }
             }
             .padding(.horizontal, width * .paddingRatio)

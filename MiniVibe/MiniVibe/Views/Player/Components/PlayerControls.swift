@@ -41,7 +41,7 @@ struct PlayerControls: View {
                     nowPlaying.isPlaying.toggle()
                 } label: {
                     Image(systemName: nowPlaying.isPlaying ? "pause.fill" : "play.fill")
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .font(.system(size: 40))
                         .frame(height: 40)
                 }
@@ -52,7 +52,7 @@ struct PlayerControls: View {
                     viewModel.like()
                 } label: {
                     Image(systemName: track.liked == 1 ? "heart.fill" : "heart")
-                        .foregroundColor(track.liked == 1 ? .pink : .secondary)
+                        .foregroundColor(track.liked == 1 ? .accentColor : .secondary)
                         .font(.system(size: 32))
                 }
                 
@@ -62,7 +62,7 @@ struct PlayerControls: View {
                     isShuffle.toggle()
                 } label: {
                     Image(systemName: "shuffle")
-                        .foregroundColor(isShuffle ? .pink : .secondary)
+                        .foregroundColor(isShuffle ? .accentColor : .secondary)
                 }
             }
         }

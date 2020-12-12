@@ -21,6 +21,7 @@ struct ThumbnailItem: View {
             
             Text(title)
                 .font(.system(size: 17))
+                .foregroundColor(.primary)
             
             Text(subtitle)
                 .font(.system(size: 12))

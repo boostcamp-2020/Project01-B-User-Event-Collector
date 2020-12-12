@@ -29,7 +29,7 @@ struct PlayerSlider: View {
                     .foregroundColor(.secondary)
                 
                 Rectangle()
-                    .foregroundColor(.pink)
+                    .foregroundColor(.accentColor)
                     .frame(width: width * CGFloat(percentage / 100))
             }
             .frame(height: dragAction ? 24 : 3)

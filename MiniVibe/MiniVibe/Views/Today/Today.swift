@@ -91,6 +91,14 @@ struct Today: View {
 
 struct Today_Previews: PreviewProvider {
     static var previews: some View {
-        Today()
+        Group {
+            Today()
+                .previewDevice(PreviewDevice(rawValue: "iPhone SE"))
+                .previewDisplayName("iPhone SE")
+            
+            Today()
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12 mini"))
+                .previewDisplayName("iPhone 12 mini")
+        }
     }
 }

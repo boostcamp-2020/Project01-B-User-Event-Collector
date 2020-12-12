@@ -32,7 +32,7 @@ struct ThumbnailGrid: View {
                                               imageURL: album.imageUrl)
                             }
                         )
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                     }
                 }
                 .padding(.horizontal, geometry.size.width * .paddingRatio)
@@ -44,9 +44,7 @@ struct ThumbnailGrid: View {
 
 struct ThumbnailGrid_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            ThumbnailGrid(albums: [])
-        }
+        ThumbnailGrid(albums: [])
                 
     }
 }

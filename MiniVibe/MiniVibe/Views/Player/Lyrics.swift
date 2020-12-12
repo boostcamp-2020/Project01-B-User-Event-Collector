@@ -39,6 +39,7 @@ struct Lyrics: View {
                 ScrollView {
                     Text(nowPlaying.playingTrack?.track.lyrics ?? "")
                         .font(.system(size: CGFloat(15 * textSize.rawValue)))
+                        .foregroundColor(.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
                 }
@@ -49,12 +50,6 @@ struct Lyrics: View {
         .background(BackgroundImage())
     }
     
-}
-
-struct Lyrics_Previews: PreviewProvider {
-    static var previews: some View {
-        Lyrics(isOpenLyrics: .constant(false))
-    }
 }
 
 struct BackgroundImage: View {
@@ -96,7 +91,7 @@ struct LyricsTrackInfo: View {
             Button {
                 action()
             } label: { Image(systemName: "xmark") }
-            .foregroundColor(.black)
+            .foregroundColor(.primary)
         }
         .frame(height: 50)
         .padding(.horizontal, 20)
@@ -119,5 +114,13 @@ struct LyricsViewOption: View {
         .padding()
         .font(.system(size: 25))
         .foregroundColor(.black)
+    }
+}
+
+struct Lyrics_Previews: PreviewProvider {
+    static var previews: some View {
+        //Lyrics(isOpenLyrics: .constant(false))
+        LyricsViewOption(textSize: .constant(.one))
+            .previewLayout(.fixed(width: 300, height: 80))
     }
 }

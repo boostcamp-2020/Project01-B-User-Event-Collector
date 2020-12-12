@@ -24,7 +24,7 @@ struct SectionTitle<D: View>: View {
             label: {
                 HStack {
                     Text(title)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .font(.system(size: 16.5))
                         .bold()
                     
@@ -35,7 +35,8 @@ struct SectionTitle<D: View>: View {
                         .font(.system(size: 12))
                 }
                 .padding(.horizontal, width * .paddingRatio)
-            })
+            }
+        )
     }
 }
 
@@ -44,6 +45,7 @@ struct SectionTitle_Previews: PreviewProvider {
         SectionTitle(width: 375, title: "최근 들은 노래") {
             Text("Hello")
         }
+        .previewInAllColorSchemes
         .previewLayout(.fixed(width: 375, height: 50))
     }
 }
