@@ -28,7 +28,7 @@ extension LikeLogType {
 
 struct LikeLog: LikeLogType {
     let userId: Int
-    let componentId: String
+    let componentId: String = "likeButton"
     var data: LogData
     var isLike: Bool
     let timestamp: Date = Date()

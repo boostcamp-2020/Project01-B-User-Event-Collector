@@ -68,7 +68,7 @@ struct PlayListView: View {
                     .fullScreenCover(isPresented: $viewModel.showSheet) {
                         switch viewModel.activeSheet {
                         case .playlist:
-                            PlayListMenu(playlist: playlist)
+                            PlayListMenu(viewModel: viewModel)
                                 .logTransition(eventLogger: eventLogger,
                                                identifier: .playlistMenu(id: playlist.id),
                                                componentId: .playlistMenuButton)
@@ -92,7 +92,7 @@ struct PlayListView: View {
     var trailingBarButtons: some View {
         HStack(spacing: 10) {
             Button {
-                
+                viewModel.send(.like)
             } label: {
                 Image(systemName: "heart")
             }
@@ -119,7 +119,7 @@ struct PlayListView: View {
 struct PlayListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PlayListView(viewModel: .init(id: 0))
+            PlayListView(viewModel: .init(id: 0, eventLogger: EventLogger(persistentContainer: .init())))
         }
     }
 }

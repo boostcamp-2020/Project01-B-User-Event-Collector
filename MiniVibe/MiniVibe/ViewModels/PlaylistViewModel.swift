@@ -12,6 +12,7 @@ final class PlaylistViewModel: ObservableObject {
         case appear
         case showPlaylistMenu
         case showTrackMenu(info: TrackViewModel)
+        case like
     }
     
     enum ActiveSheet {
@@ -20,6 +21,7 @@ final class PlaylistViewModel: ObservableObject {
     }
     
     private let useCase = PlaylistUseCase()
+    private let eventLogger: EventLoggerType
     private var cancellables = Set<AnyCancellable>()
     private let id: Int
     
@@ -28,8 +30,9 @@ final class PlaylistViewModel: ObservableObject {
     @Published var showSheet = false
     @Published var isOpenArticle = false
     
-    init(id: Int) {
+    init(id: Int, eventLogger: EventLoggerType) {
         self.id = id
+        self.eventLogger = eventLogger
     }
     
     func send(_ input: Input) {
@@ -42,6 +45,8 @@ final class PlaylistViewModel: ObservableObject {
         case let .showTrackMenu(info):
             activeSheet = .track(info: info)
             showSheet = true
+        case .like:
+            like()
         }
     }
     
@@ -53,5 +58,12 @@ final class PlaylistViewModel: ObservableObject {
                 self?.playlist = playlist
             }
             .store(in: &cancellables)
+    }
+    
+    private func like() {
+        eventLogger.send(LikeLog(userId: 0,
+                                 data: .init(type: "Playlist",
+                                             id: id),
+                                 isLike: true))
     }
 }

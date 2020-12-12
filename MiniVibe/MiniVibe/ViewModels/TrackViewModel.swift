@@ -30,7 +30,6 @@ final class TrackViewModel: ObservableObject {
                     if isSuccess {
                         self.track.liked = 1
                         self.eventLogger.send(LikeLog(userId: 0,
-                                                       componentId: "likeButton",
                                                        data: .init(type: "Track", id: self.track.id),
                                                        isLike: true))
                     }
@@ -45,7 +44,6 @@ final class TrackViewModel: ObservableObject {
                     if isSuccess {
                         self.track.liked = 0
                         self.eventLogger.send(LikeLog(userId: 0,
-                                                       componentId: "likeButton",
                                                        data: .init(type: "Track", id: self.track.id),
                                                        isLike: false))
                     }

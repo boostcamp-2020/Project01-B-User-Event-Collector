@@ -57,8 +57,7 @@ struct TrackRowC: View {
                 Image(systemName: "ellipsis")
                     .foregroundColor(.black)
                     .padding()
-            }
-            
+            }            
         }
         .padding(.vertical, 8)
     }

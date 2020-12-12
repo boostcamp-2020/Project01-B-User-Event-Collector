@@ -8,20 +8,25 @@
 import SwiftUI
 
 struct PlayListMenu: View {
+    init(viewModel: PlaylistViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
     @Environment(\.presentationMode) var presentationMode
-    let playlist: Playlist
+    @StateObject private var viewModel: PlaylistViewModel
     
     var body: some View {
+        let playlist = viewModel.playlist
         VStack(spacing: 36) {
             Spacer()
-            MenuThumbnailButton(imageUrl: playlist.imageUrl,
-                                title: playlist.title,
-                                subtitle: playlist.subTitle ?? "")
+            MenuThumbnailButton(imageUrl: playlist?.imageUrl ?? "",
+                                title: playlist?.title ?? "",
+                                subtitle: playlist?.subTitle ?? "")
             MenuButton(type: .download(.playList)) {
                 
             }
             MenuButton(type: .like(0)) {
-                
+                viewModel.send(.like)
             }
             MenuButton(type: .addToPlaylist) {
                 
@@ -38,6 +43,6 @@ struct PlayListMenu: View {
 
 struct PlayListMenu_Previews: PreviewProvider {
     static var previews: some View {
-        PlayListMenu(playlist: .init(id: 0, title: "", subTitle: "", description: "", imageUrl: "", customized: false, tracks: []))
+        PlayListMenu(viewModel: .init(id: 0, eventLogger: EventLogger(persistentContainer: .init())))
     }
 }
