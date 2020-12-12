@@ -73,13 +73,4 @@ const MoveTrackEvent = Event.discriminator<IMoveTrack>('MoveTrack', new Schema(m
 // Subscribe Event
 const SubscribeEvent = Event.discriminator<ISubscribeEvent>('Subscribe', new Schema(subscribeEventSchema, options));
 
-Event.create({
-    platform: 'iOS',
-    event: 'Subscribe',
-    componentId: 'comp_id',
-    timestamp: Date.now(),
-    userId: 1,
-    data: { type: 'track', id: 1 },
-});
-
 export default Event;
