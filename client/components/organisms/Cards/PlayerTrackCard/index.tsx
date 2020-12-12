@@ -4,7 +4,7 @@ import IconButton from '@components/atoms/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import TrackCard from '@components/molecules/TrackCard';
 import { Play } from '@components/molecules/TrackPlayButton/TrackPlayButton.styles';
-import { PlayerTrackCardProps } from '@interfaces/props';
+import { PlayerTrackCardProp } from 'interfaces/props';
 
 const PlayerTrackCardContainer = styled.li`
     background-color: #141414;
@@ -21,7 +21,7 @@ const PlayerTrackCardContainer = styled.li`
         cursor: move;
     }
 `;
-const PlayerTrackCard = ({ data }: PlayerTrackCardProps) => {
+const PlayerTrackCard = ({ data }: PlayerTrackCardProp) => { 
     return (
         <PlayerTrackCardContainer>
             <TrackCard

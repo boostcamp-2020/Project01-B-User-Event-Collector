@@ -10,7 +10,6 @@ const rootReducer = combineReducers({
         //HYDRATE를 위한 index reducer (HYDRATE는 redux의 서버사이드 렌더링을 위해 필요함)
         switch (action.type) {
             case HYDRATE:
-                console.log('HYDRATE', action);
                 return {
                     ...state,
                     ...action.payload,

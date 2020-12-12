@@ -5,6 +5,9 @@ import Label from '@components/atoms/Label';
 import MainMagazineCard from '@components/organisms/Cards/MainMagazineCard/MainMagazineCard';
 import { MagazineSort } from '@interfaces/props';
 import MagazineList from '@components/organisms/CardLists/MagazineList/MagazineList';
+import { request } from 'utils/apis';
+import apiUrl from 'constants/apiUrl';
+
 
 const mainMagazineData = 
 {
@@ -61,7 +64,7 @@ const ContentsContainer = styled.div`
     align-items: center;
 `;
 
-const Magazine = () => {
+const Magazine = ({MagazinesData, MainMagazineData}) => {
     return (
         <Container>
             <TitleContainer>
@@ -76,21 +79,28 @@ const Magazine = () => {
                 <Label variant="secondary">GENRE</Label>
             </LabelContainer>
             <MainMagazineContainer>
-                <MainMagazineCard {...mainMagazineData} />
+                <MainMagazineCard {...MainMagazineData} />
             </MainMagazineContainer>
             <ContentsContainer>
                 <ContentsContainer>
-                    <MagazineList items={Magazinesdata} />
+                    <MagazineList items={MagazinesData} />
                 </ContentsContainer>
             </ContentsContainer>
         </Container>
     );
 };
 
-/*export const getServerSideProps = wrapper.getServerSideProps((context) => {
-    constext.store.dispatch({
-        type: LOAD_USER_REQUEST,
-    });
-})*/
+export async function getServerSideProps(context) {
+    const MagazinesData = await request(apiUrl.magazine);
+    const MainMagazineData = MagazinesData[0];
 
+    // TODO: error handling
+
+    return {
+        props: {
+            MagazinesData,
+            MainMagazineData
+        },
+    };
+}
 export default Magazine;

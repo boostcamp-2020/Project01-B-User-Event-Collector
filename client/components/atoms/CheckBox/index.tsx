@@ -3,12 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import styled from 'styled-components';
 import { selectTrack, unselectTrack } from 'reducers/selectedTrack';
-import { TrackRowCardProps } from 'interfaces/props';
+import { TrackRowCardProps, CheckBoxProps } from 'interfaces/props';
 
-interface CheckBoxProps {
-    id: string;
-    data: TrackRowCardProps;
-}
+
 
 const StyledCheckBox = styled.div`
     width: 40px;
@@ -46,8 +43,8 @@ const CheckBox = ({ id, data }: CheckBoxProps) => {
 
     return(
         <StyledCheckBox>
-            <Input type="checkbox" id={id} checked = {checked} onChange = {onChangeHandler}/>
-            <label htmlFor={id} />
+            <Input type="checkbox" id ={`'${id}'`} checked = {checked} onChange = {onChangeHandler}/>
+            <label htmlFor={`'${id}'`} />
         </StyledCheckBox>
         )};
 

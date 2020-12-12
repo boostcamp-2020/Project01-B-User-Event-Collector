@@ -48,7 +48,7 @@ const AlbumCard = ( data : AlbumCardProps) => {
                     <StyledA href={"/album/"+id}>{title}</StyledA>
                 </TitelContainer>
                 <DescriptionContainer>
-                    <StyledA variant="tertiary" href={"/artist/"+id}>{artistName}</StyledA>
+                    <StyledA variant="tertiary" href={"/artist/"+artistId}>{artistName}</StyledA>
                 </DescriptionContainer>
             </TextContainer>
         </CardContainer>

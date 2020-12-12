@@ -9,7 +9,9 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import AddButton from '@components/atoms/Button/AddButton';
 import Heart from '@components/atoms/Heart/Heart';
 
-const ButtonContainer = styled.div`
+import { HeaderButtonGroupProps } from 'interfaces/props';
+
+const ButtonContainer = styled.div<HeaderButtonGroupProps>`
     width: ${(props) => (props.sort === 'track' ? '300px' : '480px')};
     height: 40px;
     display: flex;
@@ -46,11 +48,6 @@ const contentsDropDownMenu = [
         content: 'MP3 구매',
     },
 ];
-
-interface HeaderButtonGroupProps {
-    sort?: 'track';
-    onAddUpNextHandler: any;
-}
 
 const HeaderButtonGroup = ({sort, onAddUpNextHandler}: HeaderButtonGroupProps) => {
     return (
