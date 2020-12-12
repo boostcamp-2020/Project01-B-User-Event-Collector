@@ -70,7 +70,15 @@ interface IUpNextChangeEvent extends IEvent {
     trackId: number[],
 }
 
+interface ISaveEvent extends IEvent {
+    componentId: string,
+    data: {
+        type: string,
+        id: number
+    },
+}
+
 export {
     IEvent, IClickEvent, ITransitionEvent, ISearchEvent, ILikeEvent, IShareEvent, IAddToPlaylistEvent,
-    IPlayEvent, IPlayNowEvent, IUpNextChangeEvent,
+    IPlayEvent, IPlayNowEvent, IUpNextChangeEvent, ISaveEvent,
 };
