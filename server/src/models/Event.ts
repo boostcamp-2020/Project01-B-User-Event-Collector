@@ -1,6 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 import {
     IEvent, IClickEvent, ITransitionEvent, ISearchEvent, ILikeEvent, IShareEvent,
+    IAddToPlaylistEvent,
 } from '../types/event';
 
 const options = {
@@ -40,15 +41,24 @@ const searchEventSchema = {
 const likeEventSchema = {
     componentId: { type: String, required: true },
     data: { type: dataSchema, required: true },
+    page: { type: String },
     isLike: { type: Boolean, required: true },
 };
 
 const shareEventSchema = {
     componentId: { type: String, required: true },
+    page: { type: String },
     data: { type: dataSchema, required: true },
 };
 
-const Event = mongoose.model<IEvent|IClickEvent|ITransitionEvent|ISearchEvent|ILikeEvent|IShareEvent>('Event', new Schema(eventSchema, options));
+const addToPlaylistSchema = {
+    componentId: { type: String, required: true },
+    page: { type: String },
+    data: { type: dataSchema, required: true },
+    playlistId: { type: Number, required: true },
+};
+
+const Event = mongoose.model<IEvent|IClickEvent|ITransitionEvent|ISearchEvent|ILikeEvent|IShareEvent|IAddToPlaylistEvent>('Event', new Schema(eventSchema, options));
 
 // Click Event
 const ClickEvent = Event.discriminator<IClickEvent>('Click', new Schema(clickEventSchema, options));
@@ -73,21 +83,7 @@ const ActiveEvent = Event.discriminator<IEvent>('Active', new Schema(eventSchema
 const BackgroundEvent = Event.discriminator<IEvent>('Background', new Schema(eventSchema, options));
 const TerminateEvent = Event.discriminator<IEvent>('Terminate', new Schema(eventSchema, options));
 
-Event.create({
-    platform: 'Web',
-    event: 'Share',
-    componentId: 'comp_id',
-    timestamp: Date.now(),
-    userId: 1,
-    // componentId: 'library-playlist',
-    // data: { type: 'playlist', id: 1 },
-    // isLike: true,
-    // targetPage: 'next page url',
-    // componentId: 'component ID',
-    data: {
-        id: 1,
-        type: 'artist',
-    },
-});
+// AddToPlaylist Event
+const AddToPlaylsitEvent = Event.discriminator<IAddToPlaylistEvent>('AddToPlaylsit', new Schema(addToPlaylistSchema, options));
 
 export default Event;
