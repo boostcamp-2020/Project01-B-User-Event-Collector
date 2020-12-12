@@ -23,7 +23,7 @@ struct MiniVibeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainTab()
+            MainTab(viewModel: .init(eventLogger: eventLogger))
                 .environmentObject(NowPlaying())
                 .environmentObject(eventLogger)
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in

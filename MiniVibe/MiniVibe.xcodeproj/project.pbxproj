@@ -52,6 +52,7 @@
 		4478F71C256E858700755656 /* MixtapeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4478F71B256E858700755656 /* MixtapeGrid.swift */; };
 		4478F720256E89EB00755656 /* ChartList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4478F71F256E89EB00755656 /* ChartList.swift */; };
 		4478F723256E8B2B00755656 /* PlayAndShuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4478F722256E8B2B00755656 /* PlayAndShuffle.swift */; };
+		4479025C2584FE9F00CE8797 /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4479025B2584FE9F00CE8797 /* MainTabViewModel.swift */; };
 		447BF73B256F3E6C003B5DB7 /* MainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BF73A256F3E6C003B5DB7 /* MainTab.swift */; };
 		447ECD302579184E00EE1435 /* LibraryArtistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447ECD2F2579184E00EE1435 /* LibraryArtistsView.swift */; };
 		447ECD3825791B9800EE1435 /* LibraryArtistRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447ECD3725791B9800EE1435 /* LibraryArtistRow.swift */; };
@@ -208,6 +209,7 @@
 		4478F71B256E858700755656 /* MixtapeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixtapeGrid.swift; sourceTree = "<group>"; };
 		4478F71F256E89EB00755656 /* ChartList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartList.swift; sourceTree = "<group>"; };
 		4478F722256E8B2B00755656 /* PlayAndShuffle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAndShuffle.swift; sourceTree = "<group>"; };
+		4479025B2584FE9F00CE8797 /* MainTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
 		447BF73A256F3E6C003B5DB7 /* MainTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTab.swift; sourceTree = "<group>"; };
 		447ECD2F2579184E00EE1435 /* LibraryArtistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryArtistsView.swift; sourceTree = "<group>"; };
 		447ECD3725791B9800EE1435 /* LibraryArtistRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryArtistRow.swift; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 				44D5FABD257FD66400A3E91C /* ArtistViewModel.swift */,
 				44D5FAC5257FDE5D00A3E91C /* ArtistSectionViewModel.swift */,
 				449C21C92584921700E180BB /* TrackViewModel.swift */,
+				4479025B2584FE9F00CE8797 /* MainTabViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -979,6 +982,7 @@
 				44B22A57257E0D450068A11B /* AlbumUseCase.swift in Sources */,
 				800FA849257DC557008926A5 /* EndPoint.swift in Sources */,
 				44139CBB25763C5F000CEEA5 /* ThumbnailGrid.swift in Sources */,
+				4479025C2584FE9F00CE8797 /* MainTabViewModel.swift in Sources */,
 				80D02E08257E0E0D00A6748F /* News.swift in Sources */,
 				448A39FC25814D5200583624 /* EventLogView.swift in Sources */,
 				80045E0E25762C1100F32E6C /* ArtistMenu.swift in Sources */,

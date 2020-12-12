@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct MainTab: View {
-    @State private var contentFrame = CGRect.zero
-    @State private var isPlayerPresented = false
     @EnvironmentObject private var nowPlaying: NowPlaying
     @EnvironmentObject private var eventLogger: EventLogger
+    @State private var contentFrame = CGRect.zero
+    @StateObject private var viewModel: MainTabViewModel
     
-    init() {
+    init(viewModel: MainTabViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
         UITabBar.appearance().barTintColor = .systemBackground
         UITabBar.appearance().clipsToBounds = true
     }
     
     var body: some View {
-        TabView(selection: $eventLogger.tabViewSelection) {
+        TabView(selection: $viewModel.tabViewSelection) {
             Today()
                 .tabItem {
                     Image(systemName: "house.fill")
@@ -59,7 +60,7 @@ struct MainTab: View {
     
     @ViewBuilder
     private var player: some View {
-        if eventLogger.tabViewSelection != .none {
+        if viewModel.tabViewSelection != .none {
             PlayerPreview(coordinate: contentFrame)
                 .onTapGesture {
                     if !nowPlaying.upNext.isEmpty {
@@ -78,7 +79,7 @@ struct MainTab: View {
 
 struct MainTab_Previews: PreviewProvider {
     static var previews: some View {
-        MainTab()
+        MainTab(viewModel: .init(eventLogger: EventLogger(persistentContainer: .init())))
     }
 }
 

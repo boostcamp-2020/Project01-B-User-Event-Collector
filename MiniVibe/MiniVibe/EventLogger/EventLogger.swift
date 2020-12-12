@@ -13,15 +13,6 @@ protocol EventLoggerType {
 
 final class EventLogger: EventLoggerType, ObservableObject {
     
-    @Published var tabViewSelection: ViewIdentifier = .today {
-        didSet {
-            guard oldValue != tabViewSelection,
-                  tabViewSelection != .none else { return }
-            send(TabViewTransition(userId: 0,
-                                   componentId: tabViewSelection.description,
-                                   page: tabViewSelection.description))
-        }
-    }
     private let persistentContainer: NSPersistentContainer
     
     init(persistentContainer: NSPersistentContainer) {
