@@ -9,12 +9,10 @@ import SwiftUI
 
 struct MainTab: View {
     @EnvironmentObject private var nowPlaying: NowPlaying
-    @EnvironmentObject private var eventLogger: EventLogger
     @State private var contentFrame = CGRect.zero
-    @StateObject private var viewModel: MainTabViewModel
+    @StateObject private var viewModel = MainTabViewModel()
     
-    init(viewModel: MainTabViewModel) {
-        self._viewModel = StateObject(wrappedValue: viewModel)
+    init() {
         UITabBar.appearance().barTintColor = .systemBackground
         UITabBar.appearance().clipsToBounds = true
     }
@@ -45,7 +43,7 @@ struct MainTab: View {
                 }
                 .tag(ViewIdentifier.library)
             
-            EventLogView(viewModel: .init(eventLogger: eventLogger))
+            EventLogView(viewModel: .init())
                 .tabItem {
                     Image(systemName: "pencil.and.ellipsis.rectangle")
                 }
@@ -69,8 +67,7 @@ struct MainTab: View {
                 }
                 .sheet(isPresented: $nowPlaying.isPlayerPresented) {
                     PlayerView()
-                        .logTransition(eventLogger: eventLogger,
-                                       identifier: .player,
+                        .logTransition(identifier: .player,
                                        componentId: ComponentId.playerPreview)
                 }
         }
@@ -79,7 +76,7 @@ struct MainTab: View {
 
 struct MainTab_Previews: PreviewProvider {
     static var previews: some View {
-        MainTab(viewModel: .init(eventLogger: EventLogger(persistentContainer: .init())))
+        MainTab()
     }
 }
 

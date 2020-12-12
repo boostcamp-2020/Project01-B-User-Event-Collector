@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct LibraryArtistsView: View {
-    @EnvironmentObject private var eventLogger: EventLogger
-    
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width
@@ -54,8 +52,7 @@ struct LibraryArtistsView: View {
                         ForEach(0..<10) { _ in
                             NavigationLink(destination:
                                             ArtistView(id: 3)
-                                            .logTransition(eventLogger: eventLogger,
-                                                           identifier: .artist(id: 3), componentId: .artistRow)
+                                            .logTransition(identifier: .artist(id: 3), componentId: .artistRow)
                             ) {
                                 LibraryArtistRow(artist: "방탄소년단")
                             }

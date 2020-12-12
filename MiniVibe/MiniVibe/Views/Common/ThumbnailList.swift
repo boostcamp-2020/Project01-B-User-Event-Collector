@@ -13,7 +13,6 @@ struct ThumbnailList: View {
         case magazine(data: [Magazine])
     }
     
-    @EnvironmentObject private var eventLogger: EventLogger
     let info: Info
     let navigationTitle: String
     
@@ -40,10 +39,8 @@ struct ThumbnailList: View {
         case let .playlist(data):
             ForEach(data, id: \.id) { playlist in
                 NavigationLink(destination:
-                                PlayListView(viewModel: .init(id: playlist.id,
-                                                              eventLogger: eventLogger))
-                                .logTransition(eventLogger: eventLogger,
-                                               identifier: .playlist(id: playlist.id),
+                                PlayListView(viewModel: .init(id: playlist.id))
+                                .logTransition(identifier: .playlist(id: playlist.id),
                                                componentId: ComponentId.playlistRow)
                 ) {
                     ThumbnailRow(imageURL: playlist.imageUrl,
@@ -55,8 +52,7 @@ struct ThumbnailList: View {
             ForEach(data, id: \.id) { magazine in
                 NavigationLink(destination:
                                 MagazineView(magazine: magazine)
-                                .logTransition(eventLogger: eventLogger,
-                                               identifier: .magazine(id: magazine.id),
+                                .logTransition(identifier: .magazine(id: magazine.id),
                                                componentId: ComponentId.magazineRow)
                 ) {
                     ThumbnailRow(imageURL: magazine.imageUrl,

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TodayTitle: View {
-    @EnvironmentObject private var eventLogger: EventLogger
     let width: CGFloat
     
     var body: some View {
@@ -17,8 +16,7 @@ struct TodayTitle: View {
                 .foregroundColor(.black)
                 .font(.title)
                 .fontWeight(.heavy)
-                .logSubscription(eventLogger: eventLogger,
-                                 componentId: "")
+                .logSubscription(componentId: "")
             
             Spacer()
             

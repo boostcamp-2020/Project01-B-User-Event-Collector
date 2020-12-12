@@ -54,7 +54,7 @@ struct TrackRowD: View {
 
 struct TrackRowD_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowD(viewModel: .init(track: trackinfo, eventLogger: EventLogger(persistentContainer: .init())), order: 1, menuButtonAction: { _ in })
+        TrackRowD(viewModel: .init(track: trackinfo), order: 1, menuButtonAction: { _ in })
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

@@ -15,7 +15,6 @@ struct PlayListSection<D: View>: View {
         self.destination = destination
     }
     
-    @EnvironmentObject private var eventLogger: EventLogger
     @State private var isOpenMenu = false
     let width: CGFloat
     let title: String
@@ -31,10 +30,8 @@ struct PlayListSection<D: View>: View {
                     ForEach(playlists, id: \.id) { playlist in
                         NavigationLink(
                             destination:
-                                PlayListView(viewModel: .init(id: playlist.id,
-                                                              eventLogger: eventLogger))
-                                .logTransition(eventLogger: eventLogger,
-                                               identifier: .playlist(id: playlist.id),
+                                PlayListView(viewModel: .init(id: playlist.id))
+                                .logTransition(identifier: .playlist(id: playlist.id),
                                                componentId: .playlistItem(section: title))
                             ,
                             label: {

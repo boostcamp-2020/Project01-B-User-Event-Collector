@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MixtapeGrid: View {
-    @EnvironmentObject private var eventLogger: EventLogger
     let title: String
     let mixtapes: [Mixtape]
     
@@ -21,8 +20,7 @@ struct MixtapeGrid: View {
                     ForEach(mixtapes, id: \.id) { mixtape in
                         NavigationLink(
                             destination: Text("MixtapeView")
-                                .logTransition(eventLogger: eventLogger,
-                                               identifier: .mixtape(id: mixtape.id),
+                                .logTransition(identifier: .mixtape(id: mixtape.id),
                                                componentId: ComponentId.mixtapeItem),
                             label: {
                                 ThumbnailItem(title: mixtape.title,

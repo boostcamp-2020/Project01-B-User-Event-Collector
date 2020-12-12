@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ChartSectionB: View {
-    @EnvironmentObject private var eventLogger: EventLogger
     let width: CGFloat
     let sectionTitle: String
     
@@ -16,8 +15,7 @@ struct ChartSectionB: View {
         VStack {
             SectionTitle(width: width, title: sectionTitle) {
                 ChartList(title: sectionTitle, tracks: [])
-                    .logTransition(eventLogger: eventLogger,
-                                   identifier: .chart(id: 0),
+                    .logTransition(identifier: .chart(id: 0),
                                    componentId: .sectionTitle(category: sectionTitle))
             }
             
@@ -25,8 +23,7 @@ struct ChartSectionB: View {
                 // 무조건 100개
                 LazyHGrid(rows: .init(repeating: .init(.flexible(minimum: 60)), count: 5)) {
                     ForEach(0..<100) { index in
-                        TrackRowE(viewModel: .init(track: trackinfo,
-                                                   eventLogger: eventLogger),
+                        TrackRowE(viewModel: .init(track: trackinfo),
                                   order: index)
                     }
                     .frame(width: width * .sectionRatio)

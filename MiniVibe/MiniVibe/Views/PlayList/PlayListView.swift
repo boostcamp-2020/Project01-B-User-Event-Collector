@@ -12,7 +12,6 @@ struct PlayListView: View {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
     
-    @EnvironmentObject private var eventLogger: EventLogger
     @StateObject private var viewModel: PlaylistViewModel
     
     var body: some View {
@@ -25,8 +24,7 @@ struct PlayListView: View {
                             title: playlist.title,
                             subtitle: playlist.subTitle ?? "",
                             content: playlist.description ?? "")
-                        .logTransition(eventLogger: eventLogger,
-                                       identifier: .article,
+                        .logTransition(identifier: .article,
                                        componentId: .playlistDescription)
                 } else {
                     ScrollView {
@@ -46,8 +44,7 @@ struct PlayListView: View {
                                 ) {
                                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
                                         ForEach(playlist.tracks ?? [], id: \.id) { track in
-                                            TrackRowC(viewModel: TrackViewModel(track: track,
-                                                                                eventLogger: eventLogger)) {
+                                            TrackRowC(viewModel: TrackViewModel(track: track)) {
                                                 viewModel.send(.showTrackMenu(info: $0))
                                             }
                                         }
@@ -69,13 +66,11 @@ struct PlayListView: View {
                         switch viewModel.activeSheet {
                         case .playlist:
                             PlayListMenu(viewModel: viewModel)
-                                .logTransition(eventLogger: eventLogger,
-                                               identifier: .playlistMenu(id: playlist.id),
+                                .logTransition(identifier: .playlistMenu(id: playlist.id),
                                                componentId: .playlistMenuButton)
                         case let .track(trackViewModel):
                             PlayerMenu(viewModel: trackViewModel)
-                                .logTransition(eventLogger: eventLogger,
-                                               identifier: .playerMenu(id: trackViewModel.track.id),
+                                .logTransition(identifier: .playerMenu(id: trackViewModel.track.id),
                                                componentId: .trackMenuButton)
                         }
                     }
@@ -119,7 +114,7 @@ struct PlayListView: View {
 struct PlayListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PlayListView(viewModel: .init(id: 0, eventLogger: EventLogger(persistentContainer: .init())))
+            PlayListView(viewModel: .init(id: 0))
         }
     }
 }

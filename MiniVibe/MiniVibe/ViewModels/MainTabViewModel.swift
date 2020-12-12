@@ -6,6 +6,7 @@
 //
 
 import Combine
+import EventLogKit
 
 final class MainTabViewModel: ObservableObject {
     
@@ -13,7 +14,7 @@ final class MainTabViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     @Published var tabViewSelection: ViewIdentifier = .today
     
-    init(eventLogger: EventLoggerType) {
+    init(eventLogger: EventLoggerType = MiniVibeApp.eventLogger) {
         self.eventLogger = eventLogger
         $tabViewSelection
             .removeDuplicates()

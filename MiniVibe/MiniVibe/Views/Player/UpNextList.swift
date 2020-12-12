@@ -13,7 +13,6 @@ struct UpNextList: View {
         UITableView.appearance().showsVerticalScrollIndicator = false
     }
     
-    @EnvironmentObject private var eventLogger: EventLogger
     @EnvironmentObject private var nowPlaying: NowPlaying
     @State private var editMode = EditMode.active
     private var selectionCount: Int {
@@ -94,7 +93,7 @@ struct UpNextList: View {
         nowPlaying.upNext.move(fromOffsets: source, toOffset: destination)
         let destinationIndex = sourceIndex < destination ?  destination - 1 : destination
         if sourceIndex != destinationIndex {
-            eventLogger.send(MoveTrackLog(userId: 0,
+            MiniVibeApp.eventLogger.send(MoveTrackLog(userId: 0,
                                           trackId: nowPlaying.upNext[destinationIndex].track.id,
                                           source: sourceIndex,
                                           destination: destinationIndex))

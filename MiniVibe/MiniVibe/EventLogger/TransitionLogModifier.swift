@@ -6,21 +6,21 @@
 //
 
 import SwiftUI
+import EventLogKit
 
 struct TransitionLogModifier: ViewModifier {
-    let eventLogger: EventLogger
     let identifier: ViewIdentifier
     let componentId: ComponentId
     
     func body(content: Content) -> some View {
         content
             .onAppear {
-                eventLogger.send(Appear(userId: 0,
+                MiniVibeApp.eventLogger.send(Appear(userId: 0,
                                         componentId: componentId.description,
                                         page: identifier.description))
             }
             .onDisappear {
-                eventLogger.send(Disappear(userId: 0,
+                MiniVibeApp.eventLogger.send(Disappear(userId: 0,
                                            componentId: "disappear",
                                            page: identifier.description))
             }
@@ -28,25 +28,23 @@ struct TransitionLogModifier: ViewModifier {
 }
 
 struct SubscribeLogModifier: ViewModifier {
-    let eventLogger: EventLogger
     let componentId: String
     
     func body(content: Content) -> some View {
         content
             .onTapGesture {
-                eventLogger.send(SubscribeLog(userId: 0,
+                MiniVibeApp.eventLogger.send(SubscribeLog(userId: 0,
                                               componentId: componentId))
             }
     }
 }
 
 extension View {
-    func logTransition(eventLogger: EventLogger, identifier: ViewIdentifier, componentId: ComponentId) -> some View {
-        modifier(TransitionLogModifier(eventLogger: eventLogger, identifier: identifier, componentId: componentId))
+    func logTransition(identifier: ViewIdentifier, componentId: ComponentId) -> some View {
+        modifier(TransitionLogModifier(identifier: identifier, componentId: componentId))
     }
     
-    func logSubscription(eventLogger: EventLogger, componentId: String) -> some View {
-        modifier(SubscribeLogModifier(eventLogger: eventLogger,
-                                      componentId: componentId))
+    func logSubscription(componentId: String) -> some View {
+        modifier(SubscribeLogModifier(componentId: componentId))
     }
 }
