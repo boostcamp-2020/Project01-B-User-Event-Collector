@@ -17,7 +17,7 @@ struct PreviewItem: View {
             Image("content")
                 .resizable()
             
-            VStack(spacing: 3) {
+            VStack(alignment: .leading, spacing: 3) {
                 Text("연인을 위한 캐롤")
                     .font(.system(size: 17))
                     .bold()

@@ -50,7 +50,7 @@ struct MainTab: View {
                 }
                 .tag(ViewIdentifier.none)
         }
-        .accentColor(.accentColor)
+        .foregroundColor(.accentColor)
         .onPreferenceChange(Size.self, perform: { value in
             contentFrame = value.last ?? .zero
         })

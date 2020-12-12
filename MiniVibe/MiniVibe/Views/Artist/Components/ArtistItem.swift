@@ -20,6 +20,7 @@ struct ArtistItem: View {
             
             Text(artist.name)
                 .font(.system(size: 17))
+                .foregroundColor(.primary)
                 .lineLimit(2)
             
             Text("♥︎ 999")
