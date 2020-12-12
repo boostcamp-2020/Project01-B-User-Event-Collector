@@ -43,6 +43,6 @@ struct PlayerMenu: View {
 
 struct PlayerMenu_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerMenu(viewModel: .init(track: trackinfo))
+        PlayerMenu(viewModel: .init(track: trackinfo, eventLogger: EventLogger(persistentContainer: .init())))
     }
 }

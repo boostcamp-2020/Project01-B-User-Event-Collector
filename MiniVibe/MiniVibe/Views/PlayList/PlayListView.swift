@@ -46,7 +46,8 @@ struct PlayListView: View {
                                 ) {
                                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
                                         ForEach(playlist.tracks ?? [], id: \.id) { track in
-                                            TrackRowC(viewModel: TrackViewModel(track: track)) {
+                                            TrackRowC(viewModel: TrackViewModel(track: track,
+                                                                                eventLogger: eventLogger)) {
                                                 viewModel.send(.showTrackMenu(info: $0))
                                             }
                                         }

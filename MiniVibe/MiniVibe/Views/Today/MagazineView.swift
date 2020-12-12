@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MagazineView: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject private var eventLogger: EventLogger
     let magazine: Magazine
     
     var body: some View {
@@ -28,7 +29,9 @@ struct MagazineView: View {
                             Text(ArticleExample.content)
                                 .padding(.horizontal, width * .paddingRatio)
                             ForEach(0..<10) { index in
-                                TrackRowE(viewModel: .init(track: trackinfo), order: index)
+                                TrackRowE(viewModel: .init(track: trackinfo,
+                                                           eventLogger: eventLogger),
+                                          order: index)
                             }
                         }
                         .padding(.horizontal, geometry.size.width * .paddingRatio)

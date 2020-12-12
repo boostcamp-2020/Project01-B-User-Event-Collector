@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChartList: View {
+    @EnvironmentObject private var eventLogger: EventLogger
     let title: String
     let tracks: [TrackInfo]
     
@@ -21,7 +22,9 @@ struct ChartList: View {
                 ) {
                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
                         ForEach(tracks, id: \.id) { track in
-                            TrackRowA(viewModel: .init(track: track), order: 1)
+                            TrackRowA(viewModel: .init(track: track,
+                                                       eventLogger: eventLogger),
+                                      order: 1)
                         }
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)

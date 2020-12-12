@@ -26,7 +26,7 @@ struct ChartSectionA: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: .init(repeating: .init(.flexible(minimum: 60)), count: 5)) {
                     ForEach(tracks, id: \.id) { track in
-                        TrackRowB(viewModel: .init(track: track))
+                        TrackRowB(viewModel: .init(track: track, eventLogger: eventLogger))
                     }
                     .frame(width: width * .sectionRatio)
                 }

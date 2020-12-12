@@ -24,7 +24,8 @@ struct Player: View {
             
             Spacer()
             
-            PlayerControls(isOpenMenu: $isMenuOpen, viewModel: nowPlaying.playingTrack ?? .init(track: trackinfo))
+            PlayerControls(isOpenMenu: $isMenuOpen,
+                           viewModel: nowPlaying.playingTrack ?? .init(track: trackinfo, eventLogger: eventLogger))
                 .environmentObject(nowPlaying)
             
             Spacer()

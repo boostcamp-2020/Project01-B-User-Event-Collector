@@ -34,11 +34,11 @@ struct LibrarySongsView: View {
                             }
                         }
                         ForEach(0..<50) { _ in
-                            TrackRowC(viewModel: .init(track: trackinfo)) { _ in
+                            TrackRowC(viewModel: .init(track: trackinfo, eventLogger: eventLogger)) { _ in
                                 isMenuOpen = true
                             }
                             .fullScreenCover(isPresented: $isMenuOpen) {
-                                PlayerMenu(viewModel: .init(track: trackinfo))
+                                PlayerMenu(viewModel: .init(track: trackinfo, eventLogger: eventLogger))
                                     .logTransition(eventLogger: eventLogger,
                                                    identifier: .playerMenu(id: trackinfo.id),
                                                    componentId: .trackMenuButton

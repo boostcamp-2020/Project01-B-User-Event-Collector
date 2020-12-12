@@ -73,7 +73,7 @@ struct TrackRowA: View {
 
 struct TrackRow_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowA(viewModel: .init(track: trackinfo), order: 3)
+        TrackRowA(viewModel: .init(track: trackinfo, eventLogger: EventLogger(persistentContainer: .init())), order: 3)
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

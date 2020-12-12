@@ -61,7 +61,7 @@ struct TrackRowE: View {
 
 struct TrackRowE_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowE(viewModel: .init(track: trackinfo), order: 3)
+        TrackRowE(viewModel: .init(track: trackinfo, eventLogger: EventLogger(persistentContainer: .init())), order: 3)
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

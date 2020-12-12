@@ -66,7 +66,7 @@ struct TrackRowC: View {
 
 struct TrackRowC_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowC(viewModel: .init(track: trackinfo), menuButtonAction: { _ in })
+        TrackRowC(viewModel: .init(track: trackinfo, eventLogger: EventLogger(persistentContainer: .init())), menuButtonAction: { _ in })
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }
