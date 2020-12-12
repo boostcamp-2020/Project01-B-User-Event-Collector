@@ -24,7 +24,7 @@ const clickEventSchema = {
     componentId: { type: String, required: true },
     page: { type: String, required: true },
     targetPage: { type: String },
-    data: { type: dataSchema, required: true },
+    data: { type: dataSchema },
 };
 
 const transitionEventSchema = {

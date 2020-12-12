@@ -7,6 +7,7 @@ import playlistRouter from './playlists';
 import albumRouter from './albums';
 import trackRouter from './tracks';
 import mixtapeRouter from './mixtapes';
+import eventRouter from './events';
 
 const router = express.Router();
 
@@ -18,4 +19,5 @@ router.use('/playlists', playlistRouter);
 router.use('/tracks', trackRouter);
 router.use('/albums', albumRouter);
 router.use('/mixtapes', mixtapeRouter);
+router.use('/events', eventRouter);
 export default router;

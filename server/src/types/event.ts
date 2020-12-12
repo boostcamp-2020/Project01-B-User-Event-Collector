@@ -16,7 +16,7 @@ interface IClickEvent extends IEvent {
     componentId: string,
     page: string,
     targetPage?: string,
-    data: IData,
+    data?: IData,
 }
 
 interface ITransitionEvent extends IEvent {
