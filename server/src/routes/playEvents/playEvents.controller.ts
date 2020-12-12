@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import Event from '../../models/Event';
+import Event from '../../models/PlayEvent';
 
 export const create = async (req: Request, res: Response, next: NextFunction) => {
     const event = req.body;
