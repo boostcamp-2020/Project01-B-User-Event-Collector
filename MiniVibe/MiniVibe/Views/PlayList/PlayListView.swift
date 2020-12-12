@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct PlayListView: View {
-    init(id: Int) {
-        self.id = id
+    init(viewModel: PlaylistViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
     }
     
-    @StateObject private var viewModel = PlaylistViewModel()
-    private let id: Int
+    @EnvironmentObject private var eventLogger: EventLogger
+    @StateObject private var viewModel: PlaylistViewModel
     
     var body: some View {
         if let playlist = viewModel.playlist {
@@ -25,6 +25,9 @@ struct PlayListView: View {
                             title: playlist.title,
                             subtitle: playlist.subTitle ?? "",
                             content: playlist.description ?? "")
+                        .logTransition(eventLogger: eventLogger,
+                                       identifier: .article,
+                                       componentId: .playlistDescription)
                 } else {
                     ScrollView {
                         VStack(spacing: 36) {
@@ -43,8 +46,9 @@ struct PlayListView: View {
                                 ) {
                                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
                                         ForEach(playlist.tracks ?? [], id: \.id) { track in
-                                            TrackRowC(track: track) {
-                                                viewModel.send(.showTrackMenu(info: track))
+                                            TrackRowC(viewModel: TrackViewModel(track: track,
+                                                                                eventLogger: eventLogger)) {
+                                                viewModel.send(.showTrackMenu(info: $0))
                                             }
                                         }
                                     }
@@ -64,9 +68,15 @@ struct PlayListView: View {
                     .fullScreenCover(isPresented: $viewModel.showSheet) {
                         switch viewModel.activeSheet {
                         case .playlist:
-                            PlayListMenu(playlist: playlist)
-                        case let .track(info):
-                            PlayerMenu(track: info)
+                            PlayListMenu(viewModel: viewModel)
+                                .logTransition(eventLogger: eventLogger,
+                                               identifier: .playlistMenu(id: playlist.id),
+                                               componentId: .playlistMenuButton)
+                        case let .track(trackViewModel):
+                            PlayerMenu(viewModel: trackViewModel)
+                                .logTransition(eventLogger: eventLogger,
+                                               identifier: .playerMenu(id: trackViewModel.track.id),
+                                               componentId: .trackMenuButton)
                         }
                     }
                 }
@@ -74,7 +84,7 @@ struct PlayListView: View {
         } else {
             Color.clear
                 .onAppear {
-                    viewModel.send(.appear(playlistID: id))
+                    viewModel.send(.appear)
                 }
         }
     }
@@ -82,7 +92,7 @@ struct PlayListView: View {
     var trailingBarButtons: some View {
         HStack(spacing: 10) {
             Button {
-                
+                viewModel.send(.like)
             } label: {
                 Image(systemName: "heart")
             }
@@ -109,7 +119,7 @@ struct PlayListView: View {
 struct PlayListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PlayListView(id: 0)
+            PlayListView(viewModel: .init(id: 0, eventLogger: EventLogger(persistentContainer: .init())))
         }
     }
 }

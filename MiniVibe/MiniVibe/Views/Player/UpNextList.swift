@@ -13,6 +13,7 @@ struct UpNextList: View {
         UITableView.appearance().showsVerticalScrollIndicator = false
     }
     
+    @EnvironmentObject private var eventLogger: EventLogger
     @EnvironmentObject private var nowPlaying: NowPlaying
     @State private var editMode = EditMode.active
     private var selectionCount: Int {
@@ -36,14 +37,14 @@ struct UpNextList: View {
             
             VStack(spacing: 0) {
                 List(selection: $nowPlaying.selectedTracks) {
-                    ForEach(nowPlaying.upNext, id: \.self) { track in
+                    ForEach(nowPlaying.upNext, id: \.self) { viewModel in
                         HStack(spacing: 10) {
-                            KFImage(URL(string: track.album.imageUrl))
+                            KFImage(URL(string: viewModel.track.album.imageUrl))
                                 .resizable()
                                 .frame(width: 50, height: 50)
                             VStack(alignment: .leading) {
-                                Text(track.title)
-                                Text(track.artist.name)
+                                Text(viewModel.track.title)
+                                Text(viewModel.track.artist.name)
                             }
                         }
                     }
@@ -57,7 +58,6 @@ struct UpNextList: View {
                         .frame(height: 48)
                 }
             }
-            
         }
     }
     
@@ -90,10 +90,15 @@ struct UpNextList: View {
     }
     
     private func onMove(source: IndexSet, destination: Int) {
-        var destinationIndex: Int = 0
-        nowPlaying.upNext.move(fromOffsets: source, toOffset: destination)
         guard let sourceIndex = source.first else { return }
-        destinationIndex = sourceIndex < destination ?  destination - 1 : destination
+        nowPlaying.upNext.move(fromOffsets: source, toOffset: destination)
+        let destinationIndex = sourceIndex < destination ?  destination - 1 : destination
+        if sourceIndex != destinationIndex {
+            eventLogger.send(MoveTrackLog(userId: 0,
+                                          trackId: nowPlaying.upNext[destinationIndex].track.id,
+                                          source: sourceIndex,
+                                          destination: destinationIndex))
+        }
     }
     
     @ViewBuilder

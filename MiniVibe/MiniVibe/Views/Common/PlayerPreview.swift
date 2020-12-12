@@ -35,15 +35,16 @@ struct PlayerPreview: View {
     }
     
     @ViewBuilder private func playingTrackInfo() -> some View {
-        KFImage(URL(string: nowPlaying.playingTrack?.album.imageUrl ?? ""))
+        let track = nowPlaying.playingTrack?.track
+        KFImage(URL(string: track?.album.imageUrl ?? ""))
             .resizable()
             .frame(width: height, height: height)
         
         VStack(alignment: .leading) {
-            Text(nowPlaying.playingTrack?.title ?? "What's on today?")
+            Text(track?.title ?? "What's on today?")
                 .font(.system(size: 15))
             
-            Text(nowPlaying.playingTrack?.artist.name ?? "Tap the play button")
+            Text(track?.artist.name ?? "Tap the play button")
                 .font(.system(size: 12))
                 .foregroundColor(.secondary)
         }

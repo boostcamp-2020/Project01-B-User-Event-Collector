@@ -16,16 +16,24 @@ enum ViewIdentifier: CustomStringConvertible, Hashable {
     case recommendedRecentAlbum
     case album(id: Int)
     case albumMenu(id: Int)
+    case latestAlbumList
+    case artistAlbumList
     case mixtapes
     case mixtape(id: Int)
     case playlist(id: Int)
-    case playlists(id: Int) // 각각의 플레이리스트 목록에 id가 있다고 가정(현재 API에는 구현되어있지 않음)
+    case playlistMenu(id: Int)
+    case playlists(id: Int)
     case magazine(id: Int)
+    case magazineList
     case station
     case player
     case lyrics(id: Int)
     case playerMenu(id: Int)
     case chart(id: Int)
+    case article
+    case artist(id: Int)
+    case artistMenu(id: Int)
+    case trackList
     
     var description: String {
         switch self {
@@ -42,29 +50,45 @@ enum ViewIdentifier: CustomStringConvertible, Hashable {
         case .recommendedRecentAlbum:
             return "recommendedRecentAlbum"
         case let .album(id):
-            return "album \(id)"
+            return "album_\(id)"
         case let .albumMenu(id):
-            return "album menu \(id)"
+            return "albumMenu_\(id)"
+        case .latestAlbumList:
+            return "latestAlbumList"
+        case .artistAlbumList:
+            return "artistAlbumList"
         case .mixtapes:
             return "mixtapes"
         case let .mixtape(id):
-            return "mixtape \(id)"
+            return "mixtape_\(id)"
         case let .playlist(id):
-            return "playlist \(id)"
+            return "playlist_\(id)"
+        case let .playlistMenu(id):
+            return "playlistMenu_\(id)"
         case let .playlists(id):
-            return "playlists \(id)"
+            return "playlists_\(id)"
         case let .magazine(id):
-            return "magazine \(id)"
+            return "magazine_\(id)"
+        case .magazineList:
+            return "magazineList"
         case .station:
             return "station"
         case .player:
             return "player"
         case let .lyrics(id):
-            return "lyrics \(id)"
+            return "lyrics_\(id)"
         case let .playerMenu(id):
-            return "playerMenu \(id)"
+            return "playerMenu_\(id)"
         case let .chart(id):
-            return "chart \(id)"
+            return "chart_\(id)"
+        case .article:
+            return "article"
+        case let .artist(id):
+            return "artist_\(id)"
+        case let .artistMenu(id):
+            return "artistMenu_\(id)"
+        case .trackList:
+            return "trackList"
         }
     }
 }

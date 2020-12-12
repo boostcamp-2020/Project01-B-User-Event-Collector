@@ -9,13 +9,26 @@ import SwiftUI
 import KingfisherSwiftUI
 
 struct TrackRowE: View {
+    @EnvironmentObject private var eventLogger: EventLogger
     @EnvironmentObject private var nowPlaying: NowPlaying
+    @StateObject private var viewModel: TrackViewModel
     let order: Int
-    let track: TrackInfo
+    
+    init(viewModel: TrackViewModel, order: Int) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+        self.order = order
+    }
 
     var body: some View {
         HStack {
-            NavigationLink(destination: AlbumView(id: track.album.id)) {
+            let track = viewModel.track
+            NavigationLink(destination:
+                            AlbumView(viewModel: .init(id: track.album.id,
+                                                       eventLogger: eventLogger))
+                            .logTransition(eventLogger: eventLogger,
+                                           identifier: .album(id: track.album.id),
+                                           componentId: .trackRowThumbnail)
+            ) {
                 KFImage(URL(string: track.album.imageUrl))
                     .resizable()
                     .frame(width: 50, height: 50)
@@ -23,7 +36,7 @@ struct TrackRowE: View {
             }
             
             Button {
-                nowPlaying.addTrack(track: track)
+                nowPlaying.addTrack(track: viewModel)
             } label: {
                 Text("\(order)")
                     .font(.title3)
@@ -49,7 +62,7 @@ struct TrackRowE: View {
 
 struct TrackRowE_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowE(order: 3, track: trackinfo)
+        TrackRowE(viewModel: .init(track: trackinfo, eventLogger: EventLogger(persistentContainer: .init())), order: 3)
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

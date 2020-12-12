@@ -19,14 +19,14 @@ struct ChartSectionA: View {
             SectionTitle(width: width, title: title) {
                 ChartList(title: title, tracks: tracks)
                     .logTransition(eventLogger: eventLogger,
-                                   identifier: .chart(id: 100))
+                                   identifier: .chart(id: 100),
+                                   componentId: .sectionTitle(category: title))
             }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: .init(repeating: .init(.flexible(minimum: 60)), count: 5)) {
                     ForEach(tracks, id: \.id) { track in
-                        TrackRowB(track: track)
-                            
+                        TrackRowB(viewModel: .init(track: track, eventLogger: eventLogger))
                     }
                     .frame(width: width * .sectionRatio)
                 }

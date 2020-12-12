@@ -12,13 +12,13 @@ struct PlayerControls: View {
     @EnvironmentObject private var eventLogger: EventLogger
     @Binding var isOpenMenu: Bool
     @State private var isShuffle = false
-    let title: String
-    let artist: String
+    @ObservedObject var viewModel: TrackViewModel
     
     var body: some View {
+        let track = viewModel.track
         VStack {
-            PlayerSliderView(title: title,
-                             artist: artist,
+            PlayerSliderView(title: track.title,
+                             artist: track.artist.name,
                              isOpenMenu: $isOpenMenu)
                 .frame(height: 100)
             
@@ -49,21 +49,10 @@ struct PlayerControls: View {
                 Spacer()
                 
                 Button {
-                    if nowPlaying.playingTrack?.liked == 1 {
-                        nowPlaying.cancelLikedTrack(id: nowPlaying.playingTrack?.id ?? 0)
-                    } else {
-                        nowPlaying.likeTrack(id: nowPlaying.playingTrack?.id ?? 0)
-                    }
-                    
-                    // TO DO: action에서 분리해내기
-                    eventLogger.send(LikeLog(userId: 0,
-                                             componentId: "PlayerLikeButton",
-                                             data: .init(type: "Track",
-                                                         id: nowPlaying.playingTrack?.id ?? 0),
-                                             isLike: nowPlaying.playingTrack?.liked == 1))
+                    viewModel.like()
                 } label: {
-                    Image(systemName: nowPlaying.playingTrack?.liked == 1 ? "heart.fill" : "heart")
-                        .foregroundColor(nowPlaying.playingTrack?.liked == 1 ? .pink : .secondary)
+                    Image(systemName: track.liked == 1 ? "heart.fill" : "heart")
+                        .foregroundColor(track.liked == 1 ? .pink : .secondary)
                         .font(.system(size: 32))
                 }
                 
@@ -82,6 +71,6 @@ struct PlayerControls: View {
 
 struct PlayerControls_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerControls(isOpenMenu: .constant(false), title: "곰인형", artist: "린")
+        PlayerControls(isOpenMenu: .constant(false), viewModel: .init(track: trackinfo, eventLogger: EventLogger(persistentContainer: .init())))
     }
 }

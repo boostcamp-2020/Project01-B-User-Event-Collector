@@ -8,19 +8,29 @@
 import SwiftUI
 
 struct RecommandedPlayListSection: View {
+    @EnvironmentObject private var eventLogger: EventLogger
     let width: CGFloat
     let title: String
     
     var body: some View {
         VStack {
             SectionTitle(width: width, title: title) {
-                ThumbnailList(info: .playlist(data: []), navigationTitle: title) //"VIBE 추천 플레이리스트"
+                ThumbnailList(info: .playlist(data: []), navigationTitle: title)
+                    .logTransition(eventLogger: eventLogger,
+                                   identifier: .playlists(id: 5),
+                                   componentId: .sectionTitle(category: title))
             }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: width * .spacingRatio) {
                     ForEach(0..<5) { _ in
-                        NavigationLink(destination: AlbumView(id: 11)) {
+                        NavigationLink(destination:
+                                        AlbumView(viewModel: .init(id: 11,
+                                                                   eventLogger: eventLogger))
+                                        .logTransition(eventLogger: eventLogger,
+                                                       identifier: .album(id: 11),
+                                                       componentId: .playlistItem(section: title))
+                        ) {
                             RecommandedPlayListItem()
                                 .frame(width: width * .sectionRatio)
                         }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LibraryAlbumsView: View {
+    @EnvironmentObject private var eventLogger: EventLogger
     @State private var isMenuOpen = false
     
     var body: some View {
@@ -33,7 +34,13 @@ struct LibraryAlbumsView: View {
                         let title = "요즘 이 곡"
                         let subtitle = "VIBE"
                         NavigationLink(
-                            destination: AlbumView(id: 11),
+                            destination:
+                                AlbumView(viewModel: .init(id: 11,
+                                                           eventLogger: eventLogger))
+                                .logTransition(eventLogger: eventLogger,
+                                               identifier: .album(id: 11),
+                                               componentId: .albumItem)
+                            ,
                             label: {
                                 ThumbnailItem(title: title, subtitle: subtitle, imageURL: "")
                             }

@@ -12,7 +12,7 @@ struct PlayerView: View {
     @EnvironmentObject var eventLogger: EventLogger
     @State private var isOpenMenu = false
     @State private var isOpenLyrics = false
-
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -29,14 +29,17 @@ struct PlayerView: View {
                 }
                 if isOpenLyrics {
                     Lyrics(isOpenLyrics: $isOpenLyrics)
-                        .logTransition(eventLogger: eventLogger, identifier: .lyrics(id: 100))
+                        .logTransition(eventLogger: eventLogger,
+                                       identifier: .lyrics(id: 100),
+                                       componentId: ComponentId.lyrics)
                 }
             }
             .animation(.easeInOut)
             .fullScreenCover(isPresented: $isOpenMenu) {
-                PlayerMenu(track: trackinfo)
+                if let viewModel = nowPlaying.playingTrack {
+                    PlayerMenu(viewModel: viewModel)
+                }
             }
-            .logTransition(eventLogger: eventLogger, identifier: .player)
         }
     }
 }

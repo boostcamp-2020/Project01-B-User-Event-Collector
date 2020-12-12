@@ -31,9 +31,11 @@ struct PlayListSection<D: View>: View {
                     ForEach(playlists, id: \.id) { playlist in
                         NavigationLink(
                             destination:
-                                PlayListView(id: playlist.id)
+                                PlayListView(viewModel: .init(id: playlist.id,
+                                                              eventLogger: eventLogger))
                                 .logTransition(eventLogger: eventLogger,
-                                               identifier: .playlist(id: playlist.id))
+                                               identifier: .playlist(id: playlist.id),
+                                               componentId: .playlistItem(section: title))
                             ,
                             label: {
                                 ThumbnailItem(title: playlist.title,

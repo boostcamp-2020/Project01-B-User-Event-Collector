@@ -10,29 +10,33 @@ import SwiftUI
 
 @main
 struct MiniVibeApp: App {
-    @Environment(\.scenePhase) var scenePhase
     let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Event")
         container.loadPersistentStores(completionHandler: { _, _ in })
         return container
     }()
+    let eventLogger: EventLogger
+    
+    init() {
+        eventLogger = EventLogger(persistentContainer: persistentContainer)
+    }
     
     var body: some Scene {
         WindowGroup {
             MainTab()
                 .environmentObject(NowPlaying())
-                .environmentObject(EventLogger(persistentContainer: persistentContainer))
-                .onChange(of: scenePhase) { newScenePhase in
-                    switch newScenePhase {
-                    case .active:
-                        print("active")
-                    case .inactive:
-                        print("inactive")
-                    case .background:
-                        print("background")
-                    @unknown default:
-                        print("unknown")
-                    }
+                .environmentObject(eventLogger)
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+                    eventLogger.send(Active(userId: 0))
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
+                    eventLogger.send(Background(userId: 0))
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                    eventLogger.send(Foreground(userId: 0))
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willTerminateNotification)) { _ in
+                    eventLogger.send(Terminate(userId: 0))
                 }
         }
     }

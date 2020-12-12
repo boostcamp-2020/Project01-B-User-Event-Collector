@@ -10,17 +10,24 @@ import SwiftUI
 struct AlbumMenu: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var eventLogger: EventLogger
-    let album: Album
+    @StateObject private var viewModel: AlbumViewModel
+    
+    init(viewModel: AlbumViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     var body: some View {
+        let album = viewModel.album
         VStack(spacing: 36) {
             Spacer()
-            MenuThumbnailButton()
+            MenuThumbnailButton(imageUrl: album?.imageUrl ?? "",
+                                title: album?.title ?? "",
+                                subtitle: album?.artist.name ?? "")
             MenuButton(type: .download(.album)) {
                 
             }
             MenuButton(type: .like(0)) {
-                
+                viewModel.send(.like)
             }
             MenuButton(type: .addToPlaylist) {
                 
@@ -32,12 +39,11 @@ struct AlbumMenu: View {
                 presentationMode.wrappedValue.dismiss()
             }
         }
-        .logTransition(eventLogger: eventLogger, identifier: .albumMenu(id: album.id))
     }
 }
 
 struct AlbumMenu_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumMenu(album: .init(id: 1, title: "", description: "", releaseDate: "", artist: .init(id: 1, name: ""), imageUrl: "", tracks: []))
+        AlbumMenu(viewModel: .init(id: 1, eventLogger: EventLogger(persistentContainer: .init())))
     }
 }

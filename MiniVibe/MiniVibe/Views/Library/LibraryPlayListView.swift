@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LibraryPlayListView: View {
+    @EnvironmentObject private var eventLogger: EventLogger
+    
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width
@@ -49,7 +51,13 @@ struct LibraryPlayListView: View {
                     ForEach(0..<10) { _ in
                         let title = "보관함 플레이리스트"
                         NavigationLink(
-                            destination: PlayListView(id: 0),
+                            destination:
+                                PlayListView(viewModel: .init(id: 0,
+                                                              eventLogger: eventLogger))
+                                .logTransition(eventLogger: eventLogger,
+                                               identifier: .playlist(id: 0),
+                                               componentId: .playlistRow)
+                            ,
                             label: {
                                 LibraryPlayListRow(title: title)
                             })

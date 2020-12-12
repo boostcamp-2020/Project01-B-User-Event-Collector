@@ -28,6 +28,7 @@
 		441EC8402576031F0069146E /* PlayerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441EC83F2576031F0069146E /* PlayerMenu.swift */; };
 		441F915F2583AE470006FB05 /* Save+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441F915D2583AE470006FB05 /* Save+CoreDataClass.swift */; };
 		441F91662583AEA90006FB05 /* SaveLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441F91652583AEA90006FB05 /* SaveLog.swift */; };
+		44337F6E2583C4AE00B88EFA /* ComponentId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44337F6D2583C4AE00B88EFA /* ComponentId.swift */; };
 		444272B3256CDEC8008BB87B /* TodayTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272B2256CDEC8008BB87B /* TodayTitle.swift */; };
 		444272B8256CE2B3008BB87B /* PreviewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272B7256CE2B3008BB87B /* PreviewItem.swift */; };
 		444272BB256CE701008BB87B /* PreviewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272BA256CE701008BB87B /* PreviewSection.swift */; };
@@ -58,6 +59,7 @@
 		447ECD40257928A300EE1435 /* LibraryPlayListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447ECD3F257928A300EE1435 /* LibraryPlayListRow.swift */; };
 		448A39F82581476B00583624 /* Date+timeStampFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A39F72581476B00583624 /* Date+timeStampFormat.swift */; };
 		448A39FC25814D5200583624 /* EventLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A39FB25814D5200583624 /* EventLogView.swift */; };
+		449C21CA2584921700E180BB /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449C21C92584921700E180BB /* TrackViewModel.swift */; };
 		44A90ADD25822F420032CD82 /* EventLogType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A90ADC25822F420032CD82 /* EventLogType.swift */; };
 		44ACE45F257E6B9B00EA5479 /* PlaylistUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ACE45E257E6B9B00EA5479 /* PlaylistUseCase.swift */; };
 		44ACE463257E7E9500EA5479 /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ACE462257E7E9500EA5479 /* PlaylistViewModel.swift */; };
@@ -182,6 +184,7 @@
 		441EC83F2576031F0069146E /* PlayerMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerMenu.swift; sourceTree = "<group>"; };
 		441F915D2583AE470006FB05 /* Save+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Save+CoreDataClass.swift"; sourceTree = "<group>"; };
 		441F91652583AEA90006FB05 /* SaveLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveLog.swift; sourceTree = "<group>"; };
+		44337F6D2583C4AE00B88EFA /* ComponentId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentId.swift; sourceTree = "<group>"; };
 		444272B2256CDEC8008BB87B /* TodayTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTitle.swift; sourceTree = "<group>"; };
 		444272B7256CE2B3008BB87B /* PreviewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewItem.swift; sourceTree = "<group>"; };
 		444272BA256CE701008BB87B /* PreviewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSection.swift; sourceTree = "<group>"; };
@@ -212,6 +215,7 @@
 		447ECD3F257928A300EE1435 /* LibraryPlayListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlayListRow.swift; sourceTree = "<group>"; };
 		448A39F72581476B00583624 /* Date+timeStampFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+timeStampFormat.swift"; sourceTree = "<group>"; };
 		448A39FB25814D5200583624 /* EventLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLogView.swift; sourceTree = "<group>"; };
+		449C21C92584921700E180BB /* TrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModel.swift; sourceTree = "<group>"; };
 		44A90ADC25822F420032CD82 /* EventLogType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLogType.swift; sourceTree = "<group>"; };
 		44ACE45E257E6B9B00EA5479 /* PlaylistUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistUseCase.swift; sourceTree = "<group>"; };
 		44ACE462257E7E9500EA5479 /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
@@ -456,6 +460,7 @@
 				80051691257F17FA00D7EF4C /* ViewLogger.swift */,
 				44D858F9257F338900CA794E /* EventUseCase.swift */,
 				445D3A1B257F38620002D2DE /* ViewIdentifier.swift */,
+				44337F6D2583C4AE00B88EFA /* ComponentId.swift */,
 				445D3A21257F441B0002D2DE /* TransitionLogModifier.swift */,
 				4471B1B02581625900647CA0 /* EventLogViewModel.swift */,
 				448A39FB25814D5200583624 /* EventLogView.swift */,
@@ -508,6 +513,7 @@
 				80D02DFF257E0C6400A6748F /* SearchViewModel.swift */,
 				44D5FABD257FD66400A3E91C /* ArtistViewModel.swift */,
 				44D5FAC5257FDE5D00A3E91C /* ArtistSectionViewModel.swift */,
+				449C21C92584921700E180BB /* TrackViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -960,6 +966,7 @@
 				80C6207A256CF21600B5C375 /* StationItem.swift in Sources */,
 				44D5FAC2257FD89E00A3E91C /* ArtistUseCase.swift in Sources */,
 				80FA4433257640330092D25D /* PlaylistAlbumInfo.swift in Sources */,
+				449C21CA2584921700E180BB /* TrackViewModel.swift in Sources */,
 				441357EA25764C8900DC0746 /* ArtistView.swift in Sources */,
 				8084AB6D256E403900F2AAC2 /* ThumbnailRow.swift in Sources */,
 				80A5213A257902FF0051A925 /* LibrarySongsView.swift in Sources */,
@@ -1010,6 +1017,7 @@
 				447ECD40257928A300EE1435 /* LibraryPlayListRow.swift in Sources */,
 				80D02E00257E0C6400A6748F /* SearchViewModel.swift in Sources */,
 				8060925825825B880032FBE0 /* Subscribe+CoreDataClass.swift in Sources */,
+				44337F6E2583C4AE00B88EFA /* ComponentId.swift in Sources */,
 				440D023625779C4F00477A7D /* MenuThumbnailButton.swift in Sources */,
 				44B22A53257E0C8F0068A11B /* Track.swift in Sources */,
 				445D3A22257F441B0002D2DE /* TransitionLogModifier.swift in Sources */,

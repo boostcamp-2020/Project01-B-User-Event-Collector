@@ -27,6 +27,11 @@ struct Active: EngagementLogType {
     let timestamp = Date()
 }
 
+struct Foreground: EngagementLogType {
+    let userId: Int
+    let timestamp = Date()
+}
+
 struct Background: EngagementLogType {
     let userId: Int
     let timestamp = Date()

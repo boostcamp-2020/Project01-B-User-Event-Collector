@@ -9,12 +9,24 @@ import SwiftUI
 import KingfisherSwiftUI
 
 struct TrackRowB: View {
+    @EnvironmentObject private var eventLogger: EventLogger
     @EnvironmentObject private var nowPlaying: NowPlaying
-    let track: TrackInfo
+    @StateObject private var viewModel: TrackViewModel
+    
+    init(viewModel: TrackViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
 
     var body: some View {
+        let track = viewModel.track
         HStack {
-            NavigationLink(destination: AlbumView(id: track.albumId ?? 0)) {
+            NavigationLink(destination:
+                            AlbumView(viewModel: .init(id: track.album.id,
+                                                       eventLogger: eventLogger))
+                            .logTransition(eventLogger: eventLogger,
+                                            identifier: .album(id: track.album.id),
+                                            componentId: .trackRowThumbnail)
+            ) {
                 KFImage(URL(string: track.album.imageUrl))
                     .resizable()
                     .frame(width: 50, height: 50)
@@ -22,7 +34,7 @@ struct TrackRowB: View {
             }
             
             Button {
-                nowPlaying.addTrack(track: track)
+                nowPlaying.addTrack(track: viewModel)
             } label: {
                 VStack(alignment: .leading, spacing: 4) {
                     Spacer()
@@ -43,7 +55,7 @@ struct TrackRowB: View {
 
 struct TrackRowB_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowB(track: trackinfo)
+        TrackRowB(viewModel: .init(track: trackinfo, eventLogger: EventLogger(persistentContainer: .init())))
             .previewLayout(.fixed(width: 375, height: 80))
     }
 }

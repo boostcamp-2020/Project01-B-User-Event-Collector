@@ -32,11 +32,13 @@ struct ArtistView: View {
                         VStack {
                             SectionTitle(width: width, title: "노래") {
                                 ChartList(title: "노래", tracks: artist.tracks)
+                                    .logTransition(eventLogger: eventLogger,
+                                                   identifier: .trackList, componentId: .sectionTitle(category: "노래"))
                             }
                             
                             VStack(spacing: 12) {
                                 ForEach(artist.tracks, id: \.id) { track in
-                                    TrackRowB(track: track)
+                                    TrackRowB(viewModel: .init(track: track, eventLogger: eventLogger))
                                 }
                                 .frame(width: width * .sectionRatio)
                             }
@@ -48,6 +50,9 @@ struct ArtistView: View {
                                 title: "앨범",
                                 categories: ["전체", "정규", "비정규", "참여"]
                             )
+                            .logTransition(eventLogger: eventLogger,
+                                           identifier: .artistAlbumList,
+                                           componentId: .sectionTitle(category: "앨범"))
                         }
                         
                         ArtistSection(width: width,
@@ -58,11 +63,17 @@ struct ArtistView: View {
                                         playlists: []) {
                             ThumbnailList(info: .playlist(data: []),
                                           navigationTitle: "관련 플레이리스트")
+                                .logTransition(eventLogger: eventLogger,
+                                               identifier: .playlists(id: 0),
+                                               componentId: .sectionTitle(category: "관련 플레이리스트"))
                         }
                     }
                 }
                 .sheet(isPresented: $viewModel.isOpenMenu) {
                     ArtistMenu(artist: artist)
+                        .logTransition(eventLogger: eventLogger,
+                                       identifier: .artistMenu(id: artist.id),
+                                       componentId: .sectionTitle(category: "관련 플레이리스트"))
                 }
                 .navigationTitle(artist.name)
                 .navigationBarItems(trailing: trailingBarButtons)

@@ -17,7 +17,8 @@ struct StationSection: View {
             SectionTitle(width: width, title: title) {
                 StationList()
                     .logTransition(eventLogger: eventLogger,
-                                   identifier: .station)
+                                   identifier: .station,
+                                   componentId: .sectionTitle(category: title))
             }
             
             StationStack(width: width)

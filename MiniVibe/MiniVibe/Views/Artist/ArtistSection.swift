@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ArtistSection: View {
+    @EnvironmentObject private var eventLogger: EventLogger
     @StateObject private var viewModel = ArtistSectionViewModel()
     let width: CGFloat
     let sectionTitle: String
@@ -22,7 +23,12 @@ struct ArtistSection: View {
                 HStack(spacing: 16) {
                     ForEach(viewModel.artists, id: \.id) { artist in
                         NavigationLink(
-                            destination: ArtistView(id: artist.id),
+                            destination:
+                                ArtistView(id: artist.id)
+                                .logTransition(eventLogger: eventLogger,
+                                               identifier: .artist(id: artist.id),
+                                               componentId: .artistItem)
+                            ,
                             label: {
                                 ArtistItem(artist: artist)
                             })
