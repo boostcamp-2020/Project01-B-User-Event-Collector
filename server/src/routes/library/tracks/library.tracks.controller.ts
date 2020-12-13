@@ -5,8 +5,7 @@ import Track from '../../../models/Track';
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.body;
-    // TODO: 인증 구현 후 수정
-    const userId = 1;
+    const userId = req.user;
 
     const manager = getManager();
 
@@ -25,8 +24,7 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
-    // TODO: 인증 구현 후 수정
-    const userId = 1;
+    const userId = req.user;
 
     const userRepository = getRepository(User);
     // const libraryTracks = await userRepository.findOne(userId, { relations: ['libraryTracks'] });
@@ -35,7 +33,7 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
         .leftJoinAndSelect('library_tracks.album', 'album')
         .leftJoinAndSelect('library_tracks.artist', 'artist')
         .loadRelationCountAndMap('library_tracks.liked', 'library_tracks.likeUsers', 'user',
-                (qb) => qb.andWhere('user.id = :userId', { userId }))
+            (qb) => qb.andWhere('user.id = :userId', { userId }))
         .select([
             'user.id',
             'library_tracks.id',
@@ -60,8 +58,7 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
 
 const remove = async (req: Request, res: Response, next: NextFunction) => {
     const trackId: string = req.params.trackId as string;
-    // TODO: 인증 구현 후 수정
-    const userId = 1;
+    const userId = req.user;
 
     const manager = getManager();
 
