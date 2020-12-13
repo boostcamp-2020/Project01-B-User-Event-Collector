@@ -14,11 +14,13 @@ struct MiniVibeApp: App {
     static let eventLogger = EventLogger(local: nil,
                                          server: nil,
                                          reachability: ReachablilityObserver(hostName: "www.google.com"))
+    
     let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Event")
         container.loadPersistentStores(completionHandler: { _, _ in })
         return container
     }()
+    
     
     var body: some Scene {
         WindowGroup {
