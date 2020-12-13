@@ -28,7 +28,7 @@ struct MagazineView: View {
                             Text(ArticleExample.content)
                                 .padding(.horizontal, width * .paddingRatio)
                             ForEach(0..<10) { index in
-                                TrackRowE(viewModel: .init(track: trackinfo),
+                                TrackRowE(viewModel: .init(track: trackinfo, eventLogger: MiniVibeApp.eventLogger),
                                           order: index)
                             }
                         }

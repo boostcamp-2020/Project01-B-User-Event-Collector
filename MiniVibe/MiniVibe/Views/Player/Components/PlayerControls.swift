@@ -70,6 +70,9 @@ struct PlayerControls: View {
 
 struct PlayerControls_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerControls(isOpenMenu: .constant(false), viewModel: .init(track: trackinfo))
+        PlayerControls(isOpenMenu: .constant(false),
+                       viewModel: .init(track: trackinfo,
+                                        eventLogger: MiniVibeApp.eventLogger)
+        )
     }
 }

@@ -50,8 +50,7 @@ struct AlbumView: View {
                                     ) {
                                         Section(header: PlayAndShuffle(width: geometry.size.width)) {
                                             ForEach(tracks, id: \.id) { track in
-                                                TrackRowD(viewModel: TrackViewModel(track: track),
-                                                          order: 1) {
+                                                TrackRowD(viewModel: .init(track: track, eventLogger: MiniVibeApp.eventLogger), order: 1) {
                                                     viewModel.send(.showTrackMenu(info: $0))
                                                 }
                                             }
@@ -135,7 +134,7 @@ struct AlbumView: View {
 struct AlbumPlaylistView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AlbumView(viewModel: AlbumViewModel(id: 11))
+            AlbumView(viewModel: .init(id: 11, eventLogger: MiniVibeApp.eventLogger))
         }
     }
 }

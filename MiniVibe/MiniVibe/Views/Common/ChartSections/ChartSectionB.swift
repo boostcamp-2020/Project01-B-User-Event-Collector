@@ -22,7 +22,7 @@ struct ChartSectionB: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: .init(repeating: .init(.flexible(minimum: 60)), count: 5)) {
                     ForEach(0..<100) { index in
-                        TrackRowE(viewModel: .init(track: trackinfo),
+                        TrackRowE(viewModel: .init(track: trackinfo, eventLogger: MiniVibeApp.eventLogger),
                                   order: index)
                     }
                     .frame(width: width * .sectionRatio)

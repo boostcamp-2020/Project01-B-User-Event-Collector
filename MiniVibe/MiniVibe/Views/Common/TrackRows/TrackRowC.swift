@@ -22,7 +22,7 @@ struct TrackRowC: View {
         HStack {
             let track = viewModel.track
             NavigationLink(destination:
-                            AlbumView(viewModel: .init(id: track.album.id))
+                            AlbumView(viewModel: .init(id: track.album.id, eventLogger: MiniVibeApp.eventLogger))
                             .logTransition(identifier: .album(id: track.album.id),
                                            componentId: .trackRowThumbnail)
             ) {

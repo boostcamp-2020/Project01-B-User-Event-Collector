@@ -36,7 +36,7 @@ struct ArtistView: View {
                             
                             VStack(spacing: 12) {
                                 ForEach(artist.tracks, id: \.id) { track in
-                                    TrackRowB(viewModel: .init(track: track))
+                                    TrackRowB(viewModel: .init(track: track, eventLogger: MiniVibeApp.eventLogger))
                                 }
                                 .frame(width: width * .sectionRatio)
                             }

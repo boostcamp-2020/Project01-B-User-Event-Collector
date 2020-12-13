@@ -33,11 +33,12 @@ struct LibrarySongsView: View {
                             }
                         }
                         ForEach(0..<50) { _ in
-                            TrackRowC(viewModel: .init(track: trackinfo)) { _ in
+                            TrackRowC(viewModel: .init(track: trackinfo,
+                                                       eventLogger: MiniVibeApp.eventLogger)) { _ in
                                 isMenuOpen = true
                             }
                             .fullScreenCover(isPresented: $isMenuOpen) {
-                                PlayerMenu(viewModel: .init(track: trackinfo))
+                                PlayerMenu(viewModel: .init(track: trackinfo, eventLogger: MiniVibeApp.eventLogger))
                                     .logTransition(identifier: .playerMenu(id: trackinfo.id),
                                                    componentId: .trackMenuButton
                                     )
