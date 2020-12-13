@@ -10,7 +10,6 @@ import KingfisherSwiftUI
 
 struct TrackRowC: View {
     @EnvironmentObject private var nowPlaying: NowPlaying
-    @EnvironmentObject private var eventLogger: EventLogger
     @StateObject private var viewModel: TrackViewModel
     private let menuButtonAction: (TrackViewModel) -> Void
 
@@ -23,10 +22,8 @@ struct TrackRowC: View {
         HStack {
             let track = viewModel.track
             NavigationLink(destination:
-                            AlbumView(viewModel: .init(id: track.album.id,
-                                                       eventLogger: eventLogger))
-                            .logTransition(eventLogger: eventLogger,
-                                           identifier: .album(id: track.album.id),
+                            AlbumView(viewModel: .init(id: track.album.id))
+                            .logTransition(identifier: .album(id: track.album.id),
                                            componentId: .trackRowThumbnail)
             ) {
                 TrackRowImage(imageUrl: viewModel.track.album.imageUrl)

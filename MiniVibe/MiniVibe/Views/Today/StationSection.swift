@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct StationSection: View {
-    @EnvironmentObject private var eventLogger: EventLogger
     let width: CGFloat
     let title: String
     
@@ -16,8 +15,7 @@ struct StationSection: View {
         VStack {
             SectionTitle(width: width, title: title) {
                 StationList()
-                    .logTransition(eventLogger: eventLogger,
-                                   identifier: .station,
+                    .logTransition(identifier: .station,
                                    componentId: .sectionTitle(category: title))
             }
             

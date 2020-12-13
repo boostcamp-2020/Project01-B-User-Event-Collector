@@ -6,6 +6,7 @@
 //
 
 import Combine
+import EventLogKit
 
 final class AlbumViewModel: ObservableObject {
     enum Input {
@@ -29,7 +30,7 @@ final class AlbumViewModel: ObservableObject {
     @Published var showSheet = false
     @Published var isOpenArticle = false
     
-    init(id: Int, eventLogger: EventLoggerType) {
+    init(id: Int, eventLogger: EventLoggerType = MiniVibeApp.eventLogger) {
         self.id = id
         self.eventLogger = eventLogger
     }

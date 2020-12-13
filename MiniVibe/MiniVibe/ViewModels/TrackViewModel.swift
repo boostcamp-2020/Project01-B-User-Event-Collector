@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import EventLogKit
 
 final class TrackViewModel: ObservableObject {
     @Published var track: TrackInfo
@@ -14,7 +15,7 @@ final class TrackViewModel: ObservableObject {
     private let useCase: TrackUseCase
     private var cancellables: Set<AnyCancellable> = []
     
-    init(track: TrackInfo, useCase: TrackUseCase = .init(), eventLogger: EventLoggerType) {
+    init(track: TrackInfo, useCase: TrackUseCase = .init(), eventLogger: EventLoggerType = MiniVibeApp.eventLogger) {
         self.track = track
         self.useCase = useCase
         self.eventLogger = eventLogger

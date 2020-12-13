@@ -9,7 +9,6 @@ import SwiftUI
 import KingfisherSwiftUI
 
 struct NewsItem: View {
-    @EnvironmentObject private var eventLogger: EventLogger
     let width: CGFloat
     let news: News
     
@@ -26,10 +25,8 @@ struct NewsItem: View {
             }
             
             NavigationLink(destination:
-                            AlbumView(viewModel: .init(id: news.albumId,
-                                                       eventLogger: eventLogger))
-                            .logTransition(eventLogger: eventLogger,
-                                           identifier: .album(id: news.albumId),
+                            AlbumView(viewModel: .init(id: news.albumId))
+                            .logTransition(identifier: .album(id: news.albumId),
                                            componentId: .newsItem)
             ) {
                 HStack(spacing: width * .spacingRatio) {
