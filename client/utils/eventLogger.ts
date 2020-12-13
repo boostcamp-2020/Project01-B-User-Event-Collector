@@ -1,11 +1,13 @@
+import { request } from '@utils/apis';
+
 function eventLogger(event, param) {
     const eventData = {
         event,
         ...param,
+        platform: 'Web',
         timestamp: new Date(),
     };
-    // TODO : event api 요청으로 수정
-    console.log(eventData);
+    request(eventData);
 }
 
 export default eventLogger;

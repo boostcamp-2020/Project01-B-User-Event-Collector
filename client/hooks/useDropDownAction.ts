@@ -8,23 +8,22 @@ import { useState } from 'react';
 const useDropDownAction = ({ anchorEl, setAnchorEl, state }) => {
     const componentInfo = useContext(ComponentInfoContext);
     const data = componentInfo.data;
+
     const handleClick = (e) => {
         setAnchorEl(e.currentTarget);
     };
+
     const handleClose = (e) => {
         const content = e.currentTarget.innerText;
         switch (content) {
             case dropDownMenu.like:
-                addToLibrary(`${apiUrl.like}${data.type}s`, {
-                    data: {
-                        id: data.id,
-                    },
-                });
+                addToLibrary(`${apiUrl.like}${data.type}s`, { id: data.id });
                 state.setIsLiked(1);
                 break;
             case dropDownMenu.unlike:
                 state.setIsLiked(0);
-                deleteFromLibrary(`${apiUrl.like}${data.type}/${data.id}`);
+                alert(data.type);
+                deleteFromLibrary(data);
                 break;
             case dropDownMenu.addToPlaylist:
                 request(apiUrl.libraryPlaylist).then((data) => {

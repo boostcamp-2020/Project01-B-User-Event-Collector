@@ -1,15 +1,15 @@
 import axios from 'axios';
-export const getRequestOptions = (method, options, headers) => ({
-    method: method,
+import apiUrl from 'constants/apiUrl';
+
+export const requestOptions = {
+    method: 'GET',
     headers: {
         'Content-Type': 'application/json',
-        ...headers,
     },
-    ...options,
-});
+};
 
 export const request = async (url, option) => {
-    const options = { ...getRequestOptions('GET', option) };
+    const options = { ...requestOptions, ...option };
 
     try {
         const { data } = await axios({ ...options, url });
@@ -20,28 +20,14 @@ export const request = async (url, option) => {
     }
 };
 
-export const addToLibrary = async (url, option) => {
-    const options = { ...getRequestOptions('POST', option) };
-    try {
-        await axios({ ...options, url });
-    } catch (err) {
-        console.error(err);
-    }
+export const addToLibrary = async (url, data) => {
+    await request(url, { method: 'POST', data });
 };
 
-export const deleteFromLibrary = async (url, option) => {
-    const options = { ...getRequestOptions('DELETE', option) };
-    try {
-        await axios({ ...options, url });
-    } catch (err) {
-        console.error(err);
-    }
+export const addToPlaylist = async (url, data) => {
+    await request(url, { method: 'POST', data });
 };
-export const addToPlaylist = async (url, option) => {
-    const options = { ...getRequestOptions('POST', option) };
-    try {
-        await axios({ ...options, url });
-    } catch (err) {
-        console.error(err);
-    }
+
+export const deleteFromLibrary = async (data) => {
+    await request(`${apiUrl.like}${data.type}s/${data.id}`, { method: 'DELETE' });
 };

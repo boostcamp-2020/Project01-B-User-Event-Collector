@@ -9,7 +9,6 @@ function useClickEventLog({ userId }) {
     const handleRouteChange = (url) => {
         eventLogger('Transition', {
             userId,
-            // page: router.asPath,
             page: url,
         });
     };
