@@ -23,6 +23,10 @@ struct TrackResponse: Decodable {
     let data: [TrackInfo]
 }
 
+struct SingleTrackResponse: Decodable {
+    let data: TrackInfo
+}
+
 struct TrackInfo: Decodable, Hashable {
     struct Artist: Decodable {
         let id: Int
