@@ -20,8 +20,8 @@ export const request = async (url, option) => {
     }
 };
 
-export const addToLibrary = async (url, data) => {
-    await request(url, { method: 'POST', data });
+export const addToLibrary = async (data) => {
+    await request(`${apiUrl.like}${data.type}s`, { method: 'POST', data: { id: data.id } });
 };
 
 export const addToPlaylist = async (url, data) => {

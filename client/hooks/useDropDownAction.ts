@@ -17,13 +17,12 @@ const useDropDownAction = ({ anchorEl, setAnchorEl, state }) => {
         const content = e.currentTarget.innerText;
         switch (content) {
             case dropDownMenu.like:
-                addToLibrary(`${apiUrl.like}${data.type}s`, { id: data.id });
+                addToLibrary(data);
                 state.setIsLiked(1);
                 break;
             case dropDownMenu.unlike:
-                state.setIsLiked(0);
-                alert(data.type);
                 deleteFromLibrary(data);
+                state.setIsLiked(0);
                 break;
             case dropDownMenu.addToPlaylist:
                 request(apiUrl.libraryPlaylist).then((data) => {
@@ -34,11 +33,7 @@ const useDropDownAction = ({ anchorEl, setAnchorEl, state }) => {
                 });
                 break;
             case dropDownMenu.addToLibrary:
-                addToLibrary(`${apiUrl.like}${data.type}s`, {
-                    data: {
-                        id: data.id,
-                    },
-                });
+                addToLibrary(data);
                 break;
             case dropDownMenu.addToUpNext:
                 break;
