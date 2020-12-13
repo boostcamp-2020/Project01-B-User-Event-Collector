@@ -17,7 +17,7 @@ open class EventLogger: EventLoggerType {
     private let local: LocalStorageType?
     private let server: ServerStorageType?
     private let reachability: ReachabilityObserving
-    private var networkState: Reachability.Connection = .unavailable
+    private var networkState: Connection = .unavailable
     
     public init(local: LocalStorageType?,
          server: ServerStorageType?,

@@ -10,20 +10,24 @@ import Reachability
 
 public protocol ReachabilityObserving {
     var hostName: String { get }
-    var state: Reachability.Connection { get }
-    var stateHandler: ((Reachability.Connection) -> Void)? { get }
-    func setUpNotify(_ action: ((Reachability.Connection) -> Void)?)
+    var state: Connection { get }
+    func setUpNotify(_ action: ((Connection) -> Void)?)
+}
+
+public enum Connection {
+    case unavailable
+    case cellular, wifi
 }
 
 open class ReachablilityObserver: ReachabilityObserving {
     
     public let hostName: String
-    public private(set) var state: Reachability.Connection = .unavailable {
+    public private(set) var state: Connection = .unavailable {
         didSet {
             stateHandler?(state)
         }
     }
-    public private(set) var stateHandler: ((Reachability.Connection) -> Void)?
+    private var stateHandler: ((Connection) -> Void)?
     private var reachability: Reachability?
     
     public init(hostName: String) {
@@ -37,12 +41,23 @@ open class ReachablilityObserver: ReachabilityObserving {
     
     private func setUpReachability() {
         reachability = try? Reachability(hostname: hostName)
-        reachability?.whenReachable = { [weak self] in self?.state = $0.connection }
-        reachability?.whenUnreachable = { [weak self] in self?.state = $0.connection }
+        reachability?.whenReachable = { [weak self] in self?.updateState($0.connection) }
+        reachability?.whenUnreachable = { [weak self] in self?.updateState($0.connection) }
+    }
+    
+    public func setUpNotify(_ action: ((Connection) -> Void)?) {
+        stateHandler = action
         try? reachability?.startNotifier()
     }
     
-    public func setUpNotify(_ action: ((Reachability.Connection) -> Void)?) {
-        stateHandler = action
+    private func updateState(_ connection: Reachability.Connection) {
+        switch connection {
+        case .cellular:
+            state = .cellular
+        case .wifi:
+            state = .wifi
+        default:
+            state = .unavailable
+        }
     }
 }

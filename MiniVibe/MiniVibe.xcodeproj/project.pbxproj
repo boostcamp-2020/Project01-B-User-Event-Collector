@@ -160,6 +160,13 @@
 			remoteGlobalIDString = 4479024C2584FB3C00CE8797;
 			remoteInfo = EventLogKit;
 		};
+		44823215258541F90007BDA1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4419A20B2585270900C3D640 /* EventLogKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 448232032585393B0007BDA1;
+			remoteInfo = EventLogKitTests;
+		};
 		80ABC1752574BF11003D4666 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 805E28A2256BBD52007AF5F1 /* Project object */;
@@ -374,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				4419A2102585270900C3D640 /* EventLogKit.framework */,
+				44823216258541F90007BDA1 /* EventLogKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -886,6 +894,13 @@
 			remoteRef = 4419A20F2585270900C3D640 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		44823216258541F90007BDA1 /* EventLogKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = EventLogKitTests.xctest;
+			remoteRef = 44823215258541F90007BDA1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1279,7 +1294,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JPSVCU4H4D;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = MiniVibeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1299,7 +1314,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JPSVCU4H4D;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = MiniVibeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
