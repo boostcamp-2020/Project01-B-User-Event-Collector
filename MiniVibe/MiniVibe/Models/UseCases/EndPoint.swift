@@ -35,7 +35,7 @@ enum EndPoint {
         case let .album(id):
             return "/api/albums/\(id)"
         case let .track(id):
-            return "/api/ablums/\(id)"
+            return "/api/tracks/\(id)"
         case .tracks:
             return "/api/tracks"
         case .magazines:
