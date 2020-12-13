@@ -8,7 +8,11 @@
 import Combine
 import Foundation
 
-struct PlaylistUseCase {
+protocol PlaylistUseCaseType {
+    func loadPlaylist(with id: Int) -> AnyPublisher<Playlist, UseCaseError>
+}
+
+struct PlaylistUseCase: PlaylistUseCaseType {
     struct PlaylistResponse: Decodable {
         let data: Playlist
     }

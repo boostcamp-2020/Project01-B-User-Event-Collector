@@ -8,7 +8,11 @@
 import Combine
 import Foundation
 
-struct AlbumUseCase {
+protocol AlbumUseCaseType {
+    func loadAlbum(with id: Int) -> AnyPublisher<Album, UseCaseError>
+}
+
+struct AlbumUseCase: AlbumUseCaseType {
     struct AlbumResponse: Decodable {
         let data: Album
     }
