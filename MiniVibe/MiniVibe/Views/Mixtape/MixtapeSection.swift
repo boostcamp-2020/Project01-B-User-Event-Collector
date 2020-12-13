@@ -27,8 +27,8 @@ struct MixtapeSection: View {
                         NavigationLink(
                             destination:
                                 Text("MixtapeView")
-                                .logTransition(identifier: .mixtape(id: mixtape.id), componentId: ComponentId.mixtapeItem)
-                                ),
+                                .logTransition(identifier: .mixtape(id: mixtape.id),
+                                               componentId: ComponentId.mixtapeItem),
                             label: {
                                 ThumbnailItem(title: mixtape.title,
                                               subtitle: mixtape.subTitle,

@@ -28,10 +28,6 @@ struct TrackRowA: View {
                                            componentId: .trackRowThumbnail)
             ) {
                 TrackRowImage(imageUrl: track.album.imageUrl)
-                KFImage(URL(string: track.album.imageUrl))
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .border(Color.gray, width: 0.7)
             }
             
             Button {
