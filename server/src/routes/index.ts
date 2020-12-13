@@ -10,6 +10,7 @@ import trackRouter from './tracks';
 import mixtapeRouter from './mixtapes';
 import eventRouter from './events';
 import playEventRouter from './playEvents';
+import { authenticateJWT } from './auth';
 
 const router = express.Router();
 
@@ -17,7 +18,7 @@ router.use('/users', userRouter);
 router.use('/artists', artistRouter);
 router.use('/news', newsRouter);
 router.use('/magazines', magazineRouter);
-router.use('/library', libraryRouter);
+router.use('/library', authenticateJWT, libraryRouter);
 router.use('/playlists', playlistRouter);
 router.use('/tracks', trackRouter);
 router.use('/albums', albumRouter);
