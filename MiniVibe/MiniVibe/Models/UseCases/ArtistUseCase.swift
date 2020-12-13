@@ -8,7 +8,12 @@
 import Foundation
 import Combine
 
-struct ArtistUseCase {
+protocol ArtistUseCaseType {
+    func loadArtists() -> AnyPublisher<[Artist], UseCaseError>
+    func loadArtist(with id: Int) -> AnyPublisher<ArtistInfo, UseCaseError>
+}
+
+struct ArtistUseCase: ArtistUseCaseType {
     struct ArtistResponse: Decodable {
         let data: ArtistInfo
     }
