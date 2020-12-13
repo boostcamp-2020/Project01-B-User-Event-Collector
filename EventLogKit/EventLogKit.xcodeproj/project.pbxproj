@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4461958B2585FE5C00C434A0 /* EventLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4461958A2585FE5C00C434A0 /* EventLoggerTests.swift */; };
+		44619591258606A500C434A0 /* MockStorages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44619590258606A500C434A0 /* MockStorages.swift */; };
+		44619595258606D100C434A0 /* MockReachabilityObservers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44619594258606D100C434A0 /* MockReachabilityObservers.swift */; };
 		447902512584FB3C00CE8797 /* EventLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 4479024F2584FB3C00CE8797 /* EventLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		447902592584FD7900CE8797 /* EventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447902582584FD7900CE8797 /* EventLogger.swift */; };
 		447902642585067300CE8797 /* EventLogType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447902632585067300CE8797 /* EventLogType.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4461958A2585FE5C00C434A0 /* EventLoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLoggerTests.swift; sourceTree = "<group>"; };
+		44619590258606A500C434A0 /* MockStorages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorages.swift; sourceTree = "<group>"; };
+		44619594258606D100C434A0 /* MockReachabilityObservers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockReachabilityObservers.swift; sourceTree = "<group>"; };
 		4479024C2584FB3C00CE8797 /* EventLogKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EventLogKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4479024F2584FB3C00CE8797 /* EventLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventLog.h; sourceTree = "<group>"; };
 		447902502584FB3C00CE8797 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4461958F2586068600C434A0 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				44619590258606A500C434A0 /* MockStorages.swift */,
+				44619594258606D100C434A0 /* MockReachabilityObservers.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		447902422584FB3C00CE8797 = {
 			isa = PBXGroup;
 			children = (
@@ -94,7 +109,9 @@
 		448232042585393B0007BDA1 /* EventLogKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				4461958A2585FE5C00C434A0 /* EventLoggerTests.swift */,
 				4482321925854D910007BDA1 /* ReachabilityObserverTests.swift */,
+				4461958F2586068600C434A0 /* Mock */,
 				448232072585393B0007BDA1 /* Info.plist */,
 			);
 			path = EventLogKitTests;
@@ -226,6 +243,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44619595258606D100C434A0 /* MockReachabilityObservers.swift in Sources */,
+				44619591258606A500C434A0 /* MockStorages.swift in Sources */,
+				4461958B2585FE5C00C434A0 /* EventLoggerTests.swift in Sources */,
 				4482321A25854D910007BDA1 /* ReachabilityObserverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
