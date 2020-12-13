@@ -16,10 +16,7 @@ struct ArtistMenu: View {
         VStack(spacing: 36) {
             Spacer()
             HStack {
-                KFImage(URL(string: artist.imageUrl))
-                    .resizable()
-                    .aspectRatio(1, contentMode: .fit)
-                    .frame(width: 80)
+                MenuAlbumImage(imageUrl: artist.imageUrl)
                     .clipShape(Circle())
                 
                 VStack(alignment: .leading,
@@ -35,7 +32,7 @@ struct ArtistMenu: View {
                 
                 Spacer()
             }
-            .foregroundColor(.black)
+            .foregroundColor(.primary)
             .padding(.horizontal)
             
             MenuButton(type: .like(0)) {
@@ -56,6 +53,6 @@ struct ArtistMenu: View {
 
 struct ArtistMenu_Previews: PreviewProvider {
     static var previews: some View {
-        ArtistMenu(artist: .init(id: 0, name: "", imageUrl: "", genre: .init(name: ""), tracks: [], albums: []))
+        ArtistMenu(artist: .init(id: 0, name: "보아", imageUrl: "", genre: .init(name: ""), tracks: [], albums: []))
     }
 }

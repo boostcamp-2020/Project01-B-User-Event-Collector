@@ -17,8 +17,7 @@ const StyledDehazeIcon = styled(DehazeIcon)`
 const ContentsButtonGroup = () => {
     return (
         <ButtonContainer>
-            <Button icon = { StyledDehazeIcon }>바로 다음에</Button>
-            <Button icon = { StyledDehazeIcon }>맨 아래에</Button>
+            <Button>모두 재생목록에 추가</Button>
         </ButtonContainer>
     )
 }

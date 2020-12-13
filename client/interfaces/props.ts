@@ -6,7 +6,7 @@ export enum MagazineSort {
 }
 
 export interface StationCardProps {
-
+    src: string;
 }
 
 export interface TrackInfoProps {
@@ -137,7 +137,11 @@ export interface PlayerTrackCardProps {
     albumId: number;
     lyrics: string;
     artist: { id: number; name: string; },
-    album: { id: number; title: string; imageUrl: string; }
+    album: { id: number; title: string; imageUrl: string; };
+}
+
+export interface PlayerTrackCardProp {
+    data?
 }
 
 export interface DropdownMenuProps {
@@ -148,5 +152,33 @@ export interface DropdownMenuProps {
         handleClick?: (e: MouseEvent<HTMLElement>) => void;
     }[];
     children?: ReactNode;
-    state: object
+    state?: object
 }
+
+export interface CheckBoxProps {
+    id: number;
+    data?: TrackRowCardProps;
+    checked?: boolean;
+    onChange?: (e: any) => void;
+}
+
+export interface HeaderButtonGroupProps {
+    sort?: 'track';
+    onAddUpNextHandler?: any;
+}
+
+export interface LyricModalProps {
+    src: string;
+    title: string;
+    artist: string;
+    lyrics: string;
+    visibility: boolean;
+    onClickFunc?: any;
+}
+
+export interface PlayControllerProps {
+    track,
+    displayHeader: boolean,
+    displayHeaderHandler?
+}
+

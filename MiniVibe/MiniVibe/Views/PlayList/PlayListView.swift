@@ -106,7 +106,7 @@ struct PlayListView: View {
             .padding(.vertical)
         }
         .font(.system(size: 17))
-        .foregroundColor(.black)
+        .foregroundColor(.primary)
     }
     
 }

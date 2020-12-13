@@ -13,7 +13,7 @@ struct MultiselectTabBar: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(Color.pink)
+                .foregroundColor(.accentColor)
             
             HStack {
                 TabbarButton(type: .addToPlaylist) {

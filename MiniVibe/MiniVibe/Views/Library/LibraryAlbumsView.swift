@@ -23,7 +23,7 @@ struct LibraryAlbumsView: View {
                             Image(systemName: "arrow.up.arrow.down")
                             Text("Recently Added")
                         }
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                     }
                 }
                 LazyVGrid(
@@ -42,7 +42,7 @@ struct LibraryAlbumsView: View {
                                 ThumbnailItem(title: title, subtitle: subtitle, imageURL: "")
                             }
                         )
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                     }
                 }
                 .padding(.bottom, 70)

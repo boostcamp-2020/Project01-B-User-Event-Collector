@@ -6,6 +6,6 @@ export default {
     component: CheckBox,
 };
 
-const STORY_ID = '1';
+const STORY_ID = 1;
 const onChange = (e) => {};
 export const Default = () => <CheckBox id={STORY_ID} checked={false} onChange={onChange} />;

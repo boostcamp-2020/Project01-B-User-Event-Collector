@@ -45,7 +45,7 @@ struct PlaylistAlbumInfo: View {
                     // TO DO: 앨범 전체 곡 다운로드
                 } label: {
                     Image(systemName: "arrow.down.to.line")
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .font(.system(size: 25, weight: .light))
                 }
             }
@@ -76,6 +76,8 @@ struct PlaylistAlbumInfo: View {
 
 struct PlaylistAlbumInfo_Previews: PreviewProvider {
     static var previews: some View {
-        PlaylistAlbumInfo(isOpenArticle: .constant(false), imageURL: "", title: "", subtitle: "", description: "", article: "")
+        PlaylistAlbumInfo(isOpenArticle: .constant(false), imageURL: "", title: "title", subtitle: "subtitle", description: "asdfasdfasdfasdf", article: "asdfasdfasdfasdf")
+            .previewLayout(.fixed(width: 375, height: 200))
+            .previewInAllColorSchemes
     }
 }

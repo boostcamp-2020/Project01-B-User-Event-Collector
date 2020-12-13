@@ -2,12 +2,13 @@ import React, { useState, useContext } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Menu, { MenuProps } from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { DropdownMenuProps } from '@interfaces/props';
-import useDropDownAction from '@hooks/useDropDownAction';
+import { DropdownMenuProps } from 'interfaces/props';
+import useDropDownAction from 'hooks/useDropDownAction';
 import PlaylistModal from '@components/organisms/PlaylistModal';
-import ComponentInfoContext from '@utils/context/ComponentInfoContext';
-import apiUrl from '@constants/apiUrl';
-import { addToPlaylist } from '@utils/apis';
+import ComponentInfoContext from 'utils/context/ComponentInfoContext';
+import apiUrl from 'constants/apiUrl';
+import { addToPlaylist } from 'utils/apis';
+
 const StyledMenu = withStyles({
     paper: {
         border: '1px solid #d3d4d5',

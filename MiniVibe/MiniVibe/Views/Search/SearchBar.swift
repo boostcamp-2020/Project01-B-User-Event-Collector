@@ -36,7 +36,7 @@ struct SearchBar: View {
                     dismissKeyboard()
                 } label: { Text("취소") }
                 .padding(.trailing, 10)
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
                 .transition(.move(edge: .trailing))
                 .animation(.easeInOut(duration: 0.2))
             }

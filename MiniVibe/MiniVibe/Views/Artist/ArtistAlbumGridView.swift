@@ -22,7 +22,7 @@ struct ArtistAlbumGridView: View {
                              rightSegmentState: .normal,
                              barMetrics: .default)
         UISegmentedControl.appearance()
-            .setTitleTextAttributes([.foregroundColor: UIColor.black,
+            .setTitleTextAttributes([.foregroundColor: UIColor(Color.primary),
                                      .font: UIFont.boldSystemFont(ofSize: 16)],
                                     for: .selected)
         UISegmentedControl.appearance()

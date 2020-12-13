@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ContentsThumbnail from '@components/molecules/ContentsThumbnail/ContentsThumbnail';
 import A from '@components/atoms/A/A';
 import Text from '@components/atoms/Text';
-import NewsCardProps from '@interface/props';
+import { NewsCardProps } from 'interfaces/props';
 
 const CardContainer = styled.div`
     display: flex;

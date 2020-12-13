@@ -3,7 +3,9 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head'; //head를 수정할 수 있게 함
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { clearAllTracks } from 'reducers/selectedTrack';
+import { useRouter } from 'next/router';
 
 import wrapper from '../store/configureStore';
 import withReduxSaga from 'next-redux-saga';
@@ -43,7 +45,11 @@ const trackData = {
 const currentPlayList = Array(30).fill(trackData);
 
 const App = ({ Component, pageProps }) => {
+    const router = useRouter();
+    const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
+    const { tracks } = useSelector(state =>  state.selectedTrack);
+    const selectedTrackCount = tracks.length;
 
     useTransitionEventLog({ userId: user.id });
 
@@ -54,6 +60,10 @@ const App = ({ Component, pageProps }) => {
             jssStyles.parentElement.removeChild(jssStyles);
         }
     }, []);
+
+    useEffect(() => {
+        dispatch(clearAllTracks());
+    }, [router.asPath]);
 
     return (
         <Container>
@@ -66,10 +76,10 @@ const App = ({ Component, pageProps }) => {
                 <HeaderSideBar user={user} />
             </ComponentInfoContext.Provider>
             <ComponentInfoContext.Provider value={{ componentId: componentType.floatingSelectMenu }}>
-                <FloatingSelectMenu />
+                {selectedTrackCount > 0 && <FloatingSelectMenu />}
             </ComponentInfoContext.Provider>
             <ComponentInfoContext.Provider value={{ componentId: componentType.musicPlayer }}>
-                <MusicPlayer tracks={currentPlayList} />
+                <MusicPlayer />
             </ComponentInfoContext.Provider>
             <Component {...pageProps} />
         </Container>

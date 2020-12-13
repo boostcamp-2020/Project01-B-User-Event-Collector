@@ -17,8 +17,10 @@ struct LibraryArtistRow: View {
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 60)
                 .clipShape(Circle())
+            
             Text(artist)
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
+            
             Spacer()
         }
     }

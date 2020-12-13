@@ -20,7 +20,6 @@ struct ChartSectionB: View {
             }
             
             ScrollView(.horizontal, showsIndicators: false) {
-                // 무조건 100개
                 LazyHGrid(rows: .init(repeating: .init(.flexible(minimum: 60)), count: 5)) {
                     ForEach(0..<100) { index in
                         TrackRowE(viewModel: .init(track: trackinfo),
@@ -38,5 +37,6 @@ struct ChartSectionB_Previews: PreviewProvider {
     static var previews: some View {
         ChartSectionB(width: 375, sectionTitle: "국내 급상승 🔥")
             .previewLayout(.fixed(width: 375, height: 420))
+            .previewInAllColorSchemes
     }
 }

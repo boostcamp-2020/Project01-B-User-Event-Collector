@@ -14,12 +14,8 @@ struct MenuThumbnailButton: View {
     let subtitle: String
     
     var body: some View {
-
         HStack {
-            KFImage(URL(string: imageUrl))
-                .resizable()
-                .aspectRatio(1, contentMode: .fit)
-                .frame(width: 80)
+            MenuAlbumImage(imageUrl: imageUrl)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
@@ -30,17 +26,17 @@ struct MenuThumbnailButton: View {
             }
             .lineLimit(1)
             .padding(.horizontal, 8)
-
+            
             Spacer()
         }
-        .foregroundColor(.black)
         .padding(.horizontal)
     }
-    
 }
 
 struct MenuThumbnailButton_Previews: PreviewProvider {
     static var previews: some View {
-        MenuThumbnailButton(imageUrl: "", title: "", subtitle: "")
+        MenuThumbnailButton(imageUrl: "", title: "bbb", subtitle: "ccc")
+            .previewLayout(.fixed(width: 375, height: 80))
+            .previewInAllColorSchemes
     }
 }

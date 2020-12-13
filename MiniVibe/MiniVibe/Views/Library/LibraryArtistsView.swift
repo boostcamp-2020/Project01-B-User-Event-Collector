@@ -36,16 +36,17 @@ struct LibraryArtistsView: View {
                                 }
                             }
                         }
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         
                         HStack {
                             Image(systemName: "plus")
                                 .font(.system(size: 30, weight: .ultraLight))
                                 .frame(width: 60, height: 60)
-                                .background(Color.secondary.opacity(0.3))
+                                .background(Color.playAndShuffle)
                                 .clipShape(Circle())
+                            
                             Text("아티스트 추가")
-                                .foregroundColor(.black)
+                            
                             Spacer()
                         }
                         
@@ -79,7 +80,7 @@ struct LibraryArtistsView: View {
                 .foregroundColor(.purple)
                 .frame(width: width * .thumbnailRatio)
             })
-            .background(Color.secondary.opacity(0.15))
+            .background(Color.playAndShuffle)
             .clipShape(RoundedRectangle(cornerRadius: 5))
             
             Button(action: {}, label: {
@@ -92,11 +93,9 @@ struct LibraryArtistsView: View {
                 .foregroundColor(.blue)
                 .frame(width: width * .thumbnailRatio)
             })
-            .background(Color.secondary.opacity(0.15))
+            .background(Color.playAndShuffle)
             .clipShape(RoundedRectangle(cornerRadius: 5))
         }
-        .background(Color.white)
-        
     }
 }
 

@@ -28,7 +28,7 @@ struct MixtapeSection: View {
                             destination:
                                 Text("MixtapeView")
                                 .logTransition(identifier: .mixtape(id: mixtape.id), componentId: ComponentId.mixtapeItem)
-                            ,
+                                ),
                             label: {
                                 ThumbnailItem(title: mixtape.title,
                                               subtitle: mixtape.subTitle,
@@ -37,7 +37,7 @@ struct MixtapeSection: View {
                             }
                         )
                     }
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                 }
                 .padding(.horizontal, width * .paddingRatio)
             }

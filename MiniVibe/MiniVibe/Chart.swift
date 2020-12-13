@@ -15,7 +15,6 @@ struct Chart: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
                         Text("차트")
-                            .foregroundColor(.black)
                             .font(.title)
                             .fontWeight(.heavy)
                             .padding(width * .paddingRatio)

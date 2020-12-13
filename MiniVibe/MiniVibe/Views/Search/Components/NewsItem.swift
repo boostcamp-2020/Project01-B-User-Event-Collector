@@ -16,11 +16,12 @@ struct NewsItem: View {
         VStack(alignment: .trailing, spacing: width * .spacingRatio) {
             VStack {
                 KFImage(URL(string: news.imageUrl))
-                    .aspectRatio(3, contentMode: .fit)
-                
+                    .frame(width: width * .sectionRatio, height: 150)
+                    
                 Text(news.title)
                     .font(.system(size: 17))
                     .bold()
+                    .padding()
             }
             
             NavigationLink(destination:
@@ -33,12 +34,11 @@ struct NewsItem: View {
                     Text("음악듣기")
                         .font(.system(size: 13))
                 }
-                .foregroundColor(.pink)
+                .foregroundColor(.accentColor)
                 .padding()
             }
         }
         .border(Color(.systemGray6), width: 1)
-        .frame(width: width * .sectionRatio)
     }
 }
 

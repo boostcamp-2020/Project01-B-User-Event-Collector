@@ -42,7 +42,7 @@ struct MagazineView: View {
                 } label: {
                     Image(systemName: "xmark")
                         .font(.system(size: 20))
-                        .foregroundColor(Color.black.opacity(0.8))
+                        .foregroundColor(Color.primary.opacity(0.8))
                         .padding(10) 
                 }
                 

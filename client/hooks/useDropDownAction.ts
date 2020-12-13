@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import ComponentInfoContext from '@utils/context/ComponentInfoContext';
-import dropDownMenu from '@constants/dropDownMenu';
-import { addToLibrary, deleteFromLibrary, request } from '@utils/apis';
-import apiUrl from '@constants/apiUrl';
+import ComponentInfoContext from 'utils/context/ComponentInfoContext';
+import dropDownMenu from 'constants/dropDownMenu';
+import { addToLibrary, deleteFromLibrary, request } from 'utils/apis';
+import apiUrl from 'constants/apiUrl';
 import { useState } from 'react';
 
 const useDropDownAction = ({ anchorEl, setAnchorEl, state }) => {

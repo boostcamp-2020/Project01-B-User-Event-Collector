@@ -77,13 +77,13 @@ struct MenuButton: View {
         } label: {
             HStack(spacing: 0) {
                 Image(systemName: type.imageName)
-                    .foregroundColor(type == .like(1) ? .pink : .black)
+                    .foregroundColor(type == .like(1) ? .accentColor : .primary)
                     .font(.system(size: 24))
                     .frame(width: 24, height: 24)
                     .padding(.horizontal)
                 
                 Text(type.title)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
             }
             .font(.system(size: 18))
             
@@ -95,5 +95,7 @@ struct MenuButton: View {
 struct MenuButton_Previews: PreviewProvider {
     static var previews: some View {
         MenuButton(type: .like(0), action: {})
+            .previewLayout(.fixed(width: 375, height: 80))
+            .previewInAllColorSchemes
     }
 }

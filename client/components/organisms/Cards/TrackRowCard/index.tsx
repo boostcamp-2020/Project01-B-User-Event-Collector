@@ -6,11 +6,11 @@ import HiddenText from '@components/atoms/Text/HiddenText';
 import CheckBox from '@components/atoms/CheckBox';
 import TrackPlayButton from '@components/molecules/TrackPlayButton';
 import DropDownMenu from '@components/molecules/DropdownMenu';
-import { TrackRowCardProps } from '@interfaces/props';
+import { TrackRowCardProps } from 'interfaces/props';
 import LyricModal from '@components/organisms/LyricModal/LyricModal';
-import { deleteFromLibrary } from '@utils/apis';
-import apiUrl from '@constants/apiUrl';
-import ComponentInfoContext from '@utils/context/ComponentInfoContext';
+import { deleteFromLibrary } from 'utils/apis';
+import apiUrl from 'constants/apiUrl';
+import ComponentInfoContext from 'utils/context/ComponentInfoContext';
 import {
     List,
     TrackLeft,

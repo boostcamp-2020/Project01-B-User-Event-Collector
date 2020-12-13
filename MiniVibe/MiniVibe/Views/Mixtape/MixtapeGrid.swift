@@ -28,7 +28,6 @@ struct MixtapeGrid: View {
                                               imageURL: mixtape.imageUrl)
                             }
                         )
-                        .foregroundColor(.black)
                     }
                 }
                 .padding(.horizontal, geometry.size.width * .paddingRatio)
@@ -36,16 +35,6 @@ struct MixtapeGrid: View {
             }
             .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(
-                trailing: Button {
-                    
-                } label: {
-                    Text("취향 설정")
-                        .foregroundColor(.black)
-                        .font(.system(size: 16))
-                        .fontWeight(.regular)
-                }
-            )
         }
     }
 }

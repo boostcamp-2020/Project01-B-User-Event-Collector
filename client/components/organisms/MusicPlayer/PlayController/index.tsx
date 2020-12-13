@@ -7,6 +7,7 @@ import PlaylistDisplayButton from '@components/molecules/PlaylistDisplayButton';
 import ProgressBar from '@components/molecules/ProgressBar';
 import PlayerTrackInfo from '@components/organisms/MusicPlayer/PlayerTrackInfo';
 import { useSelector, useDispatch } from 'react-redux';
+import { PlayControllerProps } from 'interfaces/props';
 
 const Container = styled.div`
     position: fixed;
@@ -64,12 +65,6 @@ const DisplayButtonContaier = styled.div`
     text-align: center;
     border-left: 1px solid hsla(0, 0%, 84.7%, 0.15);
 `;
-
-interface PlayControllerProps {
-    track,
-    displayHeader: boolean,
-    displayHeaderHandler
-}
 
 const PlayController = ({track, displayHeader, displayHeaderHandler}: PlayControllerProps) => {
     const data = track;
