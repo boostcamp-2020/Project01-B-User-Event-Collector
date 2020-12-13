@@ -8,7 +8,7 @@
 import Foundation
 @testable import MiniVibe
 
-extension NetworkService.NetworkError: Equatable {
+extension NetworkError: Equatable {
     public static func == (lhs: Self, rhs: Self) -> Bool {
         switch (lhs, rhs) {
         case (.invalidURL, .invalidURL): return true

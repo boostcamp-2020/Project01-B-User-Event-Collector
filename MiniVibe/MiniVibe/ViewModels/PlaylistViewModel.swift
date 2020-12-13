@@ -6,6 +6,7 @@
 //
 
 import Combine
+import EventLogKit
 
 final class PlaylistViewModel: ObservableObject {
     enum Input {
@@ -20,7 +21,7 @@ final class PlaylistViewModel: ObservableObject {
         case track(info: TrackViewModel)
     }
     
-    private let useCase = PlaylistUseCase()
+    private let useCase: PlaylistUseCaseType
     private let eventLogger: EventLoggerType
     private var cancellables = Set<AnyCancellable>()
     private let id: Int
@@ -30,8 +31,9 @@ final class PlaylistViewModel: ObservableObject {
     @Published var showSheet = false
     @Published var isOpenArticle = false
     
-    init(id: Int, eventLogger: EventLoggerType) {
+    init(id: Int, useCase: PlaylistUseCaseType = PlaylistUseCase(),eventLogger: EventLoggerType) {
         self.id = id
+        self.useCase = useCase
         self.eventLogger = eventLogger
     }
     

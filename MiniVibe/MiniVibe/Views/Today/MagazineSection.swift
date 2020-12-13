@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MagazineSection: View {
-    @EnvironmentObject private var eventLogger: EventLogger
     let width: CGFloat
     let title = "매거진"
     let magazines: [Magazine]
@@ -17,8 +16,7 @@ struct MagazineSection: View {
         VStack {
             SectionTitle(width: width, title: title) {
                 ThumbnailList(info: .magazine(data: magazines), navigationTitle: title)
-                    .logTransition(eventLogger: eventLogger,
-                                   identifier: .magazineList,
+                    .logTransition(identifier: .magazineList,
                                    componentId: .magazineItem)
             }
             
@@ -27,8 +25,7 @@ struct MagazineSection: View {
                     ForEach(magazines, id: \.id) {magazine in
                         NavigationLink(destination:
                                         MagazineView(magazine: magazine)
-                                        .logTransition(eventLogger: eventLogger,
-                                                       identifier: .magazine(id: magazine.id),
+                                        .logTransition(identifier: .magazine(id: magazine.id),
                                                        componentId: .magazineItem)
                         ) {
                             MagazineItem(magazine: magazine)

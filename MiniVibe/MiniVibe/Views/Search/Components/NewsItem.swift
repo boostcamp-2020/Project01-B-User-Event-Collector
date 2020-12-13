@@ -9,7 +9,6 @@ import SwiftUI
 import KingfisherSwiftUI
 
 struct NewsItem: View {
-    @EnvironmentObject private var eventLogger: EventLogger
     let width: CGFloat
     let news: News
     
@@ -17,18 +16,17 @@ struct NewsItem: View {
         VStack(alignment: .trailing, spacing: width * .spacingRatio) {
             VStack {
                 KFImage(URL(string: news.imageUrl))
-                    .aspectRatio(3, contentMode: .fit)
-                
+                    .frame(width: width * .sectionRatio, height: 150)
+                    
                 Text(news.title)
                     .font(.system(size: 17))
                     .bold()
+                    .padding()
             }
             
             NavigationLink(destination:
-                            AlbumView(viewModel: .init(id: news.albumId,
-                                                       eventLogger: eventLogger))
-                            .logTransition(eventLogger: eventLogger,
-                                           identifier: .album(id: news.albumId),
+                            AlbumView(viewModel: .init(id: news.albumId))
+                            .logTransition(identifier: .album(id: news.albumId),
                                            componentId: .newsItem)
             ) {
                 HStack(spacing: width * .spacingRatio) {
@@ -36,12 +34,11 @@ struct NewsItem: View {
                     Text("음악듣기")
                         .font(.system(size: 13))
                 }
-                .foregroundColor(.pink)
+                .foregroundColor(.accentColor)
                 .padding()
             }
         }
         .border(Color(.systemGray6), width: 1)
-        .frame(width: width * .sectionRatio)
     }
 }
 

@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct LibraryArtistsView: View {
-    @EnvironmentObject private var eventLogger: EventLogger
-    
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width
@@ -38,24 +36,24 @@ struct LibraryArtistsView: View {
                                 }
                             }
                         }
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         
                         HStack {
                             Image(systemName: "plus")
                                 .font(.system(size: 30, weight: .ultraLight))
                                 .frame(width: 60, height: 60)
-                                .background(Color.secondary.opacity(0.3))
+                                .background(Color.playAndShuffle)
                                 .clipShape(Circle())
+                            
                             Text("아티스트 추가")
-                                .foregroundColor(.black)
+                            
                             Spacer()
                         }
                         
                         ForEach(0..<10) { _ in
                             NavigationLink(destination:
                                             ArtistView(id: 3)
-                                            .logTransition(eventLogger: eventLogger,
-                                                           identifier: .artist(id: 3), componentId: .artistRow)
+                                            .logTransition(identifier: .artist(id: 3), componentId: .artistRow)
                             ) {
                                 LibraryArtistRow(artist: "방탄소년단")
                             }
@@ -82,7 +80,7 @@ struct LibraryArtistsView: View {
                 .foregroundColor(.purple)
                 .frame(width: width * .thumbnailRatio)
             })
-            .background(Color.secondary.opacity(0.15))
+            .background(Color.playAndShuffle)
             .clipShape(RoundedRectangle(cornerRadius: 5))
             
             Button(action: {}, label: {
@@ -95,11 +93,9 @@ struct LibraryArtistsView: View {
                 .foregroundColor(.blue)
                 .frame(width: width * .thumbnailRatio)
             })
-            .background(Color.secondary.opacity(0.15))
+            .background(Color.playAndShuffle)
             .clipShape(RoundedRectangle(cornerRadius: 5))
         }
-        .background(Color.white)
-        
     }
 }
 

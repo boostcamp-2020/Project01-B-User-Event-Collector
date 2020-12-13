@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct LibraryPlayListView: View {
-    @EnvironmentObject private var eventLogger: EventLogger
-    
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width
@@ -37,7 +35,7 @@ struct LibraryPlayListView: View {
                             }
                         }
                     }
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                     
                     HStack(spacing: 24) {
                         Image(systemName: "plus")
@@ -52,10 +50,8 @@ struct LibraryPlayListView: View {
                         let title = "보관함 플레이리스트"
                         NavigationLink(
                             destination:
-                                PlayListView(viewModel: .init(id: 0,
-                                                              eventLogger: eventLogger))
-                                .logTransition(eventLogger: eventLogger,
-                                               identifier: .playlist(id: 0),
+                                PlayListView(viewModel: .init(id: 0))
+                                .logTransition(identifier: .playlist(id: 0),
                                                componentId: .playlistRow)
                             ,
                             label: {

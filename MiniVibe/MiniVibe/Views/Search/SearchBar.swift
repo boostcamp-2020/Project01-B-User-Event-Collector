@@ -7,8 +7,8 @@
 
 import SwiftUI
 
+
 struct SearchBar: View {
-    @EnvironmentObject var eventLogger: EventLogger
     @State private var isEditing = false
     @Binding var searchedText: String
     
@@ -17,7 +17,7 @@ struct SearchBar: View {
     var body: some View {
         HStack {
             TextField("검색어를 입력해 주세요.", text: $searchedText, onCommit: {
-                eventLogger.send(SearchLog(userId: 0,
+                MiniVibeApp.eventLogger.send(SearchLog(userId: 0,
                                            componentId: "searchBar",
                                            text: searchedText))
             })
@@ -36,7 +36,7 @@ struct SearchBar: View {
                     dismissKeyboard()
                 } label: { Text("취소") }
                 .padding(.trailing, 10)
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
                 .transition(.move(edge: .trailing))
                 .animation(.easeInOut(duration: 0.2))
             }

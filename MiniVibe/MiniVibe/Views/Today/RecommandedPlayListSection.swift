@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RecommandedPlayListSection: View {
-    @EnvironmentObject private var eventLogger: EventLogger
     let width: CGFloat
     let title: String
     
@@ -16,8 +15,7 @@ struct RecommandedPlayListSection: View {
         VStack {
             SectionTitle(width: width, title: title) {
                 ThumbnailList(info: .playlist(data: []), navigationTitle: title)
-                    .logTransition(eventLogger: eventLogger,
-                                   identifier: .playlists(id: 5),
+                    .logTransition(identifier: .playlists(id: 5),
                                    componentId: .sectionTitle(category: title))
             }
             
@@ -25,17 +23,15 @@ struct RecommandedPlayListSection: View {
                 LazyHStack(spacing: width * .spacingRatio) {
                     ForEach(0..<5) { _ in
                         NavigationLink(destination:
-                                        AlbumView(viewModel: .init(id: 11,
-                                                                   eventLogger: eventLogger))
-                                        .logTransition(eventLogger: eventLogger,
-                                                       identifier: .album(id: 11),
+                                        AlbumView(viewModel: .init(id: 11))
+                                        .logTransition(identifier: .album(id: 11),
                                                        componentId: .playlistItem(section: title))
                         ) {
                             RecommandedPlayListItem()
                                 .frame(width: width * .sectionRatio)
                         }
                     }
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                 }
                 .padding(.horizontal, width * .paddingRatio)
             }

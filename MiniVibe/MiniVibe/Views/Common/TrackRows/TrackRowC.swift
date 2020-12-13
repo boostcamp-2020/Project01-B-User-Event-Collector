@@ -10,7 +10,6 @@ import KingfisherSwiftUI
 
 struct TrackRowC: View {
     @EnvironmentObject private var nowPlaying: NowPlaying
-    @EnvironmentObject private var eventLogger: EventLogger
     @StateObject private var viewModel: TrackViewModel
     private let menuButtonAction: (TrackViewModel) -> Void
 
@@ -23,41 +22,25 @@ struct TrackRowC: View {
         HStack {
             let track = viewModel.track
             NavigationLink(destination:
-                            AlbumView(viewModel: .init(id: track.album.id,
-                                                       eventLogger: eventLogger))
-                            .logTransition(eventLogger: eventLogger,
-                                           identifier: .album(id: track.album.id),
+                            AlbumView(viewModel: .init(id: track.album.id))
+                            .logTransition(identifier: .album(id: track.album.id),
                                            componentId: .trackRowThumbnail)
             ) {
-                KFImage(URL(string: viewModel.track.album.imageUrl))
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .border(Color.gray, width: 0.7)
+                TrackRowImage(imageUrl: viewModel.track.album.imageUrl)
             }
             
             Button {
                 nowPlaying.addTrack(track: viewModel)
             } label: {
-                VStack(alignment: .leading, spacing: 4) {
-                    Spacer()
-                    Text(viewModel.track.title)
-                        .font(.system(size: 17))
-                        .foregroundColor(.black)
-                        
-                    Text(viewModel.track.artist.name)
-                        .font(.system(size: 13))
-                        .foregroundColor(.secondary)
-                    Spacer()
-                }
+                TrackRowInfoB(title: viewModel.track.title,
+                              artist: viewModel.track.artist.name)
                 Spacer()
             }
             
             Button {
                 menuButtonAction(viewModel)
             } label: {
-                Image(systemName: "ellipsis")
-                    .foregroundColor(.black)
-                    .padding()
+                TrackRowMenu()
             }
         }
         .padding(.vertical, 8)
@@ -66,7 +49,13 @@ struct TrackRowC: View {
 
 struct TrackRowC_Previews: PreviewProvider {
     static var previews: some View {
-        TrackRowC(viewModel: .init(track: trackinfo, eventLogger: EventLogger(persistentContainer: .init())), menuButtonAction: { _ in })
-            .previewLayout(.fixed(width: 375, height: 80))
+        HStack {
+            TrackRowImage(imageUrl: "")
+            TrackRowInfoB(title: "이문세", artist: "붉은 노을")
+            Spacer()
+            TrackRowMenu()
+        }
+        .previewLayout(.fixed(width: 375, height: 80))
+        .previewInAllColorSchemes
     }
 }

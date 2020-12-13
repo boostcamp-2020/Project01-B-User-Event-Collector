@@ -32,10 +32,10 @@ struct Library: View {
             NavigationView {
                 VStack(alignment: .leading) {
                     Text("보관함")
-                        .foregroundColor(.black)
                         .font(.title)
                         .fontWeight(.heavy)
                         .padding(geometry.size.width * .paddingRatio)
+                    
                     Picker("Library", selection: $selection) {
                         ForEach(0..<categories.count) {
                             Text(categories[$0])
@@ -43,7 +43,9 @@ struct Library: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(height: 50)
+                    
                     Divider()
+                    
                     TabView(selection: $selection) {
                         LibrarySongsView().tag(0)
                             .animation(nil)

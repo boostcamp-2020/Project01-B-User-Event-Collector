@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ChartSectionA: View {
     @EnvironmentObject private var nowPlaying: NowPlaying
-    @EnvironmentObject private var eventLogger: EventLogger
     let width: CGFloat
     let title: String
     let tracks: [TrackInfo]
@@ -18,15 +17,14 @@ struct ChartSectionA: View {
         VStack {
             SectionTitle(width: width, title: title) {
                 ChartList(title: title, tracks: tracks)
-                    .logTransition(eventLogger: eventLogger,
-                                   identifier: .chart(id: 100),
+                    .logTransition(identifier: .chart(id: 100),
                                    componentId: .sectionTitle(category: title))
             }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: .init(repeating: .init(.flexible(minimum: 60)), count: 5)) {
                     ForEach(tracks, id: \.id) { track in
-                        TrackRowB(viewModel: .init(track: track, eventLogger: eventLogger))
+                        TrackRowB(viewModel: .init(track: track))
                     }
                     .frame(width: width * .sectionRatio)
                 }

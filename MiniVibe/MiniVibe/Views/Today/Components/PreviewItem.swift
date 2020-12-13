@@ -10,19 +10,19 @@ import SwiftUI
 struct PreviewItem: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text("인기 플레이리스트")
+            Text("Haapy Christmas")
                 .font(.system(size: 12))
-                .foregroundColor(.pink)
+                .foregroundColor(.accentColor)
             
             Image("content")
                 .resizable()
             
-            VStack(spacing: 3) {
-                Text("오랜만에 흥 터지네")
+            VStack(alignment: .leading, spacing: 3) {
+                Text("연인을 위한 캐롤")
                     .font(.system(size: 17))
                     .bold()
                 
-                Text("다들 들썩거릴 준비됐나요")
+                Text("너와 함께라면 하나도 춥지 않아")
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
             }

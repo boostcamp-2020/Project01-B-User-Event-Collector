@@ -11,8 +11,7 @@ struct AlbumView: View {
     init(viewModel: AlbumViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
-    
-    @EnvironmentObject private var eventLogger: EventLogger
+
     @StateObject private var viewModel: AlbumViewModel
     
     var body: some View {
@@ -30,8 +29,7 @@ struct AlbumView: View {
                             title: album.title,
                             subtitle: album.artist.name,
                             content: album.description)
-                        .logTransition(eventLogger: eventLogger,
-                                       identifier: .article,
+                        .logTransition(identifier: .article,
                                        componentId: .albumDescription)
                 } else {
                     ScrollView {
@@ -52,8 +50,7 @@ struct AlbumView: View {
                                     ) {
                                         Section(header: PlayAndShuffle(width: geometry.size.width)) {
                                             ForEach(tracks, id: \.id) { track in
-                                                TrackRowD(viewModel: TrackViewModel(track: track,
-                                                                                    eventLogger: eventLogger),
+                                                TrackRowD(viewModel: TrackViewModel(track: track),
                                                           order: 1) {
                                                     viewModel.send(.showTrackMenu(info: $0))
                                                 }
@@ -90,13 +87,11 @@ struct AlbumView: View {
                         switch viewModel.activeSheet {
                         case .album:
                             AlbumMenu(viewModel: viewModel)
-                                .logTransition(eventLogger: eventLogger,
-                                               identifier: .albumMenu(id: album.id),
+                                .logTransition(identifier: .albumMenu(id: album.id),
                                                componentId: .albumMenuButton)
                         case let .track(info):
                             PlayerMenu(viewModel: info)
-                                .logTransition(eventLogger: eventLogger,
-                                               identifier: .playerMenu(id: info.track.id),
+                                .logTransition(identifier: .playerMenu(id: info.track.id),
                                                componentId: .trackMenuButton)
                         }
                     }
@@ -132,7 +127,7 @@ struct AlbumView: View {
             .padding(.vertical)
         }
         .font(.system(size: 17))
-        .foregroundColor(.black)
+        .foregroundColor(.primary)
     }
     
 }
@@ -140,8 +135,7 @@ struct AlbumView: View {
 struct AlbumPlaylistView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AlbumView(viewModel: AlbumViewModel(id: 11,
-                                                eventLogger: EventLogger(persistentContainer: .init())))
+            AlbumView(viewModel: AlbumViewModel(id: 11))
         }
     }
 }

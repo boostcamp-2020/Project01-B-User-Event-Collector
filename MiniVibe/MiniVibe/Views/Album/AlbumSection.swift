@@ -15,7 +15,6 @@ struct AlbumSection<D: View>: View {
         self.destination = destination
     }
     
-    @EnvironmentObject private var eventLogger: EventLogger
     @State private var isOpenMenu = false
     let width: CGFloat
     let title: String
@@ -31,10 +30,8 @@ struct AlbumSection<D: View>: View {
                     ForEach(albums, id: \.id) { album in
                         NavigationLink(
                             destination:
-                                AlbumView(viewModel: .init(id: album.id,
-                                                           eventLogger: eventLogger))
-                                .logTransition(eventLogger: eventLogger,
-                                               identifier: .album(id: album.id),
+                                AlbumView(viewModel: .init(id: album.id))
+                                .logTransition(identifier: .album(id: album.id),
                                                componentId: .albumItem)
                             ,
                             label: {
@@ -45,7 +42,7 @@ struct AlbumSection<D: View>: View {
                             }
                         )
                     }
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                 }
                 .padding(.horizontal, width * .paddingRatio)
             }

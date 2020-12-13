@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct TodayTitle: View {
-    @EnvironmentObject private var eventLogger: EventLogger
     let width: CGFloat
     
     var body: some View {
         HStack {
             Text("#내돈내듣 VIBE")
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
                 .font(.title)
                 .fontWeight(.heavy)
-                .logSubscription(eventLogger: eventLogger,
-                                 componentId: "")
+                .logSubscription(componentId: "")
             
             Spacer()
             

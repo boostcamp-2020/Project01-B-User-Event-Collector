@@ -30,6 +30,8 @@
 미니 바이브 이벤트 수집기
 
 
+## miniVIBE 주소
+http://mini-vibe.kro.kr
 
 
 ## Backlog

@@ -15,19 +15,20 @@ struct SearchView: View {
         GeometryReader { geometry in
             let width = geometry.size.width
             NavigationView {
-                VStack(alignment: .leading) {
-                    Text("검색")
-                        .foregroundColor(.black)
-                        .font(.title)
-                        .fontWeight(.heavy)
-                        .padding(geometry.size.width * .paddingRatio)
-                    
-                    SearchBar(searchedText: $searchedText, width: width)
-                    
-                    NewsSection(width: width,
-                                newsList: viewModel.newsList)
-                    
-                    GenreSection()
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        Text("검색")
+                            .font(.title)
+                            .fontWeight(.heavy)
+                            .padding(geometry.size.width * .paddingRatio)
+                        
+                        SearchBar(searchedText: $searchedText, width: width)
+                        
+                        NewsSection(width: width,
+                                    newsList: viewModel.newsList)
+                        
+                        GenreSection()
+                    }
                 }
                 .navigationBarHidden(true)
             }

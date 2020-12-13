@@ -52,7 +52,7 @@ struct PlayerPreview: View {
 
     private func previewControlIcons() -> some View {
         let emptyUpNext: Bool = nowPlaying.upNext.isEmpty
-        let iconColor: Color = emptyUpNext ? Color.secondary : Color.black
+        let iconColor: Color = emptyUpNext ? Color.secondary : .primary
             
         return HStack(spacing: 20) {
             Button {
@@ -60,7 +60,7 @@ struct PlayerPreview: View {
             } label: {
                 nowPlaying.isPlaying ? Image(systemName: "pause.fill") : Image(systemName: "play.fill")
             }
-            .foregroundColor(.black)
+            .foregroundColor(.primary)
             
             Button {
                 nowPlaying.playNextTrack()

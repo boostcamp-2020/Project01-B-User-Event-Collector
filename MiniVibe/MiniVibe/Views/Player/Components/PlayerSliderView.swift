@@ -49,7 +49,7 @@ struct PlayerSliderView: View {
                     isOpenMenu = true
                 } label: {
                     Image(systemName: "ellipsis")
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                 }
             }
         }

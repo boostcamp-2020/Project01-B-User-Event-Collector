@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LibrarySongsView: View {
-    @EnvironmentObject private var eventLogger: EventLogger
     @State private var isMenuOpen = false
     
     var body: some View {
@@ -30,17 +29,16 @@ struct LibrarySongsView: View {
                                     Image(systemName: "arrow.up.arrow.down")
                                     Text("Recently Added")
                                 }
-                                .foregroundColor(.black)
+                                .foregroundColor(.primary)
                             }
                         }
                         ForEach(0..<50) { _ in
-                            TrackRowC(viewModel: .init(track: trackinfo, eventLogger: eventLogger)) { _ in
+                            TrackRowC(viewModel: .init(track: trackinfo)) { _ in
                                 isMenuOpen = true
                             }
                             .fullScreenCover(isPresented: $isMenuOpen) {
-                                PlayerMenu(viewModel: .init(track: trackinfo, eventLogger: eventLogger))
-                                    .logTransition(eventLogger: eventLogger,
-                                                   identifier: .playerMenu(id: trackinfo.id),
+                                PlayerMenu(viewModel: .init(track: trackinfo))
+                                    .logTransition(identifier: .playerMenu(id: trackinfo.id),
                                                    componentId: .trackMenuButton
                                     )
                             }

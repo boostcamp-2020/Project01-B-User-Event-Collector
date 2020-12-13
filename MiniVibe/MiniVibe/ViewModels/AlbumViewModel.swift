@@ -6,6 +6,7 @@
 //
 
 import Combine
+import EventLogKit
 
 final class AlbumViewModel: ObservableObject {
     enum Input {
@@ -20,7 +21,7 @@ final class AlbumViewModel: ObservableObject {
         case track(info: TrackViewModel)
     }
     
-    private let useCase = AlbumUseCase()
+    private let useCase: AlbumUseCaseType
     private let eventLogger: EventLoggerType
     private var cancellables = Set<AnyCancellable>()
     private let id: Int
@@ -28,9 +29,10 @@ final class AlbumViewModel: ObservableObject {
     @Published private(set) var activeSheet: ActiveSheet = .album
     @Published var showSheet = false
     @Published var isOpenArticle = false
-    
-    init(id: Int, eventLogger: EventLoggerType) {
+
+    init(id: Int, useCase: AlbumUseCaseType = AlbumUseCase(), eventLogger: EventLoggerType) {
         self.id = id
+        self.useCase = useCase
         self.eventLogger = eventLogger
     }
     

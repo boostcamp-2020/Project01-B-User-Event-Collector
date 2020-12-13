@@ -43,6 +43,16 @@ struct PlayerMenu: View {
 
 struct PlayerMenu_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerMenu(viewModel: .init(track: trackinfo, eventLogger: EventLogger(persistentContainer: .init())))
+        VStack(spacing: 36) {
+            Spacer()
+            MenuThumbnailButton(imageUrl: "", title: "마음", subtitle: "아이유")
+            MenuButton(type: .like(1)) {}
+            MenuButton(type: .like(0)) {}
+            MenuButton(type: .exclude) {}
+            MenuButton(type: .download(.music)) {}
+            MenuButton(type: .addToPlaylist) {}
+            MenuButton(type: .share) {}
+            MenuCloseButton {}
+        }
     }
 }

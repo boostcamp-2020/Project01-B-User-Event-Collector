@@ -14,11 +14,15 @@ final class ArtistViewModel: ObservableObject {
         case showArtistMenu
     }
     
-    private let useCase = ArtistUseCase()
+    private let useCase: ArtistUseCaseType
     private var cancellables = Set<AnyCancellable>()
     
     @Published private(set) var artist: ArtistInfo?
     @Published var isOpenMenu = false
+    
+    init(useCase: ArtistUseCaseType = ArtistUseCase()) {
+        self.useCase = useCase
+    }
     
     func send(_ input: Input) {
         switch input {

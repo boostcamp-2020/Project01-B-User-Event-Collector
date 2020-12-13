@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LibraryAlbumsView: View {
-    @EnvironmentObject private var eventLogger: EventLogger
     @State private var isMenuOpen = false
     
     var body: some View {
@@ -24,7 +23,7 @@ struct LibraryAlbumsView: View {
                             Image(systemName: "arrow.up.arrow.down")
                             Text("Recently Added")
                         }
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                     }
                 }
                 LazyVGrid(
@@ -35,17 +34,15 @@ struct LibraryAlbumsView: View {
                         let subtitle = "VIBE"
                         NavigationLink(
                             destination:
-                                AlbumView(viewModel: .init(id: 11,
-                                                           eventLogger: eventLogger))
-                                .logTransition(eventLogger: eventLogger,
-                                               identifier: .album(id: 11),
+                                AlbumView(viewModel: .init(id: 11))
+                                .logTransition(identifier: .album(id: 11),
                                                componentId: .albumItem)
                             ,
                             label: {
                                 ThumbnailItem(title: title, subtitle: subtitle, imageURL: "")
                             }
                         )
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                     }
                 }
                 .padding(.bottom, 70)

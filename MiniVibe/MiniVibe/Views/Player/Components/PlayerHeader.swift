@@ -16,7 +16,6 @@ struct PlayerHeader: View {
                 
             } label: {
                 Image(systemName: "slider.horizontal.3")
-                    .foregroundColor(.black)
             }
             
             Spacer()
@@ -29,9 +28,9 @@ struct PlayerHeader: View {
                 
             } label: {
                 Image(systemName: "chevron.compact.down")
-                    .foregroundColor(.black)
             }
         }
+        .foregroundColor(.primary)
         .padding(8)
     }
 }

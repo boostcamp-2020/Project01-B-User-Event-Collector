@@ -13,7 +13,6 @@ struct UpNextList: View {
         UITableView.appearance().showsVerticalScrollIndicator = false
     }
     
-    @EnvironmentObject private var eventLogger: EventLogger
     @EnvironmentObject private var nowPlaying: NowPlaying
     @State private var editMode = EditMode.active
     private var selectionCount: Int {
@@ -34,6 +33,7 @@ struct UpNextList: View {
                 trailingBarItem
             }
             .padding()
+            .foregroundColor(.primary)
             
             VStack(spacing: 0) {
                 List(selection: $nowPlaying.selectedTracks) {
@@ -44,7 +44,12 @@ struct UpNextList: View {
                                 .frame(width: 50, height: 50)
                             VStack(alignment: .leading) {
                                 Text(viewModel.track.title)
+                                    .font(.system(size: 13))
+                                    .foregroundColor(.primary)
+                                
                                 Text(viewModel.track.artist.name)
+                                    .font(.system(size: 11))
+                                    .foregroundColor(.secondary)
                             }
                         }
                     }
@@ -94,7 +99,7 @@ struct UpNextList: View {
         nowPlaying.upNext.move(fromOffsets: source, toOffset: destination)
         let destinationIndex = sourceIndex < destination ?  destination - 1 : destination
         if sourceIndex != destinationIndex {
-            eventLogger.send(MoveTrackLog(userId: 0,
+            MiniVibeApp.eventLogger.send(MoveTrackLog(userId: 0,
                                           trackId: nowPlaying.upNext[destinationIndex].track.id,
                                           source: sourceIndex,
                                           destination: destinationIndex))
