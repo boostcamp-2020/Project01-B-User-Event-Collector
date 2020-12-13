@@ -1,13 +1,11 @@
-// import express from 'express';
-// import User from '../models/User';
-// const router = express.Router();
+import express from 'express';
+import passport from 'passport';
 
-// router.get('/:id',  (req, res, next) => {
-//     const id = req.params.id;
-//     console.log(User);
-//     User.find({})
-//     .then((user) => res.send(user))
-//     .catch(e =>  res.send(e));
-// })
+const router = express.Router();
 
-// export default router;
+router.get('/login/naver', passport.authenticate('login-naver'), (req, res, next) => {
+    const apiUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}&state=${process.env.STATE}`;
+    res.redirect(apiUrl);
+});
+
+export default router;

@@ -1,4 +1,5 @@
 import express from 'express';
+import userRouter from './users';
 import artistRouter from './artists';
 import newsRouter from './news';
 import magazineRouter from './magazines';
@@ -12,6 +13,7 @@ import playEventRouter from './playEvents';
 
 const router = express.Router();
 
+router.use('/users', userRouter);
 router.use('/artists', artistRouter);
 router.use('/news', newsRouter);
 router.use('/magazines', magazineRouter);
