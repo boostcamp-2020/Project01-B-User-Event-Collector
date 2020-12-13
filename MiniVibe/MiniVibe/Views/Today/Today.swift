@@ -16,7 +16,6 @@ struct Today: View {
         UINavigationBar.appearance().standardAppearance = appearance
     }
     
-    @EnvironmentObject var eventLogger: EventLogger
     @StateObject private var viewModel = TodayViewModel()
     
     var body: some View {
@@ -42,8 +41,7 @@ struct Today: View {
                                             playlists: viewModel.playlists) {
                                 ThumbnailList(info: .playlist(data: viewModel.playlists),
                                               navigationTitle: "즐겨듣는 플레이리스트")
-                                    .logTransition(eventLogger: eventLogger,
-                                                   identifier: .playlists(id: 0),
+                                    .logTransition(identifier: .playlists(id: 0),
                                                    componentId: .sectionTitle(category: "즐겨듣는 플레이리스트"))
                             }
                             
@@ -52,8 +50,7 @@ struct Today: View {
                                             playlists: viewModel.playlists) {
                                 ThumbnailList(info: .playlist(data: viewModel.playlists),
                                               navigationTitle: "내 취향 플레이리스트")
-                                    .logTransition(eventLogger: eventLogger,
-                                                   identifier: .playlists(id: 1),
+                                    .logTransition(identifier: .playlists(id: 1),
                                                    componentId: .sectionTitle(category: "내 취향 플레이리스트"))
                             }
                             
@@ -68,8 +65,7 @@ struct Today: View {
                                          albums: viewModel.albums) {
                                 ThumbnailGridView(title: "좋아할 최신 앨범",
                                                   album: viewModel.albums)
-                                    .logTransition(eventLogger: eventLogger,
-                                                   identifier: .recommendedRecentAlbum,
+                                    .logTransition(identifier: .recommendedRecentAlbum,
                                                    componentId: .sectionTitle(category: "좋아할 최신 앨범"))
                             }
                             

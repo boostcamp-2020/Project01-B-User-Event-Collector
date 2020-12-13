@@ -6,6 +6,7 @@
 //
 
 import Combine
+import EventLogKit
 
 final class PlaylistViewModel: ObservableObject {
     enum Input {

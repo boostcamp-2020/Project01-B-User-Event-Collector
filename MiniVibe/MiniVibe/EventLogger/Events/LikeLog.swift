@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import EventLogKit
 
 protocol LikeLogType: EventLogType {
     var componentId: String { get }

@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import EventLogKit
 
 protocol PlayLogType: EventLogType {
     var trackId: Int { get }

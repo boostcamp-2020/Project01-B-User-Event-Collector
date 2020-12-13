@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ArtistSection: View {
-    @EnvironmentObject private var eventLogger: EventLogger
     @StateObject private var viewModel = ArtistSectionViewModel()
     let width: CGFloat
     let sectionTitle: String
@@ -25,8 +24,7 @@ struct ArtistSection: View {
                         NavigationLink(
                             destination:
                                 ArtistView(id: artist.id)
-                                .logTransition(eventLogger: eventLogger,
-                                               identifier: .artist(id: artist.id),
+                                .logTransition(identifier: .artist(id: artist.id),
                                                componentId: .artistItem)
                             ,
                             label: {

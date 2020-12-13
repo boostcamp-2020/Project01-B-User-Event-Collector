@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct MainTab: View {
-    @State private var contentFrame = CGRect.zero
-    @State private var isPlayerPresented = false
     @EnvironmentObject private var nowPlaying: NowPlaying
-    @EnvironmentObject private var eventLogger: EventLogger
+    @State private var contentFrame = CGRect.zero
+    @StateObject private var viewModel = MainTabViewModel()
     
     init() {
         UITabBar.appearance().barTintColor = .systemBackground
@@ -19,7 +18,7 @@ struct MainTab: View {
     }
     
     var body: some View {
-        TabView(selection: $eventLogger.tabViewSelection) {
+        TabView(selection: $viewModel.tabViewSelection) {
             Today()
                 .tabItem {
                     Image(systemName: "house.fill")
@@ -44,7 +43,7 @@ struct MainTab: View {
                 }
                 .tag(ViewIdentifier.library)
             
-            EventLogView(viewModel: .init(eventLogger: eventLogger))
+            EventLogView(viewModel: .init())
                 .tabItem {
                     Image(systemName: "pencil.and.ellipsis.rectangle")
                 }
@@ -59,7 +58,7 @@ struct MainTab: View {
     
     @ViewBuilder
     private var player: some View {
-        if eventLogger.tabViewSelection != .none {
+        if viewModel.tabViewSelection != .none {
             PlayerPreview(coordinate: contentFrame)
                 .onTapGesture {
                     if !nowPlaying.upNext.isEmpty {
@@ -68,8 +67,7 @@ struct MainTab: View {
                 }
                 .sheet(isPresented: $nowPlaying.isPlayerPresented) {
                     PlayerView()
-                        .logTransition(eventLogger: eventLogger,
-                                       identifier: .player,
+                        .logTransition(identifier: .player,
                                        componentId: ComponentId.playerPreview)
                 }
         }

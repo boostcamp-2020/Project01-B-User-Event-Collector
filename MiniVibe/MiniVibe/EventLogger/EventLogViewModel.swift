@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import EventLogKit
 
 final class EventLogViewModel: ObservableObject {
     enum Input {
@@ -20,9 +21,9 @@ final class EventLogViewModel: ObservableObject {
     }
     
     @Published private(set) var state: State = .idle
-    private let eventLogger: EventLogger
+    private let eventLogger: EventLoggerType
     
-    init(eventLogger: EventLogger) {
+    init(eventLogger: EventLoggerType = MiniVibeApp.eventLogger) {
         self.eventLogger = eventLogger
     }
     
@@ -36,12 +37,12 @@ final class EventLogViewModel: ObservableObject {
     }
     
     private func load() {
-        let events = eventLogger.events()
-        state = events.isEmpty ? .empty : .loaded(events: events)
+//        let events = eventLogger.events()
+//        state = events.isEmpty ? .empty : .loaded(events: events)
     }
     
     private func reset() {
-        eventLogger.reset()
-        state = .empty
+//        eventLogger.reset()
+//        state = .empty
     }
 }

@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import EventLogKit
 
 final class TrackViewModel: ObservableObject {
     @Published var track: TrackInfo
