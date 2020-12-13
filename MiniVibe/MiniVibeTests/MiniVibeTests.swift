@@ -42,7 +42,7 @@ class MiniVibeTests: XCTestCase {
                 case .finished:
                     XCTFail("Network Request Success -fail")
                 case let .failure(error):
-                    XCTAssertEqual(error, NetworkService.NetworkError.invalidURL)
+                    XCTAssertEqual(error, NetworkError.invalidURL)
                     expectation.fulfill()
                 }
             } receiveValue: { _ in
@@ -62,7 +62,7 @@ class MiniVibeTests: XCTestCase {
                 case .finished:
                     XCTFail("Network Request Success -fail")
                 case let .failure(error):
-                    XCTAssertEqual(error, NetworkService.NetworkError.unknownError(message: "Unknown Error"))
+                    XCTAssertEqual(error, NetworkError.unknownError(message: "Unknown Error"))
                     expectation.fulfill()
                 }
             } receiveValue: { _ in
