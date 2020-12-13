@@ -15,14 +15,14 @@ const config : StrategyOption = {
 const auth = async (accessToken :any, refreshToken: any, profile: any, done:any) => {
     try {
         const manager = getManager();
-        let user = await manager.findOne(User, profile.id);
+        let user = await manager.findOne(User, { password: profile.id });
 
         if (!user) {
             user = new User();
             user.email = profile.emails[0].value;
             user.name = user.email.split('@')[0];
             user.password = profile.id;
-            manager.save(user);
+            await manager.save(user);
         }
         return done(null, user);
     } catch (err) {
