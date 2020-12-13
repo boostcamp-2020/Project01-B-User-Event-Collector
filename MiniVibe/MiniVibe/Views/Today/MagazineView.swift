@@ -27,6 +27,8 @@ struct MagazineView: View {
                         Section(header: PlayAndShuffle(width: geometry.size.width)) {
                             Text(ArticleExample.content)
                                 .padding(.horizontal, width * .paddingRatio)
+                                .foregroundColor(.primary)
+                            
                             ForEach(0..<10) { index in
                                 TrackRowE(viewModel: .init(track: trackinfo, eventLogger: MiniVibeApp.eventLogger),
                                           order: index)

@@ -20,6 +20,7 @@ struct NewsItem: View {
                     
                 Text(news.title)
                     .font(.system(size: 17))
+                    .foregroundColor(.primary)
                     .bold()
                     .padding()
             }

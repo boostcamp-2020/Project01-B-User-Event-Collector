@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="LatestUpnext" representedClassName="LatestUpnext" syncable="YES" codeGenerationType="class">
-        <attribute name="trackId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="track" optional="YES" attributeType="Transformable"/>
     </entity>
     <elements>
         <element name="LatestUpnext" positionX="-63" positionY="-18" width="128" height="44"/>
