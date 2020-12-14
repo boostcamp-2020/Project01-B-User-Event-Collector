@@ -63,7 +63,15 @@ export const addToLibrary = async (url, option) => {
 };
 
 export const addToPlaylist = async (url, data) => {
-    await request(url, { method: 'POST', data });
+    const options = { ...getRequestOptions('POST', data) };
+    try {
+        await axios({
+            ...options,
+            url,
+        });
+    } catch (err) {
+        console.error(err);
+    }
 };
 
 export const deleteFromLibrary = async (url, option) => {
