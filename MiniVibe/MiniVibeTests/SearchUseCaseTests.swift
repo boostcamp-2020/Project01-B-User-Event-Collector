@@ -37,7 +37,7 @@ class SearchUseCaseTests: XCTestCase {
     }
 
     func test_load_news_failure() {
-        let expectation = XCTestExpectation(description: "news load success test")
+        let expectation = XCTestExpectation(description: "news load failure test")
         defer { wait(for: [expectation], timeout: 5) }
         
         let usecase = SearchUseCase(network: MockFailureNetworkService())

@@ -34,30 +34,9 @@ class ArtistsUseCaseTests: XCTestCase {
                 XCTAssertEqual(receivedArtists, artists.data)
             }
             .store(in: &cancellables)
-     
     }
     
     func test_load_artist_success() {
-        let expectations = XCTestExpectation(description: "artist load success test")
-        defer { wait(for: [expectations], timeout: 5) }
-        let usecase = ArtistUseCase(network: MockFailureNetworkService())
-        usecase.loadArtists()
-            .sink { result in
-                switch result {
-                case .finished:
-                    XCTFail("Result should not finish")
-                case let .failure(error):
-                    XCTAssertEqual(error, UseCaseError.decodingError)
-                    expectations.fulfill()
-                }
-            } receiveValue: { _ in
-                XCTFail("Result should not finish")
-            }
-            .store(in: &cancellables)
-
-    }
-
-    func test_load_artists_failure() {
         let expectations = XCTestExpectation(description: "artists load failure test")
         defer { wait(for: [expectations], timeout: 5) }
         
@@ -91,7 +70,26 @@ class ArtistsUseCaseTests: XCTestCase {
                 XCTAssertEqual(receivedInfo, artist.data)
             }
             .store(in: &cancellables)
-
+    }
+    
+    func test_load_artists_failure() {
+        let expectations = XCTestExpectation(description: "artist load success test")
+        defer { wait(for: [expectations], timeout: 5) }
+        
+        let usecase = ArtistUseCase(network: MockFailureNetworkService())
+        usecase.loadArtists()
+            .sink { result in
+                switch result {
+                case .finished:
+                    XCTFail("Result should not finish")
+                case let .failure(error):
+                    XCTAssertEqual(error, UseCaseError.decodingError)
+                    expectations.fulfill()
+                }
+            } receiveValue: { _ in
+                XCTFail("Result should not finish")
+            }
+            .store(in: &cancellables)
     }
 
     func test_load_artist_failure() {

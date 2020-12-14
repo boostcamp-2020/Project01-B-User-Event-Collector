@@ -102,6 +102,7 @@
 		800A9BFB2587423900D65CB0 /* NewsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A9BFA2587423900D65CB0 /* NewsExtensions.swift */; };
 		800A9C0625874AE300D65CB0 /* ArtistsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A9C0525874AE200D65CB0 /* ArtistsUseCaseTests.swift */; };
 		800A9C0B25874C3100D65CB0 /* ArtistsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A9C0A25874C3100D65CB0 /* ArtistsExtensions.swift */; };
+		800A9C102587560400D65CB0 /* TrackUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A9C0F2587560400D65CB0 /* TrackUseCaseTests.swift */; };
 		800FA849257DC557008926A5 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FA848257DC557008926A5 /* EndPoint.swift */; };
 		800FA84D257DC5EA008926A5 /* Albums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FA84C257DC5EA008926A5 /* Albums.swift */; };
 		800FA851257DC71E008926A5 /* TodayUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800FA850257DC71E008926A5 /* TodayUseCase.swift */; };
@@ -306,6 +307,7 @@
 		800A9BFA2587423900D65CB0 /* NewsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsExtensions.swift; sourceTree = "<group>"; };
 		800A9C0525874AE200D65CB0 /* ArtistsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsUseCaseTests.swift; sourceTree = "<group>"; };
 		800A9C0A25874C3100D65CB0 /* ArtistsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsExtensions.swift; sourceTree = "<group>"; };
+		800A9C0F2587560400D65CB0 /* TrackUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackUseCaseTests.swift; sourceTree = "<group>"; };
 		800FA848257DC557008926A5 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		800FA84C257DC5EA008926A5 /* Albums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Albums.swift; sourceTree = "<group>"; };
 		800FA850257DC71E008926A5 /* TodayUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUseCase.swift; sourceTree = "<group>"; };
@@ -835,6 +837,7 @@
 		80ABC1712574BF11003D4666 /* MiniVibeTests */ = {
 			isa = PBXGroup;
 			children = (
+				800A9C0F2587560400D65CB0 /* TrackUseCaseTests.swift */,
 				800A9C0525874AE200D65CB0 /* ArtistsUseCaseTests.swift */,
 				800A9BF52587407900D65CB0 /* SearchUseCaseTests.swift */,
 				44E3E9FE258753E1001CB352 /* PlaylistUseCaseTests.swift */,
@@ -1217,6 +1220,7 @@
 				800A9BFB2587423900D65CB0 /* NewsExtensions.swift in Sources */,
 				44E3E9F325874375001CB352 /* TrackExtensions.swift in Sources */,
 				44E3E9F925874F4C001CB352 /* MagazineExtensions.swift in Sources */,
+				800A9C102587560400D65CB0 /* TrackUseCaseTests.swift in Sources */,
 				80ABC1832574C1FC003D4666 /* NetworkError+Equatable.swift in Sources */,
 				800A9BF62587407900D65CB0 /* SearchUseCaseTests.swift in Sources */,
 				44E3E9FC2587508B001CB352 /* AlbumUseCaseTests.swift in Sources */,

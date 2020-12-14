@@ -19,6 +19,28 @@ extension TrackResponse: Encodable {
     }
 }
 
+extension SingleTrackResponse: Encodable {
+    enum CodingKeys: String, CodingKey {
+        case data
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(data, forKey: .data)
+    }
+}
+
+extension TrackUseCase.LikeTrackResponse: Encodable {
+    enum CodingKeys: String, CodingKey {
+        case success
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(success, forKey: .success)
+    }
+}
+
 extension TrackInfo: Encodable {
     enum CodingKeys: String, CodingKey {
         case id, title, lyrics, albumId, album, artist, liked
