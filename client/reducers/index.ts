@@ -4,23 +4,20 @@ import user from './user';
 import selectedTrack from './selectedTrack';
 import musicPlayer from './musicPlayer';
 
-// (아전상태, 액션) => 다음상태
-const rootReducer = combineReducers({
-    index: (state: object = {}, action) => {
-        //HYDRATE를 위한 index reducer (HYDRATE는 redux의 서버사이드 렌더링을 위해 필요함)
-        switch (action.type) {
-            case HYDRATE:
-                return {
-                    ...state,
-                    ...action.payload,
-                };
-            default:
-                return state;
-        }
-    },
-    user,
-    selectedTrack,
-    musicPlayer
-});
+const rootReducer = (state, action) => {
+    switch (action.type) {
+      case HYDRATE:
+        console.log('HYDRATE', action);
+        return action.payload;
+      default: {
+        const combinedReducer = combineReducers({
+            user,
+            selectedTrack,
+            musicPlayer
+        });
+        return combinedReducer(state, action);
+      }
+    }
+  };
 
 export default rootReducer;

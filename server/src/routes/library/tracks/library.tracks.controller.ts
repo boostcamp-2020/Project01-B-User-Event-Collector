@@ -45,7 +45,7 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
             'album.id',
             'album.title',
             'album.imageUrl',
-        ])
+        ]).where('user.id = :userId', { userId })
         .getOne();
 
     const libraryTracks = user?.libraryTracks ? user?.libraryTracks : [];

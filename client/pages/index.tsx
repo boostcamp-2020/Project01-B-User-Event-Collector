@@ -8,6 +8,7 @@ import apiUrl from '@constants/apiUrl';
 import { page, contentType } from '@constants/identifier';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
+import { useSelector, useDispatch } from 'react-redux';
 
 const TodayContainer = styled.div`
     height: 100%;
@@ -46,6 +47,7 @@ const ContentsContainer = styled.div`
 
 const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata }) => {
     //TODO: isLogined state 이용하여 <UserContentsContainer> 부분은 로그인 했을 때만 보이도록 수정
+    const user = useSelector((state) => state.user);
 
     return (
         <ComponentInfoContext.Provider value={{ componentId: page.today }}>
@@ -78,7 +80,7 @@ const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata }) => {
                         </ComponentInfoWrapper>
                     </ContentsContainer>
                 </PublicContentsContainer>
-                <UserContentsContainer>
+                { user.isLoggedIn && <UserContentsContainer>
                     <ContentsContainer>
                         <ComponentInfoWrapper componentId={contentType.recommendedPlaylist}>
                             <CardListContainer title="내 취향 플레이리스트" href="/">
@@ -103,7 +105,7 @@ const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata }) => {
                             </CardListContainer>
                         </ComponentInfoWrapper>
                     </ContentsContainer>
-                </UserContentsContainer>
+                </UserContentsContainer>}
             </TodayContainer>
         </ComponentInfoContext.Provider>
     );

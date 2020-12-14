@@ -14,8 +14,8 @@ const apiUrl = {
     libraryPlaylist: `${baseUrl}/library/playlists`,
     libraryMixtape: `${baseUrl}/library/mixtapes`,
     like: `${baseUrl}/library/`,
-    addTracksToPlaylist: `${baseUrl}/playlists/tracks`,
-    // event
+    addTracksToPlaylist:`${baseUrl}/playlists/tracks`,
+    user: `${baseUrl}/users`,
     event: `${baseUrl}/events/`,
     playEvent: `${baseUrl}/play-events/`,
 };
