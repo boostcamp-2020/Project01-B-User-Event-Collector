@@ -21,7 +21,7 @@ struct ArtistView: View {
     
     @ViewBuilder
     private var content: some View {
-        if let artist = viewModel.artist {
+        if let artist = viewModel.state.artist {
             GeometryReader { geometry in
                 let width = geometry.size.width
                 ScrollView {
@@ -65,7 +65,7 @@ struct ArtistView: View {
                         }
                     }
                 }
-                .sheet(isPresented: $viewModel.isOpenMenu) {
+                .sheet(isPresented: $viewModel.state.isOpenMenu) {
                     ArtistMenu(artist: artist)
                         .logTransition(identifier: .artistMenu(id: artist.id),
                                        componentId: .sectionTitle(category: "관련 플레이리스트"))
@@ -86,7 +86,7 @@ struct ArtistView: View {
     var trailingBarButtons: some View {
         HStack(spacing: 10) {
             Button {
-                
+                viewModel.send(.like(artistId: id))
             } label: {  Image(systemName: "heart") }
             
             Button {

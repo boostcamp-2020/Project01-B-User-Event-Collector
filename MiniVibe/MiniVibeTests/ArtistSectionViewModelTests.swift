@@ -31,7 +31,7 @@ class ArtistSectionViewModelTests: XCTestCase {
                                                           liked: 0)],
                                            albums: [.init(id: 0, title: "", imageUrl: "")])
         
-        let usecase = MockArtistSectionUseCase(artists: artists, artistInfo: artistInfo)
+        let usecase = MockArtistUseCase(artists: artists, artistInfo: artistInfo)
         let viewModel = ArtistSectionViewModel(useCase: usecase)
         
         viewModel.$state

@@ -1,5 +1,5 @@
 //
-//  MockArtistSectionUseCase.swift
+//  MockArtistUseCase.swift
 //  MiniVibeTests
 //
 //  Created by Sue Cho on 2020/12/14.
@@ -9,7 +9,7 @@ import XCTest
 import Combine
 @testable import MiniVibe
 
-struct MockArtistSectionUseCase: ArtistUseCaseType {
+struct MockArtistUseCase: ArtistUseCaseType {
     let artists: [Artist]
     let artistInfo: ArtistInfo
     
@@ -25,4 +25,3 @@ struct MockArtistSectionUseCase: ArtistUseCaseType {
             .eraseToAnyPublisher()
     }
 }
-
