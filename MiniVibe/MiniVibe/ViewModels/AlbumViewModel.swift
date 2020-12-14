@@ -30,7 +30,7 @@ final class AlbumViewModel: ObservableObject {
     @Published var showSheet = false
     @Published var isOpenArticle = false
 
-    init(id: Int, useCase: AlbumUseCaseType = AlbumUseCase(), eventLogger: EventLoggerType) {
+    init(id: Int, useCase: AlbumUseCaseType = AlbumUseCase(), eventLogger: EventLoggerType = MiniVibeApp.eventLogger) {
         self.id = id
         self.useCase = useCase
         self.eventLogger = eventLogger
