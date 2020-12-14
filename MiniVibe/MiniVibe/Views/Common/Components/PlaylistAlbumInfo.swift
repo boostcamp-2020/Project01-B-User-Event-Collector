@@ -64,6 +64,7 @@ struct PlaylistAlbumInfo: View {
     var optionalInfo: some View {
         VStack(alignment: .leading) {
             Text(description)
+                .foregroundColor(.primary)
             
             HStack {
                 Text(article)
