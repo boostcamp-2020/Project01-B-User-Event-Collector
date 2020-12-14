@@ -9,7 +9,7 @@ import XCTest
 import Combine
 @testable import MiniVibe
 
-struct MockArtistUseCase: ArtistUseCaseType {
+struct MockArtistSectionUseCase: ArtistUseCaseType {
     let artists: [Artist]
     let artistInfo: ArtistInfo
     

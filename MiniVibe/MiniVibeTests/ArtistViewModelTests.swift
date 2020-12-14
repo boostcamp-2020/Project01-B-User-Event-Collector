@@ -31,7 +31,7 @@ final class ArtistViewModelTests: XCTestCase {
                                                           liked: 0)],
                                            albums: [.init(id: 0, title: "", imageUrl: "")])
         
-        let usecase = MockArtistUseCase(artists: artists, artistInfo: artistInfo)
+        let usecase = MockArtistSectionUseCase(artists: artists, artistInfo: artistInfo)
         let viewModel = ArtistViewModel(useCase: usecase)
         viewModel.$state
             .sink { state in
@@ -62,7 +62,7 @@ final class ArtistViewModelTests: XCTestCase {
                                                           liked: 0)],
                                            albums: [.init(id: 0, title: "", imageUrl: "")])
         
-        let usecase = MockArtistUseCase(artists: artists, artistInfo: artistInfo)
+        let usecase = MockArtistSectionUseCase(artists: artists, artistInfo: artistInfo)
         let viewModel = ArtistViewModel(useCase: usecase)
         viewModel.$state
             .sink { state in
@@ -93,7 +93,7 @@ final class ArtistViewModelTests: XCTestCase {
                                                           liked: 0)],
                                            albums: [.init(id: 0, title: "", imageUrl: "")])
         
-        let usecase = MockArtistUseCase(artists: artists, artistInfo: artistInfo)
+        let usecase = MockArtistSectionUseCase(artists: artists, artistInfo: artistInfo)
         let eventLogger = MockEventLogger { data in
             XCTAssertEqual(data.event, "LikeLog")
             expectation.fulfill()
