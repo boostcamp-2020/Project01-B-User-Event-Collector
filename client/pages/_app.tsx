@@ -19,6 +19,8 @@ import { componentType } from '@constants/identifier';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import useTransitionEventLog from '@hooks/useTransitionEventLog';
 
+import { LOAD_USER_REQUEST } from 'constants/actions';
+
 const Container = styled.div`
     background-color: white;
 `;
@@ -65,6 +67,12 @@ const App = ({ Component, pageProps }) => {
         dispatch(clearAllTracks());
     }, [router.asPath]);
 
+    useEffect(() => {
+        dispatch({
+            type: LOAD_USER_REQUEST
+        });
+    }, []);
+
     return (
         <Container>
             <Head>
@@ -90,4 +98,4 @@ App.propTypes = {
     Component: PropTypes.elementType.isRequired,
 };
 
-export default wrapper.withRedux(withReduxSaga(App));
+export default wrapper.withRedux(App);

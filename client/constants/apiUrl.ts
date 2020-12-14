@@ -14,7 +14,8 @@ const apiUrl = {
     libraryPlaylist: `${baseUrl}/library/playlists`,
     libraryMixtape: `${baseUrl}/library/mixtapes`,
     like: `${baseUrl}/library/`,
-    addTracksToPlaylist:`${baseUrl}/playlists/tracks`
+    addTracksToPlaylist:`${baseUrl}/playlists/tracks`,
+    user: `${baseUrl}/users`,
 };
 
 export default apiUrl;

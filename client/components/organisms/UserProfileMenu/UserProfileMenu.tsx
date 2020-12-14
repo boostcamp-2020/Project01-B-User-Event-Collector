@@ -5,22 +5,28 @@ import MenuLink from '@components/atoms/MenuLink';
 import DropdownMenu from '@components/molecules/DropdownMenu';
 import Avatar from '@material-ui/core/Avatar';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import apiUrl from 'constants/apiUrl';
+import { UserProps } from 'interfaces/props';
+import { useDispatch } from 'react-redux';
+import { loginRequestAction } from 'reducers/user';
 
 interface UserProfileMenuProps {
-    user?: {
-        id: string;
-        name: string;
-        profileUrl?: string;
-    };
+    user?: UserProps;
 }
 
 const IconWrapper = styled.div`
     margin-right: 10px;
 `;
 
+const ProfileContainer = styled.div`
+    display: flex;
+    align-items: center;
+    color: white;
+`;
+
 const UserProfileMenu = ({ user }: UserProfileMenuProps) => {
     // const router = useRouter();
-
+    const dispatch = useDispatch();
     const defaultImage = 'https://ssl.pstatic.net/static/common/myarea/myInfo.gif?type=s33';
     const dropdownItems = [
         {
@@ -32,15 +38,20 @@ const UserProfileMenu = ({ user }: UserProfileMenuProps) => {
             handleClick: (e: MouseEvent<HTMLElement>) => console.log('로그아웃'), // TODO: 로그아웃 함수로 변경
         },
     ];
-    if (!user) {
+    const loginHandler = () => {
+        dispatch(loginRequestAction());
+    }
+
+    if (!user.user) {
         return (
             // TODO : 배포 서버로 바꾸기 , constants 폴더로 이동
-            <MenuLink href="http://localhost:4500/api/users/login/naver">
+             //<MenuLink onClick={loginHandler} href='/'>
+            <ProfileContainer onClick={loginHandler}>
                 <IconWrapper>
                     <Avatar alt="profile" src={defaultImage} style={{ width: 30, height: 30 }} />
                 </IconWrapper>
                 로그인
-            </MenuLink>
+            </ProfileContainer>
         );
     }
     return (
@@ -49,11 +60,11 @@ const UserProfileMenu = ({ user }: UserProfileMenuProps) => {
                 <IconWrapper>
                     <Avatar
                         alt="profile"
-                        src={user.profileUrl ? user.profileUrl : defaultImage}
+                        src={user.user.profileUrl ? user.user.profileUrl : defaultImage}
                         style={{ width: 30, height: 30 }}
                     />
                 </IconWrapper>
-                {user.name}
+                {user.user.name}
                 <ArrowDropDownIcon />
             </MenuLink>
         </DropdownMenu>

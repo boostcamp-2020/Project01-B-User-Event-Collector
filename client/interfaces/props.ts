@@ -182,3 +182,7 @@ export interface PlayControllerProps {
     displayHeaderHandler?
 }
 
+export interface UserProps {
+    user,
+    isLoggedIn: boolean    
+}

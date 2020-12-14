@@ -13,13 +13,10 @@ import {
     ProfileContainer,
     Header,
 } from './HeaderSideBar.styles';
+import { UserProps } from 'interfaces/props';
 
 interface HeaderProps {
-    user?: {
-        id: string;
-        name: string;
-        profileUrl?: string;
-    };
+    user: UserProps;
 }
 
 const HeaderSideBar = ({ user }: HeaderProps) => {
@@ -42,7 +39,7 @@ const HeaderSideBar = ({ user }: HeaderProps) => {
                     <UserProfileMenu user={user} />
                 </ProfileContainer>
                 <MainMenu />
-                {user && <SubMenu />}
+                {user.user && <SubMenu />}
             </SectionContainer>
         </Header>
     );
