@@ -9,11 +9,9 @@ import SwiftUI
 
 struct ArtistView: View {
     
-    private let id: Int
     @StateObject private var viewModel: ArtistViewModel
 
-    init(id: Int, viewModel: ArtistViewModel) {
-        self.id = id
+    init(viewModel: ArtistViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -103,7 +101,7 @@ struct ArtistView: View {
 struct ArtistView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ArtistView(id: 3, viewModel: .init(id: 3))
+            ArtistView(viewModel: .init(id: 3))
         }
     }
 }

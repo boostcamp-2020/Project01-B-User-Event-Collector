@@ -24,7 +24,7 @@ struct ArtistSection: View {
                     ForEach(viewModel.state.artists, id: \.id) { artist in
                         NavigationLink(
                             destination:
-                                ArtistView(id: artist.id, viewModel: .init(id: artist.id))
+                                ArtistView(viewModel: .init(id: artist.id))
                                 .logTransition(identifier: .artist(id: artist.id),
                                                componentId: .artistItem)
                             ,

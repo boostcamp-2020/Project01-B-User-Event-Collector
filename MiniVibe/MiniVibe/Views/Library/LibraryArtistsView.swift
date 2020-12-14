@@ -53,8 +53,7 @@ struct LibraryArtistsView: View {
                         
                         ForEach(0..<10) { _ in
                             NavigationLink(destination:
-                                            ArtistView(id: 3,
-                                                       viewModel: .init(id: 3))
+                                            ArtistView(viewModel: .init(id: 3))
                                             .logTransition(identifier: .artist(id: 3), componentId: .artistRow)
                             ) {
                                 LibraryArtistRow(artist: "방탄소년단")
