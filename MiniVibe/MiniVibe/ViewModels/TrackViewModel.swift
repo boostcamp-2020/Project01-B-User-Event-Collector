@@ -14,16 +14,10 @@ final class TrackViewModel: ObservableObject {
         case like
     }
     struct State {
-        var track: TrackInfo = .init(id: 0,
-                                     title: "",
-                                     lyrics: "",
-                                     albumId: 0,
-                                     album: .init(id: 0, title: "", imageUrl: ""),
-                                     artist: .init(id: 0, name: ""),
-                                     liked: 0)
+        var track: TrackInfo
     }
 
-    @Published var state = State()
+    @Published var state: State
     private let eventLogger: EventLoggerType
     private let useCase: TrackUseCaseType
     private var cancellables: Set<AnyCancellable> = []
@@ -34,7 +28,7 @@ final class TrackViewModel: ObservableObject {
         
         self.useCase = useCase
         self.eventLogger = eventLogger
-        state.track = track
+        state = State(track: track)
     }
     
     func send(_ input: Input) {
