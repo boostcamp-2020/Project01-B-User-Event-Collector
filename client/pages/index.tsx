@@ -116,7 +116,11 @@ export async function getServerSideProps(context) {
         request(apiUrl.mixtape),
     ]);
 
-    // TODO: error handling
+    if (!Magazinesdata || !Newsdata || !Playlistdata || !Albumdata || !Mixtapedata) {
+        return {
+            notFound: true,
+        };
+    }
 
     return {
         props: {

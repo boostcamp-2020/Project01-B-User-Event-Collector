@@ -82,6 +82,12 @@ export async function getServerSideProps(context) {
     const trackData = playlistData?.tracks;
     const artistData = playlistData?.relatedArtists;
 
+    if (!playlistData) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
         props: {
             playlistData,
