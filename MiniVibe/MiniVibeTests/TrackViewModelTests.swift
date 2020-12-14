@@ -47,7 +47,7 @@ class TrackViewModelTests: XCTestCase {
                                        eventLogger: eventLogger)
         viewModel.$state
             .sink { state in
-                if state.track.liked == viewModel.state.track.liked {
+                if state.track.liked == 1 {
                     expectation.fulfill()
                 }
             }
@@ -80,7 +80,7 @@ class TrackViewModelTests: XCTestCase {
                                        eventLogger: eventLogger)
         viewModel.$state
             .sink { state in
-                if state.track.liked == viewModel.state.track.liked {
+                if state.track.liked == 0 {
                     expectation.fulfill()
                 }
             }
