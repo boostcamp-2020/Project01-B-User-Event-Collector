@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHeader';
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
 import apiUrl from 'constants/apiUrl';
-import { request } from '@utils/apis';
+import { requestByCookie } from '@utils/apis';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 import { page, contentType } from '@constants/identifier';
@@ -45,12 +45,13 @@ const PlaylistLibrary = ({ playlistData }) => {
     );
 };
 
-export const getServerSideProps = async () => {
-    const playlistData = await request(apiUrl.libraryPlaylist);
+export const getServerSideProps = async ({req, res}) => {
+    const playlistData = await requestByCookie(req, res, apiUrl.libraryPlaylist);
     return {
         props: {
             playlistData,
         },
     };
 };
+
 export default PlaylistLibrary;
