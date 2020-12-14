@@ -5,6 +5,12 @@ import apiUrl from 'constants/apiUrl';
 
 export const getRequestOptions = (method, options, headers) => ({
     method: method,
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: getCookie('token'),
+        ...headers,
+    },
+    ...options,
 });
 
 export const requestOptions = {
