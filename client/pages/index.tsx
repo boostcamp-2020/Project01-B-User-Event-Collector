@@ -48,7 +48,7 @@ const ContentsContainer = styled.div`
 
 const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata }) => {
     //TODO: isLogined state 이용하여 <UserContentsContainer> 부분은 로그인 했을 때만 보이도록 수정
-    const { user } = useSelector((state) => state.user);
+    const user = useSelector((state) => state.user);
 
     return (
         <ComponentInfoContext.Provider value={{ componentId: page.today }}>
@@ -81,7 +81,7 @@ const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata })
                         </ComponentInfoWrapper>
                     </ContentsContainer>
                 </PublicContentsContainer>
-                { user && <UserContentsContainer>
+                { user.isLoggedIn && <UserContentsContainer>
                     <ContentsContainer>
                         <ComponentInfoWrapper componentId={contentType.recommendedPlaylist}>
                             <CardListContainer title="내 취향 플레이리스트" href="/">

@@ -4,7 +4,6 @@ import User from '../../../models/User';
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
     const userId = req.user;
-
     try {
         const UserRepository = getRepository(User);
         const user = await UserRepository.createQueryBuilder('user')
