@@ -85,6 +85,8 @@
 		44DEED142587AD4900060960 /* MockAlbumUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DEED132587AD4900060960 /* MockAlbumUseCase.swift */; };
 		44DEED1D2587C7AB00060960 /* PlaylistViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DEED1C2587C7AB00060960 /* PlaylistViewModelTests.swift */; };
 		44DEED222587D01A00060960 /* PlaylistViewModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DEED212587D01A00060960 /* PlaylistViewModelExtensions.swift */; };
+		44DEED2D2587DEED00060960 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DEED2C2587DEED00060960 /* SearchViewModelTests.swift */; };
+		44DEED322587E54000060960 /* MockSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DEED312587E54000060960 /* MockSearchUseCase.swift */; };
 		44E39B312580E6EA00968B0A /* Transition+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E39B2F2580E6EA00968B0A /* Transition+CoreDataClass.swift */; };
 		44E3E9E0258738DF001CB352 /* TodayUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E3E9DF258738DF001CB352 /* TodayUseCaseTests.swift */; };
 		44E3E9E725873DEA001CB352 /* MixtapeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E3E9E625873DEA001CB352 /* MixtapeExtensions.swift */; };
@@ -303,6 +305,8 @@
 		44DEED132587AD4900060960 /* MockAlbumUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAlbumUseCase.swift; sourceTree = "<group>"; };
 		44DEED1C2587C7AB00060960 /* PlaylistViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModelTests.swift; sourceTree = "<group>"; };
 		44DEED212587D01A00060960 /* PlaylistViewModelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModelExtensions.swift; sourceTree = "<group>"; };
+		44DEED2C2587DEED00060960 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
+		44DEED312587E54000060960 /* MockSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchUseCase.swift; sourceTree = "<group>"; };
 		44E39B2F2580E6EA00968B0A /* Transition+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+CoreDataClass.swift"; sourceTree = "<group>"; };
 		44E3E9DF258738DF001CB352 /* TodayUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUseCaseTests.swift; sourceTree = "<group>"; };
 		44E3E9E625873DEA001CB352 /* MixtapeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixtapeExtensions.swift; sourceTree = "<group>"; };
@@ -604,6 +608,7 @@
 				44DEED102587AD1900060960 /* MockEventLogger.swift */,
 				44DEED132587AD4900060960 /* MockAlbumUseCase.swift */,
 				80D0C9FF2587C745003D8CB2 /* MockArtistSectionUseCase.swift */,
+				44DEED312587E54000060960 /* MockSearchUseCase.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -870,6 +875,7 @@
 		80ABC1712574BF11003D4666 /* MiniVibeTests */ = {
 			isa = PBXGroup;
 			children = (
+				44DEED2C2587DEED00060960 /* SearchViewModelTests.swift */,
 				80D0CA062587D05E003D8CB2 /* ArtistViewModelTests.swift */,
 				44DEED1C2587C7AB00060960 /* PlaylistViewModelTests.swift */,
 				80D0C9FA2587C611003D8CB2 /* ArtistSectionViewModelTests.swift */,
@@ -1256,6 +1262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44DEED2D2587DEED00060960 /* SearchViewModelTests.swift in Sources */,
 				800A9BFB2587423900D65CB0 /* NewsExtensions.swift in Sources */,
 				44E3E9F325874375001CB352 /* TrackExtensions.swift in Sources */,
 				44E3E9F925874F4C001CB352 /* MagazineExtensions.swift in Sources */,
@@ -1280,6 +1287,7 @@
 				44E3E9F625874B9B001CB352 /* PlaylistExtensions.swift in Sources */,
 				44E3E9E0258738DF001CB352 /* TodayUseCaseTests.swift in Sources */,
 				80D0C9FB2587C611003D8CB2 /* ArtistSectionViewModelTests.swift in Sources */,
+				44DEED322587E54000060960 /* MockSearchUseCase.swift in Sources */,
 				44E3E9FF258753E1001CB352 /* PlaylistUseCaseTests.swift in Sources */,
 				44DEED0E2587AC1B00060960 /* AlbumViewModelExtensions.swift in Sources */,
 				44E3E9F02587434D001CB352 /* AlbumExtensions.swift in Sources */,
