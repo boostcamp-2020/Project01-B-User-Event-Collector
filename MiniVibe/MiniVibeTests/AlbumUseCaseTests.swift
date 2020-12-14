@@ -14,7 +14,7 @@ final class AlbumUseCaseTests: XCTestCase {
     private var cancellables: Set<AnyCancellable> = []
     
     func tests_load_album_success() {
-        let expectation = XCTestExpectation(description: "album load test")
+        let expectation = XCTestExpectation(description: "album load success test")
         defer { wait(for: [expectation], timeout: 5) }
         
         let album = AlbumUseCase.AlbumResponse(data:
@@ -44,7 +44,7 @@ final class AlbumUseCaseTests: XCTestCase {
     }
     
     func tests_load_album_failure() {
-        let expectation = XCTestExpectation(description: "album load test")
+        let expectation = XCTestExpectation(description: "album load failure test")
         defer { wait(for: [expectation], timeout: 5) }
         
         let useCase = AlbumUseCase(network: MockFailureNetworkService())

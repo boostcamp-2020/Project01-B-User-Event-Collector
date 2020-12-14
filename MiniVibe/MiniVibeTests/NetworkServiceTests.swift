@@ -33,7 +33,7 @@ final class NetworkServiceTests: XCTestCase {
     }
 
     func test_network_fail_invalidURL() throws {
-        let expectation = XCTestExpectation(description: "Network success test")
+        let expectation = XCTestExpectation(description: "Network failure test")
         let network = NetworkService()
         let url = ""
         network.request(url: url, request: .get, body: nil)
@@ -53,7 +53,7 @@ final class NetworkServiceTests: XCTestCase {
     }
     
     func test_network_fail_unknownError() throws {
-        let expectation = XCTestExpectation(description: "Network success test")
+        let expectation = XCTestExpectation(description: "Network failure test")
         let network = NetworkService()
         let url = "abcdefg"
         network.request(url: url, request: .get, body: nil)

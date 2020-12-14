@@ -14,7 +14,7 @@ final class PlaylistUseCaseTests: XCTestCase {
     private var cancellables: Set<AnyCancellable> = []
     
     func tests_load_playlist_success() {
-        let expectation = XCTestExpectation(description: "playlist load test")
+        let expectation = XCTestExpectation(description: "playlist load success test")
         defer { wait(for: [expectation], timeout: 5) }
         
         let playlist = PlaylistUseCase.PlaylistResponse(data:
@@ -44,7 +44,7 @@ final class PlaylistUseCaseTests: XCTestCase {
     }
     
     func tests_load_album_failure() {
-        let expectation = XCTestExpectation(description: "album load test")
+        let expectation = XCTestExpectation(description: "album load failure test")
         defer { wait(for: [expectation], timeout: 5) }
         
         let useCase = PlaylistUseCase(network: MockFailureNetworkService())

@@ -9,7 +9,7 @@ import XCTest
 import Combine
 @testable import MiniVibe
 
-class ArtistsUseCaseTests: XCTestCase {
+final class ArtistsUseCaseTests: XCTestCase {
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -36,8 +36,28 @@ class ArtistsUseCaseTests: XCTestCase {
             .store(in: &cancellables)
     }
     
+    func test_load_artists_failure() {
+        let expectations = XCTestExpectation(description: "artist load failure test")
+        defer { wait(for: [expectations], timeout: 5) }
+        
+        let usecase = ArtistUseCase(network: MockFailureNetworkService())
+        usecase.loadArtists()
+            .sink { result in
+                switch result {
+                case .finished:
+                    XCTFail("Result should not finish")
+                case let .failure(error):
+                    XCTAssertEqual(error, UseCaseError.decodingError)
+                    expectations.fulfill()
+                }
+            } receiveValue: { _ in
+                XCTFail("Result should not finish")
+            }
+            .store(in: &cancellables)
+    }
+    
     func test_load_artist_success() {
-        let expectations = XCTestExpectation(description: "artists load failure test")
+        let expectations = XCTestExpectation(description: "artist load success test")
         defer { wait(for: [expectations], timeout: 5) }
         
         let artist = ArtistUseCase.ArtistResponse(
@@ -68,26 +88,6 @@ class ArtistsUseCaseTests: XCTestCase {
                 }
             } receiveValue: { receivedInfo in
                 XCTAssertEqual(receivedInfo, artist.data)
-            }
-            .store(in: &cancellables)
-    }
-    
-    func test_load_artists_failure() {
-        let expectations = XCTestExpectation(description: "artist load success test")
-        defer { wait(for: [expectations], timeout: 5) }
-        
-        let usecase = ArtistUseCase(network: MockFailureNetworkService())
-        usecase.loadArtists()
-            .sink { result in
-                switch result {
-                case .finished:
-                    XCTFail("Result should not finish")
-                case let .failure(error):
-                    XCTAssertEqual(error, UseCaseError.decodingError)
-                    expectations.fulfill()
-                }
-            } receiveValue: { _ in
-                XCTFail("Result should not finish")
             }
             .store(in: &cancellables)
     }
