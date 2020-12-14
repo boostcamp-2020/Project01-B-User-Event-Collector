@@ -13,7 +13,7 @@ struct PlayerThumbnail: View {
     @Binding var isOpenLyrics: Bool
     
     var body: some View {
-        let track = nowPlaying.playingTrack?.track
+        let track = nowPlaying.playingTrack?.state.track
         VStack {
             KFImage(URL(string: track?.album.imageUrl ?? ""))
                 .placeholder {

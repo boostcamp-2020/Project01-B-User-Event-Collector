@@ -122,6 +122,8 @@
 		802187E325828B79009A4D95 /* Engagement+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802187E125828B79009A4D95 /* Engagement+CoreDataClass.swift */; };
 		802187EA25828BDE009A4D95 /* EngagementLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802187E925828BDE009A4D95 /* EngagementLog.swift */; };
 		8033A7AA257FA7B100B1C321 /* NowPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8033A7A9257FA7B100B1C321 /* NowPlaying.swift */; };
+		803B1388258797E500ED6B70 /* TrackViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B1387258797E500ED6B70 /* TrackViewModelTests.swift */; };
+		803B139125879ECB00ED6B70 /* MockTrackUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B139025879ECB00ED6B70 /* MockTrackUseCase.swift */; };
 		803D7B8A258684700037D9DF /* LatestUpnext+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803D7B88258684700037D9DF /* LatestUpnext+CoreDataClass.swift */; };
 		803D7B9425868A020037D9DF /* TrackInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803D7B9325868A020037D9DF /* TrackInfoData.swift */; };
 		805E28AE256BBD52007AF5F1 /* MiniVibeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805E28AD256BBD52007AF5F1 /* MiniVibeApp.swift */; };
@@ -333,6 +335,8 @@
 		802187E125828B79009A4D95 /* Engagement+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Engagement+CoreDataClass.swift"; sourceTree = "<group>"; };
 		802187E925828BDE009A4D95 /* EngagementLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngagementLog.swift; sourceTree = "<group>"; };
 		8033A7A9257FA7B100B1C321 /* NowPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlaying.swift; sourceTree = "<group>"; };
+		803B1387258797E500ED6B70 /* TrackViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModelTests.swift; sourceTree = "<group>"; };
+		803B139025879ECB00ED6B70 /* MockTrackUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTrackUseCase.swift; sourceTree = "<group>"; };
 		803D7B88258684700037D9DF /* LatestUpnext+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LatestUpnext+CoreDataClass.swift"; sourceTree = "<group>"; };
 		803D7B9325868A020037D9DF /* TrackInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInfoData.swift; sourceTree = "<group>"; };
 		805E28AA256BBD52007AF5F1 /* MiniVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -584,6 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				44E3E9EB25873E0B001CB352 /* MockNetworkServices.swift */,
+				803B139025879ECB00ED6B70 /* MockTrackUseCase.swift */,
 				44599CA02587941C004D1977 /* MockTodayUseCase.swift */,
 				44DEED102587AD1900060960 /* MockEventLogger.swift */,
 				44DEED132587AD4900060960 /* MockAlbumUseCase.swift */,
@@ -853,6 +858,7 @@
 		80ABC1712574BF11003D4666 /* MiniVibeTests */ = {
 			isa = PBXGroup;
 			children = (
+				803B1387258797E500ED6B70 /* TrackViewModelTests.swift */,
 				44DEED082587A1BE00060960 /* AlbumViewModelTests.swift */,
 				44599C9A25878F7A004D1977 /* TodayViewModelTests.swift */,
 				800A9C0F2587560400D65CB0 /* TrackUseCaseTests.swift */,
@@ -1238,6 +1244,7 @@
 				800A9BFB2587423900D65CB0 /* NewsExtensions.swift in Sources */,
 				44E3E9F325874375001CB352 /* TrackExtensions.swift in Sources */,
 				44E3E9F925874F4C001CB352 /* MagazineExtensions.swift in Sources */,
+				803B139125879ECB00ED6B70 /* MockTrackUseCase.swift in Sources */,
 				44DEED092587A1BE00060960 /* AlbumViewModelTests.swift in Sources */,
 				44599CA12587941C004D1977 /* MockTodayUseCase.swift in Sources */,
 				800A9C102587560400D65CB0 /* TrackUseCaseTests.swift in Sources */,
@@ -1247,6 +1254,7 @@
 				44E3E9FC2587508B001CB352 /* AlbumUseCaseTests.swift in Sources */,
 				80ABC1732574BF11003D4666 /* NetworkServiceTests.swift in Sources */,
 				44E3E9EC25873E0B001CB352 /* MockNetworkServices.swift in Sources */,
+				803B1388258797E500ED6B70 /* TrackViewModelTests.swift in Sources */,
 				800A9C0B25874C3100D65CB0 /* ArtistsExtensions.swift in Sources */,
 				800A9C0625874AE300D65CB0 /* ArtistsUseCaseTests.swift in Sources */,
 				44E3E9E725873DEA001CB352 /* MixtapeExtensions.swift in Sources */,

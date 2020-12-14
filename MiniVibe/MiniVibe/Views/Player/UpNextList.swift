@@ -39,7 +39,7 @@ struct UpNextList: View {
                 List(selection: $nowPlaying.selectedTracks) {
                     ForEach(nowPlaying.upNext, id: \.self) { viewModel in
                         HStack(spacing: 10) {
-                            KFImage(URL(string: viewModel.track.album.imageUrl))
+                            KFImage(URL(string: viewModel.state.track.album.imageUrl))
                                 .placeholder {
                                     Image("placeholder")
                                         .resizable()
@@ -47,11 +47,11 @@ struct UpNextList: View {
                                 .resizable()
                                 .frame(width: 50, height: 50)
                             VStack(alignment: .leading) {
-                                Text(viewModel.track.title)
+                                Text(viewModel.state.track.title)
                                     .font(.system(size: 13))
                                     .foregroundColor(.primary)
                                 
-                                Text(viewModel.track.artist.name)
+                                Text(viewModel.state.track.artist.name)
                                     .font(.system(size: 11))
                                     .foregroundColor(.secondary)
                             }
@@ -104,9 +104,9 @@ struct UpNextList: View {
         let destinationIndex = sourceIndex < destination ?  destination - 1 : destination
         if sourceIndex != destinationIndex {
             MiniVibeApp.eventLogger.send(MoveTrackLog(userId: 0,
-                                          trackId: nowPlaying.upNext[destinationIndex].track.id,
-                                          source: sourceIndex,
-                                          destination: destinationIndex))
+                                                      trackId: nowPlaying.upNext[destinationIndex].state.track.id,
+                                                      source: sourceIndex,
+                                                      destination: destinationIndex))
         }
     }
     

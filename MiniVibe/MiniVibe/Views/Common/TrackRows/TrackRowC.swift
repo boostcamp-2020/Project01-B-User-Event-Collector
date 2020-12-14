@@ -20,20 +20,20 @@ struct TrackRowC: View {
     
     var body: some View {
         HStack {
-            let track = viewModel.track
+            let track = viewModel.state.track
             NavigationLink(destination:
                             AlbumView(viewModel: .init(id: track.album.id, eventLogger: MiniVibeApp.eventLogger))
                             .logTransition(identifier: .album(id: track.album.id),
                                            componentId: .trackRowThumbnail)
             ) {
-                TrackRowImage(imageUrl: viewModel.track.album.imageUrl)
+                TrackRowImage(imageUrl: viewModel.state.track.album.imageUrl)
             }
             
             Button {
                 nowPlaying.addTrack(track: viewModel)
             } label: {
-                TrackRowInfoB(title: viewModel.track.title,
-                              artist: viewModel.track.artist.name)
+                TrackRowInfoB(title: viewModel.state.track.title,
+                              artist: viewModel.state.track.artist.name)
                 Spacer()
             }
             

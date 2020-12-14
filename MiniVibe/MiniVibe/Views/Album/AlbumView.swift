@@ -90,7 +90,7 @@ struct AlbumView: View {
                                                componentId: .albumMenuButton)
                         case let .track(info):
                             PlayerMenu(viewModel: info)
-                                .logTransition(identifier: .playerMenu(id: info.track.id),
+                                .logTransition(identifier: .playerMenu(id: info.state.track.id),
                                                componentId: .trackMenuButton)
                         }
                     }

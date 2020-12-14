@@ -24,7 +24,7 @@ struct TrackRowD: View {
             Button {
                 nowPlaying.addTrack(track: viewModel)
             } label: {
-                TrackRowInfoC(order: order, title: viewModel.track.title)
+                TrackRowInfoC(order: order, title: viewModel.state.track.title)
             }
             
             Spacer()

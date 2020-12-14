@@ -14,7 +14,7 @@ struct PlayerControls: View {
     @ObservedObject var viewModel: TrackViewModel
     
     var body: some View {
-        let track = viewModel.track
+        let track = viewModel.state.track
         VStack {
             PlayerSliderView(title: track.title,
                              artist: track.artist.name,
@@ -48,7 +48,7 @@ struct PlayerControls: View {
                 Spacer()
                 
                 Button {
-                    viewModel.like()
+                    viewModel.send(.like)
                 } label: {
                     Image(systemName: track.liked == 1 ? "heart.fill" : "heart")
                         .foregroundColor(track.liked == 1 ? .accentColor : .secondary)
