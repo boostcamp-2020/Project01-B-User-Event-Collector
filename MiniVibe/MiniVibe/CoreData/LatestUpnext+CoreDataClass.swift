@@ -20,6 +20,6 @@ extension LatestUpnext {
         return NSFetchRequest<LatestUpnext>(entityName: "LatestUpnext")
     }
 
-    @NSManaged public var track: TrackInfoData
+    @NSManaged public var track: [TrackInfoData]
 
 }
