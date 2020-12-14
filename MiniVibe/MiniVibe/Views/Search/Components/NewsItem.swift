@@ -20,6 +20,7 @@ struct NewsItem: View {
                         Image("placeholder")
                             .resizable()
                     }
+                    .resizable()
                     .frame(width: width * .sectionRatio, height: 150)
                     
                 Text(news.title)
