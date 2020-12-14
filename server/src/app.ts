@@ -20,7 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 passportInit(passport);
 app.use(morgan('dev'));
-app.use(authenticateJWT);
 
 app.use(cors({
     origin: true,

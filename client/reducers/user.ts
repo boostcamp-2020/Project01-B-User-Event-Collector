@@ -6,11 +6,14 @@ import {
     LOG_OUT_REQUEST,
     LOG_OUT_SUCCESS,
     LOG_OUT_FAILURE,
-    LOAD_USER_REQUEST
+    LOAD_USER_REQUEST,
+    LOAD_USER_SUCCESS
  } from 'constants/actions';
 
 const initialState = {
-    user: null,
+    id: null,
+    name: null,
+    profileUrl: null,
     isLoggedIn: false,
 };
 
@@ -24,23 +27,22 @@ export const logoutRequestAction = () => ({
 });
 
 const dummyUser = {
-    id: "minji1023",
-    name: "Minji"
+    id: 9,
+    name: "iznim1023"
 }
 
 const reducer = (state = initialState, action) => {
+    console.log(action.data);
     switch (action.type) {
         /* 로그인 */
         case LOG_IN_REQUEST:
-            console.log('reducer');
             return {
                 ...state,
             }
         case LOG_IN_SUCCESS:
-            alert('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
             return {
+                ...state,
                 isLoggedIn: true,
-                user: dummyUser
             }
         case LOG_IN_FAILURE:
             return {
@@ -64,8 +66,14 @@ const reducer = (state = initialState, action) => {
             }
         case LOAD_USER_REQUEST:
             return {
+                ...state
+            }
+        case LOAD_USER_SUCCESS:
+            return {
                 isLoggedIn: true,
-                user: action.data
+                id: action.data.id,
+                name: action.data.name,
+                profileUrl: action.data.imageUrl
             }
         default: 
             return state;

@@ -19,19 +19,12 @@ import {
 
 function loginAPI() {
     //axios로 서버에 요청을 보낸다
-    // axios.get(apiUrl.user + "/login/naver", {
-    //     headers: {
-    //         'Access-Control-Allow-Origin': '*'
-    //     }
-    //    });
     window.location.href = apiUrl.user + "/login/naver";
-    return;
 }
 
 function* logIn(action) {
     try {
-        const result = yield call(loginAPI);
-        yield delay(1000);
+        yield call(loginAPI);
         yield put({         //put은 dispatch. 액션을 dispatch
             type: LOG_IN_SUCCESS,
         })
@@ -69,7 +62,6 @@ function* logOut(action) {
 /* 유저 정보 로드 */
 
 function loadUserAPI() {
-    alert(getCookie('token'));
     return axios.get(apiUrl.user, {
         headers: {
             "Authorization" : getCookie('token')
@@ -80,6 +72,7 @@ function loadUserAPI() {
 function* loadUser(action) {
     try {
         const result = yield call(loadUserAPI);
+        console.log(result);
         yield put({         //put은 dispatch. 액션을 dispatch
             type: LOAD_USER_SUCCESS,
             data: result.data

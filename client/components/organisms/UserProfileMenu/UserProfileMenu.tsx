@@ -42,16 +42,15 @@ const UserProfileMenu = ({ user }: UserProfileMenuProps) => {
         dispatch(loginRequestAction());
     }
 
-    if (!user.user) {
+    if (!user.isLoggedIn) {
         return (
             // TODO : 배포 서버로 바꾸기 , constants 폴더로 이동
-             //<MenuLink onClick={loginHandler} href='/'>
-            <ProfileContainer onClick={loginHandler}>
+             <MenuLink href={apiUrl.user + "/login/naver"}>
                 <IconWrapper>
                     <Avatar alt="profile" src={defaultImage} style={{ width: 30, height: 30 }} />
                 </IconWrapper>
                 로그인
-            </ProfileContainer>
+            </MenuLink>
         );
     }
     return (
@@ -60,11 +59,11 @@ const UserProfileMenu = ({ user }: UserProfileMenuProps) => {
                 <IconWrapper>
                     <Avatar
                         alt="profile"
-                        src={user.user.profileUrl ? user.user.profileUrl : defaultImage}
+                        src={user.profileUrl ? user.profileUrl : defaultImage}
                         style={{ width: 30, height: 30 }}
                     />
                 </IconWrapper>
-                {user.user.name}
+                {user.name}
                 <ArrowDropDownIcon />
             </MenuLink>
         </DropdownMenu>

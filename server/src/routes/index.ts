@@ -18,7 +18,7 @@ router.use('/users', userRouter);
 router.use('/artists', artistRouter);
 router.use('/news', newsRouter);
 router.use('/magazines', magazineRouter);
-router.use('/library', authenticateJWT, libraryRouter);
+router.use('/library', libraryRouter);
 router.use('/playlists', playlistRouter);
 router.use('/tracks', trackRouter);
 router.use('/albums', albumRouter);

@@ -2,6 +2,7 @@ import express from 'express';
 import passport from 'passport';
 import { getManager } from 'typeorm';
 import User from '../../models/User';
+import authRouter, { authenticateJWT } from '../auth';
 
 const router = express.Router();
 
@@ -10,8 +11,7 @@ router.get('/login/naver', passport.authenticate('login-naver'), (req, res, next
     res.redirect(apiUrl);
 });
 
-router.get('/', async (req, res, next) => {
-    console.log(req.user);
+router.get('/', authenticateJWT, async (req, res, next) => {
     try {
         if(req.user){
             const manager = getManager();

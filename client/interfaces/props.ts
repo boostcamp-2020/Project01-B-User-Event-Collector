@@ -177,12 +177,14 @@ export interface LyricModalProps {
 }
 
 export interface PlayControllerProps {
-    track,
-    displayHeader: boolean,
-    displayHeaderHandler?
+    track;
+    displayHeader: boolean;
+    displayHeaderHandler?;
 }
 
 export interface UserProps {
-    user,
-    isLoggedIn: boolean    
+    id: number;
+    name: string;
+    isLoggedIn: boolean;
+    profileUrl: string;
 }

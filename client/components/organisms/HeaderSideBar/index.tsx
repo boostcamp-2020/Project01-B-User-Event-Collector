@@ -39,7 +39,7 @@ const HeaderSideBar = ({ user }: HeaderProps) => {
                     <UserProfileMenu user={user} />
                 </ProfileContainer>
                 <MainMenu />
-                {user.user && <SubMenu />}
+                {user.isLoggedIn && <SubMenu />}
             </SectionContainer>
         </Header>
     );
