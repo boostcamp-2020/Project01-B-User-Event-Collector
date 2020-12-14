@@ -56,9 +56,6 @@ export const addToLibrary = async (url, option) => {
         await axios({
             ...options,
             url,
-            headers: {
-                Authorization: getCookie('token'),
-            },
         });
     } catch (err) {
         console.error(err);
@@ -69,8 +66,16 @@ export const addToPlaylist = async (url, data) => {
     await request(url, { method: 'POST', data });
 };
 
-export const deleteFromLibrary = async (data) => {
-    await request(`${apiUrl.like}${data.type}s/${data.id}`, { method: 'DELETE' });
+export const deleteFromLibrary = async (url, option) => {
+    const options = { ...getRequestOptions('DELETE', option) };
+    try {
+        await axios({
+            ...options,
+            url,
+        });
+    } catch (err) {
+        console.error(err);
+    }
 };
 
 export const createPlaylist = async (data) => {

@@ -11,6 +11,7 @@ import { useContext, useState } from 'react';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import { addToLibrary, deleteFromLibrary } from '@utils/apis';
 import useLikeEventLog from '@hooks/useLikeEventLog';
+import apiUrl from '@constants/apiUrl';
 
 const HeaderContainter = styled.div`
     display: flex;
@@ -77,11 +78,15 @@ const ArtistHeader = ({ src, name, genre, isLiked }: ArtistHeaderProps) => {
     const likeHandler = (e) => {
         if (liked) {
             setIsLiked(0);
-            deleteFromLibrary(data);
+            deleteFromLibrary(`${apiUrl.like}${data.type}s/${data.id}`);
             logLikeEvent(false);
         } else {
             setIsLiked(1);
-            addToLibrary(data);
+            addToLibrary(`${apiUrl.like}${data.type}s`, {
+                data: {
+                    id: data.id,
+                },
+            });
             logLikeEvent(true);
         }
     };

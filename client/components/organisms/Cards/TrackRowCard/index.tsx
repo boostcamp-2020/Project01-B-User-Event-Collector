@@ -24,6 +24,7 @@ import {
     StyledMoreHorizIcon,
     Like,
 } from './TrackRowCard.styles';
+import apiUrl from '@constants/apiUrl';
 
 const contentsDropDownMenu = [
     {
@@ -57,7 +58,7 @@ const TrackRowCard = (data: TrackRowCardProps) => {
 
     const onClickUnlikeHandler = () => {
         setIsLiked(0);
-        deleteFromLibrary(componentInfo.data);
+        deleteFromLibrary(`${apiUrl.like}${componentInfo.data.type}s/${componentInfo.data.id}`);
         logLikeEvent(false);
     };
 

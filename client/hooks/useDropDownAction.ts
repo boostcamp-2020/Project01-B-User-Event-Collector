@@ -18,12 +18,16 @@ const useDropDownAction = ({ userId, setAnchorEl, state }) => {
         const content = e.currentTarget.innerText;
         switch (content) {
             case dropDownMenu.like:
-                addToLibrary(data);
+                addToLibrary(`${apiUrl.like}${data.type}s`, {
+                    data: {
+                        id: data.id
+                    }
+                });
                 state.setIsLiked(1);
                 logLikeEvent(true);
                 break;
             case dropDownMenu.unlike:
-                deleteFromLibrary(data);
+                deleteFromLibrary(`${apiUrl.like}${data.type}s/${data.id}`);
                 state.setIsLiked(0);
                 logLikeEvent(false);
                 break;
