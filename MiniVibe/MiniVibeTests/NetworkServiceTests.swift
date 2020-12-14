@@ -11,7 +11,7 @@ import Combine
 
 final class NetworkServiceTests: XCTestCase {
     
-    var subscriptions: Set<AnyCancellable> = []
+    private var cancellables: Set<AnyCancellable> = []
 
     func test_network_success() throws {
         let expectation = XCTestExpectation(description: "Network success test")
@@ -28,7 +28,7 @@ final class NetworkServiceTests: XCTestCase {
             } receiveValue: { _ in
                 
             }
-            .store(in: &subscriptions)
+            .store(in: &cancellables)
         wait(for: [expectation], timeout: 5)
     }
 
@@ -48,7 +48,7 @@ final class NetworkServiceTests: XCTestCase {
             } receiveValue: { _ in
                 XCTFail("Received Value - fail")
             }
-            .store(in: &subscriptions)
+            .store(in: &cancellables)
         wait(for: [expectation], timeout: 5)
     }
     
@@ -68,7 +68,7 @@ final class NetworkServiceTests: XCTestCase {
             } receiveValue: { _ in
                 XCTFail("Received Value - fail")
             }
-            .store(in: &subscriptions)
+            .store(in: &cancellables)
         wait(for: [expectation], timeout: 5)
     }
 
