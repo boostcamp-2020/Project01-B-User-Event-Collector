@@ -31,3 +31,12 @@ export const addToPlaylist = async (url, data) => {
 export const deleteFromLibrary = async (data) => {
     await request(`${apiUrl.like}${data.type}s/${data.id}`, { method: 'DELETE' });
 };
+
+export const sendEvent = async (eventData) => {
+    try {
+        await axios.post(apiUrl.event, eventData);
+    } catch (err) {
+        console.log(error.response.data);
+        // TODO: 로그 손실 방지 처리 & 에러 핸들링
+    }
+};

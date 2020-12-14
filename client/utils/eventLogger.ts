@@ -1,4 +1,4 @@
-import { request } from '@utils/apis';
+import { sendEvent } from '@utils/apis';
 
 function eventLogger(event, param) {
     const eventData = {
@@ -7,7 +7,7 @@ function eventLogger(event, param) {
         platform: 'Web',
         timestamp: new Date(),
     };
-    request(eventData);
+    sendEvent(eventData);
 }
 
 export default eventLogger;

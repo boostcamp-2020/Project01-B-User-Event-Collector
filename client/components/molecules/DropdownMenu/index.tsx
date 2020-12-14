@@ -70,8 +70,9 @@ const DropdownMenu = ({ id, control: ControlComponent, menuItems, children, stat
                 </span>
             )}
             <StyledMenu id={id} anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-                {menuItems.map(({ content }) => (
+                {menuItems.map(({ content }, idx) => (
                     <MenuItem
+                        key={`${id}_${idx}`}
                         onClick={(e) => {
                             handleClick(e);
                             handleClose(e);
