@@ -21,7 +21,10 @@ struct LibrarySongsView: View {
                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
                         HStack {
                             Text("50곡")
+                                .foregroundColor(Color.primary)
+                            
                             Spacer()
+                            
                             Button {
                                 
                             } label: {
