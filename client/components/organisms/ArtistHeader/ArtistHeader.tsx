@@ -78,11 +78,11 @@ const ArtistHeader = ({ src, name, genre, isLiked }: ArtistHeaderProps) => {
         if (liked) {
             setIsLiked(0);
             deleteFromLibrary(data);
-            logLikeEvent(false)
+            logLikeEvent(false);
         } else {
             setIsLiked(1);
             addToLibrary(data);
-            logLikeEvent(trje);
+            logLikeEvent(true);
         }
     };
 
