@@ -21,7 +21,7 @@ struct ArtistSection: View {
             ScrollView(.horizontal,
                        showsIndicators: false) {
                 HStack(spacing: 16) {
-                    ForEach(viewModel.artists, id: \.id) { artist in
+                    ForEach(viewModel.state.artists, id: \.id) { artist in
                         NavigationLink(
                             destination:
                                 ArtistView(id: artist.id)
@@ -37,7 +37,7 @@ struct ArtistSection: View {
             }
         }
         .onAppear {
-            viewModel.load()
+            viewModel.send(.appear)
         }
     }
 }
