@@ -7,18 +7,9 @@
 
 import XCTest
 import Combine
-@testable import EventLogKit
 @testable import MiniVibe
 
-class TrackViewModelTests: XCTestCase {
-    
-    struct MockEventLogger: EventLoggerType {
-        var handler: ((EventLogType) -> Void)?
-        
-        func send(_ event: EventLogType) {
-            handler?(event)
-        }
-    }
+final class TrackViewModelTests: XCTestCase {
     
     private var cancellables = Set<AnyCancellable>()
     

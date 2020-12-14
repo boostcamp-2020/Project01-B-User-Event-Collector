@@ -7,7 +7,6 @@
 
 import XCTest
 import Combine
-@testable import EventLogKit
 @testable import MiniVibe
 
 final class AlbumViewModelTests: XCTestCase {
@@ -91,7 +90,7 @@ final class AlbumViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "showTrackMenu test")
         defer { wait(for: [expectation], timeout: 5) }
         
-        let eventLogger = MockEventLogger(eventSendHandler: { data in
+        let eventLogger = MockEventLogger(handler: { data in
             XCTAssertEqual(data.event, "LikeLog")
             expectation.fulfill()
         })
