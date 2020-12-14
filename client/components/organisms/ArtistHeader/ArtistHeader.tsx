@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 import Text from '@components/atoms/Text';
 import Image from '@components/atoms/Image/Image';
@@ -9,7 +10,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { useContext, useState } from 'react';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import { addToLibrary, deleteFromLibrary } from '@utils/apis';
-import apiUrl from '@constants/apiUrl';
+import useLikeEventLog from '@hooks/useLikeEventLog';
 
 const HeaderContainter = styled.div`
     display: flex;
@@ -70,19 +71,21 @@ interface ArtistHeaderProps {
 const ArtistHeader = ({ src, name, genre, isLiked }: ArtistHeaderProps) => {
     const [liked, setIsLiked] = useState(isLiked);
     const { data } = useContext(ComponentInfoContext);
+    const user = useSelector((state) => state.user);
+    const logLikeEvent = useLikeEventLog({ userId: user.id });
+
     const likeHandler = (e) => {
         if (liked) {
             setIsLiked(0);
-            deleteFromLibrary(`${apiUrl.like}${data.type}s/${data.id}`);
+            deleteFromLibrary(data);
+            logLikeEvent(false)
         } else {
             setIsLiked(1);
-            addToLibrary(`${apiUrl.like}${data.type}s`, {
-                data: {
-                    id: data.id,
-                },
-            });
+            addToLibrary(data);
+            logLikeEvent(trje);
         }
     };
+
     return (
         <HeaderContainter>
             <ThumbnailContainer>
