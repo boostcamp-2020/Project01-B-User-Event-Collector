@@ -58,7 +58,16 @@ export const sendEvent = async (eventData) => {
     try {
         await axios.post(apiUrl.event, eventData);
     } catch (err) {
-        console.log(error.response.data);
+        console.log(err.response.data);
+        // TODO: 로그 손실 방지 처리 & 에러 핸들링
+    }
+};
+
+export const sendPlayEvent = async (eventData) => {
+    try {
+        await axios.post(apiUrl.playEvent, eventData);
+    } catch (err) {
+        console.log(err.response.data);
         // TODO: 로그 손실 방지 처리 & 에러 핸들링
     }
 };
