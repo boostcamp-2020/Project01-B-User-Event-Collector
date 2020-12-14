@@ -34,12 +34,12 @@ struct Today: View {
                             
                             MixtapeSection(width: width,
                                            title: "나를 위한 믹스테잎",
-                                           mixtapes: viewModel.mixtapes)
+                                           mixtapes: viewModel.state.mixtapes)
                             
                             PlayListSection(width: width,
                                             title: "즐겨듣는 플레이리스트",
-                                            playlists: viewModel.playlists) {
-                                ThumbnailList(info: .playlist(data: viewModel.playlists),
+                                            playlists: viewModel.state.playlists) {
+                                ThumbnailList(info: .playlist(data: viewModel.state.playlists),
                                               navigationTitle: "즐겨듣는 플레이리스트")
                                     .logTransition(identifier: .playlists(id: 0),
                                                    componentId: .sectionTitle(category: "즐겨듣는 플레이리스트"))
@@ -47,8 +47,8 @@ struct Today: View {
                             
                             PlayListSection(width: width,
                                             title: "내 취향 플레이리스트",
-                                            playlists: viewModel.playlists) {
-                                ThumbnailList(info: .playlist(data: viewModel.playlists),
+                                            playlists: viewModel.state.playlists) {
+                                ThumbnailList(info: .playlist(data: viewModel.state.playlists),
                                               navigationTitle: "내 취향 플레이리스트")
                                     .logTransition(identifier: .playlists(id: 1),
                                                    componentId: .sectionTitle(category: "내 취향 플레이리스트"))
@@ -56,21 +56,21 @@ struct Today: View {
                             
                             StationSection(width: width, title: "DJ 스테이션")
                             
-                            ChartSectionA(width: width, title: "최근 들은 노래", tracks: viewModel.tracks)
+                            ChartSectionA(width: width, title: "최근 들은 노래", tracks: viewModel.state.tracks)
                             
                             RecommandedPlayListSection(width: width, title: "VIBE 추천 플레이리스트")
                             
                             AlbumSection(width: width,
                                          title: "좋아할 최신 앨범",
-                                         albums: viewModel.albums) {
+                                         albums: viewModel.state.albums) {
                                 ThumbnailGridView(title: "좋아할 최신 앨범",
-                                                  album: viewModel.albums)
+                                                  album: viewModel.state.albums)
                                     .logTransition(identifier: .recommendedRecentAlbum,
                                                    componentId: .sectionTitle(category: "좋아할 최신 앨범"))
                             }
                             
                             MagazineSection(width: width,
-                                            magazines: viewModel.magazines)
+                                            magazines: viewModel.state.magazines)
                         }
                         .padding(.bottom, 70)
                     }
@@ -79,7 +79,7 @@ struct Today: View {
                 }
             }
             .onAppear {
-                viewModel.load()
+                viewModel.send(.appear)
             }
         }
     }
