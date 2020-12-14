@@ -25,7 +25,7 @@ final class ArtistSectionViewModel: ObservableObject {
         self.useCase = useCase
     }
     
-    func load() {
+    private func load() {
         useCase.loadArtists()
             .sink { _ in
                 

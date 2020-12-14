@@ -9,7 +9,7 @@ import XCTest
 import Combine
 @testable import MiniVibe
 
-class ArtistSectionViewModelTests: XCTestCase {
+final class ArtistSectionViewModelTests: XCTestCase {
     
     private var cancellable: Set<AnyCancellable> = []
     
