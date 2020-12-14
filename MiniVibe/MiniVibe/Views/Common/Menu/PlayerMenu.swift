@@ -20,8 +20,7 @@ struct PlayerMenu: View {
                                 title: track.title,
                                 subtitle: track.artist.name)
             MenuButton(type: .like(track.liked)) {
-                viewModel.state.track.liked == 0 ?
-                    viewModel.send(.like) : viewModel.send(.cancelLike)
+                viewModel.send(.like)
             }
             MenuButton(type: .exclude) {
                 

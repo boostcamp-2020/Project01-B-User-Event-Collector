@@ -48,8 +48,7 @@ struct PlayerControls: View {
                 Spacer()
                 
                 Button {
-                    viewModel.state.track.liked == 0 ?
-                        viewModel.send(.like) : viewModel.send(.cancelLike)
+                    viewModel.send(.like)
                 } label: {
                     Image(systemName: track.liked == 1 ? "heart.fill" : "heart")
                         .foregroundColor(track.liked == 1 ? .accentColor : .secondary)

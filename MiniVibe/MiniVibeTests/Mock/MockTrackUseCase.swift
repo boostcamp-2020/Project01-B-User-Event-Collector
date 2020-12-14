@@ -11,14 +11,14 @@ import Combine
 
 struct MockTrackUseCase: TrackUseCaseType {
     let track: TrackInfo
+    let success = true
     
     func loadTrack(id: Int) -> AnyPublisher<TrackInfo, UseCaseError> {
         Just(track)
             .setFailureType(to: UseCaseError.self)
             .eraseToAnyPublisher()
     }
-
-    let success = true
+    
     func likeTrack(id: Int) -> AnyPublisher<Bool, UseCaseError> {
         Just(success)
             .setFailureType(to: UseCaseError.self)

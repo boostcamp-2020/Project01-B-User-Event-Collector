@@ -13,10 +13,15 @@ import Combine
 class TrackViewModelTests: XCTestCase {
     
     struct MockEventLogger: EventLoggerType {
-        func send(_ event: EventLogType) { }
+        func send(_ event: EventLogType) {
+            var handler: (EventLogType) -> Void
+        }
     }
-
+    
+    private var cancellables = Set<AnyCancellable>()
+    
     func test_like_track() {
+        let expectation = XCTestExpectation(description: "Like track test")
         let track = TrackInfo(id: 0,
                               title: "",
                               lyrics: "",
@@ -31,11 +36,19 @@ class TrackViewModelTests: XCTestCase {
         let viewModel = TrackViewModel(track: track,
                                        useCase: usecase,
                                        eventLogger: eventLogger)
+        viewModel.$state
+            .sink { state in
+                if state.track.liked == usecase.track.liked {
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &cancellables)
+        
         viewModel.send(.like)
-        XCTAssertEqual(viewModel.state.track.liked, 1)
     }
     
     func test_cancel_like_track() {
+        let expectation = XCTestExpectation(description: "Like track test")
         let track = TrackInfo(id: 0,
                               title: "",
                               lyrics: "",
@@ -50,8 +63,15 @@ class TrackViewModelTests: XCTestCase {
         let viewModel = TrackViewModel(track: track,
                                        useCase: usecase,
                                        eventLogger: eventLogger)
-        viewModel.send(.cancelLike)
-        XCTAssertEqual(viewModel.state.track.liked, 0)
+        viewModel.$state
+            .sink { state in
+                if state.track.liked == usecase.track.liked {
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &cancellables)
+        
+        viewModel.send(.like)
     }
 
 }

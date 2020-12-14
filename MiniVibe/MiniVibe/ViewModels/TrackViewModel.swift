@@ -12,7 +12,6 @@ import EventLogKit
 final class TrackViewModel: ObservableObject {
     enum Input {
         case like
-        case cancelLike
     }
     struct State {
         var track: TrackInfo = .init(id: 0,
@@ -41,9 +40,7 @@ final class TrackViewModel: ObservableObject {
     func send(_ input: Input) {
         switch input {
         case .like:
-            like()
-        case .cancelLike:
-            cancelLike()
+            state.track.liked == 0 ? like() : cancelLike()
         }
     }
     
