@@ -4,20 +4,20 @@ import { func, node, string } from 'prop-types';
 import StyledInput from './Input.styles';
 import { InputProps } from '@interfaces/props';
 
-const Input = ({variant}: InputProps) => {
-  if (variant === 'search') return <StyledInput type = "text" variant={variant} placeholder='VIBE 검색' />;
-  return <StyledInput type = "text" variant={variant} placeholder='플레이리스트 이름을 입력해 주세요' />;
+const Input = ({ variant, name }: InputProps) => {
+    if (variant === 'search') return <StyledInput type="text" name={name} variant={variant} placeholder="VIBE 검색" />;
+    return <StyledInput type="text" name={name} variant={variant} placeholder="플레이리스트 이름을 입력해 주세요" />;
 };
 
 // Expected prop values
 Input.propTypes = {
-  onClick: func,
-  variant: string,
+    onClick: func,
+    variant: string,
 };
 
 // Default prop values
 Input.defaultProps = {
-  children: 'Input text',
+    children: 'Input text',
 };
 
 export default Input;

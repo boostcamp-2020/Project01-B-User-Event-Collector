@@ -8,23 +8,21 @@ import { useState } from 'react';
 const useDropDownAction = ({ anchorEl, setAnchorEl, state }) => {
     const componentInfo = useContext(ComponentInfoContext);
     const data = componentInfo.data;
+
     const handleClick = (e) => {
         setAnchorEl(e.currentTarget);
     };
+
     const handleClose = (e) => {
         const content = e.currentTarget.innerText;
         switch (content) {
             case dropDownMenu.like:
-                addToLibrary(`${apiUrl.like}${data.type}s`, {
-                    data: {
-                        id: data.id,
-                    },
-                });
+                addToLibrary(data);
                 state.setIsLiked(1);
                 break;
             case dropDownMenu.unlike:
+                deleteFromLibrary(data);
                 state.setIsLiked(0);
-                deleteFromLibrary(`${apiUrl.like}${data.type}s/${data.id}`);
                 break;
             case dropDownMenu.addToPlaylist:
                 request(apiUrl.libraryPlaylist).then((data) => {
@@ -35,11 +33,7 @@ const useDropDownAction = ({ anchorEl, setAnchorEl, state }) => {
                 });
                 break;
             case dropDownMenu.addToLibrary:
-                addToLibrary(`${apiUrl.like}${data.type}s`, {
-                    data: {
-                        id: data.id,
-                    },
-                });
+                addToLibrary(data);
                 break;
             case dropDownMenu.addToUpNext:
                 break;

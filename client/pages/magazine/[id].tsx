@@ -178,7 +178,6 @@ export async function getServerSideProps(context) {
     const { id } = context.query;
 
     const magazineData = await request(`${apiUrl.magazine}/${id}`);
-    console.log(magazineData);
 
     if (!magazineData) {
         return {
