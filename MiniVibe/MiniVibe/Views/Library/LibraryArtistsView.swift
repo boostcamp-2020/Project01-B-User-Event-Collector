@@ -46,6 +46,7 @@ struct LibraryArtistsView: View {
                                 .clipShape(Circle())
                             
                             Text("아티스트 추가")
+                                .foregroundColor(.primary)
                             
                             Spacer()
                         }

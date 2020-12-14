@@ -45,6 +45,7 @@ struct LibraryPlayListView: View {
                         Text("새 플레이리스트 추가")
                         Spacer()
                     }
+                    .foregroundColor(.primary)
                     
                     ForEach(0..<10) { _ in
                         let title = "보관함 플레이리스트"
