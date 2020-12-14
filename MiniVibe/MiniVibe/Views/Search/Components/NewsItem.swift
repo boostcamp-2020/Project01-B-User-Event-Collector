@@ -16,16 +16,22 @@ struct NewsItem: View {
         VStack(alignment: .trailing, spacing: width * .spacingRatio) {
             VStack {
                 KFImage(URL(string: news.imageUrl))
+                    .placeholder {
+                        Image("placeholder")
+                            .resizable()
+                    }
+                    .resizable()
                     .frame(width: width * .sectionRatio, height: 150)
                     
                 Text(news.title)
                     .font(.system(size: 17))
+                    .foregroundColor(.primary)
                     .bold()
                     .padding()
             }
             
             NavigationLink(destination:
-                            AlbumView(viewModel: .init(id: news.albumId))
+                            AlbumView(viewModel: .init(id: news.albumId, eventLogger: MiniVibeApp.eventLogger))
                             .logTransition(identifier: .album(id: news.albumId),
                                            componentId: .newsItem)
             ) {

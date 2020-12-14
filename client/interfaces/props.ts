@@ -10,11 +10,12 @@ export interface StationCardProps {
 }
 
 export interface TrackInfoProps {
-    data,
+    data;
     track: boolean;
 }
 
 export interface InputProps {
+    name: string;
     variant?: string;
 }
 
@@ -39,7 +40,7 @@ export interface ContentsThumbnailProps {
     src: string;
     href: string;
     sort?: 'news' | 'mainMagazine' | 'normalMagazine' | 'recommendPlaylist' | 'normalPlaylist' | 'todayMagazine';
-};
+}
 
 export interface MixtapeCardProps {
     id?: number;
@@ -71,14 +72,14 @@ export interface PlaylistCardProps {
     customized: boolean;
 }
 
- export interface LibraryArtistThumbnailProps {
+export interface LibraryArtistThumbnailProps {
     id: number;
     name: string;
     imageUrl: string;
     genre: {
         id: number;
         name: string;
-    }
+    };
 }
 
 export interface NormalArtistThumbnailProps {
@@ -131,17 +132,17 @@ export interface TrackCardProps {
 }
 
 export interface PlayerTrackCardProps {
-    id : number;
-    title : string;
+    id: number;
+    title: string;
     artistId: number;
     albumId: number;
     lyrics: string;
-    artist: { id: number; name: string; },
-    album: { id: number; title: string; imageUrl: string; };
+    artist: { id: number; name: string };
+    album: { id: number; title: string; imageUrl: string };
 }
 
 export interface PlayerTrackCardProp {
-    data?
+    data?;
 }
 
 export interface DropdownMenuProps {
@@ -152,7 +153,7 @@ export interface DropdownMenuProps {
         handleClick?: (e: MouseEvent<HTMLElement>) => void;
     }[];
     children?: ReactNode;
-    state?: object
+    state?: object;
 }
 
 export interface CheckBoxProps {
@@ -182,9 +183,11 @@ export interface PlayControllerProps {
     displayHeaderHandler?;
 }
 
+
 export interface UserProps {
     id: number;
     name: string;
     isLoggedIn: boolean;
     profileUrl: string;
 }
+

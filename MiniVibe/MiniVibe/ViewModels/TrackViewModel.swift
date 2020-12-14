@@ -15,7 +15,9 @@ final class TrackViewModel: ObservableObject {
     private let useCase: TrackUseCaseType
     private var cancellables: Set<AnyCancellable> = []
     
-    init(track: TrackInfo, useCase: TrackUseCaseType = TrackUseCase(), eventLogger: EventLoggerType) {
+    init(track: TrackInfo,
+         useCase: TrackUseCaseType = TrackUseCase(),
+         eventLogger: EventLoggerType = MiniVibeApp.eventLogger) {
         self.track = track
         self.useCase = useCase
         self.eventLogger = eventLogger

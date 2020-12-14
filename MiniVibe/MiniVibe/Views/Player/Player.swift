@@ -24,7 +24,8 @@ struct Player: View {
             Spacer()
             
             PlayerControls(isOpenMenu: $isMenuOpen,
-                           viewModel: nowPlaying.playingTrack ?? .init(track: trackinfo))
+                           viewModel: nowPlaying.playingTrack ?? .init(track: trackinfo,
+                                                                       eventLogger: MiniVibeApp.eventLogger))
                 .environmentObject(nowPlaying)
             
             Spacer()

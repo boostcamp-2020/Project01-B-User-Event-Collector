@@ -16,6 +16,8 @@ const apiUrl = {
     like: `${baseUrl}/library/`,
     addTracksToPlaylist:`${baseUrl}/playlists/tracks`,
     user: `${baseUrl}/users`,
+    event: `${baseUrl}/events/`,
+    playEvent: `${baseUrl}/play-events/`,
 };
 
 export default apiUrl;

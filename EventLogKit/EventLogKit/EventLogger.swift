@@ -14,8 +14,8 @@ public protocol EventLoggerType {
 
 open class EventLogger: EventLoggerType {
     
-    private let local: LocalStorageType?
-    private let server: ServerStorageType?
+    public let local: LocalStorageType?
+    public let server: ServerStorageType?
     private let reachability: ReachabilityObserving
     private var networkState: Connection = .unavailable
     

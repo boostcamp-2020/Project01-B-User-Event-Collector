@@ -1,5 +1,5 @@
 //
-//  MiniVibeTests.swift
+//  NetworkServiceTests.swift
 //  MiniVibeTests
 //
 //  Created by Sue Cho on 2020/11/30.
@@ -9,15 +9,15 @@ import XCTest
 import Combine
 @testable import MiniVibe
 
-class MiniVibeTests: XCTestCase {
+final class NetworkServiceTests: XCTestCase {
     
-    var subscriptions: Set<AnyCancellable> = []
+    private var cancellables: Set<AnyCancellable> = []
 
     func test_network_success() throws {
         let expectation = XCTestExpectation(description: "Network success test")
         let network = NetworkService()
         let url = "https://www.google.com"
-        network.request(url: url)
+        network.request(url: url, request: .get, body: nil)
             .sink { result in
                 switch result {
                 case .finished:
@@ -28,15 +28,15 @@ class MiniVibeTests: XCTestCase {
             } receiveValue: { _ in
                 
             }
-            .store(in: &subscriptions)
+            .store(in: &cancellables)
         wait(for: [expectation], timeout: 5)
     }
 
     func test_network_fail_invalidURL() throws {
-        let expectation = XCTestExpectation(description: "Network success test")
+        let expectation = XCTestExpectation(description: "Network failure test")
         let network = NetworkService()
         let url = ""
-        network.request(url: url)
+        network.request(url: url, request: .get, body: nil)
             .sink { result in
                 switch result {
                 case .finished:
@@ -48,15 +48,15 @@ class MiniVibeTests: XCTestCase {
             } receiveValue: { _ in
                 XCTFail("Received Value - fail")
             }
-            .store(in: &subscriptions)
+            .store(in: &cancellables)
         wait(for: [expectation], timeout: 5)
     }
     
     func test_network_fail_unknownError() throws {
-        let expectation = XCTestExpectation(description: "Network success test")
+        let expectation = XCTestExpectation(description: "Network failure test")
         let network = NetworkService()
         let url = "abcdefg"
-        network.request(url: url)
+        network.request(url: url, request: .get, body: nil)
             .sink { result in
                 switch result {
                 case .finished:
@@ -68,7 +68,7 @@ class MiniVibeTests: XCTestCase {
             } receiveValue: { _ in
                 XCTFail("Received Value - fail")
             }
-            .store(in: &subscriptions)
+            .store(in: &cancellables)
         wait(for: [expectation], timeout: 5)
     }
 

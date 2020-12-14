@@ -17,6 +17,7 @@ struct Chart: View {
                         Text("차트")
                             .font(.title)
                             .fontWeight(.heavy)
+                            .foregroundColor(.primary)
                             .padding(width * .paddingRatio)
                         ChartSectionB(width: width, sectionTitle: "오늘 TOP 100")
                         ChartSectionB(width: width, sectionTitle: "국내 급상승 🔥")

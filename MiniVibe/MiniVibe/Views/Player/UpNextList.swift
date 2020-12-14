@@ -40,6 +40,10 @@ struct UpNextList: View {
                     ForEach(nowPlaying.upNext, id: \.self) { viewModel in
                         HStack(spacing: 10) {
                             KFImage(URL(string: viewModel.track.album.imageUrl))
+                                .placeholder {
+                                    Image("placeholder")
+                                        .resizable()
+                                }
                                 .resizable()
                                 .frame(width: 50, height: 50)
                             VStack(alignment: .leading) {

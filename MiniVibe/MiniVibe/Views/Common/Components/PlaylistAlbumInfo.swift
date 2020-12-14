@@ -30,6 +30,10 @@ struct PlaylistAlbumInfo: View {
                 isOpenArticle = true
             } label: {
                 KFImage(URL(string: imageURL))
+                    .placeholder {
+                        Image("placeholder")
+                            .resizable()
+                    }
                     .resizable()
                     .aspectRatio(1, contentMode: .fit)
             }
@@ -37,6 +41,7 @@ struct PlaylistAlbumInfo: View {
             VStack(alignment: .leading) {
                 Text(title)
                     .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(.primary)
                 Text(subtitle)
                     .font(.system(size: 16))
                     .foregroundColor(.secondary)
@@ -59,6 +64,7 @@ struct PlaylistAlbumInfo: View {
     var optionalInfo: some View {
         VStack(alignment: .leading) {
             Text(description)
+                .foregroundColor(.primary)
             
             HStack {
                 Text(article)

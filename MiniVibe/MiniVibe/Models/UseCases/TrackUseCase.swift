@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 protocol TrackUseCaseType {
+    func loadTrack(id: Int) -> AnyPublisher<TrackInfo, UseCaseError>
     func likeTrack(id: Int) -> AnyPublisher<Bool, UseCaseError>
     func cancelLikedTrack(id: Int) -> AnyPublisher<Bool, UseCaseError>
 }
@@ -26,6 +27,22 @@ struct TrackUseCase: TrackUseCaseType {
     
     init(network: NetworkServiceType = NetworkService()) {
         self.network = network
+    }
+    
+    func loadTrack(id: Int) -> AnyPublisher<TrackInfo, UseCaseError> {
+        return network.request(url: EndPoint.track(id: id).urlString, request: .get, body: nil)
+            .decode(type: SingleTrackResponse.self, decoder: JSONDecoder())
+            .mapError { error -> UseCaseError in
+                switch error {
+                case is NetworkError:
+                    return .networkError
+                default:
+                    return .decodingError
+                }
+            }
+            .map(\.data)
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
     
     func likeTrack(id: Int) -> AnyPublisher<Bool, UseCaseError> {

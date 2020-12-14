@@ -36,6 +36,7 @@ struct GenreSection: View {
             VStack(alignment: .leading) {
                 Text("Genre")
                     .font(.system(size: 16.5))
+                    .foregroundColor(.primary)
                     .bold()
                     
                 LazyVGrid(

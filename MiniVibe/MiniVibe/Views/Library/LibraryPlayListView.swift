@@ -45,12 +45,13 @@ struct LibraryPlayListView: View {
                         Text("새 플레이리스트 추가")
                         Spacer()
                     }
+                    .foregroundColor(.primary)
                     
                     ForEach(0..<10) { _ in
                         let title = "보관함 플레이리스트"
                         NavigationLink(
                             destination:
-                                PlayListView(viewModel: .init(id: 0))
+                                PlayListView(viewModel: .init(id: 0, eventLogger: MiniVibeApp.eventLogger))
                                 .logTransition(identifier: .playlist(id: 0),
                                                componentId: .playlistRow)
                             ,

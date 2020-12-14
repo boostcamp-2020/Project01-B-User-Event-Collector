@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useSelector } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Menu, { MenuProps } from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -31,11 +32,16 @@ const StyledMenu = withStyles({
 
 const DropdownMenu = ({ id, control: ControlComponent, menuItems, children, state }: DropdownMenuProps) => {
     const [anchorEl, setAnchorEl] = useState(null);
-    const componentInfo = useContext(ComponentInfoContext);
     const [playlistModal, setPlaylistModal] = useState({ visibility: false, data: [] });
+    const componentInfo = useContext(ComponentInfoContext);
+    const user = useSelector((state) => state.user);
 
-    state['setPlaylistModal'] = setPlaylistModal;
-    const [handleClick, handleClose] = useDropDownAction({ anchorEl, setAnchorEl, state });
+    const [handleClick, handleClose] = useDropDownAction({
+        userId: user.id,
+        setAnchorEl,
+        state: { ...state, setPlaylistModal },
+    });
+
     const removePlaylistModal = () => {
         setPlaylistModal({
             visibility: false,
@@ -70,8 +76,9 @@ const DropdownMenu = ({ id, control: ControlComponent, menuItems, children, stat
                 </span>
             )}
             <StyledMenu id={id} anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-                {menuItems.map(({ content }) => (
+                {menuItems.map(({ content }, idx) => (
                     <MenuItem
+                        key={`${id}_${idx}`}
                         onClick={(e) => {
                             handleClick(e);
                             handleClose(e);

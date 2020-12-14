@@ -33,12 +33,17 @@ struct Article: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     KFImage(URL(string: imageURL))
+                        .placeholder {
+                            Image("placeholder")
+                                .resizable()
+                        }
                         .resizable()
                         .aspectRatio(1, contentMode: .fit)
                     
                     VStack(alignment: .leading, spacing: 4) {
                         Text(title)
                             .font(.system(size: 30, weight: .bold))
+                            .foregroundColor(.primary)
                         
                         Text(subtitle)
                             .foregroundColor(.secondary)

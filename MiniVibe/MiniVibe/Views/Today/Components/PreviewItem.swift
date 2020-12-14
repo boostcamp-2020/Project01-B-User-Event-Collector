@@ -10,7 +10,7 @@ import SwiftUI
 struct PreviewItem: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text("Haapy Christmas")
+            Text("Happy Christmas")
                 .font(.system(size: 12))
                 .foregroundColor(.accentColor)
             
@@ -20,6 +20,7 @@ struct PreviewItem: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text("연인을 위한 캐롤")
                     .font(.system(size: 17))
+                    .foregroundColor(.primary)
                     .bold()
                 
                 Text("너와 함께라면 하나도 춥지 않아")

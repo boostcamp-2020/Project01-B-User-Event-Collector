@@ -16,6 +16,7 @@ struct ArtistSection: View {
         VStack(alignment: .leading) {
             Text(sectionTitle)
                 .font(.system(size: 16.5, weight: .bold))
+                .foregroundColor(.primary)
                 .padding(.horizontal, width * .paddingRatio)
             ScrollView(.horizontal,
                        showsIndicators: false) {

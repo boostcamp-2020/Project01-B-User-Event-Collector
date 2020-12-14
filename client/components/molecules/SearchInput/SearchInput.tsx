@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Input from '../../atoms/Input/Input';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
+import useSearchEventLog from '@hooks/useSearchEventLog';
+import { useSelector } from 'react-redux';
 
 const StyledSearchInput = styled.div`
     width: 100%;
@@ -22,27 +24,31 @@ const IconContainer = styled.div`
     justify-content: center;
 `;
 
-// const ArtistName = styled.div`
-//     position: absolute;
-//     bottom: 0px;
-//     font-size: 14px;
-//     font-weight: 400;
-// `;
-
 interface SearchInputProps {
     onClose?: () => void;
 }
 
-const SearchInput = ({ onClose }: SearchInputProps) => (
-    <StyledSearchInput>
-        <IconContainer>
-            <SearchIcon style={{ color: '#999' }}/>
-        </IconContainer>
-        <Input variant="search" />
-        <IconContainer>
-            <CloseIcon style={{ color: '#999' }} onClick={onClose} />
-        </IconContainer>
-    </StyledSearchInput>
-  );
-  
-  export default SearchInput;
+const SearchInput = ({ onClose }: SearchInputProps) => {
+    const user = useSelector((state) => state.user);
+    const logSearchEvent = useSearchEventLog({ userId: user.id });
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        logSearchEvent(e.target.search.value);
+    };
+
+    return (
+        <form id="search" onSubmit={handleSubmit}>
+            <StyledSearchInput>
+                <IconContainer>
+                    <SearchIcon style={{ color: '#999' }} />
+                </IconContainer>
+                <Input name="search" variant="search" />
+                <IconContainer>
+                    <CloseIcon style={{ color: '#999' }} onClick={onClose} />
+                </IconContainer>
+            </StyledSearchInput>
+        </form>
+    );
+};
+
+export default SearchInput;

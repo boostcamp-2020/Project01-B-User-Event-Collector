@@ -43,6 +43,6 @@ struct AlbumMenu: View {
 
 struct AlbumMenu_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumMenu(viewModel: .init(id: 1))
+        AlbumMenu(viewModel: .init(id: 1, eventLogger: MiniVibeApp.eventLogger))
     }
 }

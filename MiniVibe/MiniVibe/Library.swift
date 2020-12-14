@@ -34,6 +34,7 @@ struct Library: View {
                     Text("보관함")
                         .font(.title)
                         .fontWeight(.heavy)
+                        .foregroundColor(.primary)
                         .padding(geometry.size.width * .paddingRatio)
                     
                     Picker("Library", selection: $selection) {
