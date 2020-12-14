@@ -14,13 +14,13 @@ struct MockArtistSectionUseCase: ArtistUseCaseType {
     let artistInfo: ArtistInfo
     
     func loadArtists() -> AnyPublisher<[Artist], UseCaseError> {
-        Just(artists)
+        return Just(artists)
             .setFailureType(to: UseCaseError.self)
             .eraseToAnyPublisher()
     }
     
     func loadArtist(with id: Int) -> AnyPublisher<ArtistInfo, UseCaseError> {
-        Just(artistInfo)
+        return Just(artistInfo)
             .setFailureType(to: UseCaseError.self)
             .eraseToAnyPublisher()
     }

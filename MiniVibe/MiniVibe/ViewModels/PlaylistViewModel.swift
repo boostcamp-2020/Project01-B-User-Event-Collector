@@ -16,22 +16,27 @@ final class PlaylistViewModel: ObservableObject {
         case like
     }
     
-    enum ActiveSheet {
-        case playlist
-        case track(info: TrackViewModel)
+    struct State {
+        enum ActiveSheet {
+            case playlist
+            case track(info: TrackViewModel)
+        }
+        
+        var playlist: Playlist?
+        var activeSheet: ActiveSheet = .playlist
+        var showSheet = false
+        var isOpenArticle = false
     }
     
     private let useCase: PlaylistUseCaseType
     private let eventLogger: EventLoggerType
     private var cancellables = Set<AnyCancellable>()
     private let id: Int
+    @Published var state = State()
     
-    @Published private(set) var playlist: Playlist?
-    @Published private(set) var activeSheet: ActiveSheet = .playlist
-    @Published var showSheet = false
-    @Published var isOpenArticle = false
-    
-    init(id: Int, useCase: PlaylistUseCaseType = PlaylistUseCase(),eventLogger: EventLoggerType = MiniVibeApp.eventLogger) {
+    init(id: Int,
+         useCase: PlaylistUseCaseType = PlaylistUseCase(),
+         eventLogger: EventLoggerType = MiniVibeApp.eventLogger) {
         self.id = id
         self.useCase = useCase
         self.eventLogger = eventLogger
@@ -42,11 +47,11 @@ final class PlaylistViewModel: ObservableObject {
         case .appear:
             load()
         case .showPlaylistMenu:
-            activeSheet = .playlist
-            showSheet = true
+            state.activeSheet = .playlist
+            state.showSheet = true
         case let .showTrackMenu(info):
-            activeSheet = .track(info: info)
-            showSheet = true
+            state.activeSheet = .track(info: info)
+            state.showSheet = true
         case .like:
             like()
         }
@@ -57,7 +62,7 @@ final class PlaylistViewModel: ObservableObject {
             .sink { _ in
 
             } receiveValue: { [weak self] playlist in
-                self?.playlist = playlist
+                self?.state.playlist = playlist
             }
             .store(in: &cancellables)
     }

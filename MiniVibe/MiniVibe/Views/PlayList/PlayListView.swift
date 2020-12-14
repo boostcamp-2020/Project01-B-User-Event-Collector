@@ -15,11 +15,11 @@ struct PlayListView: View {
     @StateObject private var viewModel: PlaylistViewModel
     
     var body: some View {
-        if let playlist = viewModel.playlist {
+        if let playlist = viewModel.state.playlist {
             GeometryReader { geometry in
                 let width: CGFloat = geometry.size.width
-                if viewModel.isOpenArticle {
-                    Article(isOpenArticle: $viewModel.isOpenArticle,
+                if viewModel.state.isOpenArticle {
+                    Article(isOpenArticle: $viewModel.state.isOpenArticle,
                             imageURL: playlist.imageUrl,
                             title: playlist.title,
                             subtitle: playlist.subTitle ?? "",
@@ -30,7 +30,7 @@ struct PlayListView: View {
                     ScrollView {
                         VStack(spacing: 36) {
                             VStack {
-                                PlaylistAlbumInfo(isOpenArticle: $viewModel.isOpenArticle,
+                                PlaylistAlbumInfo(isOpenArticle: $viewModel.state.isOpenArticle,
                                                   imageURL: playlist.imageUrl ,
                                                   title: playlist.title,
                                                   subtitle: playlist.subTitle ?? "",
@@ -62,8 +62,8 @@ struct PlayListView: View {
                     .navigationBarItems(
                         trailing: trailingBarButtons
                     )
-                    .fullScreenCover(isPresented: $viewModel.showSheet) {
-                        switch viewModel.activeSheet {
+                    .fullScreenCover(isPresented: $viewModel.state.showSheet) {
+                        switch viewModel.state.activeSheet {
                         case .playlist:
                             PlayListMenu(viewModel: viewModel)
                                 .logTransition(identifier: .playlistMenu(id: playlist.id),
