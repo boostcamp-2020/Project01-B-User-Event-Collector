@@ -14,6 +14,7 @@ import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import QueueMusicIcon from '@material-ui/icons/QueueMusic';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 
+import useUpNextChangeEventLog from '@hooks/useUpNextChangeEventLog';
 
 const Container = styled.div`
     position: fixed;
@@ -23,11 +24,11 @@ const Container = styled.div`
     z-index: 2000;
     border-bottom: 1px solid #e4e4e4;
     background-color: #f2f2f2;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.07);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.07);
     height: 150px;
     display: flex;
     flex-flow: column;
-    align-items: center;  
+    align-items: center;
 `;
 
 const SelectAreaContainer = styled.div`
@@ -57,7 +58,7 @@ const CheckBoxSpan = styled.span`
 const SelectedTrackCounter = styled.div`
     display: flex;
     align-items: center;
-    color: #FF1150;
+    color: #ff1150;
     font-weight: 600;
     height: 75px;
     width: 920px;
@@ -82,48 +83,66 @@ const PlayButtonContainer = styled.div`
 
 const FloatingSelectMenu = () => {
     const dispatch = useDispatch();
-    const { tracks } = useSelector(state =>  state.selectedTrack);
+    const { tracks } = useSelector((state) => state.selectedTrack);
     const selectedTrackCount = tracks.length;
+
+    const user = useSelector((state) => state.user);
+    const { logAddToUpnextEvent } = useUpNextChangeEventLog({ userId: user.id });
 
     const onAddUpNextAndPlayHandler = () => {
         dispatch(addToUpNextAndPlay(tracks));
         dispatch(clearAllTracks());
-    }
+        logAddToUpnextEvent(tracks.map(({ id }) => id));
+    };
 
     const onAddUpNextHandler = () => {
         dispatch(addToUpNext(tracks));
         dispatch(clearAllTracks());
-    }
+        logAddToUpnextEvent(tracks.map(({ id }) => id));
+    };
 
     const onClickCloseButtonHandler = () => {
         dispatch(clearAllTracks());
-    }
+    };
 
     return (
         <Container>
             <SelectAreaContainer>
-                <SelectedTrackCounter>
-                    {selectedTrackCount}곡 선택
-                </SelectedTrackCounter>
+                <SelectedTrackCounter>{selectedTrackCount}곡 선택</SelectedTrackCounter>
                 <CloseButtonContainer>
-                    <IconButton variant="plainBlackRegular" icon={CloseIcon} onClick={onClickCloseButtonHandler}/>
+                    <IconButton variant="plainBlackRegular" icon={CloseIcon} onClick={onClickCloseButtonHandler} />
                 </CloseButtonContainer>
             </SelectAreaContainer>
             <ButttonAreaContainer>
-                <Button variant="secondary" width="130" height="40" icon={PlaylistPlayIcon} onClick = {onAddUpNextHandler}>현재재생목록에 추가</Button>
-                <Button variant="secondary" width="130" height="40" icon={QueueMusicIcon}>추가</Button>
-                <Button variant="secondary" width="130" height="40" icon={MusicNoteIcon}>MP3 구매</Button>
+                <Button
+                    variant="secondary"
+                    width="130"
+                    height="40"
+                    icon={PlaylistPlayIcon}
+                    onClick={onAddUpNextHandler}
+                >
+                    현재재생목록에 추가
+                </Button>
+                <Button variant="secondary" width="130" height="40" icon={QueueMusicIcon}>
+                    추가
+                </Button>
+                <Button variant="secondary" width="130" height="40" icon={MusicNoteIcon}>
+                    MP3 구매
+                </Button>
                 <PlayButtonContainer>
-                    <Button 
-                    variant="primary" 
-                    width="120" 
-                    height="40" 
-                    icon={PlayArrowIcon}
-                    onClick={onAddUpNextAndPlayHandler}>재생</Button>
+                    <Button
+                        variant="primary"
+                        width="120"
+                        height="40"
+                        icon={PlayArrowIcon}
+                        onClick={onAddUpNextAndPlayHandler}
+                    >
+                        재생
+                    </Button>
                 </PlayButtonContainer>
             </ButttonAreaContainer>
         </Container>
-    )
-}
+    );
+};
 
 export default FloatingSelectMenu;

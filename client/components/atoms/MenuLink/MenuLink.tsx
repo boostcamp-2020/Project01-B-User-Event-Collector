@@ -1,4 +1,4 @@
-import React, { ReactNode, ComponentType } from 'react';
+import React, { MouseEvent, ReactNode, ComponentType } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -7,7 +7,8 @@ import useClickEventLog from '@hooks/useClickEventLog';
 
 interface MenuLinkProps {
     children: ReactNode;
-    href: string;
+    href?: string;
+    onClick?: (e: MouseEvent<HTMLElement>) => void;
     icon?: ComponentType;
     selected?: boolean;
 }

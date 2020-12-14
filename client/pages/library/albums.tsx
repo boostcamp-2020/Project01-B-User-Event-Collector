@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHeader';
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
 import apiUrl from 'constants/apiUrl';
-import { request } from '@utils/apis';
+import { requestByCookie } from '@utils/apis';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 import { page, contentType } from '@constants/identifier';
@@ -46,13 +46,13 @@ const AlbumLibrary = ({ albumData }) => {
     );
 };
 
-export const getServerSideProps = async () => {
-    const albumData = await request(apiUrl.libraryAlbum);
-    console.log(albumData);
+export const getServerSideProps = async ({req, res}) => {
+    const albumData = await requestByCookie(req, res, apiUrl.libraryAlbum);
     return {
         props: {
             albumData,
         },
     };
 };
+
 export default AlbumLibrary;

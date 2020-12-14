@@ -6,7 +6,7 @@ import useClickEventLog from '@hooks/useClickEventLog';
 
 interface AProps {
     children: ReactNode;
-    href: string;
+    href?: string;
     variant?: 'primary' | 'secondary' | 'tertiary';
 }
 

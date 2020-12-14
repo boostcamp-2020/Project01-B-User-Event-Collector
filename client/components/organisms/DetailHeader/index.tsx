@@ -8,6 +8,8 @@ import Text from '@components/atoms/Text';
 import HeaderButtonGroup from '@components/organisms/HeaderButtonGroup';
 import Image from '@components/atoms/Image/Image';
 
+import useUpNextChangeEventLog from '@hooks/useUpNextChangeEventLog';
+
 const HeaderContainter = styled.div`
     display: flex;
     border-bottom: 1px #d7d7d7 solid;
@@ -63,20 +65,29 @@ const DescriptionContainer = styled.div`
 `;
 
 interface DetailHeaderProps {
-    sort: 'album' | 'mixtape' | 'playlist' | 'track',
-    data
+    sort: 'album' | 'mixtape' | 'playlist' | 'track';
+    data;
 }
 
 const DetailHeader = ({ sort, data }: DetailHeaderProps) => {
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
+    const { logAddToUpnextEvent } = useUpNextChangeEventLog({ userId: user.id });
+
     const onAddUpNextAndPlayHandler = () => {
-        sort === 'track'? dispatch(addToUpNextAndPlay([data])) : dispatch(addToUpNextAndPlay(data.tracks));
-    }
+        if (sort === 'track') {
+            dispatch(addToUpNextAndPlay([data]));
+            logAddToUpnextEvent([data.id]);
+            return;
+        }
+        dispatch(addToUpNextAndPlay(data.tracks));
+        logAddToUpnextEvent(data.tracks.map(({ id }) => id));
+    };
 
     return (
         <HeaderContainter>
             <ImageContainer>
-                <Image src={sort === "track" ? data.album.imageUrl : data.imageUrl } variant="" />
+                <Image src={sort === 'track' ? data.album.imageUrl : data.imageUrl} variant="" />
             </ImageContainer>
             <DetailContainer>
                 <TextContainer>
@@ -96,8 +107,10 @@ const DetailHeader = ({ sort, data }: DetailHeaderProps) => {
                     </DescriptionContainer>
                 </TextContainer>
                 <ButtonContainer>
-                    {sort === 'track' && <HeaderButtonGroup sort="track" onAddUpNextHandler = {onAddUpNextAndPlayHandler}/>}
-                    {sort !== 'track' && <HeaderButtonGroup onAddUpNextHandler = {onAddUpNextAndPlayHandler}/>}
+                    {sort === 'track' && (
+                        <HeaderButtonGroup sort="track" onAddUpNextHandler={onAddUpNextAndPlayHandler} />
+                    )}
+                    {sort !== 'track' && <HeaderButtonGroup onAddUpNextHandler={onAddUpNextAndPlayHandler} />}
                 </ButtonContainer>
             </DetailContainer>
         </HeaderContainter>

@@ -3,12 +3,12 @@ import MainMagazineCard from '@components/organisms/Cards/MainMagazineCard/MainM
 import CardListContainer from '@components/organisms/CardListContainer';
 import MagazineCardList from '@components/organisms/CardLists/MagazineList/MagazineList';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
-import Link from 'next/link';
 import { request } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
 import { page, contentType } from '@constants/identifier';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
+import { useSelector, useDispatch } from 'react-redux';
 
 const TodayContainer = styled.div`
     height: 100%;
@@ -45,8 +45,9 @@ const ContentsContainer = styled.div`
     border-bottom: 1px solid #dddddd;
 `;
 
-const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata }) => {
+const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata }) => {
     //TODO: isLogined state 이용하여 <UserContentsContainer> 부분은 로그인 했을 때만 보이도록 수정
+    const user = useSelector((state) => state.user);
 
     return (
         <ComponentInfoContext.Provider value={{ componentId: page.today }}>
@@ -79,7 +80,7 @@ const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata })
                         </ComponentInfoWrapper>
                     </ContentsContainer>
                 </PublicContentsContainer>
-                <UserContentsContainer>
+                { user.isLoggedIn && <UserContentsContainer>
                     <ContentsContainer>
                         <ComponentInfoWrapper componentId={contentType.recommendedPlaylist}>
                             <CardListContainer title="내 취향 플레이리스트" href="/">
@@ -104,22 +105,21 @@ const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata })
                             </CardListContainer>
                         </ComponentInfoWrapper>
                     </ContentsContainer>
-                </UserContentsContainer>
+                </UserContentsContainer>}
             </TodayContainer>
         </ComponentInfoContext.Provider>
     );
 };
 
 export async function getServerSideProps(context) {
-    const [Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata] = await Promise.all([
+    const [Magazinesdata, Newsdata, Playlistdata, Albumdata] = await Promise.all([
         request(apiUrl.magazine),
         request(apiUrl.news),
         request(apiUrl.playlist),
         request(apiUrl.album),
-        request(apiUrl.mixtape),
     ]);
 
-    if (!Magazinesdata || !Newsdata || !Playlistdata || !Albumdata || !Mixtapedata) {
+    if (!Magazinesdata || !Newsdata || !Playlistdata || !Albumdata) {
         return {
             notFound: true,
         };
@@ -131,7 +131,6 @@ export async function getServerSideProps(context) {
             Newsdata,
             Playlistdata,
             Albumdata,
-            // Mixtapedata,
         },
     };
 }
