@@ -9,12 +9,12 @@ import XCTest
 import Combine
 @testable import MiniVibe
 
-class TrackUseCaseTests: XCTestCase {
+final class TrackUseCaseTests: XCTestCase {
     
     private var cancellables = Set<AnyCancellable>()
     
     func test_load_track_success() {
-        let expectations = XCTestExpectation(description: "track load test")
+        let expectations = XCTestExpectation(description: "track load success test")
         defer { wait(for: [expectations], timeout: 5) }
         
         let tracks = SingleTrackResponse(
@@ -45,7 +45,7 @@ class TrackUseCaseTests: XCTestCase {
     }
     
     func test_load_track_failure() {
-        let expectations = XCTestExpectation(description: "track load test")
+        let expectations = XCTestExpectation(description: "track load failure test")
         defer { wait(for: [expectations], timeout: 5) }
         let usecase = TrackUseCase(network: MockFailureNetworkService())
         usecase.cancelLikedTrack(id: 0)
@@ -64,7 +64,7 @@ class TrackUseCaseTests: XCTestCase {
     }
     
     func test_like_track_success() {
-        let expectations = XCTestExpectation(description: "track like test")
+        let expectations = XCTestExpectation(description: "track like success test")
         defer { wait(for: [expectations], timeout: 5) }
         
         let likeTrack = TrackUseCase.LikeTrackResponse(success: true)
@@ -85,7 +85,7 @@ class TrackUseCaseTests: XCTestCase {
     }
     
     func test_like_track_failure() {
-        let expectations = XCTestExpectation(description: "track like test")
+        let expectations = XCTestExpectation(description: "track like failure test")
         defer { wait(for: [expectations], timeout: 5) }
         
         let usecase = TrackUseCase(network: MockFailureNetworkService())
@@ -105,7 +105,7 @@ class TrackUseCaseTests: XCTestCase {
     }
     
     func test_cancel_like_track_success() {
-        let expectations = XCTestExpectation(description: "track like test")
+        let expectations = XCTestExpectation(description: "track cancel like success test")
         defer { wait(for: [expectations], timeout: 5) }
         
         let cancelLikeTrack = TrackUseCase.LikeTrackResponse(success: true)
@@ -126,7 +126,7 @@ class TrackUseCaseTests: XCTestCase {
     }
     
     func test_cancel_like_track_failure() {
-        let expectations = XCTestExpectation(description: "track like test")
+        let expectations = XCTestExpectation(description: "track cancel like failure test")
         defer { wait(for: [expectations], timeout: 5) }
         
         let usecase = TrackUseCase(network: MockFailureNetworkService())

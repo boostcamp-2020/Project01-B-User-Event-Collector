@@ -9,7 +9,7 @@ import XCTest
 import Combine
 @testable import MiniVibe
 
-class SearchUseCaseTests: XCTestCase {
+final class SearchUseCaseTests: XCTestCase {
     
     private var cancellables: Set<AnyCancellable> = []
     

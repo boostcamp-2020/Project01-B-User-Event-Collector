@@ -14,7 +14,7 @@ final class TodayUseCaseTests: XCTestCase {
     private var cancellables: Set<AnyCancellable> = []
     
     func test_load_mixtapes_success() {
-        let expectation = XCTestExpectation(description: "mixtape load test")
+        let expectation = XCTestExpectation(description: "mixtape load success test")
         defer { wait(for: [expectation], timeout: 5) }
         
         let mixtapes = Mixtapes(data: [
@@ -38,7 +38,7 @@ final class TodayUseCaseTests: XCTestCase {
     }
     
     func test_load_mixtapes_failure() {
-        let expectation = XCTestExpectation(description: "mixtape load test")
+        let expectation = XCTestExpectation(description: "mixtape load failure test")
         defer { wait(for: [expectation], timeout: 5) }
         
         let useCase = TodayUseCase(network: MockFailureNetworkService())
