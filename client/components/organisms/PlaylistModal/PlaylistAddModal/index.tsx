@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import Button from '@components/atoms/Button';
 import Input from '@components/atoms/Input/Input';
+import { useState } from 'react';
 
 interface PlaylistAddModalContainer {
     visible: boolean;
@@ -70,17 +71,19 @@ interface PlaylistAddModalProps {
 }
 
 const PlaylistAddModal = ({ visibility }: PlaylistAddModalProps) => {
+    const [visible, setVisible] = useState(visibility);
+    const modalOff = (e) => {
+        setVisible(!visible);
+    };
     return (
-        <ModalContainer visible={visibility}>
+        <ModalContainer visible={visible}>
             <Modal>
-                <HeaderContainer>
-                    새 플레이리스트
-                </HeaderContainer>
+                <HeaderContainer>새 플레이리스트</HeaderContainer>
                 <InputContainer>
-                    <Input />
+                    <Input variant="newPlaylist" name="newPlaylist" />
                 </InputContainer>
                 <ButtonContainer>
-                    <Button>취소</Button>
+                    <Button onClick={modalOff}>취소</Button>
                     <Button variant="primary">확인</Button>
                 </ButtonContainer>
             </Modal>
