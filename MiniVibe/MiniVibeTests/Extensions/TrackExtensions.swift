@@ -8,6 +8,17 @@
 import Foundation
 @testable import MiniVibe
 
+extension TrackResponse: Encodable {
+    enum CodingKeys: String, CodingKey {
+        case data
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(data, forKey: .data)
+    }
+}
+
 extension TrackInfo: Encodable {
     enum CodingKeys: String, CodingKey {
         case id, title, lyrics, albumId, album, artist, liked
