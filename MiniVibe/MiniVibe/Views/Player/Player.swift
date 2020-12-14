@@ -11,7 +11,6 @@ struct Player: View {
     @Binding var isMenuOpen: Bool
     @Binding var isLyricsOpen: Bool
     @EnvironmentObject private var nowPlaying: NowPlaying
-    @EnvironmentObject private var eventLogger: EventLogger
     
     var body: some View {
         
@@ -25,7 +24,7 @@ struct Player: View {
             Spacer()
             
             PlayerControls(isOpenMenu: $isMenuOpen,
-                           viewModel: nowPlaying.playingTrack ?? .init(track: trackinfo, eventLogger: eventLogger))
+                           viewModel: nowPlaying.playingTrack ?? .init(track: trackinfo))
                 .environmentObject(nowPlaying)
             
             Spacer()
@@ -52,8 +51,7 @@ struct Player: View {
             }
             .foregroundColor(.accentColor)
             .font(.system(size: 12))
-            .logSubscription(eventLogger: eventLogger,
-                             componentId: "")
+            .logSubscription(componentId: "")
             
             Spacer()
             

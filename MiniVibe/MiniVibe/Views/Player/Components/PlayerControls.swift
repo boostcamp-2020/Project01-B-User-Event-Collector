@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PlayerControls: View {
     @EnvironmentObject private var nowPlaying: NowPlaying
-    @EnvironmentObject private var eventLogger: EventLogger
     @Binding var isOpenMenu: Bool
     @State private var isShuffle = false
     @ObservedObject var viewModel: TrackViewModel
@@ -71,6 +70,6 @@ struct PlayerControls: View {
 
 struct PlayerControls_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerControls(isOpenMenu: .constant(false), viewModel: .init(track: trackinfo, eventLogger: EventLogger(persistentContainer: .init())))
+        PlayerControls(isOpenMenu: .constant(false), viewModel: .init(track: trackinfo))
     }
 }

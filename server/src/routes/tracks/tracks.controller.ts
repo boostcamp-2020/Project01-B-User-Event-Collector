@@ -4,8 +4,7 @@ import { getRepository } from 'typeorm';
 import Track from '../../models/Track';
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
-    // TODO: 인증 구현 후 수정
-    const userId = 1;
+    const userId = req.user;
     try {
         const TrackRepository = getRepository(Track);
 
@@ -37,8 +36,7 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
 
 const findOne = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
-    // TODO: 인증 구현 후 수정
-    const userId = 1;
+    const userId = req.user;
     try {
         const TrackRepository = getRepository(Track);
 

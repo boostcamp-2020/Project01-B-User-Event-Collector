@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { getRepository } from 'typeorm';
 
 import Artist from '../../models/Artist';
+import User from '../../models/User';
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -18,8 +19,7 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
 
 const findOne = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
-    // TODO: 인증 구현 후 수정
-    const userId = 1;
+    const userId = req.user;
     try {
         const ArtistRepository = getRepository(Artist);
         // TODO: 연관된 아티스트 목록 추가
@@ -51,9 +51,17 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
 
         if (!artist) return res.status(404).json({ success: false });
 
+        const UserRepository = getRepository(User);
+        const userLiked = await UserRepository.createQueryBuilder('user')
+            .leftJoinAndSelect('user.libraryArtists', 'library_artists')
+            .where('library_artists.id = :id', { id })
+            .getOne();
         return res.json({
             success: true,
-            data: artist,
+            data: {
+                ...artist,
+                liked: userLiked ? 1 : 0,
+            },
         });
     } catch (err) {
         return res.status(500).json({ success: false });

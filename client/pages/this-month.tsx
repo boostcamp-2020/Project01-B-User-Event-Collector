@@ -6,15 +6,18 @@ import CardListContainer from '@components/organisms/CardListContainer';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 import { request } from 'utils/apis';
 import apiUrl from 'constants/apiUrl';
+import ComponentInfoContext from '@utils/context/ComponentInfoContext';
+import { contentType, dataType, page } from '@constants/identifier';
+import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 
 const Artistdata = Array(9).fill({
     id: 3,
-    name: "이영지",
-    imageUrl: "https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg",
+    name: '이영지',
+    imageUrl: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg',
     genre: {
         id: 1,
-        name: "랩/힙합"
-    }
+        name: '랩/힙합',
+    },
 });
 
 const Container = styled.div`
@@ -41,29 +44,37 @@ const TrackListContainer = styled.div`
     padding-bottom: 50px;
 `;
 
-const ArtistListContainer = styled.div`
-`;
+const ArtistListContainer = styled.div``;
 
 const ThisMonth = ({ PlaylistData, TrackData }) => {
     return (
-        <Container>
-            <Header>
-                <DetailHeader sort = "playlist" data = {PlaylistData}/>
-            </Header>
-            <ContentsContainer>
-                <ContentsButtonGroup />
-                <TrackListContainer>
-                    <TrackRowList items={TrackData} />
-                </TrackListContainer>
-                <ArtistListContainer>
-                    <CardListContainer title="연관 아티스트">
-                    <ContentsCardList variant="artist" items={Artistdata} />
-                </CardListContainer>
-                </ArtistListContainer>
-            </ContentsContainer>
-        </Container>
-    )
-}
+        <ComponentInfoContext.Provider
+            value={{
+                componentId: `${page.playlist}-${PlaylistData.id}`,
+                data: { type: dataType.playlist, id: PlaylistData.id },
+            }}
+        >
+            <Container>
+                <ComponentInfoWrapper componentId={contentType.summaryHeader}>
+                    <Header>
+                        <DetailHeader sort="playlist" data={PlaylistData} />
+                    </Header>
+                </ComponentInfoWrapper>
+                <ContentsContainer>
+                    <ContentsButtonGroup />
+                    <TrackListContainer>
+                        <TrackRowList items={TrackData} />
+                    </TrackListContainer>
+                    <ArtistListContainer>
+                        <CardListContainer title="연관 아티스트">
+                            <ContentsCardList variant="artist" items={Artistdata} />
+                        </CardListContainer>
+                    </ArtistListContainer>
+                </ContentsContainer>
+            </Container>
+        </ComponentInfoContext.Provider>
+    );
+};
 
 export async function getServerSideProps(context) {
     const PlaylistData = await request(apiUrl.playlist + `/9`);
@@ -74,7 +85,7 @@ export async function getServerSideProps(context) {
     return {
         props: {
             PlaylistData,
-            TrackData
+            TrackData,
         },
     };
 }

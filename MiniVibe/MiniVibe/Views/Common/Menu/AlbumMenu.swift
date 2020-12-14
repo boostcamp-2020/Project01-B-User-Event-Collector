@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AlbumMenu: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var eventLogger: EventLogger
     @StateObject private var viewModel: AlbumViewModel
     
     init(viewModel: AlbumViewModel) {
@@ -44,6 +43,6 @@ struct AlbumMenu: View {
 
 struct AlbumMenu_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumMenu(viewModel: .init(id: 1, eventLogger: EventLogger(persistentContainer: .init())))
+        AlbumMenu(viewModel: .init(id: 1))
     }
 }

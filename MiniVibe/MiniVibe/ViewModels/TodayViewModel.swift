@@ -8,7 +8,7 @@
 import Combine
 
 final class TodayViewModel: ObservableObject {
-    private let useCase = TodayUseCase()
+    private let useCase: TodayUseCaseType
     private var cancellables = Set<AnyCancellable>()
     
     @Published private(set) var mixtapes = [Mixtape]()
@@ -16,6 +16,10 @@ final class TodayViewModel: ObservableObject {
     @Published private(set) var tracks = [TrackInfo]()
     @Published private(set) var playlists = [Playlist]()
     @Published private(set) var magazines = [Magazine]()
+    
+    init(useCase: TodayUseCaseType = TodayUseCase()) {
+        self.useCase = useCase
+    }
     
     func load() {
         useCase.loadMixtapes()

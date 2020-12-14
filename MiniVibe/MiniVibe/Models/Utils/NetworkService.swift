@@ -53,7 +53,7 @@ final class NetworkService: NetworkServiceType {
         self.session = session
     }
     
-    func request(url: String, request type: RequestType, body: Data?) -> AnyPublisher<Data, NetworkError> {
+    func request(url: String, request type: RequestType = .get, body: Data? = nil) -> AnyPublisher<Data, NetworkError> {
         guard let url = URL(string: url) else {
             return Fail(error: NetworkError.invalidURL)
                 .eraseToAnyPublisher()

@@ -54,6 +54,5 @@ struct PlayerMenu_Previews: PreviewProvider {
             MenuButton(type: .share) {}
             MenuCloseButton {}
         }
-        .previewInAllColorSchemes
     }
 }

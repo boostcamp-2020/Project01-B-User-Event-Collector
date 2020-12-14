@@ -7,14 +7,17 @@
 
 import Combine
 import Foundation
+import EventLogKit
 
 final class TrackViewModel: ObservableObject {
     @Published var track: TrackInfo
     private let eventLogger: EventLoggerType
-    private let useCase: TrackUseCase
+    private let useCase: TrackUseCaseType
     private var cancellables: Set<AnyCancellable> = []
     
-    init(track: TrackInfo, useCase: TrackUseCase = .init(), eventLogger: EventLoggerType) {
+    init(track: TrackInfo,
+         useCase: TrackUseCaseType = TrackUseCase(),
+         eventLogger: EventLoggerType = MiniVibeApp.eventLogger) {
         self.track = track
         self.useCase = useCase
         self.eventLogger = eventLogger
@@ -22,7 +25,7 @@ final class TrackViewModel: ObservableObject {
     
     func like() {
         if track.liked == 0 {
-            useCase.likeTrack(like: LikeTrack(trackId: track.id))
+            useCase.likeTrack(id: track.id)
                 .sink { _ in
                     
                 } receiveValue: { [weak self] isSuccess in
