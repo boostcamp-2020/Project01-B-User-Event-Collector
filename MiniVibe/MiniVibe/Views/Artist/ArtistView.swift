@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ArtistView: View {
-    init(id: Int) {
-        self.id = id
-    }
     
-    @StateObject private var viewModel = ArtistViewModel()
-    private let id: Int
+    @StateObject private var viewModel: ArtistViewModel
+
+    init(viewModel: ArtistViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     var body: some View {
         content
@@ -21,7 +21,7 @@ struct ArtistView: View {
     
     @ViewBuilder
     private var content: some View {
-        if let artist = viewModel.artist {
+        if let artist = viewModel.state.artist {
             GeometryReader { geometry in
                 let width = geometry.size.width
                 ScrollView {
@@ -65,7 +65,7 @@ struct ArtistView: View {
                         }
                     }
                 }
-                .sheet(isPresented: $viewModel.isOpenMenu) {
+                .sheet(isPresented: $viewModel.state.isOpenMenu) {
                     ArtistMenu(artist: artist)
                         .logTransition(identifier: .artistMenu(id: artist.id),
                                        componentId: .sectionTitle(category: "관련 플레이리스트"))
@@ -78,7 +78,7 @@ struct ArtistView: View {
         } else {
             Color.clear
                 .onAppear {
-                    viewModel.send(.appear(artistID: id))
+                    viewModel.send(.appear)
                 }
         }
     }
@@ -86,7 +86,7 @@ struct ArtistView: View {
     var trailingBarButtons: some View {
         HStack(spacing: 10) {
             Button {
-                
+                viewModel.send(.like)
             } label: {  Image(systemName: "heart") }
             
             Button {
@@ -101,7 +101,7 @@ struct ArtistView: View {
 struct ArtistView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ArtistView(id: 3)
+            ArtistView(viewModel: .init(id: 3))
         }
     }
 }
