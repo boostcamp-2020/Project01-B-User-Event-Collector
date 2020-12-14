@@ -1,5 +1,5 @@
 //
-//  MiniVibeTests.swift
+//  NetworkServiceTests.swift
 //  MiniVibeTests
 //
 //  Created by Sue Cho on 2020/11/30.
@@ -9,7 +9,7 @@ import XCTest
 import Combine
 @testable import MiniVibe
 
-class MiniVibeTests: XCTestCase {
+final class NetworkServiceTests: XCTestCase {
     
     var subscriptions: Set<AnyCancellable> = []
 
