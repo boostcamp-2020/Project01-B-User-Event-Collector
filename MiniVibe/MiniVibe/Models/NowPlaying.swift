@@ -102,7 +102,7 @@ final class PlayerDataManager {
     }
     
     func viewModelToTracks(viewModel: [TrackViewModel]) -> [TrackInfo] {
-        return viewModel.map { $0.track }
+        return viewModel.map { $0.state.track }
     }
     
     func saveTracks(tracks: [TrackInfo]) {

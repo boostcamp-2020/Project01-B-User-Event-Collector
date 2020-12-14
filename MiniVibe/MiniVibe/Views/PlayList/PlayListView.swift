@@ -70,7 +70,7 @@ struct PlayListView: View {
                                                componentId: .playlistMenuButton)
                         case let .track(trackViewModel):
                             PlayerMenu(viewModel: trackViewModel)
-                                .logTransition(identifier: .playerMenu(id: trackViewModel.track.id),
+                                .logTransition(identifier: .playerMenu(id: trackViewModel.state.track.id),
                                                componentId: .trackMenuButton)
                         }
                     }

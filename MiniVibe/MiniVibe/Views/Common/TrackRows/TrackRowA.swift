@@ -20,7 +20,7 @@ struct TrackRowA: View {
     }
     
     var body: some View {
-        let track = viewModel.track
+        let track = viewModel.state.track
         HStack {
             NavigationLink(destination:
                             AlbumView(viewModel: .init(id: track.album.id, eventLogger: MiniVibeApp.eventLogger))

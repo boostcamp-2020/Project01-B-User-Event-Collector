@@ -15,12 +15,13 @@ struct PlayerMenu: View {
     var body: some View {
         VStack(spacing: 36) {
             Spacer()
-            let track = viewModel.track
+            let track = viewModel.state.track
             MenuThumbnailButton(imageUrl: track.album.imageUrl,
                                 title: track.title,
                                 subtitle: track.artist.name)
             MenuButton(type: .like(track.liked)) {
-                viewModel.like()
+                viewModel.state.track.liked == 0 ?
+                    viewModel.send(.like) : viewModel.send(.cancelLike)
             }
             MenuButton(type: .exclude) {
                 

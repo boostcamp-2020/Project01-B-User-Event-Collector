@@ -35,7 +35,7 @@ struct PlayerPreview: View {
     }
     
     @ViewBuilder private func playingTrackInfo() -> some View {
-        let track = nowPlaying.playingTrack?.track
+        let track = nowPlaying.playingTrack?.state.track
         KFImage(URL(string: track?.album.imageUrl ?? ""))
             .placeholder {
                 Image("placeholder")
