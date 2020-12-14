@@ -1,10 +1,11 @@
 import axios from 'axios';
 import Cookies from 'cookies';
 import { getCookie } from 'utils/cookies';
+import apiUrl from 'constants/apiUrl';
 
 export const getRequestOptions = (method, options, headers) => ({
     method: method,
-import apiUrl from 'constants/apiUrl';
+});
 
 export const requestOptions = {
     method: 'GET',
@@ -28,22 +29,25 @@ export const requestByCookie = async (req, res, apiUrl) => {
     const cookies = new Cookies(req, res);
     const data = await request(apiUrl, {
         headers: {
-        "Authorization" : cookies.get('token')
-        }
+            Authorization: cookies.get('token'),
+        },
     });
     return data;
-}
+};
 
 export const addToLibrary = async (url, option) => {
     const options = { ...getRequestOptions('POST', option) };
     try {
-        await axios({ ...options, url , headers: {
-            "Authorization" : getCookie('token')
-            }});
+        await axios({
+            ...options,
+            url,
+            headers: {
+                Authorization: getCookie('token'),
+            },
+        });
     } catch (err) {
         console.error(err);
     }
-
 };
 
 export const addToPlaylist = async (url, data) => {
