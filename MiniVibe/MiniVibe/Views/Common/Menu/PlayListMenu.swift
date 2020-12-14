@@ -16,7 +16,7 @@ struct PlayListMenu: View {
     @StateObject private var viewModel: PlaylistViewModel
     
     var body: some View {
-        let playlist = viewModel.playlist
+        let playlist = viewModel.state.playlist
         VStack(spacing: 36) {
             Spacer()
             MenuThumbnailButton(imageUrl: playlist?.imageUrl ?? "",

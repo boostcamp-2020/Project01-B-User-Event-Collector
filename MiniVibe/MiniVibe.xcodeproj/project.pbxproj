@@ -83,6 +83,8 @@
 		44DEED0E2587AC1B00060960 /* AlbumViewModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DEED0D2587AC1B00060960 /* AlbumViewModelExtensions.swift */; };
 		44DEED112587AD1900060960 /* MockEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DEED102587AD1900060960 /* MockEventLogger.swift */; };
 		44DEED142587AD4900060960 /* MockAlbumUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DEED132587AD4900060960 /* MockAlbumUseCase.swift */; };
+		44DEED1D2587C7AB00060960 /* PlaylistViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DEED1C2587C7AB00060960 /* PlaylistViewModelTests.swift */; };
+		44DEED222587D01A00060960 /* PlaylistViewModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DEED212587D01A00060960 /* PlaylistViewModelExtensions.swift */; };
 		44E39B312580E6EA00968B0A /* Transition+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E39B2F2580E6EA00968B0A /* Transition+CoreDataClass.swift */; };
 		44E3E9E0258738DF001CB352 /* TodayUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E3E9DF258738DF001CB352 /* TodayUseCaseTests.swift */; };
 		44E3E9E725873DEA001CB352 /* MixtapeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E3E9E625873DEA001CB352 /* MixtapeExtensions.swift */; };
@@ -298,6 +300,8 @@
 		44DEED0D2587AC1B00060960 /* AlbumViewModelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModelExtensions.swift; sourceTree = "<group>"; };
 		44DEED102587AD1900060960 /* MockEventLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEventLogger.swift; sourceTree = "<group>"; };
 		44DEED132587AD4900060960 /* MockAlbumUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAlbumUseCase.swift; sourceTree = "<group>"; };
+		44DEED1C2587C7AB00060960 /* PlaylistViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModelTests.swift; sourceTree = "<group>"; };
+		44DEED212587D01A00060960 /* PlaylistViewModelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModelExtensions.swift; sourceTree = "<group>"; };
 		44E39B2F2580E6EA00968B0A /* Transition+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+CoreDataClass.swift"; sourceTree = "<group>"; };
 		44E3E9DF258738DF001CB352 /* TodayUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUseCaseTests.swift; sourceTree = "<group>"; };
 		44E3E9E625873DEA001CB352 /* MixtapeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixtapeExtensions.swift; sourceTree = "<group>"; };
@@ -584,6 +588,7 @@
 				44E3E9F525874B9B001CB352 /* PlaylistExtensions.swift */,
 				44E3E9F825874F4C001CB352 /* MagazineExtensions.swift */,
 				44DEED0D2587AC1B00060960 /* AlbumViewModelExtensions.swift */,
+				44DEED212587D01A00060960 /* PlaylistViewModelExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -863,6 +868,7 @@
 		80ABC1712574BF11003D4666 /* MiniVibeTests */ = {
 			isa = PBXGroup;
 			children = (
+				44DEED1C2587C7AB00060960 /* PlaylistViewModelTests.swift */,
 				80D0C9FA2587C611003D8CB2 /* ArtistSectionViewModelTests.swift */,
 				803B1387258797E500ED6B70 /* TrackViewModelTests.swift */,
 				44DEED082587A1BE00060960 /* AlbumViewModelTests.swift */,
@@ -1254,7 +1260,9 @@
 				80D0CA002587C745003D8CB2 /* MockArtistSectionUseCase.swift in Sources */,
 				44DEED092587A1BE00060960 /* AlbumViewModelTests.swift in Sources */,
 				44599CA12587941C004D1977 /* MockTodayUseCase.swift in Sources */,
+				44DEED1D2587C7AB00060960 /* PlaylistViewModelTests.swift in Sources */,
 				800A9C102587560400D65CB0 /* TrackUseCaseTests.swift in Sources */,
+				44DEED222587D01A00060960 /* PlaylistViewModelExtensions.swift in Sources */,
 				80ABC1832574C1FC003D4666 /* NetworkError+Equatable.swift in Sources */,
 				44DEED142587AD4900060960 /* MockAlbumUseCase.swift in Sources */,
 				800A9BF62587407900D65CB0 /* SearchUseCaseTests.swift in Sources */,
