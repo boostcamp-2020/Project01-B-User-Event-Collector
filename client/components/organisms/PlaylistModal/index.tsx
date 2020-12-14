@@ -81,9 +81,7 @@ const PlaylistModal = ({ data, visibility, onClickFunc, handleClick }: PlaylistM
                 <HeaderContainer>내 플레이리스트에 추가</HeaderContainer>
                 <PlaylistContainer>
                     <NewPlaylistButton />
-                    {data.map((d) => (
-                        <PlaylistRowCard data={d} onClickFunc={handleClick} />
-                    ))}
+                    {data ? data.map((d) => <PlaylistRowCard data={d} onClickFunc={handleClick} />) : null}
                 </PlaylistContainer>
             </Modal>
         </ModalContainer>
