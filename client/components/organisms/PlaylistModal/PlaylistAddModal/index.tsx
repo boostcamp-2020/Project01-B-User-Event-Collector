@@ -72,15 +72,20 @@ interface PlaylistAddModalProps {
 
 const PlaylistAddModal = ({ visibility }: PlaylistAddModalProps) => {
     const [visible, setVisible] = useState(visibility);
+    const [title, setTitle] = useState('');
     const modalOff = (e) => {
         setVisible(!visible);
     };
+    const onChangeInput = (e) => {
+        setTitle(e.target.value);
+    };
+    const createNewPlaylist = (e) => {};
     return (
         <ModalContainer visible={visible}>
             <Modal>
                 <HeaderContainer>새 플레이리스트</HeaderContainer>
                 <InputContainer>
-                    <Input variant="newPlaylist" name="newPlaylist" />
+                    <Input variant="newPlaylist" name="newPlaylist" value={title} onChange={onChangeInput} />
                 </InputContainer>
                 <ButtonContainer>
                     <Button onClick={modalOff}>취소</Button>
