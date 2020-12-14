@@ -39,6 +39,7 @@ struct Article: View {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(title)
                             .font(.system(size: 30, weight: .bold))
+                            .foregroundColor(.primary)
                         
                         Text(subtitle)
                             .foregroundColor(.secondary)

@@ -15,6 +15,7 @@ struct StationList: View {
                     Section(
                         header: Text("최근 들은 스테이션")
                             .bold()
+                            .foregroundColor(.primary)
                             .padding(.top, 8)
                             .padding(.horizontal, geometry.size.width * .paddingRatio),
                         footer: Spacer().frame(height: 50)
@@ -22,9 +23,11 @@ struct StationList: View {
                         StationStack(width: geometry.size.width)
                     }
                     
-                    ForEach(0..<3) { _ in
+                    ForEach(0..<2) { _ in
                         Section(
-                            header: Text("느낌별 스테이션").bold(),
+                            header: Text("느낌별 스테이션")
+                                .bold()
+                                .foregroundColor(.primary),
                             footer: Spacer().frame(height: 50)
                         ) {
                             LazyVGrid(
@@ -33,7 +36,7 @@ struct StationList: View {
                                     count: 2
                                 )
                             ) {
-                                ForEach(0..<10) { _ in
+                                ForEach(0..<4) { _ in
                                     StationItem()
                                 }
                             }

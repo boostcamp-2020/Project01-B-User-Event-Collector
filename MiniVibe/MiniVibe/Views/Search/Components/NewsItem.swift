@@ -20,12 +20,13 @@ struct NewsItem: View {
                     
                 Text(news.title)
                     .font(.system(size: 17))
+                    .foregroundColor(.primary)
                     .bold()
                     .padding()
             }
             
             NavigationLink(destination:
-                            AlbumView(viewModel: .init(id: news.albumId))
+                            AlbumView(viewModel: .init(id: news.albumId, eventLogger: MiniVibeApp.eventLogger))
                             .logTransition(identifier: .album(id: news.albumId),
                                            componentId: .newsItem)
             ) {

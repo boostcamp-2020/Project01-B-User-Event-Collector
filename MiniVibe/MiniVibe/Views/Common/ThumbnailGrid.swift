@@ -19,7 +19,7 @@ struct ThumbnailGrid: View {
                     ForEach(albums, id: \.id) { album in
                         NavigationLink(
                             destination:
-                                AlbumView(viewModel: .init(id: album.id))
+                                AlbumView(viewModel: .init(id: album.id, eventLogger: MiniVibeApp.eventLogger))
                                 .logTransition(identifier: .album(id: album.id),
                                                componentId: .albumItem)
                             ,

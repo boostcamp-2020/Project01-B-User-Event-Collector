@@ -34,7 +34,7 @@ struct LibraryAlbumsView: View {
                         let subtitle = "VIBE"
                         NavigationLink(
                             destination:
-                                AlbumView(viewModel: .init(id: 11))
+                                AlbumView(viewModel: .init(id: 11, eventLogger: MiniVibeApp.eventLogger))
                                 .logTransition(identifier: .album(id: 11),
                                                componentId: .albumItem)
                             ,

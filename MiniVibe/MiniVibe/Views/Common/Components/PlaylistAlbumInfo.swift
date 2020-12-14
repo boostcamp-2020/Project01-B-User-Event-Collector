@@ -37,6 +37,7 @@ struct PlaylistAlbumInfo: View {
             VStack(alignment: .leading) {
                 Text(title)
                     .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(.primary)
                 Text(subtitle)
                     .font(.system(size: 16))
                     .foregroundColor(.secondary)

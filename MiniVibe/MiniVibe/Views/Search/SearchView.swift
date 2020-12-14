@@ -20,6 +20,7 @@ struct SearchView: View {
                         Text("검색")
                             .font(.title)
                             .fontWeight(.heavy)
+                            .foregroundColor(.primary)
                             .padding(geometry.size.width * .paddingRatio)
                         
                         SearchBar(searchedText: $searchedText, width: width)

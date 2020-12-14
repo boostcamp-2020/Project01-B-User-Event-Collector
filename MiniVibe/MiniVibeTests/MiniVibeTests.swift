@@ -17,7 +17,7 @@ class MiniVibeTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Network success test")
         let network = NetworkService()
         let url = "https://www.google.com"
-        network.request(url: url)
+        network.request(url: url, request: .get, body: nil)
             .sink { result in
                 switch result {
                 case .finished:
@@ -36,7 +36,7 @@ class MiniVibeTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Network success test")
         let network = NetworkService()
         let url = ""
-        network.request(url: url)
+        network.request(url: url, request: .get, body: nil)
             .sink { result in
                 switch result {
                 case .finished:
@@ -56,7 +56,7 @@ class MiniVibeTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Network success test")
         let network = NetworkService()
         let url = "abcdefg"
-        network.request(url: url)
+        network.request(url: url, request: .get, body: nil)
             .sink { result in
                 switch result {
                 case .finished:
