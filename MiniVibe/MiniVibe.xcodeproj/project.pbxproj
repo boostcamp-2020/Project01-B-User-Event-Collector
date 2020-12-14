@@ -38,6 +38,8 @@
 		445919A4256E4A6F0069DAB2 /* ThumbnailGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445919A3256E4A6F0069DAB2 /* ThumbnailGridView.swift */; };
 		445919AD256E559D0069DAB2 /* StationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445919AC256E559D0069DAB2 /* StationList.swift */; };
 		445919B1256E5CEA0069DAB2 /* StationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445919B0256E5CEA0069DAB2 /* StationStack.swift */; };
+		44599C9B25878F7A004D1977 /* TodayViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44599C9A25878F7A004D1977 /* TodayViewModelTests.swift */; };
+		44599CA12587941C004D1977 /* MockTodayUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44599CA02587941C004D1977 /* MockTodayUseCase.swift */; };
 		445D3A1C257F38620002D2DE /* ViewIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D3A1B257F38620002D2DE /* ViewIdentifier.swift */; };
 		445D3A22257F441B0002D2DE /* TransitionLogModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D3A21257F441B0002D2DE /* TransitionLogModifier.swift */; };
 		445D3A3B257FBF3D0002D2DE /* Mixtape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D3A3A257FBF3D0002D2DE /* Mixtape.swift */; };
@@ -245,6 +247,8 @@
 		445919A3256E4A6F0069DAB2 /* ThumbnailGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailGridView.swift; sourceTree = "<group>"; };
 		445919AC256E559D0069DAB2 /* StationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationList.swift; sourceTree = "<group>"; };
 		445919B0256E5CEA0069DAB2 /* StationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationStack.swift; sourceTree = "<group>"; };
+		44599C9A25878F7A004D1977 /* TodayViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModelTests.swift; sourceTree = "<group>"; };
+		44599CA02587941C004D1977 /* MockTodayUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTodayUseCase.swift; sourceTree = "<group>"; };
 		445D3A1B257F38620002D2DE /* ViewIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewIdentifier.swift; sourceTree = "<group>"; };
 		445D3A21257F441B0002D2DE /* TransitionLogModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionLogModifier.swift; sourceTree = "<group>"; };
 		445D3A3A257FBF3D0002D2DE /* Mixtape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mixtape.swift; sourceTree = "<group>"; };
@@ -576,6 +580,7 @@
 			children = (
 				44E3E9EB25873E0B001CB352 /* MockNetworkServices.swift */,
 				803B139025879ECB00ED6B70 /* MockTrackUseCase.swift */,
+				44599CA02587941C004D1977 /* MockTodayUseCase.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -843,6 +848,7 @@
 			isa = PBXGroup;
 			children = (
 				803B1387258797E500ED6B70 /* TrackViewModelTests.swift */,
+				44599C9A25878F7A004D1977 /* TodayViewModelTests.swift */,
 				800A9C0F2587560400D65CB0 /* TrackUseCaseTests.swift */,
 				800A9C0525874AE200D65CB0 /* ArtistsUseCaseTests.swift */,
 				800A9BF52587407900D65CB0 /* SearchUseCaseTests.swift */,
@@ -1227,6 +1233,7 @@
 				44E3E9F325874375001CB352 /* TrackExtensions.swift in Sources */,
 				44E3E9F925874F4C001CB352 /* MagazineExtensions.swift in Sources */,
 				803B139125879ECB00ED6B70 /* MockTrackUseCase.swift in Sources */,
+				44599CA12587941C004D1977 /* MockTodayUseCase.swift in Sources */,
 				800A9C102587560400D65CB0 /* TrackUseCaseTests.swift in Sources */,
 				80ABC1832574C1FC003D4666 /* NetworkError+Equatable.swift in Sources */,
 				800A9BF62587407900D65CB0 /* SearchUseCaseTests.swift in Sources */,
@@ -1237,6 +1244,7 @@
 				800A9C0B25874C3100D65CB0 /* ArtistsExtensions.swift in Sources */,
 				800A9C0625874AE300D65CB0 /* ArtistsUseCaseTests.swift in Sources */,
 				44E3E9E725873DEA001CB352 /* MixtapeExtensions.swift in Sources */,
+				44599C9B25878F7A004D1977 /* TodayViewModelTests.swift in Sources */,
 				44E3E9F625874B9B001CB352 /* PlaylistExtensions.swift in Sources */,
 				44E3E9E0258738DF001CB352 /* TodayUseCaseTests.swift in Sources */,
 				44E3E9FF258753E1001CB352 /* PlaylistUseCaseTests.swift in Sources */,
