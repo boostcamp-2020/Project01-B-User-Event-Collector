@@ -1,4 +1,9 @@
 import axios from 'axios';
+import Cookies from 'cookies';
+import { getCookie } from 'utils/cookies';
+
+export const getRequestOptions = (method, options, headers) => ({
+    method: method,
 import apiUrl from 'constants/apiUrl';
 
 export const requestOptions = {
@@ -19,9 +24,26 @@ export const request = async (url, option) => {
         console.log(err);
     }
 };
+export const requestByCookie = async (req, res, apiUrl) => {
+    const cookies = new Cookies(req, res);
+    const data = await request(apiUrl, {
+        headers: {
+        "Authorization" : cookies.get('token')
+        }
+    });
+    return data;
+}
 
-export const addToLibrary = async (data) => {
-    await request(`${apiUrl.like}${data.type}s`, { method: 'POST', data: { id: data.id } });
+export const addToLibrary = async (url, option) => {
+    const options = { ...getRequestOptions('POST', option) };
+    try {
+        await axios({ ...options, url , headers: {
+            "Authorization" : getCookie('token')
+            }});
+    } catch (err) {
+        console.error(err);
+    }
+
 };
 
 export const addToPlaylist = async (url, data) => {
@@ -36,7 +58,16 @@ export const sendEvent = async (eventData) => {
     try {
         await axios.post(apiUrl.event, eventData);
     } catch (err) {
-        console.log(error.response.data);
+        console.log(err.response.data);
+        // TODO: 로그 손실 방지 처리 & 에러 핸들링
+    }
+};
+
+export const sendPlayEvent = async (eventData) => {
+    try {
+        await axios.post(apiUrl.playEvent, eventData);
+    } catch (err) {
+        console.log(err.response.data);
         // TODO: 로그 손실 방지 처리 & 에러 핸들링
     }
 };

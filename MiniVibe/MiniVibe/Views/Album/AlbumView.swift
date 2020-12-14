@@ -20,11 +20,11 @@ struct AlbumView: View {
     
     @ViewBuilder
     private var content: some View {
-        if let album = viewModel.album {
+        if let album = viewModel.state.album {
             GeometryReader { geometry in
                 let width: CGFloat = geometry.size.width
-                if viewModel.isOpenArticle {
-                    Article(isOpenArticle: $viewModel.isOpenArticle,
+                if viewModel.state.isOpenArticle {
+                    Article(isOpenArticle: $viewModel.state.isOpenArticle,
                             imageURL: album.imageUrl,
                             title: album.title,
                             subtitle: album.artist.name,
@@ -35,7 +35,7 @@ struct AlbumView: View {
                     ScrollView {
                         VStack(spacing: 36) {
                             VStack {
-                                PlaylistAlbumInfo(isOpenArticle: $viewModel.isOpenArticle,
+                                PlaylistAlbumInfo(isOpenArticle: $viewModel.state.isOpenArticle,
                                                   imageURL: album.imageUrl,
                                                   title: album.title,
                                                   subtitle: album.artist.name,
@@ -82,8 +82,8 @@ struct AlbumView: View {
                     .navigationBarItems(
                         trailing: trailingBarButtons
                     )
-                    .fullScreenCover(isPresented: $viewModel.showSheet) {
-                        switch viewModel.activeSheet {
+                    .fullScreenCover(isPresented: $viewModel.state.showSheet) {
+                        switch viewModel.state.activeSheet {
                         case .album:
                             AlbumMenu(viewModel: viewModel)
                                 .logTransition(identifier: .albumMenu(id: album.id),

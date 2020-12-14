@@ -3,11 +3,12 @@ import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHe
 import TrackRowList from '@components/organisms/CardLists/TrackRowList';
 import ContentsButtonGroup from '@components/organisms/ContentsButtonGroup';
 import apiUrl from 'constants/apiUrl';
-import { request } from '@utils/apis';
+import { requestByCookie } from '@utils/apis';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 import { page, contentType } from '@constants/identifier';
 import NoDataContainer from '@components/molecules/NoDataContainer';
+
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -63,12 +64,13 @@ const TrackLibrary = ({ trackData }) => {
     );
 };
 
-export const getServerSideProps = async () => {
-    const trackData = await request(apiUrl.libraryTrack);
+export const getServerSideProps = async ({req, res}) => {
+    const trackData = await requestByCookie(req, res, apiUrl.libraryTrack);
     return {
         props: {
             trackData,
         },
     };
 };
+
 export default TrackLibrary;

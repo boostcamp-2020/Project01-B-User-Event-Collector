@@ -9,6 +9,7 @@ import Combine
 import EventLogKit
 
 final class AlbumViewModel: ObservableObject {
+    
     enum Input {
         case appear
         case showAlbumMenu
@@ -16,21 +17,27 @@ final class AlbumViewModel: ObservableObject {
         case like
     }
     
-    enum ActiveSheet {
-        case album
-        case track(info: TrackViewModel)
+    struct State {
+        enum ActiveSheet {
+            case album
+            case track(info: TrackViewModel)
+        }
+        
+        var album: Album?
+        var activeSheet: ActiveSheet = .album
+        var showSheet = false
+        var isOpenArticle = false
     }
     
     private let useCase: AlbumUseCaseType
     private let eventLogger: EventLoggerType
     private var cancellables = Set<AnyCancellable>()
     private let id: Int
-    @Published private(set) var album: Album?
-    @Published private(set) var activeSheet: ActiveSheet = .album
-    @Published var showSheet = false
-    @Published var isOpenArticle = false
+    @Published var state = State()
 
-    init(id: Int, useCase: AlbumUseCaseType = AlbumUseCase(), eventLogger: EventLoggerType = MiniVibeApp.eventLogger) {
+    init(id: Int,
+         useCase: AlbumUseCaseType = AlbumUseCase(),
+         eventLogger: EventLoggerType = MiniVibeApp.eventLogger) {
         self.id = id
         self.useCase = useCase
         self.eventLogger = eventLogger
@@ -41,11 +48,11 @@ final class AlbumViewModel: ObservableObject {
         case .appear:
             load()
         case .showAlbumMenu:
-            activeSheet = .album
-            showSheet = true
+            state.activeSheet = .album
+            state.showSheet = true
         case let .showTrackMenu(info):
-            activeSheet = .track(info: info)
-            showSheet = true
+            state.activeSheet = .track(info: info)
+            state.showSheet = true
         case .like:
             like()
         }
@@ -56,7 +63,7 @@ final class AlbumViewModel: ObservableObject {
             .sink { _ in
                 
             } receiveValue: { [weak self] album in
-                self?.album = album
+                self?.state.album = album
             }
             .store(in: &cancellables)
     }

@@ -182,3 +182,12 @@ export interface PlayControllerProps {
     displayHeader: boolean;
     displayHeaderHandler?;
 }
+
+
+export interface UserProps {
+    id: number;
+    name: string;
+    isLoggedIn: boolean;
+    profileUrl: string;
+}
+

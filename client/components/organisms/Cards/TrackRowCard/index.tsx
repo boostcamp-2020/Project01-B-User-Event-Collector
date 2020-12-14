@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
+import { useSelector } from 'react-redux';
 import A from '@components/atoms/A/A';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import QueueMusicIcon from '@material-ui/icons/QueueMusic';
 import HiddenText from '@components/atoms/Text/HiddenText';
 import CheckBox from '@components/atoms/CheckBox';
 import TrackPlayButton from '@components/molecules/TrackPlayButton';
@@ -9,7 +9,7 @@ import DropDownMenu from '@components/molecules/DropdownMenu';
 import { TrackRowCardProps } from 'interfaces/props';
 import LyricModal from '@components/organisms/LyricModal/LyricModal';
 import { deleteFromLibrary } from 'utils/apis';
-import apiUrl from 'constants/apiUrl';
+import useLikeEventLog from 'hooks/useLikeEventLog';
 import ComponentInfoContext from 'utils/context/ComponentInfoContext';
 import {
     List,
@@ -51,10 +51,14 @@ const TrackRowCard = (data: TrackRowCardProps) => {
 
     const [isLiked, setIsLiked] = useState(liked);
     const [displayLyrics, setDisplayLyrics] = useState(false);
+    const user = useSelector((state) => state.user);
+
+    const logLikeEvent = useLikeEventLog({ userId: user.id });
 
     const onClickUnlikeHandler = () => {
         setIsLiked(0);
         deleteFromLibrary(componentInfo.data);
+        logLikeEvent(false);
     };
 
     const onClickShowLyric = () => {
