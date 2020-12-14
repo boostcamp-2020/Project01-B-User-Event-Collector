@@ -32,7 +32,7 @@ final class ArtistViewModelTests: XCTestCase {
                                            albums: [.init(id: 0, title: "", imageUrl: "")])
         
         let usecase = MockArtistSectionUseCase(artists: artists, artistInfo: artistInfo)
-        let viewModel = ArtistViewModel(useCase: usecase)
+        let viewModel = ArtistViewModel(id: artistInfo.id, useCase: usecase, eventLogger: MockEventLogger())
         viewModel.$state
             .sink { state in
                 if state.artist == usecase.artistInfo {
@@ -41,11 +41,11 @@ final class ArtistViewModelTests: XCTestCase {
             }
             .store(in: &cancellable)
         
-        viewModel.send(.appear(artistID: artistInfo.id))
+        viewModel.send(.appear)
     }
     
     func test_show_artist_menu() {
-        let expectation = XCTestExpectation(description: "test load artist")
+        let expectation = XCTestExpectation(description: "test show artist")
         defer { wait(for: [expectation], timeout: 5) }
         
         let artists: [Artist] = [.init(id: 0, name: "", imageUrl: "", genre: .init(name: ""))]
@@ -63,7 +63,7 @@ final class ArtistViewModelTests: XCTestCase {
                                            albums: [.init(id: 0, title: "", imageUrl: "")])
         
         let usecase = MockArtistSectionUseCase(artists: artists, artistInfo: artistInfo)
-        let viewModel = ArtistViewModel(useCase: usecase)
+        let viewModel = ArtistViewModel(id: artistInfo.id, useCase: usecase, eventLogger: MockEventLogger())
         viewModel.$state
             .sink { state in
                 if state.isOpenMenu {
@@ -76,7 +76,7 @@ final class ArtistViewModelTests: XCTestCase {
     }
     
     func test_event_like_artist() {
-        let expectation = XCTestExpectation(description: "test load artist")
+        let expectation = XCTestExpectation(description: "test like artist")
         defer { wait(for: [expectation], timeout: 5) }
         
         let artists: [Artist] = [.init(id: 0, name: "", imageUrl: "", genre: .init(name: ""))]
@@ -99,7 +99,7 @@ final class ArtistViewModelTests: XCTestCase {
             expectation.fulfill()
         }
         
-        let viewModel = ArtistViewModel(useCase: usecase, eventLogger: eventLogger)
-        viewModel.send(.like(artistId: artistInfo.id))
+        let viewModel = ArtistViewModel(id: artistInfo.id, useCase: usecase, eventLogger: eventLogger)
+        viewModel.send(.like)
     }
 }
