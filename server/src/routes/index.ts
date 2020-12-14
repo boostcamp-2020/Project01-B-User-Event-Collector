@@ -1,4 +1,5 @@
 import express from 'express';
+import userRouter from './users';
 import artistRouter from './artists';
 import newsRouter from './news';
 import magazineRouter from './magazines';
@@ -9,13 +10,15 @@ import trackRouter from './tracks';
 import mixtapeRouter from './mixtapes';
 import eventRouter from './events';
 import playEventRouter from './playEvents';
+import { authenticateJWT } from './auth';
 
 const router = express.Router();
 
+router.use('/users', userRouter);
 router.use('/artists', artistRouter);
 router.use('/news', newsRouter);
 router.use('/magazines', magazineRouter);
-router.use('/library', libraryRouter);
+router.use('/library', authenticateJWT, libraryRouter);
 router.use('/playlists', playlistRouter);
 router.use('/tracks', trackRouter);
 router.use('/albums', albumRouter);

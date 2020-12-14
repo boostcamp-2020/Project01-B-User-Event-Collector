@@ -22,8 +22,7 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
 
 const findOne = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
-    // TODO: 인증 구현 후 수정
-    const userId = 1;
+    const userId = req.user;
     try {
         const AlbumRepository = getRepository(Album);
         const album = await AlbumRepository.createQueryBuilder('album')

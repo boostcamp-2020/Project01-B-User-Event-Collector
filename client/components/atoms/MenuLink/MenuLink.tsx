@@ -43,7 +43,7 @@ const MenuLink = ({ children, href, icon: Icon, selected }: MenuLinkProps) => {
 
     return (
         <Link href={href}>
-            <StyledLink selected={selected ? selected : router.pathname === href} onClick={handleClick}>
+            <StyledLink selected={selected ? selected : router.pathname === href} onClick={handleClick} href={href}>
                 {Icon && (
                     <IconWrapper>
                         <Icon />

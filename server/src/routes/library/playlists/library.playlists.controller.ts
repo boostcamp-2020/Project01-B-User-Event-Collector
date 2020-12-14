@@ -5,7 +5,7 @@ import User from '../../../models/User';
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.body;
-    const userId = 1;
+    const userId = req.user;
     try {
         const manager = getManager();
         const user = await manager.findOne(User, userId, { relations: ['libraryPlaylists'] });
@@ -24,8 +24,7 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
-    const userId = 1;
-
+    const userId = req.user;
     try {
         const UserRepository = getRepository(User);
         const user = await UserRepository.createQueryBuilder('user')
@@ -50,8 +49,7 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
 
 const remove = async (req: Request, res: Response, next: NextFunction) => {
     const playlistId: string = req.params.playlistId as string;
-    // TODO: 인증 구현 후 수정
-    const userId = 1;
+    const userId = req.user;
 
     const manager = getManager();
 
@@ -65,7 +63,7 @@ const remove = async (req: Request, res: Response, next: NextFunction) => {
 
     await manager.save(user);
 
-    res.json({
+    return res.json({
         success: true,
     });
 };
