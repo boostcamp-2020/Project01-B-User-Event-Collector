@@ -2,12 +2,13 @@ import { useContext } from 'react';
 import ComponentInfoContext from 'utils/context/ComponentInfoContext';
 import dropDownMenu from 'constants/dropDownMenu';
 import { addToLibrary, deleteFromLibrary, request } from 'utils/apis';
+import useLikeEventLog from 'hooks/useLikeEventLog';
 import apiUrl from 'constants/apiUrl';
-import { useState } from 'react';
 
-const useDropDownAction = ({ anchorEl, setAnchorEl, state }) => {
+const useDropDownAction = ({ userId, setAnchorEl, state }) => {
     const componentInfo = useContext(ComponentInfoContext);
     const data = componentInfo.data;
+    const logLikeEvent = useLikeEventLog({ userId });
 
     const handleClick = (e) => {
         setAnchorEl(e.currentTarget);
@@ -19,10 +20,12 @@ const useDropDownAction = ({ anchorEl, setAnchorEl, state }) => {
             case dropDownMenu.like:
                 addToLibrary(data);
                 state.setIsLiked(1);
+                logLikeEvent(true);
                 break;
             case dropDownMenu.unlike:
                 deleteFromLibrary(data);
                 state.setIsLiked(0);
+                logLikeEvent(false);
                 break;
             case dropDownMenu.addToPlaylist:
                 request(apiUrl.libraryPlaylist).then((data) => {
@@ -34,6 +37,7 @@ const useDropDownAction = ({ anchorEl, setAnchorEl, state }) => {
                 break;
             case dropDownMenu.addToLibrary:
                 addToLibrary(data);
+                logLikeEvent(true);
                 break;
             case dropDownMenu.addToUpNext:
                 break;

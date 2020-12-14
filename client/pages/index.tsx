@@ -3,7 +3,6 @@ import MainMagazineCard from '@components/organisms/Cards/MainMagazineCard/MainM
 import CardListContainer from '@components/organisms/CardListContainer';
 import MagazineCardList from '@components/organisms/CardLists/MagazineList/MagazineList';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
-import Link from 'next/link';
 import { request } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
 import { page, contentType } from '@constants/identifier';
@@ -45,7 +44,7 @@ const ContentsContainer = styled.div`
     border-bottom: 1px solid #dddddd;
 `;
 
-const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata }) => {
+const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata }) => {
     //TODO: isLogined state 이용하여 <UserContentsContainer> 부분은 로그인 했을 때만 보이도록 수정
 
     return (
@@ -111,15 +110,14 @@ const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata })
 };
 
 export async function getServerSideProps(context) {
-    const [Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata] = await Promise.all([
+    const [Magazinesdata, Newsdata, Playlistdata, Albumdata] = await Promise.all([
         request(apiUrl.magazine),
         request(apiUrl.news),
         request(apiUrl.playlist),
         request(apiUrl.album),
-        request(apiUrl.mixtape),
     ]);
 
-    if (!Magazinesdata || !Newsdata || !Playlistdata || !Albumdata || !Mixtapedata) {
+    if (!Magazinesdata || !Newsdata || !Playlistdata || !Albumdata) {
         return {
             notFound: true,
         };
@@ -131,7 +129,6 @@ export async function getServerSideProps(context) {
             Newsdata,
             Playlistdata,
             Albumdata,
-            // Mixtapedata,
         },
     };
 }
