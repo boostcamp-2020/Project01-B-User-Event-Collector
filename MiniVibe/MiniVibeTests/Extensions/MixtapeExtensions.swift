@@ -21,10 +21,7 @@ extension Mixtapes: Encodable {
 
 extension Mixtape: Encodable {
     enum CodingKeys: String, CodingKey {
-        case id
-        case title
-        case subTitle
-        case imageUrl
+        case id, title, subTitle, imageUrl
     }
     
     public func encode(to encoder: Encoder) throws {
