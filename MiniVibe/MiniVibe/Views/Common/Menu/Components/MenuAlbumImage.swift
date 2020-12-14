@@ -13,6 +13,10 @@ struct MenuAlbumImage: View {
     
     var body: some View {
         KFImage(URL(string: imageUrl))
+            .placeholder {
+                Image("placeholder")
+                    .resizable()
+            }
             .resizable()
             .aspectRatio(1, contentMode: .fit)
             .frame(width: 80)

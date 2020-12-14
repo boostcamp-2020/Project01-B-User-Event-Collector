@@ -14,6 +14,10 @@ struct ArtistItem: View {
     var body: some View {
         VStack {
             KFImage(URL(string: artist.imageUrl))
+                .placeholder {
+                    Image("placeholder")
+                        .resizable()
+                }
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .clipShape(Circle())

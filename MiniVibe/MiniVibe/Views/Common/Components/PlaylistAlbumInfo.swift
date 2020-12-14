@@ -30,6 +30,10 @@ struct PlaylistAlbumInfo: View {
                 isOpenArticle = true
             } label: {
                 KFImage(URL(string: imageURL))
+                    .placeholder {
+                        Image("placeholder")
+                            .resizable()
+                    }
                     .resizable()
                     .aspectRatio(1, contentMode: .fit)
             }
@@ -60,6 +64,7 @@ struct PlaylistAlbumInfo: View {
     var optionalInfo: some View {
         VStack(alignment: .leading) {
             Text(description)
+                .foregroundColor(.primary)
             
             HStack {
                 Text(article)

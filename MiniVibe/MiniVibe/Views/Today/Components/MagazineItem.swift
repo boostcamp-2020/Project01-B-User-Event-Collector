@@ -30,6 +30,10 @@ struct MagazineItem: View {
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             KFImage(URL(string: magazine.imageUrl))
+                .placeholder {
+                    Image("placeholder")
+                        .resizable()
+                }
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
             

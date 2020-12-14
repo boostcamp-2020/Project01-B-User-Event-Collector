@@ -20,7 +20,7 @@ struct PlayerPreview: View {
                 playingTrackInfo()
                 
                 Spacer()
-                    
+                
                 previewControlIcons()
                     .font(.system(size: 20))
             }
@@ -37,6 +37,10 @@ struct PlayerPreview: View {
     @ViewBuilder private func playingTrackInfo() -> some View {
         let track = nowPlaying.playingTrack?.track
         KFImage(URL(string: track?.album.imageUrl ?? ""))
+            .placeholder {
+                Image("placeholder")
+                    .resizable()
+            }
             .resizable()
             .frame(width: height, height: height)
         
@@ -49,11 +53,11 @@ struct PlayerPreview: View {
                 .foregroundColor(.secondary)
         }
     }
-
+    
     private func previewControlIcons() -> some View {
         let emptyUpNext: Bool = nowPlaying.upNext.isEmpty
         let iconColor: Color = emptyUpNext ? Color.secondary : .primary
-            
+        
         return HStack(spacing: 20) {
             Button {
                 nowPlaying.isPlaying.toggle()

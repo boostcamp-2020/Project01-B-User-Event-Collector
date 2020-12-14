@@ -16,6 +16,10 @@ struct ThumbnailRow: View {
     var body: some View {
         HStack(spacing: 15) {
             KFImage(URL(string: imageURL))
+                .placeholder {
+                    Image("placeholder")
+                        .resizable()
+                }
                 .resizable()
                 .frame(width: 80, height: 80)
             
