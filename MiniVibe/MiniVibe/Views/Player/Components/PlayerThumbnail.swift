@@ -16,6 +16,10 @@ struct PlayerThumbnail: View {
         let track = nowPlaying.playingTrack?.track
         VStack {
             KFImage(URL(string: track?.album.imageUrl ?? ""))
+                .placeholder {
+                    Image("placeholder")
+                        .resizable()
+                }
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .scaleEffect(nowPlaying.isPlaying ? 1 : 0.9)

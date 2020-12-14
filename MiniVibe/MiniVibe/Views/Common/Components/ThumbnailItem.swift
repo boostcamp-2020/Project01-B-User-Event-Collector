@@ -16,6 +16,10 @@ struct ThumbnailItem: View {
     var body: some View {
         VStack(alignment: .leading) {
             KFImage(URL(string: imageURL))
+                .placeholder {
+                    Image("placeholder")
+                        .resizable()
+                }
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
             

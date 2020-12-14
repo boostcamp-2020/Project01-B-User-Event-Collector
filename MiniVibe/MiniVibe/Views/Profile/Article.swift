@@ -33,6 +33,10 @@ struct Article: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     KFImage(URL(string: imageURL))
+                        .placeholder {
+                            Image("placeholder")
+                                .resizable()
+                        }
                         .resizable()
                         .aspectRatio(1, contentMode: .fit)
                     

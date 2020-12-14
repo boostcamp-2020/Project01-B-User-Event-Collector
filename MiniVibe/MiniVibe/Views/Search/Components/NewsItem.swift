@@ -16,6 +16,10 @@ struct NewsItem: View {
         VStack(alignment: .trailing, spacing: width * .spacingRatio) {
             VStack {
                 KFImage(URL(string: news.imageUrl))
+                    .placeholder {
+                        Image("placeholder")
+                            .resizable()
+                    }
                     .frame(width: width * .sectionRatio, height: 150)
                     
                 Text(news.title)

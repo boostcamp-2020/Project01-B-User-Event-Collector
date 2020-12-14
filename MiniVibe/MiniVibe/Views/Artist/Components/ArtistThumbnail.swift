@@ -14,6 +14,10 @@ struct ArtistThumbnail: View {
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             KFImage(URL(string: artist.imageUrl))
+                .placeholder {
+                    Image("placeholder")
+                        .resizable()
+                }
                 .scaledToFit()
             
             VStack(alignment: .leading) {

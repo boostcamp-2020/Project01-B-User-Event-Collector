@@ -56,6 +56,10 @@ struct BackgroundImage: View {
     @EnvironmentObject private var nowPlaying: NowPlaying
     var body: some View {
         KFImage(URL(string: nowPlaying.playingTrack?.track.album.imageUrl ?? ""))
+            .placeholder {
+                Image("placeholder")
+                    .resizable()
+            }
             .resizable()
             .scaledToFill()
             .overlay(Color.white.blur(radius: 300))
@@ -75,6 +79,10 @@ struct LyricsTrackInfo: View {
     var body: some View {
         HStack(spacing: 10) {
             KFImage(URL(string: nowPlaying.playingTrack?.track.album.imageUrl ?? ""))
+                .placeholder {
+                    Image("placeholder")
+                        .resizable()
+                }
                 .resizable()
                 .scaledToFit()
             
