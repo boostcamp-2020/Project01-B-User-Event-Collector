@@ -8,25 +8,40 @@
 import Combine
 
 final class TodayViewModel: ObservableObject {
+    
+    enum Input {
+        case appear
+    }
+    
+    struct State {
+        var mixtapes = [Mixtape]()
+        var albums = [Album]()
+        var tracks = [TrackInfo]()
+        var playlists = [Playlist]()
+        var magazines = [Magazine]()
+    }
+    
     private let useCase: TodayUseCaseType
     private var cancellables = Set<AnyCancellable>()
-    
-    @Published private(set) var mixtapes = [Mixtape]()
-    @Published private(set) var albums = [Album]()
-    @Published private(set) var tracks = [TrackInfo]()
-    @Published private(set) var playlists = [Playlist]()
-    @Published private(set) var magazines = [Magazine]()
+    @Published private(set) var state = State()
     
     init(useCase: TodayUseCaseType = TodayUseCase()) {
         self.useCase = useCase
     }
     
-    func load() {
+    func send(_ input: Input) {
+        switch input {
+        case .appear:
+            load()
+        }
+    }
+    
+    private func load() {
         useCase.loadMixtapes()
             .sink { _ in
                 
             } receiveValue: { [weak self] mixtapes in
-                self?.mixtapes = mixtapes
+                self?.state.mixtapes = mixtapes
             }
             .store(in: &cancellables)
         
@@ -34,7 +49,7 @@ final class TodayViewModel: ObservableObject {
             .sink { _ in
                 // error 처리
             } receiveValue: { [weak self] albums in
-                self?.albums = albums
+                self?.state.albums = albums
             }
             .store(in: &cancellables)
         
@@ -42,7 +57,7 @@ final class TodayViewModel: ObservableObject {
             .sink { _ in
                 
             } receiveValue: { [weak self] tracks in
-                self?.tracks = tracks
+                self?.state.tracks = tracks
             }
             .store(in: &cancellables)
         
@@ -50,7 +65,7 @@ final class TodayViewModel: ObservableObject {
             .sink { _ in
                 
             } receiveValue: { [weak self] playlists in
-                self?.playlists = playlists
+                self?.state.playlists = playlists
             }
             .store(in: &cancellables)
         
@@ -58,7 +73,7 @@ final class TodayViewModel: ObservableObject {
             .sink { _ in
                 
             } receiveValue: { [weak self] magazines in
-                self?.magazines = magazines
+                self?.state.magazines = magazines
             }
             .store(in: &cancellables)
     }
