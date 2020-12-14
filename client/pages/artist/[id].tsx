@@ -48,7 +48,12 @@ const Artist = ({ artistData, trackData }) => {
             <Container>
                 <ComponentInfoWrapper componentId={contentType.summaryHeader}>
                     <Header>
-                        <ArtistHeader src={artistData.imageUrl} name={artistData.name} genre={artistData.genre.name} />
+                        <ArtistHeader
+                            src={artistData.imageUrl}
+                            name={artistData.name}
+                            genre={artistData.genre.name}
+                            isLiked={artistData.liked}
+                        />
                     </Header>
                 </ComponentInfoWrapper>
                 <ContentsContainer>
