@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ArtistView: View {
-    init(id: Int) {
-        self.id = id
-    }
     
-    @StateObject private var viewModel = ArtistViewModel()
     private let id: Int
+    @StateObject private var viewModel: ArtistViewModel
+
+    init(id: Int, viewModel: ArtistViewModel) {
+        self.id = id
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     var body: some View {
         content
@@ -78,7 +80,7 @@ struct ArtistView: View {
         } else {
             Color.clear
                 .onAppear {
-                    viewModel.send(.appear(artistID: id))
+                    viewModel.send(.appear)
                 }
         }
     }
@@ -86,7 +88,7 @@ struct ArtistView: View {
     var trailingBarButtons: some View {
         HStack(spacing: 10) {
             Button {
-                viewModel.send(.like(artistId: id))
+                viewModel.send(.like)
             } label: {  Image(systemName: "heart") }
             
             Button {
@@ -101,7 +103,7 @@ struct ArtistView: View {
 struct ArtistView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ArtistView(id: 3)
+            ArtistView(id: 3, viewModel: .init(id: 3))
         }
     }
 }
