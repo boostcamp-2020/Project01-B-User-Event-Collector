@@ -16,7 +16,7 @@ struct AlbumMenu: View {
     }
     
     var body: some View {
-        let album = viewModel.album
+        let album = viewModel.state.album
         VStack(spacing: 36) {
             Spacer()
             MenuThumbnailButton(imageUrl: album?.imageUrl ?? "",
