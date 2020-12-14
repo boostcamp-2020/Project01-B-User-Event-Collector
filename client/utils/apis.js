@@ -58,6 +58,18 @@ export const deleteFromLibrary = async (data) => {
     await request(`${apiUrl.like}${data.type}s/${data.id}`, { method: 'DELETE' });
 };
 
+export const createPlaylist = async (data) => {
+    await axios(`${apiUrl.playlist}`, {
+        method: 'POST',
+        headers: {
+            'Content-Typee': 'application/json',
+            Authorization: getCookie('token'),
+        },
+        data: {
+            ...data,
+        },
+    });
+};
 export const sendEvent = async (eventData) => {
     try {
         await axios.post(apiUrl.event, eventData);

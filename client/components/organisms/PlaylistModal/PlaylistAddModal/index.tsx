@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from '@components/atoms/Button';
 import Input from '@components/atoms/Input/Input';
 import { useState } from 'react';
+import { createPlaylist } from '@utils/apis';
 
 interface PlaylistAddModalContainer {
     visible: boolean;
@@ -73,13 +74,20 @@ interface PlaylistAddModalProps {
 const PlaylistAddModal = ({ visibility }: PlaylistAddModalProps) => {
     const [visible, setVisible] = useState(visibility);
     const [title, setTitle] = useState('');
+    const [disabled, setDisabled] = useState(true);
     const modalOff = (e) => {
-        setVisible(!visible);
+        setVisible(false);
     };
     const onChangeInput = (e) => {
         setTitle(e.target.value);
+        if (title) setDisabled(false);
+        else setDisabled(true);
     };
-    const createNewPlaylist = (e) => {};
+    const createNewPlaylist = (e) => {
+        if (!title) return;
+        createPlaylist({ title: title });
+        setVisible(!visible);
+    };
     return (
         <ModalContainer visible={visible}>
             <Modal>
@@ -89,7 +97,9 @@ const PlaylistAddModal = ({ visibility }: PlaylistAddModalProps) => {
                 </InputContainer>
                 <ButtonContainer>
                     <Button onClick={modalOff}>취소</Button>
-                    <Button variant="primary">확인</Button>
+                    <Button variant="primary" onClick={createNewPlaylist} disabled={disabled}>
+                        확인
+                    </Button>
                 </ButtonContainer>
             </Modal>
         </ModalContainer>
