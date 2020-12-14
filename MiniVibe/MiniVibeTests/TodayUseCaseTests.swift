@@ -49,7 +49,7 @@ final class TodayUseCaseTests: XCTestCase {
                 case .finished:
                     XCTFail()
                 case let .failure(error):
-                    XCTAssertEqual(error, UseCaseError.decodingError)
+                    XCTAssertEqual(error, .decodingError)
                     expectation.fulfill()
                 }
             } receiveValue: { _ in
@@ -100,7 +100,7 @@ final class TodayUseCaseTests: XCTestCase {
                 case .finished:
                     XCTFail()
                 case let .failure(error):
-                    XCTAssertEqual(error, UseCaseError.decodingError)
+                    XCTAssertEqual(error, .decodingError)
                     expectation.fulfill()
                 }
             } receiveValue: { _ in
@@ -151,7 +151,7 @@ final class TodayUseCaseTests: XCTestCase {
                 case .finished:
                     XCTFail()
                 case let .failure(error):
-                    XCTAssertEqual(error, UseCaseError.decodingError)
+                    XCTAssertEqual(error, .decodingError)
                     expectation.fulfill()
                 }
             } receiveValue: { _ in
@@ -205,7 +205,7 @@ final class TodayUseCaseTests: XCTestCase {
                 case .finished:
                     XCTFail()
                 case let .failure(error):
-                    XCTAssertEqual(error, UseCaseError.decodingError)
+                    XCTAssertEqual(error, .decodingError)
                     expectation.fulfill()
                 }
             } receiveValue: { _ in
@@ -254,7 +254,7 @@ final class TodayUseCaseTests: XCTestCase {
                 case .finished:
                     XCTFail()
                 case let .failure(error):
-                    XCTAssertEqual(error, UseCaseError.decodingError)
+                    XCTAssertEqual(error, .decodingError)
                     expectation.fulfill()
                 }
             } receiveValue: { _ in
