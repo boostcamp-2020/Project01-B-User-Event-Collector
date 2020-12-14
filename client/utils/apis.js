@@ -34,7 +34,16 @@ export const requestByCookie = async (req, res, apiUrl) => {
     });
     return data;
 };
-
+export const requestPlaylists = async (apiUrl) => {
+    const { data } = await axios(apiUrl, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: getCookie('token'),
+        },
+    });
+    return data.data;
+};
 export const addToLibrary = async (url, option) => {
     const options = { ...getRequestOptions('POST', option) };
     try {

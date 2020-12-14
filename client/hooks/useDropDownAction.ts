@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import ComponentInfoContext from 'utils/context/ComponentInfoContext';
 import dropDownMenu from 'constants/dropDownMenu';
-import { addToLibrary, deleteFromLibrary, request } from 'utils/apis';
+import { addToLibrary, deleteFromLibrary, requestPlaylists } from 'utils/apis';
 import useLikeEventLog from 'hooks/useLikeEventLog';
 import apiUrl from 'constants/apiUrl';
 
@@ -28,7 +28,7 @@ const useDropDownAction = ({ userId, setAnchorEl, state }) => {
                 logLikeEvent(false);
                 break;
             case dropDownMenu.addToPlaylist:
-                request(apiUrl.libraryPlaylist).then((data) => {
+                requestPlaylists(apiUrl.libraryPlaylist).then((data) => {
                     state.setPlaylistModal({
                         visibility: true,
                         data: data,
