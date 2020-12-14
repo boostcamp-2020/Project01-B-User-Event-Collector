@@ -8,7 +8,15 @@
 import Foundation
 import Combine
 
-struct TodayUseCase {
+protocol TodayUseCaseType {
+    func loadMixtapes() -> AnyPublisher<[Mixtape], UseCaseError>
+    func loadAlbums() -> AnyPublisher<[Album], UseCaseError>
+    func loadPlaylists() -> AnyPublisher<[Playlist], UseCaseError>
+    func loadTracks() -> AnyPublisher<[TrackInfo], UseCaseError>
+    func loadMagazines() -> AnyPublisher<[Magazine], UseCaseError>
+}
+
+struct TodayUseCase: TodayUseCaseType {
     private let network: NetworkServiceType
     
     init(network: NetworkServiceType = NetworkService()) {

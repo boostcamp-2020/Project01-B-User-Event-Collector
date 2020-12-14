@@ -8,10 +8,14 @@
 import Combine
 
 final class SearchViewModel: ObservableObject {
-    private let useCase = SearchUseCase()
+    private let useCase: SearchUseCaseType
     private var cancellables = Set<AnyCancellable>()
     
     @Published private(set) var newsList = [News]()
+    
+    init(useCase: SearchUseCaseType = SearchUseCase()) {
+        self.useCase = useCase
+    }
     
     func load() {
         useCase.loadNews()

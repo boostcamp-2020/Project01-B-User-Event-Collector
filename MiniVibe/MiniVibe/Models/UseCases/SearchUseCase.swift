@@ -8,7 +8,11 @@
 import Foundation
 import Combine
 
-struct SearchUseCase {
+protocol SearchUseCaseType {
+    func loadNews() -> AnyPublisher<[News], UseCaseError>
+}
+
+struct SearchUseCase: SearchUseCaseType {
     private let network: NetworkServiceType
     
     init(network: NetworkServiceType = NetworkService()) {

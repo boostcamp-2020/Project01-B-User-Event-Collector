@@ -87,13 +87,16 @@ const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata, Mixtapedata })
                             </CardListContainer>
                         </ComponentInfoWrapper>
                     </ContentsContainer>
-                    <ContentsContainer>
+                    {
+                        // TODO: user logined -> 믹스테잎 or null
+                    }
+                    {/* <ContentsContainer>
                         <ComponentInfoWrapper componentId={contentType.mixtape}>
                             <CardListContainer title="나를 위한 믹스테잎">
                                 <ContentsCardList variant="mixtape" items={Mixtapedata} />
                             </CardListContainer>
                         </ComponentInfoWrapper>
-                    </ContentsContainer>
+                    </ContentsContainer> */}
                     <ContentsContainer>
                         <ComponentInfoWrapper componentId={contentType.customizedAlbum}>
                             <CardListContainer title="좋아할 최신 앨범" href="/">
@@ -128,7 +131,7 @@ export async function getServerSideProps(context) {
             Newsdata,
             Playlistdata,
             Albumdata,
-            Mixtapedata,
+            // Mixtapedata,
         },
     };
 }

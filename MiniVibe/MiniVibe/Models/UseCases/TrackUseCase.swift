@@ -8,23 +8,28 @@
 import Foundation
 import Combine
 
-struct LikeTrack: Encodable {
-    let trackId: Int
+protocol TrackUseCaseType {
+    func likeTrack(id: Int) -> AnyPublisher<Bool, UseCaseError>
+    func cancelLikedTrack(id: Int) -> AnyPublisher<Bool, UseCaseError>
 }
 
-struct LikeTrackResponse: Decodable {
-    let success: Bool
-}
+struct TrackUseCase: TrackUseCaseType {
+    struct LikeTrack: Encodable {
+        let trackId: Int
+    }
 
-struct TrackUseCase {
+    struct LikeTrackResponse: Decodable {
+        let success: Bool
+    }
+    
     private let network: NetworkServiceType
     
     init(network: NetworkServiceType = NetworkService()) {
         self.network = network
     }
     
-    func likeTrack(like: LikeTrack) -> AnyPublisher<Bool, UseCaseError> {
-        return Just(like)
+    func likeTrack(id: Int) -> AnyPublisher<Bool, UseCaseError> {
+        return Just(LikeTrack(trackId: id))
             .encode(encoder: JSONEncoder())
             .flatMap { data in
                 return network.request(url: EndPoint.like.urlString, request: .post, body: data)

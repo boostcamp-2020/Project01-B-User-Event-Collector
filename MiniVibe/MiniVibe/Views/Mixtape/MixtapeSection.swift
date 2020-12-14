@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MixtapeSection: View {
-    @EnvironmentObject private var eventLogger: EventLogger
     let width: CGFloat
     let title: String
     let mixtapes: [Mixtape]
@@ -18,8 +17,7 @@ struct MixtapeSection: View {
             SectionTitle(width: width, title: title) {
                 MixtapeGrid(title: title,
                             mixtapes: mixtapes)
-                    .logTransition(eventLogger: eventLogger,
-                                   identifier: .mixtapes,
+                    .logTransition(identifier: .mixtapes,
                                    componentId: ComponentId.sectionTitle(category: title))
             }
             
@@ -29,10 +27,8 @@ struct MixtapeSection: View {
                         NavigationLink(
                             destination:
                                 Text("MixtapeView")
-                                .logTransition(eventLogger: eventLogger,
-                                               identifier: .mixtape(id: mixtape.id),
-                                               componentId: ComponentId.mixtapeItem
-                                ),
+                                .logTransition(identifier: .mixtape(id: mixtape.id),
+                                               componentId: ComponentId.mixtapeItem),
                             label: {
                                 ThumbnailItem(title: mixtape.title,
                                               subtitle: mixtape.subTitle,

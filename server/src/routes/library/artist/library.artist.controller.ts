@@ -5,8 +5,7 @@ import Artist from '../../../models/Artist';
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.body;
-    // TODO: 인증 구현 후 수정
-    const userId = 1;
+    const userId = req.user;
 
     const manager = getManager();
 
@@ -19,14 +18,13 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 
     await manager.save(user);
 
-    res.json({
+    return res.json({
         success: true,
     });
 };
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
-    // TODO: 인증 구현 후 수정
-    const userId = 1;
+    const userId = req.user;
 
     const userRepository = getRepository(User);
     const user = await userRepository.createQueryBuilder('user')
@@ -37,11 +35,12 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
             'library_artists.name',
             'library_artists.imageUrl',
         ])
+        .where('user.id = :id', { id: userId })
         .getOne();
 
     const libraryArtists = user?.libraryArtists ? user?.libraryArtists : [];
 
-    res.json({
+    return res.json({
         success: true,
         data: libraryArtists,
     });
@@ -49,8 +48,7 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
 
 const remove = async (req: Request, res: Response, next: NextFunction) => {
     const artistId: string = req.params.artistId as string;
-    // TODO: 인증 구현 후 수정
-    const userId = 1;
+    const userId = req.user;
 
     const manager = getManager();
 
@@ -63,7 +61,7 @@ const remove = async (req: Request, res: Response, next: NextFunction) => {
 
     await manager.save(user);
 
-    res.json({
+    return res.json({
         success: true,
     });
 };

@@ -9,7 +9,6 @@ import SwiftUI
 import KingfisherSwiftUI
 
 struct TrackRowB: View {
-    @EnvironmentObject private var eventLogger: EventLogger
     @EnvironmentObject private var nowPlaying: NowPlaying
     @StateObject private var viewModel: TrackViewModel
     
@@ -21,10 +20,8 @@ struct TrackRowB: View {
         let track = viewModel.track
         HStack {
             NavigationLink(destination:
-                            AlbumView(viewModel: .init(id: track.album.id,
-                                                       eventLogger: eventLogger))
-                            .logTransition(eventLogger: eventLogger,
-                                            identifier: .album(id: track.album.id),
+                            AlbumView(viewModel: .init(id: track.album.id))
+                            .logTransition(identifier: .album(id: track.album.id),
                                             componentId: .trackRowThumbnail)
             ) {
                 TrackRowImage(imageUrl: track.album.imageUrl)
