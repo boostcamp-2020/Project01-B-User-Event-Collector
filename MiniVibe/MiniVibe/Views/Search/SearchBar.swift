@@ -7,32 +7,26 @@
 
 import SwiftUI
 
-
 struct SearchBar: View {
-    @State private var isEditing = false
-    @Binding var searchedText: String
-    
+    @ObservedObject var viewModel: SearchViewModel
     let width: CGFloat
     
     var body: some View {
         HStack {
-            TextField("검색어를 입력해 주세요.", text: $searchedText, onCommit: {
-                MiniVibeApp.eventLogger.send(SearchLog(userId: 0,
-                                           componentId: "searchBar",
-                                           text: searchedText))
+            TextField("검색어를 입력해 주세요.", text: $viewModel.state.searchedText, onCommit: {
+                viewModel.send(.search)
             })
             .padding(10)
             .background(Color(.systemGray6))
             .padding(10)
             .cornerRadius(8)
             .onTapGesture {
-                isEditing = true
+                viewModel.send(.searchBarTapped)
             }
             
-            if isEditing {
+            if viewModel.state.isEditing {
                 Button {
-                    searchedText = ""
-                    isEditing = false
+                    viewModel.send(.cancelSearch)
                     dismissKeyboard()
                 } label: { Text("취소") }
                 .padding(.trailing, 10)
@@ -47,7 +41,8 @@ struct SearchBar: View {
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geometry in
-            SearchBar(searchedText: .constant(""), width: geometry.size.width)
+            SearchBar(viewModel: .init(useCase: SearchUseCase(),
+                                       eventLogger: MiniVibeApp.eventLogger), width: geometry.size.width)
         }
     }
 }
