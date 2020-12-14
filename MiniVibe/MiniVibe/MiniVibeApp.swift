@@ -5,20 +5,14 @@
 //  Created by Sue Cho on 2020/11/23.
 //
 
-import CoreData
 import SwiftUI
 import EventLogKit
 
 @main
 struct MiniVibeApp: App {
-    static let eventLogger = EventLogger(local: nil,
+    static let eventLogger = EventLogger(local: LocalEventStorage(),
                                          server: nil,
-                                         reachability: ReachablilityObserver(hostName: "www.google.com"))
-    let persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Event")
-        container.loadPersistentStores(completionHandler: { _, _ in })
-        return container
-    }()
+                                         reachability: ReachablilityObserver(hostName: "local"))
     
     var body: some Scene {
         WindowGroup {

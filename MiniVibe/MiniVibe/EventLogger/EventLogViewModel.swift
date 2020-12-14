@@ -21,10 +21,10 @@ final class EventLogViewModel: ObservableObject {
     }
     
     @Published private(set) var state: State = .idle
-    private let eventLogger: EventLoggerType
+    private let localStorage: LocalEventStorage?
     
-    init(eventLogger: EventLoggerType = MiniVibeApp.eventLogger) {
-        self.eventLogger = eventLogger
+    init(localStorage: LocalEventStorage?) {
+        self.localStorage = localStorage
     }
     
     func send(input: Input) {
@@ -37,12 +37,12 @@ final class EventLogViewModel: ObservableObject {
     }
     
     private func load() {
-//        let events = eventLogger.events()
-//        state = events.isEmpty ? .empty : .loaded(events: events)
+        let events = localStorage?.events() ?? []
+        state = events.isEmpty ? .empty : .loaded(events: events)
     }
     
     private func reset() {
-//        eventLogger.reset()
-//        state = .empty
+        localStorage?.reset()
+        state = .empty
     }
 }
