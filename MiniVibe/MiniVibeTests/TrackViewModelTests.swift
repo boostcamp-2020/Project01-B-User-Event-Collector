@@ -12,33 +12,8 @@ import Combine
 
 class TrackViewModelTests: XCTestCase {
     
-    struct MockTrackUseCase: TrackUseCaseType {
-        let track: TrackInfo
-        
-        func loadTrack(id: Int) -> AnyPublisher<TrackInfo, UseCaseError> {
-            Just(track)
-                .setFailureType(to: UseCaseError.self)
-                .eraseToAnyPublisher()
-        }
-
-        let success = true
-        func likeTrack(id: Int) -> AnyPublisher<Bool, UseCaseError> {
-            Just(success)
-                .setFailureType(to: UseCaseError.self)
-                .eraseToAnyPublisher()
-        }
-
-        func cancelLikedTrack(id: Int) -> AnyPublisher<Bool, UseCaseError> {
-            Just(success)
-                .setFailureType(to: UseCaseError.self)
-                .eraseToAnyPublisher()
-        }
-    }
-    
     struct MockEventLogger: EventLoggerType {
-        func send(_ event: EventLogType) {
-            
-        }
+        func send(_ event: EventLogType) { }
     }
 
     func test_like_track() {
