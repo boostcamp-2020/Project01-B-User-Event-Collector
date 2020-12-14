@@ -5,7 +5,6 @@
 //  Created by Sue Cho on 2020/11/23.
 //
 
-import CoreData
 import SwiftUI
 import EventLogKit
 
@@ -23,16 +22,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct MiniVibeApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
-    static let eventLogger = EventLogger(local: nil,
-                                         server: nil,
-                                         reachability: ReachablilityObserver(hostName: "www.google.com"))
 
-    let persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Event")
-        container.loadPersistentStores(completionHandler: { _, _ in })
-        return container
-    }()
+    static let eventLogger = EventLogger(local: LocalEventStorage(),
+                                         server: nil,
+                                         reachability: ReachablilityObserver(hostName: "local"))
     
     let nowPlaying = NowPlaying()
     

@@ -32,10 +32,10 @@ const UserProfileMenu = ({ user }: UserProfileMenuProps) => {
             handleClick: (e: MouseEvent<HTMLElement>) => console.log('로그아웃'), // TODO: 로그아웃 함수로 변경
         },
     ];
-
     if (!user) {
         return (
-            <MenuLink href="/login">
+            // TODO : 배포 서버로 바꾸기 , constants 폴더로 이동
+            <MenuLink href="http://localhost:4500/api/users/login/naver">
                 <IconWrapper>
                     <Avatar alt="profile" src={defaultImage} style={{ width: 30, height: 30 }} />
                 </IconWrapper>

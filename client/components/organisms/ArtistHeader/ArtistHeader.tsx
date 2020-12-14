@@ -6,6 +6,10 @@ import Heart from '@components/atoms/Heart/Heart';
 import DropDownMenu from '@components/molecules/DropdownMenu';
 
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import { useContext, useState } from 'react';
+import ComponentInfoContext from '@utils/context/ComponentInfoContext';
+import { addToLibrary, deleteFromLibrary } from '@utils/apis';
+import apiUrl from '@constants/apiUrl';
 
 const HeaderContainter = styled.div`
     display: flex;
@@ -47,9 +51,9 @@ const BlankDiv = styled.div`
     width: 20px;
 `;
 
-const contentsDropDownMenu = [
+const contentsDropDownMenu = (liked) => [
     {
-        content: '좋아요 취소',
+        content: liked ? '좋아요 취소' : '좋아요',
     },
     {
         content: '공유',
@@ -60,25 +64,48 @@ interface ArtistHeaderProps {
     src: string;
     name: string;
     genre: string;
+    isLiked: number;
 }
 
-const ArtistHeader = ({ src, name, genre }: ArtistHeaderProps) => (
-    <HeaderContainter>
-        <ThumbnailContainer>
-            <Image src={src} variant="largeArtist" />
-        </ThumbnailContainer>
-        <ContentsContainer>
-            <TextContainer>
-                <Text variant="tertiary">{name}</Text>
-                <Text>{genre}</Text>
-            </TextContainer>
-            <ButtonContainer>
-                <Heart isSelected={true} />
-                <BlankDiv></BlankDiv>
-                <StyledDropDown id="artist" control={MoreHorizIcon} menuItems={contentsDropDownMenu} state={{}} />
-            </ButtonContainer>
-        </ContentsContainer>
-    </HeaderContainter>
-);
+const ArtistHeader = ({ src, name, genre, isLiked }: ArtistHeaderProps) => {
+    const [liked, setIsLiked] = useState(isLiked);
+    const { data } = useContext(ComponentInfoContext);
+    const likeHandler = (e) => {
+        if (liked) {
+            setIsLiked(0);
+            deleteFromLibrary(`${apiUrl.like}${data.type}s/${data.id}`);
+        } else {
+            setIsLiked(1);
+            addToLibrary(`${apiUrl.like}${data.type}s`, {
+                data: {
+                    id: data.id,
+                },
+            });
+        }
+    };
+    return (
+        <HeaderContainter>
+            <ThumbnailContainer>
+                <Image src={src} variant="largeArtist" />
+            </ThumbnailContainer>
+            <ContentsContainer>
+                <TextContainer>
+                    <Text variant="tertiary">{name}</Text>
+                    <Text>{genre}</Text>
+                </TextContainer>
+                <ButtonContainer>
+                    <Heart isSelected={liked ? true : false} onClick={likeHandler} />
+                    <BlankDiv></BlankDiv>
+                    <StyledDropDown
+                        id="artist"
+                        control={MoreHorizIcon}
+                        menuItems={contentsDropDownMenu(liked)}
+                        state={{ setIsLiked }}
+                    />
+                </ButtonContainer>
+            </ContentsContainer>
+        </HeaderContainter>
+    );
+};
 
 export default ArtistHeader;

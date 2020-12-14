@@ -31,7 +31,7 @@ final class PlaylistViewModel: ObservableObject {
     @Published var showSheet = false
     @Published var isOpenArticle = false
     
-    init(id: Int, useCase: PlaylistUseCaseType = PlaylistUseCase(),eventLogger: EventLoggerType) {
+    init(id: Int, useCase: PlaylistUseCaseType = PlaylistUseCase(),eventLogger: EventLoggerType = MiniVibeApp.eventLogger) {
         self.id = id
         self.useCase = useCase
         self.eventLogger = eventLogger

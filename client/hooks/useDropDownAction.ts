@@ -24,7 +24,7 @@ const useDropDownAction = ({ anchorEl, setAnchorEl, state }) => {
                 break;
             case dropDownMenu.unlike:
                 state.setIsLiked(0);
-                deleteFromLibrary(`${apiUrl.like}${data.type}/${data.id}`);
+                deleteFromLibrary(`${apiUrl.like}${data.type}s/${data.id}`);
                 break;
             case dropDownMenu.addToPlaylist:
                 request(apiUrl.libraryPlaylist).then((data) => {

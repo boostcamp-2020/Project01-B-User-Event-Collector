@@ -70,6 +70,7 @@
 		44BD3F21257E0015005861A1 /* Magazines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BD3F20257E0015005861A1 /* Magazines.swift */; };
 		44BDF0212578F41900C0A43D /* PlayListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BDF0202578F41900C0A43D /* PlayListSection.swift */; };
 		44BDF0252578F72A00C0A43D /* PlayListMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BDF0242578F72A00C0A43D /* PlayListMenu.swift */; };
+		44D2EF932586FD5B00D29CAA /* LocalEventStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D2EF922586FD5B00D29CAA /* LocalEventStorage.swift */; };
 		44D5FABA257FD08300A3E91C /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D5FAB9257FD08300A3E91C /* Artist.swift */; };
 		44D5FABE257FD66400A3E91C /* ArtistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D5FABD257FD66400A3E91C /* ArtistViewModel.swift */; };
 		44D5FAC2257FD89E00A3E91C /* ArtistUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D5FAC1257FD89E00A3E91C /* ArtistUseCase.swift */; };
@@ -260,6 +261,7 @@
 		44BD3F20257E0015005861A1 /* Magazines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magazines.swift; sourceTree = "<group>"; };
 		44BDF0202578F41900C0A43D /* PlayListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListSection.swift; sourceTree = "<group>"; };
 		44BDF0242578F72A00C0A43D /* PlayListMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListMenu.swift; sourceTree = "<group>"; };
+		44D2EF922586FD5B00D29CAA /* LocalEventStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEventStorage.swift; sourceTree = "<group>"; };
 		44D5FAB9257FD08300A3E91C /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		44D5FABD257FD66400A3E91C /* ArtistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewModel.swift; sourceTree = "<group>"; };
 		44D5FAC1257FD89E00A3E91C /* ArtistUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistUseCase.swift; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				806092352582269E0032FBE0 /* Events */,
+				44D2EF922586FD5B00D29CAA /* LocalEventStorage.swift */,
 				445D3A1B257F38620002D2DE /* ViewIdentifier.swift */,
 				44337F6D2583C4AE00B88EFA /* ComponentId.swift */,
 				445D3A21257F441B0002D2DE /* TransitionLogModifier.swift */,
@@ -1027,6 +1030,7 @@
 				4478F71C256E858700755656 /* MixtapeGrid.swift in Sources */,
 				805E28D7256BDE90007AF5F1 /* SectionTitle.swift in Sources */,
 				80DA95332577A681008C9DFF /* TrackRowD.swift in Sources */,
+				44D2EF932586FD5B00D29CAA /* LocalEventStorage.swift in Sources */,
 				80A52168257942F70051A925 /* GenreSection.swift in Sources */,
 				80609260258261B90032FBE0 /* MoveTrack+CoreDataClass.swift in Sources */,
 				4471B1B12581625900647CA0 /* EventLogViewModel.swift in Sources */,

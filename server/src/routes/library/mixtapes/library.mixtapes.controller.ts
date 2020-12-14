@@ -3,7 +3,7 @@ import { getRepository } from 'typeorm';
 import User from '../../../models/User';
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
-    const userId = 1;
+    const userId = req.user;
 
     try {
         const UserRepository = getRepository(User);
