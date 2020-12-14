@@ -7,39 +7,60 @@
 
 import Combine
 import Foundation
+import EventLogKit
 
 final class ArtistViewModel: ObservableObject {
     enum Input {
-        case appear(artistID: Int)
+        case appear
         case showArtistMenu
+        case like
+    }
+    
+    struct State {
+        var artist: ArtistInfo?
+        var isOpenMenu = false
     }
     
     private let useCase: ArtistUseCaseType
+    private let eventLogger: EventLoggerType
     private var cancellables = Set<AnyCancellable>()
+    private let id: Int
     
-    @Published private(set) var artist: ArtistInfo?
-    @Published var isOpenMenu = false
+    @Published var state = State()
     
-    init(useCase: ArtistUseCaseType = ArtistUseCase()) {
+    init(id: Int,
+         useCase: ArtistUseCaseType = ArtistUseCase(),
+         eventLogger: EventLoggerType = MiniVibeApp.eventLogger) {
+        self.id = id
         self.useCase = useCase
+        self.eventLogger = eventLogger
     }
     
     func send(_ input: Input) {
         switch input {
-        case let .appear(artistID):
-                    load(artistID: artistID)
+        case .appear:
+            load()
         case .showArtistMenu:
-            isOpenMenu = true
+            state.isOpenMenu = true
+        case .like:
+            like()
         }
     }
     
-    private func load(artistID: Int) {
-        useCase.loadArtist(with: artistID)
+    private func load() {
+        useCase.loadArtist(with: id)
             .sink { _ in
                 
             } receiveValue: { [weak self] artist in
-                self?.artist = artist
+                self?.state.artist = artist
             }
             .store(in: &cancellables)
+    }
+    
+    private func like() {
+        eventLogger.send(LikeLog(userId: id,
+                                 data: .init(type: "Artist", id: id),
+                                 isLike: true)
+        )
     }
 }

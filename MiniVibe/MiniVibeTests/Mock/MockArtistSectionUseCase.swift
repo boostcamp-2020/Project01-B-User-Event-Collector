@@ -1,5 +1,5 @@
 //
-//  MockArtistSectionUseCase.swift
+//  MockArtistUseCase.swift
 //  MiniVibeTests
 //
 //  Created by Sue Cho on 2020/12/14.
@@ -25,4 +25,3 @@ struct MockArtistSectionUseCase: ArtistUseCaseType {
             .eraseToAnyPublisher()
     }
 }
-
