@@ -8,7 +8,7 @@ function useClickEventLog({ userId, href }) {
     const componentInfo = useContext(ComponentInfoContext);
     const router = useRouter();
 
-    const handleClick = () => {
+    const logClickEvent = () => {
         eventLogger('Click', {
             userId,
             page: router.asPath,
@@ -17,7 +17,7 @@ function useClickEventLog({ userId, href }) {
         });
     };
 
-    return handleClick;
+    return logClickEvent;
 }
 
 export default useClickEventLog;
