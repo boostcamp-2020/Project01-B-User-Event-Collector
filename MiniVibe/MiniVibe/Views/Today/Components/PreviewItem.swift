@@ -10,7 +10,7 @@ import SwiftUI
 struct PreviewItem: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text("Haapy Christmas")
+            Text("Happy Christmas")
                 .font(.system(size: 12))
                 .foregroundColor(.accentColor)
             
