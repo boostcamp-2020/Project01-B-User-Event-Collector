@@ -3,6 +3,8 @@ import IconButton from '@components/atoms/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import PlaylistRowCard from '@components/organisms/PlaylistModal/PlaylistRowCard';
 import NewPlaylistButton from '@components/organisms/PlaylistModal/NewPlaylistButton';
+import PlaylistAddModal from './PlaylistAddModal';
+import { useState } from 'react';
 
 interface PlaylistModalContainer {
     visible: boolean;
@@ -72,6 +74,10 @@ interface PlaylistModalProps {
 }
 
 const PlaylistModal = ({ data, visibility, onClickFunc, handleClick }: PlaylistModalProps) => {
+    const [playlistaddModal, setPlaylistModal] = useState(false);
+    const createNewPlaylist = (e) => {
+        setPlaylistModal(!playlistaddModal);
+    };
     return (
         <ModalContainer visible={visibility}>
             <Modal>
@@ -80,10 +86,9 @@ const PlaylistModal = ({ data, visibility, onClickFunc, handleClick }: PlaylistM
                 </ButtonContainer>
                 <HeaderContainer>내 플레이리스트에 추가</HeaderContainer>
                 <PlaylistContainer>
-                    <NewPlaylistButton />
-                    {data.map((d) => (
-                        <PlaylistRowCard data={d} onClickFunc={handleClick} />
-                    ))}
+                    <NewPlaylistButton onClickFunc={createNewPlaylist} />
+                    <PlaylistAddModal visibility={playlistaddModal} />
+                    {data ? data.map((d) => <PlaylistRowCard data={d} onClickFunc={handleClick} />) : null}
                 </PlaylistContainer>
             </Modal>
         </ModalContainer>

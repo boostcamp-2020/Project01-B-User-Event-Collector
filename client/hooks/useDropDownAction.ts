@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import ComponentInfoContext from 'utils/context/ComponentInfoContext';
 import dropDownMenu from 'constants/dropDownMenu';
-import { addToLibrary, deleteFromLibrary, request } from 'utils/apis';
+import { addToLibrary, deleteFromLibrary, requestPlaylists } from 'utils/apis';
 import useLikeEventLog from 'hooks/useLikeEventLog';
 import apiUrl from 'constants/apiUrl';
 
@@ -18,17 +18,21 @@ const useDropDownAction = ({ userId, setAnchorEl, state }) => {
         const content = e.currentTarget.innerText;
         switch (content) {
             case dropDownMenu.like:
-                addToLibrary(data);
+                addToLibrary(`${apiUrl.like}${data.type}s`, {
+                    data: {
+                        id: data.id
+                    }
+                });
                 state.setIsLiked(1);
                 logLikeEvent(true);
                 break;
             case dropDownMenu.unlike:
-                deleteFromLibrary(data);
+                deleteFromLibrary(`${apiUrl.like}${data.type}s/${data.id}`);
                 state.setIsLiked(0);
                 logLikeEvent(false);
                 break;
             case dropDownMenu.addToPlaylist:
-                request(apiUrl.libraryPlaylist).then((data) => {
+                requestPlaylists(apiUrl.libraryPlaylist).then((data) => {
                     state.setPlaylistModal({
                         visibility: true,
                         data: data,
@@ -36,7 +40,12 @@ const useDropDownAction = ({ userId, setAnchorEl, state }) => {
                 });
                 break;
             case dropDownMenu.addToLibrary:
-                addToLibrary(data);
+                let type = undefined
+                if(data.type === 'magazine' || data.type === 'news') type = 'playlist'
+                else type = data.type
+                addToLibrary(`${apiUrl.like}${type}s`, {data: {
+                    id: data.id
+                }});
                 logLikeEvent(true);
                 break;
             case dropDownMenu.addToUpNext:

@@ -65,7 +65,7 @@ const listById = async (req: Request, res: Response, next: NextFunction) => {
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
     const { title } = req.body;
-
+    const userId = req.user;
     try {
         const PlaylistRepository = getRepository(Playlist);
         const playlist = new Playlist();
@@ -74,7 +74,7 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
         await PlaylistRepository.insert(playlist);
 
         req.body = {
-            playlistId: playlist.id,
+            id: playlist.id,
         };
         return await libraryPlaylist.create(req, res, next);
     } catch (err) {

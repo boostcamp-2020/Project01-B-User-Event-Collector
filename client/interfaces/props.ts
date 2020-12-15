@@ -16,7 +16,9 @@ export interface TrackInfoProps {
 
 export interface InputProps {
     name: string;
-    variant?: string;
+    variant?: string;   
+    value: string | undefined;
+    onChange : (e : React.ChangeEvent<HTMLElement> ) => void | undefined
 }
 
 export interface MagazineCardProps {

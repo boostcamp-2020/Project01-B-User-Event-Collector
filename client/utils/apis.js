@@ -5,6 +5,12 @@ import apiUrl from 'constants/apiUrl';
 
 export const getRequestOptions = (method, options, headers) => ({
     method: method,
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: getCookie('token'),
+        ...headers,
+    },
+    ...options,
 });
 
 export const requestOptions = {
@@ -34,16 +40,22 @@ export const requestByCookie = async (req, res, apiUrl) => {
     });
     return data;
 };
-
+export const requestPlaylists = async (apiUrl) => {
+    const { data } = await axios(apiUrl, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: getCookie('token'),
+        },
+    });
+    return data.data;
+};
 export const addToLibrary = async (url, option) => {
     const options = { ...getRequestOptions('POST', option) };
     try {
         await axios({
             ...options,
             url,
-            headers: {
-                Authorization: getCookie('token'),
-            },
         });
     } catch (err) {
         console.error(err);
@@ -51,13 +63,41 @@ export const addToLibrary = async (url, option) => {
 };
 
 export const addToPlaylist = async (url, data) => {
-    await request(url, { method: 'POST', data });
+    const options = { ...getRequestOptions('POST', data) };
+    try {
+        await axios({
+            ...options,
+            url,
+        });
+    } catch (err) {
+        console.error(err);
+    }
 };
 
-export const deleteFromLibrary = async (data) => {
-    await request(`${apiUrl.like}${data.type}s/${data.id}`, { method: 'DELETE' });
+export const deleteFromLibrary = async (url, option) => {
+    const options = { ...getRequestOptions('DELETE', option) };
+    try {
+        await axios({
+            ...options,
+            url,
+        });
+    } catch (err) {
+        console.error(err);
+    }
 };
 
+export const createPlaylist = async (data) => {
+    await axios(`${apiUrl.playlist}`, {
+        method: 'POST',
+        headers: {
+            'Content-Typee': 'application/json',
+            Authorization: getCookie('token'),
+        },
+        data: {
+            ...data,
+        },
+    });
+};
 export const sendEvent = async (eventData) => {
     try {
         await axios.post(apiUrl.event, eventData);

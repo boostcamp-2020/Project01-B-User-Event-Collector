@@ -49,8 +49,13 @@ const DropdownMenu = ({ id, control: ControlComponent, menuItems, children, stat
         });
     };
     const onClickHandler = (e) => {
+        let type = undefined;
+        if (componentInfo.data.type === 'magazine') type = 'playlist';
+        else if (componentInfo.data.type === 'news') type = 'album';
+        else type = componentInfo.data.type;
+
         const playlistId = e.currentTarget.firstChild.innerText;
-        const url = `${apiUrl.playlist}/${componentInfo.data.type}`;
+        const url = `${apiUrl.playlist}/${type}`;
         const reqBodyData = {
             data: {
                 id: parseInt(playlistId),

@@ -9,23 +9,22 @@ interface ButtonProps {
     variant?: 'primary' | 'secondary';
     width?: string;
     height?: string;
+    disabled?: boolean | undefined;
 }
 
 const IconWrapper = styled.div`
     margin-right: 3px;
 `;
 
-const Button = ({
-  children, onClick, icon: Icon, variant, width, height
-}: ButtonProps) => (
-  <StyledButton variant={variant} onClick={onClick} width={width} height={height} >
-    { Icon && (
-    <IconWrapper>
-      <Icon />
-    </IconWrapper>
-    )}
-    {children}
-  </StyledButton>
+const Button = ({ children, onClick, icon: Icon, variant, width, height, disabled }: ButtonProps) => (
+    <StyledButton variant={variant} onClick={onClick} width={width} height={height} disabled={disabled}>
+        {Icon && (
+            <IconWrapper>
+                <Icon />
+            </IconWrapper>
+        )}
+        {children}
+    </StyledButton>
 );
 
 export default Button;

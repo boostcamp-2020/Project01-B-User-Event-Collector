@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Text from '@components/atoms/Text';
 
 interface NewPlaylistButtonProps {
-    onClickFunc?: any;
+    onClickFunc?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 const GreyDiv = styled.div`
@@ -19,10 +19,10 @@ const Container = styled.div`
     align-items: center;
     cursor: pointer;
     &:hover {
-        background-color: #e7e7e7;   
+        background-color: #e7e7e7;
     }
-    &:hover ${GreyDiv}{
-        background-color: #b7b7b7;  
+    &:hover ${GreyDiv} {
+        background-color: #b7b7b7;
     }
 `;
 
@@ -50,7 +50,7 @@ const TitleContainer = styled.div`
 
 const NewPlaylistButton = ({ onClickFunc }: NewPlaylistButtonProps) => {
     return (
-        <Container>
+        <Container onClick={onClickFunc}>
             <ImageContainer>
                 <GreyDiv />
             </ImageContainer>
