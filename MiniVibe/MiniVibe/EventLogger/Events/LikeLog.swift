@@ -8,7 +8,7 @@
 import CoreData
 import EventLogKit
 
-protocol LikeLogType: EventLogType {
+protocol LikeLogType: CustomEventLogType {
     var componentId: String { get }
     var data: LogData { get }
     var isLike: Bool { get }

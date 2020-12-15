@@ -8,7 +8,7 @@
 import CoreData
 import EventLogKit
 
-protocol SearchLogType: EventLogType {
+protocol SearchLogType: CustomEventLogType {
     var componentId: String { get }
     var text: String { get }
 }
