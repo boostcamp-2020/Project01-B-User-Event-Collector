@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     @StateObject private var viewModel = SearchViewModel()
+    @State private var searchedText = ""
     
     var body: some View {
         GeometryReader { geometry in
@@ -22,10 +23,10 @@ struct SearchView: View {
                             .foregroundColor(.primary)
                             .padding(geometry.size.width * .paddingRatio)
                         
-                        SearchBar(viewModel: viewModel, width: width)
+                        SearchBar(searchedText: $searchedText, width: width)
                         
                         NewsSection(width: width,
-                                    newsList: viewModel.state.newsList)
+                                    newsList: viewModel.newsList)
                         
                         GenreSection()
                     }
@@ -34,7 +35,7 @@ struct SearchView: View {
             }
         }
         .onAppear {
-            viewModel.send(.appear)
+            viewModel.load()
         }
     }
     
