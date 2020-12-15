@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Cookies from 'cookies';
 import { getCookie } from 'utils/cookies';
 import apiUrl from 'constants/apiUrl';
 
@@ -28,8 +27,7 @@ export const request = async (url, option, token) => {
         const { data } = await axios({ ...options, url });
         return data.data;
     } catch (err) {
-        // TODO : error handling
-        console.log(err);
+        console.error(err);
     }
 };
 
