@@ -30,6 +30,6 @@ struct SearchLog: SearchLogType {
     let componentId: String
     let text: String
     let timestamp: Date = Date()
-    let event = String(describing: Self.self)
+    let event = "Search"
     let platform = "iOS"
 }

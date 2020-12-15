@@ -31,7 +31,7 @@ struct AddToUpnext: UpnextChangeLogType {
     let trackId: [Int]
     let componentId: String
     let timestamp = Date()
-    let event = String(describing: Self.self)
+    let event = "AddToUpnext"
     let platform = "iOS"
 }
 
@@ -40,6 +40,6 @@ struct RemoveFromUpnext: UpnextChangeLogType {
     let trackId: [Int]
     let componentId: String
     let timestamp = Date()
-    let event = String(describing: Self.self)
+    let event = "RemoveFromUpnext"
     let platform = "iOS"
 }

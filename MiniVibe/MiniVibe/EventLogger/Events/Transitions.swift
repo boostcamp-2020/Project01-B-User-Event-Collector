@@ -32,7 +32,7 @@ struct Appear: TransitionLogType {
     let componentId: String
     let page: String
     let timestamp = Date()
-    let event = String(describing: Self.self)
+    let event = "Appear"
     let platform = "iOS"
 }
 
@@ -50,6 +50,6 @@ struct TabViewTransition: TransitionLogType {
     let componentId: String
     let page: String
     let timestamp = Date()
-    let event = String(describing: Self.self)
+    let event = "TabViewTransition"
     let platform = "iOS"
 }
