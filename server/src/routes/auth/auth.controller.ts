@@ -10,3 +10,8 @@ export const authenticateLogin = (req : Request, res : Response, next: NextFunct
         return res.redirect(process.env.CLIENT_HOST || 'http://localhost:3000');
     })(req, res, next);
 };
+
+export const naverLogin = (req : Request, res : Response, next: NextFunction) => {
+    const apiUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}&state=${process.env.STATE}`;
+    res.redirect(apiUrl);
+};
