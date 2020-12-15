@@ -13,15 +13,16 @@ export const getRequestOptions = (method, options, headers) => ({
     ...options,
 });
 
-export const requestOptions = {
+const requestOptions = {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json',
     },
 };
 
-export const request = async (url, option) => {
+export const request = async (url, option, token) => {
     const options = { ...requestOptions, ...option };
+    if (token) options.headers.Authorization = token;
 
     try {
         const { data } = await axios({ ...options, url });
@@ -32,9 +33,8 @@ export const request = async (url, option) => {
     }
 };
 
-export const requestByCookie = async (req, res, apiUrl) => {
-    console.log('........?', apiUrl);
-    const cookies = new Cookies(req, res);
+export const requestByCookie = async (apiUrl) => {
+    // const cookies = new Cookies(req, res);
     const data = await request(apiUrl, {
         headers: {
             Authorization: cookies.get('token') || 'no cookie',
