@@ -21,8 +21,7 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
 
 const listById = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
-    // TODO: 인증 구현 후 수 정
-    const userId = 1;
+    const userId = req.user;
     try {
         const PlaylistRepository = getRepository(Playlist);
         const playlist = await PlaylistRepository.createQueryBuilder('playlist')

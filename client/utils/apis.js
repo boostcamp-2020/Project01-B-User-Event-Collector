@@ -31,6 +31,7 @@ export const request = async (url, option) => {
         console.log(err);
     }
 };
+
 export const requestByCookie = async (req, res, apiUrl) => {
     const cookies = new Cookies(req, res);
     const data = await request(apiUrl, {
@@ -40,6 +41,7 @@ export const requestByCookie = async (req, res, apiUrl) => {
     });
     return data;
 };
+
 export const requestPlaylists = async (apiUrl) => {
     const { data } = await axios(apiUrl, {
         method: 'GET',
@@ -50,6 +52,7 @@ export const requestPlaylists = async (apiUrl) => {
     });
     return data.data;
 };
+
 export const addToLibrary = async (url, option) => {
     const options = { ...getRequestOptions('POST', option) };
     try {
