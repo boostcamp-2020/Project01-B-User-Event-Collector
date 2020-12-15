@@ -71,7 +71,9 @@ struct MainTab: View {
                     PlayerView()
                         .logTransition(identifier: .player,
                                        componentId: ComponentId.playerPreview)
+                        .environmentObject(nowPlaying)
                 }
+                .environmentObject(nowPlaying)
         }
     }
 }
