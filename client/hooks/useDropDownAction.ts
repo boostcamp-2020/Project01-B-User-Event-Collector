@@ -41,7 +41,9 @@ const useDropDownAction = ({ userId, setAnchorEl, state }) => {
                 break;
             case dropDownMenu.addToLibrary:
                 let type = undefined
-                if(data.type === 'magazine' || data.type === 'news') type = 'playlist'
+                console.log('---------', data)
+                if(data.type === 'magazine') type = 'playlist'
+                else if(data.type === 'news') type = 'album'
                 else type = data.type
                 addToLibrary(`${apiUrl.like}${type}s`, {data: {
                     id: data.id
