@@ -19,10 +19,8 @@ enum EndPoint {
     case newsList
     case artists
     case artist(id: Int)
-    
-    
-    case like // 좋아요
-    case cancelLike(id: Int) // 좋아요 취소
+    case like
+    case cancelLike(id: Int)
     
     static private let baseURL = "http://101.101.209.213:3000"
     

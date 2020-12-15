@@ -17,7 +17,13 @@ public final class TrackInfoData: NSSecureUnarchiveFromDataTransformer, NSCoding
     public let artist: ArtistData
     public let liked: Int
 
-    public init(id: Int, title: String, lyrics: String, albumId: Int, album: TrackAlbumData, artist: ArtistData, liked: Int) {
+    public init(id: Int,
+                title: String,
+                lyrics: String,
+                albumId: Int,
+                album: TrackAlbumData,
+                artist: ArtistData,
+                liked: Int) {
         self.id = id
         self.title = title
         self.lyrics = lyrics
@@ -32,8 +38,10 @@ public final class TrackInfoData: NSSecureUnarchiveFromDataTransformer, NSCoding
         title = coder.decodeObject(forKey: "title") as? String ?? ""
         lyrics = coder.decodeObject(forKey: "lyrics") as? String ?? ""
         albumId = coder.decodeInteger(forKey: "albumId")
-        album = coder.decodeObject(forKey: "album") as? TrackAlbumData ?? TrackAlbumData(id: 0, title: "abcdefg", imageUrl: "")
-        artist = coder.decodeObject(forKey: "artist") as? ArtistData ?? ArtistData(id: 0, name: "default")
+        album = coder.decodeObject(forKey: "album") as? TrackAlbumData
+            ?? TrackAlbumData(id: 0, title: "default", imageUrl: "")
+        artist = coder.decodeObject(forKey: "artist") as? ArtistData
+            ?? ArtistData(id: 0, name: "default")
         liked = coder.decodeInteger(forKey: "liked")
     }
     

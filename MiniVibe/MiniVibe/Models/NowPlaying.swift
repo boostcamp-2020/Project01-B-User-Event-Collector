@@ -14,6 +14,7 @@ final class NowPlaying: ObservableObject {
     @Published var isPlayerPresented: Bool = false
     @Published var upNext = [TrackViewModel]()
     @Published var selectedTracks = Set<TrackViewModel>()
+    
     let dataManager = PlayerDataManager()
  
     var playingTrack: TrackViewModel? {
