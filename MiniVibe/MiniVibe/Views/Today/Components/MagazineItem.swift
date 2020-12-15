@@ -18,7 +18,7 @@ private struct Badge: View {
             .foregroundColor(.white)
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
             .background(
-                RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                RoundedRectangle(cornerRadius: 25.0)
                     .foregroundColor(.purple)
             )
     }

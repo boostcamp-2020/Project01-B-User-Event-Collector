@@ -1,6 +1,9 @@
 disabled_rules:
     - trailing_whitespace
     - identifier_name
-
+    - weak_delegate
+    - nesting
+    - function_body_length
+    - xctfail_message
 excluded:
     - Pods

@@ -36,7 +36,12 @@ struct ArtistThumbnail: View {
 struct ArtistThumbnail_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            ArtistThumbnail(artist: .init(id: 0, name: "", imageUrl: "", genre: .init(name: ""), tracks: [], albums: []))
+            ArtistThumbnail(artist: .init(id: 0,
+                                          name: "",
+                                          imageUrl: "",
+                                          genre: .init(name: ""),
+                                          tracks: [],
+                                          albums: []))
             Spacer()
         }
     }

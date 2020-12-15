@@ -11,7 +11,7 @@ struct AlbumView: View {
     init(viewModel: AlbumViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
-
+    
     @StateObject private var viewModel: AlbumViewModel
     
     var body: some View {
@@ -50,7 +50,10 @@ struct AlbumView: View {
                                     ) {
                                         Section(header: PlayAndShuffle(width: geometry.size.width)) {
                                             ForEach(tracks, id: \.id) { track in
-                                                TrackRowD(viewModel: .init(track: track, eventLogger: MiniVibeApp.eventLogger), order: 1) {
+                                                TrackRowD(viewModel:
+                                                            .init(track: track,
+                                                                  eventLogger: MiniVibeApp.eventLogger),
+                                                          order: 1) {
                                                     viewModel.send(.showTrackMenu(info: $0))
                                                 }
                                             }
@@ -73,7 +76,7 @@ struct AlbumView: View {
                                 playlists: []
                             ) {
                                 ThumbnailList(info: .playlist(data: []),
-                                                           navigationTitle: "관련 플레이리스트")
+                                              navigationTitle: "관련 플레이리스트")
                             }
                         }
                         .padding(.bottom, 70)

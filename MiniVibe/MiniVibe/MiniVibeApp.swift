@@ -11,7 +11,10 @@ import EventLogKit
 class AppDelegate: NSObject, UIApplicationDelegate {
     var nowPlaying: NowPlaying!
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+    ) -> Bool {
         let defaultTracks = nowPlaying.dataManager.fetch()
         let trackViewModel = nowPlaying.dataManager.tracksToViewModel(tracks: defaultTracks)
         nowPlaying.upNext = trackViewModel
@@ -22,7 +25,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct MiniVibeApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-
+    
     static let eventLogger = EventLogger(local: LocalEventStorage(),
                                          server: ServerEventStorage(),
                                          reachability: ReachablilityObserver(hostName: "www.google.com"))
