@@ -1,10 +1,12 @@
 import express from 'express';
 import * as playlistsContoller from './playlists.controller';
+import { checkAuth } from '../auth';
 
 const router = express.Router();
 
 router.get('/', playlistsContoller.list);
 router.get('/:id', playlistsContoller.listById);
+router.use(checkAuth);
 router.post('/', playlistsContoller.create);
 router.post('/track', playlistsContoller.addTracks);
 router.post('/album', playlistsContoller.addAlbum);

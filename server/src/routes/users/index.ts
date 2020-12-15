@@ -13,13 +13,12 @@ router.get('/login/naver', passport.authenticate('login-naver'), (req, res, next
 
 router.get('/', authenticateJWT, async (req, res, next) => {
     try {
-        if(req.user){
+        if (req.user) {
             const manager = getManager();
             const user = await manager.findOne(User, req.user);
             return res.status(200).json(user);
-        } else {
-            res.status(200).json(null);
         }
+        return res.status(200).json(null);
     } catch (err) {
         console.log(err);
     }
