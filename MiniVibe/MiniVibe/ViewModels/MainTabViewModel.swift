@@ -10,20 +10,28 @@ import EventLogKit
 
 final class MainTabViewModel: ObservableObject {
     
+    struct State {
+        var tabViewSelection: ViewIdentifier = .today
+    }
+    
     private let eventLogger: EventLoggerType
     private var cancellables: Set<AnyCancellable> = []
-    @Published var tabViewSelection: ViewIdentifier = .today
+    @Published var state = State()
     
     init(eventLogger: EventLoggerType = MiniVibeApp.eventLogger) {
         self.eventLogger = eventLogger
-        $tabViewSelection
-            .removeDuplicates()
-            .filter { $0 != .none }
+        
+        $state
+            .removeDuplicates { (prev, current) -> Bool in
+                prev.tabViewSelection == current.tabViewSelection
+            }
+            .filter { $0.tabViewSelection != .none }
             .sink { tabItem in
                 eventLogger.send(TabViewTransition(userId: 0,
-                                                   componentId: tabItem.description,
-                                                   page: tabItem.description))
+                                                   componentId: tabItem.tabViewSelection.description,
+                                                   page: tabItem.tabViewSelection.description))
             }
             .store(in: &cancellables)
     }
+
 }

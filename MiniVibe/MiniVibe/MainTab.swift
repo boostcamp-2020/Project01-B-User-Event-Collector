@@ -18,7 +18,7 @@ struct MainTab: View {
     }
     
     var body: some View {
-        TabView(selection: $viewModel.tabViewSelection) {
+        TabView(selection: $viewModel.state.tabViewSelection) {
             Today()
                 .tabItem {
                     Image(systemName: "house.fill")
@@ -60,7 +60,7 @@ struct MainTab: View {
     
     @ViewBuilder
     private var player: some View {
-        if viewModel.tabViewSelection != .none {
+        if viewModel.state.tabViewSelection != .none {
             PlayerPreview(coordinate: contentFrame)
                 .onTapGesture {
                     if !nowPlaying.upNext.isEmpty {
@@ -69,9 +69,11 @@ struct MainTab: View {
                 }
                 .sheet(isPresented: $nowPlaying.isPlayerPresented) {
                     PlayerView()
+                        .environmentObject(nowPlaying)
                         .logTransition(identifier: .player,
                                        componentId: ComponentId.playerPreview)
                 }
+                .environmentObject(nowPlaying)
         }
     }
 }
