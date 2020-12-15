@@ -10,7 +10,7 @@ import SwiftUI
 struct Player: View {
     @Binding var isMenuOpen: Bool
     @Binding var isLyricsOpen: Bool
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var nowPlaying: NowPlayingViewModel
     
     var body: some View {
         

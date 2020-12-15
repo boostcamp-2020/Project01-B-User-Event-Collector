@@ -13,11 +13,8 @@ struct UpNextList: View {
         UITableView.appearance().showsVerticalScrollIndicator = false
     }
     
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var nowPlaying: NowPlayingViewModel
     @State private var editMode = EditMode.active
-    private var selectionCount: Int {
-        return nowPlaying.selectedTracks.count
-    }
     
     var body: some View {
         VStack {
@@ -36,8 +33,8 @@ struct UpNextList: View {
             .foregroundColor(.primary)
             
             VStack(spacing: 0) {
-                List(selection: $nowPlaying.selectedTracks) {
-                    ForEach(nowPlaying.upNext, id: \.self) { viewModel in
+                List(selection: $nowPlaying.state.selectedTracks) {
+                    ForEach(nowPlaying.state.upNext, id: \.self) { viewModel in
                         HStack(spacing: 10) {
                             KFImage(URL(string: viewModel.state.track.album.imageUrl))
                                 .placeholder {
@@ -57,11 +54,13 @@ struct UpNextList: View {
                             }
                         }
                     }
-                    .onMove(perform: onMove(source:destination:))
+                    .onMove(perform: { (source, destination) in
+                        nowPlaying.send(.moveTrack(source: source, destination: destination))
+                    })
                 }
                 .environment(\.editMode, .constant(EditMode.active))
                 
-                if nowPlaying.selectedTracks.count > 0 {
+                if !nowPlaying.isEmptySelects {
                     MultiselectTabBar()
                         .ignoresSafeArea(.all, edges: .bottom)
                         .frame(height: 48)
@@ -71,55 +70,37 @@ struct UpNextList: View {
     }
     
     var headerTitle: some View {
-        selectionCount > 0 ?
-            Text("\(selectionCount) song(s) selected") :
+        !nowPlaying.isEmptySelects ?
+            Text("\(nowPlaying.state.selectedTracks.count) song(s) selected") :
             Text("Up next")
     }
     
     @ViewBuilder
     var leadingBarItem: some View {
-        if selectionCount == 0 {
+        if nowPlaying.isEmptySelects {
             Button {
-                // TO DO:
-                // 현재 [Up Next] 트랙 내에서 검색
+
             } label: {
                 Image(systemName: "magnifyingglass")
             }
-        } else if selectionCount == nowPlaying.upNext.count {
-            Button {
-                nowPlaying.selectedTracks.removeAll()
-            } label: {
-                Text("Deselect All")
-            }
         } else {
             Button {
-                nowPlaying.upNext.forEach { nowPlaying.selectedTracks.insert($0) }
-            } label: { Text("Select All") }
-        }
-    }
-    
-    private func onMove(source: IndexSet, destination: Int) {
-        guard let sourceIndex = source.first else { return }
-        nowPlaying.upNext.move(fromOffsets: source, toOffset: destination)
-        let destinationIndex = sourceIndex < destination ?  destination - 1 : destination
-        if sourceIndex != destinationIndex {
-            MiniVibeApp.eventLogger.send(MoveTrackLog(userId: 0,
-                                                      trackId: nowPlaying.upNext[destinationIndex].state.track.id,
-                                                      source: sourceIndex,
-                                                      destination: destinationIndex))
+                nowPlaying.send(.selectButtonTapped)
+            } label: {
+                Text(nowPlaying.isAllSelected ? "Deselect All" : "Select All")
+            }
         }
     }
     
     @ViewBuilder
     var trailingBarItem: some View {
-        if selectionCount > 0 {
+        if !nowPlaying.isEmptySelects {
             Button {
-                nowPlaying.selectedTracks.removeAll()
+                nowPlaying.send(.selectButtonTapped)
             } label: { Text("Done") }
         } else {
             Button {
-                // TO DO:
-                // sheet 내리기
+                nowPlaying.send(.togglePlayer)
             } label: { Image(systemName: "chevron.down") }
         }
     }

@@ -29,7 +29,7 @@ extension PlayLogType {
     }
 }
 
-struct PlayerPlay: PlayLogType {
+struct PlayLog: PlayLogType {
     let userId: Int
     let trackId: Int
     let componentId: String

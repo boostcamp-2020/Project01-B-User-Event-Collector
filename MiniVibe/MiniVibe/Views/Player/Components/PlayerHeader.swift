@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlayerHeader: View {
     let title: String
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var nowPlaying: NowPlayingViewModel
     
     var body: some View {
         HStack {
@@ -26,10 +26,11 @@ struct PlayerHeader: View {
             Spacer()
             
             Button {
-                nowPlaying.isPlayerPresented = false
+                nowPlaying.send(.togglePlayer)
             } label: {
                 Image(systemName: "chevron.compact.down")
             }
+            .padding(.vertical)
         }
         .foregroundColor(.primary)
         .padding(8)

@@ -25,7 +25,7 @@ struct Lyrics: View {
     
     @State private var textSize = Size.one
     @Binding var isOpenLyrics: Bool
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var nowPlaying: NowPlayingViewModel
     
     var body: some View {
         
@@ -53,7 +53,7 @@ struct Lyrics: View {
 }
 
 struct BackgroundImage: View {
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var nowPlaying: NowPlayingViewModel
     var body: some View {
         KFImage(URL(string: nowPlaying.playingTrack?.state.track.album.imageUrl ?? ""))
             .placeholder {
@@ -68,7 +68,7 @@ struct BackgroundImage: View {
 }
 
 struct LyricsTrackInfo: View {
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var nowPlaying: NowPlayingViewModel
     
     init(action: @escaping () -> Void) {
         self.action = action

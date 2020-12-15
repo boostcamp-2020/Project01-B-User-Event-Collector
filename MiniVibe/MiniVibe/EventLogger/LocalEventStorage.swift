@@ -23,7 +23,8 @@ final class LocalEventStorage: LocalStorageType {
             Like.fetchRequest(),
             Subscribe.fetchRequest(),
             MoveTrack.fetchRequest(),
-            Engagement.fetchRequest()
+            Engagement.fetchRequest(),
+            Play.fetchRequest()
         ]
     }
     
