@@ -78,7 +78,7 @@ const App = ({ Component, pageProps }) => {
         <CookiesProvider>
         <Container >
             <Head>
-                <meta charSet="utf-8" />
+                <meta charSet="utf-8" name="Description" content="mini VIBE Event Collector"/>
                 <title>miniVibe</title>
                 <link rel="shortcut icon" href="https://img.icons8.com/cute-clipart/64/000000/like.png" />
             </Head>
