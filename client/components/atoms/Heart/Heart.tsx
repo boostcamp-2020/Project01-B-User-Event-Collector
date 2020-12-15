@@ -18,7 +18,7 @@ const Heart = ({ isSelected, sort, onClick }: HeartProps) => {
         setIsClicked(!isClicked);
     };
     return (
-        <Container onClick={onClickHandler}>
+        <Container onClick={sort === 'musicPlayer' ? onClickHandler : undefined}>
             {sort !== 'musicPlayer' ? (
                 <div onClick={onClick}>
                     {isSelected ? <FavoriteIcon style={{ color: '#FF1150' }} /> : <FavoriteBorderIcon />}
