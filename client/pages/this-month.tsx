@@ -4,7 +4,7 @@ import TrackRowList from '@components/organisms/CardLists/TrackRowList';
 import ContentsButtonGroup from '@components/organisms/ContentsButtonGroup';
 import CardListContainer from '@components/organisms/CardListContainer';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
-import { request } from 'utils/apis';
+import { requestByCookie } from 'utils/apis';
 import apiUrl from 'constants/apiUrl';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import { contentType, dataType, page } from '@constants/identifier';
@@ -77,7 +77,8 @@ const ThisMonth = ({ PlaylistData, TrackData }) => {
 };
 
 export async function getServerSideProps(context) {
-    const PlaylistData = await request(apiUrl.playlist + `/9`);
+    const { req, res } = context;
+    const PlaylistData = await requestByCookie(req, res, apiUrl.playlist + `/9`);
     const TrackData = PlaylistData?.tracks;
 
     // TODO: error handling

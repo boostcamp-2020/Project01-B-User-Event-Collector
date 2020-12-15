@@ -3,7 +3,7 @@ import MainMagazineCard from '@components/organisms/Cards/MainMagazineCard/MainM
 import CardListContainer from '@components/organisms/CardListContainer';
 import MagazineCardList from '@components/organisms/CardLists/MagazineList/MagazineList';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
-import { request } from '@utils/apis';
+import { requestByCookie, request } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
 import { page, contentType } from '@constants/identifier';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
@@ -112,6 +112,13 @@ const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata }) => {
 };
 
 export async function getServerSideProps(context) {
+    const { req, res } = context;
+    // const [Magazinesdata, Newsdata, Playlistdata, Albumdata] = await Promise.all([
+    //     requestByCookie(req, res, apiUrl.magazine),
+    //     requestByCookie(req, res, apiUrl.news),
+    //     requestByCookie(req, res, apiUrl.playlist),
+    //     requestByCookie(req, res, apiUrl.album),
+    // ]);
     const [Magazinesdata, Newsdata, Playlistdata, Albumdata] = await Promise.all([
         request(apiUrl.magazine),
         request(apiUrl.news),

@@ -44,7 +44,9 @@ struct PlayListView: View {
                                 ) {
                                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
                                         ForEach(playlist.tracks ?? [], id: \.id) { track in
-                                            TrackRowC(viewModel: .init(track: track, eventLogger: MiniVibeApp.eventLogger)) {
+                                            TrackRowC(viewModel:
+                                                        .init(track: track,
+                                                              eventLogger: MiniVibeApp.eventLogger)) {
                                                 viewModel.send(.showTrackMenu(info: $0))
                                             }
                                         }

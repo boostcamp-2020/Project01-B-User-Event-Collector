@@ -82,7 +82,12 @@ struct PlaylistAlbumInfo: View {
 
 struct PlaylistAlbumInfo_Previews: PreviewProvider {
     static var previews: some View {
-        PlaylistAlbumInfo(isOpenArticle: .constant(false), imageURL: "", title: "title", subtitle: "subtitle", description: "asdfasdfasdfasdf", article: "asdfasdfasdfasdf")
+        PlaylistAlbumInfo(isOpenArticle: .constant(false),
+                          imageURL: "",
+                          title: "title",
+                          subtitle: "subtitle",
+                          description: "asdfasdfasdfasdf",
+                          article: "asdfasdfasdfasdf")
             .previewLayout(.fixed(width: 375, height: 200))
             .previewInAllColorSchemes
     }
