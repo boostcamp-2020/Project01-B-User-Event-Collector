@@ -16,26 +16,18 @@ struct ServerResponse: Decodable {
 
 final class ServerEventStorage: ServerStorageType {
     private let network: NetworkServiceType
+    private let local: LocalStorageType
     private var cancellable = Set<AnyCancellable>()
     
-    init(network: NetworkServiceType = NetworkService()) {
+    init(network: NetworkServiceType = NetworkService(),
+         local: LocalStorageType = LocalEventStorage(.persistent)) {
         self.network = network
+        self.local = local
     }
     
     func send<T: EventLogType>(_ event: T) {
-        var url = EndPoint.events.urlString
         guard let encodedData = try? JSONEncoder().encode(event) else { return }
-        
-        switch event {
-        case is PlayLog,
-             is AddToUpnext,
-             is RemoveFromUpnext,
-             is MoveTrackLog:
-            url = EndPoint.playEvents.urlString
-
-        default:
-            url = EndPoint.events.urlString
-        }
+        let url = eventEndPoint(event: event)
         
         network.request(url: url, request: .post, body: encodedData)
             .decode(type: ServerResponse.self, decoder: JSONDecoder())
@@ -51,13 +43,31 @@ final class ServerEventStorage: ServerStorageType {
             }
             .map(\.success)
             .eraseToAnyPublisher()
-            .sink(receiveCompletion: { _ in
-                
-            }, receiveValue: { success in
+            .sink(receiveCompletion: { [weak self] result in
+                switch result {
+                case .finished:
+                    break
+                case .failure(_):
+                    self?.local.save(event)
+                }
+            }, receiveValue: { [weak self] success in
                 if !success {
-                    LocalEventStorage(.persistent).save(event)
+                    self?.local.save(event)
                 }
             })
             .store(in: &cancellable)
+    }
+    
+    private func eventEndPoint(event: EventLogType) -> String {
+        switch event {
+        case is PlayLog,
+             is AddToUpnext,
+             is RemoveFromUpnext,
+             is MoveTrackLog:
+            return EndPoint.playEvents.urlString
+
+        default:
+            return EndPoint.events.urlString
+        }
     }
 }
