@@ -54,16 +54,17 @@ const contentsDropDownMenu = [
 ];
 
 const HeaderButtonGroup = ({ sort, onAddUpNextHandler, liked }: HeaderButtonGroupProps) => {
-    const [addButton, setAddButton] = useState(liked);
+    const [likeStatus, setLikeStatus] = useState(liked);
     const componentInfo = useContext(ComponentInfoContext);
+    const data = componentInfo.data;
 
-    const addButtonHandler = () => {
-        if (!addButton) {
-            addToLibrary(`${apiUrl.libraryAlbum}`, { data: { id: componentInfo.data.id } });
+    const likeHandler = () => {
+        if (!likeStatus) {
+            addToLibrary(`${apiUrl.like}${data.type}s`, { data: { id: data.id } });
         } else {
-            deleteFromLibrary(`${apiUrl.libraryAlbum}/${componentInfo.data.id}`);
+            deleteFromLibrary(`${apiUrl.like}${data.type}s/${data.id}`);
         }
-        setAddButton(!addButton);
+        setLikeStatus(!likeStatus);
     };
     return (
         <ButtonContainer sort={sort} liked={liked}>
@@ -83,13 +84,13 @@ const HeaderButtonGroup = ({ sort, onAddUpNextHandler, liked }: HeaderButtonGrou
                 </Button>
             )}
             <Button height="40">MP3 구매</Button>
-            {sort !== 'track' && <AddButton onClick={addButtonHandler} liked={addButton} />}
-            {sort === 'track' && <Heart isSelected={false} />}
+            {sort !== 'track' && <AddButton onClick={likeHandler} liked={likeStatus} />}
+            {sort === 'track' && <Heart isSelected={likeStatus} onClick={likeHandler} />}
             <StyledDropDown
                 id="contents"
                 control={StyledMoreHorizIcon}
                 menuItems={contentsDropDownMenu}
-                state={{ setAddButton }}
+                state={{ setLikeStatus }}
             />
         </ButtonContainer>
     );
