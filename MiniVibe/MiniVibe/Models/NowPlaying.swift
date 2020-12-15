@@ -119,7 +119,7 @@ final class PlayerDataManager {
                                      albumId: track.albumId!,
                                      album: albumData,
                                      artist: artistData,
-                                     liked: track.id)
+                                     liked: track.liked)
 
         }
         let savedInfo = NSManagedObject(entity: entity,
