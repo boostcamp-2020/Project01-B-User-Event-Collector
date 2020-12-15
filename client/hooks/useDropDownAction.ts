@@ -22,13 +22,16 @@ const useDropDownAction = ({ userId, setAnchorEl, state }) => {
                     data: {
                         id: data.id
                     }
-                });
-                state.setIsLiked(1);
+                })
+                .then(data => {state.setIsLiked(1)})
+                .catch(err => {console.log(err); });
                 logLikeEvent(true);
                 break;
             case dropDownMenu.unlike:
-                deleteFromLibrary(`${apiUrl.like}${data.type}s/${data.id}`);
-                state.setIsLiked(0);
+                deleteFromLibrary(`${apiUrl.like}${data.type}s/${data.id}`)
+                .then(data => {state.setIsLiked(0);})
+                .catch(err => {console.log(err); });
+                
                 logLikeEvent(false);
                 break;
             case dropDownMenu.addToPlaylist:
@@ -37,7 +40,7 @@ const useDropDownAction = ({ userId, setAnchorEl, state }) => {
                         visibility: true,
                         data: data,
                     });
-                });
+                }).catch(err => {console.log(err); });
                 break;
             case dropDownMenu.addToLibrary:
                 let type = data.type
@@ -47,8 +50,9 @@ const useDropDownAction = ({ userId, setAnchorEl, state }) => {
                     if(type === 'magazine') type = 'playlist'
                     else if(type === 'news') type = 'album'
                 }
-                addToLibrary(`${apiUrl.like}${type}s`, {data: {id} });
-                if(state.setLikeStatus) state.setLikeStatus(true)
+                addToLibrary(`${apiUrl.like}${type}s`, {data: {id} })
+                .then(data => {if(state.setLikeStatus) state.setLikeStatus(true)})
+                .catch(err => {console.log(err); });
                 logLikeEvent(true);
                 break;
             case dropDownMenu.addToUpNext:

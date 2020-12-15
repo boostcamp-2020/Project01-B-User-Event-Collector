@@ -60,11 +60,22 @@ const HeaderButtonGroup = ({ sort, onAddUpNextHandler, liked }: HeaderButtonGrou
 
     const likeHandler = () => {
         if (!likeStatus) {
-            addToLibrary(`${apiUrl.like}${data.type}s`, { data: { id: data.id } });
+            addToLibrary(`${apiUrl.like}${data.type}s`, { data: { id: data.id } })
+                .then((data) => {
+                    setLikeStatus(!likeStatus);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         } else {
-            deleteFromLibrary(`${apiUrl.like}${data.type}s/${data.id}`);
+            deleteFromLibrary(`${apiUrl.like}${data.type}s/${data.id}`)
+                .then((data) => {
+                    setLikeStatus(!likeStatus);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         }
-        setLikeStatus(!likeStatus);
     };
     return (
         <ButtonContainer sort={sort} liked={liked}>

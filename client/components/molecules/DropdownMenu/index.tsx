@@ -65,8 +65,9 @@ const DropdownMenu = ({ id, control: ControlComponent, menuItems, children, stat
                 data: [id],
             },
         };
-        addToPlaylist(url, reqBodyData);
-        removePlaylistModal();
+        addToPlaylist(url, reqBodyData).then((data) => {
+            removePlaylistModal();
+        });
     };
     return (
         <>
