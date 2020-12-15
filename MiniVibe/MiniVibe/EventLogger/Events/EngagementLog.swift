@@ -26,19 +26,27 @@ extension EngagementLogType {
 struct Active: EngagementLogType {
     let userId: Int
     let timestamp = Date()
+    let event = String(describing: Self.self)
+    let platform = "iOS"
 }
 
 struct Foreground: EngagementLogType {
     let userId: Int
     let timestamp = Date()
+    let event = String(describing: Self.self)
+    let platform = "iOS"
 }
 
 struct Background: EngagementLogType {
     let userId: Int
     let timestamp = Date()
+    let event = String(describing: Self.self)
+    let platform = "iOS"
 }
 
 struct Terminate: EngagementLogType {
     let userId: Int
     let timestamp = Date()
+    let event = String(describing: Self.self)
+    let platform = "iOS"
 }

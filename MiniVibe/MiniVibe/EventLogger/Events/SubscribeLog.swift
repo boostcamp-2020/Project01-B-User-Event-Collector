@@ -28,4 +28,6 @@ struct SubscribeLog: SubscribeLogType {
     let userId: Int
     let timestamp = Date()
     let componentId: String
+    let event = "Subscribe"
+    let platform = "iOS"
 }

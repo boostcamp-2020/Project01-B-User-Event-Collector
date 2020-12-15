@@ -29,10 +29,12 @@ extension PlayLogType {
     }
 }
 
-struct PlayerPlay: PlayLogType {
+struct PlayLog: PlayLogType {
     let userId: Int
     let trackId: Int
     let componentId: String
     var isPlay: Bool
     let timestamp = Date()
+    let event = "Play"
+    let platform = "iOS"
 }

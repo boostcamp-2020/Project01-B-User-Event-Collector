@@ -34,4 +34,6 @@ struct MoveTrackLog: MoveTrackLogType {
     let source: Int
     let destination: Int
     let timestamp = Date()
+    let event = "MoveTrack"
+    let platform = "iOS"
 }
