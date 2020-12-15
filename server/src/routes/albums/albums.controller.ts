@@ -43,9 +43,8 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
         const UserRepository = getRepository(User);
         const userLiked = await UserRepository.createQueryBuilder('user')
             .leftJoinAndSelect('user.libraryAlbums', 'library_albums')
-            .where('library_albums.id = :id', { id })
+            .where('user.id = :userId AND library_albums.id = :id', { userId, id })
             .getOne();
-
         const relatedAlbums = await AlbumRepository.createQueryBuilder('album')
             .leftJoinAndSelect('album.artist', 'artist')
             .where('album.id != :id and artist.id = :artistId', { id, artistId: album?.artist.id })
