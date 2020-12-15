@@ -13,9 +13,9 @@ interface MagazineListProps {
 const MagazineList = ({ variant, items }: MagazineListProps) => (
     <List variant={variant}>
         {items.map((item) => (
-            <Item variant={variant}>
-                <ComponentInfoWrapper componentId={`${item.id}`} data={{ type: dataType.magaznie, id: item.id }}>
-                    <MagazineCard {...(item as MagazineCardProps)} />
+            <Item key = {item.id} variant={variant}>
+                <ComponentInfoWrapper key = {item.id} componentId={`${item.id}`} data={{ type: dataType.magaznie, id: item.id }}>
+                    <MagazineCard key = {item.id} {...(item as MagazineCardProps)} />
                 </ComponentInfoWrapper>
             </Item>
         ))}
