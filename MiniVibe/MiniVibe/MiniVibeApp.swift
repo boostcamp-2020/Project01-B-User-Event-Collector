@@ -9,15 +9,13 @@ import SwiftUI
 import EventLogKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    var nowPlaying: NowPlaying!
+    var nowPlaying: NowPlayingViewModel?
     
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
-        let defaultTracks = nowPlaying.dataManager.fetch()
-        let trackViewModel = nowPlaying.dataManager.tracksToViewModel(tracks: defaultTracks)
-        nowPlaying.upNext = trackViewModel
+        nowPlaying?.send(.launch)
         return true
     }
 }
@@ -30,7 +28,7 @@ struct MiniVibeApp: App {
                                          server: ServerEventStorage(),
                                          reachability: ReachablilityObserver(hostName: "www.google.com"))
     
-    let nowPlaying = NowPlaying()
+    let nowPlaying = NowPlayingViewModel()
     
     init() {
         appDelegate.nowPlaying = nowPlaying
@@ -48,10 +46,7 @@ struct MiniVibeApp: App {
                 .onReceive(
                     NotificationCenter.default.publisher(
                         for: UIApplication.willResignActiveNotification)) { _ in
-                    nowPlaying.dataManager.delete()
-                    let upNext = nowPlaying.upNext
-                    let tracksToSave = nowPlaying.dataManager.viewModelToTracks(viewModel: upNext)
-                    nowPlaying.dataManager.saveTracks(tracks: tracksToSave)
+                    nowPlaying.send(.resignActive)
                     MiniVibeApp.eventLogger.send(Background(userId: 0))
                 }
                 .onReceive(

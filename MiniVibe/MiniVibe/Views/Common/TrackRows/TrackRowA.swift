@@ -9,7 +9,7 @@ import SwiftUI
 import KingfisherSwiftUI
 
 struct TrackRowA: View {
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var nowPlaying: NowPlayingViewModel
     @StateObject private var viewModel: TrackViewModel
     @State private var isMenuOpen = false
     private let order: Int
@@ -31,7 +31,7 @@ struct TrackRowA: View {
             }
             
             Button {
-                nowPlaying.addTrack(track: viewModel)
+                nowPlaying.send(.add(track: viewModel))
             } label: {
                 TrackRowInfoA(order: order,
                               title: track.title,

@@ -9,7 +9,7 @@ import CoreData
 import Foundation
 import EventLogKit
 
-protocol TransitionLogType: EventLogType {
+protocol TransitionLogType: CustomEventLogType {
     var componentId: String { get }
     var page: String { get }
 }

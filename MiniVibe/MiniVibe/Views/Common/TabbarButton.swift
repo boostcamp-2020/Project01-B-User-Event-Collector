@@ -37,7 +37,7 @@ struct TabbarButton: View {
         }
     }
     
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var nowPlaying: NowPlayingViewModel
     let type: ButtonType
     let action: () -> Void
     

@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import EventLogKit
 
-protocol PlayLogType: EventLogType {
+protocol PlayLogType: CustomEventLogType {
     var trackId: Int { get }
     var componentId: String { get }
     var isPlay: Bool { get }

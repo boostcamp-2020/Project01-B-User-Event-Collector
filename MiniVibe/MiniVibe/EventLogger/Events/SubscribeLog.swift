@@ -9,7 +9,7 @@ import CoreData
 import Foundation
 import EventLogKit
 
-protocol SubscribeLogType: EventLogType {
+protocol SubscribeLogType: CustomEventLogType {
     var componentId: String { get }
 }
 

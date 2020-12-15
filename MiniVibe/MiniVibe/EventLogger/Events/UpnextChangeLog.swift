@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import EventLogKit
 
-protocol UpnextChangeLogType: EventLogType {
+protocol UpnextChangeLogType: CustomEventLogType {
     var trackId: [Int] { get }
     var componentId: String { get }
 }

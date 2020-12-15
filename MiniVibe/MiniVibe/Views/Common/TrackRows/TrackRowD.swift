@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TrackRowD: View {
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var nowPlaying: NowPlayingViewModel
     @StateObject private var viewModel: TrackViewModel
     private let order: Int
     private let menuButtonAction: (TrackViewModel) -> Void
@@ -22,7 +22,7 @@ struct TrackRowD: View {
     var body: some View {
         HStack {
             Button {
-                nowPlaying.addTrack(track: viewModel)
+                nowPlaying.send(.add(track: viewModel))
             } label: {
                 TrackRowInfoC(order: order, title: viewModel.state.track.title)
             }
