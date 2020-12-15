@@ -1,6 +1,5 @@
 import express from 'express';
 import * as trackController from './library.tracks.controller';
-import { authenticateJWT } from '../../auth';
 
 const router = express.Router();
 

@@ -1,4 +1,5 @@
-const baseUrl = 'http://localhost:4500/api';
+const host = 'http://localhost:4500';
+const baseUrl = `${host}/api`;
 
 const apiUrl = {
     magazine: `${baseUrl}/magazines`,
@@ -14,8 +15,9 @@ const apiUrl = {
     libraryPlaylist: `${baseUrl}/library/playlists`,
     libraryMixtape: `${baseUrl}/library/mixtapes`,
     like: `${baseUrl}/library/`,
-    addTracksToPlaylist:`${baseUrl}/playlists/tracks`,
+    addTracksToPlaylist: `${baseUrl}/playlists/tracks`,
     user: `${baseUrl}/users`,
+    login: `${host}/auth/naver-login`,
     event: `${baseUrl}/events/`,
     playEvent: `${baseUrl}/play-events/`,
 };

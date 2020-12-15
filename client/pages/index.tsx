@@ -80,45 +80,40 @@ const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata }) => {
                         </ComponentInfoWrapper>
                     </ContentsContainer>
                 </PublicContentsContainer>
-                { user.isLoggedIn && <UserContentsContainer>
-                    <ContentsContainer>
-                        <ComponentInfoWrapper componentId={contentType.recommendedPlaylist}>
-                            <CardListContainer title="내 취향 플레이리스트" href="/">
-                                <ContentsCardList variant="playlist" items={Playlistdata} />
-                            </CardListContainer>
-                        </ComponentInfoWrapper>
-                    </ContentsContainer>
-                    {
-                        // TODO: user logined -> 믹스테잎 or null
-                    }
-                    {/* <ContentsContainer>
+                {user.isLoggedIn && (
+                    <UserContentsContainer>
+                        <ContentsContainer>
+                            <ComponentInfoWrapper componentId={contentType.recommendedPlaylist}>
+                                <CardListContainer title="내 취향 플레이리스트" href="/">
+                                    <ContentsCardList variant="playlist" items={Playlistdata} />
+                                </CardListContainer>
+                            </ComponentInfoWrapper>
+                        </ContentsContainer>
+                        {
+                            // TODO: user logined -> 믹스테잎 or null
+                        }
+                        {/* <ContentsContainer>
                         <ComponentInfoWrapper componentId={contentType.mixtape}>
                             <CardListContainer title="나를 위한 믹스테잎">
                                 <ContentsCardList variant="mixtape" items={Mixtapedata} />
                             </CardListContainer>
                         </ComponentInfoWrapper>
                     </ContentsContainer> */}
-                    <ContentsContainer>
-                        <ComponentInfoWrapper componentId={contentType.customizedAlbum}>
-                            <CardListContainer title="좋아할 최신 앨범" href="/">
-                                <ContentsCardList variant="album" items={Albumdata} />
-                            </CardListContainer>
-                        </ComponentInfoWrapper>
-                    </ContentsContainer>
-                </UserContentsContainer>}
+                        <ContentsContainer>
+                            <ComponentInfoWrapper componentId={contentType.customizedAlbum}>
+                                <CardListContainer title="좋아할 최신 앨범" href="/">
+                                    <ContentsCardList variant="album" items={Albumdata} />
+                                </CardListContainer>
+                            </ComponentInfoWrapper>
+                        </ContentsContainer>
+                    </UserContentsContainer>
+                )}
             </TodayContainer>
         </ComponentInfoContext.Provider>
     );
 };
 
-export async function getServerSideProps(context) {
-    const { req, res } = context;
-    // const [Magazinesdata, Newsdata, Playlistdata, Albumdata] = await Promise.all([
-    //     requestByCookie(req, res, apiUrl.magazine),
-    //     requestByCookie(req, res, apiUrl.news),
-    //     requestByCookie(req, res, apiUrl.playlist),
-    //     requestByCookie(req, res, apiUrl.album),
-    // ]);
+export async function getServerSideProps() {
     const [Magazinesdata, Newsdata, Playlistdata, Albumdata] = await Promise.all([
         request(apiUrl.magazine),
         request(apiUrl.news),
