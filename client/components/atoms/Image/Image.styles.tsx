@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface StyledImageProps {
-  variant?: 'primary' | 'todayMagazine' | 'normalMagazine' | 'news' | 'detailThumbnail' | 'trackRowCard' | 'trackInfo' | 'lyricTrackInfo' | 'smallArtist' | 'regularArtist' | 'largeArtist';
+  variant?: 'primary' | 'todayMagazine' | 'normalMagazine' | 'news' | 'detailThumbnail' | 'trackRowCard' | 'trackInfo' | 'lyricTrackInfo' | 'smallArtist' | 'regularArtist' | 'largeArtist' | 'album' | 'playlist' | 'station' | 'mixtape';
 }
 
 const getImageStyle = (props: StyledImageProps) => {
@@ -18,7 +18,7 @@ const getImageStyle = (props: StyledImageProps) => {
       width = '310px';
       height = '310px';
     break;
-    case 'normalMagazine':     //보관함 헤더의 썸네일 & DJ 스테이션
+    case 'normalMagazine' || 'album' || 'playlist' || 'station':     //보관함 헤더의 썸네일 & DJ 스테이션
         width = '180px';
         height = '180px';
     break;

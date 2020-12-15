@@ -32,11 +32,20 @@ export const request = async (url, option) => {
     }
 };
 
+export const requestTracks = async (apiUrl, cookie) => {
+    const data = await request(apiUrl, {
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: cookie,
+        }});
+    return data;
+}
+
 export const requestByCookie = async (req, res, apiUrl) => {
     const cookies = new Cookies(req, res);
     const data = await request(apiUrl, {
         headers: {
-            Authorization: cookies.get('token'),
+            Authorization: cookies.get('token') || 'no cookie',
         },
     });
     return data;
@@ -59,10 +68,6 @@ export const addToLibrary = async (url, option) => {
         await axios({
             ...options,
             url,
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: getCookie('token'),
-            },
         });
     } catch (err) {
         console.error(err);

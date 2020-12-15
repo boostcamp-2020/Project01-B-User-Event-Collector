@@ -41,7 +41,7 @@ const AlbumCard = ( data : AlbumCardProps) => {
     return (
         <CardContainer>
             <ThumbnailContainer>
-                <ContentsThumbnail src={imageUrl} href={"/album/"+id} />
+                <ContentsThumbnail data={data} sort="album"/>
             </ThumbnailContainer>
             <TextContainer>
                 <TitelContainer>

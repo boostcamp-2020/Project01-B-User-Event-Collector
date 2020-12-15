@@ -20,6 +20,7 @@ import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import useTransitionEventLog from '@hooks/useTransitionEventLog';
 
 import { LOAD_USER_REQUEST } from 'constants/actions';
+import { CookiesProvider } from 'react-cookie';
 
 const Container = styled.div`
     background-color: white;
@@ -74,7 +75,8 @@ const App = ({ Component, pageProps }) => {
     }, []);
 
     return (
-        <Container>
+        <CookiesProvider>
+        <Container >
             <Head>
                 <meta charSet="utf-8" />
                 <title>miniVibe</title>
@@ -91,6 +93,7 @@ const App = ({ Component, pageProps }) => {
             </ComponentInfoContext.Provider>
             <Component {...pageProps} />
         </Container>
+        </CookiesProvider>
     );
 };
 

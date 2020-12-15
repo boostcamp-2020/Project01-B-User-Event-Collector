@@ -41,7 +41,7 @@ const PlaylistCard = (data: PlaylistCardProps) => {
     return (
         <CardContainer>
             <ThumbnailContainer>
-                <ContentsThumbnail src={imageUrl} href={'/playlist/' + id} />
+                <ContentsThumbnail data={data} sort="playlist" />
             </ThumbnailContainer>
             <TextContainer>
                 <TitelContainer>
