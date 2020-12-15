@@ -7,7 +7,7 @@ import Button from '@components/atoms/Button';
 import TrackRowList from '@components/organisms/CardLists/TrackRowList';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import { request } from '@utils/apis';
+import { requestByCookie } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
 import { page, contentType } from '@constants/identifier';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
@@ -176,8 +176,9 @@ const MagazineDetail = ({ magazineData }) => {
 
 export async function getServerSideProps(context) {
     const { id } = context.query;
+    const { req, res } = context;
 
-    const magazineData = await request(`${apiUrl.magazine}/${id}`);
+    const magazineData = await requestByCookie(req, res,`${apiUrl.magazine}/${id}`);
 
     if (!magazineData) {
         return {

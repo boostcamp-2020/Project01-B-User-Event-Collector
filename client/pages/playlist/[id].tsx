@@ -5,7 +5,7 @@ import TrackRowList from '@components/organisms/CardLists/TrackRowList';
 import ContentsButtonGroup from '@components/organisms/ContentsButtonGroup';
 import CardListContainer from '@components/organisms/CardListContainer';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
-import { request } from '@utils/apis';
+import { requestByCookie } from '@utils/apis';
 import apiUrl from '@constants/apiUrl';
 import { page, contentType, dataType } from '@constants/identifier';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
@@ -77,8 +77,8 @@ const Playlist = ({ playlistData, trackData, artistData }) => {
 
 export async function getServerSideProps(context) {
     const { id } = context.query;
-
-    const playlistData = await request(apiUrl.playlist + `/${id}`);
+    const { req, res } = context;
+    const playlistData = await requestByCookie(req, res, apiUrl.playlist + `/${id}`);
     const trackData = playlistData?.tracks;
     const artistData = playlistData?.relatedArtists;
 
