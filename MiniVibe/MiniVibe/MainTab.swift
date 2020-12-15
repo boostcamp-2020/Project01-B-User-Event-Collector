@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainTab: View {
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var nowPlaying: NowPlayingViewModel
     @State private var contentFrame = CGRect.zero
     @StateObject private var viewModel = MainTabViewModel()
     
@@ -46,10 +46,10 @@ struct MainTab: View {
             EventLogView(viewModel:
                             .init(localStorage: MiniVibeApp.eventLogger.local as? LocalEventStorage)
             )
-                .tabItem {
-                    Image(systemName: "pencil.and.ellipsis.rectangle")
-                }
-                .tag(ViewIdentifier.none)
+            .tabItem {
+                Image(systemName: "pencil.and.ellipsis.rectangle")
+            }
+            .tag(ViewIdentifier.none)
         }
         .foregroundColor(.accentColor)
         .onPreferenceChange(Size.self, perform: { value in
@@ -63,11 +63,9 @@ struct MainTab: View {
         if viewModel.state.tabViewSelection != .none {
             PlayerPreview(coordinate: contentFrame)
                 .onTapGesture {
-                    if !nowPlaying.upNext.isEmpty {
-                        nowPlaying.isPlayerPresented.toggle()
-                    }
+                    nowPlaying.send(.togglePlayer)
                 }
-                .sheet(isPresented: $nowPlaying.isPlayerPresented) {
+                .sheet(isPresented: $nowPlaying.state.isPlayerPresented) {
                     PlayerView()
                         .environmentObject(nowPlaying)
                         .logTransition(identifier: .player,

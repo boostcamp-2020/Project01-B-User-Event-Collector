@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlayerView: View {
-    @EnvironmentObject var nowPlaying: NowPlaying
+    @EnvironmentObject var nowPlaying: NowPlayingViewModel
     @State private var isOpenMenu = false
     @State private var isOpenLyrics = false
     

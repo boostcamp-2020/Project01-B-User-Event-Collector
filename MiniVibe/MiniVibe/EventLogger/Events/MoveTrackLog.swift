@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import EventLogKit
 
-protocol MoveTrackLogType: EventLogType {
+protocol MoveTrackLogType: CustomEventLogType {
     var trackId: Int { get }
     var source: Int { get }
     var destination: Int { get }
@@ -34,4 +34,6 @@ struct MoveTrackLog: MoveTrackLogType {
     let source: Int
     let destination: Int
     let timestamp = Date()
+    let event = "MoveTrack"
+    let platform = "iOS"
 }

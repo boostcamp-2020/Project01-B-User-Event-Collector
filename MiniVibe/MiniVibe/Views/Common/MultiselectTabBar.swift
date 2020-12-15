@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MultiselectTabBar: View {
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var nowPlaying: NowPlayingViewModel
     
     var body: some View {
         ZStack {
@@ -29,8 +29,7 @@ struct MultiselectTabBar: View {
                 Spacer()
                 
                 TabbarButton(type: .delete) {
-                    nowPlaying.deleteTrack()
-                    nowPlaying.selectedTracks.removeAll()
+                    nowPlaying.send(.deleteSelectedTracks)
                 }
             }
             .foregroundColor(.white)

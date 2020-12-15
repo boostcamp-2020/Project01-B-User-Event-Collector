@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlayerControls: View {
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var nowPlaying: NowPlayingViewModel
     @Binding var isOpenMenu: Bool
     @State private var isShuffle = false
     @ObservedObject var viewModel: TrackViewModel
@@ -37,9 +37,9 @@ struct PlayerControls: View {
                 Spacer()
                 
                 Button {
-                    nowPlaying.isPlaying.toggle()
+                    nowPlaying.send(.playButtonTapped)
                 } label: {
-                    Image(systemName: nowPlaying.isPlaying ? "pause.fill" : "play.fill")
+                    Image(systemName: nowPlaying.state.isPlaying ? "pause.fill" : "play.fill")
                         .foregroundColor(.primary)
                         .font(.system(size: 40))
                         .frame(height: 40)

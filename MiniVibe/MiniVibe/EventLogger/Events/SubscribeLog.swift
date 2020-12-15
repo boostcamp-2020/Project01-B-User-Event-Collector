@@ -9,7 +9,7 @@ import CoreData
 import Foundation
 import EventLogKit
 
-protocol SubscribeLogType: EventLogType {
+protocol SubscribeLogType: CustomEventLogType {
     var componentId: String { get }
 }
 
@@ -28,4 +28,6 @@ struct SubscribeLog: SubscribeLogType {
     let userId: Int
     let timestamp = Date()
     let componentId: String
+    let event = "Subscribe"
+    let platform = "iOS"
 }

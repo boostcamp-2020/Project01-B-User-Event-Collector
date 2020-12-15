@@ -9,7 +9,7 @@ import SwiftUI
 import KingfisherSwiftUI
 
 struct PlayerPreview: View {
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var nowPlaying: NowPlayingViewModel
     let coordinate: CGRect
     private let height: CGFloat = 50
     private let edgeInset = EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
@@ -55,32 +55,29 @@ struct PlayerPreview: View {
     }
     
     private func previewControlIcons() -> some View {
-        let emptyUpNext: Bool = nowPlaying.upNext.isEmpty
-        let iconColor: Color = emptyUpNext ? Color.secondary : .primary
-        
         return HStack(spacing: 20) {
             Button {
-                nowPlaying.isPlaying.toggle()
+                nowPlaying.send(.playButtonTapped)
             } label: {
-                nowPlaying.isPlaying ? Image(systemName: "pause.fill") : Image(systemName: "play.fill")
+                Image(systemName: nowPlaying.state.isPlaying ? "pause.fill" : "play.fill")
             }
             .foregroundColor(.primary)
             
             Button {
-                nowPlaying.playNextTrack()
+                nowPlaying.send(.playNext)
             } label: {
                 Image(systemName: "forward.fill")
             }
-            .disabled(emptyUpNext)
-            .foregroundColor(iconColor)
+            .disabled(nowPlaying.isEmptyUpNext)
+            .foregroundColor(nowPlaying.isEmptyUpNext ? Color.secondary : .primary)
             
             Button {
-                nowPlaying.isPlayerPresented = true
+                nowPlaying.send(.togglePlayer)
             } label: {
                 Image(systemName: "music.note.list")
             }
-            .disabled(emptyUpNext)
-            .foregroundColor(iconColor)
+            .disabled(nowPlaying.isEmptyUpNext)
+            .foregroundColor(nowPlaying.isEmptyUpNext ? Color.secondary : .primary)
         }
     }
 }

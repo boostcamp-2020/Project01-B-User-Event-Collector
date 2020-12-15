@@ -3,12 +3,12 @@ import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHe
 import TrackRowList from '@components/organisms/CardLists/TrackRowList';
 import ContentsButtonGroup from '@components/organisms/ContentsButtonGroup';
 import apiUrl from 'constants/apiUrl';
-import { requestByCookie } from '@utils/apis';
+import { getTokenFromCtx } from '@utils/cookies';
+import { request } from '@utils/apis';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 import { page, contentType } from '@constants/identifier';
 import NoDataContainer from '@components/molecules/NoDataContainer';
-
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -40,12 +40,12 @@ const TrackLibrary = ({ trackData }) => {
     const dispatch = useDispatch();
     const onAddUpNextAndPlayHandler = () => {
         dispatch(addToUpNextAndPlay(trackData));
-    }
+    };
     return (
         <ComponentInfoContext.Provider value={{ componentId: page.libraryTrack }}>
             <LibraryContainer>
                 <LibraryHeaderContainer>
-                    <LibraryHeader sort="track" onAddUpNextAndPlayHandler={onAddUpNextAndPlayHandler}/>
+                    <LibraryHeader sort="track" onAddUpNextAndPlayHandler={onAddUpNextAndPlayHandler} />
                 </LibraryHeaderContainer>
                 {trackData.length !== 0 ? (
                     <LibraryContentsContainer>
@@ -64,8 +64,19 @@ const TrackLibrary = ({ trackData }) => {
     );
 };
 
-export const getServerSideProps = async ({req, res}) => {
-    const trackData = await requestByCookie(req, res, apiUrl.libraryTrack);
+export const getServerSideProps = async (context) => {
+    const token = getTokenFromCtx(context);
+    const trackData = await request(apiUrl.libraryTrack, {}, token);
+
+    if (!trackData) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        };
+    }
+
     return {
         props: {
             trackData,

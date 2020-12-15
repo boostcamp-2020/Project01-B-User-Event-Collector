@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import EventLogKit
 
-protocol ShareLogType: EventLogType {
+protocol ShareLogType: CustomEventLogType {
     var componentId: String { get }
     var data: LogData { get }
 }
@@ -31,4 +31,5 @@ struct ShareLog: ShareLogType {
     let componentId: String
     var data: LogData
     let timestamp: Date = Date()
+    let event: String = "Share"
 }
