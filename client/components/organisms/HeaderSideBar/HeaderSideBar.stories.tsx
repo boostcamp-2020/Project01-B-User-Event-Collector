@@ -6,6 +6,6 @@ export default {
     component: HeaderSideBar,
 };
 
-export const LoggedIn = () => <HeaderSideBar user={{ id: '1234', name: 'User' }} />;
+export const LoggedIn = () => <HeaderSideBar user={{ id: 10, name: 'User', isLoggedIn:true, profileUrl:"https://musicmeta-phinf.pstatic.net/album/003/399/3399784.jpg" }} />;
 
-export const NotLoggedIn = () => <HeaderSideBar />;
+export const NotLoggedIn = () => <HeaderSideBar user={{ id: 10, name: 'User', isLoggedIn:true, profileUrl:"https://musicmeta-phinf.pstatic.net/album/003/399/3399784.jpg" }}/>;

@@ -19,6 +19,8 @@ const Container = styled.div`
 
 const TitleContainer = styled.div`
     margin: 10px 0;
+    display: flex;
+    align-items:center;
 `;
 
 const Title = styled.div`
@@ -30,10 +32,12 @@ const CardListContainer = ({ title, href, children }: CardListContainerProps) =>
     <Container>
         <TitleContainer>
             {href ? (
+                <>
                 <A href={href} variant="secondary">
                     {title}
-                    <IconButton variant="plainBlackRegular" icon={ArrowForwardIosIcon} />
                 </A>
+                <IconButton variant="plainBlackRegular" icon={ArrowForwardIosIcon}/>
+                </>
             ) : (
                 <Title>{title}</Title>
             )}

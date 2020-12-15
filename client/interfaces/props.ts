@@ -15,10 +15,10 @@ export interface TrackInfoProps {
 }
 
 export interface InputProps {
-    name: string;
+    name?: string;
     variant?: string;   
-    value: string | undefined;
-    onChange : (e : React.ChangeEvent<HTMLElement> ) => void | undefined
+    value?: string | undefined;
+    onChange? : (e : React.ChangeEvent<HTMLElement> ) => void | undefined
 }
 
 export interface MagazineCardProps {
