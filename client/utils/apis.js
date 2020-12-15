@@ -33,10 +33,11 @@ export const request = async (url, option) => {
 };
 
 export const requestByCookie = async (req, res, apiUrl) => {
+    console.log('........?', apiUrl);
     const cookies = new Cookies(req, res);
     const data = await request(apiUrl, {
         headers: {
-            Authorization: cookies.get('token'),
+            Authorization: cookies.get('token') || 'no cookie',
         },
     });
     return data;
