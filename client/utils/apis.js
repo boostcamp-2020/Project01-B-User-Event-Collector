@@ -59,10 +59,6 @@ export const addToLibrary = async (url, option) => {
         await axios({
             ...options,
             url,
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: getCookie('token'),
-            },
         });
     } catch (err) {
         console.error(err);
