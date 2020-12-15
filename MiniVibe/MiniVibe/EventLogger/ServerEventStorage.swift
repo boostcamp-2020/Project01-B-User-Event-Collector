@@ -23,10 +23,8 @@ final class ServerEventStorage: ServerStorageType {
     }
     
     func send<T: EventLogType>(_ event: T) {
-   
         var url = EndPoint.events.urlString
-        let encoder = JSONEncoder()
-        guard let encodedData = try? encoder.encode(event) else { return }
+        guard let encodedData = try? JSONEncoder().encode(event) else { return }
         
         switch event {
         case is PlayLog,
@@ -55,9 +53,10 @@ final class ServerEventStorage: ServerStorageType {
             .eraseToAnyPublisher()
             .sink(receiveCompletion: { _ in
                 
-            }, receiveValue: { response in
-                // if response == false,
-                    // save in core data
+            }, receiveValue: { success in
+                if !success {
+                    LocalEventStorage(.persistent).save(event)
+                }
             })
             .store(in: &cancellable)
     }
