@@ -7,7 +7,7 @@ import passport from 'passport';
 import 'dotenv/config';
 import passportInit from './routes/auth/passport/passport-init';
 import apiRouter from './routes';
-import authRouter, { authenticateJWT } from './routes/auth';
+import authRouter from './routes/auth';
 import db from './db';
 
 db();
@@ -24,7 +24,7 @@ app.use(morgan('dev'));
 app.use(cors({
     origin: true,
     credentials: true,
-  }))
+}));
 
 app.use('/auth', authRouter);
 app.use('/api', apiRouter);

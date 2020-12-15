@@ -2,7 +2,7 @@ import express from 'express';
 import passport from 'passport';
 import { getManager } from 'typeorm';
 import User from '../../models/User';
-import authRouter, { authenticateJWT } from '../auth';
+import { authenticateJWT } from '../../middlewares/auth';
 
 const router = express.Router();
 
@@ -20,7 +20,7 @@ router.get('/', authenticateJWT, async (req, res, next) => {
         }
         return res.status(200).json(null);
     } catch (err) {
-        console.log(err);
+        return res.status(500).json(null);
     }
 });
 

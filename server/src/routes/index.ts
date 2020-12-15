@@ -10,7 +10,7 @@ import trackRouter from './tracks';
 import mixtapeRouter from './mixtapes';
 import eventRouter from './events';
 import playEventRouter from './playEvents';
-import { authenticateJWT, checkAuth } from './auth';
+import { authenticateJWT, checkAuth } from '../middlewares/auth';
 
 const router = express.Router();
 
