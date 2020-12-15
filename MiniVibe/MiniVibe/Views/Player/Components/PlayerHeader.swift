@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PlayerHeader: View {
     let title: String
+    @EnvironmentObject private var nowPlaying: NowPlaying
     
     var body: some View {
         HStack {
@@ -25,7 +26,7 @@ struct PlayerHeader: View {
             Spacer()
             
             Button {
-                
+                nowPlaying.isPlayerPresented = false
             } label: {
                 Image(systemName: "chevron.compact.down")
             }
