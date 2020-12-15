@@ -9,14 +9,18 @@ import SwiftUI
 
 struct PreviewSection: View {
     let width: CGFloat
-    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(0..<5) { _ in
-                    PreviewItem()
-                        .frame(width: width * .sectionRatio)
-                }
+                MockPreviewItem.item0
+                    .frame(width: width * .sectionRatio)
+                
+                MockPreviewItem.item1
+                    .frame(width: width * .sectionRatio)
+                
+                MockPreviewItem.item2
+                    .frame(width: width * .sectionRatio)
+
             }
             .padding(.horizontal, width * .paddingRatio)
         }
