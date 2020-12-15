@@ -10,6 +10,10 @@ import AddButton from '@components/atoms/Button/AddButton';
 import Heart from '@components/atoms/Heart/Heart';
 
 import { HeaderButtonGroupProps } from 'interfaces/props';
+import { useContext, useState } from 'react';
+import { addToLibrary, deleteFromLibrary } from '@utils/apis';
+import apiUrl from '@constants/apiUrl';
+import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 
 const ButtonContainer = styled.div<HeaderButtonGroupProps>`
     width: ${(props) => (props.sort === 'track' ? '300px' : '480px')};
@@ -49,20 +53,44 @@ const contentsDropDownMenu = [
     },
 ];
 
-const HeaderButtonGroup = ({sort, onAddUpNextHandler}: HeaderButtonGroupProps) => {
+const HeaderButtonGroup = ({ sort, onAddUpNextHandler, liked }: HeaderButtonGroupProps) => {
+    const [addButton, setAddButton] = useState(liked);
+    const componentInfo = useContext(ComponentInfoContext);
+
+    const addButtonHandler = () => {
+        if (!addButton) {
+            addToLibrary(`${apiUrl.libraryAlbum}`, { data: { id: componentInfo.data.id } });
+        } else {
+            deleteFromLibrary(`${apiUrl.libraryAlbum}/${componentInfo.data.id}`);
+        }
+        setAddButton(!addButton);
+    };
     return (
-        <ButtonContainer sort={sort}>
-            { sort === 'track' && 
-            <Button variant = "primary" width='100' height='40' icon={PlayArrowIcon} onClick={onAddUpNextHandler}>재생</Button> }
-            { sort !== 'track' && 
-            <Button variant = "primary" width='130' height='40' icon={PlayArrowIcon} onClick={onAddUpNextHandler}>전체재생</Button>}
-            { sort !== 'track' && 
-            <Button width='130' height='40' icon={ShuffleIcon}>랜덤재생</Button>
-            }
-            <Button height='40'>MP3 구매</Button>
-            { sort !== 'track' && <AddButton />}
-            { sort === 'track' && <Heart isSelected = {false}/>}
-            <StyledDropDown id="contents" control={StyledMoreHorizIcon} menuItems={contentsDropDownMenu} state={{}} />
+        <ButtonContainer sort={sort} liked={liked}>
+            {sort === 'track' && (
+                <Button variant="primary" width="100" height="40" icon={PlayArrowIcon} onClick={onAddUpNextHandler}>
+                    재생
+                </Button>
+            )}
+            {sort !== 'track' && (
+                <Button variant="primary" width="130" height="40" icon={PlayArrowIcon} onClick={onAddUpNextHandler}>
+                    전체재생
+                </Button>
+            )}
+            {sort !== 'track' && (
+                <Button width="130" height="40" icon={ShuffleIcon}>
+                    랜덤재생
+                </Button>
+            )}
+            <Button height="40">MP3 구매</Button>
+            {sort !== 'track' && <AddButton onClick={addButtonHandler} liked={addButton} />}
+            {sort === 'track' && <Heart isSelected={false} />}
+            <StyledDropDown
+                id="contents"
+                control={StyledMoreHorizIcon}
+                menuItems={contentsDropDownMenu}
+                state={{ setAddButton }}
+            />
         </ButtonContainer>
     );
 };

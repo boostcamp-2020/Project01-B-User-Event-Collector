@@ -46,6 +46,7 @@ const useDropDownAction = ({ userId, setAnchorEl, state }) => {
                 addToLibrary(`${apiUrl.like}${type}s`, {data: {
                     id: data.id
                 }});
+                state.setAddButton(true);
                 logLikeEvent(true);
                 break;
             case dropDownMenu.addToUpNext:

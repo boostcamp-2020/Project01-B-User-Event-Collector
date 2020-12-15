@@ -168,6 +168,7 @@ export interface CheckBoxProps {
 export interface HeaderButtonGroupProps {
     sort?: 'track';
     onAddUpNextHandler?: any;
+    liked: boolean
 }
 
 export interface LyricModalProps {
