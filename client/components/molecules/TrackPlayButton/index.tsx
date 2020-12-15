@@ -1,14 +1,20 @@
 import React from 'react';
 import Image from '@components/atoms/Image/Image';
 import { ButtonContainer, Play } from './TrackPlayButton.styles';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToUpNextAndPlay } from 'reducers/musicPlayer';
 
 interface TrackPlayButtonProps {
     data;
     imgVariant?: 'trackRowCard' | 'trackInfo';
 }
 const TrackPlayButton = ({ data, imgVariant }: TrackPlayButtonProps) => {
+    const dispatch = useDispatch();
+    const onClickPlayHandler = () => {
+        dispatch(addToUpNextAndPlay([data]));
+    }
     return(
-        <ButtonContainer>
+        <ButtonContainer onClick={onClickPlayHandler}>
             <Image variant={imgVariant} src={data.album.imageUrl} />
             <Play>
                 {
