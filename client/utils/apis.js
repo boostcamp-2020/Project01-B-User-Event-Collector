@@ -60,6 +60,7 @@ export const addToLibrary = async (url, option) => {
             url,
         });
     } catch (err) {
+        alert('로그인이 필요한 서비스입니다!');
         console.error(err);
     }
 };
@@ -72,6 +73,7 @@ export const addToPlaylist = async (url, data) => {
             url,
         });
     } catch (err) {
+        alert('로그인이 필요한 서비스입니다!');
         console.error(err);
     }
 };
@@ -84,21 +86,27 @@ export const deleteFromLibrary = async (url, option) => {
             url,
         });
     } catch (err) {
+        alert('로그인이 필요한 서비스입니다!');
         console.error(err);
     }
 };
 
 export const createPlaylist = async (data) => {
-    await axios(`${apiUrl.playlist}`, {
-        method: 'POST',
-        headers: {
-            'Content-Typee': 'application/json',
-            Authorization: getCookie('token'),
-        },
-        data: {
-            ...data,
-        },
-    });
+    try {
+        await axios(`${apiUrl.playlist}`, {
+            method: 'POST',
+            headers: {
+                'Content-Typee': 'application/json',
+                Authorization: getCookie('token'),
+            },
+            data: {
+                ...data,
+            },
+        });
+    } catch (err) {
+        alert('로그인이 필요한 서비스입니다!');
+        console.error(err);
+    }
 };
 export const sendEvent = async (eventData) => {
     try {
