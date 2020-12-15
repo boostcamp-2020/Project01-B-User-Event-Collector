@@ -33,12 +33,21 @@ final class MainTabViewModelTests: XCTestCase {
         
         defer { wait(for: [expectation], timeout: 5) }
         
-        let eventLogger = MockEventLogger { (data) in
-            XCTAssertEqual(data.event, "TabViewTransition")
-            expectation.fulfill()
+        var transitionCount = 0
+        let eventLogger = MockEventLogger { data in
+            let transitionLog = data as? TransitionLogType
+            transitionCount += 1
+            if transitionLog?.page == "charts",
+               transitionCount == 2 {
+                expectation.fulfill()
+            }
         }
+
         let viewModel = MainTabViewModel(eventLogger: eventLogger)
-        
         viewModel.state.tabViewSelection = .today
+        viewModel.state.tabViewSelection = .today
+        viewModel.state.tabViewSelection = .today
+        viewModel.state.tabViewSelection = .today
+        viewModel.state.tabViewSelection = .charts
     }
 }
