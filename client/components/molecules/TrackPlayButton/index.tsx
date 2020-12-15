@@ -13,9 +13,10 @@ const TrackPlayButton = ({ data, imgVariant }: TrackPlayButtonProps) => {
     const onClickPlayHandler = () => {
         dispatch(addToUpNextAndPlay([data]));
     }
+    const altImg = 'http://placehold.it/20x20';
     return(
         <ButtonContainer onClick={onClickPlayHandler}>
-            <Image variant={imgVariant} src={data.album.imageUrl} />
+            <Image variant={imgVariant} src={data? data.album.imageUrl:altImg} />
             <Play>
                 {
                     // TODO : svg 파일 분리
