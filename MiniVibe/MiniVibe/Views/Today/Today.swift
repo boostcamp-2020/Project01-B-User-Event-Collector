@@ -37,15 +37,6 @@ struct Today: View {
                                            mixtapes: viewModel.state.mixtapes)
                             
                             PlayListSection(width: width,
-                                            title: "즐겨듣는 플레이리스트",
-                                            playlists: viewModel.state.playlists) {
-                                ThumbnailList(info: .playlist(data: viewModel.state.playlists),
-                                              navigationTitle: "즐겨듣는 플레이리스트")
-                                    .logTransition(identifier: .playlists(id: 0),
-                                                   componentId: .sectionTitle(category: "즐겨듣는 플레이리스트"))
-                            }
-                            
-                            PlayListSection(width: width,
                                             title: "내 취향 플레이리스트",
                                             playlists: viewModel.state.playlists) {
                                 ThumbnailList(info: .playlist(data: viewModel.state.playlists),
