@@ -33,4 +33,6 @@ struct LikeLog: LikeLogType {
     var data: LogData
     var isLike: Bool
     let timestamp: Date = Date()
+    let event = "Like"
+    let platform = "iOS"
 }

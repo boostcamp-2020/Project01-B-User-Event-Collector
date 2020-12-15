@@ -31,4 +31,5 @@ struct ShareLog: ShareLogType {
     let componentId: String
     var data: LogData
     let timestamp: Date = Date()
+    let event: String = "Share"
 }

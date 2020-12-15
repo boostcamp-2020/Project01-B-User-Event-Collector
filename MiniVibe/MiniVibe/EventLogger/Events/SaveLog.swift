@@ -30,4 +30,6 @@ struct SaveLog: SaveLogType {
     let componentId: String
     let data: LogData
     let timestamp = Date()
+    let event = "Save"
+    let platform = "iOS"
 }
