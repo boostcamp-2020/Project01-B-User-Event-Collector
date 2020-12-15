@@ -40,14 +40,14 @@ const useDropDownAction = ({ userId, setAnchorEl, state }) => {
                 });
                 break;
             case dropDownMenu.addToLibrary:
-                let type = undefined
-                console.log('---------', data)
-                if(data.type === 'magazine') type = 'playlist'
-                else if(data.type === 'news') type = 'album'
-                else type = data.type
-                addToLibrary(`${apiUrl.like}${type}s`, {data: {
-                    id: data.id
-                }});
+                let type = data.type
+                let id = data.id
+                if(type === 'magazine' || type === 'news') {
+                    id = state.contentId
+                    if(type === 'magazine') type = 'playlist'
+                    else if(type === 'news') type = 'album'
+                }
+                addToLibrary(`${apiUrl.like}${type}s`, {data: {id} });
                 if(state.setLikeStatus) state.setLikeStatus(true)
                 logLikeEvent(true);
                 break;
