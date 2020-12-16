@@ -3,7 +3,8 @@ import passport from 'passport';
 import jwt from 'jsonwebtoken';
 
 const callback = (err: any, result: any, res : Response) => {
-    if (err || !result.success) return res.status(401).json(...result);
+    if (err || !result.success) return res.cookie('fail', result.message).redirect(`${process.env.CLIENT_HOST}/login`);
+    res.clearCookie('fail');
     const { user } = result;
     const token = jwt.sign({ id: user.id, name: user.name }, process.env.JWT_SECRET || 'jwt_secret');
     res.cookie('token', token);
@@ -11,7 +12,7 @@ const callback = (err: any, result: any, res : Response) => {
 };
 export const authenticateLogin = (req : Request, res: Response, next: NextFunction) => {
     const loginStrategy = req.url.split('/')[1];
-    passport.authenticate(loginStrategy, { session: false, failureRedirect: `${process.env.CLIENTHOST}/login` }, (err, result) => {
+    passport.authenticate(loginStrategy, { session: false, failureRedirect: `${process.env.CLIENT_HOST}/login` }, (err, result) => {
         callback(err, result, res);
     })(req, res, next);
 };
