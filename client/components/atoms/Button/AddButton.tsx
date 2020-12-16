@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState } from 'react';
+import React, { MouseEvent, useState, useContext } from 'react';
 import styled from 'styled-components';
 import CheckIcon from '@material-ui/icons/Check';
 import AddIcon from '@material-ui/icons/Add';
@@ -6,6 +6,7 @@ import AddIcon from '@material-ui/icons/Add';
 interface AddButtonProps {
     onClick?: (e: MouseEvent<HTMLElement>) => void;
     variant?: 'primary';
+    liked: boolean;
 }
 
 const Container = styled.div`
@@ -13,18 +14,13 @@ const Container = styled.div`
     margin-left: 10px;
 `;
 
-const AddButton = ({
-  onClick, variant
-}: AddButtonProps) => {
-    const [isClicked, setIsClicked] = useState(false);
-    const onClickHandler = () => {
-        setIsClicked(!isClicked);
-    }
-    return(
-        <Container onClick = { onClickHandler }>
-            {isClicked && <AddIcon />}
-            {!isClicked && <CheckIcon />}
+const AddButton = ({ onClick, variant, liked }: AddButtonProps) => {
+    return (
+        <Container onClick={onClick}>
+            {!liked && <AddIcon />}
+            {liked && <CheckIcon />}
         </Container>
-        )};
+    );
+};
 
 export default AddButton;

@@ -26,6 +26,9 @@ open class EventLogger: EventLoggerType {
         self.server = server
         self.reachability = reachability
         reachability.setUpNotify { [weak self] in self?.networkState = $0 }
+        server?.setFailureHandler { event in
+            local?.save(event)
+        }
     }
     
     public func send<T: EventLogType>(_ event: T) {

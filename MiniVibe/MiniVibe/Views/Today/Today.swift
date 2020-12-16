@@ -37,15 +37,7 @@ struct Today: View {
                                            mixtapes: viewModel.state.mixtapes)
                             
                             PlayListSection(width: width,
-                                            title: "즐겨듣는 플레이리스트",
-                                            playlists: viewModel.state.playlists) {
-                                ThumbnailList(info: .playlist(data: viewModel.state.playlists),
-                                              navigationTitle: "즐겨듣는 플레이리스트")
-                                    .logTransition(identifier: .playlists(id: 0),
-                                                   componentId: .sectionTitle(category: "즐겨듣는 플레이리스트"))
-                            }
-                            
-                            PlayListSection(width: width,
+                                            sizeRatio: .thumbnailRatio,
                                             title: "내 취향 플레이리스트",
                                             playlists: viewModel.state.playlists) {
                                 ThumbnailList(info: .playlist(data: viewModel.state.playlists),
@@ -58,7 +50,15 @@ struct Today: View {
                             
                             ChartSectionA(width: width, title: "최근 들은 노래", tracks: viewModel.state.tracks)
                             
-                            RecommandedPlayListSection(width: width, title: "VIBE 추천 플레이리스트")
+                            PlayListSection(width: width,
+                                            sizeRatio: .sectionRatio,
+                                            title: "VIBE 추천 플레이리스트",
+                                            playlists: viewModel.state.playlists) {
+                                ThumbnailList(info: .playlist(data: viewModel.state.playlists),
+                                              navigationTitle: "VIBE 추천 플레이리스트")
+                                    .logTransition(identifier: .playlists(id: 1),
+                                                   componentId: .sectionTitle(category: "VIBE 추천 플레이리스트"))
+                            }
                             
                             AlbumSection(width: width,
                                          title: "좋아할 최신 앨범",

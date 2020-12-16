@@ -54,7 +54,7 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
         const UserRepository = getRepository(User);
         const userLiked = await UserRepository.createQueryBuilder('user')
             .leftJoinAndSelect('user.libraryArtists', 'library_artists')
-            .where('library_artists.id = :id', { id })
+            .where('user.id = :userId AND library_artists.id = :id', { userId, id })
             .getOne();
         return res.json({
             success: true,

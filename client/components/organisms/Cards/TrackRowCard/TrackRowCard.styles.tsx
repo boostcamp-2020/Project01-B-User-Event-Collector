@@ -60,8 +60,9 @@ const BackgroundImg = styled.div`
     &::after {
         content: '';
         background-image: linear-gradient(transparent, transparent),
-            url(https://vibe.naver.com/img/sp_vibe.7af837ac.svg);
-        background-size: 1118px 1081px;
+            url(https://vibe.naver.com/img/sp_vibe.463acaba.svg);
+        background-size: 1118px 1106px;
+        background-position: -33px -1057px;
         display: inline-block;
         width: 20px;
         height: 20px;
@@ -69,13 +70,13 @@ const BackgroundImg = styled.div`
 `;
 export const Mp3 = styled(BackgroundImg)`
     &::after {
-        background-position: -307px -860px;
+        background-position: -810px -890px;
         width: 30px;
     }
 `;
 export const ShowLyricButton = styled(BackgroundImg)`
     &::after {
-        background-position: -969px -986px;
+        background-position: -33px -1057px;
     }
 `;
 
