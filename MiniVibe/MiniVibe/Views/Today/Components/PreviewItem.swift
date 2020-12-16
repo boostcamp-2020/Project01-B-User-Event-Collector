@@ -15,23 +15,28 @@ struct PreviewItem: View {
     let subtitle: String
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text(upperTitle)
-                .font(.system(size: 12))
-                .foregroundColor(.accentColor)
-            
-            KFImage(URL(string: imageUrl))
-                .resizable()
-            
-            VStack(alignment: .leading, spacing: 3) {
-                Text(title)
-                    .font(.system(size: 17))
-                    .foregroundColor(.primary)
-                    .bold()
-                
-                Text(subtitle)
+        GeometryReader { geometry in
+            VStack(alignment: .leading, spacing: 6) {
+                Text(upperTitle)
                     .font(.system(size: 12))
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.accentColor)
+                
+                KFImage(URL(string: imageUrl))
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: geometry.size.height * 0.7)
+                    .clipped()
+                
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(title)
+                        .font(.system(size: 17))
+                        .foregroundColor(.primary)
+                        .bold()
+                    
+                    Text(subtitle)
+                        .font(.system(size: 12))
+                        .foregroundColor(.secondary)
+                }
             }
         }
     }
