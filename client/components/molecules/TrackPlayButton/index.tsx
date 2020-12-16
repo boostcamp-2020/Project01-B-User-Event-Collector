@@ -1,15 +1,22 @@
 import React from 'react';
 import Image from '@components/atoms/Image/Image';
 import { ButtonContainer, Play } from './TrackPlayButton.styles';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToUpNextAndPlay } from 'reducers/musicPlayer';
 
 interface TrackPlayButtonProps {
     data;
     imgVariant?: 'trackRowCard' | 'trackInfo';
 }
 const TrackPlayButton = ({ data, imgVariant }: TrackPlayButtonProps) => {
+    const dispatch = useDispatch();
+    const onClickPlayHandler = () => {
+        dispatch(addToUpNextAndPlay([data]));
+    }
+    const altImg = 'http://placehold.it/20x20';
     return(
-        <ButtonContainer>
-            <Image variant={imgVariant} src={data.album.imageUrl} />
+        <ButtonContainer onClick={onClickPlayHandler}>
+            <Image variant={imgVariant} src={data? data.album.imageUrl:altImg} />
             <Play>
                 {
                     // TODO : svg 파일 분리

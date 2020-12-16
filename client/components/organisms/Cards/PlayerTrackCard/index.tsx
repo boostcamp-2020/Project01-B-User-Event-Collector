@@ -5,6 +5,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import TrackCard from '@components/molecules/TrackCard';
 import { Play } from '@components/molecules/TrackPlayButton/TrackPlayButton.styles';
 import { PlayerTrackCardProp } from 'interfaces/props';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteTrackFromUpnext } from 'reducers/musicPlayer';
 
 const PlayerTrackCardContainer = styled.li`
     background-color: #141414;
@@ -21,7 +23,11 @@ const PlayerTrackCardContainer = styled.li`
         cursor: move;
     }
 `;
-const PlayerTrackCard = ({ data }: PlayerTrackCardProp) => { 
+const PlayerTrackCard = ({ data }: PlayerTrackCardProp) => {
+    const dispatch = useDispatch(); 
+    const onClickDeleteHandler = () => {
+        dispatch(deleteTrackFromUpnext(data.id));
+    }
     return (
         <PlayerTrackCardContainer>
             <TrackCard
@@ -30,7 +36,7 @@ const PlayerTrackCard = ({ data }: PlayerTrackCardProp) => {
                 isDefault={true}
                 isTrack={true}
             />
-            <IconButton variant="plainGreyRegular" icon={CloseIcon} />
+            <IconButton variant="plainGreyRegular" icon={CloseIcon} onClick={onClickDeleteHandler}/>
         </PlayerTrackCardContainer>
     )};
 
