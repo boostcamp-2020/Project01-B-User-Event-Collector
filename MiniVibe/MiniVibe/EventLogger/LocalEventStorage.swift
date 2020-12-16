@@ -24,7 +24,8 @@ final class LocalEventStorage: LocalStorageType {
             Subscribe.fetchRequest(),
             MoveTrack.fetchRequest(),
             Engagement.fetchRequest(),
-            Play.fetchRequest()
+            Play.fetchRequest(),
+            UpnextChange.fetchRequest()
         ]
     }
     

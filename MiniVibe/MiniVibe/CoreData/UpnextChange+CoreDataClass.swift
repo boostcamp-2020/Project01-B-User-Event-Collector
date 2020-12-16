@@ -30,7 +30,7 @@ extension UpnextChange {
 
 extension UpnextChange: EventPrintable {
     public override var description: String {
-        return "\(timestamp.timestampFormat())\nEvent: \(event)"
+        return "\(timestamp.timestampFormat())\nEvent: \(event)\ntracks: \(trackId)"
     }
 }
 
