@@ -4,7 +4,8 @@ import CardListContainer from '@components/organisms/CardListContainer';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 import Text from '@components/atoms/Text';
 import AlbumCard from '@components/organisms/Cards/AlbumCard/AlbumCard';
-import { requestByCookie } from '@utils/apis';
+import { request } from '@utils/apis';
+import { getTokenFromCtx } from '@utils/cookies';
 import apiUrl from '@constants/apiUrl';
 import { page, contentType, dataType } from '@constants/identifier';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
@@ -131,8 +132,9 @@ const Track = ({ trackData, belongAlbumData }) => {
 
 export async function getServerSideProps(context) {
     const { id } = context.query;
-    const { req, res } = context;
-    const trackData = await requestByCookie(req, res, `${apiUrl.track}/${id}`);
+
+    const token = getTokenFromCtx(context);
+    const trackData = await request(`${apiUrl.track}/${id}`, {}, token);
     const belongAlbumData = { ...trackData?.album, artist: trackData?.artist };
 
     if (!trackData) {

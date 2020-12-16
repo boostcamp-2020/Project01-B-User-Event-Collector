@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHeader';
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
 import apiUrl from 'constants/apiUrl';
-import { requestByCookie } from '@utils/apis';
+import { getTokenFromCtx } from '@utils/cookies';
+import { request } from '@utils/apis';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 import { page, contentType } from '@constants/identifier';
@@ -32,21 +33,32 @@ const PlaylistLibrary = ({ playlistData }) => {
                     <LibraryHeader sort="playlist" />
                 </LibraryHeaderContainer>
                 {playlistData.length !== 0 ? (
-                      <LibraryContentsContainer>
-                          <ComponentInfoWrapper componentId={contentType.playlist}>
-                              <LibraryCardList variant="playlist" items={playlistData} />
-                          </ComponentInfoWrapper>
-                      </LibraryContentsContainer>
-                  ) : (
-                      <NoDataContainer type="playlist" />
-                  )}
+                    <LibraryContentsContainer>
+                        <ComponentInfoWrapper componentId={contentType.playlist}>
+                            <LibraryCardList variant="playlist" items={playlistData} />
+                        </ComponentInfoWrapper>
+                    </LibraryContentsContainer>
+                ) : (
+                    <NoDataContainer type="playlist" />
+                )}
             </LibraryContainer>
         </ComponentInfoContext.Provider>
     );
 };
 
-export const getServerSideProps = async ({req, res}) => {
-    const playlistData = await requestByCookie(req, res, apiUrl.libraryPlaylist);
+export const getServerSideProps = async (context) => {
+    const token = getTokenFromCtx(context);
+    const playlistData = await request(apiUrl.libraryPlaylist, {}, token);
+
+    if (!playlistData) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        };
+    }
+
     return {
         props: {
             playlistData,

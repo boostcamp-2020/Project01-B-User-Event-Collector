@@ -11,27 +11,33 @@ import CoreData
 
 @objc(Like)
 public class Like: NSManagedObject {
-
+    
 }
 
 extension Like {
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Like> {
         return NSFetchRequest<Like>(entityName: "Like")
     }
-
+    
     @NSManaged public var event: String
     @NSManaged public var userId: Int
     @NSManaged public var componentId: String
     @NSManaged public var data: LogData
     @NSManaged public var isLike: Bool
     @NSManaged public var timestamp: Date
-
+    
 }
 
 extension Like: EventPrintable {
     public override var description: String {
-        return "\(timestamp.timestampFormat())\nEvent: \(event)\nData: \(data)\nIsLike: \(isLike)\nComponent: \(componentId)"
+        return  """
+                \(timestamp.timestampFormat())
+                Event: \(event)
+                Data: \(data)
+                IsLike: \(isLike)
+                Component: \(componentId)
+                """
     }
 }
 

@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import LibraryHeader from '@components/organisms/Library/LibraryHeader/LibraryHeader';
 import LibraryCardList from '@components/organisms/Library/LibraryCardList/LibraryCardList';
 import apiUrl from 'constants/apiUrl';
-import { requestByCookie } from '@utils/apis';
+import { getTokenFromCtx } from '@utils/cookies';
+import { request } from '@utils/apis';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 import { page, contentType } from '@constants/identifier';
@@ -32,21 +33,31 @@ const ArtistLibrary = ({ artistData }) => {
                     <LibraryHeader sort="artist" />
                 </LibraryHeaderContainer>
                 {artistData.length !== 0 ? (
-                      <LibraryContentsContainer>
-                          <ComponentInfoWrapper componentId={contentType.artist}>
-                              <LibraryCardList variant="artist" items={artistData} />
-                          </ComponentInfoWrapper>
-                      </LibraryContentsContainer>
-                  ) : (
-                      <NoDataContainer type="artist" />
-                  )}
+                    <LibraryContentsContainer>
+                        <ComponentInfoWrapper componentId={contentType.artist}>
+                            <LibraryCardList variant="artist" items={artistData} />
+                        </ComponentInfoWrapper>
+                    </LibraryContentsContainer>
+                ) : (
+                    <NoDataContainer type="artist" />
+                )}
             </LibraryContainer>
         </ComponentInfoContext.Provider>
     );
 };
 
-export const getServerSideProps = async ({req, res}) => {
-    const artistData = await requestByCookie(req, res, apiUrl.libraryArtist);
+export const getServerSideProps = async (context) => {
+    const token = getTokenFromCtx(context);
+    const artistData = await request(apiUrl.libraryArtist, {}, token);
+
+    if (!artistData) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        };
+    }
     return {
         props: {
             artistData,

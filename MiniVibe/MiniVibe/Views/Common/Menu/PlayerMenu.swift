@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlayerMenu: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var nowPlaying: NowPlayingViewModel
     @ObservedObject var viewModel: TrackViewModel
     
     var body: some View {

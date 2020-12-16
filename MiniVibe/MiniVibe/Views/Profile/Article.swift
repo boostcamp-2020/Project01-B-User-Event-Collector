@@ -80,6 +80,7 @@ struct Article_Previews: PreviewProvider {
     }
 }
 
+// swiftlint:disable line_length
 enum ArticleExample {
     static let content =
         """

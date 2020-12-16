@@ -40,12 +40,11 @@ const UserProfileMenu = ({ user }: UserProfileMenuProps) => {
     ];
     const loginHandler = () => {
         dispatch(loginRequestAction());
-    }
+    };
 
     if (!user.isLoggedIn) {
         return (
-            // TODO : 배포 서버로 바꾸기 , constants 폴더로 이동
-             <MenuLink href={apiUrl.user + "/login/naver"}>
+            <MenuLink href={apiUrl.login}>
                 <IconWrapper>
                     <Avatar alt="profile" src={defaultImage} style={{ width: 30, height: 30 }} />
                 </IconWrapper>

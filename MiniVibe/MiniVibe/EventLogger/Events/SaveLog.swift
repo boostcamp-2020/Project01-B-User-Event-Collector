@@ -8,7 +8,7 @@
 import CoreData
 import EventLogKit
 
-protocol SaveLogType: EventLogType {
+protocol SaveLogType: CustomEventLogType {
     var componentId: String { get }
     var data: LogData { get }
 }
@@ -30,4 +30,6 @@ struct SaveLog: SaveLogType {
     let componentId: String
     let data: LogData
     let timestamp = Date()
+    let event = "Save"
+    let platform = "iOS"
 }

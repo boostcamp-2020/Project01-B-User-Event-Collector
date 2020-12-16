@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChartSectionA: View {
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var nowPlaying: NowPlayingViewModel
     let width: CGFloat
     let title: String
     let tracks: [TrackInfo]
