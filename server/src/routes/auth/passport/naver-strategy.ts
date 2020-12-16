@@ -34,5 +34,5 @@ const auth = async (accessToken :any, refreshToken: any, profile: any, done:any)
 };
 
 export const naverStrategy = (passport : PassportStatic) => {
-    passport.use('login-naver', new NaverStrategy(config, auth));
+    passport.use('naver', new NaverStrategy(config, auth));
 };
