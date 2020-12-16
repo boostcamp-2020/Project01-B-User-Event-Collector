@@ -64,9 +64,9 @@ interface IPlayEvent extends IEvent {
 
 interface IPlayNowEvent extends IEvent {
     componentId?: string,
-    trackId: number,
+    trackId?: number,
     targetTrackId: number,
-    playingProgress: number,
+    playingProgress?: number,
 }
 
 interface IUpNextChangeEvent extends IEvent {
