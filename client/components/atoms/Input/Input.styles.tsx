@@ -17,6 +17,8 @@ const getInputStyle = (props: InputProps) => {
     default:
       placeholderColor = '#999';
       backgroundColor = '#ededed';
+      height = '20ox';
+      width = '225px';
       fontSize = '14px';
       fontWeight = '400';
       break;
