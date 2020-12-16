@@ -26,7 +26,7 @@ extension Play {
     @NSManaged public var componentId: String
     @NSManaged public var isPlay: Bool
     @NSManaged public var timestamp: Date
-
+    @NSManaged public var platform: String
 }
 
 extension Play: EventPrintable {
@@ -38,7 +38,7 @@ extension Play: EventPrintable {
 extension Play: Encodable {
 
     enum CodingKeys: CodingKey {
-        case event, userId, trackId, componentId, isPlay, timestamp
+        case event, userId, trackId, componentId, isPlay, timestamp, platform
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -49,5 +49,6 @@ extension Play: Encodable {
         try container.encode(componentId, forKey: .componentId)
         try container.encode(isPlay, forKey: .isPlay)
         try container.encode(timestamp, forKey: .timestamp)
+        try container.encode(platform, forKey: .platform)
     }
 }

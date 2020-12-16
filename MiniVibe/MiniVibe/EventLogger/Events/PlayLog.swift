@@ -24,7 +24,7 @@ extension PlayLogType {
         play.trackId = trackId
         play.componentId = componentId
         play.isPlay = isPlay
-        
+        play.platform = platform
         try? context.save()
     }
 }

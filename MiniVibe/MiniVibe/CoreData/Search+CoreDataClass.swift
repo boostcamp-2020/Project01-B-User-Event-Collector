@@ -25,7 +25,7 @@ extension Search {
     @NSManaged public var userId: Int
     @NSManaged public var text: String
     @NSManaged public var timestamp: Date
-
+    @NSManaged public var platform: String
 }
 
 extension Search: EventPrintable {
@@ -37,7 +37,7 @@ extension Search: EventPrintable {
 extension Search: Encodable {
     
     enum CodingKeys: CodingKey {
-        case event, userId, text, componentId, timestamp
+        case event, userId, text, componentId, timestamp, platform
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -47,5 +47,6 @@ extension Search: Encodable {
         try container.encode(text, forKey: .text)
         try container.encode(componentId, forKey: .componentId)
         try container.encode(timestamp, forKey: .timestamp)
+        try container.encode(platform, forKey: .platform)
     }
 }

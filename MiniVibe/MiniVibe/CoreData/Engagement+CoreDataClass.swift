@@ -23,7 +23,7 @@ extension Engagement {
     @NSManaged public var event: String
     @NSManaged public var userId: Int
     @NSManaged public var timestamp: Date
-
+    @NSManaged public var platform: String
 }
 
 extension Engagement: EventPrintable {
@@ -35,7 +35,7 @@ extension Engagement: EventPrintable {
 extension Engagement: Encodable {
     
     enum CodingKeys: CodingKey {
-        case event, userId, timestamp
+        case event, userId, timestamp, platform
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -43,5 +43,6 @@ extension Engagement: Encodable {
         try container.encode(event, forKey: .event)
         try container.encode(userId, forKey: .userId)
         try container.encode(timestamp, forKey: .timestamp)
+        try container.encode(platform, forKey: .platform)
     }
 }

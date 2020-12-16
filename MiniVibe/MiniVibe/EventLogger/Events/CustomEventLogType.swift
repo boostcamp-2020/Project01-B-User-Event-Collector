@@ -12,9 +12,3 @@ protocol CustomEventLogType: EventLogType {
     var userId: Int { get }
     var platform: String { get }
 }
-
-extension CustomEventLogType {
-    var platform: String {
-        return "iOS"
-    }
-}

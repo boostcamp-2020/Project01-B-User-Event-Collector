@@ -25,7 +25,7 @@ extension Save {
     @NSManaged public var componentId: String
     @NSManaged public var data: LogData
     @NSManaged public var timestamp: Date
-
+    @NSManaged public var platform: String
 }
 
 extension Save: EventPrintable {
@@ -37,7 +37,7 @@ extension Save: EventPrintable {
 extension Save: Encodable {
     
     enum CodingKeys: CodingKey {
-        case event, userId, componentId, data, timestamp
+        case event, userId, componentId, data, timestamp, platform
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -47,5 +47,6 @@ extension Save: Encodable {
         try container.encode(componentId, forKey: .componentId)
         try container.encode(data, forKey: .data)
         try container.encode(timestamp, forKey: .timestamp)
+        try container.encode(platform, forKey: .platform)
     }
 }

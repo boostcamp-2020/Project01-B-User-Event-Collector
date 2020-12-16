@@ -24,6 +24,7 @@ extension MoveTrackLogType {
         moveTrack.source = source
         moveTrack.destination = destination
         moveTrack.timestamp = timestamp
+        moveTrack.platform = platform
         try? context.save()
     }
 }

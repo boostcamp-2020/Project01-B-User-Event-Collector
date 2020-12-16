@@ -25,7 +25,7 @@ extension UpnextChange {
     @NSManaged public var trackId: [Int]
     @NSManaged public var userId: Int
     @NSManaged public var event: String
-
+    @NSManaged public var platform: String
 }
 
 extension UpnextChange: EventPrintable {
@@ -37,7 +37,7 @@ extension UpnextChange: EventPrintable {
 extension UpnextChange: Encodable {
 
     enum CodingKeys: CodingKey {
-        case timestamp, componentId, trackId, userId, event
+        case timestamp, componentId, trackId, userId, event, platform
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -47,5 +47,6 @@ extension UpnextChange: Encodable {
         try container.encode(trackId, forKey: .trackId)
         try container.encode(userId, forKey: .userId)
         try container.encode(event, forKey: .event)
+        try container.encode(platform, forKey: .platform)
     }
 }

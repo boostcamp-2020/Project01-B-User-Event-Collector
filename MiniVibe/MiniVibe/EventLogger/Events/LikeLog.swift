@@ -23,6 +23,7 @@ extension LikeLogType {
         likeLog.data = data
         likeLog.isLike = isLike
         likeLog.timestamp = timestamp
+        likeLog.platform = platform
         try? context.save()
     }
 }

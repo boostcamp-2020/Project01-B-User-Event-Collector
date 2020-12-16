@@ -22,7 +22,7 @@ extension TransitionLogType {
         transition.componentId = componentId
         transition.page = page
         transition.timestamp = timestamp
-        
+        transition.platform = platform
         try? context.save()
     }
 }
