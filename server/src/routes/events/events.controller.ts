@@ -21,3 +21,18 @@ export const create = async (req: Request, res: Response, next: NextFunction) =>
         success: true,
     });
 };
+
+export const list = async (req: Request, res: Response, next: NextFunction) => {
+
+    try {
+        const data = await Event.find({}).sort({timestamp:-1});
+        res.json({
+            success: true,
+            data
+        });
+    } catch (err) {
+        return res.status(500).json({ success: false });
+    }
+
+
+};

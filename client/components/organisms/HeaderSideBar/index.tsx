@@ -12,8 +12,11 @@ import {
     SectionContainer,
     ProfileContainer,
     Header,
+    AdminContainer
 } from './HeaderSideBar.styles';
 import { UserProps } from 'interfaces/props';
+import MenuLink from '@components/atoms/MenuLink';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 
 interface HeaderProps {
     user: UserProps;
@@ -40,6 +43,11 @@ const HeaderSideBar = ({ user }: HeaderProps) => {
                 </ProfileContainer>
                 <MainMenu />
                 {user.isLoggedIn && <SubMenu />}
+                <AdminContainer>
+                    <MenuLink href="/admin" icon={SupervisorAccountIcon}>
+                        관리자 메뉴
+                    </MenuLink>
+                </AdminContainer>
             </SectionContainer>
         </Header>
     );
