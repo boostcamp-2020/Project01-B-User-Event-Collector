@@ -54,26 +54,26 @@ const PlayControllerButtons = () => {
     const getNextTrackId = ({ upNextTracks, nowPlaying }) => {
         const nowPlayingIdx = upNextTracks.findIndex((t) => t.id === nowPlaying.id);
         const nextTrackIdx = nowPlayingIdx === upNextTracks.length - 1 ? nowPlayingIdx : nowPlayingIdx + 1;
-        return upNextTracks[nextTrackIdx].id;
+        return upNextTracks[nextTrackIdx]?.id;
     };
 
     const getPrevTrackId = ({ upNextTracks, nowPlaying }) => {
         const nowPlayingIdx = upNextTracks.findIndex((t) => t.id === nowPlaying.id);
         const prevTrackIdx = nowPlayingIdx == 0 ? nowPlayingIdx : nowPlayingIdx - 1;
-        return upNextTracks[prevTrackIdx].id;
+        return upNextTracks[prevTrackIdx]?.id;
     };
 
     const toPrevTrack = () => {
         dispatch(playPrevTrack());
         const prevTrackId = getPrevTrackId({ nowPlaying, upNextTracks });
-        if (prevTrackId === nowPlaying.id) return;
+        if (!prevTrackId || prevTrackId === nowPlaying.id) return;
         logPlayNowEvent(prevTrackId, nowPlaying.id, playTime, nowPlaying.playtime);
     };
 
     const toNextTrack = () => {
         dispatch(playNextTrack());
         const nextTrackId = getNextTrackId({ nowPlaying, upNextTracks });
-        if (nextTrackId === nowPlaying.id) return;
+        if (!nextTrackId || nextTrackId === nowPlaying.id) return;
         logPlayNowEvent(nextTrackId, nowPlaying.id, playTime, nowPlaying.playtime);
     };
 
