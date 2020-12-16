@@ -9,16 +9,6 @@ import XCTest
 import Combine
 @testable import MiniVibe
 
-struct MockLibraryUseCase: LibraryUseCaseType {
-    let tracks: [TrackInfo]
-    
-    func loadLikedTracks() -> AnyPublisher<[TrackInfo], UseCaseError> {
-        Just(tracks)
-            .setFailureType(to: UseCaseError.self)
-            .eraseToAnyPublisher()
-    }
-}
-
 final class LibraryViewModelTests: XCTestCase {
     
     private var cancellables = Set<AnyCancellable>()
@@ -71,7 +61,7 @@ final class LibraryViewModelTests: XCTestCase {
         let viewModel = LibraryViewModel(usecase: usecase, eventLogger: eventLogger)
         viewModel.$state
             .sink { state in
-                if state.isMenuOpen == true {
+                if state.isMenuOpen {
                     expectation.fulfill()
                 }
             }
