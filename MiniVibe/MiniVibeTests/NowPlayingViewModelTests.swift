@@ -144,31 +144,33 @@ final class NowPlayingViewModelTests: XCTestCase {
         viewModel.send(.add(track: track))
     }
     
-    func test_send_delect_select_rows() {
+    func test_send_delete_select_rows() {
         let expectation = XCTestExpectation(description: "delete select rows test")
-        expectation.expectedFulfillmentCount = 3
+        expectation.expectedFulfillmentCount = 2
         defer { wait(for: [expectation], timeout: 5) }
         
         let dataManager = MockPlayerDataManager(data: tracks)
         let eventLogger = MockEventLogger(handler: { data in
             let event = data as? RemoveFromUpnext
-            if event?.trackId == [self.tracks[0].state.track.id] {
+            if event?.trackId == self.tracks.map(\.state.track.id) {
                 expectation.fulfill()
             }
         })
         let viewModel = NowPlayingViewModel(dataManager: dataManager,
                                             eventLogger: eventLogger)
         viewModel.state.upNext = tracks
+        viewModel.state.isPlayerPresented = true
         
         viewModel.$state
             .sink { state in
-                if state.upNext == [self.tracks[1]] {
+                if state.upNext.isEmpty,
+                   state.isPlayerPresented {
                     expectation.fulfill()
                 }
             }
             .store(in: &cancellables)
         
-        viewModel.state.selectedTracks = [tracks[0]]
+        viewModel.state.selectedTracks = [tracks[0], tracks[1]]
         viewModel.send(.deleteSelectedTracks)
     }
     

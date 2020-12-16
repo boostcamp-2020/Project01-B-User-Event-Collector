@@ -115,6 +115,9 @@ final class NowPlayingViewModel: ObservableObject {
             state.upNext.remove(at: index)
         }
         state.selectedTracks.removeAll()
+        if state.upNext.isEmpty {
+            state.isPlayerPresented = false
+        }
     }
     
     private func playNextTrack() {
