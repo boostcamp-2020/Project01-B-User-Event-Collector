@@ -3,13 +3,15 @@ import apiUrl from '@constants/apiUrl';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import { componentType } from '@constants/identifier';
 import useClickEventLog from '@hooks/useClickEventLog';
-
+import { loginRequest } from '@utils/apis';
+import { Cookies } from 'react-cookie';
+import { useEffect } from 'react';
 const LoginContainer = styled.div`
     padding-top: 50px;
     padding-left: 225px;
     text-align: center;
 `;
-const From = styled.form``;
+const Form = styled.form``;
 const LoginInput = styled.input`
     background-color: transperant;
     display: block;
@@ -24,23 +26,21 @@ const NaverLogin = styled.a`
     margin-top: 40px;
 `;
 const Login = () => {
-    const onChange = () => {};
     const localClick = useClickEventLog({ userId: null, href: `${apiUrl.login}/$local-login` });
     const naverClick = useClickEventLog({ userId: null, href: `${apiUrl.login}/naver-login` });
+    const cookies = new Cookies();
+    useEffect(() => {
+        if (cookies.get('fail')) alert('아이디와 비밀번호를 확인해주세요');
+    }, []);
+
     return (
         <ComponentInfoContext.Provider value={{ componentId: componentType.loginForm }}>
             <LoginContainer>
-                <From action={`${apiUrl.login}/local-login`} method="POST">
-                    <LoginInput type="text" name="email" placeholder="이메일을 입력해주세요" onChange={onChange} />
-                    <LoginInput
-                        id="pw"
-                        type="password"
-                        name="pw"
-                        placeholder="비밀번호를 입력해주세요"
-                        onChange={onChange}
-                    />
+                <Form action={`${apiUrl.login}/local-login`} method="post">
+                    <LoginInput type="text" name="email" placeholder="이메일을 입력해주세요" />
+                    <LoginInput id="pw" type="password" name="pw" placeholder="비밀번호를 입력해주세요" />
                     <LoginInput id="local-login" type="submit" value="로그인하기" onClick={localClick} />
-                </From>
+                </Form>
                 <NaverLogin id="naver-login" href={`${apiUrl.login}/naver-login`} onClick={naverClick}>
                     <img
                         height="50"
