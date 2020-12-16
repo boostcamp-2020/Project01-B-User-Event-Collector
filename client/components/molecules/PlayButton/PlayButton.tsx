@@ -1,7 +1,7 @@
 import React from 'react'
 import PlayTriangle from '../../atoms/PlayTriangle/PlayTriangle';
 import { StyledPlayButton, StyledCircle } from './PlayButton.styles';
-import { requestTracks } from '@utils/apis';
+import { requestTracks } from '../../../utils/apis';
 import apiUrl from '@constants/apiUrl';
 import { withCookies, Cookies } from 'react-cookie';
 import { useSelector, useDispatch } from 'react-redux';

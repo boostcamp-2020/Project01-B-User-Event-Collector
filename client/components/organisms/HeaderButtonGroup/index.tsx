@@ -11,7 +11,7 @@ import Heart from '@components/atoms/Heart/Heart';
 
 import { HeaderButtonGroupProps } from 'interfaces/props';
 import { useContext, useState } from 'react';
-import { addToLibrary, deleteFromLibrary } from '@utils/apis';
+import { addToLibrary, deleteFromLibrary } from '../../../utils/apis';
 import apiUrl from '@constants/apiUrl';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 

@@ -9,7 +9,7 @@ import DropDownMenu from '@components/molecules/DropdownMenu';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { useContext, useState } from 'react';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
-import { addToLibrary, deleteFromLibrary } from '@utils/apis';
+import { addToLibrary, deleteFromLibrary } from '../../../utils/apis';
 import useLikeEventLog from '@hooks/useLikeEventLog';
 import apiUrl from '@constants/apiUrl';
 

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Button from '@components/atoms/Button';
 import Input from '@components/atoms/Input/Input';
 import { useState } from 'react';
-import { createPlaylist } from '@utils/apis';
+import { createPlaylist } from '../../../../utils/apis';
 
 interface PlaylistAddModalContainer {
     visible: boolean;
