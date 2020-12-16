@@ -127,6 +127,8 @@
 		8016AB712583AC9B00573485 /* PlayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AB702583AC9B00573485 /* PlayLog.swift */; };
 		8016AB782583AF3B00573485 /* Share+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AB762583AF3B00573485 /* Share+CoreDataClass.swift */; };
 		8016AB7F2583B21500573485 /* ShareLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AB7E2583B21500573485 /* ShareLog.swift */; };
+		80172D18258A394B00B6CC68 /* ChartsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80172D17258A394B00B6CC68 /* ChartsViewModel.swift */; };
+		80172D1D258A3AE200B6CC68 /* ChartsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80172D1C258A3AE200B6CC68 /* ChartsUseCase.swift */; };
 		801AE36A25826ED1004F1947 /* MoveTrackLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801AE36925826ED1004F1947 /* MoveTrackLog.swift */; };
 		802187E325828B79009A4D95 /* Engagement+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802187E125828B79009A4D95 /* Engagement+CoreDataClass.swift */; };
 		802187EA25828BDE009A4D95 /* EngagementLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802187E925828BDE009A4D95 /* EngagementLog.swift */; };
@@ -353,6 +355,8 @@
 		8016AB702583AC9B00573485 /* PlayLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLog.swift; sourceTree = "<group>"; };
 		8016AB762583AF3B00573485 /* Share+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Share+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8016AB7E2583B21500573485 /* ShareLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLog.swift; sourceTree = "<group>"; };
+		80172D17258A394B00B6CC68 /* ChartsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewModel.swift; sourceTree = "<group>"; };
+		80172D1C258A3AE200B6CC68 /* ChartsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsUseCase.swift; sourceTree = "<group>"; };
 		801AE36925826ED1004F1947 /* MoveTrackLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveTrackLog.swift; sourceTree = "<group>"; };
 		802187E125828B79009A4D95 /* Engagement+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Engagement+CoreDataClass.swift"; sourceTree = "<group>"; };
 		802187E925828BDE009A4D95 /* EngagementLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngagementLog.swift; sourceTree = "<group>"; };
@@ -661,6 +665,7 @@
 				80D02E03257E0DD300A6748F /* SearchUseCase.swift */,
 				44D5FAC1257FD89E00A3E91C /* ArtistUseCase.swift */,
 				806D272825812DA8002580B3 /* TrackUseCase.swift */,
+				80172D1C258A3AE200B6CC68 /* ChartsUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -677,6 +682,7 @@
 				449C21C92584921700E180BB /* TrackViewModel.swift */,
 				4479025B2584FE9F00CE8797 /* MainTabViewModel.swift */,
 				8033A7A9257FA7B100B1C321 /* NowPlayingViewModel.swift */,
+				80172D17258A394B00B6CC68 /* ChartsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1134,6 +1140,7 @@
 				44F7BBF12579419800DFA4AC /* Article.swift in Sources */,
 				44BDF0252578F72A00C0A43D /* PlayListMenu.swift in Sources */,
 				80AB73D125838AB4005ADA9A /* UpnextChange+CoreDataClass.swift in Sources */,
+				80172D18258A394B00B6CC68 /* ChartsViewModel.swift in Sources */,
 				44D7B7EA25754BF10049CDBB /* PlayerControls.swift in Sources */,
 				44E4C51B258906AE002D865C /* PlayerDataManager.swift in Sources */,
 				80DA952125779FE9008C9DFF /* TrackRowB.swift in Sources */,
@@ -1180,6 +1187,7 @@
 				8016AB712583AC9B00573485 /* PlayLog.swift in Sources */,
 				80D02E10257E0EFF00A6748F /* NewsItem.swift in Sources */,
 				44BDF0212578F41900C0A43D /* PlayListSection.swift in Sources */,
+				80172D1D258A3AE200B6CC68 /* ChartsUseCase.swift in Sources */,
 				4474DC002574E2C3006FC827 /* PlayerHeader.swift in Sources */,
 				444272B8256CE2B3008BB87B /* PreviewItem.swift in Sources */,
 				80A5213B257902FF0051A925 /* LibraryAlbumsView.swift in Sources */,

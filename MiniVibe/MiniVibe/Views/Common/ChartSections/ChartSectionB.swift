@@ -9,21 +9,23 @@ import SwiftUI
 
 struct ChartSectionB: View {
     let width: CGFloat
-    let sectionTitle: String
+    let title: String
+    let tracks: [TrackInfo]
     
     var body: some View {
         VStack {
-            SectionTitle(width: width, title: sectionTitle) {
-                ChartList(title: sectionTitle, tracks: [])
+            SectionTitle(width: width, title: title) {
+                ChartList(title: title, tracks: tracks)
                     .logTransition(identifier: .chart(id: 0),
-                                   componentId: .sectionTitle(category: sectionTitle))
+                                   componentId: .sectionTitle(category: title))
             }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: .init(repeating: .init(.flexible(minimum: 60)), count: 5)) {
-                    ForEach(0..<100) { index in
-                        TrackRowE(viewModel: .init(track: trackinfo, eventLogger: MiniVibeApp.eventLogger),
-                                  order: index)
+                    ForEach(tracks, id: \.id) { track in
+                        TrackRowE(viewModel: .init(track: track,
+                                                   eventLogger: MiniVibeApp.eventLogger),
+                                  order: 1)
                     }
                     .frame(width: width * .sectionRatio)
                 }
@@ -35,7 +37,7 @@ struct ChartSectionB: View {
 
 struct ChartSectionB_Previews: PreviewProvider {
     static var previews: some View {
-        ChartSectionB(width: 375, sectionTitle: "국내 급상승 🔥")
+        ChartSectionB(width: 375, title: "국내 급상승 🔥", tracks: [trackinfo])
             .previewLayout(.fixed(width: 375, height: 420))
             .previewInAllColorSchemes
     }
