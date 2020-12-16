@@ -53,7 +53,7 @@ struct Today: View {
                             PlayListSection(width: width,
                                             sizeRatio: .sectionRatio,
                                             title: "VIBE 추천 플레이리스트",
-                                            playlists: viewModel.state.playlists.shuffled()) {
+                                            playlists: viewModel.state.playlists.sorted(by: { $0.title > $1.title })) {
                                 ThumbnailList(info: .playlist(data: viewModel.state.playlists),
                                               navigationTitle: "VIBE 추천 플레이리스트")
                                     .logTransition(identifier: .playlists(id: 1),

@@ -40,9 +40,9 @@ final class ChartsViewModel: ObservableObject {
             .sink { _ in
                 
             } receiveValue: { [weak self] tracks in
-                self?.state.tracks1 = tracks.shuffled()
-                self?.state.tracks2 = tracks.shuffled()
-                self?.state.tracks3 = tracks.shuffled()
+                self?.state.tracks1 = tracks.sorted(by: { $0.id < $1.id })
+                self?.state.tracks2 = tracks.sorted(by: { $0.title < $1.title })
+                self?.state.tracks3 = tracks.sorted(by: { $0.title > $1.title })
             }
             .store(in: &cancellables)
     }
