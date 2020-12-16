@@ -15,6 +15,7 @@ import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToUpNext, addToUpNextAndPlay } from 'reducers/musicPlayer';
+import useUpNextChangeEventLog from '@hooks/useUpNextChangeEventLog';
 
 const Container = styled.div`
     min-height: 1300px;
@@ -120,9 +121,13 @@ const WholeTrackTitleContainer = styled.div`
 
 const MagazineDetail = ({ magazineData }) => {
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
+    const { logAddToUpnextEvent } = useUpNextChangeEventLog({ userId: user.id });
+
     const onClickPlayHandler = () => {
         dispatch(addToUpNextAndPlay(magazineData.playlist.tracks));
-    }
+        logAddToUpnextEvent(magazineData.playlist.tracks.map(({ id }) => id));
+    };
 
     return (
         <ComponentInfoContext.Provider value={{ componentId: `${page.magazine}-${magazineData.id}` }}>
@@ -143,7 +148,13 @@ const MagazineDetail = ({ magazineData }) => {
                                 </A>
                             </PlaylistLinkConainer>
                             <ButtonContainer>
-                                <Button variant="primary" width="130" height="40" icon={PlayArrowIcon} onClick={onClickPlayHandler}>
+                                <Button
+                                    variant="primary"
+                                    width="130"
+                                    height="40"
+                                    icon={PlayArrowIcon}
+                                    onClick={onClickPlayHandler}
+                                >
                                     전체재생
                                 </Button>
                             </ButtonContainer>

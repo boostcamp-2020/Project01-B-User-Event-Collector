@@ -20,8 +20,6 @@ const PlayButton = ({ sort, data }) => {
     const { logAddToUpnextEvent } = useUpNextChangeEventLog({ userId: user.id });
 
     const handleClick = async () => {
-        if (!user.isLoggedIn) return;
-
         let res, tracks;
         switch (sort) {
             case 'todayMagazine':
