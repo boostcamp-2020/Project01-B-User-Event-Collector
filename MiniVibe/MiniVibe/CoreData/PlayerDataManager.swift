@@ -1,54 +1,19 @@
 //
-//  NowPlaying.swift
+//  PlayerDataManager.swift
 //  MiniVibe
 //
-//  Created by Sue Cho on 2020/12/08.
+//  Created by TTOzzi on 2020/12/15.
 //
 
-import Foundation
-import Combine
 import CoreData
+import Foundation
 
-final class NowPlaying: ObservableObject {
-    @Published var isPlaying: Bool = false
-    @Published var isPlayerPresented: Bool = false
-    @Published var upNext = [TrackViewModel]()
-    @Published var selectedTracks = Set<TrackViewModel>()
-    let dataManager = PlayerDataManager()
- 
-    var playingTrack: TrackViewModel? {
-        return upNext.first
-    }
-    let usecase = TrackUseCase()
-    var cancellables = Set<AnyCancellable>()
-    
-    func addTrack(track: TrackViewModel) {
-        isPlaying = true
-        if let index = upNext.firstIndex(of: track) {
-            upNext.insert(upNext.remove(at: index), at: 0)
-        } else {
-            upNext.insert(track, at: 0)
-        }
-    }
-    
-    func deleteTrack() {
-        selectedTracks.forEach { track in
-            guard let index = upNext.firstIndex(of: track) else {
-                selectedTracks.removeAll()
-                return
-            }
-            upNext.remove(at: index)
-        }
-    }
-    
-    func playNextTrack() {
-        isPlaying = true
-        upNext.insert(upNext.remove(at: 0), at: upNext.count)
-    }
-    
+protocol PlayerDataManagerType {
+    func fetch() -> [TrackViewModel]
+    func saveTracks(tracks: [TrackViewModel])
 }
 
-final class PlayerDataManager {
+final class PlayerDataManager: PlayerDataManagerType {
     private let container: NSPersistentContainer
     private let managedContext: NSManagedObjectContext
     private let entity: NSEntityDescription
@@ -70,7 +35,7 @@ final class PlayerDataManager {
         _ = try? managedContext.execute(deleteRequest)
     }
     
-    func fetch() -> [TrackInfo] {
+    func fetch() -> [TrackViewModel] {
         let fetchRequest: NSFetchRequest = LatestUpnext.fetchRequest()
         var fetchedTracks = [TrackInfo]()
         do {
@@ -94,33 +59,26 @@ final class PlayerDataManager {
             return []
         }
         return fetchedTracks
+            .map { TrackViewModel(track: $0, eventLogger: MiniVibeApp.eventLogger)}
     }
     
-    func tracksToViewModel(tracks: [TrackInfo]) -> [TrackViewModel] {
-        return tracks.map { TrackViewModel(track: $0,
-                                           eventLogger: MiniVibeApp.eventLogger)}
-    }
-    
-    func viewModelToTracks(viewModel: [TrackViewModel]) -> [TrackInfo] {
-        return viewModel.map { $0.state.track }
-    }
-    
-    func saveTracks(tracks: [TrackInfo]) {
-        let data = tracks.map { track -> TrackInfoData in
+    func saveTracks(tracks: [TrackViewModel]) {
+        delete()
+        let data = tracks.map { viewModel -> TrackInfoData in
+            let track = viewModel.state.track
             let albumData = TrackAlbumData(id: track.album.id,
-                                       title: track.album.title,
-                                       imageUrl: track.album.imageUrl)
-
+                                           title: track.album.title,
+                                           imageUrl: track.album.imageUrl)
             let artistData = ArtistData(id: track.artist.id,
-                                   name: track.artist.name)
+                                        name: track.artist.name)
             return TrackInfoData(id: track.id,
-                                     title: track.title,
-                                     lyrics: track.lyrics,
-                                     albumId: track.albumId!,
-                                     album: albumData,
-                                     artist: artistData,
-                                     liked: track.liked)
-
+                                 title: track.title,
+                                 lyrics: track.lyrics,
+                                 albumId: track.albumId!,
+                                 album: albumData,
+                                 artist: artistData,
+                                 liked: track.liked)
+            
         }
         let savedInfo = NSManagedObject(entity: entity,
                                         insertInto: managedContext)

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Cookies from 'cookies';
 import { getCookie } from 'utils/cookies';
 import apiUrl from 'constants/apiUrl';
 
@@ -13,22 +12,22 @@ export const getRequestOptions = (method, options, headers) => ({
     ...options,
 });
 
-export const requestOptions = {
+const requestOptions = {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json',
     },
 };
 
-export const request = async (url, option) => {
+export const request = async (url, option, token) => {
     const options = { ...requestOptions, ...option };
+    if (token) options.headers.Authorization = token;
 
     try {
         const { data } = await axios({ ...options, url });
         return data.data;
     } catch (err) {
-        // TODO : error handling
-        console.log(err);
+        console.error(err);
     }
 };
 
@@ -41,8 +40,8 @@ export const requestTracks = async (apiUrl, cookie) => {
     return data;
 }
 
-export const requestByCookie = async (req, res, apiUrl) => {
-    const cookies = new Cookies(req, res);
+export const requestByCookie = async (apiUrl) => {
+    // const cookies = new Cookies(req, res);
     const data = await request(apiUrl, {
         headers: {
             Authorization: cookies.get('token') || 'no cookie',
@@ -70,6 +69,7 @@ export const addToLibrary = async (url, option) => {
             url,
         });
     } catch (err) {
+        alert('로그인이 필요한 서비스입니다!');
         console.error(err);
     }
 };
@@ -82,6 +82,7 @@ export const addToPlaylist = async (url, data) => {
             url,
         });
     } catch (err) {
+        alert('로그인이 필요한 서비스입니다!');
         console.error(err);
     }
 };
@@ -94,21 +95,27 @@ export const deleteFromLibrary = async (url, option) => {
             url,
         });
     } catch (err) {
+        alert('로그인이 필요한 서비스입니다!');
         console.error(err);
     }
 };
 
 export const createPlaylist = async (data) => {
-    await axios(`${apiUrl.playlist}`, {
-        method: 'POST',
-        headers: {
-            'Content-Typee': 'application/json',
-            Authorization: getCookie('token'),
-        },
-        data: {
-            ...data,
-        },
-    });
+    try {
+        await axios(`${apiUrl.playlist}`, {
+            method: 'POST',
+            headers: {
+                'Content-Typee': 'application/json',
+                Authorization: getCookie('token'),
+            },
+            data: {
+                ...data,
+            },
+        });
+    } catch (err) {
+        alert('로그인이 필요한 서비스입니다!');
+        console.error(err);
+    }
 };
 export const sendEvent = async (eventData) => {
     try {

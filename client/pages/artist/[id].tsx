@@ -5,7 +5,8 @@ import ContentsButtonGroup from '@components/organisms/ContentsButtonGroup';
 import CardListContainer from '@components/organisms/CardListContainer';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
 import Text from '@components/atoms/Text';
-import { requestByCookie } from '@utils/apis';
+import { request } from '@utils/apis';
+import { getTokenFromCtx } from '@utils/cookies';
 import apiUrl from '@constants/apiUrl';
 import { page, contentType, dataType } from '@constants/identifier';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
@@ -81,8 +82,9 @@ const Artist = ({ artistData, trackData }) => {
 
 export async function getServerSideProps(context) {
     const { id } = context.query;
-    const { req, res } = context;
-    const artistData = await requestByCookie(req, res, apiUrl.artist + `/${id}`);
+
+    const token = getTokenFromCtx(context);
+    const artistData = await request(`${apiUrl.artist}/${id}`, {}, token);
     const trackData = artistData?.tracks;
 
     if (!artistData) {

@@ -9,7 +9,7 @@ import SwiftUI
 import KingfisherSwiftUI
 
 struct TrackRowC: View {
-    @EnvironmentObject private var nowPlaying: NowPlaying
+    @EnvironmentObject private var nowPlaying: NowPlayingViewModel
     @StateObject private var viewModel: TrackViewModel
     private let menuButtonAction: (TrackViewModel) -> Void
 
@@ -30,7 +30,7 @@ struct TrackRowC: View {
             }
             
             Button {
-                nowPlaying.addTrack(track: viewModel)
+                nowPlaying.send(.add(track: viewModel))
             } label: {
                 TrackRowInfoB(title: viewModel.state.track.title,
                               artist: viewModel.state.track.artist.name)

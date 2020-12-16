@@ -10,7 +10,6 @@ import Foundation
 
 public protocol EventLogType: Encodable {
     var event: String { get }
-    var userId: Int { get }
     var timestamp: Date { get }
     func save(context: NSManagedObjectContext)
 }

@@ -9,7 +9,7 @@ import Foundation
 import Reachability
 
 public protocol EventLoggerType {
-    func send(_ event: EventLogType)
+    func send<T: EventLogType>(_ event: T)
 }
 
 open class EventLogger: EventLoggerType {
@@ -28,7 +28,7 @@ open class EventLogger: EventLoggerType {
         reachability.setUpNotify { [weak self] in self?.networkState = $0 }
     }
     
-    public func send(_ event: EventLogType) {
+    public func send<T: EventLogType>(_ event: T) {
         switch networkState {
         case .cellular, .wifi:
             server?.send(event)

@@ -9,12 +9,13 @@ import SwiftUI
 import EventLogKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    var nowPlaying: NowPlaying!
+    var nowPlaying: NowPlayingViewModel?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        let defaultTracks = nowPlaying.dataManager.fetch()
-        let trackViewModel = nowPlaying.dataManager.tracksToViewModel(tracks: defaultTracks)
-        nowPlaying.upNext = trackViewModel
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+    ) -> Bool {
+        nowPlaying?.send(.launch)
         return true
     }
 }
@@ -22,12 +23,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct MiniVibeApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-
-    static let eventLogger = EventLogger(local: LocalEventStorage(),
-                                         server: nil,
-                                         reachability: ReachablilityObserver(hostName: "local"))
     
-    let nowPlaying = NowPlaying()
+    static let eventLogger = EventLogger(local: LocalEventStorage(),
+                                         server: ServerEventStorage(),
+                                         reachability: ReachablilityObserver(hostName: "www.google.com"))
+    
+    let nowPlaying = NowPlayingViewModel()
     
     init() {
         appDelegate.nowPlaying = nowPlaying
@@ -45,10 +46,7 @@ struct MiniVibeApp: App {
                 .onReceive(
                     NotificationCenter.default.publisher(
                         for: UIApplication.willResignActiveNotification)) { _ in
-                    nowPlaying.dataManager.delete()
-                    let upNext = nowPlaying.upNext
-                    let tracksToSave = nowPlaying.dataManager.viewModelToTracks(viewModel: upNext)
-                    nowPlaying.dataManager.saveTracks(tracks: tracksToSave)
+                    nowPlaying.send(.resignActive)
                     MiniVibeApp.eventLogger.send(Background(userId: 0))
                 }
                 .onReceive(

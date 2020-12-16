@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import EventLogKit
 
-protocol EngagementLogType: EventLogType {
+protocol EngagementLogType: CustomEventLogType {
     
 }
 
@@ -26,19 +26,27 @@ extension EngagementLogType {
 struct Active: EngagementLogType {
     let userId: Int
     let timestamp = Date()
+    let event = "Active"
+    let platform = "iOS"
 }
 
 struct Foreground: EngagementLogType {
     let userId: Int
     let timestamp = Date()
+    let event = "Foreground"
+    let platform = "iOS"
 }
 
 struct Background: EngagementLogType {
     let userId: Int
     let timestamp = Date()
+    let event = "Background"
+    let platform = "iOS"
 }
 
 struct Terminate: EngagementLogType {
     let userId: Int
     let timestamp = Date()
+    let event = "Terminate"
+    let platform = "iOS"
 }

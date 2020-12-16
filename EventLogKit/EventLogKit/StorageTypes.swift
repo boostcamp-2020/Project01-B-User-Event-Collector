@@ -12,5 +12,5 @@ public protocol LocalStorageType {
 }
 
 public protocol ServerStorageType {
-    func send(_ event: EventLogType)
+    func send<T: EventLogType>(_ event: T)
 }
