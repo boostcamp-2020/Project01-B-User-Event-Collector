@@ -14,7 +14,9 @@ function useUpNextChangeEvent({ userId }) {
             trackId,
             ...componentInfo,
         });
-        if (musicPlayer && musicPlayer.nowPlaying) {
+        // playNow event
+        if (!musicPlayer) return;
+        if (musicPlayer.nowPlaying) {
             const { nowPlaying, playTime } = musicPlayer;
             const playingProgress = Math.floor((playTime * 100) / nowPlaying.playtime);
             return logPlayNowEvent(trackId[0], musicPlayer.nowPlaying.id, playingProgress);
