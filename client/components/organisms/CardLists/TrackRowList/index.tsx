@@ -13,7 +13,7 @@ const ListContainer = styled.ul`
 const TrackRowList = ({ items }: { items: TrackRowCardProps[] }) => (
     <ListContainer>
         {items.map((item) => (
-            <ComponentInfoWrapper componentId={`${item.id}`} data={{ type: dataType.track, id: item.id }}>
+            <ComponentInfoWrapper key={item.id} componentId={`${item.id}`} data={{ type: dataType.track, id: item.id }}>
                 <TrackRowCard key={item.id} {...(item as TrackRowCardProps)} />
             </ComponentInfoWrapper>
         ))}

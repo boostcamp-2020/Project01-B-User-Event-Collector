@@ -29,7 +29,7 @@ final class TrackViewModelTests: XCTestCase {
                               liked: 0)
         let usecase = MockTrackUseCase(track: track)
         let eventLogger = MockEventLogger { data in
-            XCTAssertEqual(data.event, "LikeLog")
+            XCTAssertEqual(data.event, "Like")
             expectation.fulfill()
         }
         
@@ -63,7 +63,7 @@ final class TrackViewModelTests: XCTestCase {
                               liked: 1)
         let usecase = MockTrackUseCase(track: track)
         let eventLogger = MockEventLogger { data in
-            XCTAssertEqual(data.event, "LikeLog")
+            XCTAssertEqual(data.event, "Like")
             expectation.fulfill()
         }
         let viewModel = TrackViewModel(track: track,

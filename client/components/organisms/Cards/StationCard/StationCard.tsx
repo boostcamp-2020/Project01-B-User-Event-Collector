@@ -17,7 +17,7 @@ const ThumbnailContainer = styled.div``;
 const StationCard = ({ src }: StationCardProps) => (
     <CardContainer>
         <ThumbnailContainer>
-            <ContentsThumbnail src={src} href="" />
+            <ContentsThumbnail data={{imageUrl: src}} sort="station"/>
         </ThumbnailContainer>
     </CardContainer>
 );

@@ -4,21 +4,12 @@ import TrackRowList from '@components/organisms/CardLists/TrackRowList';
 import ContentsButtonGroup from '@components/organisms/ContentsButtonGroup';
 import CardListContainer from '@components/organisms/CardListContainer';
 import ContentsCardList from '@components/organisms/CardLists/ContentsCardList';
-import { requestByCookie } from 'utils/apis';
+import { request, requestByCookie } from 'utils/apis';
 import apiUrl from 'constants/apiUrl';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import { contentType, dataType, page } from '@constants/identifier';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
-
-const Artistdata = Array(9).fill({
-    id: 3,
-    name: '이영지',
-    imageUrl: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg',
-    genre: {
-        id: 1,
-        name: '랩/힙합',
-    },
-});
+import { getTokenFromCtx } from '@utils/cookies';
 
 const Container = styled.div`
     min-height: 1300px;
@@ -46,7 +37,7 @@ const TrackListContainer = styled.div`
 
 const ArtistListContainer = styled.div``;
 
-const ThisMonth = ({ PlaylistData, TrackData }) => {
+const ThisMonth = ({ PlaylistData, TrackData, ArtistData }) => {
     return (
         <ComponentInfoContext.Provider
             value={{
@@ -67,7 +58,7 @@ const ThisMonth = ({ PlaylistData, TrackData }) => {
                     </TrackListContainer>
                     <ArtistListContainer>
                         <CardListContainer title="연관 아티스트">
-                            <ContentsCardList variant="artist" items={Artistdata} />
+                            <ContentsCardList variant="artist" items={ArtistData} />
                         </CardListContainer>
                     </ArtistListContainer>
                 </ContentsContainer>
@@ -77,16 +68,17 @@ const ThisMonth = ({ PlaylistData, TrackData }) => {
 };
 
 export async function getServerSideProps(context) {
-    const { req, res } = context;
-    const PlaylistData = await requestByCookie(req, res, apiUrl.playlist + `/9`);
+    const token = getTokenFromCtx(context);
+    const PlaylistData = await request(`${apiUrl.playlist}/9`, {}, token);
     const TrackData = PlaylistData?.tracks;
-
+    const ArtistData = await request(`${apiUrl.artist}`, {}, token);
     // TODO: error handling
 
     return {
         props: {
             PlaylistData,
             TrackData,
+            ArtistData
         },
     };
 }

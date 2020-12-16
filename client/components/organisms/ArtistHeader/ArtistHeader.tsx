@@ -66,7 +66,7 @@ interface ArtistHeaderProps {
     src: string;
     name: string;
     genre: string;
-    isLiked: number;
+    isLiked?: number;
 }
 
 const ArtistHeader = ({ src, name, genre, isLiked }: ArtistHeaderProps) => {

@@ -45,7 +45,7 @@ const MixtapeCard = (data: MixtapeCardProps) => {
     return (
         <CardContainer>
             <ThumbnailContainer>
-                <ContentsThumbnail src={imageUrl} href={'/playlist/' + id} />
+                <ContentsThumbnail data={data} sort='mixtape'/>
             </ThumbnailContainer>
             <TextContainer>
                 <TitelContainer>

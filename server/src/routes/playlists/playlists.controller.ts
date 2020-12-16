@@ -5,6 +5,7 @@ import * as TrackController from '../tracks/tracks.controller';
 import Playlist from '../../models/Playlist';
 import Track from '../../models/Track';
 import Artist from '../../models/Artist';
+import User from '../../models/User';
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -22,6 +23,7 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
 const listById = async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
     const userId = req.user;
+    console.log(userId);
     try {
         const PlaylistRepository = getRepository(Playlist);
         const playlist = await PlaylistRepository.createQueryBuilder('playlist')
@@ -46,6 +48,11 @@ const listById = async (req: Request, res: Response, next: NextFunction) => {
             .where('playlist.id = :id', { id })
             .getOne();
 
+        const UserRepository = getRepository(User);
+        const userLiked = await UserRepository.createQueryBuilder('user')
+            .leftJoinAndSelect('user.libraryPlaylists', 'library_playlists')
+            .where('user.id = :userId AND library_playlists.id = :id', { userId, id })
+            .getOne();
         const relatedArtistIds = [...new Set(playlist?.tracks.map((track) => track.artist.id))];
         let relatedArtists: { id: number, name: string, imageUrl: string }[] = [];
         if (relatedArtistIds.length > 0) {
@@ -55,7 +62,10 @@ const listById = async (req: Request, res: Response, next: NextFunction) => {
                 .getMany();
         }
 
-        return res.json({ success: true, data: { ...playlist, relatedArtists } });
+        return res.json({
+            success: true,
+            data: { ...playlist, liked: !!userLiked, relatedArtists },
+        });
     } catch (err) {
         console.error(err);
         return res.status(500).json({ success: false, data: [] });

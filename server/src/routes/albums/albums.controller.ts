@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { getRepository } from 'typeorm';
-
+import User from '../../models/User';
 import Album from '../../models/Album';
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
@@ -40,6 +40,11 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
             .where('album.id = :id', { id })
             .getOne();
 
+        const UserRepository = getRepository(User);
+        const userLiked = await UserRepository.createQueryBuilder('user')
+            .leftJoinAndSelect('user.libraryAlbums', 'library_albums')
+            .where('user.id = :userId AND library_albums.id = :id', { userId, id })
+            .getOne();
         const relatedAlbums = await AlbumRepository.createQueryBuilder('album')
             .leftJoinAndSelect('album.artist', 'artist')
             .where('album.id != :id and artist.id = :artistId', { id, artistId: album?.artist.id })
@@ -48,7 +53,7 @@ const findOne = async (req: Request, res: Response, next: NextFunction) => {
 
         return res.json({
             success: true,
-            data: { ...album, relatedAlbums },
+            data: { ...album, liked: !!userLiked, relatedAlbums },
         });
     } catch (err) {
         return res.status(500).json({ success: false });

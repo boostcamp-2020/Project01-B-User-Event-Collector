@@ -76,30 +76,24 @@ const PlayerTrackInfo = ({ track }) => {
         setDisplayLyrics(!displayLyrics);
     };
 
-    const data = track;
+    const noNowPlaying = {
+        album: {imageUrl: 'http://placehold.it/20x20'},
+        title: '재생중인 곡이 없습니다',
+        artist: '',
+        lyrics: '',
+        id:0
+    }
+
+    const data = track? track: noNowPlaying;
 
     return (
         <Container>
-            <LyricModal
-                src={data.album.imageUrl}
-                title={data.title}
-                artist={data.artist.name}
-                lyrics={data.lyrics}
-                visibility={displayLyrics}
-                onClickFunc={onClickShowLyric}
-            />
             <TrackCardContainer>
-                <TrackCard data={track} imgVariant="trackInfo" isDefault={false} isTrack={true} />
+                <TrackCard data={ track? track: noNowPlaying } imgVariant="trackInfo" isDefault={false} isTrack={true} />
             </TrackCardContainer>
             <LikeButtonContainer>
                 <Heart isSelected={true} sort="musicPlayer" />
             </LikeButtonContainer>
-            <ShowLyricButton onClick={onClickShowLyric}>
-                <QueueMusicIcon style={{ color: '#999' }} />
-            </ShowLyricButton>
-            <DropDownContainer>
-                <DropDownMenu id="contents" control={StyledMoreHorizIcon} menuItems={contentsDropDownMenu} state={{}} />
-            </DropDownContainer>
         </Container>
     );
 };

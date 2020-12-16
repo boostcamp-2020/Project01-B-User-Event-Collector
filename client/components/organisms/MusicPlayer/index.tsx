@@ -87,13 +87,15 @@ const MusicPlayer = () => {
     const [displayHeader, setDisplayHeader] = useState(false);
 
     const displayHeaderHandler = () => {
-        setDisplayHeader(!displayHeader);
+        if(upNextTracks.length !== 0){
+            setDisplayHeader(!displayHeader);
+        }
     };
 
     return (
         <Container>
             <ComponentInfoWrapper componentId={contentType.upNext}>
-                <HeaderContainer visible={displayHeader}>
+                {nowPlaying && <HeaderContainer visible={displayHeader}>
                     <ImageContainer>
                         <StyledImage src={nowPlaying.album.imageUrl} />
                     </ImageContainer>
@@ -103,13 +105,13 @@ const MusicPlayer = () => {
                             <PlayerTrackList items={upNextTracks} />
                         </TrackContainer>
                     </TrackListContainer>
-                </HeaderContainer>
+                </HeaderContainer>}
             </ComponentInfoWrapper>
             <ComponentInfoWrapper componentId={contentType.playController}>
                 <ControllerContainer>
                     <PlayController
                         track={nowPlaying}
-                        displayHeader={displayHeader}
+                        displayHeader={upNextTracks.length !== 0? displayHeader:false}
                         displayHeaderHandler={displayHeaderHandler}
                     />
                 </ControllerContainer>

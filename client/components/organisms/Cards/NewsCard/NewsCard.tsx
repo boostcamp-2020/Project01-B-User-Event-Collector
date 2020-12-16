@@ -31,16 +31,16 @@ const StyledA = styled(A)`
     font-size: 16px;
 `;
 
-const NewsCard = ( data : NewsCardProps) => {
-    const {id, title, imageUrl, date, link, albumId} = data;
+const NewsCard = (data: NewsCardProps) => {
+    const { id, title, imageUrl, date, link, albumId } = data;
     return (
         <CardContainer>
             <ThumbnailContainer>
-                <ContentsThumbnail sort="news" src={imageUrl} href={"/album/"+albumId} />
+                <ContentsThumbnail sort="news" data={data} contentId={albumId}/>
             </ThumbnailContainer>
             <TextContainer>
                 <TitleContainer>
-                    <StyledA href={"/album/"+albumId}>{title}</StyledA>
+                    <StyledA href={'/album/' + albumId}>{title}</StyledA>
                 </TitleContainer>
                 <DescriptionContainer>
                     <A href={link} variant="tertiary">
@@ -49,7 +49,7 @@ const NewsCard = ( data : NewsCardProps) => {
                 </DescriptionContainer>
             </TextContainer>
         </CardContainer>
-    )
+    );
 };
 
 export default NewsCard;

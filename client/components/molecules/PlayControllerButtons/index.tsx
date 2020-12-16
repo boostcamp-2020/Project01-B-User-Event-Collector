@@ -7,7 +7,7 @@ import RepeatOneIcon from '@material-ui/icons/RepeatOne';
 import PauseIcon from '@material-ui/icons/Pause';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
-import { playPrevTrack, playNextTrack } from 'reducers/musicPlayer';
+import { playPrevTrack, playNextTrack, playTrack, pauseTrack } from 'reducers/musicPlayer';
 import { useSelector, useDispatch } from 'react-redux';
 
 // interface PlayControllerProps {
@@ -58,6 +58,14 @@ const PlayControllerButtons = () => {
         dispatch(playNextTrack());
     }
 
+    const playTrackHandler = () => {
+        dispatch(playTrack());
+    }
+
+    const pauseTrackHandler = () => {
+        dispatch(pauseTrack());
+    }
+
     return (
         <Container>
             <SubIconWrapper>
@@ -67,7 +75,8 @@ const PlayControllerButtons = () => {
                 <SkipPreviousIcon style={{ fontSize: '35px' }} onClick = { toPrevTrack }/>
             </SkipIconWrapper>
             <PlayIconWrapper onClick={() => setPlaying(!playing)}>
-                {playing ? <PauseIcon style={{ fontSize: '55px' }} /> : <PlayArrowIcon style={{ fontSize: '55px' }} />}
+                {playing ? <PauseIcon style={{ fontSize: '55px' }} onClick = { pauseTrackHandler }/> :
+                 <PlayArrowIcon style={{ fontSize: '55px' }} onClick = { playTrackHandler }/>}
             </PlayIconWrapper>
             <SkipIconWrapper>
                 <SkipNextIcon style={{ fontSize: '35px' }} onClick = { toNextTrack }/>
