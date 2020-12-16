@@ -17,7 +17,7 @@ const apiUrl = {
     like: `${baseUrl}/library/`,
     addTracksToPlaylist: `${baseUrl}/playlists/tracks`,
     user: `${baseUrl}/users`,
-    login: `${host}/auth/naver-login`,
+    login: `${host}/auth`,
     event: `${baseUrl}/events/`,
     playEvent: `${baseUrl}/play-events/`,
 };
