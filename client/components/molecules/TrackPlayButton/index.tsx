@@ -3,7 +3,7 @@ import Image from '@components/atoms/Image/Image';
 import { ButtonContainer, Play } from './TrackPlayButton.styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToUpNextAndPlay } from 'reducers/musicPlayer';
-import usePlayNowEvent from 'hooks/usePlayNowEventLog';
+import useUpNextChangeEventLog from '@hooks/useUpNextChangeEventLog';
 
 interface TrackPlayButtonProps {
     data;
@@ -14,12 +14,11 @@ const TrackPlayButton = ({ data, imgVariant }: TrackPlayButtonProps) => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
     const { nowPlaying, playTime } = useSelector((state) => state.musicPlayer);
-    const logPlayNowEvent = usePlayNowEvent({ userId: user.id });
+    const { logAddToUpnextEvent } = useUpNextChangeEventLog({ userId: user.id });
 
     const onClickPlayHandler = () => {
         dispatch(addToUpNextAndPlay([data]));
-        if (nowPlaying) logPlayNowEvent(nowPlaying.id, data.id, Math.floor((playTime * 100) / nowPlaying.playtime));
-        else logPlayNowEvent(data.id);
+        logAddToUpnextEvent([data.id], { nowPlaying, playTime });
     };
 
     const altImg = 'http://placehold.it/20x20';
