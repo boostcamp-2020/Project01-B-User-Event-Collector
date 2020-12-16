@@ -11,8 +11,8 @@ import Foundation
 struct MockEventLogger: EventLoggerType {
     
     var handler: ((EventLogType) -> Void)?
-    
-    func send<T>(_ event: T) where T : EventLogType {
+
+    func send<T>(_ event: T) where T: EventLogType {
         handler?(event)
     }
 }

@@ -41,6 +41,18 @@ const UserContentsContainer = styled.div`
     align-items: center;
 `;
 
+const NotLoginContentsContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: rgba(50,50,50,0.3);
+    height: 100px;
+    font-weight: 700;
+`;
+
 const ContentsContainer = styled.div`
     border-bottom: 1px solid #dddddd;
 `;
@@ -57,7 +69,12 @@ const Home = ({ Magazinesdata, Newsdata, Playlistdata, Albumdata }) => {
                         <MainMagazineCard {...Magazinesdata[0]} />
                     </ComponentInfoWrapper>
                 </MainMagazineContainer>
-                <PublicContentsContainer>
+                {!user.isLoggedIn && 
+                <NotLoginContentsContainer>
+                로그인을 하셔야 모든 서비스를 이용하실 수 있습니다.
+                </NotLoginContentsContainer>
+                }
+                <PublicContentsContainer >
                     <ContentsContainer>
                         <ComponentInfoWrapper componentId={contentType.magaznie}>
                             <CardListContainer title="매거진" href="/">

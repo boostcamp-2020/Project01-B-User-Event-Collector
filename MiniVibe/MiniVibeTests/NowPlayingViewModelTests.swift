@@ -242,7 +242,7 @@ final class NowPlayingViewModelTests: XCTestCase {
         
         let dataManager = MockPlayerDataManager(data: tracks)
         let eventLogger = MockEventLogger(handler: { data in
-            if data.event == "MoveTrackLog" {
+            if data.event == "MoveTrack" {
                 expectation.fulfill()
             }
         })

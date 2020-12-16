@@ -5,7 +5,7 @@ import StyledImage from './Image.styles';
 
 const Image = ({
   variant, src
-}) => <StyledImage variant={variant} src={src} />;
+}) => <StyledImage alt = "image" variant={variant} src={src} />;
 
 // Expected prop values
 Image.propTypes = {

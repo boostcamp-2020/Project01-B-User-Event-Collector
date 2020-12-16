@@ -22,13 +22,16 @@ const useDropDownAction = ({ userId, setAnchorEl, state }) => {
                     data: {
                         id: data.id
                     }
-                });
-                state.setIsLiked(1);
+                })
+                .then(data => {state.setIsLiked(1)})
+                .catch(err => {console.log(err); });
                 logLikeEvent(true);
                 break;
             case dropDownMenu.unlike:
-                deleteFromLibrary(`${apiUrl.like}${data.type}s/${data.id}`);
-                state.setIsLiked(0);
+                deleteFromLibrary(`${apiUrl.like}${data.type}s/${data.id}`)
+                .then(data => {state.setIsLiked(0);})
+                .catch(err => {console.log(err); });
+                
                 logLikeEvent(false);
                 break;
             case dropDownMenu.addToPlaylist:
@@ -37,15 +40,19 @@ const useDropDownAction = ({ userId, setAnchorEl, state }) => {
                         visibility: true,
                         data: data,
                     });
-                });
+                }).catch(err => {console.log(err); });
                 break;
             case dropDownMenu.addToLibrary:
-                let type = undefined
-                if(data.type === 'magazine' || data.type === 'news') type = 'playlist'
-                else type = data.type
-                addToLibrary(`${apiUrl.like}${type}s`, {data: {
-                    id: data.id
-                }});
+                let type = data.type
+                let id = data.id
+                if(type === 'magazine' || type === 'news') {
+                    id = state.contentId
+                    if(type === 'magazine') type = 'playlist'
+                    else if(type === 'news') type = 'album'
+                }
+                addToLibrary(`${apiUrl.like}${type}s`, {data: {id} })
+                .then(data => {if(state.setLikeStatus) state.setLikeStatus(true)})
+                .catch(err => {console.log(err); });
                 logLikeEvent(true);
                 break;
             case dropDownMenu.addToUpNext:

@@ -40,40 +40,40 @@ const properCard = ({ variant, items }: ContentsCardListProps) => {
     switch (variant) {
         case 'mixtape':
             return items.map((item) => (
-                <ComponentInfoWrapper componentId={`${item.id}`} data={{ type: dataType.mixtape, id: item.id }}>
-                    <Item>
+                <ComponentInfoWrapper key={item.id} componentId={`${item.id}`} data={{ type: dataType.mixtape, id: item.id }}>
+                    <Item key={item.id}>
                         <MixtapeCard key={item.id} {...(item as MixtapeCardProps)} />
                     </Item>
                 </ComponentInfoWrapper>
             ));
         case 'artist':
             return items.map((item) => (
-                <ComponentInfoWrapper componentId={`${item.id}`} data={{ type: dataType.artist, id: item.id }}>
-                    <Item>
+                <ComponentInfoWrapper key={item.id} componentId={`${item.id}`} data={{ type: dataType.artist, id: item.id }}>
+                    <Item key={item.id}>
                         <NormalArtistThumbnail key={item.id} {...(item as LibraryArtistThumbnailProps)} />
                     </Item>
                 </ComponentInfoWrapper>
             ));
         case 'album':
             return items.map((item) => (
-                <ComponentInfoWrapper componentId={`${item.id}`} data={{ type: dataType.album, id: item.id }}>
-                    <Item>
+                <ComponentInfoWrapper key={item.id} componentId={`${item.id}`} data={{ type: dataType.album, id: item.id }}>
+                    <Item key={item.id}>
                         <AlbumCard key={item.id} {...(item as AlbumCardProps)} />
                     </Item>
                 </ComponentInfoWrapper>
             ));
         case 'playlist':
             return items.map((item) => (
-                <ComponentInfoWrapper componentId={`${item.id}`} data={{ type: dataType.playlist, id: item.id }}>
-                    <Item>
+                <ComponentInfoWrapper key={item.id} componentId={`${item.id}`} data={{ type: dataType.playlist, id: item.id }}>
+                    <Item key={item.id}>
                         <PlaylistCard key={item.id} {...(item as PlaylistCardProps)} />
                     </Item>
                 </ComponentInfoWrapper>
             ));
         case 'news':
             return items.map((item) => (
-                <ComponentInfoWrapper componentId={`${item.id}`} data={{ type: dataType.news, id: item.id }}>
-                    <Item>
+                <ComponentInfoWrapper key={item.id} componentId={`${item.id}`} data={{ type: dataType.news, id: item.id }}>
+                    <Item key={item.id}>
                         <NewsCard key={item.id} {...(item as NewsCardProps)} />
                     </Item>
                 </ComponentInfoWrapper>

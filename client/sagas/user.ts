@@ -72,7 +72,6 @@ function loadUserAPI() {
 function* loadUser(action) {
     try {
         const result = yield call(loadUserAPI);
-        console.log(result);
         yield put({         //put은 dispatch. 액션을 dispatch
             type: LOAD_USER_SUCCESS,
             data: result.data
@@ -86,7 +85,6 @@ function* loadUser(action) {
 }
 
 function* watchLogIn() {
-    console.log('saga111');
     yield takeLatest(LOG_IN_REQUEST, logIn);
   }
   

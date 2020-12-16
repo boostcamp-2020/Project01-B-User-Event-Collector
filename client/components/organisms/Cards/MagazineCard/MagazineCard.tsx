@@ -39,7 +39,7 @@ const MagazineCard = ( data : MagazineCardProps ) => {
     return(
     <CardContainer>
         <ThumbnailContainer>
-            <ContentsThumbnail src={imageUrl} href="magazine/[id]" sort='todayMagazine' />
+            <ContentsThumbnail data={data} sort='todayMagazine' />
         </ThumbnailContainer>
         <TextContainer>
             <TitelContainer>

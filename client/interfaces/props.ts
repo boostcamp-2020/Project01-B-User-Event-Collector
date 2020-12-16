@@ -15,10 +15,10 @@ export interface TrackInfoProps {
 }
 
 export interface InputProps {
-    name: string;
+    name?: string;
     variant?: string;   
-    value: string | undefined;
-    onChange : (e : React.ChangeEvent<HTMLElement> ) => void | undefined
+    value?: string | undefined;
+    onChange? : (e : React.ChangeEvent<HTMLElement> ) => void | undefined
 }
 
 export interface MagazineCardProps {
@@ -39,9 +39,9 @@ export interface NewsCardProps {
 }
 
 export interface ContentsThumbnailProps {
-    src: string;
-    href: string;
-    sort?: 'news' | 'mainMagazine' | 'normalMagazine' | 'recommendPlaylist' | 'normalPlaylist' | 'todayMagazine';
+    data;
+    sort?: 'news' | 'mainMagazine' | 'normalMagazine' | 'recommendPlaylist' | 'normalPlaylist' | 'todayMagazine' | 'album' | 'playlist' | 'station' | 'mixtape' ;
+    contentId?: number | undefined
 }
 
 export interface MixtapeCardProps {
@@ -155,7 +155,7 @@ export interface DropdownMenuProps {
         handleClick?: (e: MouseEvent<HTMLElement>) => void;
     }[];
     children?: ReactNode;
-    state?: object;
+    state?: any
 }
 
 export interface CheckBoxProps {
@@ -168,6 +168,7 @@ export interface CheckBoxProps {
 export interface HeaderButtonGroupProps {
     sort?: 'track';
     onAddUpNextHandler?: any;
+    liked: boolean
 }
 
 export interface LyricModalProps {

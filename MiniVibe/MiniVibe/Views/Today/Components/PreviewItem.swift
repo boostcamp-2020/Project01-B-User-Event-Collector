@@ -15,23 +15,28 @@ struct PreviewItem: View {
     let subtitle: String
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text(upperTitle)
-                .font(.system(size: 12))
-                .foregroundColor(.accentColor)
-            
-            KFImage(URL(string: imageUrl))
-                .resizable()
-            
-            VStack(alignment: .leading, spacing: 3) {
-                Text(title)
-                    .font(.system(size: 17))
-                    .foregroundColor(.primary)
-                    .bold()
-                
-                Text(subtitle)
+        GeometryReader { geometry in
+            VStack(alignment: .leading, spacing: 6) {
+                Text(upperTitle)
                     .font(.system(size: 12))
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.accentColor)
+                
+                KFImage(URL(string: imageUrl))
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: geometry.size.height * 0.7)
+                    .clipped()
+                
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(title)
+                        .font(.system(size: 17))
+                        .foregroundColor(.primary)
+                        .bold()
+                    
+                    Text(subtitle)
+                        .font(.system(size: 12))
+                        .foregroundColor(.secondary)
+                }
             }
         }
     }
@@ -44,7 +49,8 @@ struct PreviewItem_Previews: PreviewProvider {
     }
 }
 
-struct MockPreviewItem {
+// swiftlint:disable line_length
+enum MockPreviewItem {
     static let item0 = PreviewItem(upperTitle: "여왕의 귀환",
                                    imageUrl: "https://music-phinf.pstatic.net/20201207_49/1607303728781HTub7_JPEG/0-%B4%EB%C7%A5%C0%CC%B9%CC%C1%F6_1.jpg?type=w720",
                                    title: "머라이어캐리가 돌아왔다",
@@ -58,3 +64,4 @@ struct MockPreviewItem {
                                    title: "따뜻한 감동을 주는 찰리브라운과 친구들",
                                    subtitle: "함께해요")
 }
+// swiftlint:enable line_length

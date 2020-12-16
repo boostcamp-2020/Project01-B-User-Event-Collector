@@ -73,7 +73,6 @@ const DetailHeader = ({ sort, data }: DetailHeaderProps) => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
     const { logAddToUpnextEvent } = useUpNextChangeEventLog({ userId: user.id });
-
     const onAddUpNextAndPlayHandler = () => {
         if (sort === 'track') {
             dispatch(addToUpNextAndPlay([data]));
@@ -108,9 +107,15 @@ const DetailHeader = ({ sort, data }: DetailHeaderProps) => {
                 </TextContainer>
                 <ButtonContainer>
                     {sort === 'track' && (
-                        <HeaderButtonGroup sort="track" onAddUpNextHandler={onAddUpNextAndPlayHandler} />
+                        <HeaderButtonGroup
+                            sort="track"
+                            onAddUpNextHandler={onAddUpNextAndPlayHandler}
+                            liked={data.liked}
+                        />
                     )}
-                    {sort !== 'track' && <HeaderButtonGroup onAddUpNextHandler={onAddUpNextAndPlayHandler} />}
+                    {sort !== 'track' && (
+                        <HeaderButtonGroup onAddUpNextHandler={onAddUpNextAndPlayHandler} liked={data.liked} />
+                    )}
                 </ButtonContainer>
             </DetailContainer>
         </HeaderContainter>

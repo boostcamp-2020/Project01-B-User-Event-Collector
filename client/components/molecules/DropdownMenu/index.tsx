@@ -49,21 +49,25 @@ const DropdownMenu = ({ id, control: ControlComponent, menuItems, children, stat
         });
     };
     const onClickHandler = (e) => {
-        let type = undefined;
-        if (componentInfo.data.type === 'magazine') type = 'playlist';
-        else if (componentInfo.data.type === 'news') type = 'album';
-        else type = componentInfo.data.type;
+        let type = componentInfo.data.type;
+        let id = componentInfo.data.id;
+        if (type === 'magazine' || type === 'news') {
+            id = state.contentId;
+            if (type === 'magazine') type = 'playlist';
+            else if (type === 'news') type = 'album';
+        }
 
         const playlistId = e.currentTarget.firstChild.innerText;
         const url = `${apiUrl.playlist}/${type}`;
         const reqBodyData = {
             data: {
                 id: parseInt(playlistId),
-                data: [componentInfo.data.id],
+                data: [id],
             },
         };
-        addToPlaylist(url, reqBodyData);
-        removePlaylistModal();
+        addToPlaylist(url, reqBodyData).then((data) => {
+            removePlaylistModal();
+        });
     };
     return (
         <>

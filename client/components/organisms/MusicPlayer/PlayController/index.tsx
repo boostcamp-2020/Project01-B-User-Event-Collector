@@ -70,10 +70,11 @@ const PlayController = ({track, displayHeader, displayHeaderHandler}: PlayContro
     const data = track;
     const dispatch = useDispatch();
     const { nowPlaying, playTime, upNextTracks } = useSelector(state => state.musicPlayer);
+    const totalPlayTime = data? data.playtime:0;
     return (
         <Container>
             <ProgresBarContainer>
-                <ProgressBar totalPlaytime={ data.playtime } progress={50} />
+                <ProgressBar totalPlaytime={totalPlayTime} progress={playTime/totalPlayTime * 100} />
             </ProgresBarContainer>
             <SectionContainer>
                 <TrackInfoContainer>
@@ -83,7 +84,7 @@ const PlayController = ({track, displayHeader, displayHeaderHandler}: PlayContro
                     <PlayControllerButtons />
                 </PlayButtonsContainer>
                 <PlaytimeContainer>
-                    <Playtime current={playTime} total={ data.playtime } />
+                    <Playtime current={playTime} total={ totalPlayTime } />
                 </PlaytimeContainer>
                 <VolumnControllerContainer>
                     <VolumnController />

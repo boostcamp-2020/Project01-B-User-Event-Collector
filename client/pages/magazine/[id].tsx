@@ -13,6 +13,8 @@ import apiUrl from '@constants/apiUrl';
 import { page, contentType } from '@constants/identifier';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToUpNext, addToUpNextAndPlay } from 'reducers/musicPlayer';
 
 const Container = styled.div`
     min-height: 1300px;
@@ -75,7 +77,7 @@ const ButtonContainer = styled.div`
     margin: 15px 0;
     width: 270px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 `;
 
 const ContentsContainer = styled.div`
@@ -117,6 +119,11 @@ const WholeTrackTitleContainer = styled.div`
 `;
 
 const MagazineDetail = ({ magazineData }) => {
+    const dispatch = useDispatch();
+    const onClickPlayHandler = () => {
+        dispatch(addToUpNextAndPlay(magazineData.playlist.tracks));
+    }
+
     return (
         <ComponentInfoContext.Provider value={{ componentId: `${page.magazine}-${magazineData.id}` }}>
             <Container>
@@ -136,11 +143,8 @@ const MagazineDetail = ({ magazineData }) => {
                                 </A>
                             </PlaylistLinkConainer>
                             <ButtonContainer>
-                                <Button variant="primary" width="130" height="40" icon={PlayArrowIcon}>
+                                <Button variant="primary" width="130" height="40" icon={PlayArrowIcon} onClick={onClickPlayHandler}>
                                     전체재생
-                                </Button>
-                                <Button width="130" height="40" icon={ShuffleIcon}>
-                                    랜덤재생
                                 </Button>
                             </ButtonContainer>
                         </ComponentInfoWrapper>

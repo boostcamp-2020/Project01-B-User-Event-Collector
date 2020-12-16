@@ -30,8 +30,10 @@ const MoveInfoDetail = styled(StyledA)<{ top: boolean; track: boolean }>`
         `};
 `;
 const TrackInfo = ({ data , track }: TrackInfoProps) => {
-    const { id, title, artistId, artist } = data;
-    const { name: artistName } = artist;
+
+        const { id, title, artistId, artist } = data;
+        const { name: artistName } = artist;
+
     return(
         <TrackInfoContainer>
             <MoveInfoDetail href={"/track/"+id} variant="fourth" top={true} track={track}>

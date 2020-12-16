@@ -65,7 +65,8 @@ final class ServerEventStorage: ServerStorageType {
         case is PlayLog,
              is AddToUpnext,
              is RemoveFromUpnext,
-             is MoveTrackLog:
+             is MoveTrackLog,
+             is Save:
             return EndPoint.playEvents.urlString
 
         default:
