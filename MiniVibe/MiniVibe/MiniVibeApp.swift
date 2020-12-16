@@ -26,7 +26,7 @@ struct MiniVibeApp: App {
     
     static let eventLogger = EventLogger(local: LocalEventStorage(),
                                          server: ServerEventStorage(),
-                                         reachability: ReachablilityObserver(hostName: "www.google.com"))
+                                         reachability: ReachablilityObserver(hostName: "wwwom"))
     
     let nowPlaying = NowPlayingViewModel()
     

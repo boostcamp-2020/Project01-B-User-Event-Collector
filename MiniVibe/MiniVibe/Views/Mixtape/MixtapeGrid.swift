@@ -19,7 +19,8 @@ struct MixtapeGrid: View {
                 ) {
                     ForEach(mixtapes, id: \.id) { mixtape in
                         NavigationLink(
-                            destination: Text("MixtapeView")
+                            destination: PlayListView(viewModel: .init(id: mixtape.id,
+                                                                       eventLogger: MiniVibeApp.eventLogger))
                                 .logTransition(identifier: .mixtape(id: mixtape.id),
                                                componentId: ComponentId.mixtapeItem),
                             label: {
