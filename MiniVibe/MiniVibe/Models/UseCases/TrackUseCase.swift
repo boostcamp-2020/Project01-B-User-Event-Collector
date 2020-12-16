@@ -16,7 +16,7 @@ protocol TrackUseCaseType {
 
 struct TrackUseCase: TrackUseCaseType {
     struct LikeTrack: Encodable {
-        let trackId: Int
+        let id: Int
     }
 
     struct LikeTrackResponse: Decodable {
@@ -46,7 +46,7 @@ struct TrackUseCase: TrackUseCaseType {
     }
     
     func likeTrack(id: Int) -> AnyPublisher<Bool, UseCaseError> {
-        return Just(LikeTrack(trackId: id))
+        return Just(LikeTrack(id: id))
             .encode(encoder: JSONEncoder())
             .flatMap { data in
                 return network.request(url: EndPoint.like.urlString, request: .post, body: data)
