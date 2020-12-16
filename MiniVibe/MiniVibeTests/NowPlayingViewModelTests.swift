@@ -260,4 +260,19 @@ final class NowPlayingViewModelTests: XCTestCase {
         
         viewModel.send(.moveTrack(source: IndexSet(integer: 0), destination: 2))
     }
+    
+    func test_send_share_button_tapped() {
+        let expectation = XCTestExpectation(description: "share button tapped test")
+        defer { wait(for: [expectation], timeout: 5) }
+        
+        let dataManager = MockPlayerDataManager(data: tracks)
+        let eventLogger = MockEventLogger(handler: { data in
+            XCTAssertEqual(data.event, "Share")
+            expectation.fulfill()
+        })
+        let viewModel = NowPlayingViewModel(dataManager: dataManager,
+                                            eventLogger: eventLogger)
+        viewModel.send(.share)
+    }
+    
 }

@@ -22,7 +22,6 @@
 		44139C9D25762D17000CEEA5 /* ArtistSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44139C9C25762D17000CEEA5 /* ArtistSection.swift */; };
 		44139CA325762D7A000CEEA5 /* ArtistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44139CA225762D7A000CEEA5 /* ArtistItem.swift */; };
 		44139CA725763283000CEEA5 /* ArtistThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44139CA625763283000CEEA5 /* ArtistThumbnail.swift */; };
-		44139CB525763960000CEEA5 /* ArtistAlbumGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44139CB425763960000CEEA5 /* ArtistAlbumGridView.swift */; };
 		44139CBB25763C5F000CEEA5 /* ThumbnailGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44139CBA25763C5F000CEEA5 /* ThumbnailGrid.swift */; };
 		44141E712577841A00A82626 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44141E702577841A00A82626 /* ProfileView.swift */; };
 		4419A2142585271300C3D640 /* EventLogKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4419A2102585270900C3D640 /* EventLogKit.framework */; };
@@ -128,6 +127,8 @@
 		8016AB712583AC9B00573485 /* PlayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AB702583AC9B00573485 /* PlayLog.swift */; };
 		8016AB782583AF3B00573485 /* Share+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AB762583AF3B00573485 /* Share+CoreDataClass.swift */; };
 		8016AB7F2583B21500573485 /* ShareLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016AB7E2583B21500573485 /* ShareLog.swift */; };
+		80172D18258A394B00B6CC68 /* ChartsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80172D17258A394B00B6CC68 /* ChartsViewModel.swift */; };
+		80172D1D258A3AE200B6CC68 /* ChartsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80172D1C258A3AE200B6CC68 /* ChartsUseCase.swift */; };
 		801AE36A25826ED1004F1947 /* MoveTrackLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801AE36925826ED1004F1947 /* MoveTrackLog.swift */; };
 		802187E325828B79009A4D95 /* Engagement+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802187E125828B79009A4D95 /* Engagement+CoreDataClass.swift */; };
 		802187EA25828BDE009A4D95 /* EngagementLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802187E925828BDE009A4D95 /* EngagementLog.swift */; };
@@ -148,6 +149,9 @@
 		80609260258261B90032FBE0 /* MoveTrack+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8060925E258261B90032FBE0 /* MoveTrack+CoreDataClass.swift */; };
 		806D272925812DA8002580B3 /* TrackUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806D272825812DA8002580B3 /* TrackUseCase.swift */; };
 		806D273125815903002580B3 /* UseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806D273025815903002580B3 /* UseCaseError.swift */; };
+		8074AE15258A506200DCB4F1 /* ChartUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074AE14258A506200DCB4F1 /* ChartUseCaseTests.swift */; };
+		8074AE18258A52C000DCB4F1 /* ChartsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074AE17258A52C000DCB4F1 /* ChartsViewModelTests.swift */; };
+		8074AE1B258A543000DCB4F1 /* MockChartsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074AE1A258A543000DCB4F1 /* MockChartsUseCase.swift */; };
 		807B698D256FAC2F00DAF867 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807B698C256FAC2F00DAF867 /* NetworkService.swift */; };
 		80813997257E657A00A5B6AD /* MagazineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80813996257E657A00A5B6AD /* MagazineView.swift */; };
 		8084AB6D256E403900F2AAC2 /* ThumbnailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084AB6C256E403900F2AAC2 /* ThumbnailRow.swift */; };
@@ -250,7 +254,6 @@
 		44139C9C25762D17000CEEA5 /* ArtistSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSection.swift; sourceTree = "<group>"; };
 		44139CA225762D7A000CEEA5 /* ArtistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistItem.swift; sourceTree = "<group>"; };
 		44139CA625763283000CEEA5 /* ArtistThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistThumbnail.swift; sourceTree = "<group>"; };
-		44139CB425763960000CEEA5 /* ArtistAlbumGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistAlbumGridView.swift; sourceTree = "<group>"; };
 		44139CBA25763C5F000CEEA5 /* ThumbnailGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGrid.swift; sourceTree = "<group>"; };
 		44141E702577841A00A82626 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		4419A20B2585270900C3D640 /* EventLogKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EventLogKit.xcodeproj; path = ../EventLogKit/EventLogKit.xcodeproj; sourceTree = "<group>"; };
@@ -355,6 +358,8 @@
 		8016AB702583AC9B00573485 /* PlayLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLog.swift; sourceTree = "<group>"; };
 		8016AB762583AF3B00573485 /* Share+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Share+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8016AB7E2583B21500573485 /* ShareLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLog.swift; sourceTree = "<group>"; };
+		80172D17258A394B00B6CC68 /* ChartsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewModel.swift; sourceTree = "<group>"; };
+		80172D1C258A3AE200B6CC68 /* ChartsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsUseCase.swift; sourceTree = "<group>"; };
 		801AE36925826ED1004F1947 /* MoveTrackLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveTrackLog.swift; sourceTree = "<group>"; };
 		802187E125828B79009A4D95 /* Engagement+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Engagement+CoreDataClass.swift"; sourceTree = "<group>"; };
 		802187E925828BDE009A4D95 /* EngagementLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngagementLog.swift; sourceTree = "<group>"; };
@@ -377,6 +382,9 @@
 		8060925E258261B90032FBE0 /* MoveTrack+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoveTrack+CoreDataClass.swift"; sourceTree = "<group>"; };
 		806D272825812DA8002580B3 /* TrackUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackUseCase.swift; sourceTree = "<group>"; };
 		806D273025815903002580B3 /* UseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseError.swift; sourceTree = "<group>"; };
+		8074AE14258A506200DCB4F1 /* ChartUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartUseCaseTests.swift; sourceTree = "<group>"; };
+		8074AE17258A52C000DCB4F1 /* ChartsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewModelTests.swift; sourceTree = "<group>"; };
+		8074AE1A258A543000DCB4F1 /* MockChartsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChartsUseCase.swift; sourceTree = "<group>"; };
 		807B698C256FAC2F00DAF867 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		80813996257E657A00A5B6AD /* MagazineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineView.swift; sourceTree = "<group>"; };
 		8084AB6C256E403900F2AAC2 /* ThumbnailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailRow.swift; sourceTree = "<group>"; };
@@ -626,6 +634,7 @@
 				80D0C9FF2587C745003D8CB2 /* MockArtistSectionUseCase.swift */,
 				44DEED312587E54000060960 /* MockSearchUseCase.swift */,
 				44E4C52A2589205D002D865C /* MockPlayerDataManager.swift */,
+				8074AE1A258A543000DCB4F1 /* MockChartsUseCase.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -663,6 +672,7 @@
 				80D02E03257E0DD300A6748F /* SearchUseCase.swift */,
 				44D5FAC1257FD89E00A3E91C /* ArtistUseCase.swift */,
 				806D272825812DA8002580B3 /* TrackUseCase.swift */,
+				80172D1C258A3AE200B6CC68 /* ChartsUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -679,6 +689,7 @@
 				449C21C92584921700E180BB /* TrackViewModel.swift */,
 				4479025B2584FE9F00CE8797 /* MainTabViewModel.swift */,
 				8033A7A9257FA7B100B1C321 /* NowPlayingViewModel.swift */,
+				80172D17258A394B00B6CC68 /* ChartsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -776,7 +787,6 @@
 				8065E4DC25772B52007F5990 /* Components */,
 				441357E925764C8900DC0746 /* ArtistView.swift */,
 				44139C9C25762D17000CEEA5 /* ArtistSection.swift */,
-				44139CB425763960000CEEA5 /* ArtistAlbumGridView.swift */,
 			);
 			path = Artist;
 			sourceTree = "<group>";
@@ -894,6 +904,8 @@
 		80ABC1712574BF11003D4666 /* MiniVibeTests */ = {
 			isa = PBXGroup;
 			children = (
+				8074AE17258A52C000DCB4F1 /* ChartsViewModelTests.swift */,
+				8074AE14258A506200DCB4F1 /* ChartUseCaseTests.swift */,
 				44E4C52225890993002D865C /* NowPlayingViewModelTests.swift */,
 				8007D1A025883E82001DC275 /* MainTabViewModelTests.swift */,
 				44DEED2C2587DEED00060960 /* SearchViewModelTests.swift */,
@@ -1137,6 +1149,7 @@
 				44F7BBF12579419800DFA4AC /* Article.swift in Sources */,
 				44BDF0252578F72A00C0A43D /* PlayListMenu.swift in Sources */,
 				80AB73D125838AB4005ADA9A /* UpnextChange+CoreDataClass.swift in Sources */,
+				80172D18258A394B00B6CC68 /* ChartsViewModel.swift in Sources */,
 				44D7B7EA25754BF10049CDBB /* PlayerControls.swift in Sources */,
 				44E4C51B258906AE002D865C /* PlayerDataManager.swift in Sources */,
 				80DA952125779FE9008C9DFF /* TrackRowB.swift in Sources */,
@@ -1183,6 +1196,7 @@
 				8016AB712583AC9B00573485 /* PlayLog.swift in Sources */,
 				80D02E10257E0EFF00A6748F /* NewsItem.swift in Sources */,
 				44BDF0212578F41900C0A43D /* PlayListSection.swift in Sources */,
+				80172D1D258A3AE200B6CC68 /* ChartsUseCase.swift in Sources */,
 				4474DC002574E2C3006FC827 /* PlayerHeader.swift in Sources */,
 				444272B8256CE2B3008BB87B /* PreviewItem.swift in Sources */,
 				80A5213B257902FF0051A925 /* LibraryAlbumsView.swift in Sources */,
@@ -1218,7 +1232,6 @@
 				441EC8402576031F0069146E /* PlayerMenu.swift in Sources */,
 				80EB9FF5256DE8A300CD99FD /* Today.swift in Sources */,
 				4403B66825825EC6002C135A /* SearchLog.swift in Sources */,
-				44139CB525763960000CEEA5 /* ArtistAlbumGridView.swift in Sources */,
 				80813997257E657A00A5B6AD /* MagazineView.swift in Sources */,
 				440F109C25826C6B00FD3FF4 /* LikeLog.swift in Sources */,
 				80C6CBD02585207800747FED /* TrackRowImage.swift in Sources */,
@@ -1304,6 +1317,8 @@
 				44E3E9FC2587508B001CB352 /* AlbumUseCaseTests.swift in Sources */,
 				80ABC1732574BF11003D4666 /* NetworkServiceTests.swift in Sources */,
 				44E3E9EC25873E0B001CB352 /* MockNetworkServices.swift in Sources */,
+				8074AE18258A52C000DCB4F1 /* ChartsViewModelTests.swift in Sources */,
+				8074AE1B258A543000DCB4F1 /* MockChartsUseCase.swift in Sources */,
 				44E4C52325890993002D865C /* NowPlayingViewModelTests.swift in Sources */,
 				8007D1A125883E82001DC275 /* MainTabViewModelTests.swift in Sources */,
 				803B1388258797E500ED6B70 /* TrackViewModelTests.swift in Sources */,
@@ -1316,6 +1331,7 @@
 				44E4C52B2589205D002D865C /* MockPlayerDataManager.swift in Sources */,
 				80D0C9FB2587C611003D8CB2 /* ArtistSectionViewModelTests.swift in Sources */,
 				44DEED322587E54000060960 /* MockSearchUseCase.swift in Sources */,
+				8074AE15258A506200DCB4F1 /* ChartUseCaseTests.swift in Sources */,
 				44E3E9FF258753E1001CB352 /* PlaylistUseCaseTests.swift in Sources */,
 				44DEED0E2587AC1B00060960 /* AlbumViewModelExtensions.swift in Sources */,
 				44E3E9F02587434D001CB352 /* AlbumExtensions.swift in Sources */,

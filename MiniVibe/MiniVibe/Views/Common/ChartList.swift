@@ -20,25 +20,16 @@ struct ChartList: View {
                     pinnedViews: [.sectionHeaders]
                 ) {
                     Section(header: PlayAndShuffle(width: geometry.size.width)) {
-                        ForEach(tracks, id: \.id) { track in
-                            TrackRowA(viewModel: .init(track: track, eventLogger: MiniVibeApp.eventLogger),
-                                      order: 1)
+                        ForEach(tracks.indices) { index in
+                            TrackRowA(viewModel: .init(track: tracks[index],
+                                                       eventLogger: MiniVibeApp.eventLogger),
+                                      order: index + 1)
                         }
                     }
                     .padding(.horizontal, geometry.size.width * .paddingRatio)
                 }
                 .navigationTitle(title)
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(
-                    trailing: Button {
-                        
-                    } label: {
-                        
-                        Image(systemName: "checkmark.circle")
-                            .font(.system(size: 17))
-                            .foregroundColor(.primary)
-                    }
-                )
                 .padding(.bottom, 70)
             }
         }

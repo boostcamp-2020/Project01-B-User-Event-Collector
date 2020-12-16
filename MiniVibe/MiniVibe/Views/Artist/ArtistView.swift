@@ -43,15 +43,6 @@ struct ArtistView: View {
                             .padding(.horizontal, width * .paddingRatio)
                         }
                         
-                        AlbumSection(width: width, title: "앨범", albums: []) {
-                            ArtistAlbumGridView(
-                                title: "앨범",
-                                categories: ["전체", "정규", "비정규", "참여"]
-                            )
-                            .logTransition(identifier: .artistAlbumList,
-                                           componentId: .sectionTitle(category: "앨범"))
-                        }
-                        
                         ArtistSection(width: width,
                                       sectionTitle: "비슷한 아티스트")
                         
