@@ -26,6 +26,8 @@ enum EndPoint {
     case events
     case playEvents
     
+    case libraryTracks
+    
     static private let baseURL = "http://101.101.209.213:3000"
     
     private var path: String {
@@ -62,6 +64,9 @@ enum EndPoint {
             return "/api/events"
         case .playEvents:
             return "/api/play-events"
+            
+        case .libraryTracks:
+            return "/api/library/tracks"
         }
     }
     

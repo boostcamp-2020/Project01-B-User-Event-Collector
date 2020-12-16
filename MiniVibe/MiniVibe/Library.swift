@@ -8,58 +8,51 @@
 import SwiftUI
 
 struct Library: View {
-    init() {
-        let segmentAppearance = UISegmentedControl.appearance()
-        segmentAppearance.backgroundColor = .clear
-        segmentAppearance.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
-        segmentAppearance.setDividerImage(UIImage(),
-                                          forLeftSegmentState: .normal,
-                                          rightSegmentState: .normal,
-                                          barMetrics: .default)
-        segmentAppearance.setTitleTextAttributes([.foregroundColor: UIColor.systemPink,
-                                                  .font: UIFont.boldSystemFont(ofSize: 18)],
-                                                 for: .selected)
-        segmentAppearance.setTitleTextAttributes([.foregroundColor: UIColor.systemGray,
-                                                  .font: UIFont.systemFont(ofSize: 18)],
-                                                 for: .normal)
-    }
     
-    private let categories = ["노래", "앨범", "플레이리스트", "아티스트"]
-    @State private var selection = 0
+    @StateObject private var viewModel = LibraryViewModel()
     
     var body: some View {
         GeometryReader { geometry in
             NavigationView {
-                VStack(alignment: .leading) {
-                    Text("보관함")
-                        .font(.title)
-                        .fontWeight(.heavy)
-                        .foregroundColor(.primary)
-                        .padding(geometry.size.width * .paddingRatio)
-                    
-                    Picker("Library", selection: $selection) {
-                        ForEach(0..<categories.count) {
-                            Text(categories[$0])
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        Text("보관함")
+                            .font(.title)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.primary)
+                            .padding(geometry.size.width * .paddingRatio)
+                        
+                        LazyVGrid(
+                            columns: [.init(.fixed(geometry.size.width))],
+                            spacing: 5,
+                            pinnedViews: [.sectionHeaders]
+                        ) {
+                            Section(header: PlayAndShuffle(width: geometry.size.width)) {
+                                let tracks = viewModel.state.likedTracks
+                                ForEach(tracks, id: \.self) { track in
+                                    TrackRowC(viewModel: .init(track: track,
+                                                               eventLogger: MiniVibeApp.eventLogger)) { _ in
+                                        viewModel.send(.tapMenuButton)
+                                    }
+                                    .fullScreenCover(isPresented: $viewModel.state.isMenuOpen) {
+                                        PlayerMenu(viewModel: .init(track: track,
+                                                                    eventLogger: MiniVibeApp.eventLogger))
+                                            .logTransition(identifier: .playerMenu(id: trackinfo.id),
+                                                           componentId: .trackMenuButton
+                                            )
+                                    }
+                                }
+                            }
+                            .padding(.horizontal, geometry.size.width * .paddingRatio)
                         }
+                        .padding(.bottom, 70)
                     }
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(height: 50)
-                    
-                    Divider()
-                    
-                    TabView(selection: $selection) {
-                        LibrarySongsView().tag(0)
-                            .animation(nil)
-                        LibraryAlbumsView().tag(1)
-                        LibraryPlayListView().tag(2)
-                        LibraryArtistsView().tag(3)
-                            .animation(nil)
-                    }
-                    .tabViewStyle(PageTabViewStyle())
                 }
                 .navigationBarHidden(true)
-                .animation(.easeInOut)
             }
+        }
+        .onAppear {
+            viewModel.send(.appear)
         }
     }
 }
