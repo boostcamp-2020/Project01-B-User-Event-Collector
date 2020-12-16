@@ -31,14 +31,7 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
             data
         });
     } catch (err) {
-        switch (err.name) {
-        case 'ValidationError':
-            return res.status(400).json({ success: false, message: 'Invalid Parameters' });
-        case 'MongooseError':
-            return res.status(400).json({ success: false, message: 'Invalid Event name' });
-        default:
-            return res.status(500).json({ success: false });
-        }
+        return res.status(500).json({ success: false });
     }
 
 
