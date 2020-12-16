@@ -2,6 +2,8 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Slider } from '@material-ui/core';
 import { convertToHHSS } from 'utils/time';
+import { useSelector, useDispatch } from 'react-redux';
+import { playPrevTrack, playNextTrack, playTrack, pauseTrack, setTrackPlaytime } from 'reducers/musicPlayer';
 
 const PlayerSlider = withStyles({
     root: {
@@ -41,12 +43,22 @@ interface ProgressBarProps {
 }
 
 const ProgressBar = ({ progress, totalPlaytime }: ProgressBarProps) => {
+    const dispatch = useDispatch();
+    const { nowPlaying, playTime, upNextTracks } = useSelector(state => state.musicPlayer);
+    
+    const onClickHandler = (e, newValue) => {
+        dispatch(setTrackPlaytime(newValue));
+    }
+
     return (
         <>
             <PlayerSlider
+                value={ playTime }
+                onChangeCommitted = {onClickHandler}
                 valueLabelDisplay="auto"
                 aria-label="player slider"
                 defaultValue={progress ? progress : 0}
+                max={totalPlaytime}
                 scale={(x) => convertToHHSS(Math.floor((totalPlaytime * x) / 100))}
             />
         </>
