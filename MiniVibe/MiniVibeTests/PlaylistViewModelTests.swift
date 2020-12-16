@@ -101,7 +101,7 @@ final class PlaylistViewModelTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 5) }
         
         let eventLogger = MockEventLogger(handler: { data in
-            XCTAssertEqual(data.event, "LikeLog")
+            XCTAssertEqual(data.event, "Like")
             expectation.fulfill()
         })
         

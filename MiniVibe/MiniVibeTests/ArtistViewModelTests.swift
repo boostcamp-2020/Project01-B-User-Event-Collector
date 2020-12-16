@@ -95,7 +95,7 @@ final class ArtistViewModelTests: XCTestCase {
         
         let usecase = MockArtistSectionUseCase(artists: artists, artistInfo: artistInfo)
         let eventLogger = MockEventLogger { data in
-            XCTAssertEqual(data.event, "LikeLog")
+            XCTAssertEqual(data.event, "Like")
             expectation.fulfill()
         }
         
