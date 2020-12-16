@@ -42,6 +42,7 @@ export interface ContentsThumbnailProps {
     src: string;
     href: string;
     sort?: 'news' | 'mainMagazine' | 'normalMagazine' | 'recommendPlaylist' | 'normalPlaylist' | 'todayMagazine';
+    contentId?: number | undefined
 }
 
 export interface MixtapeCardProps {
@@ -155,7 +156,7 @@ export interface DropdownMenuProps {
         handleClick?: (e: MouseEvent<HTMLElement>) => void;
     }[];
     children?: ReactNode;
-    state?: object;
+    state?: any
 }
 
 export interface CheckBoxProps {
@@ -168,6 +169,7 @@ export interface CheckBoxProps {
 export interface HeaderButtonGroupProps {
     sort?: 'track';
     onAddUpNextHandler?: any;
+    liked: boolean
 }
 
 export interface LyricModalProps {

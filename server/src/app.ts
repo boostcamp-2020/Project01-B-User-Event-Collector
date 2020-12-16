@@ -16,13 +16,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(passport.initialize());
-passportInit(passport);
-
 app.use(cors({
     origin: process.env.CLIENT_HOST,
     credentials: true,
 }));
+app.use(passport.initialize());
+passportInit(passport);
 
 app.use('/auth', authRouter);
 app.use('/api', apiRouter);

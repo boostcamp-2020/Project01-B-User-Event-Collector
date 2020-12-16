@@ -67,7 +67,7 @@ const contentsDropDownMenu = [
     },
 ];
 
-const ContentsThumbnail = ({ src, href, sort }: ContentsThumbnailProps) => (
+const ContentsThumbnail = ({ src, href, sort, contentId }: ContentsThumbnailProps) => (
     <ThumbnailContainer>
         <StyledImage
             src={src}
@@ -83,7 +83,12 @@ const ContentsThumbnail = ({ src, href, sort }: ContentsThumbnailProps) => (
         />
         <ButtonContainer>
             <PlayButton />
-            <StyledDropDown id="contents" control={StyledMoreHorizIcon} menuItems={contentsDropDownMenu} state={{}} />
+            <StyledDropDown
+                id="contents"
+                control={StyledMoreHorizIcon}
+                menuItems={contentsDropDownMenu}
+                state={{ contentId }}
+            />
         </ButtonContainer>
     </ThumbnailContainer>
 );
