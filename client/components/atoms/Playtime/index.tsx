@@ -22,11 +22,12 @@ interface PlaytimeProps {
     current: number;
 }
 
-const Playtime = ({ current, total }: PlaytimeProps) => (
+const Playtime = ({ current, total }: PlaytimeProps) => {
+    return(
     <Container>
         <CurrentTime>{convertToHHSS(current)}</CurrentTime>
         <TotalTime>/{convertToHHSS(total)}</TotalTime>
     </Container>
-);
+)};
 
 export default Playtime;

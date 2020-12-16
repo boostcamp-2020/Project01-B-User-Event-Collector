@@ -50,7 +50,6 @@ const TrackLibrary = ({ trackData }) => {
                 {trackData.length !== 0 ? (
                     <LibraryContentsContainer>
                         <ComponentInfoWrapper componentId={contentType.track}>
-                            <ContentsButtonGroup />
                             <LibraryTrackListContainer>
                                 <TrackRowList items={trackData} />
                             </LibraryTrackListContainer>

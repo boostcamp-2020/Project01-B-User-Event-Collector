@@ -8,6 +8,7 @@ import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 import { page, contentType } from '@constants/identifier';
 import NoDataContainer from '@components/molecules/NoDataContainer';
+import Button from '@components/atoms/Button';
 
 const LibraryContainer = styled.div`
     width: 100%;
@@ -21,6 +22,12 @@ const LibraryContainer = styled.div`
 
 const LibraryHeaderContainer = styled.div`
     margin: 50px 0 30px 0;
+`;
+
+const ButtonContainer = styled.div`
+    width: 960px;
+    margin: 0px 0px 30px 0px;
+    display: flex;
 `;
 
 const LibraryContentsContainer = styled.div``;

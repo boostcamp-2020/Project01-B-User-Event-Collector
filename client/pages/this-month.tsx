@@ -11,16 +11,6 @@ import { contentType, dataType, page } from '@constants/identifier';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 import { getTokenFromCtx } from '@utils/cookies';
 
-const Artistdata = Array(9).fill({
-    id: 3,
-    name: '이영지',
-    imageUrl: 'https://musicmeta-phinf.pstatic.net/artist/002/826/2826154.jpg',
-    genre: {
-        id: 1,
-        name: '랩/힙합',
-    },
-});
-
 const Container = styled.div`
     min-height: 1300px;
     display: flex;
@@ -47,7 +37,7 @@ const TrackListContainer = styled.div`
 
 const ArtistListContainer = styled.div``;
 
-const ThisMonth = ({ PlaylistData, TrackData }) => {
+const ThisMonth = ({ PlaylistData, TrackData, ArtistData }) => {
     return (
         <ComponentInfoContext.Provider
             value={{
@@ -68,7 +58,7 @@ const ThisMonth = ({ PlaylistData, TrackData }) => {
                     </TrackListContainer>
                     <ArtistListContainer>
                         <CardListContainer title="연관 아티스트">
-                            <ContentsCardList variant="artist" items={Artistdata} />
+                            <ContentsCardList variant="artist" items={ArtistData} />
                         </CardListContainer>
                     </ArtistListContainer>
                 </ContentsContainer>
@@ -81,12 +71,14 @@ export async function getServerSideProps(context) {
     const token = getTokenFromCtx(context);
     const PlaylistData = await request(`${apiUrl.playlist}/9`, {}, token);
     const TrackData = PlaylistData?.tracks;
+    const ArtistData = await request(`${apiUrl.artist}`, {}, token);
     // TODO: error handling
 
     return {
         props: {
             PlaylistData,
             TrackData,
+            ArtistData
         },
     };
 }
