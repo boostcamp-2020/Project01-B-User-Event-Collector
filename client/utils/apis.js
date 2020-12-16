@@ -32,7 +32,6 @@ export const request = async (url, option, token) => {
     }
 };
 
-
 export const requestTracks = async (apiUrl, cookie) => {
     const data = await request(apiUrl, {
     headers: {
