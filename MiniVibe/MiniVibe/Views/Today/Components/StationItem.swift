@@ -25,13 +25,11 @@ struct StationItem: View {
     }
 }
 
+// swiftlint:disable line_length
 struct StationItem_Previews: PreviewProvider {
     static var previews: some View {
         StationItem(imageUrl: "https://music-phinf.pstatic.net/20181204_203/1543918901105PmOS5_PNG/mood_11_Party.png?type=f360")
             .previewLayout(.fixed(width: 375, height: 375))
     }
 }
-
-struct Station: Hashable {
-    let imageUrl: String
-}
+// swiftlint:enable line_length

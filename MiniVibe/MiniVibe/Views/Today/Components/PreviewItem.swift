@@ -44,7 +44,8 @@ struct PreviewItem_Previews: PreviewProvider {
     }
 }
 
-struct MockPreviewItem {
+// swiftlint:disable line_length
+enum MockPreviewItem {
     static let item0 = PreviewItem(upperTitle: "여왕의 귀환",
                                    imageUrl: "https://music-phinf.pstatic.net/20201207_49/1607303728781HTub7_JPEG/0-%B4%EB%C7%A5%C0%CC%B9%CC%C1%F6_1.jpg?type=w720",
                                    title: "머라이어캐리가 돌아왔다",
@@ -58,3 +59,4 @@ struct MockPreviewItem {
                                    title: "따뜻한 감동을 주는 찰리브라운과 친구들",
                                    subtitle: "함께해요")
 }
+// swiftlint:enable line_length

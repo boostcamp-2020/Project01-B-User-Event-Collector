@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct PlayListSection<D: View>: View {
-    init(width: CGFloat, sizeRatio: CGFloat, title: String, playlists: [Playlist], @ViewBuilder destination: @escaping () -> D) {
+    init(width: CGFloat,
+         sizeRatio: CGFloat,
+         title: String,
+         playlists: [Playlist],
+         @ViewBuilder destination: @escaping () -> D) {
         self.width = width
         self.sizeRatio = sizeRatio
         self.title = title
@@ -41,7 +45,6 @@ struct PlayListSection<D: View>: View {
                                               subtitle: playlist.subTitle ?? "",
                                               imageURL: playlist.imageUrl)
                                     .frame(width: width * sizeRatio)
-                                    //.frame(width: width * .thumbnailRatio)
                             }
                         )
                     }
