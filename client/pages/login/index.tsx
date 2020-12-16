@@ -42,7 +42,7 @@ const Login = () => {
             <LoginContainer>
                 <ComponentInfoWrapper componentId={contentType.localLogin}>
                     <Form action={`${apiUrl.login}/local-login`} method="post">
-                        <LoginInput type="text" name="email" placeholder="이메일을 입력해주세요" />
+                        <LoginInput type="email" name="email" placeholder="이메일을 입력해주세요" />
                         <LoginInput id="pw" type="password" name="pw" placeholder="비밀번호를 입력해주세요" />
                         <LoginInput id="local-login" type="submit" value="로그인하기" onClick={localClick} />
                     </Form>
