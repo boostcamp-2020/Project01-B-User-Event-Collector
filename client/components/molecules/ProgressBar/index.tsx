@@ -59,7 +59,7 @@ const ProgressBar = ({ progress, totalPlaytime }: ProgressBarProps) => {
                 aria-label="player slider"
                 defaultValue={progress ? progress : 0}
                 max={totalPlaytime}
-                scale={(x) => convertToHHSS(Math.floor((totalPlaytime * x) / 100))}
+                scale={(x) => convertToHHSS(x)}
             />
         </>
     );
