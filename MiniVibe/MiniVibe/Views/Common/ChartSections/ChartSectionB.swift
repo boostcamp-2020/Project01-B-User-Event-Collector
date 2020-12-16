@@ -25,7 +25,7 @@ struct ChartSectionB: View {
                     ForEach(tracks, id: \.id) { track in
                         TrackRowE(viewModel: .init(track: track,
                                                    eventLogger: MiniVibeApp.eventLogger),
-                                  order: 1)
+                                  order: 1 + (tracks.firstIndex(of: track) ?? 1))
                     }
                     .frame(width: width * .sectionRatio)
                 }

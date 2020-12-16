@@ -22,7 +22,6 @@
 		44139C9D25762D17000CEEA5 /* ArtistSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44139C9C25762D17000CEEA5 /* ArtistSection.swift */; };
 		44139CA325762D7A000CEEA5 /* ArtistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44139CA225762D7A000CEEA5 /* ArtistItem.swift */; };
 		44139CA725763283000CEEA5 /* ArtistThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44139CA625763283000CEEA5 /* ArtistThumbnail.swift */; };
-		44139CB525763960000CEEA5 /* ArtistAlbumGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44139CB425763960000CEEA5 /* ArtistAlbumGridView.swift */; };
 		44139CBB25763C5F000CEEA5 /* ThumbnailGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44139CBA25763C5F000CEEA5 /* ThumbnailGrid.swift */; };
 		44141E712577841A00A82626 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44141E702577841A00A82626 /* ProfileView.swift */; };
 		4419A2142585271300C3D640 /* EventLogKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4419A2102585270900C3D640 /* EventLogKit.framework */; };
@@ -251,7 +250,6 @@
 		44139C9C25762D17000CEEA5 /* ArtistSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSection.swift; sourceTree = "<group>"; };
 		44139CA225762D7A000CEEA5 /* ArtistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistItem.swift; sourceTree = "<group>"; };
 		44139CA625763283000CEEA5 /* ArtistThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistThumbnail.swift; sourceTree = "<group>"; };
-		44139CB425763960000CEEA5 /* ArtistAlbumGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistAlbumGridView.swift; sourceTree = "<group>"; };
 		44139CBA25763C5F000CEEA5 /* ThumbnailGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGrid.swift; sourceTree = "<group>"; };
 		44141E702577841A00A82626 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		4419A20B2585270900C3D640 /* EventLogKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EventLogKit.xcodeproj; path = ../EventLogKit/EventLogKit.xcodeproj; sourceTree = "<group>"; };
@@ -780,7 +778,6 @@
 				8065E4DC25772B52007F5990 /* Components */,
 				441357E925764C8900DC0746 /* ArtistView.swift */,
 				44139C9C25762D17000CEEA5 /* ArtistSection.swift */,
-				44139CB425763960000CEEA5 /* ArtistAlbumGridView.swift */,
 			);
 			path = Artist;
 			sourceTree = "<group>";
@@ -1223,7 +1220,6 @@
 				441EC8402576031F0069146E /* PlayerMenu.swift in Sources */,
 				80EB9FF5256DE8A300CD99FD /* Today.swift in Sources */,
 				4403B66825825EC6002C135A /* SearchLog.swift in Sources */,
-				44139CB525763960000CEEA5 /* ArtistAlbumGridView.swift in Sources */,
 				80813997257E657A00A5B6AD /* MagazineView.swift in Sources */,
 				440F109C25826C6B00FD3FF4 /* LikeLog.swift in Sources */,
 				80C6CBD02585207800747FED /* TrackRowImage.swift in Sources */,

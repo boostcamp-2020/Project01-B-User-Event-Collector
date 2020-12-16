@@ -15,8 +15,9 @@ final class ChartsViewModel: ObservableObject {
     }
     
     struct State {
-        var tracks = [TrackInfo]()
-        var albums = [Album]()
+        var tracks1 = [TrackInfo]()
+        var tracks2 = [TrackInfo]()
+        var tracks3 = [TrackInfo]()
     }
     
     private let usecase: ChartsUseCaseType
@@ -39,15 +40,9 @@ final class ChartsViewModel: ObservableObject {
             .sink { _ in
                 
             } receiveValue: { [weak self] tracks in
-                self?.state.tracks = tracks
-            }
-            .store(in: &cancellables)
-        
-        usecase.loadAlbums()
-            .sink { _ in
-                
-            } receiveValue: { [weak self] albums in
-                self?.state.albums = albums
+                self?.state.tracks1 = tracks.shuffled()
+                self?.state.tracks2 = tracks.shuffled()
+                self?.state.tracks3 = tracks.shuffled()
             }
             .store(in: &cancellables)
     }

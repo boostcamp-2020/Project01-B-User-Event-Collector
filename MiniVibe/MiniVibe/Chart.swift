@@ -21,19 +21,19 @@ struct Chart: View {
                             .fontWeight(.heavy)
                             .foregroundColor(.primary)
                             .padding(width * .paddingRatio)
+                        
                         ChartSectionB(width: width,
                                       title: "VIBE 노래방 TOP 100 🎤",
-                                      tracks: viewModel.state.tracks)
+                                      tracks: viewModel.state.tracks1)
                         
-                        AlbumSection(width: width,
-                                     title: "최신 앨범",
-                                     albums: viewModel.state.albums) {
-                            ArtistAlbumGridView(
-                                // 여기에 앨범 어떻게 넣을지 생각
-                               title: "최신 앨범",
-                               categories: ["국내", "해외"])
-                            .logTransition(identifier: .latestAlbumList, componentId: .sectionTitle(category: "최신 앨범"))
-                        }
+                        ChartSectionB(width: width,
+                                      title: "국내 급상승 🔥",
+                                      tracks: viewModel.state.tracks2)
+                        
+                        ChartSectionB(width: width,
+                                      title: "오늘 Top 100",
+                                      tracks: viewModel.state.tracks3)
+                        
                     }
                     .padding(.bottom, 70)
                 }
