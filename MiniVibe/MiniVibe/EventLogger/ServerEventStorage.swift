@@ -16,13 +16,11 @@ struct ServerResponse: Decodable {
 
 final class ServerEventStorage: ServerStorageType {
     private let network: NetworkServiceType
-    private let local: LocalStorageType
+    private var failureHandler: ((EventLogType) -> Void)?
     private var cancellable = Set<AnyCancellable>()
     
-    init(network: NetworkServiceType = NetworkService(),
-         local: LocalStorageType = LocalEventStorage(.persistent)) {
+    init(network: NetworkServiceType = NetworkService()) {
         self.network = network
-        self.local = local
     }
     
     func send<T: EventLogType>(_ event: T) {
@@ -47,15 +45,19 @@ final class ServerEventStorage: ServerStorageType {
                 switch result {
                 case .finished:
                     break
-                case .failure(_):
-                    self?.local.save(event)
+                case .failure:
+                    self?.failureHandler?(event)
                 }
             }, receiveValue: { [weak self] success in
                 if !success {
-                    self?.local.save(event)
+                    self?.failureHandler?(event)
                 }
             })
             .store(in: &cancellable)
+    }
+    
+    func setFailureHandler(_ handler: @escaping (EventLogType) -> Void) {
+        self.failureHandler = handler
     }
     
     private func eventEndPoint(event: EventLogType) -> String {
