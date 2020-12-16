@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct PlayListSection<D: View>: View {
-    init(width: CGFloat, title: String, playlists: [Playlist], @ViewBuilder destination: @escaping () -> D) {
+    init(width: CGFloat, sizeRatio: CGFloat, title: String, playlists: [Playlist], @ViewBuilder destination: @escaping () -> D) {
         self.width = width
+        self.sizeRatio = sizeRatio
         self.title = title
         self.playlists = playlists
         self.destination = destination
@@ -17,6 +18,7 @@ struct PlayListSection<D: View>: View {
     
     @State private var isOpenMenu = false
     let width: CGFloat
+    let sizeRatio: CGFloat
     let title: String
     let playlists: [Playlist]
     let destination: () -> D
@@ -38,7 +40,8 @@ struct PlayListSection<D: View>: View {
                                 ThumbnailItem(title: playlist.title,
                                               subtitle: playlist.subTitle ?? "",
                                               imageURL: playlist.imageUrl)
-                                    .frame(width: width * .thumbnailRatio)
+                                    .frame(width: width * sizeRatio)
+                                    //.frame(width: width * .thumbnailRatio)
                             }
                         )
                     }
@@ -52,7 +55,7 @@ struct PlayListSection<D: View>: View {
 
 struct PlayListSection_Previews: PreviewProvider {
     static var previews: some View {
-        PlayListSection(width: 375, title: "플레이리스트", playlists: []) {
+        PlayListSection(width: 375, sizeRatio: .sectionRatio, title: "플레이리스트", playlists: []) {
             Text("플레이리스트 더보기")
         }
         .previewLayout(.fixed(width: 375, height: 300))

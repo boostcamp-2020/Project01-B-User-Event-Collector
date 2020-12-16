@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import { selectTrack, unselectTrack } from 'reducers/selectedTrack';
 import { TrackRowCardProps, CheckBoxProps } from 'interfaces/props';
 
-
-
 const StyledCheckBox = styled.div`
     width: 40px;
     padding: 10px 12px;
@@ -26,9 +24,9 @@ const Input = styled.input`
     }
     &:checked + label {
         background-image: linear-gradient(transparent, transparent),
-            url(https://vibe.naver.com/img/sp_vibe.7af837ac.svg);
-        background-size: 1118px 1081px;
-        background-position: -816px -860px;
+            url(https://vibe.naver.com/img/sp_vibe.463acaba.svg);
+        background-size: 1118px 1106px;
+        background-position: -97px -1086px;
         border: none;
     }
 `;
@@ -37,15 +35,16 @@ const CheckBox = ({ id, data }: CheckBoxProps) => {
     const [checked, setChecked] = useState(false);
 
     const onChangeHandler = () => {
-        setChecked((checked) => (!checked));
-        !checked? dispatch(selectTrack(data)):dispatch(unselectTrack(data.id));
-    }
+        setChecked((checked) => !checked);
+        !checked ? dispatch(selectTrack(data)) : dispatch(unselectTrack(data.id));
+    };
 
-    return(
+    return (
         <StyledCheckBox>
-            <Input type="checkbox" id ={`'${id}'`} checked = {checked} onChange = {onChangeHandler}/>
+            <Input type="checkbox" id={`'${id}'`} checked={checked} onChange={onChangeHandler} />
             <label htmlFor={`'${id}'`} />
         </StyledCheckBox>
-        )};
+    );
+};
 
 export default CheckBox;

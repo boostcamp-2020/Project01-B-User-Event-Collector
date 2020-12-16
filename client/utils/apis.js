@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { getCookie } from 'utils/cookies';
 import apiUrl from 'constants/apiUrl';
+import { rejects } from 'assert';
 
 export const getRequestOptions = (method, options, headers) => ({
     method: method,
@@ -52,14 +53,20 @@ export const requestByCookie = async (apiUrl) => {
 };
 
 export const requestPlaylists = async (apiUrl) => {
-    const { data } = await axios(apiUrl, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: getCookie('token'),
-        },
-    });
-    return data.data;
+    try {
+        const { data } = await axios(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: getCookie('token'),
+            },
+        });
+        return data.data;
+    } catch (err) {
+        alert('로그인이 필요한 서비스입니다!');
+        console.log(err);
+        rejects(new Error());
+    }
 };
 
 export const addToLibrary = async (url, option) => {
@@ -72,6 +79,7 @@ export const addToLibrary = async (url, option) => {
     } catch (err) {
         alert('로그인이 필요한 서비스입니다!');
         console.error(err);
+        rejects(new Error());
     }
 };
 
@@ -85,6 +93,7 @@ export const addToPlaylist = async (url, data) => {
     } catch (err) {
         alert('로그인이 필요한 서비스입니다!');
         console.error(err);
+        rejects(new Error());
     }
 };
 
@@ -98,6 +107,7 @@ export const deleteFromLibrary = async (url, option) => {
     } catch (err) {
         alert('로그인이 필요한 서비스입니다!');
         console.error(err);
+        rejects(new Error());
     }
 };
 
@@ -116,6 +126,7 @@ export const createPlaylist = async (data) => {
     } catch (err) {
         alert('로그인이 필요한 서비스입니다!');
         console.error(err);
+        rejects(new Error());
     }
 };
 export const sendEvent = async (eventData) => {
