@@ -18,7 +18,8 @@ import {
     AddToUpnextEventProps,
     MoveTrackEventProps,
     RemoveFromUpnextEventProps,
-    SaveEventProps
+    SaveEventProps,
+    PlayNowEventProps
 } from '@interfaces/eventProps';
 
 const Container = styled.div`
@@ -299,10 +300,24 @@ const SaveEventRow = (e : SaveEventProps) => (
     </EventRow>
 )
 
+const PlayNowEventRow = (e : PlayNowEventProps) => (
+    <EventRow>
+        <EventName>{e.event}</EventName>
+        {getEventColumn('userID', e.userId)}
+        {getEventColumn('trackId', e.trackId.toString())}
+        {getEventColumn('targetTrackId', e.targetTrackId.toString())}
+        {getEventColumn('playingProgress', e.playingProgress)}
+        {getEventColumn('Platform', e.platform)}
+        {getEventColumn('Timestamp', e.timestamp)}
+    </EventRow>
+)
+
 const getProperPlayEventRow = (e) => {
     switch(e.event) {
         case "Play":
             return PlayEventRow(e);
+        case "PlayNow":
+            return PlayNowEventRow(e);
         case "AddToUpnext":
             return AddToUpnextEventRow(e);
         case "MoveTrack":

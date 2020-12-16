@@ -159,4 +159,15 @@ export interface SaveEventProps {
         id: number;
     },
     timestamp: string;
+    platform: string;
+}
+
+export interface PlayNowEventProps {
+    event: string;
+    userId: string;
+    trackId: number;
+    targetTrackId: number;
+    playingProgress: number;
+    platform: string;
+    timestamp: string;
 }
