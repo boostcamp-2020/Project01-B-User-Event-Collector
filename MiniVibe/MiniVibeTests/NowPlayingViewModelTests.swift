@@ -69,7 +69,7 @@ final class NowPlayingViewModelTests: XCTestCase {
         
         let dataManager = MockPlayerDataManager(data: tracks)
         let eventLogger = MockEventLogger(handler: { data in
-            XCTAssertEqual(data.event, "PlayLog")
+            XCTAssertEqual(data.event, "Play")
             expectation.fulfill()
         })
         let viewModel = NowPlayingViewModel(dataManager: dataManager,

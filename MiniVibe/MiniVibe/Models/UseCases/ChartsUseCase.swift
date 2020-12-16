@@ -10,10 +10,10 @@ import Combine
 
 protocol ChartsUseCaseType {
     func loadTracks() -> AnyPublisher<[TrackInfo], UseCaseError>
-    func loadAlbums() -> AnyPublisher<[Album], UseCaseError>
 }
 
 struct ChartsUseCase: ChartsUseCaseType {
+    
     private let network: NetworkServiceType
     
     init(network: NetworkServiceType = NetworkService()) {
@@ -36,20 +36,4 @@ struct ChartsUseCase: ChartsUseCaseType {
             .eraseToAnyPublisher()
     }
     
-    func loadAlbums() -> AnyPublisher<[Album], UseCaseError> {
-        return network.request(url: EndPoint.albums.urlString, request: .get, body: nil)
-            .decode(type: Albums.self, decoder: JSONDecoder())
-            .mapError { error -> UseCaseError in
-                switch error {
-                case is NetworkError:
-                    return .networkError
-                default:
-                    return .decodingError
-                }
-            }
-            .map(\.data)
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
-    }
-
 }
