@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import EventLogKit
 
-protocol PlayLogType: EventLogType {
+protocol PlayLogType: CustomEventLogType {
     var trackId: Int { get }
     var componentId: String { get }
     var isPlay: Bool { get }
@@ -29,10 +29,12 @@ extension PlayLogType {
     }
 }
 
-struct PlayerPlay: PlayLogType {
+struct PlayLog: PlayLogType {
     let userId: Int
     let trackId: Int
     let componentId: String
     var isPlay: Bool
     let timestamp = Date()
+    let event = "Play"
+    let platform = "iOS"
 }

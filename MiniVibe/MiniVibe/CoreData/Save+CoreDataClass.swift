@@ -49,4 +49,3 @@ extension Save: Encodable {
         try container.encode(timestamp, forKey: .timestamp)
     }
 }
-

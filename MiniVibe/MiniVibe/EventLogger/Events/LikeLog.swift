@@ -8,7 +8,7 @@
 import CoreData
 import EventLogKit
 
-protocol LikeLogType: EventLogType {
+protocol LikeLogType: CustomEventLogType {
     var componentId: String { get }
     var data: LogData { get }
     var isLike: Bool { get }
@@ -33,4 +33,6 @@ struct LikeLog: LikeLogType {
     var data: LogData
     var isLike: Bool
     let timestamp: Date = Date()
+    let event = "Like"
+    let platform = "iOS"
 }

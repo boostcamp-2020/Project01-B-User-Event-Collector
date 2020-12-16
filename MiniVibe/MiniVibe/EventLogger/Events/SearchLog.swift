@@ -8,7 +8,7 @@
 import CoreData
 import EventLogKit
 
-protocol SearchLogType: EventLogType {
+protocol SearchLogType: CustomEventLogType {
     var componentId: String { get }
     var text: String { get }
 }
@@ -30,4 +30,6 @@ struct SearchLog: SearchLogType {
     let componentId: String
     let text: String
     let timestamp: Date = Date()
+    let event = "Search"
+    let platform = "iOS"
 }

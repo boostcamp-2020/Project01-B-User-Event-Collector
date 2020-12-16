@@ -1,6 +1,6 @@
 import express from 'express';
 import * as playlistsContoller from './playlists.controller';
-import { checkAuth } from '../auth';
+import { checkAuth } from '../../middlewares/auth';
 
 const router = express.Router();
 

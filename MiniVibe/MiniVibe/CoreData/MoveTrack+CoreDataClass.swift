@@ -11,27 +11,32 @@ import CoreData
 
 @objc(MoveTrack)
 public class MoveTrack: NSManagedObject {
-
+    
 }
 
 extension MoveTrack {
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<MoveTrack> {
         return NSFetchRequest<MoveTrack>(entityName: "MoveTrack")
     }
-
+    
     @NSManaged public var event: String
     @NSManaged public var userId: Int
     @NSManaged public var trackId: Int
     @NSManaged public var source: Int
     @NSManaged public var destination: Int
     @NSManaged public var timestamp: Date
-
+    
 }
 
 extension MoveTrack: EventPrintable {
     public override var description: String {
-        return "\(timestamp.timestampFormat())\nEvent: \(event)\nTrackID: \(trackId)\nSource Index: \(source) -> Destination Index: \(destination)"
+        return  """
+                \(timestamp.timestampFormat())
+                Event: \(event)
+                TrackID: \(trackId)
+                Source Index: \(source) -> Destination Index: \(destination)
+                """
     }
 }
 
