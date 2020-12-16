@@ -3,20 +3,14 @@ import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 
 import eventLogger from '@utils/eventLogger';
 
-interface PlayParams {
-    trackId?: number;
-    targetTrackId: number;
-    playingProgress?: number;
-}
-
 function usePlayNowEventLog({ userId }) {
     const componentInfo = useContext(ComponentInfoContext);
 
-    const logPlayNowEvent = (trackId, targetTrackId, playingProgress: PlayParams) => {
+    const logPlayNowEvent = (targetTrackId, trackId?, playingProgress?) => {
         eventLogger('PlayNow', {
             userId,
-            trackId,
             targetTrackId,
+            trackId,
             playingProgress,
             ...componentInfo,
         });
