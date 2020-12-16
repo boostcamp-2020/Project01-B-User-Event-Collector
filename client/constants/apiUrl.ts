@@ -1,6 +1,7 @@
 const host = 'http://localhost:4500';
+const eventHost = 'http://localhost:5500'
 const baseUrl = `${host}/api`;
-
+const eventUrl = `${eventHost}/api`
 const apiUrl = {
     magazine: `${baseUrl}/magazines`,
     news: `${baseUrl}/news`,
@@ -18,8 +19,8 @@ const apiUrl = {
     addTracksToPlaylist: `${baseUrl}/playlists/tracks`,
     user: `${baseUrl}/users`,
     login: `${host}/auth/naver-login`,
-    event: `${baseUrl}/events/`,
-    playEvent: `${baseUrl}/play-events/`,
+    event: `${eventUrl}/events/`,
+    playEvent: `${eventUrl}/play-events/`,
 };
 
 export default apiUrl;
