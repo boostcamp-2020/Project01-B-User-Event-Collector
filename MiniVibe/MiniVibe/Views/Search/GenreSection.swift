@@ -10,6 +10,7 @@ import SwiftUI
 struct GenreItem: View {
     let title: String
     let width: CGFloat
+    let color: Color
     
     var body: some View {
         Button {
@@ -18,7 +19,7 @@ struct GenreItem: View {
             HStack(spacing: 10) {
                 RoundedRectangle(cornerRadius: 25.0)
                     .frame(width: 5, height: 40)
-                    .foregroundColor(Color(.brown))
+                    .foregroundColor(color)
                 Text(title)
                     .foregroundColor(.primary)
             }
@@ -42,9 +43,10 @@ struct GenreSection: View {
                 LazyVGrid(
                     columns: .init(repeating: .init(), count: 2)
                 ) {
-                    ForEach(0..<4) { _ in
-                        GenreItem(title: "이 노래 들어봐", width: geometry.size.width)
-                    }
+                    GenreItem(title: "이 노래 들어봐", width: geometry.size.width, color: Color(.brown))
+                    GenreItem(title: "국내 발라드", width: geometry.size.width, color: .blue)
+                    GenreItem(title: "국내 힙합", width: geometry.size.width, color: .yellow)
+                    GenreItem(title: "POP", width: geometry.size.width, color: .purple)
                 }
             }
             .padding(.horizontal, geometry.size.width * .paddingRatio)

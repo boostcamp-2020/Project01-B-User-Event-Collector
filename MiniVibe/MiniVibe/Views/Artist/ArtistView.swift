@@ -56,6 +56,7 @@ struct ArtistView: View {
                                       sectionTitle: "비슷한 아티스트")
                         
                         PlayListSection(width: width,
+                                        sizeRatio: .thumbnailRatio,
                                         title: "관련 플레이리스트",
                                         playlists: []) {
                             ThumbnailList(info: .playlist(data: []),

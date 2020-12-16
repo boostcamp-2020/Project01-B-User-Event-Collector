@@ -13,4 +13,5 @@ public protocol LocalStorageType {
 
 public protocol ServerStorageType {
     func send<T: EventLogType>(_ event: T)
+    func setFailureHandler(_ handler: @escaping (EventLogType) -> Void)
 }

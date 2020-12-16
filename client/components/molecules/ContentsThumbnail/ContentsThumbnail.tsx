@@ -67,7 +67,7 @@ const contentsDropDownMenu = [
     },
 ];
 
-const ContentsThumbnail = ({ data, sort }: ContentsThumbnailProps) => {
+const ContentsThumbnail = ({ data, sort, contentId }: ContentsThumbnailProps) => {
     const { imageUrl } = data;
     return (
     <ThumbnailContainer>
@@ -85,7 +85,12 @@ const ContentsThumbnail = ({ data, sort }: ContentsThumbnailProps) => {
         />
         <ButtonContainer>
             <PlayButton sort={sort} data={data}/>
-            <StyledDropDown id="contents" control={StyledMoreHorizIcon} menuItems={contentsDropDownMenu} state={{}} />
+            <StyledDropDown
+                id="contents"
+                control={StyledMoreHorizIcon}
+                menuItems={contentsDropDownMenu}
+                state={{ contentId }}
+            />
         </ButtonContainer>
     </ThumbnailContainer>
 )}
