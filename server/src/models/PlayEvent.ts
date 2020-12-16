@@ -22,9 +22,9 @@ const playEventSchema = {
 
 const playNowEventSchema = {
     componentId: { type: String },
-    trackId: { type: Number, required: true },
+    trackId: { type: Number },
     targetTrackId: { type: Number, required: true },
-    playingProgress: { type: Number, required: true },
+    playingProgress: { type: Number },
 };
 
 const upNextChangeSchema = {
