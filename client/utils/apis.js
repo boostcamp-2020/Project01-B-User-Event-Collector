@@ -32,6 +32,16 @@ export const request = async (url, option, token) => {
     }
 };
 
+
+export const requestTracks = async (apiUrl, cookie) => {
+    const data = await request(apiUrl, {
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: cookie,
+        }});
+    return data;
+}
+
 export const requestByCookie = async (apiUrl) => {
     // const cookies = new Cookies(req, res);
     const data = await request(apiUrl, {

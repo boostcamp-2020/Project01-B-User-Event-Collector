@@ -26,13 +26,7 @@ export const logoutRequestAction = () => ({
     type: LOG_OUT_REQUEST,
 });
 
-const dummyUser = {
-    id: 9,
-    name: "iznim1023"
-}
-
 const reducer = (state = initialState, action) => {
-    console.log(action.data);
     switch (action.type) {
         /* 로그인 */
         case LOG_IN_REQUEST:

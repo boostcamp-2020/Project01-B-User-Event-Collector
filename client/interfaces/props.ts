@@ -15,10 +15,10 @@ export interface TrackInfoProps {
 }
 
 export interface InputProps {
-    name: string;
+    name?: string;
     variant?: string;   
-    value: string | undefined;
-    onChange : (e : React.ChangeEvent<HTMLElement> ) => void | undefined
+    value?: string | undefined;
+    onChange? : (e : React.ChangeEvent<HTMLElement> ) => void | undefined
 }
 
 export interface MagazineCardProps {
@@ -39,9 +39,8 @@ export interface NewsCardProps {
 }
 
 export interface ContentsThumbnailProps {
-    src: string;
-    href: string;
-    sort?: 'news' | 'mainMagazine' | 'normalMagazine' | 'recommendPlaylist' | 'normalPlaylist' | 'todayMagazine';
+    data;
+    sort?: 'news' | 'mainMagazine' | 'normalMagazine' | 'recommendPlaylist' | 'normalPlaylist' | 'todayMagazine' | 'album' | 'playlist' | 'station' | 'mixtape' ;
     contentId?: number | undefined
 }
 

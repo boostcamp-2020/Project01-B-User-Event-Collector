@@ -18,7 +18,7 @@ const PlayerTrackList = ({ items }: { items: PlayerTrackCardProps[] }) => {
     return (
     <ListContainer>
         {items.map((item) => (
-          <ComponentInfoWrapper componentId={`${item.id}`} data={{ type: dataType.track, id: item.id }}>
+          <ComponentInfoWrapper key = {item.id} componentId={`${item.id}`} data={{ type: dataType.track, id: item.id }}>
               <PlayerTrackCard 
               key = {item.id}
               data = {item} />

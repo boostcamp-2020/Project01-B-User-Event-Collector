@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import StyledIconButton from './IconButton.styles';
 
 interface IconButtonProps {
-    icon: ComponentType;
+    icon: any;
     onClick?: (e: MouseEvent<HTMLElement>) => void;
     variant?: 'plainGreyRegular' | 'plainGreySmall' | 'plainWhiteRegular' | 'plainBlackRegular' ;
 }
@@ -16,7 +16,7 @@ const IconButton = ({
   onClick, icon: Icon, variant,
 }: IconButtonProps) => (
   <StyledIconButton variant={variant} onClick={onClick}>
-    <Icon />
+    <Icon style={{ fontSize: 15 }}/>
   </StyledIconButton>
 );
 
