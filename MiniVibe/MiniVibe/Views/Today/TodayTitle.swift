@@ -20,15 +20,11 @@ struct TodayTitle: View {
             
             Spacer()
             
-            NavigationLink(
-                destination: ProfileView(),
-                label: {
-                    Image(systemName: "person")
-                        .clipShape(Circle())
-                        .font(.system(size: 24))
-                        .frame(width: 60, height: 60)
-                }
-            )
+            Image(systemName: "person")
+                .clipShape(Circle())
+                .font(.system(size: 24))
+                .frame(width: 60, height: 60)
+
         }
     }
 }

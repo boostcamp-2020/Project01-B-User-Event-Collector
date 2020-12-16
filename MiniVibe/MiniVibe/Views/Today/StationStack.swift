@@ -13,7 +13,7 @@ struct StationStack: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: width * .spacingRatio) {
-                ForEach(0..<10) { _ in
+                ForEach(0..<6) { _ in
                     StationItem()
                         .frame(width: width * .thumbnailRatio)
                 }
