@@ -5,8 +5,7 @@ export const create = async (req: Request, res: Response, next: NextFunction) =>
     const event = req.body;
 
     try {
-        const a = await Event.create(event);
-        console.log(a);
+        await Event.create(event);
     } catch (err) {
         switch (err.name) {
         case 'ValidationError':
