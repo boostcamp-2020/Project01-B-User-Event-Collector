@@ -72,7 +72,9 @@ interface DetailHeaderProps {
 const DetailHeader = ({ sort, data }: DetailHeaderProps) => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
+    const { nowPlaying, playTime } = useSelector((state) => state.musicPlayer);
     const { logAddToUpnextEvent } = useUpNextChangeEventLog({ userId: user.id });
+
     const onAddUpNextAndPlayHandler = () => {
         if (sort === 'track') {
             dispatch(addToUpNextAndPlay([data]));
@@ -80,7 +82,10 @@ const DetailHeader = ({ sort, data }: DetailHeaderProps) => {
             return;
         }
         dispatch(addToUpNextAndPlay(data.tracks));
-        logAddToUpnextEvent(data.tracks.map(({ id }) => id));
+        logAddToUpnextEvent(
+            data.tracks.map(({ id }) => id),
+            { nowPlaying, playTime },
+        );
     };
 
     return (

@@ -16,6 +16,7 @@ import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToUpNext, addToUpNextAndPlay } from 'reducers/musicPlayer';
 import useUpNextChangeEventLog from '@hooks/useUpNextChangeEventLog';
+import usePlayNowEvent from 'hooks/usePlayNowEventLog';
 
 const Container = styled.div`
     min-height: 1300px;
@@ -123,10 +124,14 @@ const MagazineDetail = ({ magazineData }) => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
     const { logAddToUpnextEvent } = useUpNextChangeEventLog({ userId: user.id });
+    const { nowPlaying, playTime } = useSelector((state) => state.musicPlayer);
 
     const onClickPlayHandler = () => {
         dispatch(addToUpNextAndPlay(magazineData.playlist.tracks));
-        logAddToUpnextEvent(magazineData.playlist.tracks.map(({ id }) => id));
+        logAddToUpnextEvent(
+            magazineData.playlist.tracks.map(({ id }) => id),
+            { nowPlaying, playTime },
+        );
     };
 
     return (

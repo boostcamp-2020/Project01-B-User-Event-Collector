@@ -17,6 +17,7 @@ const PlayButton = ({ sort, data }) => {
     const cookies = new Cookies(); //request를 위해 새 쿠키 생성
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
+    const { nowPlaying, playTime } = useSelector((state) => state.musicPlayer);
     const { logAddToUpnextEvent } = useUpNextChangeEventLog({ userId: user.id });
 
     const handleClick = async () => {
@@ -50,7 +51,10 @@ const PlayButton = ({ sort, data }) => {
         if (!tracks || tracks.length === 0) return;
 
         dispatch(addToUpNextAndPlay(tracks));
-        logAddToUpnextEvent(tracks.map(({ id }) => id));
+        logAddToUpnextEvent(
+            tracks.map(({ id }) => id),
+            { nowPlaying, playTime },
+        );
     };
 
     return (
