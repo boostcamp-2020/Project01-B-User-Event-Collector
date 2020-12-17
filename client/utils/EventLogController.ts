@@ -9,11 +9,14 @@ class EventLogController {
     _timerEvent() {
         this._timer.stop();
         if (process.browser) {
-            const eventLogs = this.getLogs();
+            const eventLogs = this.getLogs('eventLogs');
+            const playEventLogs = this.getLogs('playEventLogs');
 
-            if (eventLogs.length === 0) return;
+            if (eventLogs.length === 0 && playEventLogs.length === 0) return;
 
-            sendLossedEvents(eventLogs)
+            const allLogs = eventLogs.concat(playEventLogs);
+
+            sendLossedEvents(allLogs)
                 .then((res) => {
                     this.resetLogs();
                 })
@@ -23,23 +26,25 @@ class EventLogController {
                 });
         }
     }
-    saveLogs(eventLog) {
-        const eventLogs = this.getLogs();
-        eventLogs.push(eventLog);
-        localStorage.setItem('eventLogs', JSON.stringify(eventLogs));
+    saveLogs(eventType, logData) {
+        const storageLogs = this.getLogs(eventType);
+        storageLogs.push(logData);
+        localStorage.setItem(eventType, JSON.stringify(storageLogs));
     }
 
-    getLogs() {
-        const eventsLog = localStorage.getItem('eventLogs');
-        if (!eventsLog) {
+    getLogs(eventType) {
+        const storageLogs = localStorage.getItem(eventType);
+        if (!storageLogs) {
             this.resetLogs();
             return [];
         }
-        return JSON.parse(eventsLog);
+        return JSON.parse(storageLogs);
     }
 
     resetLogs() {
-        localStorage.setItem('eventLogs', JSON.stringify([]));
+        const emptyArray = JSON.stringify([]);
+        localStorage.setItem('eventLogs', emptyArray);
+        localStorage.setItem('playEventLogs', emptyArray);
     }
 }
 const eventLogController = new EventLogController();
