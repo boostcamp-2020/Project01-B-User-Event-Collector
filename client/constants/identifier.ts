@@ -17,6 +17,7 @@ export const componentType = {
     mainHeader: 'main-header',
     musicPlayer: 'music-player',
     floatingSelectMenu: 'select-menu',
+    loginForm: 'login-form'
 };
 
 export const contentType = {
@@ -38,6 +39,10 @@ export const contentType = {
     // music player 관련
     playController: 'play-controller',
     upNext: 'up-next',
+
+    // login 관련
+    localLogin: 'localLogin',
+    naverLogin: 'naverLogin'
 };
 
 export const dataType = {
