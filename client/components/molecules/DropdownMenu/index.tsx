@@ -8,7 +8,7 @@ import useDropDownAction from 'hooks/useDropDownAction';
 import PlaylistModal from '@components/organisms/PlaylistModal';
 import ComponentInfoContext from 'utils/context/ComponentInfoContext';
 import apiUrl from 'constants/apiUrl';
-import { addToPlaylist } from 'utils/apis';
+import { addToPlaylist } from '../../../utils/apis';
 
 const StyledMenu = withStyles({
     paper: {

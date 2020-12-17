@@ -8,7 +8,7 @@ import TrackPlayButton from '@components/molecules/TrackPlayButton';
 import DropDownMenu from '@components/molecules/DropdownMenu';
 import { TrackRowCardProps } from 'interfaces/props';
 import LyricModal from '@components/organisms/LyricModal/LyricModal';
-import { deleteFromLibrary } from 'utils/apis';
+import { deleteFromLibrary } from '../../../../utils/apis';
 import useLikeEventLog from 'hooks/useLikeEventLog';
 import ComponentInfoContext from 'utils/context/ComponentInfoContext';
 import {
