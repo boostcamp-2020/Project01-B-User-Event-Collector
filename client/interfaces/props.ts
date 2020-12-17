@@ -51,7 +51,6 @@ export interface ContentsThumbnailProps {
         | 'playlist'
         | 'station'
         | 'mixtape';
-    contentId?: number | undefined;
 }
 
 export interface MixtapeCardProps {
