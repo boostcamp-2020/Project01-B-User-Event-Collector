@@ -3,7 +3,6 @@ import apiUrl from '@constants/apiUrl';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 import { componentType, contentType } from '@constants/identifier';
 import useClickEventLog from '@hooks/useClickEventLog';
-import { loginRequest } from '@utils/apis';
 import { Cookies } from 'react-cookie';
 import { useEffect } from 'react';
 import ComponentInfoWrapper from '@utils/context/ComponentInfoWrapper';

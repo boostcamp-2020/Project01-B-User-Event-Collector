@@ -40,7 +40,7 @@ const PageTitle = styled.div`
 `;
 
 const EventContainer = styled.div`
-    width: 1200px;
+    width: 960px;
 `;
 
 const TitleContainer = styled.div`
@@ -57,7 +57,7 @@ const ContentsContainer = styled.div`
     margin: 0 0 50px 0;
     padding: 40px 30px;
     overflow: scroll;
-    font-size: 13px;
+    font-size: 11px;
 `;
 
 const EventRow = styled.div`

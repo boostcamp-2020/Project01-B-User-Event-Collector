@@ -64,6 +64,7 @@ function* logOut(action) {
 function loadUserAPI() {
     return axios.get(apiUrl.user, {
         headers: {
+            'Content-Type': 'application/json',
             "Authorization" : getCookie('token')
         }
     });
