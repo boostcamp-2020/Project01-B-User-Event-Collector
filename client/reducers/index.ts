@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import user from './user';
 import selectedTrack from './selectedTrack';
 import musicPlayer from './musicPlayer';
+import playlist from './playlist';
 
 const rootReducer = (state, action) => {
     switch (action.type) {
@@ -13,7 +14,8 @@ const rootReducer = (state, action) => {
         const combinedReducer = combineReducers({
             user,
             selectedTrack,
-            musicPlayer
+            musicPlayer,
+            playlist
         });
         return combinedReducer(state, action);
       }

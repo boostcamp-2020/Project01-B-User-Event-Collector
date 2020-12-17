@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Menu, { MenuProps } from '@material-ui/core/Menu';
@@ -9,6 +9,7 @@ import PlaylistModal from '@components/organisms/PlaylistModal';
 import ComponentInfoContext from 'utils/context/ComponentInfoContext';
 import apiUrl from 'constants/apiUrl';
 import { addToPlaylist } from '../../../utils/apis';
+import { Visibility } from '@material-ui/icons';
 
 const StyledMenu = withStyles({
     paper: {
@@ -97,12 +98,12 @@ const DropdownMenu = ({ id, control: ControlComponent, menuItems, children, stat
                     </MenuItem>
                 ))}
             </StyledMenu>
+            {playlistModal.visibility && 
             <PlaylistModal
-                visibility={playlistModal.visibility}
                 data={playlistModal.data}
                 handleClick={onClickHandler}
                 onClickFunc={removePlaylistModal}
-            />
+            />}
         </>
     );
 };

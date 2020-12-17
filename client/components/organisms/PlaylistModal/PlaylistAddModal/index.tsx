@@ -4,13 +4,10 @@ import Button from '@components/atoms/Button';
 import Input from '@components/atoms/Input/Input';
 import { useState } from 'react';
 import { createPlaylist } from '../../../../utils/apis';
-
-interface PlaylistAddModalContainer {
-    visible: boolean;
-}
-
-const ModalContainer = styled.div<PlaylistAddModalContainer>`
-    visibility : ${(props) => (props.visible === true ? 'visible;' : 'hidden;')}
+import { useSelector, useDispatch } from 'react-redux';
+import { showPlaylistAddModal, hidePlaylistAddModal } from '@reducers/playlist'
+import apiUrl from 'constants/apiUrl';
+const ModalContainer = styled.div`
     overflow-y: auto;
     position: fixed;
     top: 0;
@@ -67,36 +64,39 @@ const ButtonContainer = styled.div`
     justify-content: space-between;
 `;
 
-interface PlaylistAddModalProps {
-    visibility: boolean;
-}
+const PlaylistAddModal = ({ playlist, onSubmit }) => {
+    const dispatch = useDispatch();
 
-const PlaylistAddModal = ({ visibility }: PlaylistAddModalProps) => {
-    const [visible, setVisible] = useState(visibility);
     const [title, setTitle] = useState('');
     const [disabled, setDisabled] = useState(true);
-    const modalOff = (e) => {
-        setVisible(false);
-    };
+
+    const hidePlaylistAddModalHandler = () => {
+        dispatch(hidePlaylistAddModal());
+    }
+
     const onChangeInput = (e) => {
         setTitle(e.target.value);
         if (title) setDisabled(false);
         else setDisabled(true);
     };
-    const createNewPlaylist = (e) => {
+
+    const createNewPlaylist = async (e) => {
         if (!title) return;
-        createPlaylist({ title: title });
-        setVisible(!visible);
+        const newPlaylist = await createPlaylist({ title: title });
+        console.log(newPlaylist);
+        onSubmit([...playlist, newPlaylist]);
+        hidePlaylistAddModalHandler();
     };
+
     return (
-        <ModalContainer visible={visible}>
+        <ModalContainer>
             <Modal>
                 <HeaderContainer>새 플레이리스트</HeaderContainer>
                 <InputContainer>
                     <Input variant="newPlaylist" name="newPlaylist" value={title} onChange={onChangeInput} />
                 </InputContainer>
                 <ButtonContainer>
-                    <Button onClick={modalOff}>취소</Button>
+                    <Button onClick={hidePlaylistAddModalHandler}>취소</Button>
                     <Button variant="primary" onClick={createNewPlaylist} disabled={disabled}>
                         확인
                     </Button>

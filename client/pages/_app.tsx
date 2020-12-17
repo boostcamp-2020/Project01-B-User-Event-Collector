@@ -13,6 +13,7 @@ import withReduxSaga from 'next-redux-saga';
 import HeaderSideBar from '@components/organisms/HeaderSideBar';
 import MusicPlayer from '@components/organisms/MusicPlayer';
 import FloatingSelectMenu from '@components/organisms/FloatingSelectMenu';
+import PlaylistAddModal from '@components/organisms/PlaylistModal/PlaylistAddModal';
 import '../assets/global.css';
 
 import { componentType } from '@constants/identifier';
@@ -52,6 +53,7 @@ const App = ({ Component, pageProps }) => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
     const { tracks } = useSelector(state =>  state.selectedTrack);
+ 
     const selectedTrackCount = tracks.length;
 
     useTransitionEventLog({ userId: user.id });
@@ -72,7 +74,7 @@ const App = ({ Component, pageProps }) => {
         dispatch({
             type: LOAD_USER_REQUEST
         });
-    }, []);
+    }, [router.asPath]);
 
     return (
         <CookiesProvider>
@@ -91,6 +93,7 @@ const App = ({ Component, pageProps }) => {
             <ComponentInfoContext.Provider value={{ componentId: componentType.musicPlayer }}>
                 <MusicPlayer />
             </ComponentInfoContext.Provider>
+           
             <Component {...pageProps} />
         </Container>
         </CookiesProvider>
