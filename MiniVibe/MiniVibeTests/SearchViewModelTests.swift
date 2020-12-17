@@ -60,7 +60,7 @@ final class SearchViewModelTests: XCTestCase {
         defer { wait(for: [expectation], timeout: 5) }
         
         let eventLogger = MockEventLogger(handler: { data in
-            XCTAssertEqual(data.event, "SearchLog")
+            XCTAssertEqual(data.event, "Search")
             expectation.fulfill()
         })
         let viewModel = SearchViewModel(useCase: useCase,

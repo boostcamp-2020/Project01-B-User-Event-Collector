@@ -3,20 +3,28 @@ import Image from '@components/atoms/Image/Image';
 import { ButtonContainer, Play } from './TrackPlayButton.styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToUpNextAndPlay } from 'reducers/musicPlayer';
+import useUpNextChangeEventLog from '@hooks/useUpNextChangeEventLog';
 
 interface TrackPlayButtonProps {
     data;
     imgVariant?: 'trackRowCard' | 'trackInfo';
 }
+
 const TrackPlayButton = ({ data, imgVariant }: TrackPlayButtonProps) => {
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
+    const { nowPlaying, playTime } = useSelector((state) => state.musicPlayer);
+    const { logAddToUpnextEvent } = useUpNextChangeEventLog({ userId: user.id });
+
     const onClickPlayHandler = () => {
         dispatch(addToUpNextAndPlay([data]));
-    }
+        logAddToUpnextEvent([data.id], { nowPlaying, playTime });
+    };
+
     const altImg = 'http://placehold.it/20x20';
-    return(
+    return (
         <ButtonContainer onClick={onClickPlayHandler}>
-            <Image variant={imgVariant} src={data? data.album.imageUrl:altImg} />
+            <Image variant={imgVariant} src={data ? data.album.imageUrl : altImg} />
             <Play>
                 {
                     // TODO : svg 파일 분리
@@ -37,6 +45,7 @@ const TrackPlayButton = ({ data, imgVariant }: TrackPlayButtonProps) => {
                 </svg>
             </Play>
         </ButtonContainer>
-    )};
+    );
+};
 
 export default TrackPlayButton;

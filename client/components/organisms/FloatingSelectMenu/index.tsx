@@ -84,6 +84,7 @@ const PlayButtonContainer = styled.div`
 const FloatingSelectMenu = () => {
     const dispatch = useDispatch();
     const { tracks } = useSelector((state) => state.selectedTrack);
+    const { nowPlaying, playTime } = useSelector((state) => state.musicPlayer);
     const selectedTrackCount = tracks.length;
 
     const user = useSelector((state) => state.user);
@@ -92,7 +93,10 @@ const FloatingSelectMenu = () => {
     const onAddUpNextAndPlayHandler = () => {
         dispatch(addToUpNextAndPlay(tracks));
         dispatch(clearAllTracks());
-        logAddToUpnextEvent(tracks.map(({ id }) => id));
+        logAddToUpnextEvent(
+            tracks.map(({ id }) => id),
+            { nowPlaying, playTime },
+        );
     };
 
     const onAddUpNextHandler = () => {

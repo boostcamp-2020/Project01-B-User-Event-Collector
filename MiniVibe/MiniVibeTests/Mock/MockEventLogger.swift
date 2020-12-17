@@ -9,9 +9,10 @@ import Foundation
 @testable import EventLogKit
 
 struct MockEventLogger: EventLoggerType {
-    var handler: ((EventLogType) -> Void)?
     
-    func send(_ event: EventLogType) {
+    var handler: ((EventLogType) -> Void)?
+
+    func send<T>(_ event: T) where T: EventLogType {
         handler?(event)
     }
 }

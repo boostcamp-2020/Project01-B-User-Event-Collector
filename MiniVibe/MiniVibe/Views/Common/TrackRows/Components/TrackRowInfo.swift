@@ -22,6 +22,7 @@ struct TrackRowInfoA: View {
                 Spacer()
                 Text(title)
                     .font(.system(size: 17))
+                    .lineLimit(1)
                 
                 Text(artist)
                     .font(.system(size: 13))
@@ -47,6 +48,7 @@ struct TrackRowInfoB: View {
             Text(title)
                 .font(.system(size: 17))
                 .foregroundColor(.primary)
+                .lineLimit(1)
             
             Text(artist)
                 .font(.system(size: 13))

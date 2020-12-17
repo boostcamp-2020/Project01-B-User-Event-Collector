@@ -49,11 +49,9 @@ struct AlbumView: View {
                                         pinnedViews: [.sectionHeaders]
                                     ) {
                                         Section(header: PlayAndShuffle(width: geometry.size.width)) {
-                                            ForEach(tracks, id: \.id) { track in
-                                                TrackRowD(viewModel:
-                                                            .init(track: track,
-                                                                  eventLogger: MiniVibeApp.eventLogger),
-                                                          order: 1) {
+                                            ForEach(tracks.indices) { index in
+                                                TrackRowD(viewModel: .init(track: tracks[index]),
+                                                          order: index + 1) {
                                                     viewModel.send(.showTrackMenu(info: $0))
                                                 }
                                             }
@@ -62,11 +60,7 @@ struct AlbumView: View {
                                     }
                                 }
                             }
-                            
-                            AlbumSection(width: width, title: "아티스트의 다른 앨범", albums: []) {
-                                ThumbnailGridView(title: "아티스트의 다른 앨범", album: [])
-                            }
-                            
+
                             ArtistSection(width: width,
                                           sectionTitle: "비슷한 아티스트")
                             

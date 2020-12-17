@@ -21,6 +21,7 @@ final class NowPlayingViewModel: ObservableObject {
         case togglePlayer
         case selectButtonTapped
         case moveTrack(source: IndexSet, destination: Int)
+        case share
     }
     
     struct State {
@@ -73,6 +74,8 @@ final class NowPlayingViewModel: ObservableObject {
             isAllSelected ? deselectAll() : selectAll()
         case let .moveTrack(source, destination):
             moveTrack(source: source, destination: destination)
+        case .share:
+            shareTrack()
         }
     }
     
@@ -112,6 +115,9 @@ final class NowPlayingViewModel: ObservableObject {
             state.upNext.remove(at: index)
         }
         state.selectedTracks.removeAll()
+        if state.upNext.isEmpty {
+            state.isPlayerPresented = false
+        }
     }
     
     private func playNextTrack() {
@@ -161,5 +167,11 @@ final class NowPlayingViewModel: ObservableObject {
             return
         }
         state.isPlayerPresented.toggle()
+    }
+    
+    private func shareTrack() {
+        eventLogger.send(ShareLog(userId: 0,
+                                  componentId: "ShareButton",
+                                  data: .init(type: "friends", id: 0)))
     }
 }

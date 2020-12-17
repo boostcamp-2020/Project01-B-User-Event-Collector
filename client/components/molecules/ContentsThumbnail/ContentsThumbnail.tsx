@@ -67,32 +67,34 @@ const contentsDropDownMenu = [
     },
 ];
 
-const ContentsThumbnail = ({ data, sort, contentId }: ContentsThumbnailProps) => {
+const ContentsThumbnail = ({ data, sort }: ContentsThumbnailProps) => {
     const { imageUrl } = data;
+    const contentId = data.albumId || data.id;
     return (
-    <ThumbnailContainer>
-        <StyledImage
-            src={imageUrl}
-            variant={
-                sort === 'news'
-                    ? 'news'
-                    : sort === 'todayMagazine' || sort === 'recommendPlaylist'
-                    ? 'primary'
-                    : sort === 'normalMagazine'
-                    ? 'normalMagazine'
-                    : ''
-            }
-        />
-        <ButtonContainer>
-            <PlayButton sort={sort} data={data}/>
-            <StyledDropDown
-                id="contents"
-                control={StyledMoreHorizIcon}
-                menuItems={contentsDropDownMenu}
-                state={{ contentId }}
+        <ThumbnailContainer>
+            <StyledImage
+                src={imageUrl}
+                variant={
+                    sort === 'news'
+                        ? 'news'
+                        : sort === 'todayMagazine' || sort === 'recommendPlaylist'
+                        ? 'primary'
+                        : sort === 'normalMagazine'
+                        ? 'normalMagazine'
+                        : ''
+                }
             />
-        </ButtonContainer>
-    </ThumbnailContainer>
-)}
+            <ButtonContainer>
+                <PlayButton sort={sort} data={data} />
+                <StyledDropDown
+                    id="contents"
+                    control={StyledMoreHorizIcon}
+                    menuItems={contentsDropDownMenu}
+                    state={{ contentId }}
+                />
+            </ButtonContainer>
+        </ThumbnailContainer>
+    );
+};
 
 export default ContentsThumbnail;
