@@ -10,6 +10,8 @@ interface ButtonProps {
     width?: string;
     height?: string;
     disabled?: boolean | undefined;
+    htmlType?
+    id?
 }
 
 const IconWrapper = styled.div`

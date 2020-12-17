@@ -17,7 +17,8 @@ export const componentType = {
     mainHeader: 'main-header',
     musicPlayer: 'music-player',
     floatingSelectMenu: 'select-menu',
-    loginForm: 'login-form'
+    loginForm: 'login-form',
+    join: 'join-form'
 };
 
 export const contentType = {
@@ -42,7 +43,8 @@ export const contentType = {
 
     // login 관련
     localLogin: 'localLogin',
-    naverLogin: 'naverLogin'
+    naverLogin: 'naverLogin',
+    join: 'join'
 };
 
 export const dataType = {
