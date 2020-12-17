@@ -23,7 +23,6 @@ const requestOptions = {
 export const request = async (url, option, token) => {
     const options = { ...requestOptions, ...option };
     if (token) options.headers.Authorization = token;
-
     try {
         const { data } = await axios({ ...options, url });
         return data.data;
@@ -132,7 +131,7 @@ export const sendEvent = async (eventData) => {
     try {
         await axios.post(apiUrl.event, eventData);
     } catch (err) {
-        console.log(err.response.data);
+        console.log(err.response);
         // TODO: 로그 손실 방지 처리 & 에러 핸들링
     }
 };
@@ -141,7 +140,7 @@ export const sendPlayEvent = async (eventData) => {
     try {
         await axios.post(apiUrl.playEvent, eventData);
     } catch (err) {
-        console.log(err.response.data);
+        console.log(err.response);
         // TODO: 로그 손실 방지 처리 & 에러 핸들링
     }
 };

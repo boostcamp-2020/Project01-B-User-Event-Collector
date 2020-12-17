@@ -6,6 +6,6 @@ export default {
     component: HeaderButtonGroup,
 };
 
-export const Default = () => <HeaderButtonGroup />;
+export const Default = () => <HeaderButtonGroup liked={true} />;
 
-export const Track = () => <HeaderButtonGroup sort="track" />;
+export const Track = () => <HeaderButtonGroup sort="track" liked={true} />;
