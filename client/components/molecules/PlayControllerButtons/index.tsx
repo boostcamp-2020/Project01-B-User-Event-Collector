@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
@@ -52,6 +52,10 @@ const PlayControllerButtons = () => {
     const { nowPlaying, upNextTracks, playTime } = useSelector((state) => state.musicPlayer);
     const logPlayNowEvent = usePlayNowEventLog({ userId: user.id });
     const logPlayEvent = usePlayEventLog({ userId: user.id });
+
+    useEffect(() => {
+        if (nowPlaying) logPlayEvent(nowPlaying.id, true);
+    }, [nowPlaying]);
 
     const getNextTrackId = ({ upNextTracks, nowPlaying }) => {
         const nowPlayingIdx = upNextTracks.findIndex((t) => t.id === nowPlaying.id);
