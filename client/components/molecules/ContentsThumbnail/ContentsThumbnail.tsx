@@ -69,7 +69,7 @@ const contentsDropDownMenu = [
 
 const ContentsThumbnail = ({ data, sort }: ContentsThumbnailProps) => {
     const { imageUrl } = data;
-    const contentId = data.albumId || data.id;
+    const contentId = data.albumId || (data.playlist && data.playlist.id);
     return (
         <ThumbnailContainer>
             <StyledImage

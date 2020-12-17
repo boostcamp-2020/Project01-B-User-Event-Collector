@@ -6,7 +6,10 @@ import Magazine from '../../models/Magazine';
 const list = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const MagazineRepository = getRepository(Magazine);
-        const magazines = await MagazineRepository.find();
+        const magazines = await MagazineRepository.createQueryBuilder('magazine')
+            .leftJoinAndSelect('magazine.playlist', 'playlist')
+            .select(['magazine', 'playlist.id'])
+            .getMany();
         return res.json({
             success: true,
             data: [...magazines],
