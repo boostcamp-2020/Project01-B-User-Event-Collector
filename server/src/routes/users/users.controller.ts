@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { getRepository } from 'typeorm';
 import User from '../../models/User';
 import bcrypt from 'bcrypt';
+import { getRandomProfileImage } from '../../utils/getRandomImage';
 
 export const getLoginedUser = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -19,6 +20,7 @@ export const getLoginedUser = async (req: Request, res: Response, next: NextFunc
 export const joinUser = async (req: Request, res: Response, next: NextFunction) => {
     const { name, email } = req.body;
     const hashedPassword = await bcrypt.hash(req.body.pw, 10);
+    const imageUrl = getRandomProfileImage(email);
     try {
         const UserRepository = getRepository(User);
         const invalidEmail = await UserRepository.findOne({
@@ -32,6 +34,7 @@ export const joinUser = async (req: Request, res: Response, next: NextFunction) 
         const user = new User();
         user.name = name;
         user.email = email;
+        user.imageUrl = imageUrl;
         user.password = hashedPassword;
         await UserRepository.insert(user);
 
