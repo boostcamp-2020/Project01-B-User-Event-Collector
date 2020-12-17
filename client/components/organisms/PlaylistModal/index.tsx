@@ -4,14 +4,13 @@ import CloseIcon from '@material-ui/icons/Close';
 import PlaylistRowCard from '@components/organisms/PlaylistModal/PlaylistRowCard';
 import NewPlaylistButton from '@components/organisms/PlaylistModal/NewPlaylistButton';
 import PlaylistAddModal from './PlaylistAddModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { showPlaylistAddModal, hidePlaylistAddModal } from '@reducers/playlist';
+import { addToLibrary, deleteFromLibrary, requestPlaylists } from '@utils/apis';
+import apiUrl from 'constants/apiUrl';
 
-interface PlaylistModalContainer {
-    visible: boolean;
-}
-
-const ModalContainer = styled.div<PlaylistModalContainer>`
-    visibility : ${(props) => (props.visible === true ? 'visible;' : 'hidden;')}
+const ModalContainer = styled.div`
     overflow-y: auto;
     position: fixed;
     top: 0;
@@ -68,27 +67,31 @@ const PlaylistContainer = styled.div`
 
 interface PlaylistModalProps {
     data;
-    visibility: boolean;
     onClickFunc?: any;
     handleClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
-const PlaylistModal = ({ data, visibility, onClickFunc, handleClick }: PlaylistModalProps) => {
-    const [playlistaddModal, setPlaylistModal] = useState(false);
-    const createNewPlaylist = (e) => {
-        setPlaylistModal(!playlistaddModal);
-    };
+const PlaylistModal = ({ data,  onClickFunc, handleClick }: PlaylistModalProps) => {
+    const dispatch = useDispatch();
+    const { showModal } = useSelector(state => state.playlist);
+
+    const [playlistData, setPlaylistData] = useState(data);
+
+    const showPlaylistAddModalHandler = () => {
+        dispatch(showPlaylistAddModal());
+    }
+
     return (
-        <ModalContainer visible={visibility}>
+        <ModalContainer>
+            {showModal && <PlaylistAddModal playlist = {playlistData} onSubmit={setPlaylistData}/>}
             <Modal>
                 <ButtonContainer>
                     <IconButton icon={CloseIcon} variant="plainBlackRegular" onClick={onClickFunc} />
                 </ButtonContainer>
                 <HeaderContainer>내 플레이리스트에 추가</HeaderContainer>
                 <PlaylistContainer>
-                    <NewPlaylistButton onClickFunc={createNewPlaylist} />
-                    <PlaylistAddModal visibility={playlistaddModal} />
-                    {data ? data.map((d) => <PlaylistRowCard data={d} onClickFunc={handleClick} />) : null}
+                    <NewPlaylistButton onClickFunc={showPlaylistAddModalHandler} />
+                    {playlistData ? playlistData.map((d) => <PlaylistRowCard data={d} onClickFunc={handleClick} />) : null}
                 </PlaylistContainer>
             </Modal>
         </ModalContainer>

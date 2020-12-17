@@ -1,8 +1,8 @@
 import Text from '@components/atoms/Text';
 import Button from '@components/atoms/Button/Button';
 import styled from 'styled-components';
-import ShuffleIcon from '@material-ui/icons/Shuffle';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import { useState } from 'react';
 
 const HeaderContainter = styled.div`
     display: flex;
@@ -21,7 +21,8 @@ const TextContainer = styled.div`
 
 const ButtonContainer = styled.div`
     display: flex;
-    width: 28%;
+    width: 960px;
+    flex-flow: row-reverse;
     align-items: center;
     justify-content: space-between;
 `;
@@ -49,7 +50,6 @@ const headerTitle = (sort) => {
 };
 
 const LibraryHeader = ({ sort, onAddUpNextAndPlayHandler }: LibraryHeaderProps) => {
-
     return(
     <HeaderContainter>
         <TextContainer>
@@ -60,9 +60,6 @@ const LibraryHeader = ({ sort, onAddUpNextAndPlayHandler }: LibraryHeaderProps) 
             <ButtonContainer>
                 <Button variant="primary" width="130" height="40" icon={PlayArrowIcon} onClick={onAddUpNextAndPlayHandler}>
                     전체재생
-                </Button>
-                <Button width="130" height="40" icon={ShuffleIcon}>
-                    랜덤재생
                 </Button>
             </ButtonContainer>
         )}

@@ -111,7 +111,7 @@ export const deleteFromLibrary = async (url, option) => {
 
 export const createPlaylist = async (data) => {
     try {
-        await axios(`${apiUrl.playlist}`, {
+        const { data: res } = await axios(`${apiUrl.playlist}`, {
             method: 'POST',
             headers: {
                 'Content-Typee': 'application/json',
@@ -121,6 +121,7 @@ export const createPlaylist = async (data) => {
                 ...data,
             },
         });
+        return res.data;
     } catch (err) {
         alert('로그인이 필요한 서비스입니다!');
         console.error(err);

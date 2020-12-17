@@ -16,7 +16,7 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
         user.libraryPlaylists.push(playlist);
         await manager.save(user);
 
-        return res.json({ success: true });
+        return res.json({ success: true, data: req.body });
     } catch (err) {
         console.error(err);
         return res.status(500).json({ success: false });

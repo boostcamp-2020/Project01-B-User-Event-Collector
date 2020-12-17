@@ -6,6 +6,7 @@ import Playlist from '../../models/Playlist';
 import Track from '../../models/Track';
 import Artist from '../../models/Artist';
 import User from '../../models/User';
+import { getRandomPlaylistImage } from '../../utils/getRandomImage';
 
 const list = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -74,17 +75,25 @@ const listById = async (req: Request, res: Response, next: NextFunction) => {
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
     const { title } = req.body;
+    const imageUrl = getRandomPlaylistImage();
     const userId = req.user;
     try {
         const PlaylistRepository = getRepository(Playlist);
         const playlist = new Playlist();
-
         playlist.title = title;
+        playlist.imageUrl = imageUrl;
         await PlaylistRepository.insert(playlist);
 
+        const newPlayList = await PlaylistRepository.findOne({
+            where: {
+                id: playlist.id
+            }
+        })
+
         req.body = {
-            id: playlist.id,
+            ...newPlayList
         };
+        
         return await libraryPlaylist.create(req, res, next);
     } catch (err) {
         console.error(err);
