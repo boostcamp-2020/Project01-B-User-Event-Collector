@@ -56,4 +56,11 @@ const Header = styled.header`
     z-index: 50;
 `;
 
-export { LogoContainer, Logo, SearchContainer, SectionContainer, ProfileContainer, Header };
+const AdminContainer = styled.div`
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    opacity: 0.5;
+`;
+
+export { LogoContainer, Logo, SearchContainer, SectionContainer, ProfileContainer, Header, AdminContainer };

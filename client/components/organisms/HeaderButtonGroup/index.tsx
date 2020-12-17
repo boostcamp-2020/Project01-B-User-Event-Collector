@@ -12,6 +12,8 @@ import Heart from '@components/atoms/Heart/Heart';
 import { HeaderButtonGroupProps } from 'interfaces/props';
 import { useContext, useState } from 'react';
 import { addToLibrary, deleteFromLibrary } from '../../../utils/apis';
+import { useSelector } from 'react-redux';
+import useLikeEventLog from 'hooks/useLikeEventLog';
 import apiUrl from '@constants/apiUrl';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';
 
@@ -55,7 +57,10 @@ const contentsDropDownMenu = [
 
 const HeaderButtonGroup = ({ sort, onAddUpNextHandler, liked }: HeaderButtonGroupProps) => {
     const [likeStatus, setLikeStatus] = useState(liked);
+
     const componentInfo = useContext(ComponentInfoContext);
+    const user = useSelector((state) => state.user);
+    const logLikeEvent = useLikeEventLog({ userId: user.id });
     const data = componentInfo.data;
 
     const likeHandler = () => {
@@ -63,6 +68,7 @@ const HeaderButtonGroup = ({ sort, onAddUpNextHandler, liked }: HeaderButtonGrou
             addToLibrary(`${apiUrl.like}${data.type}s`, { data: { id: data.id } })
                 .then((data) => {
                     setLikeStatus(!likeStatus);
+                    logLikeEvent(true);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -71,6 +77,7 @@ const HeaderButtonGroup = ({ sort, onAddUpNextHandler, liked }: HeaderButtonGrou
             deleteFromLibrary(`${apiUrl.like}${data.type}s/${data.id}`)
                 .then((data) => {
                     setLikeStatus(!likeStatus);
+                    logLikeEvent(false);
                 })
                 .catch((err) => {
                     console.log(err);

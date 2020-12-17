@@ -9,10 +9,8 @@ import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 import { playPrevTrack, playNextTrack, playTrack, pauseTrack } from 'reducers/musicPlayer';
 import { useSelector, useDispatch } from 'react-redux';
+import usePlayNowEventLog from 'hooks/usePlayNowEventLog';
 
-// interface PlayControllerProps {
-//     playing: boolean;
-// }
 const Container = styled.div`
     display: flex;
     justify-content: center;
@@ -49,14 +47,35 @@ const SubIconWrapper = styled.button`
 const PlayControllerButtons = () => {
     const dispatch = useDispatch();
     const [playing, setPlaying] = useState(false);
+    const user = useSelector((state) => state.user);
+    const { nowPlaying, upNextTracks, playTime } = useSelector((state) => state.musicPlayer);
+    const logPlayNowEvent = usePlayNowEventLog({ userId: user.id });
+
+    const getNextTrackId = ({ upNextTracks, nowPlaying }) => {
+        const nowPlayingIdx = upNextTracks.findIndex((t) => t.id === nowPlaying.id);
+        const nextTrackIdx = nowPlayingIdx === upNextTracks.length - 1 ? nowPlayingIdx : nowPlayingIdx + 1;
+        return upNextTracks[nextTrackIdx]?.id;
+    };
+
+    const getPrevTrackId = ({ upNextTracks, nowPlaying }) => {
+        const nowPlayingIdx = upNextTracks.findIndex((t) => t.id === nowPlaying.id);
+        const prevTrackIdx = nowPlayingIdx == 0 ? nowPlayingIdx : nowPlayingIdx - 1;
+        return upNextTracks[prevTrackIdx]?.id;
+    };
 
     const toPrevTrack = () => {
         dispatch(playPrevTrack());
-    }
+        const prevTrackId = getPrevTrackId({ nowPlaying, upNextTracks });
+        if (!prevTrackId || prevTrackId === nowPlaying.id) return;
+        logPlayNowEvent(prevTrackId, nowPlaying.id, playTime, nowPlaying.playtime);
+    };
 
     const toNextTrack = () => {
         dispatch(playNextTrack());
-    }
+        const nextTrackId = getNextTrackId({ nowPlaying, upNextTracks });
+        if (!nextTrackId || nextTrackId === nowPlaying.id) return;
+        logPlayNowEvent(nextTrackId, nowPlaying.id, playTime, nowPlaying.playtime);
+    };
 
     const playTrackHandler = () => {
         dispatch(playTrack());
@@ -72,14 +91,14 @@ const PlayControllerButtons = () => {
                 <ShuffleIcon />
             </SubIconWrapper>
             <SkipIconWrapper>
-                <SkipPreviousIcon style={{ fontSize: '35px' }} onClick = { toPrevTrack }/>
+                <SkipPreviousIcon style={{ fontSize: '35px' }} onClick={toPrevTrack} />
             </SkipIconWrapper>
             <PlayIconWrapper onClick={() => setPlaying(!playing)}>
                 {playing ? <PauseIcon style={{ fontSize: '55px' }} onClick = { pauseTrackHandler }/> :
                  <PlayArrowIcon style={{ fontSize: '55px' }} onClick = { playTrackHandler }/>}
             </PlayIconWrapper>
             <SkipIconWrapper>
-                <SkipNextIcon style={{ fontSize: '35px' }} onClick = { toNextTrack }/>
+                <SkipNextIcon style={{ fontSize: '35px' }} onClick={toNextTrack} />
             </SkipIconWrapper>
             <SubIconWrapper>
                 <RepeatIcon />

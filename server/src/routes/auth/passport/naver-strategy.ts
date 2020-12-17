@@ -24,15 +24,15 @@ const auth = async (accessToken :any, refreshToken: any, profile: any, done:any)
             user.password = profile.id;
             await manager.save(user);
         }
-        return done(null, user);
+        return done(null, { success: true, user });
     } catch (err) {
         // TODO : 예외처리 필요
         // 인증실패 ? 알 수 없는 오류 발생 ?
         console.error(err);
-        return done(err, false);
+        return done(err, { success: false, message: err });
     }
 };
 
 export const naverStrategy = (passport : PassportStatic) => {
-    passport.use('login-naver', new NaverStrategy(config, auth));
+    passport.use('naver', new NaverStrategy(config, auth));
 };

@@ -19,7 +19,11 @@ struct MockLocalStorage: LocalStorageType {
 struct MockServerStorage: ServerStorageType {
     let sendHandler: (EventLogType) -> Void
     
-    func send(_ event: EventLogType) {
+    func send<T>(_ event: T) where T : EventLogType {
         sendHandler(event)
+    }
+    
+    func setFailureHandler(_ handler: @escaping (EventLogType) -> Void) {
+        
     }
 }

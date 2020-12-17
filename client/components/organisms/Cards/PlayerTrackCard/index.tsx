@@ -7,6 +7,7 @@ import { Play } from '@components/molecules/TrackPlayButton/TrackPlayButton.styl
 import { PlayerTrackCardProp } from 'interfaces/props';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteTrackFromUpnext } from 'reducers/musicPlayer';
+import useUpNextChangeEvent from 'hooks/useUpNextChangeEventLog';
 
 const PlayerTrackCardContainer = styled.li`
     background-color: #141414;
@@ -24,20 +25,21 @@ const PlayerTrackCardContainer = styled.li`
     }
 `;
 const PlayerTrackCard = ({ data }: PlayerTrackCardProp) => {
-    const dispatch = useDispatch(); 
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
+    const { logRemoveFromUpnextEvent } = useUpNextChangeEvent({ userId: user.id });
+
     const onClickDeleteHandler = () => {
         dispatch(deleteTrackFromUpnext(data.id));
-    }
+        logRemoveFromUpnextEvent([data.id]);
+    };
+
     return (
         <PlayerTrackCardContainer>
-            <TrackCard
-                data = { data } 
-                imgVariant="trackRowCard"
-                isDefault={true}
-                isTrack={true}
-            />
-            <IconButton variant="plainGreyRegular" icon={CloseIcon} onClick={onClickDeleteHandler}/>
+            <TrackCard data={data} imgVariant="trackRowCard" isDefault={true} isTrack={true} />
+            <IconButton variant="plainGreyRegular" icon={CloseIcon} onClick={onClickDeleteHandler} />
         </PlayerTrackCardContainer>
-    )};
+    );
+};
 
 export default PlayerTrackCard;

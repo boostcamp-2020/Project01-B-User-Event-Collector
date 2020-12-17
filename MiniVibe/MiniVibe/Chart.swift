@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Chart: View {
+    @StateObject private var viewModel = ChartsViewModel()
+    
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width
@@ -19,21 +21,27 @@ struct Chart: View {
                             .fontWeight(.heavy)
                             .foregroundColor(.primary)
                             .padding(width * .paddingRatio)
-                        ChartSectionB(width: width, sectionTitle: "오늘 TOP 100")
-                        ChartSectionB(width: width, sectionTitle: "국내 급상승 🔥")
-                        ChartSectionB(width: width, sectionTitle: "VIBE 노래방 TOP 100 🎤")
-                        AlbumSection(width: width, title: "최신 앨범", albums: []) {
-                            ArtistAlbumGridView(
-                               title: "최신 앨범",
-                               categories: ["국내", "해외"]
-                            )
-                            .logTransition(identifier: .latestAlbumList, componentId: .sectionTitle(category: "최신 앨범"))
-                        }
+                        
+                        ChartSectionB(width: width,
+                                      title: "VIBE 노래방 TOP 100 🎤",
+                                      tracks: viewModel.state.tracks1)
+                        
+                        ChartSectionB(width: width,
+                                      title: "국내 급상승 🔥",
+                                      tracks: viewModel.state.tracks2)
+                        
+                        ChartSectionB(width: width,
+                                      title: "오늘 Top 100",
+                                      tracks: viewModel.state.tracks3)
+                        
                     }
                     .padding(.bottom, 70)
                 }
                 .navigationBarHidden(true)
             }
+        }
+        .onAppear {
+            viewModel.send(.appear)
         }
     }
 }

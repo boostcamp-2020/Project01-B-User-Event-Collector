@@ -44,7 +44,7 @@ const UserProfileMenu = ({ user }: UserProfileMenuProps) => {
 
     if (!user.isLoggedIn) {
         return (
-            <MenuLink href={apiUrl.login}>
+            <MenuLink href="/login">
                 <IconWrapper>
                     <Avatar alt="profile" src={defaultImage} style={{ width: 30, height: 30 }} />
                 </IconWrapper>
