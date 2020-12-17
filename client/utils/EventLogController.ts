@@ -6,7 +6,23 @@ class EventLogController {
     constructor() {
         this._timer = new Timer(this._timerEvent.bind(this), parseInt(process.env.DELAY_TIME) || 10000);
     }
-    _timerEvent() {}
+    _timerEvent() {
+        this._timer.stop();
+        if (process.browser) {
+            const eventLogs = this.getLogs();
+
+            if (eventLogs.length === 0) return;
+
+            sendLossedEvents(eventLogs)
+                .then((res) => {
+                    this.resetLogs();
+                })
+                .catch((err) => {})
+                .finally(() => {
+                    this._timer.start();
+                });
+        }
+    }
     saveLogs(eventLog) {
         const eventLogs = this.getLogs();
         eventLogs.push(eventLog);
