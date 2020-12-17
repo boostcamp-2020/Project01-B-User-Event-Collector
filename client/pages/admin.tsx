@@ -270,7 +270,7 @@ const MoveTrackEventRow = (e : MoveTrackEventProps) => (
     <EventRow>
         <EventName>{e.event}</EventName>
         {getEventColumn('userID', e.userId)}
-        {getEventColumn('trackId', e.trackId.toString())}
+        {getEventColumn('trackId', e.trackId)}
         {getEventColumn('source', e.source)}
         {getEventColumn('destination', e.destination)}
         {getEventColumn('Platform', e.platform)}
@@ -304,8 +304,8 @@ const PlayNowEventRow = (e : PlayNowEventProps) => (
     <EventRow>
         <EventName>{e.event}</EventName>
         {getEventColumn('userID', e.userId)}
-        {getEventColumn('trackId', e.trackId.toString())}
-        {getEventColumn('targetTrackId', e.targetTrackId.toString())}
+        {getEventColumn('trackId', e.trackId)}
+        {getEventColumn('targetTrackId', e.targetTrackId)}
         {getEventColumn('playingProgress', e.playingProgress)}
         {getEventColumn('Platform', e.platform)}
         {getEventColumn('Timestamp', e.timestamp)}
