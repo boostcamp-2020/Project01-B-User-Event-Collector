@@ -11,8 +11,8 @@ import Heart from '@components/atoms/Heart/Heart';
 
 import { HeaderButtonGroupProps } from 'interfaces/props';
 import { useContext, useState } from 'react';
+import { addToLibrary, deleteFromLibrary } from '../../../utils/apis';
 import { useSelector } from 'react-redux';
-import { addToLibrary, deleteFromLibrary } from '@utils/apis';
 import useLikeEventLog from 'hooks/useLikeEventLog';
 import apiUrl from '@constants/apiUrl';
 import ComponentInfoContext from '@utils/context/ComponentInfoContext';

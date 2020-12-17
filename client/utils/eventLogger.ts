@@ -1,4 +1,4 @@
-import { sendEvent, sendPlayEvent } from '@utils/apis';
+import { sendEvent, sendPlayEvent } from './apis';
 import { Event, PlayEvent } from '@constants/events';
 
 function eventLogger(event, param) {
