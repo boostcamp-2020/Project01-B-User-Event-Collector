@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
@@ -10,6 +10,7 @@ import SkipNextIcon from '@material-ui/icons/SkipNext';
 import { playPrevTrack, playNextTrack, playTrack, pauseTrack } from 'reducers/musicPlayer';
 import { useSelector, useDispatch } from 'react-redux';
 import usePlayNowEventLog from 'hooks/usePlayNowEventLog';
+import usePlayEventLog from 'hooks/usePlayEventLog';
 
 const Container = styled.div`
     display: flex;
@@ -50,6 +51,11 @@ const PlayControllerButtons = () => {
     const user = useSelector((state) => state.user);
     const { nowPlaying, upNextTracks, playTime } = useSelector((state) => state.musicPlayer);
     const logPlayNowEvent = usePlayNowEventLog({ userId: user.id });
+    const logPlayEvent = usePlayEventLog({ userId: user.id });
+
+    useEffect(() => {
+        if (nowPlaying) logPlayEvent(nowPlaying.id, true);
+    }, [nowPlaying]);
 
     const getNextTrackId = ({ upNextTracks, nowPlaying }) => {
         const nowPlayingIdx = upNextTracks.findIndex((t) => t.id === nowPlaying.id);
@@ -79,11 +85,13 @@ const PlayControllerButtons = () => {
 
     const playTrackHandler = () => {
         dispatch(playTrack());
-    }
+        if (nowPlaying) logPlayEvent(nowPlaying.id, true);
+    };
 
     const pauseTrackHandler = () => {
         dispatch(pauseTrack());
-    }
+        if (nowPlaying) logPlayEvent(nowPlaying.id, false);
+    };
 
     return (
         <Container>
@@ -94,8 +102,11 @@ const PlayControllerButtons = () => {
                 <SkipPreviousIcon style={{ fontSize: '35px' }} onClick={toPrevTrack} />
             </SkipIconWrapper>
             <PlayIconWrapper onClick={() => setPlaying(!playing)}>
-                {playing ? <PauseIcon style={{ fontSize: '55px' }} onClick = { pauseTrackHandler }/> :
-                 <PlayArrowIcon style={{ fontSize: '55px' }} onClick = { playTrackHandler }/>}
+                {playing ? (
+                    <PauseIcon style={{ fontSize: '55px' }} onClick={pauseTrackHandler} />
+                ) : (
+                    <PlayArrowIcon style={{ fontSize: '55px' }} onClick={playTrackHandler} />
+                )}
             </PlayIconWrapper>
             <SkipIconWrapper>
                 <SkipNextIcon style={{ fontSize: '35px' }} onClick={toNextTrack} />
