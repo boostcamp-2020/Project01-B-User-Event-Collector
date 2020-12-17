@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getCookie } from 'utils/cookies';
 import apiUrl from 'constants/apiUrl';
 import { rejects } from 'assert';
-
+import eventLogController from '@utils/EventLogController';
 export const getRequestOptions = (method, options, headers) => ({
     method: method,
     headers: {
@@ -33,12 +33,13 @@ export const request = async (url, option, token) => {
 
 export const requestTracks = async (apiUrl, cookie) => {
     const data = await request(apiUrl, {
-    headers: {
-        'Content-Type': 'application/json',
-        Authorization: cookie,
-        }});
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: cookie,
+        },
+    });
     return data;
-}
+};
 
 export const requestByCookie = async (apiUrl) => {
     // const cookies = new Cookies(req, res);
@@ -132,7 +133,7 @@ export const sendEvent = async (eventData) => {
         await axios.post(apiUrl.event, eventData);
     } catch (err) {
         console.log(err.response);
-        // TODO: 로그 손실 방지 처리 & 에러 핸들링
+        eventLogController.saveLogs('eventLogs', eventData);
     }
 };
 
@@ -141,6 +142,6 @@ export const sendPlayEvent = async (eventData) => {
         await axios.post(apiUrl.playEvent, eventData);
     } catch (err) {
         console.log(err.response);
-        // TODO: 로그 손실 방지 처리 & 에러 핸들링
+        eventLogController.saveLogs('playEventLogs', eventData);
     }
 };
