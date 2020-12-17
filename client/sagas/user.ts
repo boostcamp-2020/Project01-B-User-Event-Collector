@@ -12,8 +12,32 @@ import {
     LOG_OUT_SUCCESS,
     LOAD_USER_REQUEST,
     LOAD_USER_SUCCESS,
-    LOAD_USER_FAILURE
+    LOAD_USER_FAILURE,
+    JOIN_FAILURE,
+    JOIN_REQUEST,
+    JOIN_SUCCESS
   } from 'constants/actions';
+
+ /* 회원가입 */
+
+function joinAPI(data) {
+    return axios.post(apiUrl.user+"/join", data);
+}
+
+function* join(action) {
+    try {
+        const result = yield call(joinAPI, action.data);
+        yield put({         //put은 dispatch. 액션을 dispatch
+            type: JOIN_SUCCESS,
+            data: result.data
+        })
+    } catch (err) {
+        yield put({
+            type: JOIN_FAILURE,
+            error: err.reponse
+        })
+    }
+}
 
 /* 로그인 */
 
@@ -73,14 +97,21 @@ function loadUserAPI() {
 function* loadUser(action) {
     try {
         const result = yield call(loadUserAPI);
-        yield put({         //put은 dispatch. 액션을 dispatch
-            type: LOAD_USER_SUCCESS,
-            data: result.data
-        })
+        if(result.data){
+            yield put({         //put은 dispatch. 액션을 dispatch
+                type: LOAD_USER_SUCCESS,
+                data: result.data
+            })
+        } else {
+            yield put({
+                type: LOAD_USER_FAILURE,
+                error: {err:'no user exsits'}
+            })
+        }
     } catch (err) {
         yield put({
             type: LOAD_USER_FAILURE,
-            error: err.reponse.data
+            error: err.reponse
         })
     }
 }
@@ -96,11 +127,16 @@ function* watchLogOut() {
 function* watchLoadUser() {
     yield takeLatest(LOAD_USER_REQUEST, loadUser);
 }
+
+function* watchJoin() {
+    yield takeLatest(JOIN_REQUEST, join);
+}
   
 export default function* userSaga() {
     yield all([
         fork(watchLogIn),
         fork(watchLogOut),
-        fork(watchLoadUser)
+        fork(watchLoadUser),
+        fork(watchJoin)
     ]);
 }
