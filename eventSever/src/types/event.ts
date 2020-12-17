@@ -89,7 +89,6 @@ interface IMoveTrack extends IEvent {
 }
 
 export {
-    IEvent, IClickEvent, ITransitionEvent, ISearchEvent, ILikeEvent, IShareEvent,
-    IAddToPlaylistEvent, IPlayEvent, IPlayNowEvent, IUpNextChangeEvent, ISaveEvent,
-    ISubscribeEvent, IMoveTrack,
+    IEvent, IClickEvent, ITransitionEvent, ISearchEvent, ILikeEvent, IShareEvent, IAddToPlaylistEvent,
+    IPlayEvent, IPlayNowEvent, IUpNextChangeEvent, ISaveEvent, ISubscribeEvent, IMoveTrack,
 };
