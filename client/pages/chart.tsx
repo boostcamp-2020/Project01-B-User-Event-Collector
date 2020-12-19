@@ -60,7 +60,7 @@ const Albumdata = Array(9).fill({
     },
 });
 
-const Chart = ({ chartData }) => {
+const Chart = ({ chartData, recentAlbumData }) => {
     return (
         <Container>
             <Header>
@@ -72,23 +72,13 @@ const Chart = ({ chartData }) => {
                         <ChartCardList items={chartData} unit={5} />
                     </CardListContainer>
                 </ChartContainer>
-                {/* <ChartContainer>
-                    <CardListContainer title="국내 급상승" href="/">
-                        <ChartCardList items={ChartCards} unit={5} />
-                    </CardListContainer>
-                </ChartContainer>
-                <ChartContainer>
-                    <CardListContainer title="음악 검색 Top 100" href="/">
-                        <ChartCardList items={ChartCards} unit={5} />
-                    </CardListContainer>
-                </ChartContainer> */}
                 <ChartContainer>
                     <CardListContainer title="장르 바로가기">
                         <GenreCardList />
                     </CardListContainer>
                 </ChartContainer>
                 <CardListContainer title="최신 앨범" href="/album/sample">
-                    <ContentsCardList variant="album" items={Albumdata} />
+                    <ContentsCardList variant="album" items={recentAlbumData} />
                 </CardListContainer>
             </ContentsContainer>
         </Container>
@@ -96,7 +86,7 @@ const Chart = ({ chartData }) => {
 };
 
 export async function getServerSideProps() {
-    let chartData = await request(apiUrl.chart);
+    let [chartData, recentAlbumData] = await Promise.all([request(apiUrl.chart), request(apiUrl.album)]);
 
     if (!chartData) {
         return {
@@ -107,6 +97,7 @@ export async function getServerSideProps() {
     return {
         props: {
             chartData,
+            recentAlbumData: recentAlbumData ? recentAlbumData : [],
         },
     };
 }
