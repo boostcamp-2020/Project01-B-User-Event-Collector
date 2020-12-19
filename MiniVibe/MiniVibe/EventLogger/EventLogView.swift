@@ -8,42 +8,55 @@
 import SwiftUI
 
 struct EventLogView: View {
-    @ObservedObject var viewModel: EventLogViewModel
+    init(viewModel: EventLogViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+        let segmentAppearance = UISegmentedControl.appearance()
+        segmentAppearance.backgroundColor = .clear
+        segmentAppearance.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
+        segmentAppearance.setDividerImage(UIImage(),
+                                          forLeftSegmentState: .normal,
+                                          rightSegmentState: .normal,
+                                          barMetrics: .default)
+        segmentAppearance.setTitleTextAttributes([.foregroundColor: UIColor.systemPink,
+                                                  .font: UIFont.boldSystemFont(ofSize: 18)],
+                                                 for: .selected)
+        segmentAppearance.setTitleTextAttributes([.foregroundColor: UIColor.systemGray,
+                                                  .font: UIFont.systemFont(ofSize: 18)],
+                                                 for: .normal)
+    }
+    
+    @StateObject var viewModel: EventLogViewModel
     
     var body: some View {
         NavigationView {
-            content
-                .listStyle(PlainListStyle())
-                .navigationTitle("Event Log")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing: resetButton)
-        }
-    }
-    
-    @ViewBuilder
-    private var content: some View {
-        switch viewModel.state {
-        case .idle:
-            Color.clear
-                .onAppear {
-                    viewModel.send(input: .appear)
+            VStack {
+                Picker("StorageCategory", selection: $viewModel.state.selection) {
+                    ForEach(0..<viewModel.state.category.count) {
+                        Text(viewModel.state.category[$0])
+                    }
                 }
-        case let .loaded(events):
-            eventList(events: events)
-        case .empty:
-            Text("Event log not found.")
+                .pickerStyle(SegmentedPickerStyle())
+                .frame(height: 50)
+                
+                Divider()
+                
+                TabView(selection: $viewModel.state.selection) {
+                    eventList(events: viewModel.state.local).tag(0)
+                    eventList(events: viewModel.state.server).tag(1)
+                }
+                .tabViewStyle(PageTabViewStyle())
+                .animation(.easeInOut)
+            }
+            .listStyle(PlainListStyle())
+            .navigationTitle("Event Log")
+            .navigationBarTitleDisplayMode(.inline)
+        }
+        .onAppear {
+            viewModel.send(input: .appear)
         }
     }
     
-    private var resetButton: some View {
-        Button {
-            viewModel.send(input: .reset)
-        } label: {
-            Image(systemName: "trash")
-        }
-    }
-    
-    private func eventList(events: [EventPrintable]) -> some View {
+    private func eventList(events: [CustomStringConvertible]) -> some View {
         List(events, id: \.description) { event in
             Text(event.description)
                 .foregroundColor(.primary)

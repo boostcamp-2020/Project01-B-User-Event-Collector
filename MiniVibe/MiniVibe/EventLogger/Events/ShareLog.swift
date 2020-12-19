@@ -32,4 +32,5 @@ struct ShareLog: ShareLogType {
     var data: LogData
     let timestamp: Date = Date()
     let event: String = "Share"
+    let platform: String = "iOS"
 }

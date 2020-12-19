@@ -14,7 +14,7 @@ protocol CustomEventLogType: EventLogType {
 }
 
 extension CustomEventLogType {
-    var platform: String {
-        return "iOS"
+    var description: String {
+        return "\(timestamp.timestampFormat())\n\(event)"
     }
 }

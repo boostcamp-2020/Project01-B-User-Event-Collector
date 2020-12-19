@@ -11,38 +11,34 @@ import EventLogKit
 final class EventLogViewModel: ObservableObject {
     enum Input {
         case appear
-        case reset
     }
     
-    enum State {
-        case idle
-        case loaded(events: [EventPrintable])
-        case empty
+    struct State {
+        let category = ["Local", "Server"]
+        var local: [EventPrintable] = []
+        var server: [EventLogType] = []
+        var selection = 0
     }
     
-    @Published private(set) var state: State = .idle
+    @Published var state = State()
     private let localStorage: LocalEventStorage?
+    private let serverStorage: ServerEventStorage?
     
-    init(localStorage: LocalEventStorage?) {
+    init(localStorage: LocalEventStorage?,
+         serverStorage: ServerEventStorage?) {
         self.localStorage = localStorage
+        self.serverStorage = serverStorage
     }
     
     func send(input: Input) {
         switch input {
         case .appear:
             load()
-        case .reset:
-            reset()
         }
     }
     
     private func load() {
-        let events = localStorage?.events() ?? []
-        state = events.isEmpty ? .empty : .loaded(events: events)
-    }
-    
-    private func reset() {
-        localStorage?.reset()
-        state = .empty
+        state.local = localStorage?.events() ?? []
+        state.server = serverStorage?.events ?? []
     }
 }

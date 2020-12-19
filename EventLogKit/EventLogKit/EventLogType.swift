@@ -8,14 +8,9 @@
 import CoreData
 import Foundation
 
-public protocol EventLogType: Encodable {
+public protocol EventLogType: Encodable, CustomStringConvertible {
     var event: String { get }
     var timestamp: Date { get }
     func save(context: NSManagedObjectContext)
 }
 
-public extension EventLogType {
-    var event: String {
-        return String(describing: Self.self)
-    }
-}
