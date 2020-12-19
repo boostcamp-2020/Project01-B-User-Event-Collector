@@ -16,7 +16,7 @@ struct TodayTitle: View {
                 .foregroundColor(.primary)
                 .font(.title)
                 .fontWeight(.heavy)
-                .logSubscription(componentId: "")
+                .logSubscription(componentId: "mainSubscribe")
             
             Spacer()
             
