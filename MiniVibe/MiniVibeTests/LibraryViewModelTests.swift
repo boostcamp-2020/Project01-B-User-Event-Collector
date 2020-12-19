@@ -59,15 +59,26 @@ final class LibraryViewModelTests: XCTestCase {
             expectation.fulfill()
         }
         let viewModel = LibraryViewModel(usecase: usecase, eventLogger: eventLogger)
+        let tappedTrack = TrackViewModel(track: .init(id: 0,
+                                                         title: "",
+                                                         lyrics: "",
+                                                         albumId: 0,
+                                                         album: .init(id: 0,
+                                                                      title: "",
+                                                                      imageUrl: ""),
+                                                         artist: .init(id: 0,
+                                                                       name: ""),
+                                                         liked: 0))
+        
         viewModel.$state
             .sink { state in
-                if state.isMenuOpen {
+                if state.isMenuOpen,
+                   state.tappedTrack == tappedTrack {
                     expectation.fulfill()
                 }
             }
             .store(in: &cancellables)
         
-        viewModel.send(.tapMenuButton)
+        viewModel.send(.tapMenuButton(track: tappedTrack))
     }
-
 }

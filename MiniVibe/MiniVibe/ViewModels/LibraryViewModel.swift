@@ -13,12 +13,13 @@ final class LibraryViewModel: ObservableObject {
     
     enum Input {
         case appear
-        case tapMenuButton
+        case tapMenuButton(track: TrackViewModel)
     }
     
     struct State {
         var likedTracks = [TrackInfo]()
         var isMenuOpen = false
+        var tappedTrack: TrackViewModel?
     }
     
     @Published var state = State()
@@ -36,8 +37,9 @@ final class LibraryViewModel: ObservableObject {
         switch input {
         case .appear:
             load()
-        case .tapMenuButton:
+        case let .tapMenuButton(track):
             state.isMenuOpen = true
+            state.tappedTrack = track
         }
     }
     
