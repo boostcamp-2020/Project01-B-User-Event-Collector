@@ -47,11 +47,6 @@ struct MiniVibeApp: App {
                 }
                 .onReceive(
                     NotificationCenter.default.publisher(
-                        for: UIApplication.willEnterForegroundNotification)) { _ in
-                    MiniVibeApp.eventLogger.send(Foreground(userId: 0))
-                }
-                .onReceive(
-                    NotificationCenter.default.publisher(
                         for: UIApplication.willTerminateNotification)) { _ in
                     MiniVibeApp.eventLogger.send(Terminate(userId: 0))
                 }

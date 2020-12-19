@@ -31,13 +31,6 @@ struct Active: EngagementLogType {
     let platform = "iOS"
 }
 
-struct Foreground: EngagementLogType {
-    let userId: Int
-    let timestamp = Date()
-    let event = "Foreground"
-    let platform = "iOS"
-}
-
 struct Background: EngagementLogType {
     let userId: Int
     let timestamp = Date()
