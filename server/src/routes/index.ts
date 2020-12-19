@@ -8,6 +8,7 @@ import playlistRouter from './playlists';
 import albumRouter from './albums';
 import trackRouter from './tracks';
 import mixtapeRouter from './mixtapes';
+import chartRouter from './chart';
 import { authenticateJWT, checkAuth } from '../middlewares/auth';
 
 const router = express.Router();
@@ -22,5 +23,6 @@ router.use('/playlists', playlistRouter);
 router.use('/tracks', trackRouter);
 router.use('/albums', albumRouter);
 router.use('/mixtapes', mixtapeRouter);
+router.use('/chart', chartRouter);
 
 export default router;
