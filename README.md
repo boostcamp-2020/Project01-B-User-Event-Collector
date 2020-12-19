@@ -30,13 +30,32 @@ miniVIBE 는 재생관련 이벤트와 비재생관련 **이벤트를 구분**�
 
 | In-Depth | WEB 🕸 | iOS 🍎 |
 | -------- | -------- | -------- |
-| 기술스택 In-Depth     | [바로가기]()     | [바로가기]()     |
-| 기술 특﹒장점 In-Depth     | [바로가기]()     | [바로가기]()     |
+| 기술스택 In-Depth     | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector/wiki/Web-기술-스택)     | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector/wiki/iOS-기술-스택)     |
+| 기술 In-Depth     | [바로가기]()     | [바로가기]()     |
 | 기능 In-Depth     | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector#minivibe---web-기능-in-depth)     | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector#minivibe---ios-기능-in-depth)     |
 | 체험해보기     | [바로가기](http://mini-vibe.kro.kr)   | [기능 In-Depth](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector#minivibe---ios-기능-in-depth)  |
 
 
 ## miniVIBE - WEB 기능 In-Depth
+
+### 전체 동작
+
+- DB에 저장되어 있는 콘텐츠를 각 페이지에서 조회
+- 각 콘텐츠(매거진, 앨범, 트랙, 아티스트)를 클릭하여 각 상세 페이지로 이동
+- 나만의 플레이리스트 생성
+- 각 콘텐츠를 내 플레이리스트에 추가
+
+### 보관함 
+
+- 보관함에 내가 좋아한 트랙 / 플레이리스트 / 아티스트 / 앨범 저장
+- 내 보관함에서 내가 좋아한 트랙 / 플레이리스트 / 아티스트 / 앨범 조회
+
+### 뮤직 플레이어
+
+- 트랙 / 앨범 / 플레이리스트 / 믹스테잎을 뮤직 플레이어 재생 목록에 추가
+- 음원 재생을 제외한 뮤직 플레이어 기능
+
+
 
 ## miniVIBE - iOS 기능 In-Depth
 ### 화면 별 표시할 정보 서버로부터 가져오기
