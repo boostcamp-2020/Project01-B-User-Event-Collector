@@ -20,6 +20,7 @@ const apiUrl = {
     user: `${baseUrl}/users`,
     login: `${host}/auth`,
     chart: `${baseUrl}/chart`,
+    genre: `${baseUrl}/genres`,
 
     event: `${eventUrl}/events/`,
     playEvent: `${eventUrl}/play-events/`,

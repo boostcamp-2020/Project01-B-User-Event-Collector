@@ -3,20 +3,6 @@ import styled from 'styled-components';
 import GenreCard from '@components/molecules/GenreCard/GenreCard';
 import CardScrollList from '@components/organisms/CardScrollList/CardScrollList';
 
-// TODO : DB 에서 장르 내용 받아오기
-const cards = [];
-for (let i = 0; i < 13; i++) {
-    const title = `test${i}`;
-    const href = '#';
-    const color = `#${Math.round(Math.random() * 0xffffff).toString(16)}`;
-    const card = {
-        title,
-        href,
-        color,
-    };
-    cards.push(card);
-}
-
 // TODO : refactor
 const getCardBundle = (cards) => {
     const bundle = [];
@@ -24,13 +10,9 @@ const getCardBundle = (cards) => {
     for (let i = 0; i < cards.length; i += 3) {
         bundle.push(
             <CardBundle>
-                <GenreCard title={cards[i].title} href={cards[i].href} color={cards[i].color} />
-                {cards[i + 1] ? (
-                    <GenreCard title={cards[i + 1].title} href={cards[i + 1].href} color={cards[i + 1].color} />
-                ) : null}
-                {cards[i + 2] ? (
-                    <GenreCard title={cards[i + 2].title} href={cards[i + 2].href} color={cards[i + 2].color} />
-                ) : null}
+                <GenreCard id={cards[i].id} name={cards[i].name} />
+                {cards[i + 1] ? <GenreCard id={cards[i + 1].id} name={cards[i + 1].name} /> : null}
+                {cards[i + 2] ? <GenreCard id={cards[i + 2].id} name={cards[i + 2].name} /> : null}
             </CardBundle>,
         );
     }
@@ -50,9 +32,9 @@ const CardBundle = styled.div`
     vertical-align: top;
 `;
 
-const GenreCardList = () => (
+const GenreCardList = ({ items }) => (
     <CardScrollList>
-        <StyledListContainer>{getCardBundle(cards)}</StyledListContainer>
+        <StyledListContainer>{getCardBundle(items)}</StyledListContainer>
     </CardScrollList>
 );
 
