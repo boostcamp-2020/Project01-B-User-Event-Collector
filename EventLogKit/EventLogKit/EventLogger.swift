@@ -27,7 +27,7 @@ open class EventLogger: EventLoggerType {
         self.reachability = reachability
         reachability.setUpNotify { [weak self] in
             self?.networkState = $0
-            if $0 == .wifi {
+            if $0 == .wifi || $0 == .cellular {
                 local?.sendToServer()
             }
         }
