@@ -39,6 +39,7 @@
         <attribute name="event" optional="YES" attributeType="String"/>
         <attribute name="platform" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Search" representedClassName="Search" syncable="YES">
         <attribute name="componentId" optional="YES" attributeType="String"/>
@@ -83,8 +84,8 @@
         <element name="Engagement" positionX="-71.125732421875" positionY="9.207550048828125" width="128" height="89"/>
         <element name="Like" positionX="-107.5771484375" positionY="136.6798706054688" width="128" height="134"/>
         <element name="MoveTrack" positionX="-262.615966796875" positionY="14.43283081054688" width="128" height="134"/>
-        <element name="Save" positionX="-54" positionY="-9" width="128" height="104"/>
         <element name="Play" positionX="-54" positionY="-9" width="128" height="134"/>
+        <element name="Save" positionX="-54" positionY="-9" width="128" height="119"/>
         <element name="Search" positionX="-133.276123046875" positionY="-171.7523651123047" width="128" height="119"/>
         <element name="Share" positionX="-45" positionY="0" width="128" height="119"/>
         <element name="Subscribe" positionX="161.641845703125" positionY="-102.7346343994141" width="128" height="104"/>

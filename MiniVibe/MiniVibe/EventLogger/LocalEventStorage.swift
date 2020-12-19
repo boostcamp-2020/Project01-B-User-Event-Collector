@@ -26,7 +26,9 @@ final class LocalEventStorage: LocalStorageType {
             MoveTrack.fetchRequest(),
             Engagement.fetchRequest(),
             Play.fetchRequest(),
-            UpnextChange.fetchRequest()
+            UpnextChange.fetchRequest(),
+            Share.fetchRequest(),
+            Save.fetchRequest()
         ]
     }
     private let network: NetworkServiceType
