@@ -36,6 +36,7 @@
 		444272B3256CDEC8008BB87B /* TodayTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272B2256CDEC8008BB87B /* TodayTitle.swift */; };
 		444272B8256CE2B3008BB87B /* PreviewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272B7256CE2B3008BB87B /* PreviewItem.swift */; };
 		444272BB256CE701008BB87B /* PreviewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272BA256CE701008BB87B /* PreviewSection.swift */; };
+		4443347A258E93DD003556B8 /* LocalEventStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44433479258E93DD003556B8 /* LocalEventStorageTests.swift */; };
 		444A88A62580E36000F6CB09 /* Event.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 444A88A42580E36000F6CB09 /* Event.xcdatamodeld */; };
 		445919A4256E4A6F0069DAB2 /* ThumbnailGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445919A3256E4A6F0069DAB2 /* ThumbnailGridView.swift */; };
 		445919AD256E559D0069DAB2 /* StationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445919AC256E559D0069DAB2 /* StationList.swift */; };
@@ -275,6 +276,7 @@
 		444272B2256CDEC8008BB87B /* TodayTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTitle.swift; sourceTree = "<group>"; };
 		444272B7256CE2B3008BB87B /* PreviewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewItem.swift; sourceTree = "<group>"; };
 		444272BA256CE701008BB87B /* PreviewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSection.swift; sourceTree = "<group>"; };
+		44433479258E93DD003556B8 /* LocalEventStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEventStorageTests.swift; sourceTree = "<group>"; };
 		444A88A52580E36000F6CB09 /* Event.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Event.xcdatamodel; sourceTree = "<group>"; };
 		445919A3256E4A6F0069DAB2 /* ThumbnailGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailGridView.swift; sourceTree = "<group>"; };
 		445919AC256E559D0069DAB2 /* StationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationList.swift; sourceTree = "<group>"; };
@@ -926,6 +928,7 @@
 		80ABC1712574BF11003D4666 /* MiniVibeTests */ = {
 			isa = PBXGroup;
 			children = (
+				44433479258E93DD003556B8 /* LocalEventStorageTests.swift */,
 				8074AE35258A738700DCB4F1 /* LibraryViewModelTests.swift */,
 				8074AE32258A729500DCB4F1 /* LibraryUseCaseTests.swift */,
 				8074AE17258A52C000DCB4F1 /* ChartsViewModelTests.swift */,
@@ -1358,6 +1361,7 @@
 				44599C9B25878F7A004D1977 /* TodayViewModelTests.swift in Sources */,
 				44E3E9F625874B9B001CB352 /* PlaylistExtensions.swift in Sources */,
 				44E3E9E0258738DF001CB352 /* TodayUseCaseTests.swift in Sources */,
+				4443347A258E93DD003556B8 /* LocalEventStorageTests.swift in Sources */,
 				8074AE36258A738700DCB4F1 /* LibraryViewModelTests.swift in Sources */,
 				44E4C52B2589205D002D865C /* MockPlayerDataManager.swift in Sources */,
 				80D0C9FB2587C611003D8CB2 /* ArtistSectionViewModelTests.swift in Sources */,
