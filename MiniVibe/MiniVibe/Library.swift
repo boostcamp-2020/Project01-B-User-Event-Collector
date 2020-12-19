@@ -31,15 +31,8 @@ struct Library: View {
                                 let tracks = viewModel.state.likedTracks
                                 ForEach(tracks, id: \.self) { track in
                                     TrackRowC(viewModel: .init(track: track,
-                                                               eventLogger: MiniVibeApp.eventLogger)) { _ in
-                                        viewModel.send(.tapMenuButton)
-                                    }
-                                    .fullScreenCover(isPresented: $viewModel.state.isMenuOpen) {
-                                        PlayerMenu(viewModel: .init(track: track,
-                                                                    eventLogger: MiniVibeApp.eventLogger))
-                                            .logTransition(identifier: .playerMenu(id: trackinfo.id),
-                                                           componentId: .trackMenuButton
-                                            )
+                                                               eventLogger: MiniVibeApp.eventLogger)) {
+                                        viewModel.send(.tapMenuButton(track: $0))
                                     }
                                 }
                             }
@@ -49,6 +42,17 @@ struct Library: View {
                     }
                 }
                 .navigationBarHidden(true)
+                .fullScreenCover(isPresented: $viewModel.state.isMenuOpen) {
+                    if let track = viewModel.state.tappedTrack {
+                        PlayerMenu(viewModel: track)
+                            .logTransition(identifier: .playerMenu(id: trackinfo.id),
+                                           componentId: .trackMenuButton
+                            )
+                            .onDisappear {
+                                viewModel.send(.appear)
+                            }
+                    }
+                }
             }
         }
         .onAppear {
