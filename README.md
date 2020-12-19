@@ -32,8 +32,8 @@ miniVIBE 는 재생관련 이벤트와 비재생관련 **이벤트를 구분**�
 | -------- | -------- | -------- |
 | 기술스택 In-Depth     | [바로가기]()     | [바로가기]()     |
 | 기술 특﹒장점 In-Depth     | [바로가기]()     | [바로가기]()     |
-| 기능 In-Depth     | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector#minivibe---web)     | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector#minivibe---ios)     |
-| 체험해보기     | [바로가기](http://mini-vibe.kro.kr)   | [기능 In-Depth]()  |
+| 기능 In-Depth     | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector#minivibe---web-기능-in-depth)     | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector#minivibe---ios-기능-in-depth)     |
+| 체험해보기     | [바로가기](http://mini-vibe.kro.kr)   | [기능 In-Depth](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector#minivibe---ios-기능-in-depth)  |
 
 
 ## miniVIBE - WEB 기능 In-Depth
