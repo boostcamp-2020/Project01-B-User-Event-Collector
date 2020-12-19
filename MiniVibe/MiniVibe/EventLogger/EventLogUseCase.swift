@@ -28,7 +28,11 @@ struct EventLogUseCase: EventLogUseCaseType {
             .decode(type: EventLogResponse.self, decoder: JSONDecoder())
             .replaceError(with: .init(data: []))
             .map {
-                $0.data.filter { $0.platform == "iOS" }
+                Array(
+                    $0.data
+                        .filter { $0.platform == "iOS" }
+                        .prefix(100)
+                )
             }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
@@ -42,7 +46,11 @@ struct EventLogUseCase: EventLogUseCaseType {
             .decode(type: EventLogResponse.self, decoder: JSONDecoder())
             .replaceError(with: .init(data: []))
             .map {
-                $0.data.filter { $0.platform == "iOS" }
+                Array(
+                    $0.data
+                        .filter { $0.platform == "iOS" }
+                        .prefix(100)
+                )
             }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
