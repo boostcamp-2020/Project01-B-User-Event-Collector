@@ -28,13 +28,12 @@ miniVIBE 는 재생관련 이벤트와 비재생관련 **이벤트를 구분**�
 
 # miniVIBE In-Depth
 
-| In-Depth | WEB 🕸 | iOS 🍎 |
-| -------- | -------- | -------- |
-| 기술스택 In-Depth     | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector/wiki/Web-기술-스택)     | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector/wiki/iOS-기술-스택)     |
-| 기술 In-Depth     | [바로가기]()     | [바로가기]()     |
-| 기능 In-Depth     | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector#minivibe---web-기능-in-depth)     | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector#minivibe---ios-기능-in-depth)     |
-| 체험해보기     | [바로가기](http://mini-vibe.kro.kr)   | [기능 In-Depth](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector#minivibe---ios-기능-in-depth)  |
-
+| iOS 🍎 | IN-DEPTH | WEB 🕸 | IN-DEPTH |
+| -------- | -------- | -------- | -------- |
+| 기능   | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector#minivibe---ios-기능-in-depth)     |  기능   |  [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector#minivibe---web-기능-in-depth)    |
+| 기술 스택     | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector/wiki/iOS-기술-스택)     | 기술 스택     | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector/wiki/Web-기술-스택)     |
+| 설계 & 구현    | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector/wiki/iOS-설계-및-구현)     | 기술 특장점     | [바로가기](https://github.com/boostcamp-2020/Project01-B-User-Event-Collector/wiki/Web-기술-특장점)     |
+| 기술 공유    | [바로가기]()     |  체험해보기   |  [바로가기](http://mini-vibe.kro.kr)    |
 
 ## miniVIBE - WEB 기능 In-Depth
 
