@@ -7,7 +7,7 @@ const callback = (err: any, result: any, res : Response) => {
     res.clearCookie('fail');
     const { user } = result;
     const token = jwt.sign({ id: user.id, name: user.name }, process.env.JWT_SECRET || 'jwt_secret');
-    res.cookie('token', token);
+    res.cookie('token', token, { maxAge: 60 * 60 * 24 * 1000 });
     return res.redirect(process.env.CLIENT_HOST || 'http://localhost:3000');
 };
 

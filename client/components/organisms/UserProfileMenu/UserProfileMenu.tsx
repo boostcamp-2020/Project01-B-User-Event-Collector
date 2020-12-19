@@ -1,11 +1,10 @@
 import React, { MouseEvent } from 'react';
-// import { useRouter } from 'next/router'
+import { useCookies } from 'react-cookie';
 import styled from 'styled-components';
 import MenuLink from '@components/atoms/MenuLink';
 import DropdownMenu from '@components/molecules/DropdownMenu';
 import Avatar from '@material-ui/core/Avatar';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import apiUrl from 'constants/apiUrl';
 import { UserProps } from 'interfaces/props';
 import { useDispatch } from 'react-redux';
 import { loginRequestAction } from 'reducers/user';
@@ -25,7 +24,7 @@ const ProfileContainer = styled.div`
 `;
 
 const UserProfileMenu = ({ user }: UserProfileMenuProps) => {
-    // const router = useRouter();
+    const [cookies, setCookie, removeCookie] = useCookies(['token']);
     const dispatch = useDispatch();
     const defaultImage = 'https://ssl.pstatic.net/static/common/myarea/myInfo.gif?type=s33';
     const dropdownItems = [
@@ -35,7 +34,10 @@ const UserProfileMenu = ({ user }: UserProfileMenuProps) => {
         },
         {
             content: '로그아웃',
-            handleClick: (e: MouseEvent<HTMLElement>) => console.log('로그아웃'), // TODO: 로그아웃 함수로 변경
+            handleClick: () => {
+                removeCookie('token');
+                window.location.reload();
+            },
         },
     ];
     const loginHandler = () => {

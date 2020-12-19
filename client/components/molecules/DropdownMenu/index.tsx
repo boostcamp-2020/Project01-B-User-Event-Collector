@@ -86,10 +86,11 @@ const DropdownMenu = ({ id, control: ControlComponent, menuItems, children, stat
                 </span>
             )}
             <StyledMenu id={id} anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-                {menuItems.map(({ content }, idx) => (
+                {menuItems.map(({ content, handleClick: handleItemClick }, idx) => (
                     <MenuItem
                         key={`${id}_${idx}`}
                         onClick={(e) => {
+                            if (handleItemClick) handleItemClick(e);
                             handleClick(e);
                             handleClose(e);
                         }}
@@ -98,12 +99,13 @@ const DropdownMenu = ({ id, control: ControlComponent, menuItems, children, stat
                     </MenuItem>
                 ))}
             </StyledMenu>
-            {playlistModal.visibility && 
-            <PlaylistModal
-                data={playlistModal.data}
-                handleClick={onClickHandler}
-                onClickFunc={removePlaylistModal}
-            />}
+            {playlistModal.visibility && (
+                <PlaylistModal
+                    data={playlistModal.data}
+                    handleClick={onClickHandler}
+                    onClickFunc={removePlaylistModal}
+                />
+            )}
         </>
     );
 };
