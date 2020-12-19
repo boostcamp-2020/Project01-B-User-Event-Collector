@@ -25,7 +25,12 @@ open class EventLogger: EventLoggerType {
         self.local = local
         self.server = server
         self.reachability = reachability
-        reachability.setUpNotify { [weak self] in self?.networkState = $0 }
+        reachability.setUpNotify { [weak self] in
+            self?.networkState = $0
+            if $0 == .wifi {
+                local?.sendToServer()
+            }
+        }
         server?.setFailureHandler { event in
             local?.save(event)
         }

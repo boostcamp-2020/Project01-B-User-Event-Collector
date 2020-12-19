@@ -25,7 +25,7 @@ extension Transition {
     @NSManaged public var page: String
     @NSManaged public var componentId: String
     @NSManaged public var timestamp: Date
-
+    @NSManaged public var platform: String
 }
 
 extension Transition: EventPrintable {
@@ -37,7 +37,7 @@ extension Transition: EventPrintable {
 extension Transition: Encodable {
     
     enum CodingKeys: CodingKey {
-        case event, userId, page, componentId, timestamp
+        case event, userId, page, componentId, timestamp, platform
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -47,5 +47,6 @@ extension Transition: Encodable {
         try container.encode(page, forKey: .page)
         try container.encode(componentId, forKey: .componentId)
         try container.encode(timestamp, forKey: .timestamp)
+        try container.encode(platform, forKey: .platform)
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 
 public protocol LocalStorageType {
     func save(_ event: EventLogType)
+    func sendToServer()
 }
 
 public protocol ServerStorageType {

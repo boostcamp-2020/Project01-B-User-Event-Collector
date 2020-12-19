@@ -19,6 +19,7 @@ extension EngagementLogType {
         engagement.event = event
         engagement.userId = userId
         engagement.timestamp = timestamp
+        engagement.platform = platform
         try? context.save()
     }
 }

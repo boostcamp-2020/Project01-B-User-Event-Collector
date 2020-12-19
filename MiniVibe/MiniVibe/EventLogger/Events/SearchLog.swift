@@ -21,6 +21,7 @@ extension SearchLogType {
         searchLog.componentId = componentId
         searchLog.text = text
         searchLog.timestamp = timestamp
+        searchLog.platform = platform
         try? context.save()
     }
 }

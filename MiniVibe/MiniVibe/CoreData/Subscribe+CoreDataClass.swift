@@ -24,7 +24,7 @@ extension Subscribe {
     @NSManaged public var timestamp: Date
     @NSManaged public var componentId: String
     @NSManaged public var event: String
-
+    @NSManaged public var platform: String
 }
 
 extension Subscribe: EventPrintable {
@@ -36,7 +36,7 @@ extension Subscribe: EventPrintable {
 extension Subscribe: Encodable {
     
     enum CodingKeys: CodingKey {
-        case userId, timestamp, componentId, event
+        case userId, timestamp, componentId, event, platform
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -45,5 +45,6 @@ extension Subscribe: Encodable {
         try container.encode(timestamp, forKey: .timestamp)
         try container.encode(componentId, forKey: .componentId)
         try container.encode(event, forKey: .componentId)
+        try container.encode(platform, forKey: .platform)
     }
 }
