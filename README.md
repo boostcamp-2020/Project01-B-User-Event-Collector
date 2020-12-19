@@ -43,19 +43,19 @@ miniVIBE 는 재생관련 이벤트와 비재생관련 **이벤트를 구분**�
 
 | 예시 : TODAY 화면 | 설명 |
 | --------  | -------- |
-| <img width = 200 src = "https://i.imgur.com/Ijz99Ro.gif">| 1. 주어진 API의 JSON 구조에 맞게 JSONDecoder를 사용하여<br>원하는 타입으로 변환 후 뷰에 적용<br>2. 화면마다 또는 섹션마다 알맞은 스크롤 방향 설정<br>(Vertical / Horizontal) |
+| <img width = 200 src = "https://user-images.githubusercontent.com/34840140/102691035-ead97680-424c-11eb-8b71-32fa1b54ba65.gif">| 1. 주어진 API의 JSON 구조에 맞게 JSONDecoder를 사용하여<br>원하는 타입으로 변환 후 뷰에 적용<br>2. 화면마다 또는 섹션마다 알맞은 스크롤 방향 설정<br>(Vertical / Horizontal) |
 
 ### 현재 재생목록에 Track 추가
 
 | 현재 재생목록에 track 추가 | 설명 |
 | --------  | -------- |
-| <img width = 200 src = "https://i.imgur.com/HaxB2sL.gif">| 1. 재생을 원하는 곡을 선택하면 현재 재생목록 상단에 추가되고 재생 순서가 변경 됨<br> 2. 현재 재생목록은 플레이어를 열어 확인 가능 |
+| <img width = 200 src = "https://user-images.githubusercontent.com/34840140/102691060-2411e680-424d-11eb-9225-4112511099d1.gif">| 1. 재생을 원하는 곡을 선택하면 현재 재생목록 상단에 추가되고 재생 순서가 변경 됨<br> 2. 현재 재생목록은 플레이어를 열어 확인 가능 |
 
 ### 플레이어
 
 | 플레이어 | 설명|
 |-------- |-------- |
-| <img width = 200 src = "https://i.imgur.com/pjG3KCV.gif">| 1. 재생/일시정지 가능 및 재생 상태에 따른 UI 변경<br>(자켓 사진의 변화, 가사 미리보기)<br>2. 재생 시 가사보기 가능<br>3. 특정 트랙에 좋아요/좋아요 취소<br>(트랙에 대한 평가는 '보관함'에 적용 됨.)<br>4. 현재 재생목록에 있는 트랙의 재생 순서 변경 및 목록에서 제거 가능 |
+| <img width = 200 src = "https://user-images.githubusercontent.com/34840140/102691094-4d327700-424d-11eb-90eb-7bc0d7299c73.gif">| 1. 재생/일시정지 가능 및 재생 상태에 따른 UI 변경<br>(자켓 사진의 변화, 가사 미리보기)<br>2. 재생 시 가사보기 가능<br>3. 특정 트랙에 좋아요/좋아요 취소<br>(트랙에 대한 평가는 '보관함'에 적용 됨.)<br>4. 현재 재생목록에 있는 트랙의 재생 순서 변경 및 목록에서 제거 가능 |
 
 ### 발생한 이벤트 전송
 
