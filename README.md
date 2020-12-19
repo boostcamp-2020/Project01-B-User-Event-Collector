@@ -1,10 +1,39 @@
-# 프로젝트 소개
+<img width="705" alt="스크린샷 2020-12-14 오전 10 29 40" src="https://user-images.githubusercontent.com/48787170/102030752-46dc6f00-3df7-11eb-9364-89a1eb9b9261.png">
 
-<img width="705" alt="스크린샷 2020-12-14 오전 10 29 40" src="https://user-images.githubusercontent.com/48787170/102030752-46dc6f00-3df7-11eb-9364-89a1eb9b9261.png">
+# Project - miniVIBE
 
-**Project miniVIBE는**
-뮤직 웹앱 [NAVER VIBE](https://vibe.naver.com)를 클론하고,
-프로덕트의 사용성 향상, 이용자 행동 패턴 분석을 위한 사용자 이벤트를 수집하는 프로젝트입니다
+> [NAVER VIBE](https://vibe.naver.com)를 클론하고,<br>
+> 프로덕트의 UI/UX 향상, 이용자 행동 패턴 분석을 위한 사용자 이벤트를 수집하는 프로젝트<br>
+> 부스트캠프 2020의 마지막 프로젝트로, WEB과 iOS가 협업하여 만들어낸 결과물
+
+# WE ARE...
+
+<img width = 1000 src = "https://user-images.githubusercontent.com/34840140/102684300-9fa67000-421a-11eb-85dd-88c0663688fa.png">
+
+# miniVIBE In-Depth
+
+
+| In-Depth | WEB 🕸 | iOS 🍎 |
+| -------- | -------- | -------- |
+| 기술스택 In-Depth     | [바로가기]()     | [바로가기]()     |
+| 기술 특﹒장점 In-Depth     | [바로가기]()     | [바로가기]()     |
+| 기능 In-Depth     | [바로가기]()     | [바로가기]()     |
+| 체험해보기     | [바로가기](http://mini-vibe.kro.kr)   | [기능 In-Depth]()  |
+
+
+## miniVIBE - WEB
+
+## miniVIBE - iOS
+
+
+
+
+
+
+
+
+
+
 
 ### [여기](http://mini-vibe.kro.kr)를 클릭하시면 miniVIBE Web으로 이동합니다🙌🏻
 
@@ -38,7 +67,7 @@ VIBE는 사용자의 음악 선호도 파악, 사용성 개선, 마케팅 등 �
 
 # 팀원 소개
 
-<img width="731" alt="스크린샷 2020-12-14 오전 10 30 52" src="https://user-images.githubusercontent.com/48787170/102030812-755a4a00-3df7-11eb-8926-f703543484ee.png">
+<img width="731" alt="스크린샷 2020-12-14 오전 10 30 52" src="https://user-images.githubusercontent.com/48787170/102030812-755a4a00-3df7-11eb-8926-f703543484ee.png">
 
 
 # 기술 스택
