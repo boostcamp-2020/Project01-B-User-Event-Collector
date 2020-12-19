@@ -7,7 +7,7 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const TrackRepository = getRepository(Track);
 
-        const tracks = await TrackRepository.createQueryBuilder('track')
+        let tracks = await TrackRepository.createQueryBuilder('track')
             .leftJoinAndSelect('track.album', 'album')
             .leftJoinAndSelect('track.artist', 'artist')
             .leftJoin('track.likeUsers', 'likeUsers')
@@ -22,8 +22,10 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
             .addSelect('COUNT(likeUsers.id)', 'userLikesCount')
             .groupBy('track.id')
             .orderBy('userLikesCount', 'DESC')
-            .limit(50)
+            .limit(100)
             .getMany();
+
+        tracks = tracks?.map((track, idx) => ({ ...track, rank: idx + 1 }));
 
         return res.json({
             success: !!tracks,
