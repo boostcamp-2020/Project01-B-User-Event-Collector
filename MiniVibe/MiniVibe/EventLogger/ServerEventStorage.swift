@@ -18,7 +18,6 @@ final class ServerEventStorage: ServerStorageType {
     private let network: NetworkServiceType
     private var failureHandler: ((EventLogType) -> Void)?
     private var cancellable = Set<AnyCancellable>()
-    private(set) var events = [EventLogType]()
     
     init(network: NetworkServiceType = NetworkService()) {
         self.network = network
@@ -54,8 +53,6 @@ final class ServerEventStorage: ServerStorageType {
             }, receiveValue: { [weak self] success in
                 if !success {
                     self?.failureHandler?(event)
-                } else {
-                    self?.events.insert(event, at: 0)
                 }
             })
             .store(in: &cancellable)

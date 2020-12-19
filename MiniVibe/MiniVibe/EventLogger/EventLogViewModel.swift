@@ -5,8 +5,8 @@
 //  Created by TTOzzi on 2020/12/10.
 //
 
+import Combine
 import Foundation
-import EventLogKit
 
 final class EventLogViewModel: ObservableObject {
     enum Input {
@@ -14,20 +14,22 @@ final class EventLogViewModel: ObservableObject {
     }
     
     struct State {
-        let category = ["Local", "Server"]
+        let category = ["Local", "Server", "Server(play)"]
         var local: [EventPrintable] = []
-        var server: [EventLogType] = []
+        var commonEvents: [EventLog] = []
+        var playEvents: [EventLog] = []
         var selection = 0
     }
     
     @Published var state = State()
+    private let useCase: EventLogUseCaseType
     private let localStorage: LocalEventStorage?
-    private let serverStorage: ServerEventStorage?
+    private var cancellables: Set<AnyCancellable> = []
     
-    init(localStorage: LocalEventStorage?,
-         serverStorage: ServerEventStorage?) {
+    init(useCase: EventLogUseCaseType = EventLogUseCase(),
+         localStorage: LocalEventStorage?) {
+        self.useCase = useCase
         self.localStorage = localStorage
-        self.serverStorage = serverStorage
     }
     
     func send(input: Input) {
@@ -38,7 +40,13 @@ final class EventLogViewModel: ObservableObject {
     }
     
     private func load() {
+        cancellables = []
         state.local = localStorage?.events() ?? []
-        state.server = serverStorage?.events ?? []
+        useCase.loadCommonEvents()
+            .sink { [weak self] in self?.state.commonEvents = $0 }
+            .store(in: &cancellables)
+        useCase.loadPlayEvents()
+            .sink { [weak self] in self?.state.playEvents = $0 }
+            .store(in: &cancellables)
     }
 }

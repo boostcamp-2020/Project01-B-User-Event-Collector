@@ -44,8 +44,7 @@ struct MainTab: View {
                 .tag(ViewIdentifier.library)
             
             EventLogView(viewModel:
-                            .init(localStorage: MiniVibeApp.eventLogger.local as? LocalEventStorage,
-                                  serverStorage: MiniVibeApp.eventLogger.server as? ServerEventStorage)
+                            .init(localStorage: MiniVibeApp.eventLogger.local as? LocalEventStorage)
             )
             .tabItem {
                 Image(systemName: "pencil.and.ellipsis.rectangle")

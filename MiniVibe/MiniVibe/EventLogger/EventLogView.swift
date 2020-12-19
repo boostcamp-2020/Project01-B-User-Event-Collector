@@ -18,14 +18,14 @@ struct EventLogView: View {
                                           rightSegmentState: .normal,
                                           barMetrics: .default)
         segmentAppearance.setTitleTextAttributes([.foregroundColor: UIColor.systemPink,
-                                                  .font: UIFont.boldSystemFont(ofSize: 18)],
+                                                  .font: UIFont.boldSystemFont(ofSize: 14)],
                                                  for: .selected)
         segmentAppearance.setTitleTextAttributes([.foregroundColor: UIColor.systemGray,
-                                                  .font: UIFont.systemFont(ofSize: 18)],
+                                                  .font: UIFont.systemFont(ofSize: 14)],
                                                  for: .normal)
     }
     
-    @StateObject var viewModel: EventLogViewModel
+    @StateObject private var viewModel: EventLogViewModel
     
     var body: some View {
         NavigationView {
@@ -42,7 +42,8 @@ struct EventLogView: View {
                 
                 TabView(selection: $viewModel.state.selection) {
                     eventList(events: viewModel.state.local).tag(0)
-                    eventList(events: viewModel.state.server).tag(1)
+                    eventList(events: viewModel.state.commonEvents).tag(1)
+                    eventList(events: viewModel.state.playEvents).tag(2)
                 }
                 .tabViewStyle(PageTabViewStyle())
                 .animation(.easeInOut)

@@ -29,6 +29,9 @@
 		441EC8402576031F0069146E /* PlayerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441EC83F2576031F0069146E /* PlayerMenu.swift */; };
 		441F915F2583AE470006FB05 /* Save+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441F915D2583AE470006FB05 /* Save+CoreDataClass.swift */; };
 		441F91662583AEA90006FB05 /* SaveLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441F91652583AEA90006FB05 /* SaveLog.swift */; };
+		4420C3D4258E68D10059C54A /* EventEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420C3D3258E68D10059C54A /* EventEndPoint.swift */; };
+		4420C3D9258E68ED0059C54A /* EventLogResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420C3D8258E68ED0059C54A /* EventLogResponse.swift */; };
+		4420C3DC258E69070059C54A /* EventLogUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420C3DB258E69070059C54A /* EventLogUseCase.swift */; };
 		44337F6E2583C4AE00B88EFA /* ComponentId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44337F6D2583C4AE00B88EFA /* ComponentId.swift */; };
 		444272B3256CDEC8008BB87B /* TodayTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272B2256CDEC8008BB87B /* TodayTitle.swift */; };
 		444272B8256CE2B3008BB87B /* PreviewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444272B7256CE2B3008BB87B /* PreviewItem.swift */; };
@@ -265,6 +268,9 @@
 		441EC83F2576031F0069146E /* PlayerMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerMenu.swift; sourceTree = "<group>"; };
 		441F915D2583AE470006FB05 /* Save+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Save+CoreDataClass.swift"; sourceTree = "<group>"; };
 		441F91652583AEA90006FB05 /* SaveLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveLog.swift; sourceTree = "<group>"; };
+		4420C3D3258E68D10059C54A /* EventEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEndPoint.swift; sourceTree = "<group>"; };
+		4420C3D8258E68ED0059C54A /* EventLogResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLogResponse.swift; sourceTree = "<group>"; };
+		4420C3DB258E69070059C54A /* EventLogUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLogUseCase.swift; sourceTree = "<group>"; };
 		44337F6D2583C4AE00B88EFA /* ComponentId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentId.swift; sourceTree = "<group>"; };
 		444272B2256CDEC8008BB87B /* TodayTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTitle.swift; sourceTree = "<group>"; };
 		444272B7256CE2B3008BB87B /* PreviewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewItem.swift; sourceTree = "<group>"; };
@@ -611,6 +617,9 @@
 				44337F6D2583C4AE00B88EFA /* ComponentId.swift */,
 				445D3A21257F441B0002D2DE /* TransitionLogModifier.swift */,
 				4471B1B02581625900647CA0 /* EventLogViewModel.swift */,
+				4420C3DB258E69070059C54A /* EventLogUseCase.swift */,
+				4420C3D8258E68ED0059C54A /* EventLogResponse.swift */,
+				4420C3D3258E68D10059C54A /* EventEndPoint.swift */,
 				448A39FB25814D5200583624 /* EventLogView.swift */,
 			);
 			path = EventLogger;
@@ -1168,10 +1177,12 @@
 				44D7B7EA25754BF10049CDBB /* PlayerControls.swift in Sources */,
 				44E4C51B258906AE002D865C /* PlayerDataManager.swift in Sources */,
 				80DA952125779FE9008C9DFF /* TrackRowB.swift in Sources */,
+				4420C3D4258E68D10059C54A /* EventEndPoint.swift in Sources */,
 				447ECD302579184E00EE1435 /* LibraryArtistsView.swift in Sources */,
 				44139CA325762D7A000CEEA5 /* ArtistItem.swift in Sources */,
 				805E28DA256BDFE6007AF5F1 /* ChartSectionA.swift in Sources */,
 				80D02E04257E0DD300A6748F /* SearchUseCase.swift in Sources */,
+				4420C3D9258E68ED0059C54A /* EventLogResponse.swift in Sources */,
 				800FA867257E003D008926A5 /* Playlists.swift in Sources */,
 				44F97972256CF2AE00C9C224 /* ThumbnailItem.swift in Sources */,
 				802187E325828B79009A4D95 /* Engagement+CoreDataClass.swift in Sources */,
@@ -1204,6 +1215,7 @@
 				445919A4256E4A6F0069DAB2 /* ThumbnailGridView.swift in Sources */,
 				4478F717256E817100755656 /* CGFloat+Constant.swift in Sources */,
 				80045DE225758D1600F32E6C /* MultiselectTabBar.swift in Sources */,
+				4420C3DC258E69070059C54A /* EventLogUseCase.swift in Sources */,
 				80DA95252577A084008C9DFF /* TrackRowC.swift in Sources */,
 				80A52151257927810051A925 /* SearchView.swift in Sources */,
 				44ACE45F257E6B9B00EA5479 /* PlaylistUseCase.swift in Sources */,
