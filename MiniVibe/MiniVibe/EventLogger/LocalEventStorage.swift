@@ -99,9 +99,11 @@ final class LocalEventStorage: LocalStorageType {
     private func send<T: Encodable>(logs: [T]?,
                                     isPlayEvent: Bool,
                                     fetchRequest: NSFetchRequest<NSFetchRequestResult>) {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
         let url = isPlayEvent ? EndPoint.playEvents.urlString : EndPoint.events.urlString
         guard let logs = logs,
-              let data = try? JSONEncoder().encode(logs) else { return }
+              let data = try? encoder.encode(logs) else { return }
         
         network.request(url: url, request: .post, body: data)
             .decode(type: ServerResponse.self, decoder: JSONDecoder())
