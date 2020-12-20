@@ -159,13 +159,15 @@ const reducer = (state: MusicPlayer = initialState, action) => {
                 return {
                     ...state,
                     playTime: 0,
-                    nowPlaying: action.data[0]
+                    nowPlaying: action.data[0],
+                    playingStatus: true
                 }
             } else {
                 return {
                     upNextTracks: [...state.upNextTracks, ...action.data],
                     playTime: 0,
-                    nowPlaying: action.data[0]
+                    nowPlaying: action.data[0],
+                    playingStatus: true
                 }
             }
         }
