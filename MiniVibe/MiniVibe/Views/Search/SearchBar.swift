@@ -16,6 +16,7 @@ struct SearchBar: View {
             TextField("검색어를 입력해 주세요.", text: $viewModel.state.searchedText, onCommit: {
                 viewModel.send(.search)
             })
+            .foregroundColor(.primary)
             .padding(10)
             .background(Color(.systemGray6))
             .padding(10)
