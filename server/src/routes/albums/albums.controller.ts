@@ -9,6 +9,8 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
         const albums = await AlbumRepository.createQueryBuilder('album')
             .leftJoinAndSelect('album.artist', 'artist')
             .select(['album', 'artist.id', 'artist.name'])
+            .orderBy('album.releaseDate', 'DESC')
+            .limit(20)
             .getMany();
 
         return res.json({

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Text from '../../atoms/Text';
+import { getRandomColor } from '@utils/color';
 
 const Card = styled.div`
     display: flex;
@@ -26,18 +27,19 @@ const Content = styled.div`
 `;
 
 interface GenreCardProps {
-    title: string;
-    href: string;
-    color: string;
+    id: number;
+    name: string;
+    href?: string;
+    color?: string;
 }
 
-const GenreCard = ({ title, href, color }: GenreCardProps) => (
+const GenreCard = ({ id, name, href, color }: GenreCardProps) => (
     <Card>
         {/* TODO : Link 컴포넌트로 감싸기 */}
         {/* <Link href={href}/> */}
-        <Bar color={color} />
+        <Bar color={color ? color : getRandomColor()} />
         <Content>
-            <Text>{title}</Text>
+            <Text>{name}</Text>
         </Content>
     </Card>
 );
