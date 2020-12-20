@@ -43,7 +43,6 @@ final class ServerEventStorage: ServerStorageType {
                 }
             }
             .map(\.success)
-            .eraseToAnyPublisher()
             .sink(receiveCompletion: { [weak self] result in
                 switch result {
                 case .finished:

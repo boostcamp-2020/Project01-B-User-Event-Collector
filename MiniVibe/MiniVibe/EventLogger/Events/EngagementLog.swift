@@ -19,6 +19,7 @@ extension EngagementLogType {
         engagement.event = event
         engagement.userId = userId
         engagement.timestamp = timestamp
+        engagement.platform = platform
         try? context.save()
     }
 }
@@ -27,13 +28,6 @@ struct Active: EngagementLogType {
     let userId: Int
     let timestamp = Date()
     let event = "Active"
-    let platform = "iOS"
-}
-
-struct Foreground: EngagementLogType {
-    let userId: Int
-    let timestamp = Date()
-    let event = "Foreground"
     let platform = "iOS"
 }
 

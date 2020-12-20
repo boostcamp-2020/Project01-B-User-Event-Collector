@@ -26,7 +26,7 @@ extension Like {
     @NSManaged public var data: LogData
     @NSManaged public var isLike: Bool
     @NSManaged public var timestamp: Date
-    
+    @NSManaged public var platform: String
 }
 
 extension Like: EventPrintable {
@@ -44,7 +44,7 @@ extension Like: EventPrintable {
 extension Like: Encodable {
     
     enum CodingKeys: CodingKey {
-        case event, userId, componentId, data, isLike, timestamp
+        case event, userId, componentId, data, isLike, timestamp, platform
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -55,5 +55,6 @@ extension Like: Encodable {
         try container.encode(data, forKey: .data)
         try container.encode(isLike, forKey: .isLike)
         try container.encode(timestamp, forKey: .timestamp)
+        try container.encode(platform, forKey: .platform)
     }
 }

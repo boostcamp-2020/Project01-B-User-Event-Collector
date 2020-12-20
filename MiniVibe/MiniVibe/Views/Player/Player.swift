@@ -52,7 +52,7 @@ struct Player: View {
             }
             .foregroundColor(.accentColor)
             .font(.system(size: 12))
-            .logSubscription(componentId: "")
+            .logSubscription(componentId: "playerSubscribe")
             
             Spacer()
             

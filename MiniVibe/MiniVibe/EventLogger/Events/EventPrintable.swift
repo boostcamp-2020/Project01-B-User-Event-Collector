@@ -8,5 +8,6 @@
 import Foundation
 
 protocol EventPrintable: CustomStringConvertible {
+    var event: String { get }
     var timestamp: Date { get }
 }

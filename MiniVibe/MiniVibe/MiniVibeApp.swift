@@ -16,6 +16,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
         nowPlaying?.send(.launch)
+        MiniVibeApp.eventLogger.send(Active(userId: 0))
         return true
     }
 }
@@ -40,19 +41,9 @@ struct MiniVibeApp: App {
                 .environmentObject(nowPlaying)
                 .onReceive(
                     NotificationCenter.default.publisher(
-                        for: UIApplication.didBecomeActiveNotification)) { _ in
-                    MiniVibeApp.eventLogger.send(Active(userId: 0))
-                }
-                .onReceive(
-                    NotificationCenter.default.publisher(
                         for: UIApplication.willResignActiveNotification)) { _ in
                     nowPlaying.send(.resignActive)
                     MiniVibeApp.eventLogger.send(Background(userId: 0))
-                }
-                .onReceive(
-                    NotificationCenter.default.publisher(
-                        for: UIApplication.willEnterForegroundNotification)) { _ in
-                    MiniVibeApp.eventLogger.send(Foreground(userId: 0))
                 }
                 .onReceive(
                     NotificationCenter.default.publisher(

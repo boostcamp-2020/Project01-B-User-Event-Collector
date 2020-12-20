@@ -21,6 +21,7 @@ extension SaveLogType {
         saveLog.timestamp = timestamp
         saveLog.componentId = componentId
         saveLog.data = data
+        saveLog.platform = platform
         try? context.save()
     }
 }

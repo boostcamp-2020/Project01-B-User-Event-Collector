@@ -20,6 +20,7 @@ extension SubscribeLogType {
         subscribe.userId = userId
         subscribe.componentId = componentId
         subscribe.timestamp = timestamp
+        subscribe.platform = platform
         try? context.save()
     }
 }

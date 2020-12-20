@@ -22,6 +22,7 @@ extension ShareLogType {
         shareLog.componentId = componentId
         shareLog.data = data
         shareLog.timestamp = timestamp
+        shareLog.platform = platform
         try? context.save()
     }
 }
@@ -29,7 +30,8 @@ extension ShareLogType {
 struct ShareLog: ShareLogType {
     let userId: Int
     let componentId: String
-    var data: LogData
+    let data: LogData
     let timestamp: Date = Date()
     let event: String = "Share"
+    let platform: String = "iOS"
 }

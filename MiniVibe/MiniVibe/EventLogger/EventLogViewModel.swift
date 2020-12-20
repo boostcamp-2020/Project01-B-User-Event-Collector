@@ -5,25 +5,30 @@
 //  Created by TTOzzi on 2020/12/10.
 //
 
+import Combine
 import Foundation
-import EventLogKit
 
 final class EventLogViewModel: ObservableObject {
     enum Input {
         case appear
-        case reset
     }
     
-    enum State {
-        case idle
-        case loaded(events: [EventPrintable])
-        case empty
+    struct State {
+        let category = ["Local", "Server", "Server(play)"]
+        var local: [EventPrintable] = []
+        var commonEvents: [EventLog] = []
+        var playEvents: [EventLog] = []
+        var selection = 0
     }
     
-    @Published private(set) var state: State = .idle
+    @Published var state = State()
+    private let useCase: EventLogUseCaseType
     private let localStorage: LocalEventStorage?
+    private var cancellables: Set<AnyCancellable> = []
     
-    init(localStorage: LocalEventStorage?) {
+    init(useCase: EventLogUseCaseType = EventLogUseCase(),
+         localStorage: LocalEventStorage?) {
+        self.useCase = useCase
         self.localStorage = localStorage
     }
     
@@ -31,18 +36,17 @@ final class EventLogViewModel: ObservableObject {
         switch input {
         case .appear:
             load()
-        case .reset:
-            reset()
         }
     }
     
     private func load() {
-        let events = localStorage?.events() ?? []
-        state = events.isEmpty ? .empty : .loaded(events: events)
-    }
-    
-    private func reset() {
-        localStorage?.reset()
-        state = .empty
+        cancellables = []
+        state.local = localStorage?.events() ?? []
+        useCase.loadCommonEvents()
+            .sink { [weak self] in self?.state.commonEvents = $0 }
+            .store(in: &cancellables)
+        useCase.loadPlayEvents()
+            .sink { [weak self] in self?.state.playEvents = $0 }
+            .store(in: &cancellables)
     }
 }

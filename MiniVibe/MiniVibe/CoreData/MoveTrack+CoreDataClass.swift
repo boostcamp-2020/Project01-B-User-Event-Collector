@@ -26,7 +26,7 @@ extension MoveTrack {
     @NSManaged public var source: Int
     @NSManaged public var destination: Int
     @NSManaged public var timestamp: Date
-    
+    @NSManaged public var platform: String
 }
 
 extension MoveTrack: EventPrintable {
@@ -43,7 +43,7 @@ extension MoveTrack: EventPrintable {
 extension MoveTrack: Encodable {
     
     enum CodingKeys: CodingKey {
-        case event, userId, trackId, source, destination, timestamp
+        case event, userId, trackId, source, destination, timestamp, platform
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -54,5 +54,6 @@ extension MoveTrack: Encodable {
         try container.encode(source, forKey: .source)
         try container.encode(destination, forKey: .destination)
         try container.encode(timestamp, forKey: .timestamp)
+        try container.encode(platform, forKey: .platform)
     }
 }

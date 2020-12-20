@@ -22,6 +22,7 @@ extension UpnextChangeLogType {
         upnextChange.trackId = trackId
         upnextChange.userId = userId
         upnextChange.event = event
+        upnextChange.platform = platform
         try? context.save()
     }
 }

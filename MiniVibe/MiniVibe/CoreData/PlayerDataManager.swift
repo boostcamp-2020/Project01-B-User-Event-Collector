@@ -74,7 +74,7 @@ final class PlayerDataManager: PlayerDataManagerType {
             return TrackInfoData(id: track.id,
                                  title: track.title,
                                  lyrics: track.lyrics,
-                                 albumId: track.albumId!,
+                                 albumId: track.album.id,
                                  album: albumData,
                                  artist: artistData,
                                  liked: track.liked)
