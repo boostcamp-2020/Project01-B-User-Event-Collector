@@ -1,7 +1,7 @@
 const host = 'http://localhost:4500';
-const eventHost = 'http://localhost:5500'
+const eventHost = 'http://localhost:5500';
 const baseUrl = `${host}/api`;
-const eventUrl = `${eventHost}/api`
+const eventUrl = `${eventHost}/api`;
 const apiUrl = {
     magazine: `${baseUrl}/magazines`,
     news: `${baseUrl}/news`,
@@ -21,6 +21,7 @@ const apiUrl = {
     login: `${host}/auth`,
     event: `${eventUrl}/events/`,
     playEvent: `${eventUrl}/play-events/`,
+    lossedEvent: `${eventUrl}/lossed-events`,
 };
 
 export default apiUrl;

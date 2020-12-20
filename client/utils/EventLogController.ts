@@ -1,4 +1,4 @@
-import { sendLossedEvents } from '@utils/apis';
+import { sendLossedEvents, sendLossedPlayEvents } from '@utils/apis';
 import Timer from '@utils/Timer';
 
 class EventLogController {
@@ -14,13 +14,26 @@ class EventLogController {
 
             if (eventLogs.length === 0 && playEventLogs.length === 0) return;
 
-            const allLogs = eventLogs.concat(playEventLogs);
-
-            sendLossedEvents(allLogs)
+            sendLossedEvents(eventLogs)
                 .then((res) => {
-                    this.resetLogs();
+                    this.resetLogs('eventLogs');
                 })
-                .catch((err) => {})
+                .catch((err) => {
+                    console.error(err);
+                    if (err.status === 500) this.resetLogs('eventLogs');
+                })
+                .finally(() => {
+                    this._timer.start();
+                });
+
+            sendLossedPlayEvents(playEventLogs)
+                .then((res) => {
+                    this.resetLogs('playEventLogs');
+                })
+                .catch((err) => {
+                    console.error(err);
+                    if (err.status === 500) this.resetLogs('playEventLogs');
+                })
                 .finally(() => {
                     this._timer.start();
                 });
@@ -35,16 +48,14 @@ class EventLogController {
     getLogs(eventType) {
         const storageLogs = localStorage.getItem(eventType);
         if (!storageLogs) {
-            this.resetLogs();
+            this.resetLogs(eventType);
             return [];
         }
         return JSON.parse(storageLogs);
     }
 
-    resetLogs() {
-        const emptyArray = JSON.stringify([]);
-        localStorage.setItem('eventLogs', emptyArray);
-        localStorage.setItem('playEventLogs', emptyArray);
+    resetLogs(eventType) {
+        localStorage.setItem(eventType, JSON.stringify([]));
     }
 }
 const eventLogController = new EventLogController();

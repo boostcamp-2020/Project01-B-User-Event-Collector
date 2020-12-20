@@ -145,3 +145,19 @@ export const sendPlayEvent = async (eventData) => {
         eventLogController.saveLogs('playEventLogs', eventData);
     }
 };
+
+export const sendLossedEvents = async (eventData) => {
+    try {
+        await axios.post(apiUrl.event, eventData);
+    } catch (err) {
+        rejects(err.response);
+    }
+};
+
+export const sendLossedPlayEvents = async (eventData) => {
+    try {
+        await axios.post(apiUrl.playEvent, eventData);
+    } catch (err) {
+        rejects(err.response);
+    }
+};
