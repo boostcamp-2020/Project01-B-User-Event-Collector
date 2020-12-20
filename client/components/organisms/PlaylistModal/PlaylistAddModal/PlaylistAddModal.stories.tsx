@@ -7,5 +7,5 @@ export default {
 };
 
 export const Default = () => (
-    <PlaylistAddModal visibility = {true} />
+    <PlaylistAddModal />
 );

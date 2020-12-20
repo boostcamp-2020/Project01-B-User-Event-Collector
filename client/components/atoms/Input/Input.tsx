@@ -13,7 +13,8 @@ const Input = ({ variant, name, value, onChange }: InputProps) => {
                 variant={variant}
                 placeholder="VIBE 검색"
                 value={value}
-                onChange={onChange}
+                onChange={onChange} 
+                autoComplete="off"
             />
         );
     return (
@@ -23,7 +24,8 @@ const Input = ({ variant, name, value, onChange }: InputProps) => {
             variant={variant}
             placeholder="플레이리스트 이름을 입력해 주세요"
             value={value}
-            onChange={onChange}
+            onChange={onChange} 
+            autoComplete="off"
         />
     );
 };

@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import GenreCard from '@components/molecules/GenreCard/GenreCard';
 import CardScrollList from '@components/organisms/CardScrollList/CardScrollList';
 
+interface GenreCardListProps {
+    items?;
+}
+
 // TODO : refactor
 const getCardBundle = (cards) => {
     const bundle = [];
