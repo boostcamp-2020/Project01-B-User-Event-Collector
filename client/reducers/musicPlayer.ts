@@ -15,6 +15,7 @@ interface MusicPlayer {
     nowPlaying: TrackRowCardProps;
     playTime: number;
     upNextTracks: TrackRowCardProps[];
+    playingStatus: boolean
 }
 
 const initialState = {
@@ -150,7 +151,8 @@ const reducer = (state: MusicPlayer = initialState, action) => {
             return {
                 upNextTracks: [...newTrackList, ...action.data],
                 playTime: 0,
-                nowPlaying: action.data[0]
+                nowPlaying: action.data[0],
+                playingStatus: true
             }
         } else {
             if(state.upNextTracks.map(e => e.id).includes(action.data[0].id)){
