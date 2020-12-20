@@ -49,7 +49,7 @@ const PlayControllerButtons = () => {
     const dispatch = useDispatch();
     const [playing, setPlaying] = useState(false);
     const user = useSelector((state) => state.user);
-    const { nowPlaying, upNextTracks, playTime } = useSelector((state) => state.musicPlayer);
+    const { nowPlaying, upNextTracks, playTime, playingStatus } = useSelector((state) => state.musicPlayer);
     const logPlayNowEvent = usePlayNowEventLog({ userId: user.id });
     const logPlayEvent = usePlayEventLog({ userId: user.id });
 
@@ -101,8 +101,8 @@ const PlayControllerButtons = () => {
             <SkipIconWrapper>
                 <SkipPreviousIcon style={{ fontSize: '35px' }} onClick={toPrevTrack} />
             </SkipIconWrapper>
-            <PlayIconWrapper onClick={() => setPlaying(!playing)}>
-                {playing ? (
+            <PlayIconWrapper>
+                {playingStatus ? (
                     <PauseIcon style={{ fontSize: '55px' }} onClick={pauseTrackHandler} />
                 ) : (
                     <PlayArrowIcon style={{ fontSize: '55px' }} onClick={playTrackHandler} />
