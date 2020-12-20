@@ -14,6 +14,7 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
             .select([
                 'track.id',
                 'track.title',
+                'track.playtime',
                 'artist.id',
                 'artist.name',
                 'album.id',

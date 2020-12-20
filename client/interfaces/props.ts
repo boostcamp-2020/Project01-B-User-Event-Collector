@@ -107,6 +107,7 @@ export interface ChartCardProps {
     id: number;
     rank: number;
     title: string;
+    playtime: number;
     album: {
         id: number;
         imageUrl: string;

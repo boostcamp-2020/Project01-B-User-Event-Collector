@@ -8,7 +8,7 @@ import A from '@components/atoms/A/A';
 
 const ChartCard = ( data : ChartCardProps) => {
 
-    const { id, rank, title, album, artist } = data;
+    const { id, rank, title, album, artist, playtime } = data;
     const { id: albumId, imageUrl } = album;
     const { id: artistId, name: artistName } = artist;
 
