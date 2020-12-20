@@ -40,7 +40,9 @@ const LoginInput = styled.input`
     width: 231.19px;
     height: 40px;
     margin-bottom: 10px;
-    &:focus{outline: none; }
+    &:focus {
+        outline: none;
+    }
 `;
 
 const LoginButton = styled.input`
@@ -50,7 +52,7 @@ const LoginButton = styled.input`
     align-items: center;
     padding: 9px 15px;
     color: black;
-    border: 1px solid #D7D7D7;
+    border: 1px solid #d7d7d7;
     background-color: white;
     width: 231.19px;
     height: 50px;
@@ -76,7 +78,7 @@ const Title = styled.p`
 `;
 
 const Login = () => {
-    const localClick = useClickEventLog({ userId: null, href: `${apiUrl.login}/$local-login` });
+    const localClick = useClickEventLog({ userId: null, href: `${apiUrl.login}/local-login` });
     const naverClick = useClickEventLog({ userId: null, href: `${apiUrl.login}/naver-login` });
     const cookies = new Cookies();
     useEffect(() => {
@@ -107,7 +109,11 @@ const Login = () => {
                     </NaverLogin>
                 </ComponentInfoWrapper>
                 <ComponentInfoWrapper componentId={contentType.join}>
-                    <Link href="/join"><Button icon={HeadsetIcon} variant="primary" width="231.19" height="50"><a>miniVIBE 회원가입</a></Button></Link>
+                    <Link href="/join">
+                        <Button icon={HeadsetIcon} variant="primary" width="231.19" height="50">
+                            <a>miniVIBE 회원가입</a>
+                        </Button>
+                    </Link>
                 </ComponentInfoWrapper>
             </LoginContainer>
         </ComponentInfoContext.Provider>
