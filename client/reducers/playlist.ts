@@ -24,10 +24,12 @@ const reducer = (state: PlayList = initialState, action) => {
     switch (action.type) {
         case SHOW_PLAYLIST_MODAL:
             return {
+                ...state,
                 showModal: true
             }
         case HIDE_PLAYLIST_MODAL:
             return {
+                ...state,
                 showModal: false
             }
         default: 
