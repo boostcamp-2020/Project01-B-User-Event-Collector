@@ -64,7 +64,12 @@ const ButtonContainer = styled.div`
     justify-content: space-between;
 `;
 
-const PlaylistAddModal = ({ playlist, onSubmit }) => {
+interface PlaylistAddModalProps {
+    playlist?;
+    onSubmit?; 
+}
+
+const PlaylistAddModal = ({ playlist, onSubmit } : PlaylistAddModalProps) => {
     const dispatch = useDispatch();
 
     const [title, setTitle] = useState('');

@@ -89,6 +89,7 @@ const reducer = (state = initialState, action) => {
             }
         case LOAD_USER_SUCCESS:
             return {
+                ...state,
                 isLoggedIn: true,
                 id: action.data.id,
                 name: action.data.name,

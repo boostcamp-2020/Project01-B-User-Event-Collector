@@ -110,6 +110,7 @@ const reducer = (state: MusicPlayer = initialState, action) => {
         case DELETE_TRACK_FROM_UPNEXT:
             newTrackList = state.upNextTracks.filter(t => t.id != action.data);
             return {
+                ...state,
                 upNextTracks: [...newTrackList],
                 playTime: 0,
                 nowPlaying: newTrackList[0]
@@ -149,6 +150,7 @@ const reducer = (state: MusicPlayer = initialState, action) => {
                    ).includes(track.id) !== true
            )
             return {
+                ...state,
                 upNextTracks: [...newTrackList, ...action.data],
                 playTime: 0,
                 nowPlaying: action.data[0],
@@ -159,13 +161,16 @@ const reducer = (state: MusicPlayer = initialState, action) => {
                 return {
                     ...state,
                     playTime: 0,
-                    nowPlaying: action.data[0]
+                    nowPlaying: action.data[0],
+                    playingStatus: true
                 }
             } else {
                 return {
+                    ...state,
                     upNextTracks: [...state.upNextTracks, ...action.data],
                     playTime: 0,
-                    nowPlaying: action.data[0]
+                    nowPlaying: action.data[0],
+                    playingStatus: true
                 }
             }
         }

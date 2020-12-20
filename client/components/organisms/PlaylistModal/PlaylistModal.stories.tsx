@@ -19,5 +19,5 @@ const data =
 const playlistData = Array(15).fill(data);
 
 export const Default = () => (
-    <PlaylistModal visibility = {true} data = {playlistData}/>
+    <PlaylistModal data = {playlistData}/>
 );
