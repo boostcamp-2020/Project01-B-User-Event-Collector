@@ -12,13 +12,13 @@ struct EventLogResponse: Decodable {
 }
 
 struct EventLog: Decodable {
-    var event: String
+    var event: String?
     var platform: String
     var timestamp: String
 }
 
 extension EventLog: CustomStringConvertible {
     var description: String {
-        return "\(timestamp)\n\(event)"
+        return "\(timestamp)\n\(event ?? "none")"
     }
 }

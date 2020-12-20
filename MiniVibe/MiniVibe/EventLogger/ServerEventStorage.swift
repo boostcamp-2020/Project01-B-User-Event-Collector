@@ -25,7 +25,7 @@ final class ServerEventStorage: ServerStorageType {
     
     func send<T: EventLogType>(_ event: T) {
         let encoder = JSONEncoder()
-        encoder.dateEncodingStrategy = .iso8601
+        encoder.dateEncodingStrategy = .iso8601Custom
         guard let encodedData = try? encoder.encode(event) else { return }
         
         let url = eventEndPoint(event: event)
