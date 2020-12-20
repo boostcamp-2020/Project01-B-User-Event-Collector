@@ -21,7 +21,6 @@ const apiUrl = {
     login: `${host}/auth`,
     event: `${eventUrl}/events/`,
     playEvent: `${eventUrl}/play-events/`,
-    lossedEvent: `${eventUrl}/lossed-events`,
 };
 
 export default apiUrl;
