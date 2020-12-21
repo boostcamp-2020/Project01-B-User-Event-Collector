@@ -10,9 +10,14 @@ import Foundation
 
 struct MockLocalStorage: LocalStorageType {
     let saveHandler: (EventLogType) -> Void
+    let sendToServerHandler: () -> Void
     
     func save(_ event: EventLogType) {
         saveHandler(event)
+    }
+    
+    func sendToServer() {
+        sendToServerHandler()
     }
 }
 

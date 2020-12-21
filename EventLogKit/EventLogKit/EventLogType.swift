@@ -8,7 +8,7 @@
 import CoreData
 import Foundation
 
-public protocol EventLogType: Encodable, CustomStringConvertible {
+public protocol EventLogType: Encodable {
     var event: String { get }
     var timestamp: Date { get }
     func save(context: NSManagedObjectContext)

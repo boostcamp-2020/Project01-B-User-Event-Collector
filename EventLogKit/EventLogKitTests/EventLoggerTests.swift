@@ -12,6 +12,7 @@ import XCTest
 final class EventLoggerTests: XCTestCase {    
 
     struct MockEvent: EventLogType {
+        var event: String
         var userId: Int
         var timestamp: Date
         
@@ -24,10 +25,10 @@ final class EventLoggerTests: XCTestCase {
         let expectation = XCTestExpectation(description: "available state")
         defer { wait(for: [expectation], timeout: 5) }
         
-        let mockEvent = MockEvent(userId: 0, timestamp: Date())
+        let mockEvent = MockEvent(event: "event", userId: 0, timestamp: Date())
         let localStorage = MockLocalStorage { event in
             XCTFail()
-        }
+        } sendToServerHandler: { }
         let serverStorage = MockServerStorage { event in
             expectation.fulfill()
         }
@@ -43,10 +44,10 @@ final class EventLoggerTests: XCTestCase {
         let expectation = XCTestExpectation(description: "unavailable state")
         defer { wait(for: [expectation], timeout: 5) }
         
-        let mockEvent = MockEvent(userId: 0, timestamp: Date())
+        let mockEvent = MockEvent(event: "event", userId: 0, timestamp: Date())
         let localStorage = MockLocalStorage { event in
             expectation.fulfill()
-        }
+        } sendToServerHandler: { }
         let serverStorage = MockServerStorage { event in
             XCTFail()
         }
@@ -60,12 +61,15 @@ final class EventLoggerTests: XCTestCase {
     
     func test_intergration() {
         let localStorageExpectation = XCTestExpectation(description: "test local storage recieve")
+        localStorageExpectation.expectedFulfillmentCount = 2
         let serverStorageExpectation = XCTestExpectation(description: "test server storage recieve")
         serverStorageExpectation.expectedFulfillmentCount = 2
         defer { wait(for: [localStorageExpectation, serverStorageExpectation], timeout: 5) }
         
-        let mockEvent = MockEvent(userId: 0, timestamp: Date())
+        let mockEvent = MockEvent(event: "event", userId: 0, timestamp: Date())
         let localStorage = MockLocalStorage { event in
+            localStorageExpectation.fulfill()
+        } sendToServerHandler: {
             localStorageExpectation.fulfill()
         }
         let serverStorage = MockServerStorage { event in
@@ -79,10 +83,11 @@ final class EventLoggerTests: XCTestCase {
         // serverStorageExpectation fullfill count 1
         reachability.state = .cellular
         eventLogger.send(mockEvent)
-        // localStorageExpectation fullfill
+        // localStorageExpectation fullfill count 1
         reachability.state = .unavailable
         eventLogger.send(mockEvent)
         // serverStorageExpectation fullfill count 2
+        // localStorageExpectation fullfill count 2 (sendToServer)
         reachability.state = .wifi
         eventLogger.send(mockEvent)
     }
